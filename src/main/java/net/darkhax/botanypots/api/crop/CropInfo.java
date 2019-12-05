@@ -9,8 +9,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import net.darkhax.bookshelf.Bookshelf;
+import net.darkhax.bookshelf.util.MCJsonUtils;
 import net.darkhax.botanypots.BotanyPots;
-import net.darkhax.botanypots.JsonUtils;
 import net.darkhax.botanypots.api.soil.SoilInfo;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
@@ -72,7 +72,7 @@ public class CropInfo {
         final int growthTicks = JSONUtils.getInt(json, "growthTicks");
         final float growthModifier = JSONUtils.getFloat(json, "growthModifier");
         final List<CropEntry> results = deserializeCropEntries(id, json);
-        final BlockState displayState = JsonUtils.deserializeBlockState(json.getAsJsonObject("display"));
+        final BlockState displayState = MCJsonUtils.deserializeBlockState(json.getAsJsonObject("display"));
         return new CropInfo(id, seed, validSoils.toArray(new String[0]), growthTicks, growthModifier, results.toArray(new CropEntry[0]), displayState);
     }
     

@@ -7,7 +7,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import net.darkhax.bookshelf.Bookshelf;
-import net.darkhax.botanypots.JsonUtils;
+import net.darkhax.bookshelf.util.MCJsonUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
@@ -59,7 +59,7 @@ public class SoilInfo {
     public static SoilInfo deserialize (ResourceLocation id, JsonObject json) {
         
         final Ingredient input = Ingredient.deserialize(json.getAsJsonObject("input"));
-        final BlockState renderState = JsonUtils.deserializeBlockState(json.getAsJsonObject("display"));
+        final BlockState renderState = MCJsonUtils.deserializeBlockState(json.getAsJsonObject("display"));
         final int tickRate = JSONUtils.getInt(json, "ticks");
         final Set<String> categories = new HashSet<>();
         
