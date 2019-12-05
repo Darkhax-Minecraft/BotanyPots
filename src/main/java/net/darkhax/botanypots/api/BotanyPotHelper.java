@@ -1,11 +1,15 @@
 package net.darkhax.botanypots.api;
 
+import java.util.Random;
+
 import javax.annotation.Nullable;
 
 import net.darkhax.bookshelf.util.MathsUtils;
 import net.darkhax.botanypots.api.crop.CropEntry;
 import net.darkhax.botanypots.api.crop.CropInfo;
 import net.darkhax.botanypots.api.crop.CropReloadListener;
+import net.darkhax.botanypots.api.fertilizer.FertilizerInfo;
+import net.darkhax.botanypots.api.fertilizer.FertilizerReloadListener;
 import net.darkhax.botanypots.api.soil.SoilInfo;
 import net.darkhax.botanypots.api.soil.SoilReloadListener;
 import net.minecraft.item.ItemStack;
@@ -84,5 +88,18 @@ public class BotanyPotHelper {
         }
         
         return drops;
+    }
+    
+    public static int getFertilizerTicks(ItemStack item, Random random) {
+        
+        for (FertilizerInfo fertilizer : FertilizerReloadListener.registeredFertilizer.values()) {
+            
+            if (fertilizer.getIngredient().test(item)) {
+                
+                return fertilizer.getTicksToGrow(random);
+            }
+        }
+        
+        return -1;
     }
 }

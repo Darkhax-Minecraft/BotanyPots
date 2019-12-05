@@ -107,6 +107,11 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         this.currentGrowthTicks = 0;
     }
     
+    public void addGrowth(int ticksToGrow) {
+        
+        this.currentGrowthTicks += ticksToGrow;
+    }
+    
     @Override
     public void onTileTick () {
         

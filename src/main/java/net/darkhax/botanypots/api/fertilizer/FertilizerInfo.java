@@ -1,10 +1,13 @@
 package net.darkhax.botanypots.api.fertilizer;
 
+import java.util.Random;
+
 import com.google.gson.JsonObject;
 
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 
 public class FertilizerInfo {
     
@@ -39,6 +42,11 @@ public class FertilizerInfo {
     public int getMaxTicks () {
         
         return this.maxTicks;
+    }
+    
+    public int getTicksToGrow(Random random) {
+        
+        return MathHelper.nextInt(random, this.minTicks, this.maxTicks);
     }
     
     public static FertilizerInfo deserialize (ResourceLocation id, JsonObject json) {

@@ -92,7 +92,7 @@ public class BlockBotanyPot extends Block {
                 // Attempt to insert the item. If something is inserted true is returned and
                 // the method ends. If the item can't be inserted the method will continue and
                 // the crop will try to be harvested.
-                if (!heldItem.isEmpty()) {
+                if (!heldItem.isEmpty()) {                   
                     
                     // Attempt soil add first
                     if (pot.getSoil() == null) {
@@ -113,6 +113,19 @@ public class BlockBotanyPot extends Block {
                         
                         if (cropForStack != null && BotanyPotHelper.isSoilValidForCrop(pot.getSoil(), cropForStack) && pot.setCrop(cropForStack)) {
                             
+                            heldItem.shrink(1);
+                            return true;
+                        }
+                    }
+                    
+                    else {
+                        
+                        final int fertilizerGrowthTicks = BotanyPotHelper.getFertilizerTicks(heldItem, world.rand);
+                        
+                        if (fertilizerGrowthTicks < -1) {
+                            
+                            pot.addGrowth(fertilizerGrowthTicks);
+                            // TODO spawn particles
                             heldItem.shrink(1);
                             return true;
                         }
