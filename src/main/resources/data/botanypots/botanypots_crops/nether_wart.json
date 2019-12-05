@@ -2,7 +2,7 @@
   "seed": {
     "item": "minecraft:nether_wart"
   },
-  "categories":["dirt"],
+  "categories":["soul_sand"],
   "growthTicks": 1,
   "growthModifier": 2.5,
   "display": {
