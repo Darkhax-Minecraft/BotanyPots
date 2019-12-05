@@ -92,7 +92,7 @@ public class BlockBotanyPot extends Block {
                 // Attempt to insert the item. If something is inserted true is returned and
                 // the method ends. If the item can't be inserted the method will continue and
                 // the crop will try to be harvested.
-                if (!heldItem.isEmpty()) {                   
+                if (!heldItem.isEmpty()) {
                     
                     // Attempt soil add first
                     if (pot.getSoil() == null) {

@@ -16,10 +16,29 @@ import net.minecraft.util.ResourceLocation;
 
 public class SoilInfo {
     
+    /**
+     * The id of the soil entry.
+     */
     private final ResourceLocation id;
+    
+    /**
+     * The item used to get the soil into the pot.
+     */
     private final Ingredient ingredient;
+    
+    /**
+     * The blockstate used to render the soil.
+     */
     private final BlockState renderState;
+    
+    /**
+     * The base tick rate of the soil.
+     */
     private final int tickRate;
+    
+    /**
+     * An array of associated soil categories.
+     */
     private final String[] categories;
     
     public SoilInfo(ResourceLocation id, Ingredient ingredient, BlockState renderState, int tickRate, String[] categories) {

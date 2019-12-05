@@ -18,7 +18,7 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
             
             if (tile.getCrop() != null) {
                 
-                //TODO Render Crop
+                // TODO Render Crop
                 final BlockState cropRenderState = tile.getCrop().getDisplayState();
                 final float growthRate = (float) tile.getCurrentGrowthTicks() / tile.getTotalGrowthTicks();
             }
