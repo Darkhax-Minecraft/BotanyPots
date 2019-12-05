@@ -132,7 +132,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             else {
                 
                 // TODO Growth rate is accelerated here
-                this.currentGrowthTicks += 10;
+                this.currentGrowthTicks++;
             }
         }
         
