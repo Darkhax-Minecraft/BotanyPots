@@ -1,13 +1,16 @@
 package net.darkhax.botanypots.api.soil;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
+import net.darkhax.bookshelf.lib.TableBuilder;
 import net.darkhax.botanypots.BotanyPots;
 import net.minecraft.client.resources.JsonReloadListener;
 import net.minecraft.profiler.IProfiler;
@@ -22,7 +25,7 @@ public class SoilReloadListener extends JsonReloadListener {
     
     public SoilReloadListener() {
         
-        super(GSON_INSTANCE, "botanypots_soil");
+        super(GSON_INSTANCE, "botanypots_soils");
     }
     
     @Override

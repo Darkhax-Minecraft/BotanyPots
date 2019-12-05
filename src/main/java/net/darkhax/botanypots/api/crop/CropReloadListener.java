@@ -1,15 +1,19 @@
 package net.darkhax.botanypots.api.crop;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
+import net.darkhax.bookshelf.lib.TableBuilder;
 import net.darkhax.bookshelf.util.ModUtils;
 import net.darkhax.botanypots.BotanyPots;
+import net.darkhax.botanypots.api.fertilizer.FertilizerInfo;
 import net.minecraft.client.resources.JsonReloadListener;
 import net.minecraft.profiler.IProfiler;
 import net.minecraft.resources.IResourceManager;
