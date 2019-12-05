@@ -1,0 +1,32 @@
+{
+  "seed": {
+    "item": "minecraft:sunflower"
+  },
+  "categories":["dirt"],
+  "growthTicks": 1,
+  "growthModifier": 3.5,
+  "display": {
+    "block": "minecraft:sunflower",
+    "properties": {
+      "half": "upper"
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:sunflower"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:sunflower"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

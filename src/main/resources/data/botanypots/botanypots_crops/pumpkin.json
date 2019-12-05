@@ -1,0 +1,29 @@
+{
+  "seed": {
+    "item": "minecraft:pumpkin_seeds"
+  },
+  "categories":["farmland"],
+  "growthTicks": 3,
+  "growthModifier": 2,
+  "display": {
+    "block": "minecraft:pumpkin"
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:pumpkin"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:pumpkin_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

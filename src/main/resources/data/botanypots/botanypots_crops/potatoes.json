@@ -1,0 +1,32 @@
+{
+  "seed": {
+    "item": "minecraft:potato"
+  },
+  "categories":["farmland"],
+  "growthTicks": 3,
+  "growthModifier": 1.2,
+  "display": {
+    "block": "minecraft:potatoes",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:potato"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:potato"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

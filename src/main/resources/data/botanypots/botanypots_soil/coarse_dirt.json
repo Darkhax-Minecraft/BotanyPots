@@ -1,0 +1,10 @@
+{
+  "input": {
+    "item": "minecraft:coarse_dirt"
+  },
+  "display": {
+    "block": "minecraft:coarse_dirt"
+  },
+  "categories": ["dirt", "coarse_dirt"],
+  "ticks": 250
+}

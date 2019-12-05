@@ -1,0 +1,40 @@
+{
+  "seed": {
+    "item": "minecraft:wheat_seeds"
+  },
+  "categories":["farmland"],
+  "growthTicks": 3,
+  "growthModifier": 1.2,
+  "display": {
+    "block": "minecraft:wheat",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:wheat"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:wheat"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:wheat_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

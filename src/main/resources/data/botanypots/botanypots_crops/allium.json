@@ -1,0 +1,29 @@
+{
+  "seed": {
+    "item": "minecraft:allium"
+  },
+  "categories":["dirt"],
+  "growthTicks": 1,
+  "growthModifier": 2.5,
+  "display": {
+    "block": "minecraft:allium"
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:allium"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:allium"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

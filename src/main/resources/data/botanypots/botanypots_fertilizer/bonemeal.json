@@ -1,0 +1,7 @@
+{
+  "fertilizer": {
+    "item": "minecraft:bonemeal"
+  },
+  "minTicks": 50,
+  "maxTicks": 80
+}

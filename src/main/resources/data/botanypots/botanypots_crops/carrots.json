@@ -1,0 +1,32 @@
+{
+  "seed": {
+    "item": "minecraft:carrot"
+  },
+  "categories":["farmland"],
+  "growthTicks": 3,
+  "growthModifier": 1.2,
+  "display": {
+    "block": "minecraft:carrots",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:carrot"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:carrot"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "input": {
+    "item": "minecraft:grass_block"
+  },
+  "display": {
+    "block": "minecraft:grass_block"
+  },
+  "categories": ["dirt", "grass"],
+  "ticks": 240
+}

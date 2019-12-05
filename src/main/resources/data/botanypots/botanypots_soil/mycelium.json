@@ -1,0 +1,10 @@
+{
+  "input": {
+    "item": "minecraft:mycelium"
+  },
+  "display": {
+    "block": "minecraft:mycelium"
+  },
+  "categories": ["dirt", "mushroom"],
+  "ticks": 300
+}
