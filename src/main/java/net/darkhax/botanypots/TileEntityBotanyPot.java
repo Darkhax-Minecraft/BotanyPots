@@ -43,7 +43,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     
     public TileEntityBotanyPot() {
         
-        super(BotanyPots.tileBotanyPot);
+        super(BotanyPots.instance.getContent().getPotTileType());
     }
     
     /**
@@ -205,7 +205,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                         
                         boolean didAutoHarvest = false;
                         
-                        for (ItemStack item : BotanyPotHelper.getHarvestStacks(this.world, this.getCrop())) {
+                        for (final ItemStack item : BotanyPotHelper.getHarvestStacks(this.world, this.getCrop())) {
                             
                             // Iterate every valid slot of the inventory
                             for (int slot = 0; slot < inventory.getSlots(); slot++) {
@@ -231,10 +231,12 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                                     // like to keep this simple.
                                     inventory.insertItem(slot, item, false);
                                     
-                                    // Set auto harvest to true. This will cause a reset for the next growth cycle.
+                                    // Set auto harvest to true. This will cause a reset for
+                                    // the next growth cycle.
                                     didAutoHarvest = true;
                                     
-                                    // Exit the inventory for this loop. Will then move on to the next item and start over.
+                                    // Exit the inventory for this loop. Will then move on to
+                                    // the next item and start over.
                                     break;
                                 }
                             }

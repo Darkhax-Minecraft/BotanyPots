@@ -29,7 +29,7 @@ public class BotanyPotHelper {
      */
     public static int getRequiredGrowthTicks (@Nullable CropInfo crop, @Nullable SoilInfo soil) {
         
-        return (crop == null || soil == null) ? -1 : crop.getGrowthTicksForSoil(soil);
+        return crop == null || soil == null ? -1 : crop.getGrowthTicksForSoil(soil);
     }
     
     /**

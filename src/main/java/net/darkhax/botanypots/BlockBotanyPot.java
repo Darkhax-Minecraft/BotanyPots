@@ -27,7 +27,7 @@ public class BlockBotanyPot extends Block {
     
     private static final Properties properties = Properties.create(Material.CLAY);
     
-    private boolean hopper;
+    private final boolean hopper;
     
     public BlockBotanyPot() {
         

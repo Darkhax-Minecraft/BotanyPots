@@ -1,22 +1,17 @@
 package net.darkhax.botanypots;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import net.darkhax.bookshelf.item.ItemGroupBase;
 import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.bookshelf.registry.RegistryHelperClient;
 import net.darkhax.botanypots.api.crop.CropReloadListener;
 import net.darkhax.botanypots.api.fertilizer.FertilizerReloadListener;
 import net.darkhax.botanypots.api.soil.SoilReloadListener;
-import net.minecraft.block.Block;
-import net.minecraft.item.DyeColor;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.resources.IReloadableResourceManager;
-import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
@@ -28,39 +23,21 @@ public class BotanyPots {
     
     public static final String MOD_ID = "botanypots";
     public static final Logger LOGGER = LogManager.getLogger("Botany Pots");
-    public static final ItemGroup ITEM_GROUP = ItemGroup.MISC;
-    private final RegistryHelper registry;
+    public static BotanyPots instance;
     
-    public static TileEntityType<TileEntityBotanyPot> tileBotanyPot;
-    public static List<Block> botanyPots = new ArrayList<>();
+    private final Content content;
+    private final RegistryHelper registry;
+    private final ItemGroup itemGroup;
     
     public BotanyPots() {
         
-        this.registry = DistExecutor.runForDist( () -> () -> new RegistryHelperClient(MOD_ID, LOGGER, ITEM_GROUP), () -> () -> new RegistryHelper(MOD_ID, LOGGER, ITEM_GROUP));
+        instance = this;
+        
+        this.itemGroup = new ItemGroupBase(MOD_ID, () -> new ItemStack(BotanyPots.instance.content.getBasicBotanyPot()));
+        this.registry = DistExecutor.runForDist( () -> () -> new RegistryHelperClient(MOD_ID, LOGGER, this.itemGroup), () -> () -> new RegistryHelper(MOD_ID, LOGGER, this.itemGroup));
+        this.content = DistExecutor.runForDist( () -> () -> new ContentClient(this.registry), () -> () -> new Content(this.registry));
+        
         MinecraftForge.EVENT_BUS.addListener(this::startServer);
-        
-        // Normal Botany Pots
-        botanyPots.add(this.registry.registerBlock(new BlockBotanyPot(), "botany_pot"));
-        
-        for (final DyeColor dyeColor : DyeColor.values()) {
-            
-            botanyPots.add(this.registry.registerBlock(new BlockBotanyPot(), dyeColor.getName() + "_botany_pot"));
-        }
-        
-        // Hopper Botany Pots
-        botanyPots.add(this.registry.registerBlock(new BlockBotanyPot(true), "hopper_botany_pot"));
-        
-        for (final DyeColor dyeColor : DyeColor.values()) {
-            
-            botanyPots.add(this.registry.registerBlock(new BlockBotanyPot(true), "hopper_" + dyeColor.getName() + "_botany_pot"));
-        }
-        
-        tileBotanyPot = this.registry.registerTileEntity(TileEntityBotanyPot::new, "botany_pot", botanyPots.toArray(new Block[0]));
-        
-        if (this.registry instanceof RegistryHelperClient) {
-            
-            ((RegistryHelperClient) this.registry).setSpecialRenderer(TileEntityBotanyPot.class, new TileEntityRendererBotanyPot());
-        }
         
         this.registry.initialize(FMLJavaModLoadingContext.get().getModEventBus());
     }
@@ -71,5 +48,15 @@ public class BotanyPots {
         manager.addReloadListener(new SoilReloadListener());
         manager.addReloadListener(new CropReloadListener());
         manager.addReloadListener(new FertilizerReloadListener());
+    }
+    
+    public Content getContent () {
+        
+        return this.content;
+    }
+    
+    public RegistryHelper getRegistry () {
+        
+        return this.registry;
     }
 }
