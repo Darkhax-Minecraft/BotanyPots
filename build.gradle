@@ -74,7 +74,28 @@ repositories {
 
     maven {
 
-        url 'http://maven.mcmoddev.com'
+        name = "MMD (Bookshelf)"
+        url 'https://maven.mcmoddev.com'
+    }
+    
+    maven {
+		name = "Progwml6 maven (JEI)"
+		url = "https://dvs1.progwml6.com/files/maven/"
+	}
+	
+	maven {
+	    name = "Jared's Maven (CRT)"
+        url "https://maven.blamejared.com"
+	}
+	
+    maven { 
+        name = "TehNut's Maven (HWYLA)"
+		url "https://tehnut.info/maven" 
+	}
+	
+    maven {
+        name = "ModMaven"
+        url = "https://modmaven.k-4u.nl"
     }
 }
 
@@ -83,6 +104,9 @@ dependencies {
     minecraft "net.minecraftforge:forge:${forge_version}"
 	
 	compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.14.4:${bookshelf_version}")
+	compile fg.deobf("mezz.jei:jei-1.14.4:${jei_version}")
+    compile fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.14.4:${crt_version}")
+    compile fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}")
 }
 
 jar {
