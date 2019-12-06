@@ -87,6 +87,8 @@
   "botanypots.tooltip.soil.categories": "Soil Categories: %s",
   "botanypots.tooltip.pot.totalticks": "Total Ticks: %d",
   "botanypots.tooltip.pot.growticks": "Grow Ticks: %d",
+  "botanypots.tooltip.pot.normal": "A small pot for growing many kinds of plants.",
+  "botanypots.tooltip.pot.hopper": "A small pot for growing many kinds of plants. Can automatically harvest the crop, putting it in the inventory below.",
   
   "config.waila.plugin_botanypots": "Botany Pots",
   "config.waila.plugin_botanypots.show_crop": "Show Crop",
