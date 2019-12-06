@@ -20,12 +20,11 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-@SuppressWarnings("deprecation")
 public class BlockBotanyPot extends Block {
     
     private static final VoxelShape SHAPE = Block.makeCuboidShape(2, 0, 2, 14, 8, 14);
     
-    private static final Properties properties = Properties.create(Material.CLAY);
+    private static final Properties properties = Properties.create(Material.CLAY).hardnessAndResistance(1.25F, 4.2F);
     
     private final boolean hopper;
     
@@ -46,6 +45,7 @@ public class BlockBotanyPot extends Block {
     }
     
     @Override
+    @SuppressWarnings("deprecation")
     public boolean eventReceived (BlockState state, World worldIn, BlockPos pos, int id, int param) {
         
         super.eventReceived(state, worldIn, pos, id, param);
@@ -152,7 +152,6 @@ public class BlockBotanyPot extends Block {
                         if (fertilizerGrowthTicks > -1) {
                             
                             pot.addGrowth(fertilizerGrowthTicks);
-                            // TODO spawn particles
                             
                             if (!world.isRemote) {
                                 
