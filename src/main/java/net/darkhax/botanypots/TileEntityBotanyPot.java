@@ -8,19 +8,31 @@ import net.darkhax.botanypots.api.crop.CropInfo;
 import net.darkhax.botanypots.api.crop.CropReloadListener;
 import net.darkhax.botanypots.api.soil.SoilInfo;
 import net.darkhax.botanypots.api.soil.SoilReloadListener;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 
 public class TileEntityBotanyPot extends TileEntityBasicTickable {
     
+    /**
+     * The current soil in the botany pot. Can be null.
+     */
     @Nullable
     private SoilInfo soil;
     
+    /**
+     * The current crop in the botany pot. Can be null.
+     */
     @Nullable
     private CropInfo crop;
     
+    /**
+     * The total growth ticks for the crop to mature. -1 means it's not growing.
+     */
     private int totalGrowthTicks;
+    
+    /**
+     * The total growth ticks for the crop. -1 means it's not growing.
+     */
     private int currentGrowthTicks;
     
     public TileEntityBotanyPot() {
@@ -28,88 +40,145 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         super(BotanyPots.tileBotanyPot);
     }
     
-    public boolean setSoil (@Nullable SoilInfo newSoil) {
+    /**
+     * Checks if the soil can be set. This is always true if the new soil is null. Otherwise it
+     * is only true if there isn't already soil.
+     * 
+     * @param newSoil The soil to set. Null will delete the existing soil.
+     * @return Whether or not the soil can be set.
+     */
+    public boolean canSetSoil (@Nullable SoilInfo newSoil) {
         
-        if (newSoil == null) {
-            
-            this.totalGrowthTicks = -1;
-            this.currentGrowthTicks = -1;
-            this.soil = newSoil;
-            return true;
-        }
-        
-        if (this.soil == null && this.crop == null) {
-            
-            this.soil = newSoil;
-            return true;
-        }
-        
-        return false;
+        return newSoil == null || this.getSoil() == null;
     }
     
-    public boolean setCrop (@Nullable CropInfo newCrop) {
+    /**
+     * Sets the soil in the pot. If the new soil is null it will set the pot to having no soil.
+     * This will also reset the growth timer. When called on the server the pot will be synced
+     * to the client.
+     * 
+     * @param newSoil The new soil to set in the pot.
+     */
+    public void setSoil (@Nullable SoilInfo newSoil) {
         
-        if (newCrop == null) {
+        this.soil = newSoil;
+        
+        this.resetGrowthTime();
+        
+        if (!this.world.isRemote) {
             
-            this.totalGrowthTicks = -1;
-            this.currentGrowthTicks = -1;
-            this.crop = newCrop;
+            this.sync();
         }
-        
-        if (this.soil != null && this.crop == null) {
-            
-            this.crop = newCrop;
-            
-            if (newCrop != null) {
-                
-                this.totalGrowthTicks = BotanyPotHelper.getRequiredGrowthTicks(newCrop, this.soil);
-            }
-            
-            return true;
-        }
-        
-        return false;
     }
     
+    /**
+     * Checks if a crop can be set in the pot. You can always set a crop to null. Otherwise
+     * there must be a soil, and there must not be an existing crop.
+     * 
+     * @param newCrop The new crop to set.
+     * @return Whether or not the crop can be set.
+     */
+    public boolean canSetCrop (@Nullable CropInfo newCrop) {
+        
+        return newCrop == null || this.getSoil() != null && this.getCrop() == null;
+    }
+    
+    /**
+     * Sets the crop inside the pot. If set to null the crop will be set to nothing. This will
+     * reset the growth time. If called on the server the tile will be synced to the client.
+     * 
+     * @param newCrop The new crop to set.
+     */
+    public void setCrop (@Nullable CropInfo newCrop) {
+        
+        this.crop = newCrop;
+        
+        this.resetGrowthTime();
+        
+        if (!this.world.isRemote) {
+            
+            this.sync();
+        }
+    }
+    
+    /**
+     * Gets the soil in the pot. Null means no soil.
+     * 
+     * @return The soil in the pot.
+     */
     @Nullable
     public SoilInfo getSoil () {
         
         return this.soil;
     }
     
+    /**
+     * Gets the crop in the pot. Null means no crop.
+     * 
+     * @return The crop in the pot.
+     */
     @Nullable
     public CropInfo getCrop () {
         
         return this.crop;
     }
     
+    /**
+     * Gets the total required growth ticks For the crop to become mature enough to harvest..
+     * 
+     * @return The total required growth ticks. -1 means no growth.
+     */
     public int getTotalGrowthTicks () {
         
         return this.totalGrowthTicks;
     }
     
+    /**
+     * Gets the current amount of ticks the crop has grown.
+     * 
+     * @return The current amount of ticks the crop has grown. -1 means no growth.
+     */
     public int getCurrentGrowthTicks () {
         
         return this.currentGrowthTicks;
     }
     
+    /**
+     * Checks if the crop in the pot can be harvested.
+     * 
+     * @return Whether or not the crop can be harvested.
+     */
     public boolean canHarvest () {
         
-        return this.getTotalGrowthTicks() > 0 && this.currentGrowthTicks > 0 && this.currentGrowthTicks >= this.getTotalGrowthTicks();
+        return this.crop != null && this.getTotalGrowthTicks() > 0 && this.getCurrentGrowthTicks() >= this.getTotalGrowthTicks();
     }
     
+    /**
+     * Resets the current growth ticks and the total growth ticks for the crop in the pot.
+     */
     public void resetGrowthTime () {
         
         // Recalculate total growth ticks to account for any data changes
-        this.totalGrowthTicks = BotanyPotHelper.getRequiredGrowthTicks(this.crop, this.soil);
+        this.totalGrowthTicks = BotanyPotHelper.getRequiredGrowthTicks(this.getCrop(), this.getSoil());
         
         // Reset the growth time.
         this.currentGrowthTicks = 0;
     }
     
+    /**
+     * Adds growth to the crop. This is primarily used for things like bone meal. If this is
+     * called on the server it will cause a client sync.
+     * 
+     * @param ticksToGrow The amount of ticks to add.
+     */
     public void addGrowth (int ticksToGrow) {
         
         this.currentGrowthTicks += ticksToGrow;
+        
+        if (!this.world.isRemote) {
+            
+            this.sync();
+        }
     }
     
     @Override
@@ -120,18 +189,13 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             // If it's done growing
             if (this.currentGrowthTicks >= this.totalGrowthTicks) {
                 
-                for (final ItemStack item : BotanyPotHelper.getHarvestStacks(this.world, this.getCrop())) {
-                    
-                    BlockBotanyPot.dropItem(item, this.world, this.pos);
-                }
-                
-                this.resetGrowthTime();
+                // Crop is done growing, do nothing.
+                // TODO Consider adding a hook/event here.
             }
             
             // It's not done growing
             else {
                 
-                // TODO Growth rate is accelerated here
                 this.currentGrowthTicks++;
             }
         }
