@@ -27,9 +27,22 @@ public class BlockBotanyPot extends Block {
     
     private static final Properties properties = Properties.create(Material.CLAY);
     
+    private boolean hopper;
+    
     public BlockBotanyPot() {
         
+        this(false);
+    }
+    
+    public BlockBotanyPot(boolean hopper) {
+        
         super(properties);
+        this.hopper = hopper;
+    }
+    
+    public boolean isHopper () {
+        
+        return this.hopper;
     }
     
     @Override
@@ -144,7 +157,7 @@ public class BlockBotanyPot extends Block {
                             if (!world.isRemote) {
                                 
                                 world.playEvent(2005, tile.getPos(), 0);
-                             }
+                            }
                             
                             if (!player.isCreative()) {
                                 

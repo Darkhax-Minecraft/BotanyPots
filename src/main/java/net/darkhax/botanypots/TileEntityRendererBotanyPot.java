@@ -23,6 +23,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.ForgeHooksClient;
+import net.minecraftforge.client.model.data.EmptyModelData;
 
 @OnlyIn(Dist.CLIENT)
 public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBotanyPot> {
@@ -67,7 +68,7 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
         for (final BlockRenderLayer layer : BlockRenderLayer.values()) {
             if (state.getBlock().canRenderInLayer(state, layer)) {
                 ForgeHooksClient.setRenderLayer(layer);
-                blockrendererdispatcher.getBlockModelRenderer().renderModel(world, ibakedmodel, state, pos, buff(), false, new Random(), 0);
+                blockrendererdispatcher.getBlockModelRenderer().renderModel(world, ibakedmodel, state, pos, buff(), false, new Random(), 0, EmptyModelData.INSTANCE);
             }
         }
         ForgeHooksClient.setRenderLayer(null);

@@ -3,13 +3,19 @@ package net.darkhax.botanypots;
 import javax.annotation.Nullable;
 
 import net.darkhax.bookshelf.block.tileentity.TileEntityBasicTickable;
+import net.darkhax.bookshelf.util.InventoryUtils;
 import net.darkhax.botanypots.api.BotanyPotHelper;
 import net.darkhax.botanypots.api.crop.CropInfo;
 import net.darkhax.botanypots.api.crop.CropReloadListener;
 import net.darkhax.botanypots.api.soil.SoilInfo;
 import net.darkhax.botanypots.api.soil.SoilReloadListener;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.wrapper.EmptyHandler;
 
 public class TileEntityBotanyPot extends TileEntityBasicTickable {
     
@@ -189,8 +195,57 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             // If it's done growing
             if (this.currentGrowthTicks >= this.totalGrowthTicks) {
                 
-                // Crop is done growing, do nothing.
-                // TODO Consider adding a hook/event here.
+                final Block block = this.getBlockState().getBlock();
+                
+                if (block instanceof BlockBotanyPot && ((BlockBotanyPot) block).isHopper()) {
+                    
+                    final IItemHandler inventory = InventoryUtils.getInventory(this.world, this.pos.down(), Direction.UP);
+                    
+                    if (inventory != EmptyHandler.INSTANCE) {
+                        
+                        boolean didAutoHarvest = false;
+                        
+                        for (ItemStack item : BotanyPotHelper.getHarvestStacks(this.world, this.getCrop())) {
+                            
+                            // Iterate every valid slot of the inventory
+                            for (int slot = 0; slot < inventory.getSlots(); slot++) {
+                                
+                                // Check if the simulated insert stack can be accepted into the
+                                // inventory.
+                                if (inventory.isItemValid(slot, item) && inventory.insertItem(slot, item, true).getCount() != item.getCount()) {
+                                    
+                                    // Actually insert the stack.
+                                    
+                                    // Note: It is possible for not all the items to be
+                                    // accepted. There may be a remaining item if the inventory
+                                    // can only partially accept those items. In the case of
+                                    // remaining items we will just void them. While it is
+                                    // trivial to track if any items were inserted and then
+                                    // spawn the remainder in the world as dropped items I
+                                    // personally felt that was janky and may scare players
+                                    // off. As this is an infinite resource generator I think
+                                    // voiding potential drops for a maxed out inventory is
+                                    // fine. Voids only happen on partial insertions as well,
+                                    // so it is a fairly rare situation. Alternatively I could
+                                    // add an inventory/buffer to this block, however I would
+                                    // like to keep this simple.
+                                    inventory.insertItem(slot, item, false);
+                                    
+                                    // Set auto harvest to true. This will cause a reset for the next growth cycle.
+                                    didAutoHarvest = true;
+                                    
+                                    // Exit the inventory for this loop. Will then move on to the next item and start over.
+                                    break;
+                                }
+                            }
+                        }
+                        
+                        if (didAutoHarvest) {
+                            
+                            this.resetGrowthTime();
+                        }
+                    }
+                }
             }
             
             // It's not done growing

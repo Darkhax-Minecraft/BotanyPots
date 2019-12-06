@@ -27,9 +27,9 @@ public class BotanyPotHelper {
      * @return The total amount of world ticks for the crop to reach maturity when planted in
      *         the given soil.
      */
-    public static int getRequiredGrowthTicks (CropInfo crop, SoilInfo soil) {
+    public static int getRequiredGrowthTicks (@Nullable CropInfo crop, @Nullable SoilInfo soil) {
         
-        return crop.getGrowthTicksForSoil(soil);
+        return (crop == null || soil == null) ? -1 : crop.getGrowthTicksForSoil(soil);
     }
     
     /**

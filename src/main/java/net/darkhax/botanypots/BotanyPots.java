@@ -1,5 +1,6 @@
 package net.darkhax.botanypots;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,11 +38,21 @@ public class BotanyPots {
         
         this.registry = DistExecutor.runForDist( () -> () -> new RegistryHelperClient(MOD_ID, LOGGER, ITEM_GROUP), () -> () -> new RegistryHelper(MOD_ID, LOGGER, ITEM_GROUP));
         MinecraftForge.EVENT_BUS.addListener(this::startServer);
+        
+        // Normal Botany Pots
         botanyPots.add(this.registry.registerBlock(new BlockBotanyPot(), "botany_pot"));
         
         for (final DyeColor dyeColor : DyeColor.values()) {
             
             botanyPots.add(this.registry.registerBlock(new BlockBotanyPot(), dyeColor.getName() + "_botany_pot"));
+        }
+        
+        // Hopper Botany Pots
+        botanyPots.add(this.registry.registerBlock(new BlockBotanyPot(true), "hopper_botany_pot"));
+        
+        for (final DyeColor dyeColor : DyeColor.values()) {
+            
+            botanyPots.add(this.registry.registerBlock(new BlockBotanyPot(true), "hopper_" + dyeColor.getName() + "_botany_pot"));
         }
         
         tileBotanyPot = this.registry.registerTileEntity(TileEntityBotanyPot::new, "botany_pot", botanyPots.toArray(new Block[0]));
