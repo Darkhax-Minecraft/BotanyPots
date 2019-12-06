@@ -189,6 +189,16 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         }
     }
     
+    public float getGrowthPercent() {
+        
+        if (this.totalGrowthTicks == -1 || this.currentGrowthTicks == -1) {
+            
+            return 0f;
+        }
+        
+        return (float) this.currentGrowthTicks / this.totalGrowthTicks;
+    }
+    
     @Override
     public void onTileTick () {
         

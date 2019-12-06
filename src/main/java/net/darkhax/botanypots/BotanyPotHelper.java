@@ -14,9 +14,14 @@ import net.darkhax.botanypots.soil.SoilInfo;
 import net.darkhax.botanypots.soil.SoilReloadListener;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 public class BotanyPotHelper {
+    
+    public static final ResourceLocation NONE = new ResourceLocation(BotanyPots.MOD_ID, "none");
     
     /**
      * Gets the total amount of world ticks required for a specific crop to reach maturity when
@@ -149,5 +154,17 @@ public class BotanyPotHelper {
         }
         
         return -1;
+    }
+    
+    public static ITextComponent getSoilName(@Nullable SoilInfo soil) {
+        
+        final ResourceLocation id = soil != null ? soil.getId() : NONE;
+        return new TranslationTextComponent("botanypots.soil." + id.getNamespace() + "." + id.getPath());
+    }
+    
+    public static ITextComponent getCropName(@Nullable CropInfo crop) {
+        
+        final ResourceLocation id = crop != null ? crop.getId() : NONE;
+        return new TranslationTextComponent("botanypots.crop." + id.getNamespace() + "." + id.getPath());
     }
 }
