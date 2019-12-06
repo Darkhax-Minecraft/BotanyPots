@@ -6,13 +6,14 @@ import java.util.Set;
 
 import org.openzen.zencode.java.ZenCodeType;
 
+import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
-import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.impl.blocks.MCBlockState;
 
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.util.ResourceLocation;
 
+@ZenRegister
 @ZenCodeType.Name("mods.botanypots.Soil")
 public class CrTSoilInfo {
     
@@ -30,8 +31,7 @@ public class CrTSoilInfo {
     
     public CrTSoilInfo (SoilInfo info) {
         
-        //TODO how to turn Ingredient to IIngredient
-        this(info.getId().toString(), null, new MCBlockState(info.getRenderState()), info.getTickRate(), new HashSet<>(Arrays.asList(info.getCategories())));
+        this(info.getId().toString(), IIngredient.fromIngredient(info.getIngredient()), new MCBlockState(info.getRenderState()), info.getTickRate(), new HashSet<>(Arrays.asList(info.getCategories())));
         this.existing = true;
     }
     
@@ -40,7 +40,7 @@ public class CrTSoilInfo {
         this(id, null, null, -1, new HashSet<>());
     }
     
-    public CrTSoilInfo(String id, IItemStack ingredient, MCBlockState renderState, int tickRate, Set<String> categories) {
+    public CrTSoilInfo(String id, IIngredient ingredient, MCBlockState renderState, int tickRate, Set<String> categories) {
         
         this.id = id;
         this.ingredient = ingredient;
@@ -114,15 +114,32 @@ public class CrTSoilInfo {
         return this;
     }
     
+    public CrTSoilInfo clearCategories() {
+        
+        this.categories.clear();
+        return this;
+    }
+    
     @ZenCodeType.Method
     public boolean isExistingSoil() {
         
         return this.existing;
     }
     
+    @ZenCodeType.Method
+    public void register() {
+        
+        BotanyPotsCraftTweaker.addSoil(this);
+    }
+    
+    @ZenCodeType.Method
+    public void remove() {
+        
+        BotanyPotsCraftTweaker.removeSoil(this);
+    }
+    
     public SoilInfo toSoil() {
         
-        // TODO IIngredient to Ingredient
-        return new SoilInfo(ResourceLocation.tryCreate(this.getId()), null, this.getRenderState().getInternal(), this.getTickRate(), this.getCategories());
+        return new SoilInfo(ResourceLocation.tryCreate(this.getId()), this.getIngredient().asVanillaIngredient(), this.getRenderState().getInternal(), this.getTickRate(), this.getCategories());
     }
 }
