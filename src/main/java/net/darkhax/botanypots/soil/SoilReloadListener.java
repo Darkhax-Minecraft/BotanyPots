@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.api.soil;
+package net.darkhax.botanypots.soil;
 
 import java.util.HashMap;
 import java.util.Map;

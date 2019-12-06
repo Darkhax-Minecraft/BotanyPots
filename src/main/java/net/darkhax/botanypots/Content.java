@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.darkhax.bookshelf.registry.RegistryHelper;
+import net.darkhax.botanypots.block.BlockBotanyPot;
+import net.darkhax.botanypots.block.tileentity.TileEntityBotanyPot;
 import net.minecraft.block.Block;
 import net.minecraft.item.DyeColor;
 import net.minecraft.tileentity.TileEntityType;

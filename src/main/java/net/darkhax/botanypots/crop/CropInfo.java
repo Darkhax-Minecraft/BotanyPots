@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.api.crop;
+package net.darkhax.botanypots.crop;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import com.google.gson.JsonObject;
 import net.darkhax.bookshelf.Bookshelf;
 import net.darkhax.bookshelf.util.MCJsonUtils;
 import net.darkhax.botanypots.BotanyPots;
-import net.darkhax.botanypots.api.soil.SoilInfo;
+import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;

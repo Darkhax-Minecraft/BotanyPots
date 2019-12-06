@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.api.fertilizer;
+package net.darkhax.botanypots.crop;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,27 +16,27 @@ import net.minecraft.resources.IResourceManager;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
 
-public class FertilizerReloadListener extends JsonReloadListener {
+public class CropReloadListener extends JsonReloadListener {
     
     private static final Gson GSON_INSTANCE = new GsonBuilder().create();
     
-    public static Map<ResourceLocation, FertilizerInfo> registeredFertilizer = new HashMap<>();
+    public static Map<ResourceLocation, CropInfo> registeredCrops = new HashMap<>();
     
-    public FertilizerReloadListener() {
+    public CropReloadListener() {
         
-        super(GSON_INSTANCE, "botanypots_fertilizers");
+        super(GSON_INSTANCE, "botanypots_crops");
     }
     
     @Override
     protected void apply (Map<ResourceLocation, JsonObject> splashList, IResourceManager manager, IProfiler profiler) {
         
-        profiler.startSection("Processing fertilizer JsonObjects");
+        profiler.startSection("Processing crop JsonObjects");
         
-        registeredFertilizer.clear();
+        registeredCrops.clear();
         
         for (final Entry<ResourceLocation, JsonObject> entry : splashList.entrySet()) {
             
-            if (registeredFertilizer.containsKey(entry.getKey())) {
+            if (registeredCrops.containsKey(entry.getKey())) {
                 
                 BotanyPots.LOGGER.warn("Duplicate JSON for {}. It will be overriden.", entry.getKey());
             }
@@ -56,8 +56,8 @@ public class FertilizerReloadListener extends JsonReloadListener {
                     }
                 }
                 
-                final FertilizerInfo fertilizerInfo = FertilizerInfo.deserialize(entry.getKey(), json);
-                registeredFertilizer.put(entry.getKey(), fertilizerInfo);
+                final CropInfo cropInfo = CropInfo.deserialize(entry.getKey(), json);
+                registeredCrops.put(entry.getKey(), cropInfo);
             }
             
             catch (final Exception exception) {
@@ -69,6 +69,6 @@ public class FertilizerReloadListener extends JsonReloadListener {
         
         profiler.endSection();
         
-        BotanyPots.LOGGER.info("Loaded {} fertilizer types from datapack jsons.", registeredFertilizer.size());
+        BotanyPots.LOGGER.info("Loaded {} crop types from datapack jsons.", registeredCrops.size());
     }
 }

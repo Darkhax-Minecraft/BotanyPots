@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.api.fertilizer;
+package net.darkhax.botanypots.fertilizer;
 
 import java.util.Random;
 

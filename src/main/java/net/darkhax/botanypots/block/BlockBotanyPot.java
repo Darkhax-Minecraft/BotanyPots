@@ -1,8 +1,9 @@
-package net.darkhax.botanypots;
+package net.darkhax.botanypots.block;
 
-import net.darkhax.botanypots.api.BotanyPotHelper;
-import net.darkhax.botanypots.api.crop.CropInfo;
-import net.darkhax.botanypots.api.soil.SoilInfo;
+import net.darkhax.botanypots.BotanyPotHelper;
+import net.darkhax.botanypots.block.tileentity.TileEntityBotanyPot;
+import net.darkhax.botanypots.crop.CropInfo;
+import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;

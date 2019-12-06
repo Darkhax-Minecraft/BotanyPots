@@ -1,4 +1,4 @@
-package net.darkhax.botanypots;
+package net.darkhax.botanypots.block.tileentity;
 
 import java.util.Random;
 

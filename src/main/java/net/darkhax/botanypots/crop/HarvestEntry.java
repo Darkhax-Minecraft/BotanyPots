@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.api.crop;
+package net.darkhax.botanypots.crop;
 
 import com.google.gson.JsonObject;
 

@@ -1,17 +1,17 @@
-package net.darkhax.botanypots.api;
+package net.darkhax.botanypots;
 
 import java.util.Random;
 
 import javax.annotation.Nullable;
 
 import net.darkhax.bookshelf.util.MathsUtils;
-import net.darkhax.botanypots.api.crop.CropInfo;
-import net.darkhax.botanypots.api.crop.CropReloadListener;
-import net.darkhax.botanypots.api.crop.HarvestEntry;
-import net.darkhax.botanypots.api.fertilizer.FertilizerInfo;
-import net.darkhax.botanypots.api.fertilizer.FertilizerReloadListener;
-import net.darkhax.botanypots.api.soil.SoilInfo;
-import net.darkhax.botanypots.api.soil.SoilReloadListener;
+import net.darkhax.botanypots.crop.CropInfo;
+import net.darkhax.botanypots.crop.CropReloadListener;
+import net.darkhax.botanypots.crop.HarvestEntry;
+import net.darkhax.botanypots.fertilizer.FertilizerInfo;
+import net.darkhax.botanypots.fertilizer.FertilizerReloadListener;
+import net.darkhax.botanypots.soil.SoilInfo;
+import net.darkhax.botanypots.soil.SoilReloadListener;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;

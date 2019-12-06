@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.api.soil;
+package net.darkhax.botanypots.soil;
 
 import java.util.HashSet;
 import java.util.Set;

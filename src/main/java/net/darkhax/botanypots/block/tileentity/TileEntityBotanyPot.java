@@ -1,14 +1,16 @@
-package net.darkhax.botanypots;
+package net.darkhax.botanypots.block.tileentity;
 
 import javax.annotation.Nullable;
 
 import net.darkhax.bookshelf.block.tileentity.TileEntityBasicTickable;
 import net.darkhax.bookshelf.util.InventoryUtils;
-import net.darkhax.botanypots.api.BotanyPotHelper;
-import net.darkhax.botanypots.api.crop.CropInfo;
-import net.darkhax.botanypots.api.crop.CropReloadListener;
-import net.darkhax.botanypots.api.soil.SoilInfo;
-import net.darkhax.botanypots.api.soil.SoilReloadListener;
+import net.darkhax.botanypots.BotanyPotHelper;
+import net.darkhax.botanypots.BotanyPots;
+import net.darkhax.botanypots.block.BlockBotanyPot;
+import net.darkhax.botanypots.crop.CropInfo;
+import net.darkhax.botanypots.crop.CropReloadListener;
+import net.darkhax.botanypots.soil.SoilInfo;
+import net.darkhax.botanypots.soil.SoilReloadListener;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
