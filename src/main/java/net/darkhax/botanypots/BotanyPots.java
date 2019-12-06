@@ -39,7 +39,7 @@ public class BotanyPots {
         MinecraftForge.EVENT_BUS.addListener(this::startServer);
         botanyPots.add(this.registry.registerBlock(new BlockBotanyPot(), "botany_pot"));
         
-        for (DyeColor dyeColor : DyeColor.values()) {
+        for (final DyeColor dyeColor : DyeColor.values()) {
             
             botanyPots.add(this.registry.registerBlock(new BlockBotanyPot(), dyeColor.getName() + "_botany_pot"));
         }

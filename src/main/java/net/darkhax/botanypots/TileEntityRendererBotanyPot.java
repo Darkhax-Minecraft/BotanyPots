@@ -28,9 +28,9 @@ import net.minecraftforge.client.ForgeHooksClient;
 public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBotanyPot> {
     
     @Override
-    public void render(TileEntityBotanyPot tile, double x, double y, double z, float partialTicks, int destroyStage) {
+    public void render (TileEntityBotanyPot tile, double x, double y, double z, float partialTicks, int destroyStage) {
         
-        if(tile.getSoil() != null) {
+        if (tile.getSoil() != null) {
             GlStateManager.disableLighting();
             GlStateManager.pushMatrix();
             GlStateManager.translated(x, y, z);
@@ -39,9 +39,9 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
             renderBlockModel(tile.getWorld(), tile.getPos(), tile.getSoil().getRenderState(), true);
             GlStateManager.popMatrix();
             
-            if(tile.getCrop() != null) {
+            if (tile.getCrop() != null) {
                 
-                float growth = (tile.getCurrentGrowthTicks() + partialTicks) / tile.getTotalGrowthTicks() * (10 / 16f);
+                final float growth = (tile.getCurrentGrowthTicks() + partialTicks) / tile.getTotalGrowthTicks() * (10 / 16f);
                 GlStateManager.pushMatrix();
                 GlStateManager.translated(x, y, z);
                 GlStateManager.translated(0.5, 0.40, 0.5);
@@ -54,49 +54,56 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
         }
     }
     
-    public static void renderBlockModel(World world, BlockPos pos, BlockState state, boolean translateToOrigin) {
+    public static void renderBlockModel (World world, BlockPos pos, BlockState state, boolean translateToOrigin) {
+        
         buff().begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
-        if(translateToOrigin) {
+        if (translateToOrigin) {
             buff().setTranslation(-pos.getX(), -pos.getY(), -pos.getZ());
         }
-        BlockRendererDispatcher blockrendererdispatcher = mc().getBlockRendererDispatcher();
-        BlockModelShapes modelShapes = blockrendererdispatcher.getBlockModelShapes();
-        IBakedModel ibakedmodel = modelShapes.getModel(state);
+        final BlockRendererDispatcher blockrendererdispatcher = mc().getBlockRendererDispatcher();
+        final BlockModelShapes modelShapes = blockrendererdispatcher.getBlockModelShapes();
+        final IBakedModel ibakedmodel = modelShapes.getModel(state);
         bind(AtlasTexture.LOCATION_BLOCKS_TEXTURE);
-        for(BlockRenderLayer layer : BlockRenderLayer.values()) {
-            if(state.getBlock().canRenderInLayer(state, layer)) {
+        for (final BlockRenderLayer layer : BlockRenderLayer.values()) {
+            if (state.getBlock().canRenderInLayer(state, layer)) {
                 ForgeHooksClient.setRenderLayer(layer);
                 blockrendererdispatcher.getBlockModelRenderer().renderModel(world, ibakedmodel, state, pos, buff(), false, new Random(), 0);
             }
         }
         ForgeHooksClient.setRenderLayer(null);
-        if(translateToOrigin) {
+        if (translateToOrigin) {
             buff().setTranslation(0, 0, 0);
         }
         Tessellator.getInstance().draw();
     }
     
-    public static void bind(ResourceLocation texture) {
+    public static void bind (ResourceLocation texture) {
+        
         mc().getTextureManager().bindTexture(texture);
     }
     
-    public static BufferBuilder buff() {
+    public static BufferBuilder buff () {
+        
         return tess().getBuffer();
     }
     
-    public static Tessellator tess() {
+    public static Tessellator tess () {
+        
         return Tessellator.getInstance();
     }
     
-    public static Minecraft mc() {
+    public static Minecraft mc () {
+        
         return Minecraft.getInstance();
     }
     
-    public static double clamp(double value, double min, double max) {
+    public static double clamp (double value, double min, double max) {
+        
         return Math.max(min, Math.min(value, max));
     }
     
-    public static double smoothStep(double start, double end, double amount) {
+    public static double smoothStep (double start, double end, double amount) {
+        
         amount = clamp(amount, 0, 1);
         amount = clamp((amount - start) / (end - start), 0, 1);
         return amount * amount * (3 - 2 * amount);
