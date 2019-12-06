@@ -59,8 +59,9 @@ public class BlockBotanyPot extends Block {
                     
                     final ItemStack seedStack = crop.getRandomSeed();
                     
-                    if (!seedStack.isEmpty() && pot.setCrop(null)) {
+                    if (!seedStack.isEmpty() && pot.canSetCrop(null)) {
                         
+                        pot.setCrop(null);
                         dropItem(seedStack.copy(), world, pos);
                         return true;
                     }
@@ -75,8 +76,9 @@ public class BlockBotanyPot extends Block {
                         
                         final ItemStack soilStack = soil.getRandomSoilBlock();
                         
-                        if (!soilStack.isEmpty() && pot.setSoil(null)) {
+                        if (!soilStack.isEmpty() && pot.canSetSoil(null)) {
                             
+                            pot.setSoil(null);
                             dropItem(soilStack.copy(), world, pos);
                             return true;
                         }
@@ -99,9 +101,15 @@ public class BlockBotanyPot extends Block {
                         
                         final SoilInfo soilForStack = BotanyPotHelper.getSoilForItem(heldItem);
                         
-                        if (soilForStack != null && pot.setSoil(soilForStack)) {
+                        if (soilForStack != null && pot.canSetSoil(soilForStack)) {
                             
-                            heldItem.shrink(1);
+                            pot.setSoil(soilForStack);
+                            
+                            if (!player.isCreative()) {
+                                
+                                heldItem.shrink(1);
+                            }
+                            
                             return true;
                         }
                     }
@@ -111,9 +119,15 @@ public class BlockBotanyPot extends Block {
                         
                         final CropInfo cropForStack = BotanyPotHelper.getCropForItem(heldItem);
                         
-                        if (cropForStack != null && BotanyPotHelper.isSoilValidForCrop(pot.getSoil(), cropForStack) && pot.setCrop(cropForStack)) {
+                        if (cropForStack != null && BotanyPotHelper.isSoilValidForCrop(pot.getSoil(), cropForStack) && pot.canSetCrop(cropForStack)) {
                             
-                            heldItem.shrink(1);
+                            pot.setCrop(cropForStack);
+                            
+                            if (!player.isCreative()) {
+                                
+                                heldItem.shrink(1);
+                            }
+                            
                             return true;
                         }
                     }
@@ -122,11 +136,21 @@ public class BlockBotanyPot extends Block {
                         
                         final int fertilizerGrowthTicks = BotanyPotHelper.getFertilizerTicks(heldItem, world.rand);
                         
-                        if (fertilizerGrowthTicks < -1) {
+                        if (fertilizerGrowthTicks > -1) {
                             
                             pot.addGrowth(fertilizerGrowthTicks);
                             // TODO spawn particles
-                            heldItem.shrink(1);
+                            
+                            if (!world.isRemote) {
+                                
+                                world.playEvent(2005, tile.getPos(), 0);
+                             }
+                            
+                            if (!player.isCreative()) {
+                                
+                                heldItem.shrink(1);
+                            }
+                            
                             return true;
                         }
                     }
