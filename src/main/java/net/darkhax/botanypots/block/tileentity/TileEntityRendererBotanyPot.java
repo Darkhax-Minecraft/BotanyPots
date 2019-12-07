@@ -19,6 +19,7 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -42,7 +43,7 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
             
             if (tile.getCrop() != null) {
                 
-                final float growth = (tile.getCurrentGrowthTicks() + partialTicks) / tile.getTotalGrowthTicks() * (10 / 16f);
+                final float growth = MathHelper.clamp((tile.getCurrentGrowthTicks() + partialTicks) / tile.getTotalGrowthTicks() * (10 / 16f), 0f, 1f);
                 GlStateManager.pushMatrix();
                 GlStateManager.translated(x, y, z);
                 GlStateManager.translated(0.5, 0.40, 0.5);
