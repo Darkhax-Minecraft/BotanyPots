@@ -171,6 +171,24 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         
         // Reset the growth time.
         this.currentGrowthTicks = 0;
+        
+        // To help deal with desyncs caused by reload, every reset will also reset the cached
+        // soila and crop references.
+        if (this.soil != null) {
+            
+            this.soil = SoilReloadListener.registeredSoil.get(this.soil.getId());
+            
+            // Check if the soil was removed. If so kill the crop, because crop needs a soil.
+            if (this.soil == null) {
+                
+                this.crop = null;
+            }
+        }
+        
+        if (this.crop != null) {
+            
+            this.crop = CropReloadListener.registeredCrops.get(this.crop.getId());
+        }
     }
     
     /**
@@ -182,6 +200,11 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     public void addGrowth (int ticksToGrow) {
         
         this.currentGrowthTicks += ticksToGrow;
+        
+        if (this.currentGrowthTicks > this.totalGrowthTicks) {
+            
+            this.currentGrowthTicks = this.totalGrowthTicks;
+        }
         
         if (!this.world.isRemote) {
             
