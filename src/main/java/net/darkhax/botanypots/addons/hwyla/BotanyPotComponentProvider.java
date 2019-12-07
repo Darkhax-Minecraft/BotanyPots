@@ -27,17 +27,17 @@ public class BotanyPotComponentProvider implements IComponentProvider {
             
             final TileEntityBotanyPot pot = (TileEntityBotanyPot) tile;
             
-            if (config.get(BotanyPotsHwylaPlugin.KEY_SHOW_SOIL)) {
+            if (config.get(BotanyPotsHwylaPlugin.KEY_SHOW_SOIL) && pot.getSoil() != null) {
                 
                 tooltip.add(new TranslationTextComponent("botanypots.tooltip.soil", BotanyPotHelper.getSoilName(pot.getSoil())));
             }
             
-            if (config.get(BotanyPotsHwylaPlugin.KEY_SHOW_CROP)) {
+            if (config.get(BotanyPotsHwylaPlugin.KEY_SHOW_CROP) && pot.getCrop() != null) {
                 
                 tooltip.add(new TranslationTextComponent("botanypots.tooltip.crop", BotanyPotHelper.getCropName(pot.getCrop())));
             }
             
-            if (config.get(BotanyPotsHwylaPlugin.KEY_SHOW_PROGRESS)) {
+            if (config.get(BotanyPotsHwylaPlugin.KEY_SHOW_PROGRESS) && pot.getCrop() != null && pot.getSoil() != null) {
                 
                 tooltip.add(new TranslationTextComponent("botanypots.tooltip.growth_progress", format.format(pot.getGrowthPercent() * 100f)));
             }
