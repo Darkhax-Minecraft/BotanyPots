@@ -233,6 +233,32 @@ public class BlockBotanyPot extends Block {
         return false;
     }
     
+    @Override
+    public void onReplaced (BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+        
+        if (state.hasTileEntity() && state.getBlock() != newState.getBlock()) {
+            
+            final TileEntity tileEntity = worldIn.getTileEntity(pos);
+            
+            if (tileEntity instanceof TileEntityBotanyPot) {
+                
+                final TileEntityBotanyPot pot = (TileEntityBotanyPot) tileEntity;
+                
+                if (pot.getSoil() != null) {
+                    
+                    dropItem(pot.getSoil().getRandomSoilBlock(), worldIn, pos);
+                }
+                
+                if (pot.getCrop() != null) {
+                    
+                    dropItem(pot.getCrop().getRandomSeed(), worldIn, pos);
+                }
+            }
+        }
+        
+        super.onReplaced(state, worldIn, pos, newState, isMoving);
+    }
+    
     public static void dropItem (ItemStack item, World world, BlockPos pos) {
         
         if (!world.isRemote) {
