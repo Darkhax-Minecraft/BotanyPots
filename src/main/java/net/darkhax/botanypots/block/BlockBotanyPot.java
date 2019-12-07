@@ -156,7 +156,7 @@ public class BlockBotanyPot extends Block {
                         }
                     }
                     
-                    else {
+                    else if (!pot.canHarvest()) {
                         
                         final int fertilizerGrowthTicks = BotanyPotHelper.getFertilizerTicks(heldItem, world.rand);
                         
