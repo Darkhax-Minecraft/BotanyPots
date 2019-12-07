@@ -156,13 +156,13 @@ public class BotanyPotHelper {
         return -1;
     }
     
-    public static ITextComponent getSoilName(@Nullable SoilInfo soil) {
+    public static ITextComponent getSoilName (@Nullable SoilInfo soil) {
         
         final ResourceLocation id = soil != null ? soil.getId() : NONE;
         return new TranslationTextComponent("botanypots.soil." + id.getNamespace() + "." + id.getPath());
     }
     
-    public static ITextComponent getCropName(@Nullable CropInfo crop) {
+    public static ITextComponent getCropName (@Nullable CropInfo crop) {
         
         final ResourceLocation id = crop != null ? crop.getId() : NONE;
         return new TranslationTextComponent("botanypots.crop." + id.getNamespace() + "." + id.getPath());

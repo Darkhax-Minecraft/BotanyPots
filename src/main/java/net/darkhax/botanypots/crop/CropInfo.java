@@ -29,34 +29,34 @@ public class CropInfo {
     /**
      * The ingredient used for the crop's seed.
      */
-    private final Ingredient seed;
+    private Ingredient seed;
     
     /**
      * An array of valid soil categories.
      */
-    private final String[] soilCategories;
+    private Set<String> soilCategories;
     
     /**
      * The crop's growth tick factor.
      */
-    private final int growthTicks;
+    private int growthTicks;
     
     /**
      * The crop's growth modifier.
      */
-    private final float growthMultiplier;
+    private float growthMultiplier;
     
     /**
      * An array of things the crop can drop.
      */
-    private final HarvestEntry[] results;
+    private List<HarvestEntry> results;
     
     /**
      * The BlockState to render for the crop.
      */
-    private final BlockState displayBlock;
+    private BlockState displayBlock;
     
-    public CropInfo(ResourceLocation id, Ingredient seed, String[] soilCategories, int growthTicks, float growthMultiplier, HarvestEntry[] results, BlockState displayState) {
+    public CropInfo(ResourceLocation id, Ingredient seed, Set<String> soilCategories, int growthTicks, float growthMultiplier, List<HarvestEntry> results, BlockState displayState) {
         
         this.id = id;
         this.seed = seed;
@@ -92,7 +92,7 @@ public class CropInfo {
      * 
      * @return An array of valid soil categories for this crop.
      */
-    public String[] getSoilCategories () {
+    public Set<String> getSoilCategories () {
         
         return this.soilCategories;
     }
@@ -102,7 +102,7 @@ public class CropInfo {
      * 
      * @return An array of harvest results for the crop.
      */
-    public HarvestEntry[] getResults () {
+    public List<HarvestEntry> getResults () {
         
         return this.results;
     }
@@ -132,7 +132,7 @@ public class CropInfo {
         final float growthModifier = JSONUtils.getFloat(json, "growthModifier");
         final List<HarvestEntry> results = deserializeCropEntries(id, json);
         final BlockState displayState = MCJsonUtils.deserializeBlockState(json.getAsJsonObject("display"));
-        return new CropInfo(id, seed, validSoils.toArray(new String[0]), growthTicks, growthModifier, results.toArray(new HarvestEntry[0]), displayState);
+        return new CropInfo(id, seed, validSoils, growthTicks, growthModifier, results, displayState);
     }
     
     /**
@@ -226,5 +226,35 @@ public class CropInfo {
         
         final ItemStack[] matchingStacks = this.seed.getMatchingStacks();
         return matchingStacks.length > 0 ? matchingStacks[Bookshelf.RANDOM.nextInt(matchingStacks.length)] : ItemStack.EMPTY;
+    }
+    
+    public void setSeed (Ingredient seed) {
+        
+        this.seed = seed;
+    }
+    
+    public void setSoilCategories (Set<String> soilCategories) {
+        
+        this.soilCategories = soilCategories;
+    }
+    
+    public void setGrowthTicks (int growthTicks) {
+        
+        this.growthTicks = growthTicks;
+    }
+    
+    public void setGrowthMultiplier (float growthMultiplier) {
+        
+        this.growthMultiplier = growthMultiplier;
+    }
+    
+    public void setResults (List<HarvestEntry> results) {
+        
+        this.results = results;
+    }
+    
+    public void setDisplayBlock (BlockState displayBlock) {
+        
+        this.displayBlock = displayBlock;
     }
 }

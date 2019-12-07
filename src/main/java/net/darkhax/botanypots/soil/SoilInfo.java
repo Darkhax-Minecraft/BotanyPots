@@ -24,24 +24,24 @@ public class SoilInfo {
     /**
      * The item used to get the soil into the pot.
      */
-    private final Ingredient ingredient;
+    private Ingredient ingredient;
     
     /**
      * The blockstate used to render the soil.
      */
-    private final BlockState renderState;
+    private BlockState renderState;
     
     /**
      * The base tick rate of the soil.
      */
-    private final int tickRate;
+    private int tickRate;
     
     /**
      * An array of associated soil categories.
      */
-    private final String[] categories;
+    private Set<String> categories;
     
-    public SoilInfo(ResourceLocation id, Ingredient ingredient, BlockState renderState, int tickRate, String[] categories) {
+    public SoilInfo(ResourceLocation id, Ingredient ingredient, BlockState renderState, int tickRate, Set<String> categories) {
         
         this.id = id;
         this.ingredient = ingredient;
@@ -70,7 +70,7 @@ public class SoilInfo {
         return this.renderState;
     }
     
-    public String[] getCategories () {
+    public Set<String> getCategories () {
         
         return this.categories;
     }
@@ -87,12 +87,32 @@ public class SoilInfo {
             categories.add(element.getAsString().toLowerCase());
         }
         
-        return new SoilInfo(id, input, renderState, tickRate, categories.toArray(new String[0]));
+        return new SoilInfo(id, input, renderState, tickRate, categories);
     }
     
     public ItemStack getRandomSoilBlock () {
         
         final ItemStack[] matchingStacks = this.ingredient.getMatchingStacks();
         return matchingStacks.length > 0 ? matchingStacks[Bookshelf.RANDOM.nextInt(matchingStacks.length)] : ItemStack.EMPTY;
+    }
+    
+    public void setIngredient (Ingredient ingredient) {
+        
+        this.ingredient = ingredient;
+    }
+    
+    public void setRenderState (BlockState renderState) {
+        
+        this.renderState = renderState;
+    }
+    
+    public void setTickRate (int tickRate) {
+        
+        this.tickRate = tickRate;
+    }
+    
+    public void setCategories (Set<String> categories) {
+        
+        this.categories = categories;
     }
 }

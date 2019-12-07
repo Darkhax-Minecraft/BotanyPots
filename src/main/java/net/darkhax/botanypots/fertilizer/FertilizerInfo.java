@@ -19,17 +19,17 @@ public class FertilizerInfo {
     /**
      * The items in the fertilizer category.
      */
-    private final Ingredient ingredient;
+    private Ingredient ingredient;
     
     /**
      * The minimum amount of growth ticks to add.
      */
-    private final int minTicks;
+    private int minTicks;
     
     /**
      * The maximum amount of growth ticks to add.
      */
-    private final int maxTicks;
+    private int maxTicks;
     
     public FertilizerInfo(ResourceLocation id, Ingredient ingredient, int minTicks, int maxTicks) {
         
@@ -106,5 +106,20 @@ public class FertilizerInfo {
         final int maxTicks = JSONUtils.getInt(json, "maxTicks");
         
         return new FertilizerInfo(id, ingredient, minTicks, maxTicks);
+    }
+    
+    public void setIngredient (Ingredient ingredient) {
+        
+        this.ingredient = ingredient;
+    }
+    
+    public void setMinTicks (int minTicks) {
+        
+        this.minTicks = minTicks;
+    }
+    
+    public void setMaxTicks (int maxTicks) {
+        
+        this.maxTicks = maxTicks;
     }
 }

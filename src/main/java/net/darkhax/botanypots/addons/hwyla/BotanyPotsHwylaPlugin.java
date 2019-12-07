@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 @WailaPlugin
 public class BotanyPotsHwylaPlugin implements IWailaPlugin {
-
+    
     public static final ResourceLocation KEY_SHOW_SOIL = new ResourceLocation(BotanyPots.MOD_ID, "show_soil");
     public static final ResourceLocation KEY_SHOW_CROP = new ResourceLocation(BotanyPots.MOD_ID, "show_crop");
     public static final ResourceLocation KEY_SHOW_PROGRESS = new ResourceLocation(BotanyPots.MOD_ID, "show_progress");
@@ -25,5 +25,5 @@ public class BotanyPotsHwylaPlugin implements IWailaPlugin {
         registry.addConfig(KEY_SHOW_DEBUG, false);
         
         registry.registerComponentProvider(new BotanyPotComponentProvider(), TooltipPosition.BODY, BlockBotanyPot.class);
-    }   
+    }
 }

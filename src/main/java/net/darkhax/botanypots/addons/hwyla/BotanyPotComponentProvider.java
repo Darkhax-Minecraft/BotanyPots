@@ -1,8 +1,8 @@
 package net.darkhax.botanypots.addons.hwyla;
 
 import java.text.DecimalFormat;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import mcp.mobius.waila.api.IComponentProvider;
 import mcp.mobius.waila.api.IDataAccessor;
@@ -19,10 +19,10 @@ public class BotanyPotComponentProvider implements IComponentProvider {
     private static final DecimalFormat format = new DecimalFormat("#.##");
     
     @Override
-    public void appendBody(List<ITextComponent> tooltip, IDataAccessor accessor, IPluginConfig config) {
-
+    public void appendBody (List<ITextComponent> tooltip, IDataAccessor accessor, IPluginConfig config) {
+        
         final TileEntity tile = accessor.getTileEntity();
-                
+        
         if (tile instanceof TileEntityBotanyPot) {
             
             final TileEntityBotanyPot pot = (TileEntityBotanyPot) tile;
@@ -49,14 +49,14 @@ public class BotanyPotComponentProvider implements IComponentProvider {
                     tooltip.add(new TranslationTextComponent("botanypots.tooltip.crop.id", pot.getCrop().getId().toString()).applyTextStyle(TextFormatting.LIGHT_PURPLE));
                     tooltip.add(new TranslationTextComponent("botanypots.tooltip.crop.ticks", pot.getCrop().getGrowthTicks()).applyTextStyle(TextFormatting.LIGHT_PURPLE));
                     tooltip.add(new TranslationTextComponent("botanypots.tooltip.crop.multiplier", pot.getCrop().getGrowthMultiplier()).applyTextStyle(TextFormatting.LIGHT_PURPLE));
-                    tooltip.add(new TranslationTextComponent("botanypots.tooltip.crop.categories", Arrays.toString(pot.getCrop().getSoilCategories())).applyTextStyle(TextFormatting.LIGHT_PURPLE));
+                    tooltip.add(new TranslationTextComponent("botanypots.tooltip.crop.categories", pot.getCrop().getSoilCategories().stream().collect(Collectors.joining(", "))).applyTextStyle(TextFormatting.LIGHT_PURPLE));
                 }
                 
                 if (pot.getSoil() != null) {
                     
                     tooltip.add(new TranslationTextComponent("botanypots.tooltip.soil.id", pot.getSoil().getId().toString()).applyTextStyle(TextFormatting.AQUA));
                     tooltip.add(new TranslationTextComponent("botanypots.tooltip.soil.ticks", pot.getSoil().getTickRate()).applyTextStyle(TextFormatting.AQUA));
-                    tooltip.add(new TranslationTextComponent("botanypots.tooltip.soil.categories", Arrays.toString(pot.getSoil().getCategories())).applyTextStyle(TextFormatting.AQUA));
+                    tooltip.add(new TranslationTextComponent("botanypots.tooltip.soil.categories", pot.getSoil().getCategories().stream().collect(Collectors.joining(", "))).applyTextStyle(TextFormatting.AQUA));
                 }
                 
                 tooltip.add(new TranslationTextComponent("botanypots.tooltip.pot.totalticks", pot.getTotalGrowthTicks()).applyTextStyle(TextFormatting.GREEN));
