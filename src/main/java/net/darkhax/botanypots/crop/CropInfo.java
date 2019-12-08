@@ -11,10 +11,12 @@ import com.google.gson.JsonObject;
 import net.darkhax.bookshelf.Bookshelf;
 import net.darkhax.bookshelf.util.MCJsonUtils;
 import net.darkhax.botanypots.BotanyPots;
+import net.darkhax.botanypots.PacketUtils;
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
@@ -133,6 +135,43 @@ public class CropInfo {
         final List<HarvestEntry> results = deserializeCropEntries(id, json);
         final BlockState displayState = MCJsonUtils.deserializeBlockState(json.getAsJsonObject("display"));
         return new CropInfo(id, seed, validSoils, growthTicks, growthModifier, results, displayState);
+    }
+    
+    public static CropInfo deserialize (PacketBuffer buf) {
+        
+        final ResourceLocation id = buf.readResourceLocation();
+        final Ingredient seed = Ingredient.read(buf);
+        final Set<String> validSoils = new HashSet<>();
+        PacketUtils.deserializeStringCollection(buf, validSoils);
+        final int growthTicks = buf.readInt();
+        final float growthModifier = buf.readFloat();
+        final List<HarvestEntry> results = new ArrayList<>();
+        
+        // for (int i = 0; i < buf.readInt(); i++) {
+        //
+        // results.add(HarvestEntry.deserialize(buf));
+        // }
+        
+        final BlockState displayState = PacketUtils.deserializeBlockState(buf);
+        return new CropInfo(id, seed, validSoils, growthTicks, growthModifier, results, displayState);
+    }
+    
+    public static void serialize (PacketBuffer buffer, CropInfo info) {
+        
+        buffer.writeResourceLocation(info.getId());
+        info.getSeed().write(buffer);
+        PacketUtils.serializeStringCollection(buffer, info.getSoilCategories());
+        buffer.writeInt(info.getGrowthTicks());
+        buffer.writeFloat(info.getGrowthMultiplier());
+        
+        // buffer.writeInt(info.getResults().size());
+        //
+        // for (final HarvestEntry entry : info.getResults()) {
+        //
+        // HarvestEntry.serialize(buffer, entry);
+        // }
+        
+        PacketUtils.serializeBlockState(buffer, info.getDisplayState());
     }
     
     /**

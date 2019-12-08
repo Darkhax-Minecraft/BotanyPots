@@ -5,6 +5,7 @@ import java.util.Random;
 import com.google.gson.JsonObject;
 
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
@@ -106,6 +107,24 @@ public class FertilizerInfo {
         final int maxTicks = JSONUtils.getInt(json, "maxTicks");
         
         return new FertilizerInfo(id, ingredient, minTicks, maxTicks);
+    }
+    
+    public static FertilizerInfo deserialize (PacketBuffer buf) {
+        
+        final ResourceLocation id = buf.readResourceLocation();
+        final Ingredient ingredient = Ingredient.read(buf);
+        final int minTicks = buf.readInt();
+        final int maxTicks = buf.readInt();
+        
+        return new FertilizerInfo(id, ingredient, minTicks, maxTicks);
+    }
+    
+    public static void serialize (PacketBuffer buffer, FertilizerInfo info) {
+        
+        buffer.writeResourceLocation(info.getId());
+        info.getIngredient().write(buffer);
+        buffer.writeInt(info.getMinTicks());
+        buffer.writeInt(info.getMaxTicks());
     }
     
     public void setIngredient (Ingredient ingredient) {

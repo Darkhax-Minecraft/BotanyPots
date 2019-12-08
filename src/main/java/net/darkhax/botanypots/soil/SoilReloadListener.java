@@ -53,7 +53,5 @@ public class SoilReloadListener extends JsonReloadListener {
         }
         
         profiler.endSection();
-        
-        BotanyPots.LOGGER.info("Loaded {} soil types from datapack jsons.", registeredSoil.size());
     }
 }

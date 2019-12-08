@@ -8,9 +8,11 @@ import com.google.gson.JsonObject;
 
 import net.darkhax.bookshelf.Bookshelf;
 import net.darkhax.bookshelf.util.MCJsonUtils;
+import net.darkhax.botanypots.PacketUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
 
@@ -88,6 +90,27 @@ public class SoilInfo {
         }
         
         return new SoilInfo(id, input, renderState, tickRate, categories);
+    }
+    
+    public static SoilInfo deserialize (PacketBuffer buf) {
+        
+        final ResourceLocation id = buf.readResourceLocation();
+        final Ingredient ingredient = Ingredient.read(buf);
+        final BlockState renderState = PacketUtils.deserializeBlockState(buf);
+        final int tickRate = buf.readInt();
+        final Set<String> categories = new HashSet<>();
+        PacketUtils.deserializeStringCollection(buf, categories);
+        
+        return new SoilInfo(id, ingredient, renderState, tickRate, categories);
+    }
+    
+    public static void serialize (PacketBuffer buffer, SoilInfo info) {
+        
+        buffer.writeResourceLocation(info.getId());
+        info.getIngredient().write(buffer);
+        PacketUtils.serializeBlockState(buffer, info.getRenderState());
+        buffer.writeInt(info.getTickRate());
+        PacketUtils.serializeStringCollection(buffer, info.getCategories());
     }
     
     public ItemStack getRandomSoilBlock () {

@@ -68,7 +68,5 @@ public class FertilizerReloadListener extends JsonReloadListener {
         }
         
         profiler.endSection();
-        
-        BotanyPots.LOGGER.info("Loaded {} fertilizer types from datapack jsons.", registeredFertilizer.size());
     }
 }

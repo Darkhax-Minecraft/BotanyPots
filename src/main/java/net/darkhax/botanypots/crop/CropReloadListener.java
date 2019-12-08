@@ -68,7 +68,5 @@ public class CropReloadListener extends JsonReloadListener {
         }
         
         profiler.endSection();
-        
-        BotanyPots.LOGGER.info("Loaded {} crop types from datapack jsons.", registeredCrops.size());
     }
 }

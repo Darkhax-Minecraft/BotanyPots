@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.ShapedRecipe;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.JSONUtils;
 
 public class HarvestEntry {
@@ -100,5 +101,23 @@ public class HarvestEntry {
         final int maxRolls = JSONUtils.getInt(json, "maxRolls");
         
         return new HarvestEntry(chance, item, minRolls, maxRolls);
+    }
+    
+    public static HarvestEntry deserialize (PacketBuffer buf) {
+        
+        final float chance = buf.readFloat();
+        final ItemStack item = buf.readItemStack();
+        final int min = buf.readInt();
+        final int max = buf.readInt();
+        
+        return new HarvestEntry(chance, item, min, max);
+    }
+    
+    public static void serialize (PacketBuffer buffer, HarvestEntry info) {
+        
+        buffer.writeFloat(info.getChance());
+        buffer.writeItemStack(info.getItem());
+        buffer.writeInt(info.getMinRolls());
+        buffer.writeInt(info.getMaxRolls());
     }
 }
