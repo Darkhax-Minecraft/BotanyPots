@@ -3,7 +3,7 @@
   "seed": {
     "item": "minecraft:melon_seeds"
   },
-  "categories":["farmland"],
+  "categories":["dirt"],
   "growthTicks": 3,
   "growthModifier": 2,
   "display": {

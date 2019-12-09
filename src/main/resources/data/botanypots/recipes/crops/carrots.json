@@ -3,7 +3,7 @@
   "seed": {
     "item": "minecraft:carrot"
   },
-  "categories":["farmland"],
+  "categories":["dirt"],
   "growthTicks": 3,
   "growthModifier": 1.2,
   "display": {
