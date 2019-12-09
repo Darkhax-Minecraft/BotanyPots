@@ -17,12 +17,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 public class SoilSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<SoilInfo> {
-
+    
     public static final SoilSerializer INSTANCE = new SoilSerializer();
     
     @Override
     public SoilInfo read (ResourceLocation id, JsonObject json) {
-
+        
         final Ingredient input = Ingredient.deserialize(json.getAsJsonObject("input"));
         final BlockState renderState = MCJsonUtils.deserializeBlockState(json.getAsJsonObject("display"));
         final int tickRate = JSONUtils.getInt(json, "ticks");
@@ -35,7 +35,7 @@ public class SoilSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
         
         return new SoilInfo(id, input, renderState, tickRate, categories);
     }
-
+    
     @Override
     public SoilInfo read (ResourceLocation id, PacketBuffer buf) {
         
@@ -47,11 +47,10 @@ public class SoilSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
         
         return new SoilInfo(id, ingredient, renderState, tickRate, categories);
     }
-
+    
     @Override
     public void write (PacketBuffer buffer, SoilInfo info) {
         
-        buffer.writeResourceLocation(info.getId());
         info.getIngredient().write(buffer);
         PacketUtils.serializeBlockState(buffer, info.getRenderState());
         buffer.writeInt(info.getTickRate());
