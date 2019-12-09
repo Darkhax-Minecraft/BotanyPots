@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import net.darkhax.bookshelf.Bookshelf;
+import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.RecipeData;
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.BlockState;
@@ -191,14 +192,12 @@ public class CropInfo extends RecipeData {
     @Override
     public IRecipeSerializer<?> getSerializer () {
         
-        // TODO Auto-generated method stub
-        return null;
+        return BotanyPots.instance.getContent().getRecipeSerializerCrop();
     }
 
     @Override
     public IRecipeType<?> getType () {
-        
-        // TODO Auto-generated method stub
-        return null;
+
+        return BotanyPots.instance.getContent().getRecipeTypeCrop();
     }
 }
