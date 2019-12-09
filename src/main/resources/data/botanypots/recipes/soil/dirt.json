@@ -1,0 +1,11 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:dirt"
+  },
+  "display": {
+    "block": "minecraft:dirt"
+  },
+  "categories": ["dirt"],
+  "ticks": 250
+}

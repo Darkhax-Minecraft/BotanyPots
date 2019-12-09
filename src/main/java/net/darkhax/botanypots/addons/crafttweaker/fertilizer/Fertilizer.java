@@ -5,8 +5,9 @@ import org.openzen.zencode.java.ZenCodeType;
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
+import com.blamejared.crafttweaker.impl.managers.CTCraftingTableManager;
 
-import net.darkhax.botanypots.fertilizer.FertilizerReloadListener;
+import net.darkhax.botanypots.BotanyPotHelper;
 import net.minecraft.util.ResourceLocation;
 
 @ZenRegister
@@ -40,12 +41,12 @@ public class Fertilizer {
     @ZenCodeType.Method
     public static String[] getAllIds () {
         
-        return FertilizerReloadListener.registeredFertilizer.keySet().stream().map(ResourceLocation::toString).toArray(String[]::new);
+        return BotanyPotHelper.getFertilizerData(CTCraftingTableManager.recipeManager).keySet().stream().map(ResourceLocation::toString).toArray(String[]::new);
     }
     
     @ZenCodeType.Method
     public static void removeAll () {
         
-        FertilizerReloadListener.registeredFertilizer.clear();
+        BotanyPotHelper.getFertilizerData(CTCraftingTableManager.recipeManager).clear();
     }
 }

@@ -1,7 +1,9 @@
 package net.darkhax.botanypots.addons.crafttweaker.soil;
 
+import com.blamejared.crafttweaker.impl.managers.CTCraftingTableManager;
+
+import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.BotanyPots;
-import net.darkhax.botanypots.soil.SoilReloadListener;
 
 public class ActionSoilRemove extends ActionSoil {
     
@@ -15,7 +17,7 @@ public class ActionSoilRemove extends ActionSoil {
         
         if (this.getSoil() != null) {
             
-            SoilReloadListener.registeredSoil.remove(this.getSoil().getId());
+            BotanyPotHelper.getSoilData(CTCraftingTableManager.recipeManager).remove(this.getSoil().getId());
         }
     }
     

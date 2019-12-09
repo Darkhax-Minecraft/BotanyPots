@@ -8,9 +8,7 @@ import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.block.BlockBotanyPot;
 import net.darkhax.botanypots.crop.CropInfo;
-import net.darkhax.botanypots.crop.CropReloadListener;
 import net.darkhax.botanypots.soil.SoilInfo;
-import net.darkhax.botanypots.soil.SoilReloadListener;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -176,7 +174,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         // soila and crop references.
         if (this.soil != null) {
             
-            this.soil = SoilReloadListener.registeredSoil.get(this.soil.getId());
+            this.soil = BotanyPotHelper.getSoil(this.world.getRecipeManager(), this.soil.getId());
             
             // Check if the soil was removed. If so kill the crop, because crop needs a soil.
             if (this.soil == null) {
@@ -187,7 +185,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         
         if (this.crop != null) {
             
-            this.crop = CropReloadListener.registeredCrops.get(this.crop.getId());
+            this.crop = BotanyPotHelper.getCrop(this.world.getRecipeManager(), this.crop.getId());
         }
     }
     
@@ -321,6 +319,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     @Override
     public void deserialize (CompoundNBT dataTag) {
         
+        System.out.println("deserializing at " + this.getPos());
         if (dataTag.contains("Soil")) {
             
             final String rawSoilId = dataTag.getString("Soil");
@@ -328,7 +327,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             
             if (soilId != null) {
                 
-                final SoilInfo foundSoil = SoilReloadListener.registeredSoil.get(soilId);
+                final SoilInfo foundSoil = BotanyPotHelper.getSoil(this.world.getRecipeManager(), soilId);
                 
                 if (foundSoil != null) {
                     
@@ -342,7 +341,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                         
                         if (cropId != null) {
                             
-                            final CropInfo cropInfo = CropReloadListener.registeredCrops.get(cropId);
+                            final CropInfo cropInfo = BotanyPotHelper.getCrop(this.world.getRecipeManager(), cropId);
                             
                             if (cropInfo != null) {
                                 

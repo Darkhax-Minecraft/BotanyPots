@@ -1,22 +1,18 @@
 package net.darkhax.botanypots.soil;
 
-import java.util.HashSet;
 import java.util.Set;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-
 import net.darkhax.bookshelf.Bookshelf;
-import net.darkhax.bookshelf.util.MCJsonUtils;
-import net.darkhax.botanypots.PacketUtils;
+import net.darkhax.botanypots.BotanyPots;
+import net.darkhax.botanypots.RecipeData;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
 
-public class SoilInfo {
+public class SoilInfo extends RecipeData {
     
     /**
      * The id of the soil entry.
@@ -77,42 +73,6 @@ public class SoilInfo {
         return this.categories;
     }
     
-    public static SoilInfo deserialize (ResourceLocation id, JsonObject json) {
-        
-        final Ingredient input = Ingredient.deserialize(json.getAsJsonObject("input"));
-        final BlockState renderState = MCJsonUtils.deserializeBlockState(json.getAsJsonObject("display"));
-        final int tickRate = JSONUtils.getInt(json, "ticks");
-        final Set<String> categories = new HashSet<>();
-        
-        for (final JsonElement element : json.getAsJsonArray("categories")) {
-            
-            categories.add(element.getAsString().toLowerCase());
-        }
-        
-        return new SoilInfo(id, input, renderState, tickRate, categories);
-    }
-    
-    public static SoilInfo deserialize (PacketBuffer buf) {
-        
-        final ResourceLocation id = buf.readResourceLocation();
-        final Ingredient ingredient = Ingredient.read(buf);
-        final BlockState renderState = PacketUtils.deserializeBlockState(buf);
-        final int tickRate = buf.readInt();
-        final Set<String> categories = new HashSet<>();
-        PacketUtils.deserializeStringCollection(buf, categories);
-        
-        return new SoilInfo(id, ingredient, renderState, tickRate, categories);
-    }
-    
-    public static void serialize (PacketBuffer buffer, SoilInfo info) {
-        
-        buffer.writeResourceLocation(info.getId());
-        info.getIngredient().write(buffer);
-        PacketUtils.serializeBlockState(buffer, info.getRenderState());
-        buffer.writeInt(info.getTickRate());
-        PacketUtils.serializeStringCollection(buffer, info.getCategories());
-    }
-    
     public ItemStack getRandomSoilBlock () {
         
         final ItemStack[] matchingStacks = this.ingredient.getMatchingStacks();
@@ -137,5 +97,17 @@ public class SoilInfo {
     public void setCategories (Set<String> categories) {
         
         this.categories = categories;
+    }
+
+    @Override
+    public IRecipeSerializer<?> getSerializer () {
+        
+        return BotanyPots.instance.getContent().getRecipeSerializerSoil();
+    }
+
+    @Override
+    public IRecipeType<?> getType () {
+        
+        return BotanyPots.instance.getContent().getRecipeTypeSoil();
     }
 }

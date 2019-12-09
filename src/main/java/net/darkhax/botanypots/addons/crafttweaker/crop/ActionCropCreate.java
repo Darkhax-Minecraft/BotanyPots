@@ -8,9 +8,10 @@ import com.blamejared.crafttweaker.api.actions.IRuntimeAction;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.logger.ILogger;
 import com.blamejared.crafttweaker.impl.blocks.MCBlockState;
+import com.blamejared.crafttweaker.impl.managers.CTCraftingTableManager;
 
+import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.crop.CropInfo;
-import net.darkhax.botanypots.crop.CropReloadListener;
 import net.minecraft.util.ResourceLocation;
 
 public class ActionCropCreate implements IRuntimeAction {
@@ -27,7 +28,7 @@ public class ActionCropCreate implements IRuntimeAction {
     @Override
     public void apply () {
         
-        CropReloadListener.registeredCrops.put(this.newCrop.getId(), this.newCrop);
+        BotanyPotHelper.getCropData(CTCraftingTableManager.recipeManager).put(this.newCrop.getId(), this.newCrop);
     }
     
     @Override

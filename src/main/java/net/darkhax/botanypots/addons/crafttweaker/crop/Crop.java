@@ -7,8 +7,9 @@ import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.impl.blocks.MCBlockState;
+import com.blamejared.crafttweaker.impl.managers.CTCraftingTableManager;
 
-import net.darkhax.botanypots.crop.CropReloadListener;
+import net.darkhax.botanypots.BotanyPotHelper;
 import net.minecraft.util.ResourceLocation;
 
 @ZenRegister
@@ -84,12 +85,12 @@ public class Crop {
     @ZenCodeType.Method
     public static String[] getAllIds () {
         
-        return CropReloadListener.registeredCrops.keySet().stream().map(ResourceLocation::toString).toArray(String[]::new);
+        return BotanyPotHelper.getCropData(CTCraftingTableManager.recipeManager).keySet().stream().map(ResourceLocation::toString).toArray(String[]::new);
     }
     
     @ZenCodeType.Method
     public static void removeAll () {
         
-        CropReloadListener.registeredCrops.clear();
+        BotanyPotHelper.getCropData(CTCraftingTableManager.recipeManager).clear();
     }
 }

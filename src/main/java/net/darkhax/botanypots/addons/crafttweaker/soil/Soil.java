@@ -6,8 +6,9 @@ import com.blamejared.crafttweaker.api.CraftTweakerAPI;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.impl.blocks.MCBlockState;
+import com.blamejared.crafttweaker.impl.managers.CTCraftingTableManager;
 
-import net.darkhax.botanypots.soil.SoilReloadListener;
+import net.darkhax.botanypots.BotanyPotHelper;
 import net.minecraft.util.ResourceLocation;
 
 @ZenRegister
@@ -65,12 +66,12 @@ public class Soil {
     @ZenCodeType.Method
     public static String[] getAllIds () {
         
-        return SoilReloadListener.registeredSoil.keySet().stream().map(ResourceLocation::toString).toArray(String[]::new);
+        return BotanyPotHelper.getSoilData(CTCraftingTableManager.recipeManager).keySet().stream().map(ResourceLocation::toString).toArray(String[]::new);
     }
     
     @ZenCodeType.Method
     public static void removeAll () {
         
-        SoilReloadListener.registeredSoil.clear();
+        BotanyPotHelper.getSoilData(CTCraftingTableManager.recipeManager).clear();
     }
 }

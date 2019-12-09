@@ -1,18 +1,17 @@
 package net.darkhax.botanypots;
 
-import java.util.Random;
+import java.util.Map;
 
 import javax.annotation.Nullable;
 
 import net.darkhax.bookshelf.util.MathsUtils;
+import net.darkhax.bookshelf.util.WorldUtils;
 import net.darkhax.botanypots.crop.CropInfo;
-import net.darkhax.botanypots.crop.CropReloadListener;
 import net.darkhax.botanypots.crop.HarvestEntry;
 import net.darkhax.botanypots.fertilizer.FertilizerInfo;
-import net.darkhax.botanypots.fertilizer.FertilizerReloadListener;
 import net.darkhax.botanypots.soil.SoilInfo;
-import net.darkhax.botanypots.soil.SoilReloadListener;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -22,6 +21,42 @@ import net.minecraft.world.World;
 public class BotanyPotHelper {
     
     public static final ResourceLocation NONE = new ResourceLocation(BotanyPots.MOD_ID, "none");
+    
+    @Nullable
+    public static Map<ResourceLocation, SoilInfo> getSoilData(RecipeManager manager) {
+        
+        return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeSoil(), manager);
+    }
+    
+    @Nullable
+    public static Map<ResourceLocation, CropInfo> getCropData(RecipeManager manager) {
+        
+        return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeCrop(), manager);
+    }
+    
+    @Nullable
+    public static Map<ResourceLocation, FertilizerInfo> getFertilizerData(RecipeManager manager) {
+        
+        return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), manager);
+    }
+    
+    @Nullable
+    public static SoilInfo getSoil(RecipeManager manager, ResourceLocation id) {
+        
+        return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeSoil(), manager).get(id);
+    }
+    
+    @Nullable
+    public static CropInfo getCrop(RecipeManager manager, ResourceLocation id) {
+        
+        return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeCrop(), manager).get(id);
+    }
+    
+    @Nullable
+    public static FertilizerInfo getFertilizer(RecipeManager manager, ResourceLocation id) {
+        
+        return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), manager).get(id);
+    }
     
     /**
      * Gets the total amount of world ticks required for a specific crop to reach maturity when
@@ -45,9 +80,9 @@ public class BotanyPotHelper {
      *         is not a valid soil.
      */
     @Nullable
-    public static SoilInfo getSoilForItem (ItemStack item) {
+    public static SoilInfo getSoilForItem (World world, ItemStack item) {
         
-        for (final SoilInfo soilInfo : SoilReloadListener.registeredSoil.values()) {
+        for (final SoilInfo soilInfo : WorldUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeSoil(), world.getRecipeManager())) {
             
             if (soilInfo.getIngredient().test(item)) {
                 
@@ -66,9 +101,9 @@ public class BotanyPotHelper {
      *         item is not a valid seed.
      */
     @Nullable
-    public static CropInfo getCropForItem (ItemStack item) {
+    public static CropInfo getCropForItem (World world, ItemStack item) {
         
-        for (final CropInfo cropInfo : CropReloadListener.registeredCrops.values()) {
+        for (final CropInfo cropInfo : WorldUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeCrop(), world.getRecipeManager())) {
             
             if (cropInfo.getSeed().test(item)) {
                 
@@ -143,13 +178,13 @@ public class BotanyPotHelper {
      * @return The amount of ticks to progress a crop. If this is -1 the item is not a
      *         fertilizer.
      */
-    public static int getFertilizerTicks (ItemStack item, Random random) {
+    public static int getFertilizerTicks (ItemStack item, World world) {
         
-        for (final FertilizerInfo fertilizer : FertilizerReloadListener.registeredFertilizer.values()) {
+        for (final FertilizerInfo fertilizer : WorldUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), world.getRecipeManager())) {
             
             if (fertilizer.getIngredient().test(item)) {
                 
-                return fertilizer.getTicksToGrow(random);
+                return fertilizer.getTicksToGrow(world.rand);
             }
         }
         

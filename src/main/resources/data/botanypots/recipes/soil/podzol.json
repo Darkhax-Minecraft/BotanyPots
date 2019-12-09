@@ -1,0 +1,11 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:podzol"
+  },
+  "display": {
+    "block": "minecraft:podzol"
+  },
+  "categories": ["dirt", "grass", "podzol"],
+  "ticks": 190
+}

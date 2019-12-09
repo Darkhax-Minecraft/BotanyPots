@@ -123,7 +123,7 @@ public class BlockBotanyPot extends Block {
                     // Attempt soil add first
                     if (pot.getSoil() == null) {
                         
-                        final SoilInfo soilForStack = BotanyPotHelper.getSoilForItem(heldItem);
+                        final SoilInfo soilForStack = BotanyPotHelper.getSoilForItem(world, heldItem);
                         
                         if (soilForStack != null && pot.canSetSoil(soilForStack)) {
                             
@@ -141,7 +141,7 @@ public class BlockBotanyPot extends Block {
                     // Attempt crop add second.
                     else if (pot.getCrop() == null) {
                         
-                        final CropInfo cropForStack = BotanyPotHelper.getCropForItem(heldItem);
+                        final CropInfo cropForStack = BotanyPotHelper.getCropForItem(world, heldItem);
                         
                         if (cropForStack != null && BotanyPotHelper.isSoilValidForCrop(pot.getSoil(), cropForStack) && pot.canSetCrop(cropForStack)) {
                             
@@ -158,7 +158,7 @@ public class BlockBotanyPot extends Block {
                     
                     else if (!pot.canHarvest()) {
                         
-                        final int fertilizerGrowthTicks = BotanyPotHelper.getFertilizerTicks(heldItem, world.rand);
+                        final int fertilizerGrowthTicks = BotanyPotHelper.getFertilizerTicks(heldItem, world);
                         
                         if (fertilizerGrowthTicks > -1) {
                             

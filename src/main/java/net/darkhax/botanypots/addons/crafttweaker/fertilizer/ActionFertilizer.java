@@ -2,9 +2,10 @@ package net.darkhax.botanypots.addons.crafttweaker.fertilizer;
 
 import com.blamejared.crafttweaker.api.actions.IRuntimeAction;
 import com.blamejared.crafttweaker.api.logger.ILogger;
+import com.blamejared.crafttweaker.impl.managers.CTCraftingTableManager;
 
+import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.fertilizer.FertilizerInfo;
-import net.darkhax.botanypots.fertilizer.FertilizerReloadListener;
 import net.minecraft.util.ResourceLocation;
 
 public abstract class ActionFertilizer implements IRuntimeAction {
@@ -15,7 +16,7 @@ public abstract class ActionFertilizer implements IRuntimeAction {
     public ActionFertilizer(String id) {
         
         this.id = id;
-        this.targetFertilizer = FertilizerReloadListener.registeredFertilizer.get(ResourceLocation.tryCreate(id));
+        this.targetFertilizer = BotanyPotHelper.getFertilizer(CTCraftingTableManager.recipeManager, ResourceLocation.tryCreate(id));
     }
     
     public String getId () {

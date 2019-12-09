@@ -1,0 +1,30 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:oxeye_daisy"
+  },
+  "categories":["dirt"],
+  "growthTicks": 1,
+  "growthModifier": 3.5,
+  "display": {
+    "block": "minecraft:oxeye_daisy"
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:oxeye_daisy"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:oxeye_daisy"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

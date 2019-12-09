@@ -2,9 +2,10 @@ package net.darkhax.botanypots.addons.crafttweaker.soil;
 
 import com.blamejared.crafttweaker.api.actions.IRuntimeAction;
 import com.blamejared.crafttweaker.api.logger.ILogger;
+import com.blamejared.crafttweaker.impl.managers.CTCraftingTableManager;
 
+import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.soil.SoilInfo;
-import net.darkhax.botanypots.soil.SoilReloadListener;
 import net.minecraft.util.ResourceLocation;
 
 public abstract class ActionSoil implements IRuntimeAction {
@@ -15,7 +16,7 @@ public abstract class ActionSoil implements IRuntimeAction {
     public ActionSoil(String id) {
         
         this.id = id;
-        this.targetSoil = SoilReloadListener.registeredSoil.get(ResourceLocation.tryCreate(id));
+        this.targetSoil = BotanyPotHelper.getSoil(CTCraftingTableManager.recipeManager, ResourceLocation.tryCreate(id));
     }
     
     public String getId () {

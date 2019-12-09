@@ -1,0 +1,11 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:end_stone"
+  },
+  "display": {
+    "block": "minecraft:end_stone"
+  },
+  "categories": ["end_stone"],
+  "ticks": 400
+}

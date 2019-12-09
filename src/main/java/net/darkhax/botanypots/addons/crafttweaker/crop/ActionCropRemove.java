@@ -1,7 +1,9 @@
 package net.darkhax.botanypots.addons.crafttweaker.crop;
 
+import com.blamejared.crafttweaker.impl.managers.CTCraftingTableManager;
+
+import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.BotanyPots;
-import net.darkhax.botanypots.crop.CropReloadListener;
 
 public class ActionCropRemove extends ActionCrop {
     
@@ -13,7 +15,7 @@ public class ActionCropRemove extends ActionCrop {
     @Override
     public void apply () {
         
-        CropReloadListener.registeredCrops.remove(this.getCrop().getId());
+        BotanyPotHelper.getCropData(CTCraftingTableManager.recipeManager).remove(this.getCrop().getId());
     }
     
     @Override

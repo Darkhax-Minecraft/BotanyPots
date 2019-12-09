@@ -2,15 +2,15 @@ package net.darkhax.botanypots.fertilizer;
 
 import java.util.Random;
 
-import com.google.gson.JsonObject;
-
+import net.darkhax.botanypots.BotanyPots;
+import net.darkhax.botanypots.RecipeData;
+import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
-public class FertilizerInfo {
+public class FertilizerInfo extends RecipeData {
     
     /**
      * The id for the fertilizer entry.
@@ -92,41 +92,6 @@ public class FertilizerInfo {
         return MathHelper.nextInt(random, this.minTicks, this.maxTicks);
     }
     
-    /**
-     * Reads a FertilizerInfo object from a JsonObject.
-     * 
-     * @param id The id to assign the new fertilizer info.
-     * @param json The json object to read from.
-     * @return A new FertilizerInfo that was deserialize. May also throw an exception if JSON
-     *         syntax is not valid.
-     */
-    public static FertilizerInfo deserialize (ResourceLocation id, JsonObject json) {
-        
-        final Ingredient ingredient = Ingredient.deserialize(json.getAsJsonObject("fertilizer"));
-        final int minTicks = JSONUtils.getInt(json, "minTicks");
-        final int maxTicks = JSONUtils.getInt(json, "maxTicks");
-        
-        return new FertilizerInfo(id, ingredient, minTicks, maxTicks);
-    }
-    
-    public static FertilizerInfo deserialize (PacketBuffer buf) {
-        
-        final ResourceLocation id = buf.readResourceLocation();
-        final Ingredient ingredient = Ingredient.read(buf);
-        final int minTicks = buf.readInt();
-        final int maxTicks = buf.readInt();
-        
-        return new FertilizerInfo(id, ingredient, minTicks, maxTicks);
-    }
-    
-    public static void serialize (PacketBuffer buffer, FertilizerInfo info) {
-        
-        buffer.writeResourceLocation(info.getId());
-        info.getIngredient().write(buffer);
-        buffer.writeInt(info.getMinTicks());
-        buffer.writeInt(info.getMaxTicks());
-    }
-    
     public void setIngredient (Ingredient ingredient) {
         
         this.ingredient = ingredient;
@@ -140,5 +105,17 @@ public class FertilizerInfo {
     public void setMaxTicks (int maxTicks) {
         
         this.maxTicks = maxTicks;
+    }
+
+    @Override
+    public IRecipeSerializer<?> getSerializer () {
+        
+        return BotanyPots.instance.getContent().getRecipeSerializerFertilizer();
+    }
+
+    @Override
+    public IRecipeType<?> getType () {
+        
+        return BotanyPots.instance.getContent().getRecipeTypeFertilizer();
     }
 }

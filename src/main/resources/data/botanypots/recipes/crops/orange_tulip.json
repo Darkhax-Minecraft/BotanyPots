@@ -1,0 +1,30 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:orange_tulip"
+  },
+  "categories":["dirt"],
+  "growthTicks": 1,
+  "growthModifier": 2.5,
+  "display": {
+    "block": "minecraft:orange_tulip"
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:orange_tulip"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:orange_tulip"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

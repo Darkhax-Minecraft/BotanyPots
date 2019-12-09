@@ -6,10 +6,11 @@ import java.util.HashSet;
 import com.blamejared.crafttweaker.api.actions.IRuntimeAction;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.impl.blocks.MCBlockState;
+import com.blamejared.crafttweaker.impl.managers.CTCraftingTableManager;
 
+import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.soil.SoilInfo;
-import net.darkhax.botanypots.soil.SoilReloadListener;
 import net.minecraft.util.ResourceLocation;
 
 public class ActionSoilCreate implements IRuntimeAction {
@@ -24,7 +25,7 @@ public class ActionSoilCreate implements IRuntimeAction {
     @Override
     public void apply () {
         
-        SoilReloadListener.registeredSoil.put(this.info.getId(), this.info);
+        BotanyPotHelper.getSoilData(CTCraftingTableManager.recipeManager).put(this.info.getId(), this.info);
     }
     
     @Override

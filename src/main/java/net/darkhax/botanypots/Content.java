@@ -6,11 +6,28 @@ import java.util.List;
 import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.botanypots.block.BlockBotanyPot;
 import net.darkhax.botanypots.block.tileentity.TileEntityBotanyPot;
+import net.darkhax.botanypots.crop.CropInfo;
+import net.darkhax.botanypots.crop.CropSerializer;
+import net.darkhax.botanypots.fertilizer.FertilizerInfo;
+import net.darkhax.botanypots.fertilizer.FertilizerSerializer;
+import net.darkhax.botanypots.soil.SoilInfo;
+import net.darkhax.botanypots.soil.SoilSerializer;
 import net.minecraft.block.Block;
 import net.minecraft.item.DyeColor;
+import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.tileentity.TileEntityType;
 
 public class Content {
+    
+    private final IRecipeType<SoilInfo> recipeTypeSoil;
+    private final IRecipeSerializer<SoilInfo> recipeSerializerSoil; 
+    
+    private final IRecipeType<CropInfo> recipeTypeCrop;
+    private final IRecipeSerializer<CropInfo> recipeSerializerCrop; 
+    
+    private final IRecipeType<FertilizerInfo> recipeTypeFertilizer;
+    private final IRecipeSerializer<FertilizerInfo> recipeSerializerFertilizer; 
     
     /**
      * The tile entity type for all botany pots. They share the same tile entity type. Keep in
@@ -33,6 +50,16 @@ public class Content {
     private final List<Block> botanyPots = new ArrayList<>();
     
     public Content(RegistryHelper registry) {
+        
+        // Recipe types
+        this.recipeTypeSoil = registry.registerRecipeType("soil");
+        this.recipeSerializerSoil = registry.registerRecipeSerializer(SoilSerializer.INSTANCE, "soil");
+        
+        this.recipeTypeCrop = registry.registerRecipeType("crop");
+        this.recipeSerializerCrop = registry.registerRecipeSerializer(CropSerializer.INSTANCE, "crop");
+        
+        this.recipeTypeFertilizer = registry.registerRecipeType("fertilizer");
+        this.recipeSerializerFertilizer = registry.registerRecipeSerializer(FertilizerSerializer.INSTANCE, "fertilizer");
         
         // Normal Botany Pots
         this.basicBotanyPotBlock = registry.registerBlock(new BlockBotanyPot(), "botany_pot");
@@ -63,5 +90,35 @@ public class Content {
     public Block getBasicBotanyPot () {
         
         return this.basicBotanyPotBlock;
+    }
+
+    public IRecipeType<SoilInfo> getRecipeTypeSoil () {
+        
+        return recipeTypeSoil;
+    }
+
+    public IRecipeSerializer<SoilInfo> getRecipeSerializerSoil () {
+        
+        return recipeSerializerSoil;
+    }
+
+    public IRecipeType<FertilizerInfo> getRecipeTypeFertilizer () {
+        
+        return recipeTypeFertilizer;
+    }
+
+    public IRecipeSerializer<FertilizerInfo> getRecipeSerializerFertilizer () {
+        
+        return recipeSerializerFertilizer;
+    }
+
+    public IRecipeType<CropInfo> getRecipeTypeCrop () {
+        
+        return recipeTypeCrop;
+    }
+
+    public IRecipeSerializer<CropInfo> getRecipeSerializerCrop () {
+        
+        return recipeSerializerCrop;
     }
 }

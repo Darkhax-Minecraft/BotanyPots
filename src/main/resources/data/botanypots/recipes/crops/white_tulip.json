@@ -1,0 +1,30 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:white_tulip"
+  },
+  "categories":["dirt"],
+  "growthTicks": 1,
+  "growthModifier": 2.5,
+  "display": {
+    "block": "minecraft:white_tulip"
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:white_tulip"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:white_tulip"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

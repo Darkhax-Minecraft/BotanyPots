@@ -1,7 +1,9 @@
 package net.darkhax.botanypots.addons.crafttweaker.fertilizer;
 
+import com.blamejared.crafttweaker.impl.managers.CTCraftingTableManager;
+
+import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.BotanyPots;
-import net.darkhax.botanypots.fertilizer.FertilizerReloadListener;
 
 public class ActionFertilizerRemove extends ActionFertilizer {
     
@@ -15,7 +17,7 @@ public class ActionFertilizerRemove extends ActionFertilizer {
         
         if (this.getFertilizer() != null) {
             
-            FertilizerReloadListener.registeredFertilizer.remove(this.getFertilizer().getId());
+            BotanyPotHelper.getFertilizerData(CTCraftingTableManager.recipeManager).remove(this.getFertilizer().getId());
         }
     }
     
