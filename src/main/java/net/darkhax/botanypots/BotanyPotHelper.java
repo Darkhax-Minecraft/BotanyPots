@@ -10,6 +10,7 @@ import net.darkhax.botanypots.crop.CropInfo;
 import net.darkhax.botanypots.crop.HarvestEntry;
 import net.darkhax.botanypots.fertilizer.FertilizerInfo;
 import net.darkhax.botanypots.soil.SoilInfo;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.util.NonNullList;
@@ -193,13 +194,11 @@ public class BotanyPotHelper {
     
     public static ITextComponent getSoilName (@Nullable SoilInfo soil) {
         
-        final ResourceLocation id = soil != null ? soil.getId() : NONE;
-        return new TranslationTextComponent("botanypots.soil." + id.getNamespace() + "." + id.getPath());
+        return soil != null ? soil.getRenderState().getBlock().getNameTextComponent() : Blocks.AIR.getNameTextComponent();
     }
     
     public static ITextComponent getCropName (@Nullable CropInfo crop) {
         
-        final ResourceLocation id = crop != null ? crop.getId() : NONE;
-        return new TranslationTextComponent("botanypots.crop." + id.getNamespace() + "." + id.getPath());
+        return crop != null ? crop.getDisplayState().getBlock().getNameTextComponent() : Blocks.AIR.getNameTextComponent();
     }
 }
