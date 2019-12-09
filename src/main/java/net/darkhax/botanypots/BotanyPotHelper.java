@@ -75,6 +75,7 @@ public class BotanyPotHelper {
     /**
      * Gets the first soil info associated with a given item stack.
      * 
+     * @param world The world instance to get the recipe manager from.
      * @param item The item stack to look up.
      * @return The soil info associated with the item stack. If this is null it means the item
      *         is not a valid soil.
@@ -96,6 +97,7 @@ public class BotanyPotHelper {
     /**
      * Gets the first crop for a given potential seed item stack.
      * 
+     * @param world The world instance to get the recipe manager from.
      * @param item The potential seed item stack.
      * @return The crop info associated with the given item stack. If this is null it means the
      *         item is not a valid seed.
@@ -173,8 +175,7 @@ public class BotanyPotHelper {
      * Gets the amount of ticks to progress a crop for a given fertilizer.
      * 
      * @param item The item to get the growth ticks for.
-     * @param random An instance of random used to get ticks between the min/max of the
-     *        potential fertilizer.
+     * @param world The world instance to get the recipe manager from.
      * @return The amount of ticks to progress a crop. If this is -1 the item is not a
      *         fertilizer.
      */
