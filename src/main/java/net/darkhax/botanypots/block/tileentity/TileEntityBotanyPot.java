@@ -319,7 +319,6 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     @Override
     public void deserialize (CompoundNBT dataTag) {
         
-        System.out.println("deserializing at " + this.getPos());
         if (dataTag.contains("Soil")) {
             
             final String rawSoilId = dataTag.getString("Soil");
