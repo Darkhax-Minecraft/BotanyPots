@@ -174,7 +174,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         // soila and crop references.
         if (this.soil != null) {
             
-            this.soil = BotanyPotHelper.getSoil(this.world.getRecipeManager(), this.soil.getId());
+            this.soil = BotanyPotHelper.getSoil(BotanyPots.instance.getActiveRecipeManager(), this.soil.getId());
             
             // Check if the soil was removed. If so kill the crop, because crop needs a soil.
             if (this.soil == null) {
@@ -185,7 +185,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         
         if (this.crop != null) {
             
-            this.crop = BotanyPotHelper.getCrop(this.world.getRecipeManager(), this.crop.getId());
+            this.crop = BotanyPotHelper.getCrop(BotanyPots.instance.getActiveRecipeManager(), this.crop.getId());
         }
     }
     
@@ -326,7 +326,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             
             if (soilId != null) {
                 
-                final SoilInfo foundSoil = BotanyPotHelper.getSoil(this.world.getRecipeManager(), soilId);
+                final SoilInfo foundSoil = BotanyPotHelper.getSoil(BotanyPots.instance.getActiveRecipeManager(), soilId);
                 
                 if (foundSoil != null) {
                     
@@ -340,7 +340,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                         
                         if (cropId != null) {
                             
-                            final CropInfo cropInfo = BotanyPotHelper.getCrop(this.world.getRecipeManager(), cropId);
+                            final CropInfo cropInfo = BotanyPotHelper.getCrop(BotanyPots.instance.getActiveRecipeManager(), cropId);
                             
                             if (cropInfo != null) {
                                 

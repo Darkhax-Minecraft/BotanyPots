@@ -8,8 +8,12 @@ import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.bookshelf.registry.RegistryHelperClient;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.RecipeManager;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.server.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(BotanyPots.MOD_ID)
@@ -23,6 +27,8 @@ public class BotanyPots {
     private final RegistryHelper registry;
     private final ItemGroup itemGroup;
     
+    private RecipeManager recipeManager;
+    
     public BotanyPots() {
         
         instance = this;
@@ -31,7 +37,13 @@ public class BotanyPots {
         this.registry = DistExecutor.runForDist( () -> () -> new RegistryHelperClient(MOD_ID, LOGGER, this.itemGroup), () -> () -> new RegistryHelper(MOD_ID, LOGGER, this.itemGroup));
         this.content = DistExecutor.runForDist( () -> () -> new ContentClient(this.registry), () -> () -> new Content(this.registry));
         
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::startServer);
         this.registry.initialize(FMLJavaModLoadingContext.get().getModEventBus());
+    }
+    
+    private void startServer (FMLServerAboutToStartEvent event) {
+        
+        this.recipeManager = event.getServer().getRecipeManager();
     }
     
     public Content getContent () {
@@ -42,5 +54,10 @@ public class BotanyPots {
     public RegistryHelper getRegistry () {
         
         return this.registry;
+    }
+    
+    public RecipeManager getActiveRecipeManager () {
+        
+        return this.recipeManager;
     }
 }
