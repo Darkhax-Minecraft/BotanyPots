@@ -68,6 +68,7 @@ public class CropInfo extends RecipeData {
      * 
      * @return The internal ID of the crop.
      */
+    @Override
     public ResourceLocation getId () {
         
         return this.id;
@@ -188,16 +189,16 @@ public class CropInfo extends RecipeData {
         
         this.displayBlock = displayBlock;
     }
-
+    
     @Override
     public IRecipeSerializer<?> getSerializer () {
         
         return BotanyPots.instance.getContent().getRecipeSerializerCrop();
     }
-
+    
     @Override
     public IRecipeType<?> getType () {
-
+        
         return BotanyPots.instance.getContent().getRecipeTypeCrop();
     }
 }

@@ -21,13 +21,13 @@ import net.minecraft.tileentity.TileEntityType;
 public class Content {
     
     private final IRecipeType<SoilInfo> recipeTypeSoil;
-    private final IRecipeSerializer<SoilInfo> recipeSerializerSoil; 
+    private final IRecipeSerializer<SoilInfo> recipeSerializerSoil;
     
     private final IRecipeType<CropInfo> recipeTypeCrop;
-    private final IRecipeSerializer<CropInfo> recipeSerializerCrop; 
+    private final IRecipeSerializer<CropInfo> recipeSerializerCrop;
     
     private final IRecipeType<FertilizerInfo> recipeTypeFertilizer;
-    private final IRecipeSerializer<FertilizerInfo> recipeSerializerFertilizer; 
+    private final IRecipeSerializer<FertilizerInfo> recipeSerializerFertilizer;
     
     /**
      * The tile entity type for all botany pots. They share the same tile entity type. Keep in
@@ -91,34 +91,34 @@ public class Content {
         
         return this.basicBotanyPotBlock;
     }
-
+    
     public IRecipeType<SoilInfo> getRecipeTypeSoil () {
         
-        return recipeTypeSoil;
+        return this.recipeTypeSoil;
     }
-
+    
     public IRecipeSerializer<SoilInfo> getRecipeSerializerSoil () {
         
-        return recipeSerializerSoil;
+        return this.recipeSerializerSoil;
     }
-
+    
     public IRecipeType<FertilizerInfo> getRecipeTypeFertilizer () {
         
-        return recipeTypeFertilizer;
+        return this.recipeTypeFertilizer;
     }
-
+    
     public IRecipeSerializer<FertilizerInfo> getRecipeSerializerFertilizer () {
         
-        return recipeSerializerFertilizer;
+        return this.recipeSerializerFertilizer;
     }
-
+    
     public IRecipeType<CropInfo> getRecipeTypeCrop () {
         
-        return recipeTypeCrop;
+        return this.recipeTypeCrop;
     }
-
+    
     public IRecipeSerializer<CropInfo> getRecipeSerializerCrop () {
         
-        return recipeSerializerCrop;
+        return this.recipeSerializerCrop;
     }
 }

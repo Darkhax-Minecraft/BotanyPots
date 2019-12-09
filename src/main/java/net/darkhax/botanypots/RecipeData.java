@@ -6,7 +6,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
 public abstract class RecipeData implements IRecipe<IInventory> {
-
+    
     public RecipeData() {
         
         if (this.getSerializer() == null) {
@@ -26,21 +26,21 @@ public abstract class RecipeData implements IRecipe<IInventory> {
         // Not used
         return false;
     }
-
+    
     @Override
     public ItemStack getCraftingResult (IInventory inv) {
         
         // Not used
         return ItemStack.EMPTY;
     }
-
+    
     @Override
     public boolean canFit (int width, int height) {
         
         // Not used
         return false;
     }
-
+    
     @Override
     public ItemStack getRecipeOutput () {
         

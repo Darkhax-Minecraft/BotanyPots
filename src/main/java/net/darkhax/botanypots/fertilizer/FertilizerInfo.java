@@ -45,6 +45,7 @@ public class FertilizerInfo extends RecipeData {
      * 
      * @return The fertilizer's internal id.
      */
+    @Override
     public ResourceLocation getId () {
         
         return this.id;
@@ -106,13 +107,13 @@ public class FertilizerInfo extends RecipeData {
         
         this.maxTicks = maxTicks;
     }
-
+    
     @Override
     public IRecipeSerializer<?> getSerializer () {
         
         return BotanyPots.instance.getContent().getRecipeSerializerFertilizer();
     }
-
+    
     @Override
     public IRecipeType<?> getType () {
         

@@ -16,7 +16,6 @@ import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 public class BotanyPotHelper {
@@ -24,37 +23,37 @@ public class BotanyPotHelper {
     public static final ResourceLocation NONE = new ResourceLocation(BotanyPots.MOD_ID, "none");
     
     @Nullable
-    public static Map<ResourceLocation, SoilInfo> getSoilData(RecipeManager manager) {
+    public static Map<ResourceLocation, SoilInfo> getSoilData (RecipeManager manager) {
         
         return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeSoil(), manager);
     }
     
     @Nullable
-    public static Map<ResourceLocation, CropInfo> getCropData(RecipeManager manager) {
+    public static Map<ResourceLocation, CropInfo> getCropData (RecipeManager manager) {
         
         return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeCrop(), manager);
     }
     
     @Nullable
-    public static Map<ResourceLocation, FertilizerInfo> getFertilizerData(RecipeManager manager) {
+    public static Map<ResourceLocation, FertilizerInfo> getFertilizerData (RecipeManager manager) {
         
         return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), manager);
     }
     
     @Nullable
-    public static SoilInfo getSoil(RecipeManager manager, ResourceLocation id) {
+    public static SoilInfo getSoil (RecipeManager manager, ResourceLocation id) {
         
         return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeSoil(), manager).get(id);
     }
     
     @Nullable
-    public static CropInfo getCrop(RecipeManager manager, ResourceLocation id) {
+    public static CropInfo getCrop (RecipeManager manager, ResourceLocation id) {
         
         return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeCrop(), manager).get(id);
     }
     
     @Nullable
-    public static FertilizerInfo getFertilizer(RecipeManager manager, ResourceLocation id) {
+    public static FertilizerInfo getFertilizer (RecipeManager manager, ResourceLocation id) {
         
         return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), manager).get(id);
     }

@@ -48,6 +48,7 @@ public class SoilInfo extends RecipeData {
         this.categories = categories;
     }
     
+    @Override
     public ResourceLocation getId () {
         
         return this.id;
@@ -98,13 +99,13 @@ public class SoilInfo extends RecipeData {
         
         this.categories = categories;
     }
-
+    
     @Override
     public IRecipeSerializer<?> getSerializer () {
         
         return BotanyPots.instance.getContent().getRecipeSerializerSoil();
     }
-
+    
     @Override
     public IRecipeType<?> getType () {
         

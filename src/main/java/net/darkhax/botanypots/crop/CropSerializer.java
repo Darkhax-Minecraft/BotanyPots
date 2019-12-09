@@ -20,12 +20,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<CropInfo> {
-
+    
     public static final CropSerializer INSTANCE = new CropSerializer();
     
     @Override
     public CropInfo read (ResourceLocation id, JsonObject json) {
-
+        
         final Ingredient seed = Ingredient.deserialize(json.getAsJsonObject("seed"));
         final Set<String> validSoils = deserializeSoilInfo(id, json);
         final int growthTicks = JSONUtils.getInt(json, "growthTicks");
@@ -34,10 +34,10 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
         final BlockState displayState = MCJsonUtils.deserializeBlockState(json.getAsJsonObject("display"));
         return new CropInfo(id, seed, validSoils, growthTicks, growthModifier, results, displayState);
     }
-
+    
     @Override
     public CropInfo read (ResourceLocation id, PacketBuffer buf) {
-
+        
         try {
             
             final Ingredient seed = Ingredient.read(buf);
@@ -56,14 +56,14 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
             return new CropInfo(id, seed, validSoils, growthTicks, growthModifier, results, displayState);
         }
         
-        catch (Exception e) {
+        catch (final Exception e) {
             
             e.printStackTrace();
         }
         
         throw new IllegalStateException("Failed to read crop info from packet buffer. This is not good.");
     }
-
+    
     @Override
     public void write (PacketBuffer buffer, CropInfo info) {
         
@@ -84,7 +84,7 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
             PacketUtils.serializeBlockState(buffer, info.getDisplayState());
         }
         
-        catch (Exception e) {
+        catch (final Exception e) {
             
             e.printStackTrace();
             throw new IllegalStateException("Failed to write crop to the packet buffer.");
