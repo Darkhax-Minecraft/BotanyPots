@@ -1,0 +1,39 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "xlfoodmod"
+    }
+  ],
+  "seed": {
+    "item": "xlfoodmod:pepper_seeds"
+  },
+  "categories":["dirt"],
+  "growthTicks": 3,
+  "growthModifier": 1.9,
+  "display": {
+    "block": "xlfoodmod:pepper_plant",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "xlfoodmod:pepper"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+	{
+      "chance": 0.20,
+      "output": {
+        "item": "xlfoodmod:pepper_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}
