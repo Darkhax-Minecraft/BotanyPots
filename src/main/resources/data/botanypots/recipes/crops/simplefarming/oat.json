@@ -1,0 +1,39 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "simplefarming"
+    }
+  ],
+  "seed": {
+    "item": "simplefarming:oat_seeds"
+  },
+  "categories":["dirt"],
+  "growthTicks": 2,
+  "growthModifier": 1.5,
+  "display": {
+    "block": "simplefarming:oat_crop",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "simplefarming:oat"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+	{
+      "chance": 0.25,
+      "output": {
+        "item": "simplefarming:oat_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

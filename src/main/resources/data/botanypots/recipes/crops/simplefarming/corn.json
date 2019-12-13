@@ -1,0 +1,39 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "simplefarming"
+    }
+  ],
+  "seed": {
+    "item": "simplefarming:corn_seeds"
+  },
+  "categories":["dirt"],
+  "growthTicks": 3,
+  "growthModifier": 1.9,
+  "display": {
+    "block": "simplefarming:corn_crop",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "simplefarming:corn"
+      },
+      "minRolls": 1,
+      "maxRolls": 3
+    },
+	{
+      "chance": 0.20,
+      "output": {
+        "item": "simplefarming:corn_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "simplefarming"
+    }
+  ],
+  "seed": {
+    "item": "simplefarming:sorghum_seeds"
+  },
+  "categories":["dirt"],
+  "growthTicks": 4,
+  "growthModifier": 1.5,
+  "display": {
+    "block": "simplefarming:sorghum_crop",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "simplefarming:sorghum"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+	{
+      "chance": 0.3,
+      "output": {
+        "item": "simplefarming:sorghum_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}
