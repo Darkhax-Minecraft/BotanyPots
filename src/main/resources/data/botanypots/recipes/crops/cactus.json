@@ -1,0 +1,22 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:cactus"
+  },
+  "categories":["sand"],
+  "growthTicks": 2,
+  "growthModifier": 2,
+  "display": {
+    "block": "minecraft:cactus"
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:cactus"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}
