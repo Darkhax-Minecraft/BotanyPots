@@ -1,5 +1,6 @@
 package net.darkhax.botanypots;
 
+import java.util.Collections;
 import java.util.Map;
 
 import javax.annotation.Nullable;
@@ -20,42 +21,70 @@ import net.minecraft.world.World;
 
 public class BotanyPotHelper {
     
-    public static final ResourceLocation NONE = new ResourceLocation(BotanyPots.MOD_ID, "none");
-    
     @Nullable
     public static Map<ResourceLocation, SoilInfo> getSoilData (RecipeManager manager) {
         
-        return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeSoil(), manager);
+        if (manager != null) {
+            
+            return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeSoil(), manager);
+        }
+        
+        return Collections.emptyMap();
     }
     
     @Nullable
     public static Map<ResourceLocation, CropInfo> getCropData (RecipeManager manager) {
         
-        return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeCrop(), manager);
+        if (manager != null) {
+            
+            return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeCrop(), manager);
+        }
+        
+        return Collections.emptyMap();
     }
     
     @Nullable
     public static Map<ResourceLocation, FertilizerInfo> getFertilizerData (RecipeManager manager) {
         
-        return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), manager);
+        if (manager != null) {
+            
+            return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), manager);
+        }
+        
+        return Collections.emptyMap();
     }
     
     @Nullable
     public static SoilInfo getSoil (RecipeManager manager, ResourceLocation id) {
         
-        return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeSoil(), manager).get(id);
+        if (manager != null && id != null) {
+            
+            return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeSoil(), manager).get(id);
+        }
+        
+        return null;
     }
     
     @Nullable
     public static CropInfo getCrop (RecipeManager manager, ResourceLocation id) {
         
-        return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeCrop(), manager).get(id);
+        if (manager != null && id != null) {
+            
+            return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeCrop(), manager).get(id);
+        }
+        
+        return null;
     }
     
     @Nullable
     public static FertilizerInfo getFertilizer (RecipeManager manager, ResourceLocation id) {
         
-        return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), manager).get(id);
+        if (manager != null && id != null) {
+            
+            return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), manager).get(id);
+        }
+        
+        return null;
     }
     
     /**
