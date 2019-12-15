@@ -187,6 +187,11 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             
             this.crop = BotanyPotHelper.getCrop(BotanyPots.instance.getActiveRecipeManager(), this.crop.getId());
         }
+        
+        if (!this.world.isRemote) {
+            
+            this.sync();
+        }
     }
     
     /**
