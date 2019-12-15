@@ -9,6 +9,8 @@ import net.darkhax.bookshelf.registry.RegistryHelperClient;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipeManager;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RecipesUpdatedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.fml.DistExecutor;
@@ -38,12 +40,19 @@ public class BotanyPots {
         this.content = DistExecutor.runForDist( () -> () -> new ContentClient(this.registry), () -> () -> new Content(this.registry));
         
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::startServer);
+        
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> MinecraftForge.EVENT_BUS.addListener(this::onRecipesUpdated));
         this.registry.initialize(FMLJavaModLoadingContext.get().getModEventBus());
     }
     
     private void startServer (FMLServerAboutToStartEvent event) {
         
         this.recipeManager = event.getServer().getRecipeManager();
+    }
+    
+    private void onRecipesUpdated(RecipesUpdatedEvent event) {
+        
+        this.recipeManager = event.getRecipeManager();
     }
     
     public Content getContent () {
