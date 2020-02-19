@@ -71,11 +71,11 @@ public class BotanyPotComponentProvider implements IComponentProvider {
         }
     }
     
-    private static String ticksToElapsedTime(int ticks) {
+    private static String ticksToElapsedTime (int ticks) {
         
         int i = ticks / 20;
-        int j = i / 60;
+        final int j = i / 60;
         i = i % 60;
         return i < 10 ? j + ":0" + i : j + ":" + i;
-     }
+    }
 }
