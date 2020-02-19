@@ -10,6 +10,7 @@ import mcp.mobius.waila.api.IPluginConfig;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.block.tileentity.TileEntityBotanyPot;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.StringUtils;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -42,6 +43,12 @@ public class BotanyPotComponentProvider implements IComponentProvider {
                 tooltip.add(new TranslationTextComponent("botanypots.tooltip.growth_progress", format.format(pot.getGrowthPercent() * 100f)));
             }
             
+            if (config.get(BotanyPotsHwylaPlugin.KEY_SHOW_TIME) && pot.getCurrentGrowthTicks() > 0) {
+                
+                final int ticksRemaining = pot.getTotalGrowthTicks() - pot.getCurrentGrowthTicks();
+                tooltip.add(new TranslationTextComponent("botanypots.tooltip.growth_time", ticksToElapsedTime(ticksRemaining)));
+            }
+            
             if (config.get(BotanyPotsHwylaPlugin.KEY_SHOW_DEBUG)) {
                 
                 if (pot.getCrop() != null) {
@@ -64,4 +71,12 @@ public class BotanyPotComponentProvider implements IComponentProvider {
             }
         }
     }
+    
+    private static String ticksToElapsedTime(int ticks) {
+        
+        int i = ticks / 20;
+        int j = i / 60;
+        i = i % 60;
+        return i < 10 ? j + ":0" + i : j + ":" + i;
+     }
 }
