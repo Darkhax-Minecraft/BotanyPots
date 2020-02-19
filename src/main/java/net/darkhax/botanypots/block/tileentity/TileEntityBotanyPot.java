@@ -278,7 +278,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             }
             
             // It's not done growing
-            else {
+            else if (!this.world.isBlockPowered(this.pos)) {
                 
                 this.currentGrowthTicks++;
             }
