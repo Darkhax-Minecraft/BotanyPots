@@ -156,6 +156,7 @@ public class BlockBotanyPot extends Block {
                         }
                     }
                     
+                    // Attempt fertilizer.
                     else if (!pot.canHarvest()) {
                         
                         final int fertilizerGrowthTicks = BotanyPotHelper.getFertilizerTicks(heldItem, world);
@@ -180,7 +181,7 @@ public class BlockBotanyPot extends Block {
                 }
                 
                 // Check if the pot can be harvested
-                if (pot.canHarvest()) {
+                if (!this.isHopper() && pot.canHarvest()) {
                     
                     pot.resetGrowthTime();
                     
