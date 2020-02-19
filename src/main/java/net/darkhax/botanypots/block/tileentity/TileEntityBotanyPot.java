@@ -239,7 +239,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                     
                     final IItemHandler inventory = InventoryUtils.getInventory(this.world, this.pos.down(), Direction.UP);
                     
-                    if (inventory != EmptyHandler.INSTANCE) {
+                    if (inventory != EmptyHandler.INSTANCE && !this.world.isRemote) {
                         
                         boolean didAutoHarvest = false;
                         
@@ -254,19 +254,8 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                                     
                                     // Actually insert the stack.
                                     
-                                    // Note: It is possible for not all the items to be
-                                    // accepted. There may be a remaining item if the inventory
-                                    // can only partially accept those items. In the case of
-                                    // remaining items we will just void them. While it is
-                                    // trivial to track if any items were inserted and then
-                                    // spawn the remainder in the world as dropped items I
-                                    // personally felt that was janky and may scare players
-                                    // off. As this is an infinite resource generator I think
-                                    // voiding potential drops for a maxed out inventory is
-                                    // fine. Voids only happen on partial insertions as well,
-                                    // so it is a fairly rare situation. Alternatively I could
-                                    // add an inventory/buffer to this block, however I would
-                                    // like to keep this simple.
+                                    // Insert the items. We don't care about the remainder and
+                                    // it can be safely voided.
                                     inventory.insertItem(slot, item, false);
                                     
                                     // Set auto harvest to true. This will cause a reset for
