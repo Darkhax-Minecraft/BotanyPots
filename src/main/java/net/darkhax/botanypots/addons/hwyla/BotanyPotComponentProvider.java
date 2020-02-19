@@ -10,14 +10,13 @@ import mcp.mobius.waila.api.IPluginConfig;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.block.tileentity.TileEntityBotanyPot;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.StringUtils;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 
 public class BotanyPotComponentProvider implements IComponentProvider {
     
-    private static final DecimalFormat format = new DecimalFormat("#.##");
+    private static final DecimalFormat format = new DecimalFormat("#");
     
     @Override
     public void appendBody (List<ITextComponent> tooltip, IDataAccessor accessor, IPluginConfig config) {
