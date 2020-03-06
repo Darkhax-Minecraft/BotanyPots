@@ -122,8 +122,8 @@ public class Content {
         return this.recipeSerializerCrop;
     }
     
-    public List<Block> getBotanyPotBlocks() {
-    	
-    	return this.botanyPots;
+    public List<Block> getBotanyPotBlocks () {
+        
+        return this.botanyPots;
     }
 }

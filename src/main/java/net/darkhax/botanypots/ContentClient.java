@@ -18,13 +18,13 @@ public class ContentClient extends Content {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onClientSetup);
     }
     
-    private void onClientSetup(FMLClientSetupEvent event) {
-    	
-    	for (Block block : this.getBotanyPotBlocks()) {
-    		
-    		RenderTypeLookup.setRenderLayer(block, RenderType.getCutout());
-    	}
-    	
-    	ClientRegistry.bindTileEntityRenderer(this.getPotTileType(), TileEntityRendererBotanyPot::new);
+    private void onClientSetup (FMLClientSetupEvent event) {
+        
+        for (final Block block : this.getBotanyPotBlocks()) {
+            
+            RenderTypeLookup.setRenderLayer(block, RenderType.getCutout());
+        }
+        
+        ClientRegistry.bindTileEntityRenderer(this.getPotTileType(), TileEntityRendererBotanyPot::new);
     }
 }

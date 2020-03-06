@@ -2,7 +2,6 @@ package net.darkhax.botanypots.block.tileentity;
 
 import javax.annotation.Nullable;
 
-import mezz.jei.config.Constants;
 import net.darkhax.bookshelf.block.tileentity.TileEntityBasicTickable;
 import net.darkhax.bookshelf.util.InventoryUtils;
 import net.darkhax.botanypots.BotanyPotHelper;
@@ -13,7 +12,6 @@ import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.play.server.SPlayerPositionLookPacket.Flags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.IItemHandler;
@@ -233,8 +231,8 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         if (this.hasSoilAndCrop()) {
             
             if (this.isDoneGrowing()) {
-
-            	this.attemptAutoHarvest();
+                
+                this.attemptAutoHarvest();
             }
             
             // It's not done growing
@@ -247,22 +245,22 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         else {
             
             // Reset tick counts
-        	this.resetGrowthTime();
+            this.resetGrowthTime();
         }
     }
     
-    public boolean hasSoilAndCrop() {
-    	
-    	return this.soil != null && this.crop != null;
+    public boolean hasSoilAndCrop () {
+        
+        return this.soil != null && this.crop != null;
     }
     
-    public boolean isDoneGrowing() {
-    	
-    	return this.currentGrowthTicks >= this.totalGrowthTicks;
+    public boolean isDoneGrowing () {
+        
+        return this.currentGrowthTicks >= this.totalGrowthTicks;
     }
     
-    private void attemptAutoHarvest() {
-    	      
+    private void attemptAutoHarvest () {
+        
         final Block block = this.getBlockState().getBlock();
         
         if (block instanceof BlockBotanyPot && ((BlockBotanyPot) block).isHopper()) {
@@ -301,19 +299,19 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                 
                 if (didAutoHarvest) {
                     
-                	this.onCropHarvest();
+                    this.onCropHarvest();
                     this.resetGrowthTime();
                 }
             }
         }
     }
     
-    public void onCropHarvest() {
-    	
-    	if (this.hasSoilAndCrop()) {
-    		
-        	world.playEvent(2001, pos, Block.getStateId(this.crop.getDisplayState()));
-    	}
+    public void onCropHarvest () {
+        
+        if (this.hasSoilAndCrop()) {
+            
+            this.world.playEvent(2001, this.pos, Block.getStateId(this.crop.getDisplayState()));
+        }
     }
     
     @Override

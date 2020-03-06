@@ -52,9 +52,9 @@ public class BotanyPots {
     
     private void seedTooltip (ItemTooltipEvent event) {
         
-    	final PlayerEntity player = event.getPlayer();
+        final PlayerEntity player = event.getPlayer();
         
-    	if (event.getFlags().isAdvanced() && player != null && BotanyPotHelper.getCropForItem(player.world, event.getItemStack()) != null) {
+        if (event.getFlags().isAdvanced() && player != null && BotanyPotHelper.getCropForItem(player.world, event.getItemStack()) != null) {
             
             event.getToolTip().add(new TranslationTextComponent("botanypots.tooltip.advanced.seed_item").applyTextStyle(TextFormatting.GREEN));
         }
