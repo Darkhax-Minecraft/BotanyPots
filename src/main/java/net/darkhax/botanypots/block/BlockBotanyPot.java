@@ -37,6 +37,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockBotanyPot extends Block implements IGrowable {
     
+    private static final ITextComponent TOOLTIP_NORMAL = new TranslationTextComponent("botanypots.tooltip.pot.normal").applyTextStyle(TextFormatting.GRAY);
+    
+    private static final ITextComponent TOOLTIP_HOPPER = new TranslationTextComponent("botanypots.tooltip.pot.hopper").applyTextStyle(TextFormatting.GRAY);
+    
     private static final VoxelShape SHAPE = Block.makeCuboidShape(2, 0, 2, 14, 8, 14);
     
     private static final Properties properties = Properties.create(Material.CLAY).hardnessAndResistance(1.25F, 4.2F).notSolid();
@@ -57,15 +61,6 @@ public class BlockBotanyPot extends Block implements IGrowable {
     public boolean isHopper () {
         
         return this.hopper;
-    }
-    
-    @Override
-    @SuppressWarnings("deprecation")
-    public boolean eventReceived (BlockState state, World worldIn, BlockPos pos, int id, int param) {
-        
-        super.eventReceived(state, worldIn, pos, id, param);
-        final TileEntity tileentity = worldIn.getTileEntity(pos);
-        return tileentity != null && tileentity.receiveClientEvent(id, param);
     }
     
     @Override
@@ -259,9 +254,6 @@ public class BlockBotanyPot extends Block implements IGrowable {
             world.addEntity(droppedItemEntity);
         }
     }
-    
-    private static final ITextComponent TOOLTIP_NORMAL = new TranslationTextComponent("botanypots.tooltip.pot.normal").applyTextStyle(TextFormatting.GRAY);
-    private static final ITextComponent TOOLTIP_HOPPER = new TranslationTextComponent("botanypots.tooltip.pot.hopper").applyTextStyle(TextFormatting.GRAY);
     
     @Override
     @OnlyIn(Dist.CLIENT)
