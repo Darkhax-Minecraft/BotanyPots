@@ -5,18 +5,19 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import net.darkhax.bookshelf.util.MathsUtils;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.block.tileentity.TileEntityBotanyPot;
 import net.darkhax.botanypots.crop.CropInfo;
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BoneMealItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
@@ -68,7 +69,7 @@ public class BlockBotanyPot extends Block implements IGrowable {
     }
     
     @Override
-    public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+    public ActionResultType onBlockActivated (BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
         
         final TileEntity tile = world.getTileEntity(pos);
         
@@ -186,7 +187,7 @@ public class BlockBotanyPot extends Block implements IGrowable {
                 // Check if the pot can be harvested
                 if (!this.isHopper() && pot.canHarvest()) {
                     
-                	pot.onCropHarvest();
+                    pot.onCropHarvest();
                     pot.resetGrowthTime();
                     
                     for (final ItemStack stack : BotanyPotHelper.getHarvestStacks(world, pot.getCrop())) {
@@ -212,12 +213,6 @@ public class BlockBotanyPot extends Block implements IGrowable {
     public TileEntity createTileEntity (BlockState state, IBlockReader world) {
         
         return new TileEntityBotanyPot();
-    }
-    
-    @Override
-    public BlockRenderType getRenderType (BlockState state) {
-        
-        return BlockRenderType.MODEL;
     }
     
     @Override
@@ -274,36 +269,60 @@ public class BlockBotanyPot extends Block implements IGrowable {
         
         tooltip.add(this.isHopper() ? TOOLTIP_HOPPER : TOOLTIP_NORMAL);
     }
-
-	@Override
-	public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-
-		final TileEntity tile = worldIn.getTileEntity(pos);
-		
-		if (tile instanceof TileEntityBotanyPot) {
-			
-			final TileEntityBotanyPot pot = (TileEntityBotanyPot) tile;
-			return pot.hasSoilAndCrop() && !pot.isDoneGrowing();
-		}
-		
-		return false;
-	}
-
-	@Override
-	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
-		
-		// We have custom logic for bone meal and other fertilizer. See the fertilizer data pack type.
-		return false;
-	}
-
-	@Override
-	public void grow(ServerWorld world, Random random, BlockPos pos, BlockState myState) {
-
-		final TileEntity tile = world.getTileEntity(pos);
-		
-		if (tile instanceof TileEntityBotanyPot) {
-			
-			((TileEntityBotanyPot) tile).onTileTick();
-		}
-	}
+    
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public void animateTick (BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+        
+        if (this.isHopper()) {
+            
+            // No sparkles for hopper pots
+            return;
+        }
+        
+        final TileEntity tile = worldIn.getTileEntity(pos);
+        
+        if (tile instanceof TileEntityBotanyPot && MathsUtils.tryPercentage(0.1)) {
+            
+            final TileEntityBotanyPot pot = (TileEntityBotanyPot) tile;
+            
+            if (pot.hasSoilAndCrop() && pot.isDoneGrowing()) {
+                
+                BoneMealItem.spawnBonemealParticles(worldIn, pos, 0);
+            }
+        }
+    }
+    
+    @Override
+    public boolean canGrow (IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+        
+        final TileEntity tile = worldIn.getTileEntity(pos);
+        
+        if (tile instanceof TileEntityBotanyPot) {
+            
+            final TileEntityBotanyPot pot = (TileEntityBotanyPot) tile;
+            return pot.hasSoilAndCrop() && !pot.isDoneGrowing();
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public boolean canUseBonemeal (World worldIn, Random rand, BlockPos pos, BlockState state) {
+        
+        // We have custom logic for bone meal and other fertilizer. See the fertilizer data
+        // pack type.
+        return false;
+    }
+    
+    @Override
+    public void grow (ServerWorld world, Random random, BlockPos pos, BlockState myState) {
+        
+        final TileEntity tile = world.getTileEntity(pos);
+        
+        if (tile instanceof TileEntityBotanyPot) {
+            
+            ((TileEntityBotanyPot) tile).onTileTick();
+        }
+    }
 }
