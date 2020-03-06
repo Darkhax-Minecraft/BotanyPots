@@ -1,9 +1,13 @@
 package net.darkhax.botanypots;
 
 import net.darkhax.bookshelf.registry.RegistryHelper;
-import net.darkhax.bookshelf.registry.RegistryHelperClient;
-import net.darkhax.botanypots.block.tileentity.TileEntityBotanyPot;
 import net.darkhax.botanypots.block.tileentity.TileEntityRendererBotanyPot;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class ContentClient extends Content {
     
@@ -11,11 +15,16 @@ public class ContentClient extends Content {
         
         super(registry);
         
-        if (registry instanceof RegistryHelperClient) {
-            
-            final RegistryHelperClient clientRegistry = (RegistryHelperClient) registry;
-            
-            clientRegistry.setSpecialRenderer(TileEntityBotanyPot.class, new TileEntityRendererBotanyPot());
-        }
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onClientSetup);
+    }
+    
+    private void onClientSetup(FMLClientSetupEvent event) {
+    	
+    	for (Block block : this.getBotanyPotBlocks()) {
+    		
+    		RenderTypeLookup.setRenderLayer(block, RenderType.getCutout());
+    	}
+    	
+    	ClientRegistry.bindTileEntityRenderer(this.getPotTileType(), TileEntityRendererBotanyPot::new);
     }
 }

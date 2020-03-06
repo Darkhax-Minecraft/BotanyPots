@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 import net.darkhax.bookshelf.util.MathsUtils;
+import net.darkhax.bookshelf.util.RecipeUtils;
 import net.darkhax.bookshelf.util.WorldUtils;
 import net.darkhax.botanypots.crop.CropInfo;
 import net.darkhax.botanypots.crop.HarvestEntry;
@@ -26,7 +27,7 @@ public class BotanyPotHelper {
         
         if (manager != null) {
             
-            return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeSoil(), manager);
+            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeSoil(), manager);
         }
         
         return Collections.emptyMap();
@@ -37,7 +38,7 @@ public class BotanyPotHelper {
         
         if (manager != null) {
             
-            return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeCrop(), manager);
+            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeCrop(), manager);
         }
         
         return Collections.emptyMap();
@@ -48,7 +49,7 @@ public class BotanyPotHelper {
         
         if (manager != null) {
             
-            return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), manager);
+            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), manager);
         }
         
         return Collections.emptyMap();
@@ -59,7 +60,7 @@ public class BotanyPotHelper {
         
         if (manager != null && id != null) {
             
-            return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeSoil(), manager).get(id);
+            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeSoil(), manager).get(id);
         }
         
         return null;
@@ -70,7 +71,7 @@ public class BotanyPotHelper {
         
         if (manager != null && id != null) {
             
-            return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeCrop(), manager).get(id);
+            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeCrop(), manager).get(id);
         }
         
         return null;
@@ -81,7 +82,7 @@ public class BotanyPotHelper {
         
         if (manager != null && id != null) {
             
-            return WorldUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), manager).get(id);
+            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), manager).get(id);
         }
         
         return null;
@@ -112,7 +113,7 @@ public class BotanyPotHelper {
     @Nullable
     public static SoilInfo getSoilForItem (World world, ItemStack item) {
         
-        for (final SoilInfo soilInfo : WorldUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeSoil(), world.getRecipeManager())) {
+        for (final SoilInfo soilInfo : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeSoil(), world.getRecipeManager())) {
             
             if (soilInfo.getIngredient().test(item)) {
                 
@@ -134,7 +135,7 @@ public class BotanyPotHelper {
     @Nullable
     public static CropInfo getCropForItem (World world, ItemStack item) {
         
-        for (final CropInfo cropInfo : WorldUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeCrop(), world.getRecipeManager())) {
+        for (final CropInfo cropInfo : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeCrop(), world.getRecipeManager())) {
             
             if (cropInfo.getSeed().test(item)) {
                 
@@ -210,7 +211,7 @@ public class BotanyPotHelper {
      */
     public static int getFertilizerTicks (ItemStack item, World world) {
         
-        for (final FertilizerInfo fertilizer : WorldUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), world.getRecipeManager())) {
+        for (final FertilizerInfo fertilizer : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), world.getRecipeManager())) {
             
             if (fertilizer.getIngredient().test(item)) {
                 

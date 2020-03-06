@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import net.darkhax.bookshelf.item.ItemGroupBase;
 import net.darkhax.bookshelf.registry.RegistryHelper;
-import net.darkhax.bookshelf.registry.RegistryHelperClient;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipeManager;
@@ -39,7 +39,7 @@ public class BotanyPots {
         instance = this;
         
         this.itemGroup = new ItemGroupBase(MOD_ID, () -> new ItemStack(BotanyPots.instance.content.getBasicBotanyPot()));
-        this.registry = DistExecutor.runForDist( () -> () -> new RegistryHelperClient(MOD_ID, LOGGER, this.itemGroup), () -> () -> new RegistryHelper(MOD_ID, LOGGER, this.itemGroup));
+        this.registry = new RegistryHelper(MOD_ID, LOGGER, this.itemGroup);
         this.content = DistExecutor.runForDist( () -> () -> new ContentClient(this.registry), () -> () -> new Content(this.registry));
         
         MinecraftForge.EVENT_BUS.addListener(EventPriority.LOWEST, this::startServer);
@@ -52,7 +52,9 @@ public class BotanyPots {
     
     private void seedTooltip (ItemTooltipEvent event) {
         
-        if (event.getFlags().isAdvanced() && event.getEntityPlayer() != null && BotanyPotHelper.getCropForItem(event.getEntityPlayer().world, event.getItemStack()) != null) {
+    	final PlayerEntity player = event.getPlayer();
+        
+    	if (event.getFlags().isAdvanced() && player != null && BotanyPotHelper.getCropForItem(player.world, event.getItemStack()) != null) {
             
             event.getToolTip().add(new TranslationTextComponent("botanypots.tooltip.advanced.seed_item").applyTextStyle(TextFormatting.GREEN));
         }

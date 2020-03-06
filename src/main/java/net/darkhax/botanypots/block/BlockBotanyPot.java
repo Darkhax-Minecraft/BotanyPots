@@ -17,7 +17,7 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -35,7 +35,7 @@ public class BlockBotanyPot extends Block {
     
     private static final VoxelShape SHAPE = Block.makeCuboidShape(2, 0, 2, 14, 8, 14);
     
-    private static final Properties properties = Properties.create(Material.CLAY).hardnessAndResistance(1.25F, 4.2F);
+    private static final Properties properties = Properties.create(Material.CLAY).hardnessAndResistance(1.25F, 4.2F).notSolid();
     
     private final boolean hopper;
     
@@ -65,7 +65,7 @@ public class BlockBotanyPot extends Block {
     }
     
     @Override
-    public boolean onBlockActivated (BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+    public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
         
         final TileEntity tile = world.getTileEntity(pos);
         
@@ -74,7 +74,7 @@ public class BlockBotanyPot extends Block {
             final TileEntityBotanyPot pot = (TileEntityBotanyPot) tile;
             
             // Attempt removal
-            if (player.isSneaking()) {
+            if (player.isShiftKeyDown()) {
                 
                 final CropInfo crop = pot.getCrop();
                 
@@ -87,7 +87,7 @@ public class BlockBotanyPot extends Block {
                         
                         pot.setCrop(null);
                         dropItem(seedStack.copy(), world, pos);
-                        return true;
+                        return ActionResultType.SUCCESS;
                     }
                 }
                 
@@ -104,7 +104,7 @@ public class BlockBotanyPot extends Block {
                             
                             pot.setSoil(null);
                             dropItem(soilStack.copy(), world, pos);
-                            return true;
+                            return ActionResultType.SUCCESS;
                         }
                     }
                 }
@@ -134,7 +134,7 @@ public class BlockBotanyPot extends Block {
                                 heldItem.shrink(1);
                             }
                             
-                            return true;
+                            return ActionResultType.SUCCESS;
                         }
                     }
                     
@@ -152,7 +152,7 @@ public class BlockBotanyPot extends Block {
                                 heldItem.shrink(1);
                             }
                             
-                            return true;
+                            return ActionResultType.SUCCESS;
                         }
                     }
                     
@@ -175,7 +175,7 @@ public class BlockBotanyPot extends Block {
                                 heldItem.shrink(1);
                             }
                             
-                            return true;
+                            return ActionResultType.SUCCESS;
                         }
                     }
                 }
@@ -190,12 +190,12 @@ public class BlockBotanyPot extends Block {
                         dropItem(stack, world, pos);
                     }
                     
-                    return true;
+                    return ActionResultType.SUCCESS;
                 }
             }
         }
         
-        return false;
+        return super.onBlockActivated(state, world, pos, player, hand, hit);
     }
     
     @Override
@@ -211,12 +211,6 @@ public class BlockBotanyPot extends Block {
     }
     
     @Override
-    public BlockRenderLayer getRenderLayer () {
-        
-        return BlockRenderLayer.CUTOUT;
-    }
-    
-    @Override
     public BlockRenderType getRenderType (BlockState state) {
         
         return BlockRenderType.MODEL;
@@ -226,12 +220,6 @@ public class BlockBotanyPot extends Block {
     public VoxelShape getShape (BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         
         return SHAPE;
-    }
-    
-    @Override
-    public boolean isSolid (BlockState state) {
-        
-        return false;
     }
     
     @Override
