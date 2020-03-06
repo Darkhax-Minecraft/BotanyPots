@@ -2,6 +2,7 @@ package net.darkhax.botanypots.block.tileentity;
 
 import javax.annotation.Nullable;
 
+import mezz.jei.config.Constants;
 import net.darkhax.bookshelf.block.tileentity.TileEntityBasicTickable;
 import net.darkhax.bookshelf.util.InventoryUtils;
 import net.darkhax.botanypots.BotanyPotHelper;
@@ -12,6 +13,7 @@ import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.play.server.SPlayerPositionLookPacket.Flags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.IItemHandler;
@@ -228,53 +230,11 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     @Override
     public void onTileTick () {
         
-        if (this.soil != null && this.crop != null) {
+        if (this.hasSoilAndCrop()) {
             
-            // If it's done growing
-            if (this.currentGrowthTicks >= this.totalGrowthTicks) {
-                
-                final Block block = this.getBlockState().getBlock();
-                
-                if (block instanceof BlockBotanyPot && ((BlockBotanyPot) block).isHopper()) {
-                    
-                    final IItemHandler inventory = InventoryUtils.getInventory(this.world, this.pos.down(), Direction.UP);
-                    
-                    if (inventory != EmptyHandler.INSTANCE && !this.world.isRemote) {
-                        
-                        boolean didAutoHarvest = false;
-                        
-                        for (final ItemStack item : BotanyPotHelper.getHarvestStacks(this.world, this.getCrop())) {
-                            
-                            // Iterate every valid slot of the inventory
-                            for (int slot = 0; slot < inventory.getSlots(); slot++) {
-                                
-                                // Check if the simulated insert stack can be accepted into the
-                                // inventory.
-                                if (inventory.isItemValid(slot, item) && inventory.insertItem(slot, item, true).getCount() != item.getCount()) {
-                                    
-                                    // Actually insert the stack.
-                                    
-                                    // Insert the items. We don't care about the remainder and
-                                    // it can be safely voided.
-                                    inventory.insertItem(slot, item, false);
-                                    
-                                    // Set auto harvest to true. This will cause a reset for
-                                    // the next growth cycle.
-                                    didAutoHarvest = true;
-                                    
-                                    // Exit the inventory for this loop. Will then move on to
-                                    // the next item and start over.
-                                    break;
-                                }
-                            }
-                        }
-                        
-                        if (didAutoHarvest) {
-                            
-                            this.resetGrowthTime();
-                        }
-                    }
-                }
+            if (this.isDoneGrowing()) {
+
+            	this.attemptAutoHarvest();
             }
             
             // It's not done growing
@@ -287,9 +247,73 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         else {
             
             // Reset tick counts
-            this.totalGrowthTicks = -1;
-            this.currentGrowthTicks = -1;
+        	this.resetGrowthTime();
         }
+    }
+    
+    public boolean hasSoilAndCrop() {
+    	
+    	return this.soil != null && this.crop != null;
+    }
+    
+    public boolean isDoneGrowing() {
+    	
+    	return this.currentGrowthTicks >= this.totalGrowthTicks;
+    }
+    
+    private void attemptAutoHarvest() {
+    	      
+        final Block block = this.getBlockState().getBlock();
+        
+        if (block instanceof BlockBotanyPot && ((BlockBotanyPot) block).isHopper()) {
+            
+            final IItemHandler inventory = InventoryUtils.getInventory(this.world, this.pos.down(), Direction.UP);
+            
+            if (inventory != EmptyHandler.INSTANCE && !this.world.isRemote) {
+                
+                boolean didAutoHarvest = false;
+                
+                for (final ItemStack item : BotanyPotHelper.getHarvestStacks(this.world, this.getCrop())) {
+                    
+                    // Iterate every valid slot of the inventory
+                    for (int slot = 0; slot < inventory.getSlots(); slot++) {
+                        
+                        // Check if the simulated insert stack can be accepted into the
+                        // inventory.
+                        if (inventory.isItemValid(slot, item) && inventory.insertItem(slot, item, true).getCount() != item.getCount()) {
+                            
+                            // Actually insert the stack.
+                            
+                            // Insert the items. We don't care about the remainder and
+                            // it can be safely voided.
+                            inventory.insertItem(slot, item, false);
+                            
+                            // Set auto harvest to true. This will cause a reset for
+                            // the next growth cycle.
+                            didAutoHarvest = true;
+                            
+                            // Exit the inventory for this loop. Will then move on to
+                            // the next item and start over.
+                            break;
+                        }
+                    }
+                }
+                
+                if (didAutoHarvest) {
+                    
+                	this.onCropHarvest();
+                    this.resetGrowthTime();
+                }
+            }
+        }
+    }
+    
+    public void onCropHarvest() {
+    	
+    	if (this.hasSoilAndCrop()) {
+    		
+        	world.playEvent(2001, pos, Block.getStateId(this.crop.getDisplayState()));
+    	}
     }
     
     @Override
