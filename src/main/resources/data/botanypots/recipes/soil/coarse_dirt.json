@@ -7,5 +7,5 @@
     "block": "minecraft:coarse_dirt"
   },
   "categories": ["dirt", "coarse_dirt"],
-  "ticks": 250
+  "ticks": 0.45
 }

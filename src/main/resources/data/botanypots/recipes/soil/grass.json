@@ -7,5 +7,5 @@
     "block": "minecraft:grass_block"
   },
   "categories": ["dirt", "grass"],
-  "ticks": 240
+  "ticks": 1.1
 }

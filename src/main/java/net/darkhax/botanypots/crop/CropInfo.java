@@ -134,7 +134,7 @@ public class CropInfo extends RecipeData {
      */
     public int getGrowthTicksForSoil (SoilInfo soil) {
         
-        return MathHelper.floor(soil.getTickRate() * this.growthTicks);
+        return MathHelper.floor(soil.getGrowthModifier() * this.growthTicks);
     }
     
     /**

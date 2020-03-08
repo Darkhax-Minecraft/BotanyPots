@@ -60,7 +60,7 @@ public class BotanyPotComponentProvider implements IComponentProvider {
                 if (pot.getSoil() != null) {
                     
                     tooltip.add(new TranslationTextComponent("botanypots.tooltip.soil.id", pot.getSoil().getId().toString()).applyTextStyle(TextFormatting.AQUA));
-                    tooltip.add(new TranslationTextComponent("botanypots.tooltip.soil.ticks", pot.getSoil().getTickRate()).applyTextStyle(TextFormatting.AQUA));
+                    tooltip.add(new TranslationTextComponent("botanypots.tooltip.soil.modifier", pot.getSoil().getGrowthModifier()).applyTextStyle(TextFormatting.AQUA));
                     tooltip.add(new TranslationTextComponent("botanypots.tooltip.soil.categories", pot.getSoil().getCategories().stream().collect(Collectors.joining(", "))).applyTextStyle(TextFormatting.AQUA));
                 }
                 

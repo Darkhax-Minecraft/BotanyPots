@@ -30,21 +30,21 @@ public class SoilInfo extends RecipeData {
     private BlockState renderState;
     
     /**
-     * The base tick rate of the soil.
+     * A modifier applied to the growth time of the crop.
      */
-    private int tickRate;
+    private float growthModifier;
     
     /**
      * An array of associated soil categories.
      */
     private Set<String> categories;
     
-    public SoilInfo(ResourceLocation id, Ingredient ingredient, BlockState renderState, int tickRate, Set<String> categories) {
+    public SoilInfo(ResourceLocation id, Ingredient ingredient, BlockState renderState, float growthModifier, Set<String> categories) {
         
         this.id = id;
         this.ingredient = ingredient;
         this.renderState = renderState;
-        this.tickRate = tickRate;
+        this.growthModifier = growthModifier;
         this.categories = categories;
     }
     
@@ -54,9 +54,9 @@ public class SoilInfo extends RecipeData {
         return this.id;
     }
     
-    public int getTickRate () {
+    public float getGrowthModifier() {
         
-        return this.tickRate;
+        return this.growthModifier;
     }
     
     public Ingredient getIngredient () {
@@ -90,9 +90,9 @@ public class SoilInfo extends RecipeData {
         this.renderState = renderState;
     }
     
-    public void setTickRate (int tickRate) {
+    public void setGrowthModifier (float modifier) {
         
-        this.tickRate = tickRate;
+        this.growthModifier = modifier;
     }
     
     public void setCategories (Set<String> categories) {

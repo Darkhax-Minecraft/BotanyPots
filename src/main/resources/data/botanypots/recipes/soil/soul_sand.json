@@ -7,5 +7,5 @@
     "block": "minecraft:soul_sand"
   },
   "categories": ["soul_sand"],
-  "ticks": 400
+  "ticks": 1.3
 }

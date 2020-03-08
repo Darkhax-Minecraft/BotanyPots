@@ -7,5 +7,5 @@
     "block": "minecraft:dirt"
   },
   "categories": ["dirt"],
-  "ticks": 250
+  "ticks": 1.0
 }

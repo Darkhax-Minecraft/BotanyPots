@@ -28,9 +28,9 @@ public class Soil {
     }
     
     @ZenCodeType.Method
-    public static void setTicks (String id, int ticks) {
+    public static void setGrowthModifier (String id, float modifier) {
         
-        CraftTweakerAPI.apply(new ActionSoilSetTicks(id, ticks));
+        CraftTweakerAPI.apply(new ActionSoilSetGrowthModifier(id, modifier));
     }
     
     @ZenCodeType.Method

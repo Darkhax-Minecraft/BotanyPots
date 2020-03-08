@@ -41,11 +41,11 @@ public class SoilSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
         
         final Ingredient ingredient = Ingredient.read(buf);
         final BlockState renderState = PacketUtils.deserializeBlockState(buf);
-        final int tickRate = buf.readInt();
+        final float growthModifier = buf.readFloat();
         final Set<String> categories = new HashSet<>();
         PacketUtils.deserializeStringCollection(buf, categories);
         
-        return new SoilInfo(id, ingredient, renderState, tickRate, categories);
+        return new SoilInfo(id, ingredient, renderState, growthModifier, categories);
     }
     
     @Override
@@ -53,7 +53,7 @@ public class SoilSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
         
         info.getIngredient().write(buffer);
         PacketUtils.serializeBlockState(buffer, info.getRenderState());
-        buffer.writeInt(info.getTickRate());
+        buffer.writeFloat(info.getGrowthModifier());
         PacketUtils.serializeStringCollection(buffer, info.getCategories());
     }
 }
