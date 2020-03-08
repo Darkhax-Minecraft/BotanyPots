@@ -19,6 +19,8 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BoneMealItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.StateContainer;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -56,6 +58,7 @@ public class BlockBotanyPot extends Block implements IGrowable {
         
         super(properties);
         this.hopper = hopper;
+        this.setDefaultState(this.stateContainer.getBaseState().with(BlockStateProperties.POWERED, false));
     }
     
     public boolean isHopper () {
@@ -316,5 +319,23 @@ public class BlockBotanyPot extends Block implements IGrowable {
             
             ((TileEntityBotanyPot) tile).onTileTick();
         }
+    }
+    
+    @Override
+    public boolean hasComparatorInputOverride (BlockState state) {
+        
+        return true;
+    }
+    
+    @Override
+    public int getComparatorInputOverride (BlockState blockState, World world, BlockPos pos) {
+        
+        return blockState.get(BlockStateProperties.POWERED) ? 15 : 0;
+    }
+    
+    @Override
+    protected void fillStateContainer (StateContainer.Builder<Block, BlockState> builder) {
+        
+        builder.add(BlockStateProperties.POWERED);
     }
 }

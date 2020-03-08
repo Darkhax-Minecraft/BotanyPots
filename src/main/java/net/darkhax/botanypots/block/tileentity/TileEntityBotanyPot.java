@@ -10,10 +10,13 @@ import net.darkhax.botanypots.block.BlockBotanyPot;
 import net.darkhax.botanypots.crop.CropInfo;
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.EmptyHandler;
 
@@ -40,6 +43,11 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
      * The total growth ticks for the crop. -1 means it's not growing.
      */
     private int currentGrowthTicks;
+    
+    /**
+     * A cooldown for the auto harvest.
+     */
+    private int autoHarvestCooldown;
     
     public TileEntityBotanyPot() {
         
@@ -188,6 +196,9 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             this.crop = BotanyPotHelper.getCrop(BotanyPots.instance.getActiveRecipeManager(), this.crop.getId());
         }
         
+        this.autoHarvestCooldown = 2;
+        this.world.setBlockState(this.pos, this.getState().with(BlockStateProperties.POWERED, false));
+        
         if (!this.world.isRemote) {
             
             this.sync();
@@ -228,15 +239,27 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     @Override
     public void onTileTick () {
         
+        if (this.world.isBlockPowered(this.pos)) {
+            
+            return;
+        }
+        
         if (this.hasSoilAndCrop()) {
             
             if (this.isDoneGrowing()) {
+                
+                final BlockState state = this.getState();
+                
+                if (!state.get(BlockStateProperties.POWERED)) {
+                    
+                    this.world.setBlockState(this.pos, state.with(BlockStateProperties.POWERED, true));
+                }
                 
                 this.attemptAutoHarvest();
             }
             
             // It's not done growing
-            else if (!this.world.isBlockPowered(this.pos)) {
+            else {
                 
                 this.currentGrowthTicks++;
             }
@@ -256,7 +279,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     
     public boolean isDoneGrowing () {
         
-        return this.currentGrowthTicks >= this.totalGrowthTicks;
+        return this.hasSoilAndCrop() && this.currentGrowthTicks >= this.totalGrowthTicks;
     }
     
     private void attemptAutoHarvest () {
@@ -264,6 +287,12 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         final Block block = this.getBlockState().getBlock();
         
         if (block instanceof BlockBotanyPot && ((BlockBotanyPot) block).isHopper()) {
+            
+            if (this.autoHarvestCooldown > 0) {
+                
+                this.autoHarvestCooldown--;
+                return;
+            }
             
             final IItemHandler inventory = InventoryUtils.getInventory(this.world, this.pos.down(), Direction.UP);
             
@@ -310,7 +339,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         
         if (this.hasSoilAndCrop()) {
             
-            this.world.playEvent(2001, this.pos, Block.getStateId(this.crop.getDisplayState()));
+            this.world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, this.pos, Block.getStateId(this.crop.getDisplayState()));
         }
     }
     
