@@ -29,10 +29,9 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
         final Ingredient seed = Ingredient.deserialize(json.getAsJsonObject("seed"));
         final Set<String> validSoils = deserializeSoilInfo(id, json);
         final int growthTicks = JSONUtils.getInt(json, "growthTicks");
-        final float growthModifier = JSONUtils.getFloat(json, "growthModifier");
         final List<HarvestEntry> results = deserializeCropEntries(id, json);
         final BlockState displayState = MCJsonUtils.deserializeBlockState(json.getAsJsonObject("display"));
-        return new CropInfo(id, seed, validSoils, growthTicks, growthModifier, results, displayState);
+        return new CropInfo(id, seed, validSoils, growthTicks, results, displayState);
     }
     
     @Override
@@ -44,24 +43,24 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
             final Set<String> validSoils = new HashSet<>();
             PacketUtils.deserializeStringCollection(buf, validSoils);
             final int growthTicks = buf.readInt();
-            final float growthModifier = buf.readFloat();
             final List<HarvestEntry> results = new ArrayList<>();
             
-            // for (int i = 0; i < buf.readInt(); i++) {
-            //
-            // results.add(HarvestEntry.deserialize(buf));
-            // }
+            final int length = buf.readInt();
+            
+            for (int i = 0; i < length; i++) {
+                
+                results.add(HarvestEntry.deserialize(buf));
+            }
             
             final BlockState displayState = PacketUtils.deserializeBlockState(buf);
-            return new CropInfo(id, seed, validSoils, growthTicks, growthModifier, results, displayState);
+            return new CropInfo(id, seed, validSoils, growthTicks, results, displayState);
         }
         
         catch (final Exception e) {
             
-            e.printStackTrace();
+            BotanyPots.LOGGER.catching(e);
+            throw new IllegalStateException("Failed to read crop info from packet buffer. This is not good.");
         }
-        
-        throw new IllegalStateException("Failed to read crop info from packet buffer. This is not good.");
     }
     
     @Override
@@ -72,21 +71,19 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
             info.getSeed().write(buffer);
             PacketUtils.serializeStringCollection(buffer, info.getSoilCategories());
             buffer.writeInt(info.getGrowthTicks());
-            buffer.writeFloat(info.getGrowthMultiplier());
+            buffer.writeInt(info.getResults().size());
             
-            // buffer.writeInt(info.getResults().size());
-            //
-            // for (final HarvestEntry entry : info.getResults()) {
-            //
-            // HarvestEntry.serialize(buffer, entry);
-            // }
+            for (final HarvestEntry entry : info.getResults()) {
+                
+                HarvestEntry.serialize(buffer, entry);
+            }
             
             PacketUtils.serializeBlockState(buffer, info.getDisplayState());
         }
         
         catch (final Exception e) {
             
-            e.printStackTrace();
+            BotanyPots.LOGGER.catching(e);
             throw new IllegalStateException("Failed to write crop to the packet buffer.");
         }
     }
