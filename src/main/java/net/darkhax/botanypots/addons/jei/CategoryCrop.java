@@ -1,7 +1,5 @@
 package net.darkhax.botanypots.addons.jei;
 
-import java.util.List;
-
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
@@ -70,13 +68,13 @@ public class CategoryCrop implements IRecipeCategory<CropWrapper> {
     public void draw (CropWrapper recipe, double mouseX, double mouseY) {
         
         // Seed & Soil
-        slotDrawable.draw(0, 19 * 0);
-        slotDrawable.draw(0, 19 * 1);
+        this.slotDrawable.draw(0, 19 * 0);
+        this.slotDrawable.draw(0, 19 * 1);
         
         for (int nextSlotId = 2; nextSlotId < 14; nextSlotId++) {
             
-            int relativeSlotId = nextSlotId - 2;
-            slotDrawable.draw(80 + 19 * (relativeSlotId % 4), 19 * (relativeSlotId / 4));
+            final int relativeSlotId = nextSlotId - 2;
+            this.slotDrawable.draw(80 + 19 * (relativeSlotId % 4), 19 * (relativeSlotId / 4));
         }
     }
     
@@ -86,18 +84,18 @@ public class CategoryCrop implements IRecipeCategory<CropWrapper> {
         final IGuiItemStackGroup stacks = recipeLayout.getItemStacks();
         
         // Seed Input
-        stacks.init(0, true, 0, 19*0);
+        stacks.init(0, true, 0, 19 * 0);
         stacks.set(0, recipe.getSeedItems());
         
         // Soil Inputs
-        stacks.init(1, true, 0, 19*1);
+        stacks.init(1, true, 0, 19 * 1);
         stacks.set(1, recipe.getSoilItems());
         
         int nextSlotId = 2;
         
-        for (HarvestEntry entry : recipe.getDrops()) {
+        for (final HarvestEntry entry : recipe.getDrops()) {
             
-            int relativeSlotId = nextSlotId - 2;
+            final int relativeSlotId = nextSlotId - 2;
             stacks.init(nextSlotId, false, 80 + 19 * (relativeSlotId % 4), 19 * (relativeSlotId / 4));
             stacks.set(nextSlotId, entry.getItem());
             nextSlotId++;

@@ -18,27 +18,27 @@ import net.minecraft.util.ResourceLocation;
 public class BotanyPotsJEIPlugin implements IModPlugin {
     
     @Override
-    public ResourceLocation getPluginUid() {
+    public ResourceLocation getPluginUid () {
         
         return new ResourceLocation(BotanyPots.MOD_ID, "jei");
     }
-
+    
     @Override
-    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+    public void registerRecipeCatalysts (IRecipeCatalystRegistration registration) {
         
         registration.addRecipeCatalyst(new ItemStack(BotanyPots.instance.getContent().getBasicBotanyPot()), CategoryCrop.ID);
         registration.addRecipeCatalyst(new ItemStack(BotanyPots.instance.getContent().getHopperBotanyPot()), CategoryCrop.ID);
     }
-
+    
     @Override
-    public void registerRecipes(IRecipeRegistration registration) {
-
-        Collection<CropInfo> crops = BotanyPotHelper.getCropData(BotanyPots.instance.getActiveRecipeManager()).values();
+    public void registerRecipes (IRecipeRegistration registration) {
+        
+        final Collection<CropInfo> crops = BotanyPotHelper.getCropData(BotanyPots.instance.getActiveRecipeManager()).values();
         registration.addRecipes(crops.stream().map(CropWrapper::new).collect(Collectors.toList()), CategoryCrop.ID);
     }
-
+    
     @Override
-    public void registerCategories(IRecipeCategoryRegistration registration) {
+    public void registerCategories (IRecipeCategoryRegistration registration) {
         
         registration.addRecipeCategories(new CategoryCrop(registration.getJeiHelpers().getGuiHelper()));
     }

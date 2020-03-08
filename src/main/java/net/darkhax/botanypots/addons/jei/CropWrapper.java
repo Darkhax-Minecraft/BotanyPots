@@ -21,55 +21,55 @@ public class CropWrapper implements IRecipeCategoryExtension {
     private final CropInfo cropInfo;
     private final List<ItemStack> seedItems = NonNullList.create();
     private final List<ItemStack> soilItems = NonNullList.create();
-    private final List<HarvestEntry> drops = NonNullList.create(); 
+    private final List<HarvestEntry> drops = NonNullList.create();
     
     public CropWrapper(CropInfo crop) {
         
         this.cropInfo = crop;
         
-        seedItems.addAll(Arrays.asList(crop.getSeed().getMatchingStacks()));
+        this.seedItems.addAll(Arrays.asList(crop.getSeed().getMatchingStacks()));
         
-        for (SoilInfo soil : BotanyPotHelper.getSoilData(BotanyPots.instance.getActiveRecipeManager()).values()) {
+        for (final SoilInfo soil : BotanyPotHelper.getSoilData(BotanyPots.instance.getActiveRecipeManager()).values()) {
             
             if (BotanyPotHelper.isSoilValidForCrop(soil, crop)) {
-
-                soilItems.addAll(Arrays.asList(soil.getIngredient().getMatchingStacks()));
+                
+                this.soilItems.addAll(Arrays.asList(soil.getIngredient().getMatchingStacks()));
             }
         }
         
-        drops.addAll(crop.getResults());
+        this.drops.addAll(crop.getResults());
     }
     
     public List<ItemStack> getSeedItems () {
         
-        return seedItems;
+        return this.seedItems;
     }
-
+    
     public List<ItemStack> getSoilItems () {
         
-        return soilItems;
+        return this.soilItems;
     }
-
+    
     public List<HarvestEntry> getDrops () {
         
-        return drops;
+        return this.drops;
     }
-
+    
     @Override
-    public void setIngredients(IIngredients ingredients) {
-
+    public void setIngredients (IIngredients ingredients) {
+        
         final List<ItemStack> pots = BotanyPots.instance.getContent().getBotanyPotBlocks().stream().map(ItemStack::new).collect(Collectors.toList());
         
-        List<ItemStack> inputs = new ArrayList<>();
+        final List<ItemStack> inputs = new ArrayList<>();
         
-        inputs.addAll(seedItems);
-        inputs.addAll(soilItems);
+        inputs.addAll(this.seedItems);
+        inputs.addAll(this.soilItems);
         inputs.addAll(pots);
         ingredients.setInputs(VanillaTypes.ITEM, inputs);
         
-        List<ItemStack> outputs = new ArrayList<>(); 
+        final List<ItemStack> outputs = new ArrayList<>();
         
-        for (HarvestEntry entry : this.drops) {
+        for (final HarvestEntry entry : this.drops) {
             
             outputs.add(entry.getItem());
         }
@@ -79,16 +79,15 @@ public class CropWrapper implements IRecipeCategoryExtension {
         ingredients.setOutputs(VanillaTypes.ITEM, outputs);
     }
     
-    
-    public void cropTooltip(int slotIndex, boolean input, ItemStack ingredient, List<String> tooltip) {
+    public void cropTooltip (int slotIndex, boolean input, ItemStack ingredient, List<String> tooltip) {
         
     }
     
-    public void soilTooltip(int slotIndex, boolean input, ItemStack ingredient, List<String> tooltip) {
+    public void soilTooltip (int slotIndex, boolean input, ItemStack ingredient, List<String> tooltip) {
         
     }
     
-    public void output(int slotIndex, boolean input, ItemStack ingredient, List<String> tooltip) {
+    public void output (int slotIndex, boolean input, ItemStack ingredient, List<String> tooltip) {
         
     }
 }
