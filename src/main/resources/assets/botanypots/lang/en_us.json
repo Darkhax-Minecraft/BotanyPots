@@ -59,5 +59,7 @@
   "config.waila.plugin_botanypots.show_soil": "Show Soil",
   "config.waila.plugin_botanypots.show_progress": "Show Progress",
   "config.waila.plugin_botanypots.show_time": "Show Grow Time",
-  "config.waila.plugin_botanypots.show_debug": "Show Debug"
+  "config.waila.plugin_botanypots.show_debug": "Show Debug",
+  
+  "botanypots.title": "Botany Pots"
 }

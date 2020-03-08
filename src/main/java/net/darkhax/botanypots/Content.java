@@ -44,6 +44,8 @@ public class Content {
      */
     private final Block basicBotanyPotBlock;
     
+    private final Block hopperBotanyPotBlock;
+    
     /**
      * A list of all the known botany pot blocks.
      */
@@ -71,7 +73,8 @@ public class Content {
         }
         
         // Hopper Botany Pots
-        this.botanyPots.add(registry.registerBlock(new BlockBotanyPot(true), "hopper_botany_pot"));
+        this.hopperBotanyPotBlock = registry.registerBlock(new BlockBotanyPot(true), "hopper_botany_pot");
+        this.botanyPots.add(this.hopperBotanyPotBlock);
         
         for (final DyeColor dyeColor : DyeColor.values()) {
             
@@ -90,6 +93,11 @@ public class Content {
     public Block getBasicBotanyPot () {
         
         return this.basicBotanyPotBlock;
+    }
+    
+    public Block getHopperBotanyPot() {
+        
+        return this.hopperBotanyPotBlock;
     }
     
     public IRecipeType<SoilInfo> getRecipeTypeSoil () {
