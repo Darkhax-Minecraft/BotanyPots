@@ -17,9 +17,9 @@ import net.minecraft.util.ResourceLocation;
 public class Crop {
     
     @ZenCodeType.Method
-    public static void create (String id, IIngredient seed, MCBlockState display, int ticks, float multiplier, String[] categories) {
+    public static void create (String id, IIngredient seed, MCBlockState display, int ticks, String[] categories) {
         
-        CraftTweakerAPI.apply(new ActionCropCreate(id, seed, display, ticks, multiplier, categories));
+        CraftTweakerAPI.apply(new ActionCropCreate(id, seed, display, ticks, categories));
     }
     
     @ZenCodeType.Method
@@ -44,12 +44,6 @@ public class Crop {
     public static void setTickRate (String id, int tickRate) {
         
         CraftTweakerAPI.apply(new ActionCropTickRate(id, tickRate));
-    }
-    
-    @ZenCodeType.Method
-    public static void setGrowthModifier (String id, float modifier) {
-        
-        CraftTweakerAPI.apply(new ActionCropGrowthModifier(id, modifier));
     }
     
     @ZenCodeType.Method

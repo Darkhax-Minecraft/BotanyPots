@@ -19,10 +19,10 @@ public class ActionCropCreate implements IRuntimeAction {
     private final String rawId;
     private final CropInfo newCrop;
     
-    public ActionCropCreate(String id, IIngredient seed, MCBlockState display, int ticks, float multiplier, String[] categories) {
+    public ActionCropCreate(String id, IIngredient seed, MCBlockState display, int ticks, String[] categories) {
         
         this.rawId = id;
-        this.newCrop = new CropInfo(ResourceLocation.tryCreate(id), seed.asVanillaIngredient(), new HashSet<>(Arrays.asList(categories)), ticks, multiplier, new ArrayList<>(), display.getInternal());
+        this.newCrop = new CropInfo(ResourceLocation.tryCreate(id), seed.asVanillaIngredient(), new HashSet<>(Arrays.asList(categories)), ticks, new ArrayList<>(), display.getInternal());
     }
     
     @Override

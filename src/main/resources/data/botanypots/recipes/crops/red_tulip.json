@@ -4,8 +4,7 @@
     "item": "minecraft:red_tulip"
   },
   "categories":["dirt"],
-  "growthTicks": 1,
-  "growthModifier": 2.5,
+  "growthTicks": 1200,
   "display": {
     "block": "minecraft:red_tulip"
   },

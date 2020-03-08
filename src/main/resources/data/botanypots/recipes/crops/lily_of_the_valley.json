@@ -4,8 +4,7 @@
     "item": "minecraft:lily_of_the_valley"
   },
   "categories":["dirt"],
-  "growthTicks": 1,
-  "growthModifier": 3.5,
+  "growthTicks": 1400,
   "display": {
     "block": "minecraft:lily_of_the_valley"
   },

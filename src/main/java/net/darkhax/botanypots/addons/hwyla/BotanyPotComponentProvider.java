@@ -54,7 +54,6 @@ public class BotanyPotComponentProvider implements IComponentProvider {
                     
                     tooltip.add(new TranslationTextComponent("botanypots.tooltip.crop.id", pot.getCrop().getId().toString()).applyTextStyle(TextFormatting.LIGHT_PURPLE));
                     tooltip.add(new TranslationTextComponent("botanypots.tooltip.crop.ticks", pot.getCrop().getGrowthTicks()).applyTextStyle(TextFormatting.LIGHT_PURPLE));
-                    tooltip.add(new TranslationTextComponent("botanypots.tooltip.crop.multiplier", pot.getCrop().getGrowthMultiplier()).applyTextStyle(TextFormatting.LIGHT_PURPLE));
                     tooltip.add(new TranslationTextComponent("botanypots.tooltip.crop.categories", pot.getCrop().getSoilCategories().stream().collect(Collectors.joining(", "))).applyTextStyle(TextFormatting.LIGHT_PURPLE));
                 }
                 

@@ -4,8 +4,7 @@
     "item": "minecraft:carrot"
   },
   "categories":["dirt"],
-  "growthTicks": 3,
-  "growthModifier": 1.2,
+  "growthTicks": 1100,
   "display": {
     "block": "minecraft:carrots",
     "properties": {

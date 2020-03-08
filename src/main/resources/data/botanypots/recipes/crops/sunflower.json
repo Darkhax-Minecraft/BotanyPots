@@ -4,8 +4,7 @@
     "item": "minecraft:sunflower"
   },
   "categories":["dirt"],
-  "growthTicks": 1,
-  "growthModifier": 3.5,
+  "growthTicks": 1200,
   "display": {
     "block": "minecraft:sunflower",
     "properties": {

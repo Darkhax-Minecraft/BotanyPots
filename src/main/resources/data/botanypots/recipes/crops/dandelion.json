@@ -4,8 +4,7 @@
     "item": "minecraft:dandelion"
   },
   "categories":["dirt"],
-  "growthTicks": 1,
-  "growthModifier": 2.5,
+  "growthTicks": 1200,
   "display": {
     "block": "minecraft:dandelion"
   },

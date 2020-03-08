@@ -4,8 +4,7 @@
     "item": "minecraft:brown_mushroom"
   },
   "categories":["mushroom"],
-  "growthTicks": 4,
-  "growthModifier": 1,
+  "growthTicks": 1600,
   "display": {
     "block": "minecraft:brown_mushroom"
   },

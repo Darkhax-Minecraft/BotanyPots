@@ -95,7 +95,7 @@ public class Content {
         return this.basicBotanyPotBlock;
     }
     
-    public Block getHopperBotanyPot() {
+    public Block getHopperBotanyPot () {
         
         return this.hopperBotanyPotBlock;
     }

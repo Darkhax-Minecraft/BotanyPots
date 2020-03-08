@@ -4,8 +4,7 @@
     "item": "minecraft:chorus_flower"
   },
   "categories":["end_stone"],
-  "growthTicks": 4,
-  "growthModifier": 1,
+  "growthTicks": 2400,
   "display": {
     "block": "minecraft:chorus_flower",
     "properties": {

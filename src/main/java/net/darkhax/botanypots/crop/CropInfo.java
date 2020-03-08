@@ -33,14 +33,9 @@ public class CropInfo extends RecipeData {
     private Set<String> soilCategories;
     
     /**
-     * The crop's growth tick factor.
+     * The amount of ticks for the crop to grow under normal conditions.
      */
     private int growthTicks;
-    
-    /**
-     * The crop's growth modifier.
-     */
-    private float growthMultiplier;
     
     /**
      * An array of things the crop can drop.
@@ -52,13 +47,12 @@ public class CropInfo extends RecipeData {
      */
     private BlockState displayBlock;
     
-    public CropInfo(ResourceLocation id, Ingredient seed, Set<String> soilCategories, int growthTicks, float growthMultiplier, List<HarvestEntry> results, BlockState displayState) {
+    public CropInfo(ResourceLocation id, Ingredient seed, Set<String> soilCategories, int growthTicks, List<HarvestEntry> results, BlockState displayState) {
         
         this.id = id;
         this.seed = seed;
         this.soilCategories = soilCategories;
         this.growthTicks = growthTicks;
-        this.growthMultiplier = growthMultiplier;
         this.results = results;
         this.displayBlock = displayState;
     }
@@ -119,19 +113,15 @@ public class CropInfo extends RecipeData {
      * 
      * @return The crop's growth tick factor.
      */
+    
+    /**
+     * Gets the amount of ticks the crop needs to grow under normal circumstances.
+     * 
+     * @return The growth time for the crop under normal circumstances.
+     */
     public int getGrowthTicks () {
         
         return this.growthTicks;
-    }
-    
-    /**
-     * Gets the growth multiplier for the crop.
-     * 
-     * @return The crop's growth multiplier.
-     */
-    public float getGrowthMultiplier () {
-        
-        return this.growthMultiplier;
     }
     
     /**
@@ -144,7 +134,7 @@ public class CropInfo extends RecipeData {
      */
     public int getGrowthTicksForSoil (SoilInfo soil) {
         
-        return MathHelper.floor(soil.getTickRate() * this.getGrowthMultiplier() * this.growthTicks);
+        return MathHelper.floor(soil.getTickRate() * this.growthTicks);
     }
     
     /**
@@ -173,11 +163,6 @@ public class CropInfo extends RecipeData {
     public void setGrowthTicks (int growthTicks) {
         
         this.growthTicks = growthTicks;
-    }
-    
-    public void setGrowthMultiplier (float growthMultiplier) {
-        
-        this.growthMultiplier = growthMultiplier;
     }
     
     public void setResults (List<HarvestEntry> results) {

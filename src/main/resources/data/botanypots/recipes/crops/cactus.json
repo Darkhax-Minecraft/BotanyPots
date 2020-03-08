@@ -4,8 +4,7 @@
     "item": "minecraft:cactus"
   },
   "categories":["sand"],
-  "growthTicks": 2,
-  "growthModifier": 2,
+  "growthTicks": 1600,
   "display": {
     "block": "minecraft:cactus"
   },

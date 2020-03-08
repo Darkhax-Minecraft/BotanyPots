@@ -4,8 +4,7 @@
     "item": "sweet_berries"
   },
   "categories":["dirt"],
-  "growthTicks": 3,
-  "growthModifier": 0.8,
+  "growthTicks": 800,
   "display": {
     "block": "minecraft:sweet_berry_bush",
     "properties": {

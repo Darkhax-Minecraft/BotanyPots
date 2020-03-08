@@ -4,8 +4,7 @@
     "item": "minecraft:potato"
   },
   "categories":["dirt"],
-  "growthTicks": 3,
-  "growthModifier": 1.2,
+  "growthTicks": 900,
   "display": {
     "block": "minecraft:potatoes",
     "properties": {

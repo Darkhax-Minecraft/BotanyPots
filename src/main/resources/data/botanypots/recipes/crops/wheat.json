@@ -4,8 +4,7 @@
     "item": "minecraft:wheat_seeds"
   },
   "categories":["dirt"],
-  "growthTicks": 3,
-  "growthModifier": 1.2,
+  "growthTicks": 1000,
   "display": {
     "block": "minecraft:wheat",
     "properties": {

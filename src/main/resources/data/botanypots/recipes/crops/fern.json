@@ -4,8 +4,7 @@
     "item": "minecraft:fern"
   },
   "categories":["grass"],
-  "growthTicks": 1,
-  "growthModifier": 0.8,
+  "growthTicks": 600,
   "display": {
     "block": "minecraft:fern"
   },

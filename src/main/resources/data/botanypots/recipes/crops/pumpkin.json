@@ -4,8 +4,7 @@
     "item": "minecraft:pumpkin_seeds"
   },
   "categories":["dirt"],
-  "growthTicks": 3,
-  "growthModifier": 2,
+  "growthTicks": 1800,
   "display": {
     "block": "minecraft:pumpkin"
   },

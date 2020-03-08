@@ -4,8 +4,7 @@
     "item": "minecraft:nether_wart"
   },
   "categories":["soul_sand"],
-  "growthTicks": 1,
-  "growthModifier": 2.5,
+  "growthTicks": 1600,
   "display": {
     "block": "minecraft:nether_wart",
     "properties": {
