@@ -8,6 +8,7 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import net.darkhax.bookshelf.util.RecipeUtils;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.crop.CropInfo;
@@ -33,7 +34,7 @@ public class BotanyPotsJEIPlugin implements IModPlugin {
     @Override
     public void registerRecipes (IRecipeRegistration registration) {
         
-        final Collection<CropInfo> crops = BotanyPotHelper.getCropData(BotanyPots.instance.getActiveRecipeManager()).values();
+        final Collection<CropInfo> crops = BotanyPotHelper.getCropData(RecipeUtils.getActiveRecipeManager()).values();
         registration.addRecipes(crops.stream().map(CropWrapper::new).collect(Collectors.toList()), CategoryCrop.ID);
     }
     

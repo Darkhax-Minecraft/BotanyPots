@@ -112,7 +112,13 @@ public class BotanyPotHelper {
     @Nullable
     public static SoilInfo getSoilForItem (World world, ItemStack item) {
         
-        for (final SoilInfo soilInfo : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeSoil(), world.getRecipeManager())) {
+        return getSoilForItem(world.getRecipeManager(), item);
+    }
+    
+    @Nullable
+    public static SoilInfo getSoilForItem (RecipeManager recipeManager, ItemStack item) {
+        
+        for (final SoilInfo soilInfo : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeSoil(), recipeManager)) {
             
             if (soilInfo.getIngredient().test(item)) {
                 

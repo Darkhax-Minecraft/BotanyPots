@@ -7,7 +7,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import net.darkhax.bookshelf.util.MCJsonUtils;
-import net.darkhax.botanypots.PacketUtils;
+import net.darkhax.bookshelf.util.PacketUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
@@ -25,7 +25,7 @@ public class SoilSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
         
         final Ingredient input = Ingredient.deserialize(json.getAsJsonObject("input"));
         final BlockState renderState = MCJsonUtils.deserializeBlockState(json.getAsJsonObject("display"));
-        final int tickRate = JSONUtils.getInt(json, "ticks");
+        final float growthModifier = JSONUtils.getFloat(json, "growthModifier");
         final Set<String> categories = new HashSet<>();
         
         for (final JsonElement element : json.getAsJsonArray("categories")) {
@@ -33,7 +33,12 @@ public class SoilSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
             categories.add(element.getAsString().toLowerCase());
         }
         
-        return new SoilInfo(id, input, renderState, tickRate, categories);
+        if (growthModifier <= -1) {
+            
+            throw new IllegalArgumentException("Soil " + id + " has an invalid growth modifier. It must be greater than -1.");
+        }
+        
+        return new SoilInfo(id, input, renderState, growthModifier, categories);
     }
     
     @Override

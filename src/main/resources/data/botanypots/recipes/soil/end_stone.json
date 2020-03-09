@@ -7,5 +7,5 @@
     "block": "minecraft:end_stone"
   },
   "categories": ["end_stone"],
-  "ticks": 2.0
+  "growthModifier": -0.5
 }

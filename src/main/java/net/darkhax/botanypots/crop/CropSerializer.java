@@ -9,8 +9,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import net.darkhax.bookshelf.util.MCJsonUtils;
+import net.darkhax.bookshelf.util.PacketUtils;
 import net.darkhax.botanypots.BotanyPots;
-import net.darkhax.botanypots.PacketUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
@@ -31,6 +31,12 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
         final int growthTicks = JSONUtils.getInt(json, "growthTicks");
         final List<HarvestEntry> results = deserializeCropEntries(id, json);
         final BlockState displayState = MCJsonUtils.deserializeBlockState(json.getAsJsonObject("display"));
+        
+        if (growthTicks <= 0) {
+            
+            throw new IllegalArgumentException("Crop " + id + " has an invalid growth tick rate. It must use a positive integer.");
+        }
+        
         return new CropInfo(id, seed, validSoils, growthTicks, results, displayState);
     }
     

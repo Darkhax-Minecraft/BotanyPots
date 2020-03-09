@@ -7,5 +7,5 @@
     "block": "minecraft:mycelium"
   },
   "categories": ["dirt", "mushroom"],
-  "ticks": 1.1
+  "growthModifier": -0.15
 }

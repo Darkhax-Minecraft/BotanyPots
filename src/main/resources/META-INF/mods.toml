@@ -30,6 +30,6 @@ ${mod_description}
 [[dependencies.botanypots]]
     modId="bookshelf"
     mandatory=true
-    versionRange="[5,)"
+    versionRange="[5.1,)"
     ordering="AFTER"
     side="BOTH"

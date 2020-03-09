@@ -2,15 +2,15 @@ package net.darkhax.botanypots.fertilizer;
 
 import java.util.Random;
 
+import net.darkhax.bookshelf.item.crafting.RecipeDataBase;
 import net.darkhax.botanypots.BotanyPots;
-import net.darkhax.botanypots.RecipeData;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
-public class FertilizerInfo extends RecipeData {
+public class FertilizerInfo extends RecipeDataBase {
     
     /**
      * The id for the fertilizer entry.

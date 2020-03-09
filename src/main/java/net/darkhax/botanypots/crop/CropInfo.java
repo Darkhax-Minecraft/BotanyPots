@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 import net.darkhax.bookshelf.Bookshelf;
+import net.darkhax.bookshelf.item.crafting.RecipeDataBase;
 import net.darkhax.botanypots.BotanyPots;
-import net.darkhax.botanypots.RecipeData;
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
@@ -15,7 +15,7 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
-public class CropInfo extends RecipeData {
+public class CropInfo extends RecipeDataBase {
     
     /**
      * The id of the crop.
@@ -134,7 +134,15 @@ public class CropInfo extends RecipeData {
      */
     public int getGrowthTicksForSoil (SoilInfo soil) {
         
-        return MathHelper.floor(soil.getGrowthModifier() * this.growthTicks);
+        final float requiredGrowthTicks = this.growthTicks;
+        final float growthModifier = soil.getGrowthModifier();
+        
+        if (growthModifier > -1) {
+            
+            return MathHelper.floor(requiredGrowthTicks * (1 + growthModifier * -1));
+        }
+        
+        return -1;
     }
     
     /**

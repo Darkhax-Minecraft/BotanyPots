@@ -25,6 +25,6 @@ public class ActionSoilSetGrowthModifier extends ActionSoil {
     public String describe () {
         
         BotanyPots.LOGGER.info("A CraftTweaker script changed soil {} growth modifier from {} to {}.", this.getId(), this.getSoil().getGrowthModifier(), this.modifier);
-        return "[BotanyPots] Changing soil growth modifier of " + this.getId() + " from " + this.getSoil().getGrowthModifier()+ " to " + this.modifier + ".";
+        return "[BotanyPots] Changing soil growth modifier of " + this.getId() + " from " + this.getSoil().getGrowthModifier() + " to " + this.modifier + ".";
     }
 }

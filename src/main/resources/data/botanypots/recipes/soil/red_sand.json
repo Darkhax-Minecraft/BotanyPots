@@ -7,5 +7,5 @@
     "block": "minecraft:red_sand"
   },
   "categories": ["sand", "red_sand"],
-  "ticks": 1
+  "growthModifier": 0
 }

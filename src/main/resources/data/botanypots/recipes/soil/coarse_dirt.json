@@ -7,5 +7,5 @@
     "block": "minecraft:coarse_dirt"
   },
   "categories": ["dirt", "coarse_dirt"],
-  "ticks": 0.45
+  "growthModifier": -0.65
 }

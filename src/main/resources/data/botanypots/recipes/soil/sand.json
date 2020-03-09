@@ -6,6 +6,6 @@
   "display": {
     "block": "minecraft:sand"
   },
-  "categories": ["sand"],
-  "ticks": 1
+  "categories": ["sand", "red_sand"],
+  "growthModifier": 0
 }

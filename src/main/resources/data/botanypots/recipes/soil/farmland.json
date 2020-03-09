@@ -10,5 +10,5 @@
     }
   },
   "categories": ["dirt", "farmland"],
-  "ticks": 0.85
+  "growthModifier": 0.15
 }

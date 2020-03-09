@@ -3,8 +3,8 @@ package net.darkhax.botanypots.soil;
 import java.util.Set;
 
 import net.darkhax.bookshelf.Bookshelf;
+import net.darkhax.bookshelf.item.crafting.RecipeDataBase;
 import net.darkhax.botanypots.BotanyPots;
-import net.darkhax.botanypots.RecipeData;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -12,7 +12,7 @@ import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 
-public class SoilInfo extends RecipeData {
+public class SoilInfo extends RecipeDataBase {
     
     /**
      * The id of the soil entry.
@@ -54,7 +54,7 @@ public class SoilInfo extends RecipeData {
         return this.id;
     }
     
-    public float getGrowthModifier() {
+    public float getGrowthModifier () {
         
         return this.growthModifier;
     }
