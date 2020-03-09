@@ -5,7 +5,6 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import net.darkhax.bookshelf.util.MathsUtils;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.block.tileentity.TileEntityBotanyPot;
 import net.darkhax.botanypots.crop.CropInfo;
@@ -17,7 +16,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BoneMealItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -263,29 +261,6 @@ public class BlockBotanyPot extends Block implements IGrowable {
     public void addInformation (ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         
         tooltip.add(this.isHopper() ? TOOLTIP_HOPPER : TOOLTIP_NORMAL);
-    }
-    
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    public void animateTick (BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-        
-        if (this.isHopper()) {
-            
-            // No sparkles for hopper pots
-            return;
-        }
-        
-        final TileEntity tile = worldIn.getTileEntity(pos);
-        
-        if (tile instanceof TileEntityBotanyPot && MathsUtils.tryPercentage(0.1)) {
-            
-            final TileEntityBotanyPot pot = (TileEntityBotanyPot) tile;
-            
-            if (pot.hasSoilAndCrop() && pot.isDoneGrowing()) {
-                
-                BoneMealItem.spawnBonemealParticles(worldIn, pos, 0);
-            }
-        }
     }
     
     @Override
