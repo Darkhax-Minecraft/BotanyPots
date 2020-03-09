@@ -33,13 +33,13 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
     
     @Override
     public void render (TileEntityBotanyPot tile, float partial, MatrixStack matrix, IRenderTypeBuffer buffer, int light, int overlay) {
-
+        
         if (tile.getSoil() != null) {
             
             matrix.push();
             matrix.scale(0.625f, 0.384f, 0.625f);
             matrix.translate(0.3, 0.01, 0.3);
-            renderBlock(tile.getSoil().getRenderState(), tile.getWorld(), tile.getPos(), matrix, buffer);
+            this.renderBlock(tile.getSoil().getRenderState(), tile.getWorld(), tile.getPos(), matrix, buffer);
             matrix.pop();
             
             if (tile.getCrop() != null) {
@@ -49,25 +49,25 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
                 matrix.translate(0.5, 0.40, 0.5);
                 matrix.scale(growth, growth, growth);
                 matrix.translate(-0.5, 0, -0.5);
-                renderBlock(tile.getCrop().getDisplayState(), tile.getWorld(), tile.getPos(), matrix, buffer);
+                this.renderBlock(tile.getCrop().getDisplayState(), tile.getWorld(), tile.getPos(), matrix, buffer);
                 matrix.pop();
             }
         }
     }
     
-    private void renderBlock(BlockState state, World world, BlockPos pos, MatrixStack matrix, IRenderTypeBuffer buffer) {
-
+    private void renderBlock (BlockState state, World world, BlockPos pos, MatrixStack matrix, IRenderTypeBuffer buffer) {
+        
         final BlockRendererDispatcher dispatcher = Minecraft.getInstance().getBlockRendererDispatcher();
         final IBakedModel model = dispatcher.getModelForState(state);
         final IModelData data = model.getModelData(world, pos, state, ModelDataManager.getModelData(world, pos));
         
-        for (RenderType type : RenderType.getBlockRenderTypes()) {
+        for (final RenderType type : RenderType.getBlockRenderTypes()) {
             
-           if (RenderTypeLookup.canRenderInLayer(state, type)) {
-               
-              ForgeHooksClient.setRenderLayer(type);
-              dispatcher.getBlockModelRenderer().renderModel(world, model, state, pos, matrix, buffer.getBuffer(type), false, new Random(), state.getPositionRandom(pos), OverlayTexture.NO_OVERLAY, data);
-           }
+            if (RenderTypeLookup.canRenderInLayer(state, type)) {
+                
+                ForgeHooksClient.setRenderLayer(type);
+                dispatcher.getBlockModelRenderer().renderModel(world, model, state, pos, matrix, buffer.getBuffer(type), false, new Random(), state.getPositionRandom(pos), OverlayTexture.NO_OVERLAY, data);
+            }
         }
         
         ForgeHooksClient.setRenderLayer(null);
