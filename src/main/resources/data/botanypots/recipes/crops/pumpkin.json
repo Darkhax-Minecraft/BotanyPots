@@ -1,7 +1,7 @@
 {
   "type": "botanypots:crop",
   "seed": {
-    "item": "minecraft:pumpkin_seeds"
+    "tag": "forge:seeds/pumpkin"
   },
   "categories":["dirt"],
   "growthTicks": 1800,

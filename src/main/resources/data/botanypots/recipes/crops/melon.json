@@ -1,7 +1,7 @@
 {
   "type": "botanypots:crop",
   "seed": {
-    "item": "minecraft:melon_seeds"
+    "tag": "forge:seeds/melon"
   },
   "categories":["dirt"],
   "growthTicks": 1800,
