@@ -1,0 +1,38 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "simplefarming"
+    }
+  ],
+  "seed": {
+    "item": "simplefarming:onion_seeds"
+  },
+  "categories":["dirt"],
+  "growthTicks": 1200,
+  "display": {
+    "block": "simplefarming:onion_crop",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "simplefarming:onion"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+	{
+      "chance": 0.20,
+      "output": {
+        "item": "simplefarming:onion_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

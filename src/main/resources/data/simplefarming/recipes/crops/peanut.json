@@ -1,0 +1,38 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "simplefarming"
+    }
+  ],
+  "seed": {
+    "item": "simplefarming:peanut_seeds"
+  },
+  "categories":["dirt"],
+  "growthTicks": 1200,
+  "display": {
+    "block": "simplefarming:peanut_crop",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "simplefarming:peanut"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+	{
+      "chance": 0.20,
+      "output": {
+        "item": "simplefarming:peanut_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}
