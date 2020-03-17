@@ -1,0 +1,17 @@
+{
+  "type": "botanypots:soil",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ],
+  "input": {
+    "item": "biomesoplenty:mud"
+  },
+  "display": {
+    "block": "biomesoplenty:mud"
+  },
+  "categories": ["dirt", "mud"],
+  "growthModifier": 0
+}

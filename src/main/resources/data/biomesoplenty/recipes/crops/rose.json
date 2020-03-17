@@ -1,0 +1,35 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ],
+  "seed": {
+    "item": "biomesoplenty:rose"
+  },
+  "categories":["dirt"],
+  "growthTicks": 1200,
+  "display": {
+    "block": "biomesoplenty:rose"
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "biomesoplenty:rose"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "biomesoplenty:rose"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

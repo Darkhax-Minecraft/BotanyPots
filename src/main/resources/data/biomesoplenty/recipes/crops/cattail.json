@@ -1,0 +1,45 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ],
+  "seed": {
+    "item": "biomesoplenty:cattail"
+  },
+  "categories": [
+    "mud"
+  ],
+  "growthTicks": 600,
+  "display": {
+    "block": "biomesoplenty:cattail"
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "biomesoplenty:cattail"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "biomesoplenty:cattail"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "biomesoplenty:tall_cattail"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

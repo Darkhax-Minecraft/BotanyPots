@@ -1,0 +1,35 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ],
+  "seed": {
+    "item": "biomesoplenty:pink_hibiscus"
+  },
+  "categories":["dirt"],
+  "growthTicks": 1200,
+  "display": {
+    "block": "biomesoplenty:pink_hibiscus"
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "biomesoplenty:pink_hibiscus"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "biomesoplenty:pink_hibiscus"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

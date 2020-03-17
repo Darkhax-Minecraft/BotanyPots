@@ -1,0 +1,35 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ],
+  "seed": {
+    "item": "biomesoplenty:wildflower"
+  },
+  "categories":["dirt"],
+  "growthTicks": 1200,
+  "display": {
+    "block": "biomesoplenty:wildflower"
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "biomesoplenty:wildflower"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "biomesoplenty:wildflower"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

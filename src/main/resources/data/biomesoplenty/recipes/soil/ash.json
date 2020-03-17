@@ -1,0 +1,17 @@
+{
+  "type": "botanypots:soil",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ],
+  "input": {
+    "item": "biomesoplenty:ash_block"
+  },
+  "display": {
+    "block": "biomesoplenty:ash_block"
+  },
+  "categories": ["nether", "ash_block"],
+  "growthModifier": 0.05
+}

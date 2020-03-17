@@ -1,0 +1,30 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ],
+  "seed": {
+    "item": "biomesoplenty:bramble"
+  },
+  "categories":["nether"],
+  "growthTicks": 2400,
+  "display": {
+    "block": "biomesoplenty:bramble",
+    "properties": {
+      "down": true
+    }
+  },
+  "results": [
+    {
+      "chance": 0.7,
+      "output": {
+        "item": "biomesoplenty:bramble"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

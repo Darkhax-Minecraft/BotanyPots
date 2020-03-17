@@ -1,0 +1,17 @@
+{
+  "type": "botanypots:soil",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "biomesoplenty"
+    }
+  ],
+  "input": {
+    "item": "biomesoplenty:flesh"
+  },
+  "display": {
+    "block": "biomesoplenty:flesh"
+  },
+  "categories": ["nether", "meat", "flesh"],
+  "growthModifier": 0.05
+}
