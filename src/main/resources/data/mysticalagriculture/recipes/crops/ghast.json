@@ -1,0 +1,46 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "seed": {
+    "item": "mysticalagriculture:ghast_seeds"
+  },
+  "categories":["imperium"],
+  "growthTicks": 4000,
+  "display": {
+    "block": "mysticalagriculture:ghast_crop",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "mysticalagriculture:ghast_essence"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+	{
+      "chance": 0.05,
+      "output": {
+        "item": "mysticalagriculture:ghast_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+	{
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:fertilized_essence"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "type": "botanypots:fertilizer",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "fertilizer": {
+    "item": "mysticalagriculture:mystical_fertilizer"
+  },
+  "minTicks": 330,
+  "maxTicks": 370
+}
