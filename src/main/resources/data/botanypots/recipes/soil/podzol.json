@@ -7,5 +7,5 @@
     "block": "minecraft:podzol"
   },
   "categories": ["dirt", "grass", "podzol"],
-  "growthModifier": -0.05
+  "growthModifier": 0.05
 }

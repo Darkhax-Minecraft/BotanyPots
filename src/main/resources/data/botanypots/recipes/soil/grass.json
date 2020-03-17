@@ -7,5 +7,5 @@
     "block": "minecraft:grass_block"
   },
   "categories": ["dirt", "grass"],
-  "growthModifier": -0.05
+  "growthModifier": 0.05
 }
