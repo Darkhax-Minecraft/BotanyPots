@@ -1,0 +1,48 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "botania"
+    }
+  ],
+  "seed": {
+    "item": "botania:red_mystical_flower"
+  },
+  "categories": [
+    "dirt",
+	"grass",
+	"magic",
+	"botania"
+  ],
+  "growthTicks": 1800,
+  "display": {
+    "block": "botania:red_mystical_flower"
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "botania:red_mystical_flower"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "botania:red_mystical_flower"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "botania:red_double_flower"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

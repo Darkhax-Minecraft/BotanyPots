@@ -1,0 +1,17 @@
+{
+  "type": "botanypots:soil",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "botania"
+    }
+  ],
+  "input": {
+    "item": "botania:dry_grass"
+  },
+  "display": {
+    "block": "botania:dry_grass"
+  },
+  "categories": ["dirt", "grass", "botania"],
+  "growthModifier": -0.10
+}
