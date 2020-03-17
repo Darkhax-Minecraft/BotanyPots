@@ -1,0 +1,38 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "xlfoodmod"
+    }
+  ],
+  "seed": {
+    "item": "xlfoodmod:tomato_seeds"
+  },
+  "categories":["dirt"],
+  "growthTicks": 1100,
+  "display": {
+    "block": "xlfoodmod:tomato_plant",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "xlfoodmod:tomato"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+	{
+      "chance": 0.20,
+      "output": {
+        "item": "xlfoodmod:tomato_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}
