@@ -3,6 +3,6 @@
   "fertilizer": {
     "item": "minecraft:bone_meal"
   },
-  "minTicks": 50,
-  "maxTicks": 80
+  "minTicks": 120,
+  "maxTicks": 170
 }
