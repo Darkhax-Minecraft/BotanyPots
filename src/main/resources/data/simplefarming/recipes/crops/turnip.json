@@ -10,8 +10,7 @@
     "item": "simplefarming:turnip_seeds"
   },
   "categories":["dirt"],
-  "growthTicks": 3,
-  "growthModifier": 1.9,
+  "growthTicks": 1800,
   "display": {
     "block": "simplefarming:turnip_crop",
     "properties": {
