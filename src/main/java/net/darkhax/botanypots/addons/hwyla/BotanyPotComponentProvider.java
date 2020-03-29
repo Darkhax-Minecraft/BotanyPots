@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import mcp.mobius.waila.api.IComponentProvider;
 import mcp.mobius.waila.api.IDataAccessor;
 import mcp.mobius.waila.api.IPluginConfig;
-import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.block.tileentity.TileEntityBotanyPot;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.text.ITextComponent;
@@ -29,12 +28,12 @@ public class BotanyPotComponentProvider implements IComponentProvider {
             
             if (config.get(BotanyPotsHwylaPlugin.KEY_SHOW_SOIL) && pot.getSoil() != null) {
                 
-                tooltip.add(new TranslationTextComponent("botanypots.tooltip.soil", BotanyPotHelper.getSoilName(pot.getSoil())));
+                tooltip.add(new TranslationTextComponent("botanypots.tooltip.soil", pot.getSoil().getName()));
             }
             
             if (config.get(BotanyPotsHwylaPlugin.KEY_SHOW_CROP) && pot.getCrop() != null) {
                 
-                tooltip.add(new TranslationTextComponent("botanypots.tooltip.crop", BotanyPotHelper.getCropName(pot.getCrop())));
+                tooltip.add(new TranslationTextComponent("botanypots.tooltip.crop", pot.getCrop().getName()));
             }
             
             if (config.get(BotanyPotsHwylaPlugin.KEY_SHOW_PROGRESS) && pot.getCrop() != null && pot.getSoil() != null) {

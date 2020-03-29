@@ -3,17 +3,21 @@ package net.darkhax.botanypots.crop;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.Nullable;
+
 import net.darkhax.bookshelf.Bookshelf;
 import net.darkhax.bookshelf.item.crafting.RecipeDataBase;
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.ITextComponent;
 
 public class CropInfo extends RecipeDataBase {
     
@@ -193,5 +197,11 @@ public class CropInfo extends RecipeDataBase {
     public IRecipeType<?> getType () {
         
         return BotanyPots.instance.getContent().getRecipeTypeCrop();
+    }
+    
+    
+    public ITextComponent getName () {
+        
+        return this.getDisplayState().getBlock().getNameTextComponent();
     }
 }

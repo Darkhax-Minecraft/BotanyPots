@@ -11,6 +11,7 @@ import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
 
 public class SoilInfo extends RecipeDataBase {
     
@@ -98,6 +99,11 @@ public class SoilInfo extends RecipeDataBase {
     public void setCategories (Set<String> categories) {
         
         this.categories = categories;
+    }
+    
+    public ITextComponent getName () {
+        
+        return this.getRenderState().getBlock().getNameTextComponent();
     }
     
     @Override

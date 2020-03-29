@@ -226,14 +226,4 @@ public class BotanyPotHelper {
         
         return -1;
     }
-    
-    public static ITextComponent getSoilName (@Nullable SoilInfo soil) {
-        
-        return soil != null ? soil.getRenderState().getBlock().getNameTextComponent() : Blocks.AIR.getNameTextComponent();
-    }
-    
-    public static ITextComponent getCropName (@Nullable CropInfo crop) {
-        
-        return crop != null ? crop.getDisplayState().getBlock().getNameTextComponent() : Blocks.AIR.getNameTextComponent();
-    }
 }
