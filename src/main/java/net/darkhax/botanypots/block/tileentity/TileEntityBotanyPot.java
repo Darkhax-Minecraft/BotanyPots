@@ -28,11 +28,15 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     @Nullable
     private SoilInfo soil;
     
+    private ItemStack soilStack = ItemStack.EMPTY;
+    
     /**
      * The current crop in the botany pot. Can be null.
      */
     @Nullable
     private CropInfo crop;
+    
+    private ItemStack cropStack = ItemStack.EMPTY;
     
     /**
      * The total growth ticks for the crop to mature. -1 means it's not growing.
@@ -73,10 +77,10 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
      * 
      * @param newSoil The new soil to set in the pot.
      */
-    public void setSoil (@Nullable SoilInfo newSoil) {
+    public void setSoil (@Nullable SoilInfo newSoil, ItemStack stack) {
         
         this.soil = newSoil;
-        
+        this.soilStack = stack;
         this.resetGrowthTime();
         
         if (!this.world.isRemote) {
@@ -103,10 +107,10 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
      * 
      * @param newCrop The new crop to set.
      */
-    public void setCrop (@Nullable CropInfo newCrop) {
+    public void setCrop (@Nullable CropInfo newCrop, ItemStack stack) {
         
         this.crop = newCrop;
-        
+        this.cropStack = stack;
         this.resetGrowthTime();
         
         if (!this.world.isRemote) {
@@ -359,10 +363,23 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                 dataTag.putInt("GrowthTicks", this.currentGrowthTicks);
             }
         }
+        
+        dataTag.put("CropStack", this.cropStack.serializeNBT());
+        dataTag.put("SoilStack", this.soilStack.serializeNBT());
     }
     
     @Override
     public void deserialize (CompoundNBT dataTag) {
+        
+        if (dataTag.contains("CropStack")) {
+            
+            this.cropStack = ItemStack.read(dataTag.getCompound("CropStack"));
+        }
+        
+        if (dataTag.contains("SoilStack")) {
+            
+            this.soilStack = ItemStack.read(dataTag.getCompound("SoilStack"));
+        }
         
         if (dataTag.contains("Soil")) {
             
@@ -377,6 +394,12 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                     
                     this.soil = foundSoil;
                     
+                    if (this.soilStack.isEmpty()) {
+                        
+                        this.soilStack = foundSoil.getFirstSoil();
+                        BotanyPots.LOGGER.info("No soil stack found. Migrating {} to {}.", rawSoilId, this.soilStack);
+                    }
+                    
                     // Crops are only loaded if the soil exists.
                     if (dataTag.contains("Crop")) {
                         
@@ -390,6 +413,12 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                             if (cropInfo != null) {
                                 
                                 this.crop = cropInfo;
+                                
+                                if (this.cropStack.isEmpty()) {
+                                    
+                                    this.cropStack = cropInfo.getFirstItem();
+                                    BotanyPots.LOGGER.info("No crop stack found. Migrating {} to {}.", rawCropId, this.cropStack);
+                                }
                                 
                                 // Growth ticks are only loaded if a crop and soil exist.
                                 this.currentGrowthTicks = dataTag.getInt("GrowthTicks");
@@ -423,5 +452,15 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                 BotanyPots.LOGGER.error("Botany Pot at {} has invalid soil type {}. Soil and crop will be discarded.", this.pos, rawSoilId);
             }
         }
+    }
+
+    public ItemStack getSoilStack () {
+        
+        return soilStack;
+    }
+
+    public ItemStack getCropStack () {
+        
+        return cropStack;
     }
 }

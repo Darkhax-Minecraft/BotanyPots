@@ -3,14 +3,10 @@ package net.darkhax.botanypots.crop;
 import java.util.List;
 import java.util.Set;
 
-import javax.annotation.Nullable;
-
-import net.darkhax.bookshelf.Bookshelf;
 import net.darkhax.bookshelf.item.crafting.RecipeDataBase;
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
@@ -156,10 +152,11 @@ public class CropInfo extends RecipeDataBase {
      * 
      * @return A random seed item.
      */
-    public ItemStack getRandomSeed () {
+    @Deprecated
+    public ItemStack getFirstItem () {
         
         final ItemStack[] matchingStacks = this.seed.getMatchingStacks();
-        return matchingStacks.length > 0 ? matchingStacks[Bookshelf.RANDOM.nextInt(matchingStacks.length)] : ItemStack.EMPTY;
+        return matchingStacks.length > 0 ? matchingStacks[0] : ItemStack.EMPTY;
     }
     
     public void setSeed (Ingredient seed) {

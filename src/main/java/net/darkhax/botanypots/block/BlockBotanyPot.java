@@ -81,11 +81,11 @@ public class BlockBotanyPot extends Block implements IGrowable {
                 // If a crop exists, remove it.
                 if (crop != null) {
                     
-                    final ItemStack seedStack = crop.getRandomSeed();
+                    final ItemStack seedStack = pot.getCropStack();
                     
                     if (!seedStack.isEmpty() && pot.canSetCrop(null)) {
                         
-                        pot.setCrop(null);
+                        pot.setCrop(null, ItemStack.EMPTY);
                         dropItem(seedStack.copy(), world, pos);
                         return ActionResultType.SUCCESS;
                     }
@@ -98,11 +98,11 @@ public class BlockBotanyPot extends Block implements IGrowable {
                     
                     if (soil != null) {
                         
-                        final ItemStack soilStack = soil.getRandomSoilBlock();
+                        final ItemStack soilStack = pot.getSoilStack();
                         
                         if (!soilStack.isEmpty() && pot.canSetSoil(null)) {
                             
-                            pot.setSoil(null);
+                            pot.setSoil(null, ItemStack.EMPTY);
                             dropItem(soilStack.copy(), world, pos);
                             return ActionResultType.SUCCESS;
                         }
@@ -127,7 +127,10 @@ public class BlockBotanyPot extends Block implements IGrowable {
                         
                         if (soilForStack != null && pot.canSetSoil(soilForStack)) {
                             
-                            pot.setSoil(soilForStack);
+                            ItemStack inStack = heldItem.copy();
+                            inStack.setCount(1);
+                            
+                            pot.setSoil(soilForStack, inStack);
                             
                             if (!player.isCreative()) {
                                 
@@ -145,7 +148,10 @@ public class BlockBotanyPot extends Block implements IGrowable {
                         
                         if (cropForStack != null && BotanyPotHelper.isSoilValidForCrop(pot.getSoil(), cropForStack) && pot.canSetCrop(cropForStack)) {
                             
-                            pot.setCrop(cropForStack);
+                            ItemStack inStack = heldItem.copy();
+                            inStack.setCount(1);
+                            
+                            pot.setCrop(cropForStack, inStack);
                             
                             if (!player.isCreative()) {
                                 
@@ -230,12 +236,12 @@ public class BlockBotanyPot extends Block implements IGrowable {
                 
                 if (pot.getSoil() != null) {
                     
-                    dropItem(pot.getSoil().getRandomSoilBlock(), worldIn, pos);
+                    dropItem(pot.getSoilStack(), worldIn, pos);
                 }
                 
                 if (pot.getCrop() != null) {
                     
-                    dropItem(pot.getCrop().getRandomSeed(), worldIn, pos);
+                    dropItem(pot.getCropStack(), worldIn, pos);
                 }
             }
         }

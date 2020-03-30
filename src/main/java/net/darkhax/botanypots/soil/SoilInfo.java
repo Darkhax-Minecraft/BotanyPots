@@ -75,10 +75,11 @@ public class SoilInfo extends RecipeDataBase {
         return this.categories;
     }
     
-    public ItemStack getRandomSoilBlock () {
+    @Deprecated
+    public ItemStack getFirstSoil () {
         
         final ItemStack[] matchingStacks = this.ingredient.getMatchingStacks();
-        return matchingStacks.length > 0 ? matchingStacks[Bookshelf.RANDOM.nextInt(matchingStacks.length)] : ItemStack.EMPTY;
+        return matchingStacks.length > 0 ? matchingStacks[0] : ItemStack.EMPTY;
     }
     
     public void setIngredient (Ingredient ingredient) {
