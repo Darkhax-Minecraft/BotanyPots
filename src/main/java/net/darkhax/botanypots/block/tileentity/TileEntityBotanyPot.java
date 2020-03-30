@@ -4,7 +4,6 @@ import javax.annotation.Nullable;
 
 import net.darkhax.bookshelf.block.tileentity.TileEntityBasicTickable;
 import net.darkhax.bookshelf.util.InventoryUtils;
-import net.darkhax.bookshelf.util.RecipeUtils;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.block.BlockBotanyPot;
@@ -183,7 +182,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         // soila and crop references.
         if (this.soil != null) {
             
-            this.soil = BotanyPotHelper.getSoil(this.world.getRecipeManager(), this.soil.getId());
+            this.soil = BotanyPotHelper.getSoil(this.soil.getId());
             
             // Check if the soil was removed. If so kill the crop, because crop needs a soil.
             if (this.soil == null) {
@@ -194,7 +193,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         
         if (this.crop != null) {
             
-            this.crop = BotanyPotHelper.getCrop(this.world.getRecipeManager(), this.crop.getId());
+            this.crop = BotanyPotHelper.getCrop(this.crop.getId());
         }
         
         this.autoHarvestCooldown = 2;
@@ -372,7 +371,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             
             if (soilId != null) {
                 
-                final SoilInfo foundSoil = BotanyPotHelper.getSoil(this.world.getRecipeManager(), soilId);
+                final SoilInfo foundSoil = BotanyPotHelper.getSoil(soilId);
                 
                 if (foundSoil != null) {
                     
@@ -386,7 +385,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                         
                         if (cropId != null) {
                             
-                            final CropInfo cropInfo = BotanyPotHelper.getCrop(this.world.getRecipeManager(), cropId);
+                            final CropInfo cropInfo = BotanyPotHelper.getCrop(cropId);
                             
                             if (cropInfo != null) {
                                 

@@ -11,15 +11,20 @@ import net.darkhax.botanypots.crop.CropInfo;
 import net.darkhax.botanypots.crop.HarvestEntry;
 import net.darkhax.botanypots.fertilizer.FertilizerInfo;
 import net.darkhax.botanypots.soil.SoilInfo;
-import net.minecraft.block.Blocks;
+import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 public class BotanyPotHelper {
+    
+    public static RecipeManager getManager() {
+        
+        return SidedExecutor.callForSide(() -> () -> Minecraft.getInstance().player.connection.getRecipeManager(),() -> () -> ServerLifecycleHooks.getCurrentServer().getRecipeManager());
+    }
     
     @Nullable
     public static Map<ResourceLocation, SoilInfo> getSoilData (RecipeManager manager) {
@@ -55,7 +60,9 @@ public class BotanyPotHelper {
     }
     
     @Nullable
-    public static SoilInfo getSoil (RecipeManager manager, ResourceLocation id) {
+    public static SoilInfo getSoil (ResourceLocation id) {
+        
+        final RecipeManager manager = getManager();
         
         if (manager != null && id != null) {
             
@@ -66,7 +73,9 @@ public class BotanyPotHelper {
     }
     
     @Nullable
-    public static CropInfo getCrop (RecipeManager manager, ResourceLocation id) {
+    public static CropInfo getCrop (ResourceLocation id) {
+        
+        final RecipeManager manager = getManager();
         
         if (manager != null && id != null) {
             
@@ -77,7 +86,9 @@ public class BotanyPotHelper {
     }
     
     @Nullable
-    public static FertilizerInfo getFertilizer (RecipeManager manager, ResourceLocation id) {
+    public static FertilizerInfo getFertilizer (ResourceLocation id) {
+        
+        final RecipeManager manager = getManager();
         
         if (manager != null && id != null) {
             

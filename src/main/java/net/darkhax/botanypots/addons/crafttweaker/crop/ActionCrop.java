@@ -2,7 +2,6 @@ package net.darkhax.botanypots.addons.crafttweaker.crop;
 
 import com.blamejared.crafttweaker.api.actions.IRuntimeAction;
 import com.blamejared.crafttweaker.api.logger.ILogger;
-import com.blamejared.crafttweaker.impl.managers.CTCraftingTableManager;
 
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.crop.CropInfo;
@@ -16,7 +15,7 @@ public abstract class ActionCrop implements IRuntimeAction {
     public ActionCrop(String id) {
         
         this.id = id;
-        this.targetFertilizer = BotanyPotHelper.getCrop(CTCraftingTableManager.recipeManager, ResourceLocation.tryCreate(id));
+        this.targetFertilizer = BotanyPotHelper.getCrop(ResourceLocation.tryCreate(id));
     }
     
     public String getId () {
