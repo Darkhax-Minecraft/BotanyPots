@@ -6,6 +6,6 @@
   "display": {
     "block": "minecraft:soul_sand"
   },
-  "categories": ["soul_sand"],
+  "categories": ["soul_sand", "nether"],
   "growthModifier": -0.3
 }
