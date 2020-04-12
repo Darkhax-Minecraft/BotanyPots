@@ -7,12 +7,12 @@
     }
   ],
   "seed": {
-    "item": "mysticalagriculture:iridum_seeds"
+    "item": "mysticalagriculture:iridium_seeds"
   },
   "categories":["prudentium"],
   "growthTicks": 2400,
   "display": {
-    "block": "mysticalagriculture:iridum_crop",
+    "block": "mysticalagriculture:iridium_crop",
     "properties": {
       "age": 7
     }
@@ -21,7 +21,7 @@
     {
       "chance": 0.75,
       "output": {
-        "item": "mysticalagriculture:iridum_essence"
+        "item": "mysticalagriculture:iridium_essence"
       },
       "minRolls": 1,
       "maxRolls": 1
@@ -29,7 +29,7 @@
 	{
       "chance": 0.05,
       "output": {
-        "item": "mysticalagriculture:iridum_seeds"
+        "item": "mysticalagriculture:iridium_seeds"
       },
       "minRolls": 1,
       "maxRolls": 1

@@ -11,12 +11,12 @@
     }
   ],
   "seed": {
-    "item": "mysticalagadditions:dragon_egg_seeds"
+    "item": "mysticalagriculture:dragon_egg_seeds"
   },
   "categories":["supremium"],
   "growthTicks": 4500,
   "display": {
-    "block": "mysticalagadditions:dragon_egg_crop",
+    "block": "mysticalagriculture:dragon_egg_crop",
     "properties": {
       "age": 7
     }
@@ -25,7 +25,7 @@
     {
       "chance": 0.75,
       "output": {
-        "item": "mysticalagadditions:dragon_egg_essence"
+        "item": "mysticalagriculture:dragon_egg_essence"
       },
       "minRolls": 1,
       "maxRolls": 1
@@ -33,7 +33,7 @@
 	{
       "chance": 0.05,
       "output": {
-        "item": "mysticalagadditions:dragon_egg_seeds"
+        "item": "mysticalagriculture:dragon_egg_seeds"
       },
       "minRolls": 1,
       "maxRolls": 1
