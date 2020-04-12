@@ -1,0 +1,50 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagadditions"
+    }
+  ],
+  "seed": {
+    "item": "mysticalagadditions:nether_star_seeds"
+  },
+  "categories":["supremium"],
+  "growthTicks": 4500,
+  "display": {
+    "block": "mysticalagadditions:nether_star_crop",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "mysticalagadditions:nether_star_essence"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+	{
+      "chance": 0.05,
+      "output": {
+        "item": "mysticalagadditions:nether_star_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+	{
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:fertilized_essence"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}
