@@ -2,9 +2,9 @@
   "type": "botanypots:crop",
   "conditions": [
     {
-      "type": "mysticalagriculture:crop_enabled",
-      "crop": "mysticalagradditions:nether_star"
-    }
+     "type": "mysticalagriculture:crop_enabled",
+     "crop": "mysticalagradditions:nether_star"
+   }
   ],
   "seed": {
     "item": "mysticalagriculture:nether_star_seeds"
