@@ -2,9 +2,9 @@
   "type": "botanypots:crop",
   "conditions": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "mysticalagradditions"
-    }
+     "type": "mysticalagriculture:crop_enabled",
+     "crop": "mysticalagradditions:dragon_egg"
+   }
   ],
   "seed": {
     "item": "mysticalagriculture:dragon_egg_seeds"
