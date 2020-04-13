@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 
 import net.darkhax.bookshelf.util.MathsUtils;
 import net.darkhax.bookshelf.util.RecipeUtils;
+import net.darkhax.bookshelf.util.SidedExecutor;
 import net.darkhax.botanypots.crop.CropInfo;
 import net.darkhax.botanypots.crop.HarvestEntry;
 import net.darkhax.botanypots.fertilizer.FertilizerInfo;
@@ -21,9 +22,14 @@ import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 public class BotanyPotHelper {
     
-    public static RecipeManager getManager() {
+    public static RecipeManager getManager () {
         
-        return SidedExecutor.callForSide(() -> () -> Minecraft.getInstance().player.connection.getRecipeManager(),() -> () -> ServerLifecycleHooks.getCurrentServer().getRecipeManager());
+        return getManager(null);
+    }
+    
+    public static RecipeManager getManager (@Nullable RecipeManager manager) {
+        
+        return manager != null ? manager : SidedExecutor.callForSide( () -> () -> Minecraft.getInstance().player.connection.getRecipeManager(), () -> () -> ServerLifecycleHooks.getCurrentServer().getRecipeManager());
     }
     
     @Nullable
@@ -112,24 +118,10 @@ public class BotanyPotHelper {
         return crop == null || soil == null ? -1 : crop.getGrowthTicksForSoil(soil);
     }
     
-    /**
-     * Gets the first soil info associated with a given item stack.
-     * 
-     * @param world The world instance to get the recipe manager from.
-     * @param item The item stack to look up.
-     * @return The soil info associated with the item stack. If this is null it means the item
-     *         is not a valid soil.
-     */
     @Nullable
-    public static SoilInfo getSoilForItem (World world, ItemStack item) {
+    public static SoilInfo getSoilForItem (ItemStack item) {
         
-        return getSoilForItem(world.getRecipeManager(), item);
-    }
-    
-    @Nullable
-    public static SoilInfo getSoilForItem (RecipeManager recipeManager, ItemStack item) {
-        
-        for (final SoilInfo soilInfo : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeSoil(), recipeManager)) {
+        for (final SoilInfo soilInfo : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeSoil(), getManager())) {
             
             if (soilInfo.getIngredient().test(item)) {
                 
@@ -140,22 +132,28 @@ public class BotanyPotHelper {
         return null;
     }
     
-    /**
-     * Gets the first crop for a given potential seed item stack.
-     * 
-     * @param world The world instance to get the recipe manager from.
-     * @param item The potential seed item stack.
-     * @return The crop info associated with the given item stack. If this is null it means the
-     *         item is not a valid seed.
-     */
     @Nullable
-    public static CropInfo getCropForItem (World world, ItemStack item) {
+    public static CropInfo getCropForItem (ItemStack item) {
         
-        for (final CropInfo cropInfo : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeCrop(), world.getRecipeManager())) {
+        for (final CropInfo cropInfo : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeCrop(), getManager())) {
             
             if (cropInfo.getSeed().test(item)) {
                 
                 return cropInfo;
+            }
+        }
+        
+        return null;
+    }
+    
+    @Nullable
+    public static FertilizerInfo getFertilizerForItem (ItemStack item) {
+        
+        for (final FertilizerInfo fertilizer : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), getManager())) {
+            
+            if (fertilizer.getIngredient().test(item)) {
+                
+                return fertilizer;
             }
         }
         
@@ -215,26 +213,5 @@ public class BotanyPotHelper {
         }
         
         return drops;
-    }
-    
-    /**
-     * Gets the amount of ticks to progress a crop for a given fertilizer.
-     * 
-     * @param item The item to get the growth ticks for.
-     * @param world The world instance to get the recipe manager from.
-     * @return The amount of ticks to progress a crop. If this is -1 the item is not a
-     *         fertilizer.
-     */
-    public static int getFertilizerTicks (ItemStack item, World world) {
-        
-        for (final FertilizerInfo fertilizer : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), world.getRecipeManager())) {
-            
-            if (fertilizer.getIngredient().test(item)) {
-                
-                return fertilizer.getTicksToGrow(world.rand);
-            }
-        }
-        
-        return -1;
     }
 }

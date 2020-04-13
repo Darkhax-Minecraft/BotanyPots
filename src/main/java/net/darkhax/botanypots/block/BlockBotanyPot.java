@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.block.tileentity.TileEntityBotanyPot;
 import net.darkhax.botanypots.crop.CropInfo;
+import net.darkhax.botanypots.fertilizer.FertilizerInfo;
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -67,6 +68,13 @@ public class BlockBotanyPot extends Block implements IGrowable {
     @Override
     public ActionResultType onBlockActivated (BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
         
+        if (world.isRemote) {
+            
+            // Forces all the logic to run on the server. Returning fail or pass on the client
+            // will cause the click packet not to be sent to the server.
+            return ActionResultType.SUCCESS;
+        }
+        
         final TileEntity tile = world.getTileEntity(pos);
         
         if (tile instanceof TileEntityBotanyPot) {
@@ -123,11 +131,11 @@ public class BlockBotanyPot extends Block implements IGrowable {
                     // Attempt soil add first
                     if (pot.getSoil() == null) {
                         
-                        final SoilInfo soilForStack = BotanyPotHelper.getSoilForItem(world, heldItem);
+                        final SoilInfo soilForStack = BotanyPotHelper.getSoilForItem(heldItem);
                         
                         if (soilForStack != null && pot.canSetSoil(soilForStack)) {
                             
-                            ItemStack inStack = heldItem.copy();
+                            final ItemStack inStack = heldItem.copy();
                             inStack.setCount(1);
                             
                             pot.setSoil(soilForStack, inStack);
@@ -144,11 +152,11 @@ public class BlockBotanyPot extends Block implements IGrowable {
                     // Attempt crop add second.
                     else if (pot.getCrop() == null) {
                         
-                        final CropInfo cropForStack = BotanyPotHelper.getCropForItem(world, heldItem);
+                        final CropInfo cropForStack = BotanyPotHelper.getCropForItem(heldItem);
                         
                         if (cropForStack != null && BotanyPotHelper.isSoilValidForCrop(pot.getSoil(), cropForStack) && pot.canSetCrop(cropForStack)) {
                             
-                            ItemStack inStack = heldItem.copy();
+                            final ItemStack inStack = heldItem.copy();
                             inStack.setCount(1);
                             
                             pot.setCrop(cropForStack, inStack);
@@ -165,11 +173,12 @@ public class BlockBotanyPot extends Block implements IGrowable {
                     // Attempt fertilizer.
                     else if (!pot.canHarvest()) {
                         
-                        final int fertilizerGrowthTicks = BotanyPotHelper.getFertilizerTicks(heldItem, world);
+                        final FertilizerInfo fertilizerForStack = BotanyPotHelper.getFertilizerForItem(heldItem);
                         
-                        if (fertilizerGrowthTicks > -1) {
+                        if (fertilizerForStack != null) {
                             
-                            pot.addGrowth(fertilizerGrowthTicks);
+                            final int ticksToGrow = fertilizerForStack.getTicksToGrow(world.rand, pot.getSoil(), pot.getCrop());
+                            pot.addGrowth(ticksToGrow);
                             
                             if (!world.isRemote) {
                                 
@@ -202,7 +211,7 @@ public class BlockBotanyPot extends Block implements IGrowable {
             }
         }
         
-        return super.onBlockActivated(state, world, pos, player, hand, hit);
+        return ActionResultType.FAIL;
     }
     
     @Override

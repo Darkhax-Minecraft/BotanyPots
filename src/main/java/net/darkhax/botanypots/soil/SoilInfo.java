@@ -2,7 +2,6 @@ package net.darkhax.botanypots.soil;
 
 import java.util.Set;
 
-import net.darkhax.bookshelf.Bookshelf;
 import net.darkhax.bookshelf.item.crafting.RecipeDataBase;
 import net.darkhax.botanypots.BotanyPots;
 import net.minecraft.block.BlockState;

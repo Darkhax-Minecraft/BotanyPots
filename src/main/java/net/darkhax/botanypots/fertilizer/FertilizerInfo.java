@@ -4,6 +4,8 @@ import java.util.Random;
 
 import net.darkhax.bookshelf.item.crafting.RecipeDataBase;
 import net.darkhax.botanypots.BotanyPots;
+import net.darkhax.botanypots.crop.CropInfo;
+import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
@@ -88,7 +90,7 @@ public class FertilizerInfo extends RecipeDataBase {
      * @param random An instance of random used to generate the amount of ticks.
      * @return The amount of ticks to grow the crop by.
      */
-    public int getTicksToGrow (Random random) {
+    public int getTicksToGrow (Random random, SoilInfo soil, CropInfo crop) {
         
         return MathHelper.nextInt(random, this.minTicks, this.maxTicks);
     }

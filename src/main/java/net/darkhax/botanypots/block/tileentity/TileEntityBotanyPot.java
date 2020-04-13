@@ -453,14 +453,14 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             }
         }
     }
-
+    
     public ItemStack getSoilStack () {
         
-        return soilStack;
+        return this.soilStack;
     }
-
+    
     public ItemStack getCropStack () {
         
-        return cropStack;
+        return this.cropStack;
     }
 }

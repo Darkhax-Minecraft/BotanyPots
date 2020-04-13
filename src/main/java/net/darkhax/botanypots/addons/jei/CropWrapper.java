@@ -96,7 +96,7 @@ public class CropWrapper implements IRecipeCategoryExtension {
                 
                 else if (slotIndex == 1) {
                     
-                    final SoilInfo soil = BotanyPotHelper.getSoilForItem(RecipeUtils.getActiveRecipeManager(), ingredient);
+                    final SoilInfo soil = BotanyPotHelper.getSoilForItem(ingredient);
                     
                     if (soil != null) {
                         

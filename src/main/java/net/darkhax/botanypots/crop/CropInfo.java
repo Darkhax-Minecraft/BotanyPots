@@ -196,7 +196,6 @@ public class CropInfo extends RecipeDataBase {
         return BotanyPots.instance.getContent().getRecipeTypeCrop();
     }
     
-    
     public ITextComponent getName () {
         
         return this.getDisplayState().getBlock().getNameTextComponent();
