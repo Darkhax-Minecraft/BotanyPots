@@ -269,7 +269,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             }
         }
         
-        else {
+        else if (this.totalGrowthTicks != -1 || this.currentGrowthTicks != 0) {
             
             // Reset tick counts
             this.resetGrowthTime();
@@ -370,6 +370,9 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     
     @Override
     public void deserialize (CompoundNBT dataTag) {
+        
+        this.soil = null;
+        this.crop = null;
         
         if (dataTag.contains("CropStack")) {
             
