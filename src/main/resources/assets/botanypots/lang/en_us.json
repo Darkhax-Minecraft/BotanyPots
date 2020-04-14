@@ -66,5 +66,10 @@
   "config.waila.plugin_botanypots.show_time": "Show Grow Time",
   "config.waila.plugin_botanypots.show_debug": "Show Debug",
   
-  "botanypots.title": "Botany Pots"
+  "botanypots.title": "Botany Pots",
+  
+  "advancements.botany_pots.get_pot.title": "Let It Grow",
+  "advancements.botany_pots.get_pot.description": "Get a Botany Pot!",
+  "advancements.botany_pots.get_hopper_pot.title": "Now You're Thinking With Hoppers",
+  "advancements.botany_pots.get_hopper_pot.description": "Get a Hopper Botany Pot"
 }
