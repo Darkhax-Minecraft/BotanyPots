@@ -2,6 +2,10 @@
   "type": "botanypots:crop",
   "conditions": [
     {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    },
+    {
      "type": "mysticalagriculture:crop_enabled",
      "crop": "mysticalagradditions:nether_star"
    }
