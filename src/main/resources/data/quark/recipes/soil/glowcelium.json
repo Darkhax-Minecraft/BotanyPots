@@ -1,0 +1,11 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "quark:glowcelium"
+  },
+  "display": {
+    "block": "quark:glowcelium"
+  },
+  "categories": ["glowcelium"],
+  "growthModifier": 0.05
+}
