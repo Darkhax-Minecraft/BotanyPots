@@ -3,6 +3,7 @@ package net.darkhax.botanypots.block.tileentity;
 import java.util.Random;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.IVertexBuilder;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
@@ -25,6 +26,8 @@ import net.minecraftforge.client.model.data.IModelData;
 
 @OnlyIn(Dist.CLIENT)
 public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBotanyPot> {
+    
+    private static final Random RANDOM = new Random();
     
     public TileEntityRendererBotanyPot(TileEntityRendererDispatcher dispatcher) {
         
@@ -63,10 +66,12 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
         
         for (final RenderType type : RenderType.getBlockRenderTypes()) {
             
+            final IVertexBuilder builder = buffer.getBuffer(type);
+            
             if (RenderTypeLookup.canRenderInLayer(state, type)) {
                 
                 ForgeHooksClient.setRenderLayer(type);
-                dispatcher.getBlockModelRenderer().renderModel(world, model, state, pos, matrix, buffer.getBuffer(type), false, new Random(), state.getPositionRandom(pos), OverlayTexture.NO_OVERLAY, data);
+                dispatcher.getBlockModelRenderer().renderModel(world, model, state, pos, matrix, builder, false, RANDOM, state.getPositionRandom(pos), OverlayTexture.NO_OVERLAY, data);
             }
         }
         
