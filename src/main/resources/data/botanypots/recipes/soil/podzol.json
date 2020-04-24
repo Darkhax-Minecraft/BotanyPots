@@ -6,6 +6,6 @@
   "display": {
     "block": "minecraft:podzol"
   },
-  "categories": ["dirt", "grass", "podzol"],
+  "categories": ["dirt", "grass", "podzol", "mushroom"],
   "growthModifier": 0.05
 }
