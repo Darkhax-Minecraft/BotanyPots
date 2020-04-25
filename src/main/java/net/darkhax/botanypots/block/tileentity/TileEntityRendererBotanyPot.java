@@ -29,6 +29,8 @@ import net.minecraftforge.client.model.data.EmptyModelData;
 @OnlyIn(Dist.CLIENT)
 public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBotanyPot> {
     
+    private static final Random RANDOM = new Random();
+    
     @Override
     public void render (TileEntityBotanyPot tile, double x, double y, double z, float partialTicks, int destroyStage) {
         
@@ -69,7 +71,7 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
         for (final BlockRenderLayer layer : BlockRenderLayer.values()) {
             if (state.getBlock().canRenderInLayer(state, layer)) {
                 ForgeHooksClient.setRenderLayer(layer);
-                blockrendererdispatcher.getBlockModelRenderer().renderModel(world, ibakedmodel, state, pos, buff(), false, new Random(), 0, EmptyModelData.INSTANCE);
+                blockrendererdispatcher.getBlockModelRenderer().renderModel(world, ibakedmodel, state, pos, buff(), false, RANDOM, 0, EmptyModelData.INSTANCE);
             }
         }
         ForgeHooksClient.setRenderLayer(null);
