@@ -1,0 +1,41 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "druidcraft:hemp_seeds"
+  },
+  "categories":["dirt"],
+  "growthTicks": 3,
+  "growthModifier": 1.5,
+  "display": {
+    "block": "druidcraft:hemp_crop",
+    "properties": {
+      "age": 2
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "druidcraft:hemp"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "druidcraft:hemp"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "druidcraft:hemp_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

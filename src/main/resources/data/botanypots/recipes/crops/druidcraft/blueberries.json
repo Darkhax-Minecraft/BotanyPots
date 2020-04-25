@@ -1,0 +1,33 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "druidcraft:blueberries"
+  },
+  "categories":["dirt"],
+  "growthTicks": 3,
+  "growthModifier": 0.8,
+  "display": {
+    "block": "druidcraft:blueberry_bush",
+    "properties": {
+      "age": 3
+    }
+  },
+  "results": [
+    {
+      "chance": 0.90,
+      "output": {
+        "item": "druidcraft:blueberries"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "druidcraft:blueberries"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}
