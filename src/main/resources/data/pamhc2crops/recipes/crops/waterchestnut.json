@@ -1,0 +1,37 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "pamhc2crops"
+    }
+  ],
+  "seed": {
+    "item": "pamhc2crops:waterchestnutseeditem"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1800.0,
+  "display": {
+    "block": "pamhc2crops:pamwaterchestnutcrop"
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "pamhc2crops:waterchestnutitem"
+      },
+      "minRolls": 1.0,
+      "maxRolls": 1.0
+    },
+    {
+      "chance": 0.25,
+      "output": {
+        "item": "pamhc2crops:waterchestnutseeditem"
+      },
+      "minRolls": 1.0,
+      "maxRolls": 2.0
+    }
+  ]
+}

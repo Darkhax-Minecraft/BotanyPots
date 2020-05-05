@@ -1,0 +1,37 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "pamhc2crops"
+    }
+  ],
+  "seed": {
+    "item": "pamhc2crops:candleberryseeditem"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1800.0,
+  "display": {
+    "block": "pamhc2crops:pamcandleberrycrop"
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "pamhc2crops:candleberryitem"
+      },
+      "minRolls": 1.0,
+      "maxRolls": 1.0
+    },
+    {
+      "chance": 0.25,
+      "output": {
+        "item": "pamhc2crops:candleberryseeditem"
+      },
+      "minRolls": 1.0,
+      "maxRolls": 2.0
+    }
+  ]
+}
