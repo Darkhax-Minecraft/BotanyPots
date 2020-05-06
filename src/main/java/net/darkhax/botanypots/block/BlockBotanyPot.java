@@ -82,7 +82,7 @@ public class BlockBotanyPot extends Block implements IGrowable {
             final TileEntityBotanyPot pot = (TileEntityBotanyPot) tile;
             
             // Attempt removal
-            if (player.isShiftKeyDown()) {
+            if (player.isSneaking()) {
                 
                 final CropInfo crop = pot.getCrop();
                 
