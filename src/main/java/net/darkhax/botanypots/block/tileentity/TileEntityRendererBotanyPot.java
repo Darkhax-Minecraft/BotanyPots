@@ -7,6 +7,7 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BlockModelRenderer;
 import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
@@ -15,13 +16,17 @@ import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.crash.CrashReport;
+import net.minecraft.crash.CrashReportCategory;
+import net.minecraft.crash.ReportedException;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.ILightReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.ForgeHooksClient;
-import net.minecraftforge.client.model.ModelDataManager;
+import net.minecraftforge.client.model.data.EmptyModelData;
 import net.minecraftforge.client.model.data.IModelData;
 
 @OnlyIn(Dist.CLIENT)
@@ -47,12 +52,21 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
             
             if (tile.getCrop() != null) {
                 
-                final float growth = MathHelper.clamp((tile.getCurrentGrowthTicks() + partial) / tile.getTotalGrowthTicks() * (10 / 16f), 0f, 1f);
+                final float growth = MathHelper.clamp((float) tile.getCurrentGrowthTicks() / tile.getTotalGrowthTicks() * (10 / 16f), 0, 1f);
                 matrix.push();
                 matrix.translate(0.5, 0.40, 0.5);
                 matrix.scale(growth, growth, growth);
                 matrix.translate(-0.5, 0, -0.5);
-                this.renderBlock(tile.getCrop().getDisplayState(), tile.getWorld(), tile.getPos(), matrix, buffer);
+                
+                final BlockState[] cropStates = tile.getCrop().getDisplayState();
+                
+                for (int i = 0; i < cropStates.length; i++) {
+                    
+                    matrix.translate(0, i, 0);
+                    this.renderBlock(cropStates[i], tile.getWorld(), tile.getPos(), matrix, buffer);
+                    matrix.translate(0, -i, 0);
+                }
+                
                 matrix.pop();
             }
         }
@@ -62,7 +76,6 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
         
         final BlockRendererDispatcher dispatcher = Minecraft.getInstance().getBlockRendererDispatcher();
         final IBakedModel model = dispatcher.getModelForState(state);
-        final IModelData data = model.getModelData(world, pos, state, ModelDataManager.getModelData(world, pos));
         
         for (final RenderType type : RenderType.getBlockRenderTypes()) {
             
@@ -71,10 +84,27 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
             if (RenderTypeLookup.canRenderInLayer(state, type)) {
                 
                 ForgeHooksClient.setRenderLayer(type);
-                dispatcher.getBlockModelRenderer().renderModel(world, model, state, pos, matrix, builder, false, RANDOM, state.getPositionRandom(pos), OverlayTexture.NO_OVERLAY, data);
+                this.renderModel(dispatcher.getBlockModelRenderer(), world, model, state, pos, matrix, builder, false, OverlayTexture.NO_OVERLAY, EmptyModelData.INSTANCE);
             }
         }
         
         ForgeHooksClient.setRenderLayer(null);
+    }
+    
+    public boolean renderModel (BlockModelRenderer renderer, ILightReader world, IBakedModel model, BlockState state, BlockPos pos, MatrixStack matrix, IVertexBuilder buffer, boolean checkSides, int combinedOverlayIn, IModelData modelData) {
+        
+        final boolean useAO = Minecraft.isAmbientOcclusionEnabled() && state.getLightValue(world, pos) == 0 && model.isAmbientOcclusion();
+        modelData = model.getModelData(world, pos, state, modelData);
+        
+        try {
+            return useAO ? renderer.renderModelSmooth(world, model, state, pos, matrix, buffer, checkSides, RANDOM, 0L, combinedOverlayIn, modelData) : renderer.renderModelFlat(world, model, state, pos, matrix, buffer, checkSides, RANDOM, 0L, combinedOverlayIn, modelData);
+        }
+        catch (final Throwable throwable) {
+            final CrashReport crashreport = CrashReport.makeCrashReport(throwable, "Tesselating block model");
+            final CrashReportCategory crashreportcategory = crashreport.makeCategory("Block model being tesselated");
+            CrashReportCategory.addBlockInfo(crashreportcategory, pos, state);
+            crashreportcategory.addDetail("Using AO", useAO);
+            throw new ReportedException(crashreport);
+        }
     }
 }

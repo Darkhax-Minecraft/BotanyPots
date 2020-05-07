@@ -3,14 +3,24 @@
   "seed": {
     "item": "minecraft:rose_bush"
   },
-  "categories":["dirt"],
+  "categories": [
+    "dirt"
+  ],
   "growthTicks": 1200,
-  "display": {
-    "block": "minecraft:rose_bush",
-    "properties": {
-      "half": "upper"
+  "display": [
+    {
+      "block": "minecraft:rose_bush",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "minecraft:rose_bush",
+      "properties": {
+        "half": "upper"
+      }
     }
-  },
+  ],
   "results": [
     {
       "chance": 0.75,

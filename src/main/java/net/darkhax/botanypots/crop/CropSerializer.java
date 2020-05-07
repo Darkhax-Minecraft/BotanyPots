@@ -30,14 +30,36 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
         final Set<String> validSoils = deserializeSoilInfo(id, json);
         final int growthTicks = JSONUtils.getInt(json, "growthTicks");
         final List<HarvestEntry> results = deserializeCropEntries(id, json);
-        final BlockState displayState = MCJsonUtils.deserializeBlockState(json.getAsJsonObject("display"));
+        
+        final JsonElement element = json.get("display");
+        BlockState[] states = new BlockState[0];
+        
+        if (element.isJsonObject()) {
+            
+            states = new BlockState[] { MCJsonUtils.deserializeBlockState(element.getAsJsonObject()) };
+        }
+        
+        else if (element.isJsonArray()) {
+            
+            final List<BlockState> list = new ArrayList<>();
+            
+            for (final JsonElement subElement : element.getAsJsonArray()) {
+                
+                if (subElement.isJsonObject()) {
+                    
+                    list.add(MCJsonUtils.deserializeBlockState(subElement.getAsJsonObject()));
+                }
+            }
+            
+            states = list.toArray(new BlockState[0]);
+        }
         
         if (growthTicks <= 0) {
             
             throw new IllegalArgumentException("Crop " + id + " has an invalid growth tick rate. It must use a positive integer.");
         }
         
-        return new CropInfo(id, seed, validSoils, growthTicks, results, displayState);
+        return new CropInfo(id, seed, validSoils, growthTicks, results, states);
     }
     
     @Override
@@ -58,8 +80,14 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
                 results.add(HarvestEntry.deserialize(buf));
             }
             
-            final BlockState displayState = PacketUtils.deserializeBlockState(buf);
-            return new CropInfo(id, seed, validSoils, growthTicks, results, displayState);
+            final BlockState[] displayStates = new BlockState[buf.readInt()];
+            
+            for (int i = 0; i < displayStates.length; i++) {
+                
+                displayStates[i] = PacketUtils.deserializeBlockState(buf);
+            }
+            
+            return new CropInfo(id, seed, validSoils, growthTicks, results, displayStates);
         }
         
         catch (final Exception e) {
@@ -84,7 +112,12 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
                 HarvestEntry.serialize(buffer, entry);
             }
             
-            PacketUtils.serializeBlockState(buffer, info.getDisplayState());
+            buffer.writeInt(info.getDisplayState().length);
+            
+            for (final BlockState state : info.getDisplayState()) {
+                
+                PacketUtils.serializeBlockState(buffer, state);
+            }
         }
         
         catch (final Exception e) {

@@ -45,16 +45,16 @@ public class CropInfo extends RecipeDataBase {
     /**
      * The BlockState to render for the crop.
      */
-    private BlockState displayBlock;
+    private BlockState[] displayBlocks;
     
-    public CropInfo(ResourceLocation id, Ingredient seed, Set<String> soilCategories, int growthTicks, List<HarvestEntry> results, BlockState displayState) {
+    public CropInfo(ResourceLocation id, Ingredient seed, Set<String> soilCategories, int growthTicks, List<HarvestEntry> results, BlockState[] displayStates) {
         
         this.id = id;
         this.seed = seed;
         this.soilCategories = soilCategories;
         this.growthTicks = growthTicks;
         this.results = results;
-        this.displayBlock = displayState;
+        this.displayBlocks = displayStates;
     }
     
     /**
@@ -103,9 +103,9 @@ public class CropInfo extends RecipeDataBase {
      * 
      * @return The state to display when rendering the crop.
      */
-    public BlockState getDisplayState () {
+    public BlockState[] getDisplayState () {
         
-        return this.displayBlock;
+        return this.displayBlocks;
     }
     
     /**
@@ -179,9 +179,9 @@ public class CropInfo extends RecipeDataBase {
         this.results = results;
     }
     
-    public void setDisplayBlock (BlockState displayBlock) {
+    public void setDisplayBlock (BlockState[] displayBlocks) {
         
-        this.displayBlock = displayBlock;
+        this.displayBlocks = displayBlocks;
     }
     
     @Override
@@ -198,6 +198,6 @@ public class CropInfo extends RecipeDataBase {
     
     public ITextComponent getName () {
         
-        return this.getDisplayState().getBlock().getNameTextComponent();
+        return this.getDisplayState()[0].getBlock().getNameTextComponent();
     }
 }

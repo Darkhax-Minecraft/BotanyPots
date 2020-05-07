@@ -3,14 +3,24 @@
   "seed": {
     "item": "minecraft:lilac"
   },
-  "categories":["dirt"],
+  "categories": [
+    "dirt"
+  ],
   "growthTicks": 1200,
-  "display": {
-    "block": "minecraft:lilac",
-    "properties": {
-      "half": "upper"
+  "display": [
+    {
+      "block": "minecraft:lilac",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "minecraft:lilac",
+      "properties": {
+        "half": "upper"
+      }
     }
-  },
+  ],
   "results": [
     {
       "chance": 0.75,

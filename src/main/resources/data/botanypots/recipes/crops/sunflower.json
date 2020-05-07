@@ -3,14 +3,24 @@
   "seed": {
     "item": "minecraft:sunflower"
   },
-  "categories":["dirt"],
+  "categories": [
+    "dirt"
+  ],
   "growthTicks": 1200,
-  "display": {
-    "block": "minecraft:sunflower",
-    "properties": {
-      "half": "upper"
+  "display": [
+    {
+      "block": "minecraft:sunflower",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "minecraft:sunflower",
+      "properties": {
+        "half": "upper"
+      }
     }
-  },
+  ],
   "results": [
     {
       "chance": 0.75,

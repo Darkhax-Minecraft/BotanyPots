@@ -343,7 +343,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         
         if (this.hasSoilAndCrop()) {
             
-            this.world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, this.pos, Block.getStateId(this.crop.getDisplayState()));
+            this.world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, this.pos, Block.getStateId(this.crop.getDisplayState()[0]));
         }
     }
     

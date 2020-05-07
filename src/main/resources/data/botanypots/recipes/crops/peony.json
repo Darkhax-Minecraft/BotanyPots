@@ -3,14 +3,24 @@
   "seed": {
     "item": "minecraft:peony"
   },
-  "categories":["dirt"],
+  "categories": [
+    "dirt"
+  ],
   "growthTicks": 1200,
-  "display": {
-    "block": "minecraft:peony",
-    "properties": {
-      "half": "upper"
+  "display": [
+    {
+      "block": "minecraft:peony",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "minecraft:peony",
+      "properties": {
+        "half": "upper"
+      }
     }
-  },
+  ],
   "results": [
     {
       "chance": 0.75,

@@ -12,6 +12,7 @@ import com.blamejared.crafttweaker.impl.managers.CTCraftingTableManager;
 
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.crop.CropInfo;
+import net.minecraft.block.BlockState;
 import net.minecraft.util.ResourceLocation;
 
 public class ActionCropCreate implements IRuntimeAction {
@@ -22,7 +23,7 @@ public class ActionCropCreate implements IRuntimeAction {
     public ActionCropCreate(String id, IIngredient seed, MCBlockState display, int ticks, String[] categories) {
         
         this.rawId = id;
-        this.newCrop = new CropInfo(ResourceLocation.tryCreate(id), seed.asVanillaIngredient(), new HashSet<>(Arrays.asList(categories)), ticks, new ArrayList<>(), display.getInternal());
+        this.newCrop = new CropInfo(ResourceLocation.tryCreate(id), seed.asVanillaIngredient(), new HashSet<>(Arrays.asList(categories)), ticks, new ArrayList<>(), new BlockState[] { display.getInternal() });
     }
     
     @Override
