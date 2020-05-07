@@ -255,6 +255,11 @@ task signJar(type: SignJar, dependsOn: jar) {
 
 //build.dependsOn signJar
 
+task recompress(type:Exec, dependsOn: jar) {
+    
+    commandLine 'advzip', '-z', '-4', '-i 8', jar.archivePath.toString()
+}
+
 tasks.getByName("curseforge").doLast {
     
 	try {
