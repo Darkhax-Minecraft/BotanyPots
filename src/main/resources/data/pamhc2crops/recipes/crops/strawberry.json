@@ -14,7 +14,10 @@
   ],
   "growthTicks": 1800.0,
   "display": {
-    "block": "pamhc2crops:pamstrawberrycrop"
+    "block": "pamhc2crops:pamstrawberrycrop",
+    "properties": {
+      "age": 7
+    }
   },
   "results": [
     {

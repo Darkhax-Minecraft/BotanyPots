@@ -14,7 +14,10 @@
   ],
   "growthTicks": 1800.0,
   "display": {
-    "block": "pamhc2crops:pamtomatocrop"
+    "block": "pamhc2crops:pamtomatocrop",
+    "properties": {
+      "age": 7
+    }
   },
   "results": [
     {

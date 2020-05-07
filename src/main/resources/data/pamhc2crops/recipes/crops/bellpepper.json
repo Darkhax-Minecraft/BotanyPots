@@ -14,7 +14,10 @@
   ],
   "growthTicks": 1800.0,
   "display": {
-    "block": "pamhc2crops:pambellpeppercrop"
+    "block": "pamhc2crops:pambellpeppercrop",
+    "properties": {
+      "age": 7
+    }
   },
   "results": [
     {

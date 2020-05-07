@@ -14,7 +14,10 @@
   ],
   "growthTicks": 1800.0,
   "display": {
-    "block": "pamhc2crops:pammulberrycrop"
+    "block": "pamhc2crops:pammulberrycrop",
+    "properties": {
+      "age": 7
+    }
   },
   "results": [
     {

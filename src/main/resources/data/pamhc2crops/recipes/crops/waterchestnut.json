@@ -14,7 +14,10 @@
   ],
   "growthTicks": 1800.0,
   "display": {
-    "block": "pamhc2crops:pamwaterchestnutcrop"
+    "block": "pamhc2crops:pamwaterchestnutcrop",
+    "properties": {
+      "age": 7
+    }
   },
   "results": [
     {

@@ -14,7 +14,10 @@
   ],
   "growthTicks": 1800.0,
   "display": {
-    "block": "pamhc2crops:pameggplantcrop"
+    "block": "pamhc2crops:pameggplantcrop",
+    "properties": {
+      "age": 7
+    }
   },
   "results": [
     {

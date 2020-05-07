@@ -14,7 +14,10 @@
   ],
   "growthTicks": 1800.0,
   "display": {
-    "block": "pamhc2crops:pamspinachcrop"
+    "block": "pamhc2crops:pamspinachcrop",
+    "properties": {
+      "age": 7
+    }
   },
   "results": [
     {

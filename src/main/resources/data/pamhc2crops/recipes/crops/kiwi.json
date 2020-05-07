@@ -14,7 +14,10 @@
   ],
   "growthTicks": 1800.0,
   "display": {
-    "block": "pamhc2crops:pamkiwicrop"
+    "block": "pamhc2crops:pamkiwicrop",
+    "properties": {
+      "age": 7
+    }
   },
   "results": [
     {

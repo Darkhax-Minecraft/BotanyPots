@@ -14,7 +14,10 @@
   ],
   "growthTicks": 1800.0,
   "display": {
-    "block": "pamhc2crops:pamrutabagacrop"
+    "block": "pamhc2crops:pamrutabagacrop",
+    "properties": {
+      "age": 7
+    }
   },
   "results": [
     {

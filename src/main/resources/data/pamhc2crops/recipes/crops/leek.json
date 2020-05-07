@@ -14,7 +14,10 @@
   ],
   "growthTicks": 1800.0,
   "display": {
-    "block": "pamhc2crops:pamleekcrop"
+    "block": "pamhc2crops:pamleekcrop",
+    "properties": {
+      "age": 7
+    }
   },
   "results": [
     {

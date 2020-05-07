@@ -14,7 +14,10 @@
   ],
   "growthTicks": 1800.0,
   "display": {
-    "block": "pamhc2crops:pamcantaloupecrop"
+    "block": "pamhc2crops:pamcantaloupecrop",
+    "properties": {
+      "age": 7
+    }
   },
   "results": [
     {
