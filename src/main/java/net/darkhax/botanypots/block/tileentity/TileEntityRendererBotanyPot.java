@@ -76,30 +76,31 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
         
         final BlockRendererDispatcher dispatcher = Minecraft.getInstance().getBlockRendererDispatcher();
         final IBakedModel model = dispatcher.getModelForState(state);
+        final boolean useAO = Minecraft.isAmbientOcclusionEnabled() && state.getLightValue(world, pos) == 0 && model.isAmbientOcclusion();
         
-        for (final RenderType type : RenderType.getBlockRenderTypes()) {
+        final RenderType type = RenderTypeLookup.getRenderType(state);
+        
+        if (type != null) {
+            
+            ForgeHooksClient.setRenderLayer(type);
             
             final IVertexBuilder builder = buffer.getBuffer(type);
+            this.renderModel(dispatcher.getBlockModelRenderer(), useAO, world, model, state, pos, matrix, builder, false, OverlayTexture.NO_OVERLAY);
             
-            if (RenderTypeLookup.canRenderInLayer(state, type)) {
-                
-                ForgeHooksClient.setRenderLayer(type);
-                this.renderModel(dispatcher.getBlockModelRenderer(), world, model, state, pos, matrix, builder, false, OverlayTexture.NO_OVERLAY, EmptyModelData.INSTANCE);
-            }
+            ForgeHooksClient.setRenderLayer(null);
         }
-        
-        ForgeHooksClient.setRenderLayer(null);
     }
     
-    public boolean renderModel (BlockModelRenderer renderer, ILightReader world, IBakedModel model, BlockState state, BlockPos pos, MatrixStack matrix, IVertexBuilder buffer, boolean checkSides, int combinedOverlayIn, IModelData modelData) {
-        
-        final boolean useAO = Minecraft.isAmbientOcclusionEnabled() && state.getLightValue(world, pos) == 0 && model.isAmbientOcclusion();
-        modelData = model.getModelData(world, pos, state, modelData);
+    public boolean renderModel (BlockModelRenderer renderer, boolean useAO, ILightReader world, IBakedModel model, BlockState state, BlockPos pos, MatrixStack matrix, IVertexBuilder buffer, boolean checkSides, int combinedOverlayIn) {
         
         try {
+            
+            final IModelData modelData = model.getModelData(world, pos, state, EmptyModelData.INSTANCE);
             return useAO ? renderer.renderModelSmooth(world, model, state, pos, matrix, buffer, checkSides, RANDOM, 0L, combinedOverlayIn, modelData) : renderer.renderModelFlat(world, model, state, pos, matrix, buffer, checkSides, RANDOM, 0L, combinedOverlayIn, modelData);
         }
+        
         catch (final Throwable throwable) {
+            
             final CrashReport crashreport = CrashReport.makeCrashReport(throwable, "Tesselating block model");
             final CrashReportCategory crashreportcategory = crashreport.makeCategory("Block model being tesselated");
             CrashReportCategory.addBlockInfo(crashreportcategory, pos, state);
