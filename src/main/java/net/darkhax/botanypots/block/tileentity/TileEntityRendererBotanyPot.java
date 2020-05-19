@@ -1,10 +1,13 @@
 package net.darkhax.botanypots.block.tileentity;
 
+import java.util.BitSet;
+import java.util.List;
 import java.util.Random;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 
+import net.darkhax.botanypots.BotanyPots;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockModelRenderer;
@@ -12,13 +15,13 @@ import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.model.BakedQuad;
 import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.crash.CrashReport;
-import net.minecraft.crash.CrashReportCategory;
-import net.minecraft.crash.ReportedException;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.ILightReader;
@@ -33,6 +36,9 @@ import net.minecraftforge.client.model.data.IModelData;
 public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBotanyPot> {
     
     private static final Random RANDOM = new Random();
+    private static final BitSet BITS = new BitSet(3);
+    private static final Direction[] SOIL_SIDES = new Direction[] { Direction.UP };
+    private static final Direction[] CROP_SIDES = new Direction[] { Direction.UP, Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST };
     
     public TileEntityRendererBotanyPot(TileEntityRendererDispatcher dispatcher) {
         
@@ -42,41 +48,45 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
     @Override
     public void render (TileEntityBotanyPot tile, float partial, MatrixStack matrix, IRenderTypeBuffer buffer, int light, int overlay) {
         
-        if (tile.getSoil() != null) {
+        if (tile.getSoil() != null && BotanyPots.CLIENT_CONFIG.shouldRenderSoil()) {
             
             matrix.push();
             matrix.scale(0.625f, 0.384f, 0.625f);
             matrix.translate(0.3, 0.01, 0.3);
-            this.renderBlock(tile.getSoil().getRenderState(), tile.getWorld(), tile.getPos(), matrix, buffer);
+            this.renderBlock(tile.getSoil().getRenderState(), tile.getWorld(), tile.getPos(), matrix, buffer, SOIL_SIDES);
             matrix.pop();
+        }
+        
+        if (tile.getCrop() != null && BotanyPots.CLIENT_CONFIG.shouldRenderCrop()) {
             
-            if (tile.getCrop() != null) {
+            matrix.push();
+            matrix.translate(0.5, 0.40, 0.5);
+            
+            if (BotanyPots.CLIENT_CONFIG.shouldDoGrowthAnimation()) {
                 
                 final float growth = MathHelper.clamp((float) tile.getCurrentGrowthTicks() / tile.getTotalGrowthTicks() * (10 / 16f), 0, 1f);
-                matrix.push();
-                matrix.translate(0.5, 0.40, 0.5);
                 matrix.scale(growth, growth, growth);
-                matrix.translate(-0.5, 0, -0.5);
-                
-                final BlockState[] cropStates = tile.getCrop().getDisplayState();
-                
-                for (int i = 0; i < cropStates.length; i++) {
-                    
-                    matrix.translate(0, i, 0);
-                    this.renderBlock(cropStates[i], tile.getWorld(), tile.getPos(), matrix, buffer);
-                    matrix.translate(0, -i, 0);
-                }
-                
-                matrix.pop();
             }
+            
+            matrix.translate(-0.5, 0, -0.5);
+            
+            final BlockState[] cropStates = tile.getCrop().getDisplayState();
+            
+            for (int i = 0; i < cropStates.length; i++) {
+                
+                matrix.translate(0, i, 0);
+                this.renderBlock(cropStates[i], tile.getWorld(), tile.getPos(), matrix, buffer, CROP_SIDES);
+                matrix.translate(0, -i, 0);
+            }
+            
+            matrix.pop();
         }
     }
     
-    private void renderBlock (BlockState state, World world, BlockPos pos, MatrixStack matrix, IRenderTypeBuffer buffer) {
+    private void renderBlock (BlockState state, World world, BlockPos pos, MatrixStack matrix, IRenderTypeBuffer buffer, Direction[] renderSides) {
         
         final BlockRendererDispatcher dispatcher = Minecraft.getInstance().getBlockRendererDispatcher();
         final IBakedModel model = dispatcher.getModelForState(state);
-        final boolean useAO = Minecraft.isAmbientOcclusionEnabled() && state.getLightValue(world, pos) == 0 && model.isAmbientOcclusion();
         
         final RenderType type = RenderTypeLookup.getRenderType(state);
         
@@ -85,27 +95,34 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
             ForgeHooksClient.setRenderLayer(type);
             
             final IVertexBuilder builder = buffer.getBuffer(type);
-            this.renderModel(dispatcher.getBlockModelRenderer(), useAO, world, model, state, pos, matrix, builder, false, OverlayTexture.NO_OVERLAY);
+            this.renderModel(dispatcher.getBlockModelRenderer(), world, model, state, pos, matrix, builder, renderSides);
             
             ForgeHooksClient.setRenderLayer(null);
         }
     }
     
-    public boolean renderModel (BlockModelRenderer renderer, boolean useAO, ILightReader world, IBakedModel model, BlockState state, BlockPos pos, MatrixStack matrix, IVertexBuilder buffer, boolean checkSides, int combinedOverlayIn) {
+    public void renderModel (BlockModelRenderer renderer, ILightReader world, IBakedModel model, BlockState state, BlockPos pos, MatrixStack matrix, IVertexBuilder buffer, Direction[] sides) {
         
-        try {
+        final IModelData modelData = model.getModelData(world, pos, state, EmptyModelData.INSTANCE);
+        
+        for (final Direction side : sides) {
             
-            final IModelData modelData = model.getModelData(world, pos, state, EmptyModelData.INSTANCE);
-            return useAO ? renderer.renderModelSmooth(world, model, state, pos, matrix, buffer, checkSides, RANDOM, 0L, combinedOverlayIn, modelData) : renderer.renderModelFlat(world, model, state, pos, matrix, buffer, checkSides, RANDOM, 0L, combinedOverlayIn, modelData);
+            RANDOM.setSeed(0L);
+            final List<BakedQuad> sidedQuads = model.getQuads(state, side, RANDOM, modelData);
+            
+            if (!sidedQuads.isEmpty()) {
+                
+                final int lightForSide = WorldRenderer.getPackedLightmapCoords(world, state, pos.offset(side));
+                renderer.renderQuadsFlat(world, state, pos, lightForSide, OverlayTexture.NO_OVERLAY, false, matrix, buffer, sidedQuads, BITS);
+            }
         }
         
-        catch (final Throwable throwable) {
+        RANDOM.setSeed(0L);
+        final List<BakedQuad> unsidedQuads = model.getQuads(state, null, RANDOM, modelData);
+        
+        if (!unsidedQuads.isEmpty()) {
             
-            final CrashReport crashreport = CrashReport.makeCrashReport(throwable, "Tesselating block model");
-            final CrashReportCategory crashreportcategory = crashreport.makeCategory("Block model being tesselated");
-            CrashReportCategory.addBlockInfo(crashreportcategory, pos, state);
-            crashreportcategory.addDetail("Using AO", useAO);
-            throw new ReportedException(crashreport);
+            renderer.renderQuadsFlat(world, state, pos, -1, OverlayTexture.NO_OVERLAY, true, matrix, buffer, unsidedQuads, BITS);
         }
     }
 }
