@@ -8,7 +8,9 @@ import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(BotanyPots.MOD_ID)
@@ -16,6 +18,8 @@ public class BotanyPots {
     
     public static final String MOD_ID = "botanypots";
     public static final Logger LOGGER = LogManager.getLogger("Botany Pots");
+    public static final ConfigClient CLIENT_CONFIG = new ConfigClient();
+    
     public static BotanyPots instance;
     
     private final Content content;
@@ -25,7 +29,7 @@ public class BotanyPots {
     public BotanyPots() {
         
         instance = this;
-        
+        ModLoadingContext.get().registerConfig(Type.CLIENT, CLIENT_CONFIG.getSpec());
         this.itemGroup = new ItemGroupBase(MOD_ID, () -> new ItemStack(BotanyPots.instance.content.getBasicBotanyPot()));
         this.registry = new RegistryHelper(MOD_ID, LOGGER, this.itemGroup);
         this.content = DistExecutor.runForDist( () -> () -> new ContentClient(this.registry), () -> () -> new Content(this.registry));
