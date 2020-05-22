@@ -1,42 +1,31 @@
 package net.darkhax.botanypots.block.tileentity;
 
-import java.util.BitSet;
-import java.util.List;
-import java.util.Random;
-
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 
+import net.darkhax.bookshelf.util.RenderUtils;
 import net.darkhax.botanypots.BotanyPots;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.SpawnerBlock;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BlockModelRenderer;
 import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.client.renderer.WorldRenderer;
-import net.minecraft.client.renderer.model.BakedQuad;
 import net.minecraft.client.renderer.model.IBakedModel;
-import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.ILightReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.ForgeHooksClient;
-import net.minecraftforge.client.model.data.EmptyModelData;
-import net.minecraftforge.client.model.data.IModelData;
 
 @OnlyIn(Dist.CLIENT)
 public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBotanyPot> {
     
-    private static final Random RANDOM = new Random();
-    private static final BitSet BITS = new BitSet(3);
     private static final Direction[] SOIL_SIDES = new Direction[] { Direction.UP };
     private static final Direction[] CROP_SIDES = new Direction[] { Direction.UP, Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST };
     
@@ -95,34 +84,9 @@ public class TileEntityRendererBotanyPot extends TileEntityRenderer<TileEntityBo
             ForgeHooksClient.setRenderLayer(type);
             
             final IVertexBuilder builder = buffer.getBuffer(type);
-            this.renderModel(dispatcher.getBlockModelRenderer(), world, model, state, pos, matrix, builder, renderSides);
+            RenderUtils.renderModel(dispatcher.getBlockModelRenderer(), world, model, state, pos, matrix, builder, renderSides);
             
             ForgeHooksClient.setRenderLayer(null);
-        }
-    }
-    
-    public void renderModel (BlockModelRenderer renderer, ILightReader world, IBakedModel model, BlockState state, BlockPos pos, MatrixStack matrix, IVertexBuilder buffer, Direction[] sides) {
-        
-        final IModelData modelData = model.getModelData(world, pos, state, EmptyModelData.INSTANCE);
-        
-        for (final Direction side : sides) {
-            
-            RANDOM.setSeed(0L);
-            final List<BakedQuad> sidedQuads = model.getQuads(state, side, RANDOM, modelData);
-            
-            if (!sidedQuads.isEmpty()) {
-                
-                final int lightForSide = WorldRenderer.getPackedLightmapCoords(world, state, pos.offset(side));
-                renderer.renderQuadsFlat(world, state, pos, lightForSide, OverlayTexture.NO_OVERLAY, false, matrix, buffer, sidedQuads, BITS);
-            }
-        }
-        
-        RANDOM.setSeed(0L);
-        final List<BakedQuad> unsidedQuads = model.getQuads(state, null, RANDOM, modelData);
-        
-        if (!unsidedQuads.isEmpty()) {
-            
-            renderer.renderQuadsFlat(world, state, pos, -1, OverlayTexture.NO_OVERLAY, true, matrix, buffer, unsidedQuads, BITS);
         }
     }
 }
