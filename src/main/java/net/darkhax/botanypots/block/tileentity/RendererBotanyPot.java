@@ -62,7 +62,7 @@ public class RendererBotanyPot extends TileEntityRenderer<TileEntityBotanyPot> {
         
         if (this.isOptifinePresent) {
             
-            BotanyPots.LOGGER.warn("Detected Optifine. Botany pots will be rendered in compatability mode.");
+            BotanyPots.LOGGER.warn("Detected Optifine. Botany pots will be rendered in compatibility mode.");
         }
     }
     
