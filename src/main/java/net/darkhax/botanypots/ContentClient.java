@@ -1,7 +1,7 @@
 package net.darkhax.botanypots;
 
 import net.darkhax.bookshelf.registry.RegistryHelper;
-import net.darkhax.botanypots.block.tileentity.TileEntityRendererBotanyPot;
+import net.darkhax.botanypots.block.tileentity.RendererBotanyPot;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -25,6 +25,6 @@ public class ContentClient extends Content {
             RenderTypeLookup.setRenderLayer(block, RenderType.getCutout());
         }
         
-        ClientRegistry.bindTileEntityRenderer(this.getPotTileType(), TileEntityRendererBotanyPot::new);
+        ClientRegistry.bindTileEntityRenderer(this.getPotTileType(), RendererBotanyPot::new);
     }
 }
