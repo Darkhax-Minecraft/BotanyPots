@@ -1,0 +1,48 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "buzzierbees"
+    }
+  ],
+  "seed": {
+    "item": "buzzierbees:bird_of_paradise"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "buzzierbees:bird_of_paradise",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "buzzierbees:bird_of_paradise",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "buzzierbees:bird_of_paradise"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "buzzierbees:bird_of_paradise"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "buzzierbees"
+    }
+  ],
+  "seed": {
+    "item": "buzzierbees:columbine"
+  },
+  "categories":["dirt"],
+  "growthTicks": 1200,
+  "display": {
+    "block": "buzzierbees:columbine"
+  },
+  "results": [
+    {
+      "chance": 0.65,
+      "output": {
+        "item": "buzzierbees:columbine"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}
