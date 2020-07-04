@@ -7,18 +7,18 @@
     },
     {
       "type": "mysticalagriculture:crop_enabled",
-      "crop": "mysticalagriculture:chicken"
+      "crop": "mysticalagriculture:refined_obsidian"
     }
   ],
   "seed": {
-    "item": "mysticalagriculture:chicken_seeds"
+    "item": "mysticalagriculture:refined_obsidian_seeds"
   },
   "categories": [
-    "prudentium"
+    "imperium"
   ],
-  "growthTicks": 2400,
+  "growthTicks": 4000,
   "display": {
-    "block": "mysticalagriculture:chicken_crop",
+    "block": "mysticalagriculture:refined_obsidian_crop",
     "properties": {
       "age": 7
     }
@@ -27,7 +27,7 @@
     {
       "chance": 0.75,
       "output": {
-        "item": "mysticalagriculture:chicken_essence"
+        "item": "mysticalagriculture:refined_obsidian_essence"
       },
       "minRolls": 1,
       "maxRolls": 1
@@ -35,7 +35,7 @@
     {
       "chance": 0.05,
       "output": {
-        "item": "mysticalagriculture:chicken_seeds"
+        "item": "mysticalagriculture:refined_obsidian_seeds"
       },
       "minRolls": 1,
       "maxRolls": 1

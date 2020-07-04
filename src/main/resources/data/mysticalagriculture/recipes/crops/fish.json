@@ -4,13 +4,19 @@
     {
       "type": "forge:mod_loaded",
       "modid": "mysticalagriculture"
+    },
+    {
+      "type": "mysticalagriculture:crop_enabled",
+      "crop": "mysticalagriculture:fish"
     }
   ],
   "seed": {
     "item": "mysticalagriculture:fish_seeds"
   },
-  "categories":["prudentium"],
-  "growthTicks": 2500,
+  "categories": [
+    "prudentium"
+  ],
+  "growthTicks": 2400,
   "display": {
     "block": "mysticalagriculture:fish_crop",
     "properties": {
@@ -26,7 +32,7 @@
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.05,
       "output": {
         "item": "mysticalagriculture:fish_seeds"
@@ -34,7 +40,7 @@
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.01,
       "output": {
         "item": "mysticalagriculture:fertilized_essence"
