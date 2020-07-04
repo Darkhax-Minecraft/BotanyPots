@@ -13,7 +13,9 @@
   "seed": {
     "item": "mysticalagriculture:silicon_seeds"
   },
-  "categories":["prudentium"],
+  "categories": [
+    "prudentium"
+  ],
   "growthTicks": 2400,
   "display": {
     "block": "mysticalagriculture:silicon_crop",
@@ -30,7 +32,7 @@
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.05,
       "output": {
         "item": "mysticalagriculture:silicon_seeds"
@@ -38,7 +40,7 @@
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.01,
       "output": {
         "item": "mysticalagriculture:fertilized_essence"

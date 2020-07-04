@@ -13,7 +13,9 @@
   "seed": {
     "item": "mysticalagriculture:nickel_seeds"
   },
-  "categories":["imperium"],
+  "categories": [
+    "imperium"
+  ],
   "growthTicks": 4000,
   "display": {
     "block": "mysticalagriculture:nickel_crop",
@@ -30,7 +32,7 @@
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.05,
       "output": {
         "item": "mysticalagriculture:nickel_seeds"
@@ -38,7 +40,7 @@
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.01,
       "output": {
         "item": "mysticalagriculture:fertilized_essence"

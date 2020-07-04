@@ -4,12 +4,18 @@
     {
       "type": "forge:mod_loaded",
       "modid": "mysticalagriculture"
+    },
+    {
+      "type": "mysticalagriculture:crop_enabled",
+      "crop": "mysticalagriculture:diamond"
     }
   ],
   "seed": {
     "item": "mysticalagriculture:diamond_seeds"
   },
-  "categories":["supremium"],
+  "categories": [
+    "supremium"
+  ],
   "growthTicks": 4500,
   "display": {
     "block": "mysticalagriculture:diamond_crop",
@@ -26,7 +32,7 @@
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.05,
       "output": {
         "item": "mysticalagriculture:diamond_seeds"
@@ -34,7 +40,7 @@
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.01,
       "output": {
         "item": "mysticalagriculture:fertilized_essence"

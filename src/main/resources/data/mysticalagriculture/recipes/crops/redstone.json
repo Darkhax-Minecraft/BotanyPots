@@ -4,12 +4,18 @@
     {
       "type": "forge:mod_loaded",
       "modid": "mysticalagriculture"
+    },
+    {
+      "type": "mysticalagriculture:crop_enabled",
+      "crop": "mysticalagriculture:redstone"
     }
   ],
   "seed": {
     "item": "mysticalagriculture:redstone_seeds"
   },
-  "categories":["tertium"],
+  "categories": [
+    "tertium"
+  ],
   "growthTicks": 3600,
   "display": {
     "block": "mysticalagriculture:redstone_crop",
@@ -26,7 +32,7 @@
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.05,
       "output": {
         "item": "mysticalagriculture:redstone_seeds"
@@ -34,7 +40,7 @@
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.01,
       "output": {
         "item": "mysticalagriculture:fertilized_essence"

@@ -7,16 +7,18 @@
     },
     {
       "type": "mysticalagriculture:crop_enabled",
-      "crop": "mysticalagriculture:glowing_dust"
+      "crop": "mysticalagriculture:ender_biotite"
     }
   ],
   "seed": {
-    "item": "mysticalagriculture:glowing_dust_seeds"
+    "item": "mysticalagriculture:ender_biotite_seeds"
   },
-  "categories":["tertium"],
+  "categories": [
+    "tertium"
+  ],
   "growthTicks": 3600,
   "display": {
-    "block": "mysticalagriculture:glowing_dust_crop",
+    "block": "mysticalagriculture:ender_biotite_crop",
     "properties": {
       "age": 7
     }
@@ -25,20 +27,20 @@
     {
       "chance": 0.75,
       "output": {
-        "item": "mysticalagriculture:glowing_dust_essence"
+        "item": "mysticalagriculture:ender_biotite_essence"
       },
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.05,
       "output": {
-        "item": "mysticalagriculture:glowing_dust_seeds"
+        "item": "mysticalagriculture:ender_biotite_seeds"
       },
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.01,
       "output": {
         "item": "mysticalagriculture:fertilized_essence"

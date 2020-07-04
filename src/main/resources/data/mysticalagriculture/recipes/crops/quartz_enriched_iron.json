@@ -7,18 +7,18 @@
     },
     {
       "type": "mysticalagriculture:crop_enabled",
-      "crop": "mysticalagriculture:chicken"
+      "crop": "mysticalagriculture:quartz_enriched_iron"
     }
   ],
   "seed": {
-    "item": "mysticalagriculture:chicken_seeds"
+    "item": "mysticalagriculture:quartz_enriched_iron_seeds"
   },
   "categories": [
-    "prudentium"
+    "tertium"
   ],
-  "growthTicks": 2400,
+  "growthTicks": 3600,
   "display": {
-    "block": "mysticalagriculture:chicken_crop",
+    "block": "mysticalagriculture:quartz_enriched_iron_crop",
     "properties": {
       "age": 7
     }
@@ -27,7 +27,7 @@
     {
       "chance": 0.75,
       "output": {
-        "item": "mysticalagriculture:chicken_essence"
+        "item": "mysticalagriculture:quartz_enriched_iron_essence"
       },
       "minRolls": 1,
       "maxRolls": 1
@@ -35,7 +35,7 @@
     {
       "chance": 0.05,
       "output": {
-        "item": "mysticalagriculture:chicken_seeds"
+        "item": "mysticalagriculture:quartz_enriched_iron_seeds"
       },
       "minRolls": 1,
       "maxRolls": 1

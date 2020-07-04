@@ -7,18 +7,18 @@
     },
     {
       "type": "mysticalagriculture:crop_enabled",
-      "crop": "mysticalagriculture:chicken"
+      "crop": "mysticalagriculture:manasteel"
     }
   ],
   "seed": {
-    "item": "mysticalagriculture:chicken_seeds"
+    "item": "mysticalagriculture:manasteel_seeds"
   },
   "categories": [
-    "prudentium"
+    "tertium"
   ],
-  "growthTicks": 2400,
+  "growthTicks": 3600,
   "display": {
-    "block": "mysticalagriculture:chicken_crop",
+    "block": "mysticalagriculture:manasteel_crop",
     "properties": {
       "age": 7
     }
@@ -27,7 +27,7 @@
     {
       "chance": 0.75,
       "output": {
-        "item": "mysticalagriculture:chicken_essence"
+        "item": "mysticalagriculture:manasteel_essence"
       },
       "minRolls": 1,
       "maxRolls": 1
@@ -35,7 +35,7 @@
     {
       "chance": 0.05,
       "output": {
-        "item": "mysticalagriculture:chicken_seeds"
+        "item": "mysticalagriculture:manasteel_seeds"
       },
       "minRolls": 1,
       "maxRolls": 1
