@@ -17,9 +17,9 @@ public class ActionSoilCreate implements IRuntimeAction {
     
     private final SoilInfo info;
     
-    public ActionSoilCreate(String id, IIngredient ingredient, MCBlockState displayState, int ticks, String[] categories) {
+    public ActionSoilCreate(String id, IIngredient ingredient, MCBlockState displayState, float growthModifier, String[] categories) {
         
-        this.info = new SoilInfo(ResourceLocation.tryCreate(id), ingredient.asVanillaIngredient(), displayState.getInternal(), ticks, new HashSet<>(Arrays.asList(categories)));
+        this.info = new SoilInfo(ResourceLocation.tryCreate(id), ingredient.asVanillaIngredient(), displayState.getInternal(), growthModifier, new HashSet<>(Arrays.asList(categories)));
     }
     
     @Override

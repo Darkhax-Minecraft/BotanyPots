@@ -16,9 +16,9 @@ import net.minecraft.util.ResourceLocation;
 public class Soil {
     
     @ZenCodeType.Method
-    public static void create (String id, IIngredient ingredient, MCBlockState displayState, int ticks, String[] categories) {
+    public static void create (String id, IIngredient ingredient, MCBlockState displayState, float growthModifier, String[] categories) {
         
-        CraftTweakerAPI.apply(new ActionSoilCreate(id, ingredient, displayState, ticks, categories));
+        CraftTweakerAPI.apply(new ActionSoilCreate(id, ingredient, displayState, growthModifier, categories));
     }
     
     @ZenCodeType.Method
