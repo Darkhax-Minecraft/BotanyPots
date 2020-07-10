@@ -1,0 +1,11 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:crimson_nylium"
+  },
+  "display": {
+    "block": "minecraft:crimson_nylium"
+  },
+  "categories": ["dirt", "crimson_nylium", "nylium"],
+  "growthModifier": 0.05
+}
