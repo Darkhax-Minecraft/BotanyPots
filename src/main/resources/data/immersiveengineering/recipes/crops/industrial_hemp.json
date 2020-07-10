@@ -1,0 +1,48 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "seed": {
+    "item": "immersiveengineering:seed"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 2400,
+  "display": [
+    {
+      "block": "immersiveengineering:hemp",
+      "properties": {
+        "growth": "bottom4"
+      }
+    },
+    {
+      "block": "immersiveengineering:hemp",
+      "properties": {
+        "growth": "top0"
+      }
+    }
+  ],
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "immersiveengineering:hemp_fiber"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "immersiveengineering:seed"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}
