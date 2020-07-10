@@ -24,7 +24,7 @@ import net.minecraft.crash.ReportedException;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.ILightReader;
+import net.minecraft.world.IBlockDisplayReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -129,7 +129,7 @@ public class RendererBotanyPot extends TileEntityRenderer<TileEntityBotanyPot> {
         final BlockRendererDispatcher dispatcher = Minecraft.getInstance().getBlockRendererDispatcher();
         final IBakedModel model = dispatcher.getModelForState(state);
         
-        final RenderType type = RenderTypeLookup.getRenderType(state);
+        final RenderType type = RenderTypeLookup.func_239221_b_(state);
         
         if (type != null) {
             
@@ -151,7 +151,7 @@ public class RendererBotanyPot extends TileEntityRenderer<TileEntityBotanyPot> {
         final IBakedModel model = dispatcher.getModelForState(state);
         final boolean useAO = Minecraft.isAmbientOcclusionEnabled() && state.getLightValue(world, pos) == 0 && model.isAmbientOcclusion();
         
-        final RenderType type = RenderTypeLookup.getRenderType(state);
+        final RenderType type = RenderTypeLookup.func_239221_b_(state);
         
         if (type != null) {
             
@@ -167,7 +167,7 @@ public class RendererBotanyPot extends TileEntityRenderer<TileEntityBotanyPot> {
     /**
      * This only exists for optifine compat mode.
      */
-    private boolean renderModel (BlockModelRenderer renderer, boolean useAO, ILightReader world, IBakedModel model, BlockState state, BlockPos pos, MatrixStack matrix, IVertexBuilder buffer, boolean checkSides, int overlay) {
+    private boolean renderModel (BlockModelRenderer renderer, boolean useAO, IBlockDisplayReader world, IBakedModel model, BlockState state, BlockPos pos, MatrixStack matrix, IVertexBuilder buffer, boolean checkSides, int overlay) {
         
         try {
             

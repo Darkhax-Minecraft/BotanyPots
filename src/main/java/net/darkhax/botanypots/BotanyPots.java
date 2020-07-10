@@ -30,9 +30,9 @@ public class BotanyPots {
         
         instance = this;
         ModLoadingContext.get().registerConfig(Type.CLIENT, CLIENT_CONFIG.getSpec());
-        this.itemGroup = new ItemGroupBase(MOD_ID, () -> new ItemStack(BotanyPots.instance.content.getBasicBotanyPot()));
-        this.registry = new RegistryHelper(MOD_ID, LOGGER, this.itemGroup);
-        this.content = DistExecutor.runForDist( () -> () -> new ContentClient(this.registry), () -> () -> new Content(this.registry));
+        this.itemGroup = new ItemGroupBase(MOD_ID, () -> new ItemStack(BotanyPots.instance.content.basicBotanyPot));
+        this.registry = new RegistryHelper(MOD_ID, LOGGER).withItemGroup(this.itemGroup);
+        this.content = DistExecutor.unsafeRunForDist( () -> () -> new ContentClient(this.registry), () -> () -> new Content(this.registry));
         
         this.registry.initialize(FMLJavaModLoadingContext.get().getModEventBus());
     }

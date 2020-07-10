@@ -37,7 +37,7 @@ public class BotanyPotHelper {
         
         if (manager != null) {
             
-            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeSoil(), manager);
+            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().recipeTypeSoil, manager);
         }
         
         return Collections.emptyMap();
@@ -48,7 +48,7 @@ public class BotanyPotHelper {
         
         if (manager != null) {
             
-            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeCrop(), manager);
+            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().recipeTypeCrop, manager);
         }
         
         return Collections.emptyMap();
@@ -59,7 +59,7 @@ public class BotanyPotHelper {
         
         if (manager != null) {
             
-            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), manager);
+            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().recipeTypeFertilizer, manager);
         }
         
         return Collections.emptyMap();
@@ -72,7 +72,7 @@ public class BotanyPotHelper {
         
         if (manager != null && id != null) {
             
-            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeSoil(), manager).get(id);
+            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().recipeTypeSoil, manager).get(id);
         }
         
         return null;
@@ -85,7 +85,7 @@ public class BotanyPotHelper {
         
         if (manager != null && id != null) {
             
-            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeCrop(), manager).get(id);
+            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().recipeTypeCrop, manager).get(id);
         }
         
         return null;
@@ -98,7 +98,7 @@ public class BotanyPotHelper {
         
         if (manager != null && id != null) {
             
-            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), manager).get(id);
+            return RecipeUtils.getRecipes(BotanyPots.instance.getContent().recipeTypeFertilizer, manager).get(id);
         }
         
         return null;
@@ -121,7 +121,7 @@ public class BotanyPotHelper {
     @Nullable
     public static SoilInfo getSoilForItem (ItemStack item) {
         
-        for (final SoilInfo soilInfo : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeSoil(), getManager())) {
+        for (final SoilInfo soilInfo : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().recipeTypeSoil, getManager())) {
             
             if (soilInfo.getIngredient().test(item)) {
                 
@@ -135,7 +135,7 @@ public class BotanyPotHelper {
     @Nullable
     public static CropInfo getCropForItem (ItemStack item) {
         
-        for (final CropInfo cropInfo : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeCrop(), getManager())) {
+        for (final CropInfo cropInfo : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().recipeTypeCrop, getManager())) {
             
             if (cropInfo.getSeed().test(item)) {
                 
@@ -149,7 +149,7 @@ public class BotanyPotHelper {
     @Nullable
     public static FertilizerInfo getFertilizerForItem (ItemStack item) {
         
-        for (final FertilizerInfo fertilizer : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().getRecipeTypeFertilizer(), getManager())) {
+        for (final FertilizerInfo fertilizer : RecipeUtils.getRecipeList(BotanyPots.instance.getContent().recipeTypeFertilizer, getManager())) {
             
             if (fertilizer.getIngredient().test(item)) {
                 

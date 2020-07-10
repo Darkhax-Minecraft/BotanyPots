@@ -113,12 +113,12 @@ public class FertilizerInfo extends RecipeDataBase {
     @Override
     public IRecipeSerializer<?> getSerializer () {
         
-        return BotanyPots.instance.getContent().getRecipeSerializerFertilizer();
+        return BotanyPots.instance.getContent().recipeSerializerFertilizer;
     }
     
     @Override
     public IRecipeType<?> getType () {
         
-        return BotanyPots.instance.getContent().getRecipeTypeFertilizer();
+        return BotanyPots.instance.getContent().recipeTypeFertilizer;
     }
 }

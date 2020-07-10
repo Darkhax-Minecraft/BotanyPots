@@ -23,6 +23,7 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -38,15 +39,17 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockBotanyPot extends Block implements IGrowable {
     
-    private static final ITextComponent TOOLTIP_NORMAL = new TranslationTextComponent("botanypots.tooltip.pot.normal").applyTextStyle(TextFormatting.GRAY);
+    private static final ITextComponent TOOLTIP_NORMAL = new TranslationTextComponent("botanypots.tooltip.pot.normal").func_240699_a_(TextFormatting.GRAY);
     
-    private static final ITextComponent TOOLTIP_HOPPER = new TranslationTextComponent("botanypots.tooltip.pot.hopper").applyTextStyle(TextFormatting.GRAY);
+    private static final ITextComponent TOOLTIP_HOPPER = new TranslationTextComponent("botanypots.tooltip.pot.hopper").func_240699_a_(TextFormatting.GRAY);
     
     private static final VoxelShape SHAPE = Block.makeCuboidShape(2, 0, 2, 14, 8, 14);
     
     private static final Properties properties = Properties.create(Material.CLAY).hardnessAndResistance(1.25F, 4.2F).notSolid();
     
     private final boolean hopper;
+    
+    public static List<Block> botanyPots = NonNullList.create();
     
     public BlockBotanyPot() {
         
@@ -58,6 +61,7 @@ public class BlockBotanyPot extends Block implements IGrowable {
         super(properties);
         this.hopper = hopper;
         this.setDefaultState(this.stateContainer.getBaseState().with(BlockStateProperties.POWERED, false));
+        botanyPots.add(this);
     }
     
     public boolean isHopper () {

@@ -11,20 +11,23 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class ContentClient extends Content {
     
+    private final RegistryHelper registry;
+    
     public ContentClient(RegistryHelper registry) {
         
         super(registry);
+        this.registry = registry;
         
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onClientSetup);
     }
     
     private void onClientSetup (FMLClientSetupEvent event) {
         
-        for (final Block block : this.getBotanyPotBlocks()) {
+        for (final Block block : this.registry.blocks.getValues()) {
             
             RenderTypeLookup.setRenderLayer(block, RenderType.getCutout());
         }
         
-        ClientRegistry.bindTileEntityRenderer(this.getPotTileType(), RendererBotanyPot::new);
+        ClientRegistry.bindTileEntityRenderer(this.tileBotanyPot, RendererBotanyPot::new);
     }
 }

@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[31,)"
+loaderVersion="[32,)"
 issueTrackerURL="https://github.com/Darkhax-Minecraft/BotanyPots/issues"
 
 [[mods]]
@@ -17,20 +17,20 @@ ${mod_description}
 [[dependencies.botanypots]]
     modId="forge"
     mandatory=true
-    versionRange="[31,)"
+    versionRange="[32,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.botanypots]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2]"
+    versionRange="[1.16.1]"
     ordering="NONE"
     side="BOTH"
 	
 [[dependencies.botanypots]]
     modId="bookshelf"
     mandatory=true
-    versionRange="[5.3.11,)"
+    versionRange="[6.0,)"
     ordering="AFTER"
     side="BOTH"

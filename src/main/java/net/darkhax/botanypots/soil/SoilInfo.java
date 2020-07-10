@@ -103,18 +103,18 @@ public class SoilInfo extends RecipeDataBase {
     
     public ITextComponent getName () {
         
-        return this.getRenderState().getBlock().getNameTextComponent();
+        return this.getRenderState().getBlock().getTranslatedName();
     }
     
     @Override
     public IRecipeSerializer<?> getSerializer () {
         
-        return BotanyPots.instance.getContent().getRecipeSerializerSoil();
+        return BotanyPots.instance.getContent().recipeSerializerSoil;
     }
     
     @Override
     public IRecipeType<?> getType () {
         
-        return BotanyPots.instance.getContent().getRecipeTypeSoil();
+        return BotanyPots.instance.getContent().recipeTypeSoil;
     }
 }

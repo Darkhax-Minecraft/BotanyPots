@@ -55,7 +55,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     
     public TileEntityBotanyPot() {
         
-        super(BotanyPots.instance.getContent().getPotTileType());
+        super(BotanyPots.instance.getContent().tileBotanyPot);
     }
     
     /**
@@ -397,12 +397,6 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                     
                     this.soil = foundSoil;
                     
-                    if (this.soilStack.isEmpty()) {
-                        
-                        this.soilStack = foundSoil.getFirstSoil();
-                        BotanyPots.LOGGER.info("No soil stack found. Migrating {} to {}.", rawSoilId, this.soilStack);
-                    }
-                    
                     // Crops are only loaded if the soil exists.
                     if (dataTag.contains("Crop")) {
                         
@@ -416,12 +410,6 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                             if (cropInfo != null) {
                                 
                                 this.crop = cropInfo;
-                                
-                                if (this.cropStack.isEmpty()) {
-                                    
-                                    this.cropStack = cropInfo.getFirstItem();
-                                    BotanyPots.LOGGER.info("No crop stack found. Migrating {} to {}.", rawCropId, this.cropStack);
-                                }
                                 
                                 // Growth ticks are only loaded if a crop and soil exist.
                                 this.currentGrowthTicks = dataTag.getInt("GrowthTicks");

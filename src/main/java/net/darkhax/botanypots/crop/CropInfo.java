@@ -7,7 +7,6 @@ import net.darkhax.bookshelf.item.crafting.RecipeDataBase;
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.BlockState;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
@@ -145,20 +144,6 @@ public class CropInfo extends RecipeDataBase {
         return -1;
     }
     
-    /**
-     * Gets a random seed item. This is used when taking a seed out of a pot. Since seeds are
-     * an ingredient multiple seeds may be possible. To ensure fairness this method will select
-     * one of those items at random.
-     * 
-     * @return A random seed item.
-     */
-    @Deprecated
-    public ItemStack getFirstItem () {
-        
-        final ItemStack[] matchingStacks = this.seed.getMatchingStacks();
-        return matchingStacks.length > 0 ? matchingStacks[0] : ItemStack.EMPTY;
-    }
-    
     public void setSeed (Ingredient seed) {
         
         this.seed = seed;
@@ -187,17 +172,17 @@ public class CropInfo extends RecipeDataBase {
     @Override
     public IRecipeSerializer<?> getSerializer () {
         
-        return BotanyPots.instance.getContent().getRecipeSerializerCrop();
+        return BotanyPots.instance.getContent().recipeSerializerCrop;
     }
     
     @Override
     public IRecipeType<?> getType () {
         
-        return BotanyPots.instance.getContent().getRecipeTypeCrop();
+        return BotanyPots.instance.getContent().recipeTypeCrop;
     }
     
     public ITextComponent getName () {
         
-        return this.getDisplayState()[0].getBlock().getNameTextComponent();
+        return this.getDisplayState()[0].getBlock().getTranslatedName();
     }
 }
