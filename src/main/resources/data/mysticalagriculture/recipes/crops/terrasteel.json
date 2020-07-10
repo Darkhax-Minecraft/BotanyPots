@@ -4,15 +4,21 @@
     {
       "type": "forge:mod_loaded",
       "modid": "mysticalagriculture"
+    },
+    {
+      "type": "mysticalagriculture:crop_enabled",
+      "crop": "mysticalagriculture:terrasteel"
     }
   ],
   "seed": {
-    "item": "mysticalagriculture:wither_skeleton_seeds"
+    "item": "mysticalagriculture:terrasteel_seeds"
   },
-  "categories":["supremium"],
+  "categories": [
+    "supremium"
+  ],
   "growthTicks": 4500,
   "display": {
-    "block": "mysticalagriculture:wither_skeleton_crop",
+    "block": "mysticalagriculture:terrasteel_crop",
     "properties": {
       "age": 7
     }
@@ -21,20 +27,20 @@
     {
       "chance": 0.75,
       "output": {
-        "item": "mysticalagriculture:wither_skeleton_essence"
+        "item": "mysticalagriculture:terrasteel_essence"
       },
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.05,
       "output": {
-        "item": "mysticalagriculture:wither_skeleton_seeds"
+        "item": "mysticalagriculture:terrasteel_seeds"
       },
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.01,
       "output": {
         "item": "mysticalagriculture:fertilized_essence"

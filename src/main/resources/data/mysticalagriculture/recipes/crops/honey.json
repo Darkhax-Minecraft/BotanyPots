@@ -7,18 +7,18 @@
     },
     {
       "type": "mysticalagriculture:crop_enabled",
-      "crop": "mysticalagriculture:chicken"
+      "crop": "mysticalagriculture:honey"
     }
   ],
   "seed": {
-    "item": "mysticalagriculture:chicken_seeds"
+    "item": "mysticalagriculture:honey_seeds"
   },
   "categories": [
     "prudentium"
   ],
   "growthTicks": 2400,
   "display": {
-    "block": "mysticalagriculture:chicken_crop",
+    "block": "mysticalagriculture:honey_crop",
     "properties": {
       "age": 7
     }
@@ -27,7 +27,7 @@
     {
       "chance": 0.75,
       "output": {
-        "item": "mysticalagriculture:chicken_essence"
+        "item": "mysticalagriculture:honey_essence"
       },
       "minRolls": 1,
       "maxRolls": 1
@@ -35,7 +35,7 @@
     {
       "chance": 0.05,
       "output": {
-        "item": "mysticalagriculture:chicken_seeds"
+        "item": "mysticalagriculture:honey_seeds"
       },
       "minRolls": 1,
       "maxRolls": 1

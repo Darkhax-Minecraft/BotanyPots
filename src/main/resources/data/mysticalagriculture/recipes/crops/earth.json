@@ -4,12 +4,18 @@
     {
       "type": "forge:mod_loaded",
       "modid": "mysticalagriculture"
+    },
+    {
+      "type": "mysticalagriculture:crop_enabled",
+      "crop": "mysticalagriculture:earth"
     }
   ],
   "seed": {
     "item": "mysticalagriculture:earth_seeds"
   },
-  "categories":["dirt"],
+  "categories": [
+    "dirt"
+  ],
   "growthTicks": 1200,
   "display": {
     "block": "mysticalagriculture:earth_crop",
@@ -26,7 +32,7 @@
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.05,
       "output": {
         "item": "mysticalagriculture:earth_seeds"
@@ -34,7 +40,7 @@
       "minRolls": 1,
       "maxRolls": 1
     },
-	{
+    {
       "chance": 0.01,
       "output": {
         "item": "mysticalagriculture:fertilized_essence"

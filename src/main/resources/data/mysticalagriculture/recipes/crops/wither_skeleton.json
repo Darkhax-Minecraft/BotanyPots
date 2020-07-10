@@ -7,18 +7,18 @@
     },
     {
       "type": "mysticalagriculture:crop_enabled",
-      "crop": "mysticalagriculture:chicken"
+      "crop": "mysticalagriculture:wither_skeleton"
     }
   ],
   "seed": {
-    "item": "mysticalagriculture:chicken_seeds"
+    "item": "mysticalagriculture:wither_skeleton_seeds"
   },
   "categories": [
-    "prudentium"
+    "supremium"
   ],
-  "growthTicks": 2400,
+  "growthTicks": 4500,
   "display": {
-    "block": "mysticalagriculture:chicken_crop",
+    "block": "mysticalagriculture:wither_skeleton_crop",
     "properties": {
       "age": 7
     }
@@ -27,7 +27,7 @@
     {
       "chance": 0.75,
       "output": {
-        "item": "mysticalagriculture:chicken_essence"
+        "item": "mysticalagriculture:wither_skeleton_essence"
       },
       "minRolls": 1,
       "maxRolls": 1
@@ -35,7 +35,7 @@
     {
       "chance": 0.05,
       "output": {
-        "item": "mysticalagriculture:chicken_seeds"
+        "item": "mysticalagriculture:wither_skeleton_seeds"
       },
       "minRolls": 1,
       "maxRolls": 1
