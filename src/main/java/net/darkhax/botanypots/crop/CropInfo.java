@@ -3,7 +3,7 @@ package net.darkhax.botanypots.crop;
 import java.util.List;
 import java.util.Set;
 
-import net.darkhax.bookshelf.item.crafting.RecipeDataBase;
+import net.darkhax.bookshelf.crafting.RecipeDataBase;
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.BlockState;
@@ -15,11 +15,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 
 public class CropInfo extends RecipeDataBase {
-    
-    /**
-     * The id of the crop.
-     */
-    private final ResourceLocation id;
     
     /**
      * The ingredient used for the crop's seed.
@@ -48,23 +43,12 @@ public class CropInfo extends RecipeDataBase {
     
     public CropInfo(ResourceLocation id, Ingredient seed, Set<String> soilCategories, int growthTicks, List<HarvestEntry> results, BlockState[] displayStates) {
         
-        this.id = id;
+        super(id);
         this.seed = seed;
         this.soilCategories = soilCategories;
         this.growthTicks = growthTicks;
         this.results = results;
         this.displayBlocks = displayStates;
-    }
-    
-    /**
-     * Gets the internal ID of the crop.
-     * 
-     * @return The internal ID of the crop.
-     */
-    @Override
-    public ResourceLocation getId () {
-        
-        return this.id;
     }
     
     /**

@@ -2,7 +2,7 @@ package net.darkhax.botanypots.fertilizer;
 
 import java.util.Random;
 
-import net.darkhax.bookshelf.item.crafting.RecipeDataBase;
+import net.darkhax.bookshelf.crafting.RecipeDataBase;
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.crop.CropInfo;
 import net.darkhax.botanypots.soil.SoilInfo;
@@ -13,11 +13,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
 public class FertilizerInfo extends RecipeDataBase {
-    
-    /**
-     * The id for the fertilizer entry.
-     */
-    private final ResourceLocation id;
     
     /**
      * The items in the fertilizer category.
@@ -36,21 +31,10 @@ public class FertilizerInfo extends RecipeDataBase {
     
     public FertilizerInfo(ResourceLocation id, Ingredient ingredient, int minTicks, int maxTicks) {
         
-        this.id = id;
+        super(id);
         this.ingredient = ingredient;
         this.minTicks = minTicks;
         this.maxTicks = maxTicks;
-    }
-    
-    /**
-     * The id of the fertilizer.
-     * 
-     * @return The fertilizer's internal id.
-     */
-    @Override
-    public ResourceLocation getId () {
-        
-        return this.id;
     }
     
     /**

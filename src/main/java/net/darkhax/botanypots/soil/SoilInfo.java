@@ -2,7 +2,7 @@ package net.darkhax.botanypots.soil;
 
 import java.util.Set;
 
-import net.darkhax.bookshelf.item.crafting.RecipeDataBase;
+import net.darkhax.bookshelf.crafting.RecipeDataBase;
 import net.darkhax.botanypots.BotanyPots;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
@@ -13,11 +13,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
 public class SoilInfo extends RecipeDataBase {
-    
-    /**
-     * The id of the soil entry.
-     */
-    private final ResourceLocation id;
     
     /**
      * The item used to get the soil into the pot.
@@ -41,17 +36,11 @@ public class SoilInfo extends RecipeDataBase {
     
     public SoilInfo(ResourceLocation id, Ingredient ingredient, BlockState renderState, float growthModifier, Set<String> categories) {
         
-        this.id = id;
+        super(id);
         this.ingredient = ingredient;
         this.renderState = renderState;
         this.growthModifier = growthModifier;
         this.categories = categories;
-    }
-    
-    @Override
-    public ResourceLocation getId () {
-        
-        return this.id;
     }
     
     public float getGrowthModifier () {
