@@ -341,7 +341,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     
     public void onCropHarvest () {
         
-        if (this.hasSoilAndCrop()) {
+        if (this.hasSoilAndCrop() && BotanyPots.CLIENT_CONFIG.shouldDoBreakEffects()) {
             
             this.world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, this.pos, Block.getStateId(this.crop.getDisplayState()[0]));
         }
