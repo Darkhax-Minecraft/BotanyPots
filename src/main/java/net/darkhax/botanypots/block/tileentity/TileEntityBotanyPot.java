@@ -16,7 +16,6 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.EmptyHandler;
 
@@ -341,9 +340,9 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     
     public void onCropHarvest () {
         
-        if (this.hasSoilAndCrop() && BotanyPots.CLIENT_CONFIG.shouldDoBreakEffects()) {
+        if (this.hasSoilAndCrop()) {
             
-            this.world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, this.pos, Block.getStateId(this.crop.getDisplayState()[0]));
+            BotanyPots.doBreakEffects(this.world, this.pos, this.crop.getDisplayState()[0]);
         }
     }
     
