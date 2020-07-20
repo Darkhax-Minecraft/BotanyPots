@@ -10,6 +10,7 @@ public class ConfigClient {
     private final BooleanValue growthAnimation;
     private final BooleanValue renderSoil;
     private final BooleanValue renderCrop;
+    private final BooleanValue breakEffects;
     
     public ConfigClient() {
         
@@ -27,6 +28,9 @@ public class ConfigClient {
         
         builder.comment("Whether or not crops should render in pots.");
         this.renderCrop = builder.define("renderCrop", true);
+
+        builder.comment("Whether or not break effects should occur when harvested.");
+        this.breakEffects = builder.define("breakEffects", true);
         
         builder.pop();
         this.spec = builder.build();
@@ -45,6 +49,11 @@ public class ConfigClient {
     public boolean shouldRenderCrop () {
         
         return this.renderCrop.get();
+    }
+
+    public boolean shouldDoBreakEffects () {
+
+        return this.breakEffects.get();
     }
     
     public ForgeConfigSpec getSpec () {

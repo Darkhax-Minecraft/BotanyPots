@@ -1,5 +1,14 @@
 package net.darkhax.botanypots;
 
+import net.darkhax.botanypots.network.BreakEffectsMessage;
+import net.minecraft.block.BlockState;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.network.NetworkDirection;
+import net.minecraftforge.fml.network.NetworkRegistry;
+import net.minecraftforge.fml.network.PacketDistributor;
+import net.minecraftforge.fml.network.simple.SimpleChannel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,6 +28,26 @@ public class BotanyPots {
     public static final String MOD_ID = "botanypots";
     public static final Logger LOGGER = LogManager.getLogger("Botany Pots");
     public static final ConfigClient CLIENT_CONFIG = new ConfigClient();
+    
+    private static final String NETWORK_PROTOCOL_VERSION = "1";
+    
+    private static final SimpleChannel NETWORK_CHANNEL =
+        NetworkRegistry.ChannelBuilder.named(new ResourceLocation(MOD_ID, "network"))
+            .clientAcceptedVersions(NETWORK_PROTOCOL_VERSION::equals)
+            .serverAcceptedVersions(NETWORK_PROTOCOL_VERSION::equals)
+            .networkProtocolVersion(() -> NETWORK_PROTOCOL_VERSION)
+            .simpleChannel();
+    
+    static {
+        
+        NETWORK_CHANNEL.messageBuilder(BreakEffectsMessage.class, 0, NetworkDirection.PLAY_TO_CLIENT)
+            .encoder(BreakEffectsMessage::write).decoder(BreakEffectsMessage::new)
+            .consumer( (breakEffectsMessage, contextSupplier) -> {
+                
+                contextSupplier.get().enqueueWork(breakEffectsMessage::doBreakEffects);
+                contextSupplier.get().setPacketHandled(true);
+            }).add();
+    }
     
     public static BotanyPots instance;
     
@@ -45,5 +74,10 @@ public class BotanyPots {
     public RegistryHelper getRegistry () {
         
         return this.registry;
+    }
+    
+    public static void doBreakEffects(World world, BlockPos pos, BlockState state) {
+        
+        NETWORK_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> world.getChunkAt(pos)), new BreakEffectsMessage(pos, state));
     }
 }
