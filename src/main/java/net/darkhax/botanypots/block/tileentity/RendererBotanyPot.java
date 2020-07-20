@@ -95,7 +95,8 @@ public class RendererBotanyPot extends TileEntityRenderer<TileEntityBotanyPot> {
             
             if (BotanyPots.CLIENT_CONFIG.shouldDoGrowthAnimation()) {
                 
-                final float growth = MathHelper.clamp((float) tile.getCurrentGrowthTicks() / tile.getTotalGrowthTicks() * (10 / 16f), 0, 1f);
+                final float progressScale = 0.25f + (((float) tile.getCurrentGrowthTicks() / tile.getTotalGrowthTicks()) * 0.75f);
+                final float growth = MathHelper.clamp(progressScale * 0.625f, 0, 1f);
                 matrix.scale(growth, growth, growth);
             }
             
