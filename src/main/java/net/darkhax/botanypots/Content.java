@@ -16,15 +16,12 @@ import net.darkhax.botanypots.soil.SoilInfo;
 import net.darkhax.botanypots.soil.SoilSerializer;
 import net.minecraft.block.Block;
 import net.minecraft.item.DyeColor;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.datafix.TypeReferences;
-import net.minecraft.util.registry.Registry;
 
 public class Content {
     
@@ -45,13 +42,13 @@ public class Content {
     public Content(RegistryHelper registry) {
         
         // Recipe types
-        this.recipeTypeSoil = register("soil");
+        this.recipeTypeSoil = registry.recipeTypes.register("soil");
         this.recipeSerializerSoil = registry.recipeSerializers.register(SoilSerializer.INSTANCE, "soil");
         
-        this.recipeTypeCrop = register("crop");
+        this.recipeTypeCrop = registry.recipeTypes.register("crop");
         this.recipeSerializerCrop = registry.recipeSerializers.register(CropSerializer.INSTANCE, "crop");
         
-        this.recipeTypeFertilizer = register("fertilizer");
+        this.recipeTypeFertilizer = registry.recipeTypes.register("fertilizer");
         this.recipeSerializerFertilizer = registry.recipeSerializers.register(FertilizerSerializer.INSTANCE, "fertilizer");
         
         // Blocks
@@ -67,18 +64,6 @@ public class Content {
         // Tile Entity
         this.tileBotanyPot = register("botany_pot", TileEntityBotanyPot::new, BlockBotanyPot.botanyPots);
         registry.tileEntities.register(this.tileBotanyPot, "botany_pot");
-    }
-    
-    @Deprecated // Hopefully forge will do something with this.
-    static <T extends IRecipe<?>> IRecipeType<T> register (final String key) {
-        
-        return Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(key), new IRecipeType<T>() {
-            @Override
-            public String toString () {
-                
-                return key;
-            }
-        });
     }
     
     @Deprecated // Hopefully forge will do something with this.

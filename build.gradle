@@ -104,6 +104,8 @@ dependencies {
     minecraft "net.minecraftforge:forge:${forge_version}"
 	
 	compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.16.1:${bookshelf_version}")
+    compile fg.deobf("mezz.jei:jei-1.16.1:${jei_version}")
+    compile fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.1:${crafttweaker_version}")
 }
 
 jar {
