@@ -1,5 +1,7 @@
 package net.darkhax.botanypots.network;
 
+import java.util.function.Supplier;
+
 import net.darkhax.botanypots.BotanyPots;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -9,6 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.network.NetworkEvent;
 
 public class BreakEffectsMessage {
     
@@ -17,29 +20,35 @@ public class BreakEffectsMessage {
     
     public BreakEffectsMessage(BlockPos pos, BlockState state) {
         
+        this(pos, Block.getStateId(state));
+    }
+    
+    private BreakEffectsMessage(BlockPos pos, int state) {
+        
         this.pos = pos;
-        this.state = Block.getStateId(state);
+        this.state = state;
     }
     
-    public BreakEffectsMessage(PacketBuffer buf) {
+    public static void encode (BreakEffectsMessage message, PacketBuffer buf) {
         
-        this.pos = buf.readBlockPos();
-        this.state = buf.readVarInt();
+        buf.writeBlockPos(message.pos);
+        buf.writeInt(message.state);
     }
     
-    public void write (PacketBuffer buf) {
+    public static BreakEffectsMessage decode (PacketBuffer buf) {
         
-        buf.writeBlockPos(this.pos);
-        buf.writeVarInt(this.state);
+        final BlockPos pos = buf.readBlockPos();
+        final int state = buf.readInt();
+        return new BreakEffectsMessage(pos, state);
     }
     
-    public void doBreakEffects () {
+    public static void handle (BreakEffectsMessage message, Supplier<NetworkEvent.Context> ctx) {
         
         if (BotanyPots.CLIENT_CONFIG.shouldDoBreakEffects()) {
             
             DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
                 
-                Minecraft.getInstance().world.playEvent(null, Constants.WorldEvents.BREAK_BLOCK_EFFECTS, this.pos, this.state);
+                Minecraft.getInstance().world.playEvent(null, Constants.WorldEvents.BREAK_BLOCK_EFFECTS, message.pos, message.state);
             });
         }
     }

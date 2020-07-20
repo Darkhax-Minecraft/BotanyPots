@@ -8,6 +8,7 @@ import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.block.BlockBotanyPot;
 import net.darkhax.botanypots.crop.CropInfo;
+import net.darkhax.botanypots.network.BreakEffectsMessage;
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -16,6 +17,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.network.PacketDistributor.TargetPoint;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.EmptyHandler;
 
@@ -342,7 +344,8 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         
         if (this.hasSoilAndCrop()) {
             
-            BotanyPots.doBreakEffects(this.world, this.pos, this.crop.getDisplayState()[0]);
+            final TargetPoint target = new TargetPoint(this.pos.getX() + 0.5f, this.pos.getY() + 0.5f, this.pos.getZ() + 0.5f, this.getMaxRenderDistanceSquared(), this.world.func_234923_W_());
+            BotanyPots.NETWORK.sendToNearbyPlayers(target, new BreakEffectsMessage(this.pos, this.crop.getDisplayState()[0]));
         }
     }
     

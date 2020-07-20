@@ -28,7 +28,7 @@ public class ConfigClient {
         
         builder.comment("Whether or not crops should render in pots.");
         this.renderCrop = builder.define("renderCrop", true);
-
+        
         builder.comment("Whether or not break effects should occur when harvested.");
         this.breakEffects = builder.define("breakEffects", true);
         
@@ -50,9 +50,9 @@ public class ConfigClient {
         
         return this.renderCrop.get();
     }
-
+    
     public boolean shouldDoBreakEffects () {
-
+        
         return this.breakEffects.get();
     }
     
