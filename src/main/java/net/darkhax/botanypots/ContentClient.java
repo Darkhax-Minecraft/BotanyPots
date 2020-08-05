@@ -14,7 +14,7 @@ public class ContentClient extends Content {
     
     public ContentClient(RegistryHelper registry) {
         
-        super(registry);       
+        super(registry);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onClientSetup);
     }
     

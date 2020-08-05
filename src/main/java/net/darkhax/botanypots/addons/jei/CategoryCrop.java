@@ -102,7 +102,7 @@ public class CategoryCrop implements IRecipeCategory<CropWrapper> {
             stacks.set(nextSlotId, entry.getItem());
             nextSlotId++;
         }
-
+        
         stacks.addTooltipCallback(recipe::getTooltip);
     }
 }
