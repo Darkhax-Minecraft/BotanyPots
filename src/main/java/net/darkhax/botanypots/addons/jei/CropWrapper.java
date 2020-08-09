@@ -91,7 +91,7 @@ public class CropWrapper implements IRecipeCategoryExtension {
                 if (slotIndex == 0) {
                     
                     final int growthTicks = this.cropInfo.getGrowthTicks();
-                    tooltip.add(new TranslationTextComponent("botanypots.tooltip.jei.growthrate", growthTicks, ticksToTime(growthTicks, false)).func_240701_a_(TextFormatting.GRAY));
+                    tooltip.add(new TranslationTextComponent("botanypots.tooltip.jei.growthrate", growthTicks, ticksToTime(growthTicks, false)).mergeStyle(TextFormatting.GRAY));
                 }
                 
                 else if (slotIndex == 1) {
@@ -102,7 +102,7 @@ public class CropWrapper implements IRecipeCategoryExtension {
                         
                         final int difference = this.cropInfo.getGrowthTicksForSoil(soil) - this.cropInfo.getGrowthTicks();
                         final TextFormatting formatting = difference < 0 ? TextFormatting.GREEN : difference > 0 ? TextFormatting.RED : TextFormatting.GRAY;
-                        tooltip.add(new TranslationTextComponent("botanypots.tooltip.jei.growthmodifier", soil.getGrowthModifier(), ticksToTime(difference, true)).func_240699_a_(formatting));
+                        tooltip.add(new TranslationTextComponent("botanypots.tooltip.jei.growthmodifier", soil.getGrowthModifier(), ticksToTime(difference, true)).mergeStyle(formatting));
                     }
                 }
             }
@@ -114,19 +114,19 @@ public class CropWrapper implements IRecipeCategoryExtension {
                 if (outputIndex < this.drops.size()) {
                     
                     final HarvestEntry entry = this.drops.get(outputIndex);
-                    tooltip.add(new TranslationTextComponent("botanypots.tooltip.jei.dropchance", entry.getChance() * 100f).func_240699_a_(TextFormatting.GRAY));
+                    tooltip.add(new TranslationTextComponent("botanypots.tooltip.jei.dropchance", entry.getChance() * 100f).mergeStyle(TextFormatting.GRAY));
                     
                     final int rollMin = entry.getMinRolls();
                     final int rollMax = entry.getMaxRolls();
                     
                     if (rollMin == rollMax) {
                         
-                        tooltip.add(new TranslationTextComponent("botanypots.tooltip.jei.rolls", rollMin).func_240701_a_(TextFormatting.GRAY));
+                        tooltip.add(new TranslationTextComponent("botanypots.tooltip.jei.rolls", rollMin).mergeStyle(TextFormatting.GRAY));
                     }
                     
                     else {
                         
-                        tooltip.add(new TranslationTextComponent("botanypots.tooltip.jei.rollrange", rollMin, rollMax).func_240699_a_(TextFormatting.GRAY));
+                        tooltip.add(new TranslationTextComponent("botanypots.tooltip.jei.rollrange", rollMin, rollMax).mergeStyle(TextFormatting.GRAY));
                     }
                 }
             }

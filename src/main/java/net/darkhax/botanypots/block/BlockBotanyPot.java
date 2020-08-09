@@ -39,9 +39,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockBotanyPot extends Block implements IGrowable {
     
-    private static final ITextComponent TOOLTIP_NORMAL = new TranslationTextComponent("botanypots.tooltip.pot.normal").func_240699_a_(TextFormatting.GRAY);
+    private static final ITextComponent TOOLTIP_NORMAL = new TranslationTextComponent("botanypots.tooltip.pot.normal").mergeStyle(TextFormatting.GRAY);
     
-    private static final ITextComponent TOOLTIP_HOPPER = new TranslationTextComponent("botanypots.tooltip.pot.hopper").func_240699_a_(TextFormatting.GRAY);
+    private static final ITextComponent TOOLTIP_HOPPER = new TranslationTextComponent("botanypots.tooltip.pot.hopper").mergeStyle(TextFormatting.GRAY);
     
     private static final VoxelShape SHAPE = Block.makeCuboidShape(2, 0, 2, 14, 8, 14);
     
