@@ -17,7 +17,8 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.network.PacketDistributor.TargetPoint;
+import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.IChunk;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.EmptyHandler;
 
@@ -344,8 +345,13 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         
         if (this.hasSoilAndCrop()) {
             
-            final TargetPoint target = new TargetPoint(this.pos.getX() + 0.5f, this.pos.getY() + 0.5f, this.pos.getZ() + 0.5f, this.getMaxRenderDistanceSquared(), this.world.func_234923_W_());
-            BotanyPots.NETWORK.sendToNearbyPlayers(target, new BreakEffectsMessage(this.pos, this.crop.getDisplayState()[0]));
+        	final IChunk chunk = world.getChunk(this.pos);
+        	
+        	if (chunk instanceof Chunk) {
+        		
+        		// TODO remove the need to cast this.
+                BotanyPots.NETWORK.sendToChunk((Chunk) chunk, new BreakEffectsMessage(this.pos, this.crop.getDisplayState()[0]));
+        	}
         }
     }
     
