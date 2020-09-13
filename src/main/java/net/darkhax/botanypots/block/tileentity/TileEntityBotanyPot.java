@@ -14,11 +14,15 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.IPacket;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunk;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.EmptyHandler;
 
@@ -55,6 +59,11 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
      */
     private int autoHarvestCooldown;
     
+    /**
+     * The current chunk pos. Not saved to nbt.
+     */
+    private ChunkPos chunkPos;
+    
     public TileEntityBotanyPot() {
         
         super(BotanyPots.instance.getContent().tileBotanyPot);
@@ -88,6 +97,16 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         if (!this.world.isRemote) {
             
             this.sync();
+        }
+    }
+    
+    @Override
+    public void sync () {
+        
+        if (this.world instanceof ServerWorld) {
+            
+            final IPacket<?> packet = this.getUpdatePacket();
+            sendToTracking((ServerWorld) this.world, this.getChunkPos(), this.pos, packet, false);
         }
     }
     
@@ -345,13 +364,13 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         
         if (this.hasSoilAndCrop()) {
             
-        	final IChunk chunk = world.getChunk(this.pos);
-        	
-        	if (chunk instanceof Chunk) {
-        		
-        		// TODO remove the need to cast this.
+            final IChunk chunk = this.world.getChunk(this.pos);
+            
+            if (chunk instanceof Chunk) {
+                
+                // TODO remove the need to cast this.
                 BotanyPots.NETWORK.sendToChunk((Chunk) chunk, new BreakEffectsMessage(this.pos, this.crop.getDisplayState()[0]));
-        	}
+            }
         }
     }
     
@@ -461,5 +480,20 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     public ItemStack getCropStack () {
         
         return this.cropStack;
+    }
+    
+    public ChunkPos getChunkPos () {
+        
+        if (this.chunkPos == null) {
+            
+            this.chunkPos = new ChunkPos(this.pos);
+        }
+        
+        return this.chunkPos;
+    }
+    
+    public static void sendToTracking (ServerWorld world, ChunkPos chunkPos, BlockPos blockPos, IPacket<?> packet, boolean boundaryOnly) {
+        
+        world.getChunkProvider().chunkManager.getTrackingPlayers(chunkPos, boundaryOnly).forEach(p -> p.connection.sendPacket(packet));
     }
 }
