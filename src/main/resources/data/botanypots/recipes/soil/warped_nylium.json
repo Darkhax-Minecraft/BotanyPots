@@ -6,6 +6,6 @@
   "display": {
     "block": "minecraft:warped_nylium"
   },
-  "categories": ["dirt", "warped_nylium", "nylium"],
+  "categories": ["dirt", "warped_nylium", "nylium", "mushroom"],
   "growthModifier": 0.05
 }
