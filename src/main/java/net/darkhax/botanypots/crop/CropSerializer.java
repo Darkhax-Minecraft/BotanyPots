@@ -8,7 +8,7 @@ import java.util.Set;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import net.darkhax.bookshelf.util.MCJsonUtils;
+import net.darkhax.bookshelf.serialization.Serializers;
 import net.darkhax.bookshelf.util.PacketUtils;
 import net.darkhax.botanypots.BotanyPots;
 import net.minecraft.block.BlockState;
@@ -32,27 +32,7 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
         final List<HarvestEntry> results = deserializeCropEntries(id, json);
         
         final JsonElement element = json.get("display");
-        BlockState[] states = new BlockState[0];
-        
-        if (element.isJsonObject()) {
-            
-            states = new BlockState[] { MCJsonUtils.deserializeBlockState(element.getAsJsonObject()) };
-        }
-        
-        else if (element.isJsonArray()) {
-            
-            final List<BlockState> list = new ArrayList<>();
-            
-            for (final JsonElement subElement : element.getAsJsonArray()) {
-                
-                if (subElement.isJsonObject()) {
-                    
-                    list.add(MCJsonUtils.deserializeBlockState(subElement.getAsJsonObject()));
-                }
-            }
-            
-            states = list.toArray(new BlockState[0]);
-        }
+        BlockState[] states = Serializers.BLOCK_STATE.readList(element).toArray(new BlockState[0]);
         
         if (growthTicks <= 0) {
             

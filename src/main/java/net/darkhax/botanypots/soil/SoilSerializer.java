@@ -6,7 +6,7 @@ import java.util.Set;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import net.darkhax.bookshelf.util.MCJsonUtils;
+import net.darkhax.bookshelf.serialization.Serializers;
 import net.darkhax.bookshelf.util.PacketUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -24,7 +24,7 @@ public class SoilSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
     public SoilInfo read (ResourceLocation id, JsonObject json) {
         
         final Ingredient input = Ingredient.deserialize(json.getAsJsonObject("input"));
-        final BlockState renderState = MCJsonUtils.deserializeBlockState(json.getAsJsonObject("display"));
+        final BlockState renderState = Serializers.BLOCK_STATE.read(json.get("display"));
         final float growthModifier = JSONUtils.getFloat(json, "growthModifier");
         final Set<String> categories = new HashSet<>();
         

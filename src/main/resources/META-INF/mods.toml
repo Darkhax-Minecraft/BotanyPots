@@ -1,10 +1,11 @@
 modLoader="javafml"
-loaderVersion="[32,)"
+loaderVersion="[33,)"
 issueTrackerURL="https://github.com/Darkhax-Minecraft/BotanyPots/issues"
+license="LGPL v2.1"
 
 [[mods]]
 modId="botanypots"
-updateJSONURL="https://updates.blamejared.com/get?n=botanypots&gv=1.16.1"
+updateJSONURL="https://updates.blamejared.com/get?n=botanypots&gv=1.16.2"
 version="${version}"
 displayName="${mod_name}"
 displayURL="${mod_download}"
@@ -17,20 +18,20 @@ ${mod_description}
 [[dependencies.botanypots]]
     modId="forge"
     mandatory=true
-    versionRange="[32,)"
+    versionRange="[33,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.botanypots]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.1]"
+    versionRange="[1.16.2]"
     ordering="NONE"
     side="BOTH"
 	
 [[dependencies.botanypots]]
     modId="bookshelf"
     mandatory=true
-    versionRange="[6.1,)"
+    versionRange="[7,)"
     ordering="AFTER"
     side="BOTH"
