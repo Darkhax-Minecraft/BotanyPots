@@ -6,6 +6,6 @@
   "display": {
     "block": "minecraft:crimson_nylium"
   },
-  "categories": ["dirt", "crimson_nylium", "nylium"],
+  "categories": ["dirt", "crimson_nylium", "nylium", "mushroom"],
   "growthModifier": 0.05
 }
