@@ -1,0 +1,38 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "variant16x"
+    }
+  ],
+  "seed": {
+    "item": "variant16x:paeonia"
+  },
+  "categories": [
+    "dirt",
+    "grass"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "variant16x:paeonia"
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "variant16x:paeonia"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "variant16x:paeonia"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}
