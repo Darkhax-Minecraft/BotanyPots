@@ -103,7 +103,7 @@ repositories {
 	
     maven { 
         name = "TehNut's Maven (HWYLA)"
-		url "https://tehnut.info/maven" 
+		url "https://maven.tehnut.info" 
 	}
 	
     maven {
@@ -124,6 +124,7 @@ dependencies {
 	compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.16.2:${bookshelf_version}")
     compile fg.deobf("mezz.jei:jei-1.16.2:${jei_version}")
     compile fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.2:${crafttweaker_version}")  
+    compile fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}")
 }
 
 jar {
