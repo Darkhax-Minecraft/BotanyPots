@@ -115,6 +115,11 @@ repositories {
         name = "Curios"
         url = "https://maven.theillusivec4.top/"
     }
+    
+    maven {
+        name 'tterrag maven'
+        url "https://maven.tterrag.com/"
+    }
 }
 
 dependencies {
@@ -125,6 +130,7 @@ dependencies {
     compile fg.deobf("mezz.jei:jei-1.16.2:${jei_version}")
     compile fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.2:${crafttweaker_version}")  
     compile fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}")
+    compile fg.deobf( "mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
 }
 
 jar {
