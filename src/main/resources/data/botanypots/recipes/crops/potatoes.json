@@ -3,7 +3,9 @@
   "seed": {
     "item": "minecraft:potato"
   },
-  "categories":["dirt"],
+  "categories": [
+    "dirt"
+  ],
   "growthTicks": 900,
   "display": {
     "block": "minecraft:potatoes",
@@ -23,7 +25,7 @@
     {
       "chance": 0.05,
       "output": {
-        "item": "minecraft:potato"
+        "item": "minecraft:poisonous_potato"
       },
       "minRolls": 1,
       "maxRolls": 2
