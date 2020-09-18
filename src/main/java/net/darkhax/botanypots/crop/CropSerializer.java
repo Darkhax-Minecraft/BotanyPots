@@ -32,7 +32,7 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
         final List<HarvestEntry> results = deserializeCropEntries(id, json);
         
         final JsonElement element = json.get("display");
-        BlockState[] states = Serializers.BLOCK_STATE.readList(element).toArray(new BlockState[0]);
+        final BlockState[] states = Serializers.BLOCK_STATE.readList(element).toArray(new BlockState[0]);
         
         if (growthTicks <= 0) {
             
