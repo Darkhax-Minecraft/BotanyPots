@@ -12,6 +12,7 @@ build/
 run/
 /libs
 .cache
+logs/
 
 #Eclipse
 .classpath

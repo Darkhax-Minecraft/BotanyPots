@@ -1,11 +1,13 @@
 package net.darkhax.botanypots.data;
 
 import net.darkhax.botanypots.BotanyPots;
+import net.darkhax.botanypots.fertilizer.FertilizerBuilder;
 import net.darkhax.botanypots.soil.SoilBuilder;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
+import net.minecraft.item.Items;
 import net.minecraft.state.properties.BlockStateProperties;
 
 import javax.annotation.Nonnull;
@@ -47,5 +49,7 @@ public class Recipes extends RecipeProvider {
                 .setModID(BotanyPots.MOD_ID).build(consumer);
         SoilBuilder.create().setInput(Blocks.WARPED_NYLIUM).setVisibleBlock(Blocks.WARPED_NYLIUM)
                 .addCategory("dirt", "warped_nylium", "nylium", "mushroom").setModID(BotanyPots.MOD_ID).build(consumer);
+
+        FertilizerBuilder.create().setFertilizer(Items.BONE_MEAL).setMinTicks(120).setMaxTicks(170).setModID(BotanyPots.MOD_ID).build(consumer);
     }
 }
