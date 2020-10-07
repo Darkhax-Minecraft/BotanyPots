@@ -1,8 +1,0 @@
-{
-  "type": "botanypots:fertilizer",
-  "fertilizer": {
-    "item": "minecraft:bone_meal"
-  },
-  "minTicks": 120,
-  "maxTicks": 170
-}
