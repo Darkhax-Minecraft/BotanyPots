@@ -23,7 +23,6 @@ import net.minecraft.util.ResourceLocation;
 import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Consumer;
 
 public class CropBuilder {
@@ -33,7 +32,6 @@ public class CropBuilder {
     private int growthTicks;
     private final List<BlockState> display = Lists.newArrayList();
     private final List<HarvestEntry> results = Lists.newArrayList();
-    private String modid;
 
     public static CropBuilder create() {
         return new CropBuilder();
@@ -107,11 +105,6 @@ public class CropBuilder {
 
     public CropBuilder addResults(HarvestEntry category) {
         this.results.add(category);
-        return this;
-    }
-
-    public CropBuilder setModID(String modid) {
-        this.modid = modid;
         return this;
     }
 

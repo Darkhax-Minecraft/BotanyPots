@@ -24,7 +24,6 @@ public class SoilBuilder {
     private BlockState display;
     private final List<String> categories = Lists.newArrayList();
     private float growthModifier;
-    private String modid;
 
     public static SoilBuilder create() {
         return new SoilBuilder();
@@ -74,11 +73,6 @@ public class SoilBuilder {
 
     public SoilBuilder setGrowthModifier(float modifier) {
         this.growthModifier = modifier;
-        return this;
-    }
-
-    public SoilBuilder setModID(String modid) {
-        this.modid = modid;
         return this;
     }
 

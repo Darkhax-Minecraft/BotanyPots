@@ -17,7 +17,6 @@ public class FertilizerBuilder {
     private Ingredient fertilizer;
     private int minTicks;
     private int maxTicks;
-    private String modid;
 
     public static FertilizerBuilder create() {
         return new FertilizerBuilder();
@@ -50,11 +49,6 @@ public class FertilizerBuilder {
 
     public FertilizerBuilder setMaxTicks(int ticks) {
         this.maxTicks = ticks;
-        return this;
-    }
-
-    public FertilizerBuilder setModID(String modid) {
-        this.modid = modid;
         return this;
     }
 

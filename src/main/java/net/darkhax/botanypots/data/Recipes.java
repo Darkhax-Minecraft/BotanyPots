@@ -45,10 +45,11 @@ public class Recipes extends RecipeProvider {
                 .setVisibleBlock(Blocks.FARMLAND.getDefaultState().with(BlockStateProperties.MOISTURE_0_7, 7))
                 .addCategory("dirt", "farmland")
                 .setGrowthModifier(0.15F)
-                .setModID(BotanyPots.MOD_ID)
                 .build(consumer, loc(Blocks.FARMLAND));
 
-        FertilizerBuilder.create().setFertilizer(Items.BONE_MEAL).setMinTicks(120).setMaxTicks(170).setModID(BotanyPots.MOD_ID)
+        FertilizerBuilder.create().setFertilizer(Items.BONE_MEAL)
+                .setMinTicks(120)
+                .setMaxTicks(170)
                 .build(consumer, loc(Items.BONE_MEAL));
 
         buildFlowerRecipe(Blocks.ALLIUM, consumer);
@@ -212,7 +213,6 @@ public class Recipes extends RecipeProvider {
                 .setVisibleBlock(soil)
                 .addCategory(categories)
                 .setGrowthModifier(growthModifier)
-                .setModID(BotanyPots.MOD_ID)
                 .build(consumer, loc(soil));
     }
 
