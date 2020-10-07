@@ -53,6 +53,7 @@ public class FertilizerBuilder {
     }
 
     public void build(Consumer<IFinishedRecipe> consumer, ResourceLocation id) {
+        id = new ResourceLocation(id.getNamespace(), "fertilizers/" + id.getPath());
         this.validate(id);
         consumer.accept(new FinishedRecipe(id, this.fertilizer, this.minTicks, this.maxTicks, this.group == null ? "" : this.group));
     }

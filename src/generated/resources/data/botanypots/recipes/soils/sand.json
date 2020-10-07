@@ -4,7 +4,10 @@
     "item": "minecraft:sand"
   },
   "display": {
-    "block": "minecraft:sand"
+    "properties": {
+      "block": "minecraft:sand",
+      "properties": {}
+    }
   },
   "categories": [
     "sand"

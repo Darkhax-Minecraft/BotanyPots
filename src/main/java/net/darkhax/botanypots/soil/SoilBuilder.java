@@ -77,6 +77,7 @@ public class SoilBuilder {
     }
 
     public void build(Consumer<IFinishedRecipe> consumer, ResourceLocation id) {
+        id = new ResourceLocation(id.getNamespace(), "soils/" + id.getPath());
         this.validate(id);
         consumer.accept(new FinishedRecipe(id, this.input, this.display, this.growthModifier, this.categories, this.group == null ? "" : this.group));
     }

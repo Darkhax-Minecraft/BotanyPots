@@ -4,7 +4,10 @@
     "item": "minecraft:dirt"
   },
   "display": {
-    "block": "minecraft:dirt"
+    "properties": {
+      "block": "minecraft:dirt",
+      "properties": {}
+    }
   },
   "categories": [
     "dirt"

@@ -4,7 +4,12 @@
     "item": "minecraft:mycelium"
   },
   "display": {
-    "block": "minecraft:mycelium"
+    "properties": {
+      "block": "minecraft:mycelium",
+      "properties": {
+        "snowy": false
+      }
+    }
   },
   "categories": [
     "dirt",

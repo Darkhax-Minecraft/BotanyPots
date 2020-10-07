@@ -4,7 +4,10 @@
     "item": "minecraft:end_stone"
   },
   "display": {
-    "block": "minecraft:end_stone"
+    "properties": {
+      "block": "minecraft:end_stone",
+      "properties": {}
+    }
   },
   "categories": [
     "end_stone"

@@ -4,7 +4,10 @@
     "item": "minecraft:warped_nylium"
   },
   "display": {
-    "block": "minecraft:warped_nylium"
+    "properties": {
+      "block": "minecraft:warped_nylium",
+      "properties": {}
+    }
   },
   "categories": [
     "dirt",

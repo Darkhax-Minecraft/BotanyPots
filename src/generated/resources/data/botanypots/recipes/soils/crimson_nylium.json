@@ -4,7 +4,10 @@
     "item": "minecraft:crimson_nylium"
   },
   "display": {
-    "block": "minecraft:crimson_nylium"
+    "properties": {
+      "block": "minecraft:crimson_nylium",
+      "properties": {}
+    }
   },
   "categories": [
     "dirt",

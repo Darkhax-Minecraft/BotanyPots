@@ -109,6 +109,7 @@ public class CropBuilder {
     }
 
     public void build(Consumer<IFinishedRecipe> consumer, ResourceLocation id) {
+        id = new ResourceLocation(id.getNamespace(), "crops/" + id.getPath());
         this.validate(id);
         consumer.accept(new CropBuilder.FinishedRecipe(id, this.seed, this.categories, this.growthTicks, this.display,
                 this.results, this.group == null ? "" : this.group));

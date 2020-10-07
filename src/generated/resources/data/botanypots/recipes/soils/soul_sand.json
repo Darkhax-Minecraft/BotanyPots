@@ -4,7 +4,10 @@
     "item": "minecraft:soul_sand"
   },
   "display": {
-    "block": "minecraft:soul_sand"
+    "properties": {
+      "block": "minecraft:soul_sand",
+      "properties": {}
+    }
   },
   "categories": [
     "soul_sand",

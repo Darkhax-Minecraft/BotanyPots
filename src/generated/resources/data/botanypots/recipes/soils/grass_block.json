@@ -4,7 +4,12 @@
     "item": "minecraft:grass_block"
   },
   "display": {
-    "block": "minecraft:grass_block"
+    "properties": {
+      "block": "minecraft:grass_block",
+      "properties": {
+        "snowy": false
+      }
+    }
   },
   "categories": [
     "dirt",

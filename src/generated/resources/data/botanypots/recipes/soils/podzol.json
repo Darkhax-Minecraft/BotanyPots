@@ -4,7 +4,12 @@
     "item": "minecraft:podzol"
   },
   "display": {
-    "block": "minecraft:podzol"
+    "properties": {
+      "block": "minecraft:podzol",
+      "properties": {
+        "snowy": false
+      }
+    }
   },
   "categories": [
     "dirt",

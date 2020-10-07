@@ -4,7 +4,6 @@
     "item": "minecraft:farmland"
   },
   "display": {
-    "block": "minecraft:farmland",
     "properties": {
       "block": "minecraft:farmland",
       "properties": {
