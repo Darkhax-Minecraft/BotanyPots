@@ -74,22 +74,22 @@ public class Recipes extends RecipeProvider {
                 .addVisibleBlocks(Blocks.BAMBOO)
                 .addCategories("dirt", "sand")
                 .setGrowthTicks(1800)
-                .addResults(new HarvestEntry(0.75F, new ItemStack(Blocks.BAMBOO), 1, 3),
-                        new HarvestEntry(0.05F, new ItemStack(Blocks.BAMBOO), 1, 3))
+                .addResults(new HarvestEntry(0.75F, new ItemStack(Items.BAMBOO), 1, 3),
+                        new HarvestEntry(0.05F, new ItemStack(Items.BAMBOO), 1, 3))
                 .build(consumer, loc(Items.BAMBOO));
         CropBuilder.create().setSeed(Tags.Items.SEEDS_BEETROOT)
                 .addVisibleBlocks(Blocks.BEETROOTS.getDefaultState().with(BlockStateProperties.AGE_0_3, 3))
                 .addCategories("dirt")
                 .setGrowthTicks(1500)
-                .addResults(new HarvestEntry(0.75F, new ItemStack(Blocks.BEETROOTS), 1, 1),
-                        new HarvestEntry(0.05F, new ItemStack(Blocks.BEETROOTS), 1, 2),
+                .addResults(new HarvestEntry(0.75F, new ItemStack(Items.BEETROOT), 1, 1),
+                        new HarvestEntry(0.05F, new ItemStack(Items.BEETROOT), 1, 2),
                         new HarvestEntry(0.05F, new ItemStack(Items.BEETROOT_SEEDS), 1, 2))
-                .build(consumer, loc(Items.BEETROOT_SEEDS));
+                .build(consumer, loc(Items.BEETROOT));
         CropBuilder.create().setSeed(Items.CACTUS)
                 .addVisibleBlocks(Blocks.CACTUS)
                 .addCategories("sand")
                 .setGrowthTicks(1600)
-                .addResults(new HarvestEntry(0.75F, new ItemStack(Blocks.CACTUS), 1, 1))
+                .addResults(new HarvestEntry(0.75F, new ItemStack(Items.CACTUS), 1, 1))
                 .build(consumer, loc(Items.CACTUS));
         CropBuilder.create().setSeed(Items.CARROT)
                 .addVisibleBlocks(Blocks.CARROTS.getDefaultState().with(BlockStateProperties.AGE_0_7, 7))
@@ -103,22 +103,22 @@ public class Recipes extends RecipeProvider {
                 .addCategories("end_stone")
                 .setGrowthTicks(2400)
                 .addResults(new HarvestEntry(1.0F, new ItemStack(Items.CHORUS_FRUIT), 1, 12),
-                        new HarvestEntry(0.05F, new ItemStack(Blocks.CHORUS_FLOWER), 1, 1))
+                        new HarvestEntry(0.05F, new ItemStack(Items.CHORUS_FLOWER), 1, 1))
                 .build(consumer, loc(Items.CHORUS_FLOWER));
         CropBuilder.create().setSeed(Items.CRIMSON_ROOTS)
                 .addVisibleBlocks(Blocks.CRIMSON_ROOTS)
                 .addCategories("crimson_nylium")
                 .setGrowthTicks(600)
-                .addResults(new HarvestEntry(0.75F, new ItemStack(Blocks.CRIMSON_ROOTS), 1, 1),
+                .addResults(new HarvestEntry(0.75F, new ItemStack(Items.CRIMSON_ROOTS), 1, 1),
                         new HarvestEntry(0.05F, new ItemStack(Items.CRIMSON_ROOTS), 1, 2))
                 .build(consumer, loc(Items.CRIMSON_ROOTS));
         CropBuilder.create().setSeed(Items.FERN)
                 .addVisibleBlocks(Blocks.FERN)
                 .addCategories("grass")
                 .setGrowthTicks(600)
-                .addResults(new HarvestEntry(0.75F, new ItemStack(Blocks.FERN), 1, 1),
-                        new HarvestEntry(0.05F, new ItemStack(Blocks.FERN), 1, 2),
-                        new HarvestEntry(0.05F, new ItemStack(Blocks.LARGE_FERN), 1, 1))
+                .addResults(new HarvestEntry(0.75F, new ItemStack(Items.FERN), 1, 1),
+                        new HarvestEntry(0.05F, new ItemStack(Items.FERN), 1, 2),
+                        new HarvestEntry(0.05F, new ItemStack(Items.LARGE_FERN), 1, 1))
                 .build(consumer, loc(Items.FERN));
         CropBuilder.create().setSeed(Items.LILY_OF_THE_VALLEY)
                 .addVisibleBlocks(Blocks.LILY_OF_THE_VALLEY)
@@ -131,7 +131,7 @@ public class Recipes extends RecipeProvider {
                 .addVisibleBlocks(Blocks.MELON)
                 .addCategories("dirt")
                 .setGrowthTicks(1800)
-                .addResults(new HarvestEntry(0.75F, new ItemStack(Blocks.MELON), 1, 1),
+                .addResults(new HarvestEntry(0.75F, new ItemStack(Items.MELON), 1, 1),
                         new HarvestEntry(0.05F, new ItemStack(Items.MELON_SEEDS), 1, 2))
                 .build(consumer, loc(Items.MELON_SEEDS));
         CropBuilder.create().setSeed(Items.NETHER_WART)
@@ -152,7 +152,7 @@ public class Recipes extends RecipeProvider {
                 .addVisibleBlocks(Blocks.PUMPKIN)
                 .addCategories("dirt")
                 .setGrowthTicks(1800)
-                .addResults(new HarvestEntry(0.75F, new ItemStack(Blocks.PUMPKIN), 1, 1),
+                .addResults(new HarvestEntry(0.75F, new ItemStack(Items.PUMPKIN), 1, 1),
                         new HarvestEntry(0.05F, new ItemStack(Items.PUMPKIN_SEEDS), 1, 2))
                 .build(consumer, loc(Items.PUMPKIN_SEEDS));
         CropBuilder.create().setSeed(Items.SUGAR_CANE)
