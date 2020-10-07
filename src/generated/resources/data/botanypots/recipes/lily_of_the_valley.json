@@ -1,0 +1,34 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:lily_of_the_valley"
+  },
+  "display": {
+    "properties": {
+      "block": "minecraft:lily_of_the_valley",
+      "properties": {}
+    }
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1400,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:lily_of_the_valley"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:lily_of_the_valley"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

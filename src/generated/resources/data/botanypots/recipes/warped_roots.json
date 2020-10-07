@@ -1,0 +1,34 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:warped_roots"
+  },
+  "display": {
+    "properties": {
+      "block": "minecraft:warped_roots",
+      "properties": {}
+    }
+  },
+  "categories": [
+    "warped_nylium"
+  ],
+  "growthTicks": 600,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:warped_roots"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:warped_roots"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

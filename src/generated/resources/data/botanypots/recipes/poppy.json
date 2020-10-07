@@ -1,0 +1,34 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:poppy"
+  },
+  "display": {
+    "properties": {
+      "block": "minecraft:poppy",
+      "properties": {}
+    }
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:poppy"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:poppy"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

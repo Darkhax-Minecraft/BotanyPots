@@ -1,0 +1,32 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:twisting_vines"
+  },
+  "display": [
+    {
+      "block": "minecraft:twisting_vines_plant",
+      "properties": {}
+    },
+    {
+      "block": "minecraft:twisting_vines",
+      "properties": {
+        "age": 0
+      }
+    }
+  ],
+  "categories": [
+    "warped_nylium"
+  ],
+  "growthTicks": 1600,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:twisting_vines"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

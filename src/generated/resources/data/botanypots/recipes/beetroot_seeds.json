@@ -1,0 +1,44 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "tag": "forge:seeds/beetroot"
+  },
+  "display": {
+    "properties": {
+      "block": "minecraft:beetroots",
+      "properties": {
+        "age": 3
+      }
+    }
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1500,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:beetroot_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:beetroot_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:beetroot_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

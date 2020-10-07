@@ -1,0 +1,34 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:red_tulip"
+  },
+  "display": {
+    "properties": {
+      "block": "minecraft:red_tulip",
+      "properties": {}
+    }
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:red_tulip"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:red_tulip"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

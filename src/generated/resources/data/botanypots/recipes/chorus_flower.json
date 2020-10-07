@@ -1,0 +1,36 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:chorus_flower"
+  },
+  "display": {
+    "properties": {
+      "block": "minecraft:chorus_flower",
+      "properties": {
+        "age": 0
+      }
+    }
+  },
+  "categories": [
+    "end_stone"
+  ],
+  "growthTicks": 2400,
+  "results": [
+    {
+      "chance": 1.0,
+      "output": {
+        "item": "minecraft:chorus_fruit"
+      },
+      "minRolls": 1,
+      "maxRolls": 12
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:chorus_flower"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

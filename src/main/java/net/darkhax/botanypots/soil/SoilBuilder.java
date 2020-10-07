@@ -9,10 +9,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.Property;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nullable;
@@ -124,10 +120,7 @@ public class SoilBuilder {
             JsonObject input = new JsonObject();
             input.addProperty("item", this.input.getRegistryName().toString());
             JsonObject display = new JsonObject();
-            display.addProperty("block", this.display.getBlock().asItem().getRegistryName().toString());
-            if (this.display != this.display.getBlock().getDefaultState()) {
-                display.add("properties", SerializerBlockState.SERIALIZER.write(this.display));
-            }
+            display.add("properties", SerializerBlockState.SERIALIZER.write(this.display));
             JsonArray categories = new JsonArray();
             for (String category : this.categories) {
                 categories.add(category);

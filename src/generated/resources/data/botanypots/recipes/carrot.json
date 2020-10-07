@@ -1,0 +1,36 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:carrot"
+  },
+  "display": {
+    "properties": {
+      "block": "minecraft:carrots",
+      "properties": {
+        "age": 7
+      }
+    }
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1100,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:carrot"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:carrot"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

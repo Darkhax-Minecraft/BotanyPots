@@ -1,0 +1,44 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "tag": "forge:seeds/wheat"
+  },
+  "display": {
+    "properties": {
+      "block": "minecraft:wheat",
+      "properties": {
+        "age": 7
+      }
+    }
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1000,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:wheat"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:wheat"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:wheat_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

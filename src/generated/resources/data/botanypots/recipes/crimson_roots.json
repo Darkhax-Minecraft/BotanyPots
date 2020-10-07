@@ -1,0 +1,34 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:crimson_roots"
+  },
+  "display": {
+    "properties": {
+      "block": "minecraft:crimson_roots",
+      "properties": {}
+    }
+  },
+  "categories": [
+    "crimson_nylium"
+  ],
+  "growthTicks": 600,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:crimson_roots"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:crimson_roots"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}
