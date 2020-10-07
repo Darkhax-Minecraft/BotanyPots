@@ -4,10 +4,8 @@
     "item": "minecraft:dandelion"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:dandelion",
-      "properties": {}
-    }
+    "block": "minecraft:dandelion",
+    "properties": {}
   },
   "categories": [
     "dirt"

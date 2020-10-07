@@ -4,10 +4,8 @@
     "item": "minecraft:allium"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:allium",
-      "properties": {}
-    }
+    "block": "minecraft:allium",
+    "properties": {}
   },
   "categories": [
     "dirt"

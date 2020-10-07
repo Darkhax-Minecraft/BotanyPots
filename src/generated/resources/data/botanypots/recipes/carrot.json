@@ -4,11 +4,9 @@
     "item": "minecraft:carrot"
   },
   "display": {
+    "block": "minecraft:carrots",
     "properties": {
-      "block": "minecraft:carrots",
-      "properties": {
-        "age": 7
-      }
+      "age": 7
     }
   },
   "categories": [

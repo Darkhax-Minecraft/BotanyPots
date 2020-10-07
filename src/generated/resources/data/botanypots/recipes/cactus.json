@@ -4,11 +4,9 @@
     "item": "minecraft:cactus"
   },
   "display": {
+    "block": "minecraft:cactus",
     "properties": {
-      "block": "minecraft:cactus",
-      "properties": {
-        "age": 0
-      }
+      "age": 0
     }
   },
   "categories": [

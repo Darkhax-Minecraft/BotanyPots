@@ -4,10 +4,8 @@
     "item": "minecraft:poppy"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:poppy",
-      "properties": {}
-    }
+    "block": "minecraft:poppy",
+    "properties": {}
   },
   "categories": [
     "dirt"

@@ -4,10 +4,8 @@
     "item": "minecraft:oxeye_daisy"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:oxeye_daisy",
-      "properties": {}
-    }
+    "block": "minecraft:oxeye_daisy",
+    "properties": {}
   },
   "categories": [
     "dirt"

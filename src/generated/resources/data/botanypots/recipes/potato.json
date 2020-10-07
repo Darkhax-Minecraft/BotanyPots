@@ -4,11 +4,9 @@
     "item": "minecraft:potato"
   },
   "display": {
+    "block": "minecraft:potatoes",
     "properties": {
-      "block": "minecraft:potatoes",
-      "properties": {
-        "age": 7
-      }
+      "age": 7
     }
   },
   "categories": [

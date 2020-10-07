@@ -4,10 +4,8 @@
     "item": "minecraft:crimson_roots"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:crimson_roots",
-      "properties": {}
-    }
+    "block": "minecraft:crimson_roots",
+    "properties": {}
   },
   "categories": [
     "crimson_nylium"

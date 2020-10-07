@@ -166,9 +166,7 @@ public class CropBuilder {
                 categories.add(category);
             }
             if (this.display.size() == 1) {
-                JsonObject display = new JsonObject();
-                display.add("properties", SerializerBlockState.SERIALIZER.write(this.display.get(0)));
-                json.add("display", display);
+                json.add("display", SerializerBlockState.SERIALIZER.write(this.display.get(0)));
             } else {
                 JsonArray displays = new JsonArray();
                 for (BlockState state : this.display) {

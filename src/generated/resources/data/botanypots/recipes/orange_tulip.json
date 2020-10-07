@@ -4,10 +4,8 @@
     "item": "minecraft:orange_tulip"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:orange_tulip",
-      "properties": {}
-    }
+    "block": "minecraft:orange_tulip",
+    "properties": {}
   },
   "categories": [
     "dirt"

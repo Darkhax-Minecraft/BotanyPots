@@ -4,10 +4,8 @@
     "item": "minecraft:brown_mushroom"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:brown_mushroom",
-      "properties": {}
-    }
+    "block": "minecraft:brown_mushroom",
+    "properties": {}
   },
   "categories": [
     "mushroom"

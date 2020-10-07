@@ -4,10 +4,8 @@
     "item": "minecraft:white_tulip"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:white_tulip",
-      "properties": {}
-    }
+    "block": "minecraft:white_tulip",
+    "properties": {}
   },
   "categories": [
     "dirt"

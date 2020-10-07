@@ -4,10 +4,8 @@
     "item": "minecraft:crimson_fungus"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:crimson_fungus",
-      "properties": {}
-    }
+    "block": "minecraft:crimson_fungus",
+    "properties": {}
   },
   "categories": [
     "crimson_nylium"

@@ -4,11 +4,9 @@
     "item": "minecraft:sweet_berries"
   },
   "display": {
+    "block": "minecraft:sweet_berry_bush",
     "properties": {
-      "block": "minecraft:sweet_berry_bush",
-      "properties": {
-        "age": 3
-      }
+      "age": 3
     }
   },
   "categories": [

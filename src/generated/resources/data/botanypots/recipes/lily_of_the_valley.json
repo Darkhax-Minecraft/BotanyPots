@@ -4,10 +4,8 @@
     "item": "minecraft:lily_of_the_valley"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:lily_of_the_valley",
-      "properties": {}
-    }
+    "block": "minecraft:lily_of_the_valley",
+    "properties": {}
   },
   "categories": [
     "dirt"

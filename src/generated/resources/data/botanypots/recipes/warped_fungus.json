@@ -4,10 +4,8 @@
     "item": "minecraft:warped_fungus"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:warped_fungus",
-      "properties": {}
-    }
+    "block": "minecraft:warped_fungus",
+    "properties": {}
   },
   "categories": [
     "warped_nylium"

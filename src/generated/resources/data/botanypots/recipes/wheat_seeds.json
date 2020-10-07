@@ -4,11 +4,9 @@
     "tag": "forge:seeds/wheat"
   },
   "display": {
+    "block": "minecraft:wheat",
     "properties": {
-      "block": "minecraft:wheat",
-      "properties": {
-        "age": 7
-      }
+      "age": 7
     }
   },
   "categories": [

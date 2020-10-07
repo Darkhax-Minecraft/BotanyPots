@@ -4,10 +4,8 @@
     "tag": "forge:seeds/melon"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:melon",
-      "properties": {}
-    }
+    "block": "minecraft:melon",
+    "properties": {}
   },
   "categories": [
     "dirt"

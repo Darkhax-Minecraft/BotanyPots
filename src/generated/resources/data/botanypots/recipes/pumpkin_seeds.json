@@ -4,10 +4,8 @@
     "tag": "forge:seeds/pumpkin"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:pumpkin",
-      "properties": {}
-    }
+    "block": "minecraft:pumpkin",
+    "properties": {}
   },
   "categories": [
     "dirt"

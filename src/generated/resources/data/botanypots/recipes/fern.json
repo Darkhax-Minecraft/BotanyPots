@@ -4,10 +4,8 @@
     "item": "minecraft:fern"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:fern",
-      "properties": {}
-    }
+    "block": "minecraft:fern",
+    "properties": {}
   },
   "categories": [
     "grass"

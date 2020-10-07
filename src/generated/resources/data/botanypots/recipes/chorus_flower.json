@@ -4,11 +4,9 @@
     "item": "minecraft:chorus_flower"
   },
   "display": {
+    "block": "minecraft:chorus_flower",
     "properties": {
-      "block": "minecraft:chorus_flower",
-      "properties": {
-        "age": 0
-      }
+      "age": 0
     }
   },
   "categories": [

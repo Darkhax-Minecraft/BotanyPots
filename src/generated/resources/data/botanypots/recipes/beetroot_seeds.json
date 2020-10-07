@@ -4,11 +4,9 @@
     "tag": "forge:seeds/beetroot"
   },
   "display": {
+    "block": "minecraft:beetroots",
     "properties": {
-      "block": "minecraft:beetroots",
-      "properties": {
-        "age": 3
-      }
+      "age": 3
     }
   },
   "categories": [

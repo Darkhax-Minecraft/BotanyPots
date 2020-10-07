@@ -4,10 +4,8 @@
     "item": "minecraft:azure_bluet"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:azure_bluet",
-      "properties": {}
-    }
+    "block": "minecraft:azure_bluet",
+    "properties": {}
   },
   "categories": [
     "dirt"

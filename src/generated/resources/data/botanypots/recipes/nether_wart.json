@@ -4,11 +4,9 @@
     "item": "minecraft:nether_wart"
   },
   "display": {
+    "block": "minecraft:nether_wart",
     "properties": {
-      "block": "minecraft:nether_wart",
-      "properties": {
-        "age": 3
-      }
+      "age": 3
     }
   },
   "categories": [

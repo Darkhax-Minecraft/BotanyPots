@@ -4,10 +4,8 @@
     "item": "minecraft:wither_rose"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:wither_rose",
-      "properties": {}
-    }
+    "block": "minecraft:wither_rose",
+    "properties": {}
   },
   "categories": [
     "soul_sand"

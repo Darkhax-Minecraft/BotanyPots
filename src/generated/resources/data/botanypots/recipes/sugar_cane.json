@@ -4,11 +4,9 @@
     "item": "minecraft:sugar_cane"
   },
   "display": {
+    "block": "minecraft:sugar_cane",
     "properties": {
-      "block": "minecraft:sugar_cane",
-      "properties": {
-        "age": 0
-      }
+      "age": 0
     }
   },
   "categories": [

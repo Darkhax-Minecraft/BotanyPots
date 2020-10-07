@@ -4,10 +4,8 @@
     "item": "minecraft:cornflower"
   },
   "display": {
-    "properties": {
-      "block": "minecraft:cornflower",
-      "properties": {}
-    }
+    "block": "minecraft:cornflower",
+    "properties": {}
   },
   "categories": [
     "dirt"

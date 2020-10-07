@@ -4,13 +4,11 @@
     "item": "minecraft:bamboo"
   },
   "display": {
+    "block": "minecraft:bamboo",
     "properties": {
-      "block": "minecraft:bamboo",
-      "properties": {
-        "age": 0,
-        "leaves": "none",
-        "stage": 0
-      }
+      "age": 0,
+      "leaves": "none",
+      "stage": 0
     }
   },
   "categories": [
