@@ -1,10 +1,12 @@
 package net.darkhax.botanypots.fertilizer;
 
 import com.google.gson.JsonObject;
-import net.minecraft.block.Block;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.tags.ITag;
+import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nullable;
@@ -12,7 +14,7 @@ import java.util.function.Consumer;
 
 public class FertilizerBuilder {
     private String group;
-    private Item fertilizer;
+    private Ingredient fertilizer;
     private int minTicks;
     private int maxTicks;
     private String modid;
@@ -26,8 +28,18 @@ public class FertilizerBuilder {
         return this;
     }
 
-    public FertilizerBuilder setFertilizer(Item item) {
-        this.fertilizer = item;
+    public FertilizerBuilder setFertilizer(IItemProvider item) {
+        this.fertilizer = Ingredient.fromItems(item);
+        return this;
+    }
+
+    public FertilizerBuilder setFertilizer(ITag<Item> tag) {
+        this.fertilizer = Ingredient.fromTag(tag);
+        return this;
+    }
+
+    public FertilizerBuilder setFertilizer(Ingredient ingredient) {
+        this.fertilizer = ingredient;
         return this;
     }
 
@@ -46,10 +58,6 @@ public class FertilizerBuilder {
         return this;
     }
 
-    public void build(Consumer<IFinishedRecipe> consumer) {
-        this.build(consumer, this.modid == null ? this.fertilizer.getRegistryName() : new ResourceLocation(this.modid, this.fertilizer.getRegistryName().getPath()));
-    }
-
     public void build(Consumer<IFinishedRecipe> consumer, ResourceLocation id) {
         this.validate(id);
         consumer.accept(new FinishedRecipe(id, this.fertilizer, this.minTicks, this.maxTicks, this.group == null ? "" : this.group));
@@ -66,12 +74,12 @@ public class FertilizerBuilder {
 
     private static class FinishedRecipe implements IFinishedRecipe {
         private final ResourceLocation id;
-        private final Item fertilizer;
+        private final Ingredient fertilizer;
         private final int minTicks;
         private final int maxTicks;
         private final String group;
 
-        private FinishedRecipe(ResourceLocation id, Item fertilizer, int minTicks, int maxTicks, String group) {
+        private FinishedRecipe(ResourceLocation id, Ingredient fertilizer, int minTicks, int maxTicks, String group) {
             this.id = id;
             this.fertilizer = fertilizer;
             this.minTicks = minTicks;
@@ -84,9 +92,7 @@ public class FertilizerBuilder {
             if (!this.group.isEmpty()) {
                 json.addProperty("group", this.group);
             }
-            JsonObject fertilizer = new JsonObject();
-            fertilizer.addProperty("item", this.fertilizer.getRegistryName().toString());
-            json.add("fertilizer", fertilizer);
+            json.add("fertilizer", this.fertilizer.serialize());
             json.addProperty("minTicks", this.minTicks);
             json.addProperty("maxTicks", this.maxTicks);
         }

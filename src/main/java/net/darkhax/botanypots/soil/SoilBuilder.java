@@ -9,6 +9,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.tags.ITag;
+import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nullable;
@@ -17,7 +20,7 @@ import java.util.function.Consumer;
 
 public class SoilBuilder {
     private String group;
-    private Item input;
+    private Ingredient input;
     private BlockState display;
     private final List<String> categories = Lists.newArrayList();
     private float growthModifier;
@@ -32,13 +35,18 @@ public class SoilBuilder {
         return this;
     }
 
-    public SoilBuilder setInput(Block block) {
-        this.input = block.asItem();
+    public SoilBuilder setInput(IItemProvider item) {
+        this.input = Ingredient.fromItems(item.asItem());
         return this;
     }
 
-    public SoilBuilder setInput(Item item) {
-        this.input = item;
+    public SoilBuilder setInput(ITag<Item> tag) {
+        this.input = Ingredient.fromTag(tag);
+        return this;
+    }
+
+    public SoilBuilder setInput(Ingredient ingredient) {
+        this.input = ingredient;
         return this;
     }
 
@@ -74,10 +82,6 @@ public class SoilBuilder {
         return this;
     }
 
-    public void build(Consumer<IFinishedRecipe> consumer) {
-        this.build(consumer, this.modid == null ? this.input.getRegistryName() : new ResourceLocation(this.modid, this.input.getRegistryName().getPath()));
-    }
-
     public void build(Consumer<IFinishedRecipe> consumer, ResourceLocation id) {
         this.validate(id);
         consumer.accept(new FinishedRecipe(id, this.input, this.display, this.growthModifier, this.categories, this.group == null ? "" : this.group));
@@ -97,13 +101,13 @@ public class SoilBuilder {
 
     private static class FinishedRecipe implements IFinishedRecipe {
         private final ResourceLocation id;
-        private final Item input;
+        private final Ingredient input;
         private final BlockState display;
         private final float growthModifier;
         private final List<String> categories;
         private final String group;
 
-        private FinishedRecipe(ResourceLocation id, Item input, BlockState display, float growthModifier, List<String> categories, String group) {
+        private FinishedRecipe(ResourceLocation id, Ingredient input, BlockState display, float growthModifier, List<String> categories, String group) {
             this.id = id;
             this.input = input;
             this.display = display;
@@ -117,8 +121,7 @@ public class SoilBuilder {
             if (!this.group.isEmpty()) {
                 json.addProperty("group", this.group);
             }
-            JsonObject input = new JsonObject();
-            input.addProperty("item", this.input.getRegistryName().toString());
+            json.add("input", this.input.serialize());
             JsonObject display = new JsonObject();
             display.add("properties", SerializerBlockState.SERIALIZER.write(this.display));
             JsonArray categories = new JsonArray();
@@ -126,7 +129,6 @@ public class SoilBuilder {
                 categories.add(category);
             }
 
-            json.add("input", input);
             json.add("display", display);
             json.add("categories", categories);
             json.addProperty("growthModifier", this.growthModifier);

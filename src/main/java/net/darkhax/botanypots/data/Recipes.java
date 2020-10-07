@@ -28,37 +28,28 @@ public class Recipes extends RecipeProvider {
 
     @Override
     protected void registerRecipes(@Nonnull Consumer<IFinishedRecipe> consumer) {
-        SoilBuilder.create().setInput(Blocks.COARSE_DIRT).setVisibleBlock(Blocks.COARSE_DIRT)
-                .addCategory("dirt", "coarse_dirt").setGrowthModifier(-0.65F).setModID(BotanyPots.MOD_ID).build(consumer);
-        SoilBuilder.create().setInput(Blocks.CRIMSON_NYLIUM).setVisibleBlock(Blocks.CRIMSON_NYLIUM)
-                .addCategory("dirt", "crimson_nylium", "nylium", "mushroom").setGrowthModifier(0.05F)
-                .setModID(BotanyPots.MOD_ID).build(consumer);
-        SoilBuilder.create().setInput(Blocks.DIRT).setVisibleBlock(Blocks.DIRT).addCategory("dirt")
-                .setModID(BotanyPots.MOD_ID).build(consumer);
-        SoilBuilder.create().setInput(Blocks.END_STONE).setVisibleBlock(Blocks.END_STONE).addCategory("end_stone")
-                .setGrowthModifier(-0.5F).setModID(BotanyPots.MOD_ID).build(consumer);
-        SoilBuilder.create().setInput(Blocks.FARMLAND).setVisibleBlock(Blocks.FARMLAND.getDefaultState().with(BlockStateProperties.MOISTURE_0_7, 7))
-                .addCategory("dirt", "farmland").setGrowthModifier(0.15F).setModID(BotanyPots.MOD_ID).build(consumer);
-        SoilBuilder.create().setInput(Blocks.GRASS_BLOCK).setVisibleBlock(Blocks.GRASS_BLOCK).addCategory("dirt", "grass")
-                .setGrowthModifier(0.05F).setModID(BotanyPots.MOD_ID).build(consumer);
-        SoilBuilder.create().setInput(Blocks.MYCELIUM).setVisibleBlock(Blocks.MYCELIUM).addCategory("dirt", "mushroom")
-                .setGrowthModifier(0.05F).setModID(BotanyPots.MOD_ID).build(consumer);
-        SoilBuilder.create().setInput(Blocks.NETHERRACK).setVisibleBlock(Blocks.NETHERRACK).addCategory("nether")
-                .setModID(BotanyPots.MOD_ID).build(consumer);
-        SoilBuilder.create().setInput(Blocks.PODZOL).setVisibleBlock(Blocks.PODZOL).setModID(BotanyPots.MOD_ID)
-                .addCategory("dirt", "grass", "podzol", "mushroom").setGrowthModifier(0.05F).build(consumer);
-        SoilBuilder.create().setInput(Blocks.RED_SAND).setVisibleBlock(Blocks.RED_SAND).addCategory("sand", "red_sand")
-                .setModID(BotanyPots.MOD_ID).build(consumer);
-        SoilBuilder.create().setInput(Blocks.SAND).setVisibleBlock(Blocks.SAND).addCategory("sand").setModID(BotanyPots.MOD_ID)
-                .build(consumer);
-        SoilBuilder.create().setInput(Blocks.SOUL_SAND).setVisibleBlock(Blocks.SOUL_SAND).addCategory("soul_sand", "nether")
-                .setGrowthModifier(-0.3F).setModID(BotanyPots.MOD_ID).build(consumer);
-        SoilBuilder.create().setInput(Blocks.SOUL_SOIL).setVisibleBlock(Blocks.SOUL_SOIL).addCategory("soul_sand", "nether")
-                .setModID(BotanyPots.MOD_ID).build(consumer);
-        SoilBuilder.create().setInput(Blocks.WARPED_NYLIUM).setVisibleBlock(Blocks.WARPED_NYLIUM)
-                .addCategory("dirt", "warped_nylium", "nylium", "mushroom").setModID(BotanyPots.MOD_ID).build(consumer);
+        buildSoil(Blocks.COARSE_DIRT, -0.65F, consumer, "dirt", "coarse_dirt");
+        buildSoil(Blocks.CRIMSON_NYLIUM, 0.05F, consumer, "dirt", "crimson_nylium", "nylium", "mushroom");
+        buildSoil(Blocks.DIRT, 0, consumer, "dirt");
+        buildSoil(Blocks.END_STONE, -0.5F, consumer, "end_stone");
+        buildSoil(Blocks.GRASS_BLOCK, 0.05F, consumer, "dirt", "grass");
+        buildSoil(Blocks.MYCELIUM, 0.05F, consumer, "dirt", "mushroom");
+        buildSoil(Blocks.NETHERRACK, 0, consumer, "nether");
+        buildSoil(Blocks.PODZOL, 0.05F, consumer, "dirt", "grass", "podzol", "mushroom");
+        buildSoil(Blocks.RED_SAND, 0, consumer, "sand", "red_sand");
+        buildSoil(Blocks.SAND, 0, consumer, "sand");
+        buildSoil(Blocks.SOUL_SAND, -0.3F, consumer, "soul_sand", "nether");
+        buildSoil(Blocks.SOUL_SOIL, 0, consumer, "soul_sand", "nether");
+        buildSoil(Blocks.WARPED_NYLIUM, 0, consumer, "dirt", "warped_nylium", "nylium", "mushroom");
+        SoilBuilder.create().setInput(Blocks.FARMLAND)
+                .setVisibleBlock(Blocks.FARMLAND.getDefaultState().with(BlockStateProperties.MOISTURE_0_7, 7))
+                .addCategory("dirt", "farmland")
+                .setGrowthModifier(0.15F)
+                .setModID(BotanyPots.MOD_ID)
+                .build(consumer, loc(Blocks.FARMLAND));
 
-        FertilizerBuilder.create().setFertilizer(Items.BONE_MEAL).setMinTicks(120).setMaxTicks(170).setModID(BotanyPots.MOD_ID).build(consumer);
+        FertilizerBuilder.create().setFertilizer(Items.BONE_MEAL).setMinTicks(120).setMaxTicks(170).setModID(BotanyPots.MOD_ID)
+                .build(consumer, loc(Items.BONE_MEAL));
 
         buildFlowerRecipe(Blocks.ALLIUM, consumer);
         buildFlowerRecipe(Blocks.AZURE_BLUET, consumer);
@@ -78,7 +69,6 @@ public class Recipes extends RecipeProvider {
         buildMushroomRecipe(Blocks.RED_MUSHROOM, consumer);
         buildFungusRecipe(Blocks.CRIMSON_FUNGUS, "crimson_nylium", Blocks.CRIMSON_STEM, consumer);
         buildFungusRecipe(Blocks.WARPED_FUNGUS, "warped_nylium", Blocks.WARPED_STEM, consumer);
-
         CropBuilder.create().setSeed(Items.BAMBOO)
                 .addVisibleBlocks(Blocks.BAMBOO)
                 .addCategories("dirt", "sand")
@@ -215,6 +205,15 @@ public class Recipes extends RecipeProvider {
 
     private static ResourceLocation loc(IItemProvider item) {
         return new ResourceLocation(BotanyPots.MOD_ID, item.asItem().getRegistryName().getPath());
+    }
+
+    private static void buildSoil(Block soil, float growthModifier, Consumer<IFinishedRecipe> consumer, String... categories) {
+        SoilBuilder.create().setInput(soil)
+                .setVisibleBlock(soil)
+                .addCategory(categories)
+                .setGrowthModifier(growthModifier)
+                .setModID(BotanyPots.MOD_ID)
+                .build(consumer, loc(soil));
     }
 
     private static void buildFlowerRecipe(CropBuilder builder, Block flower, Consumer<IFinishedRecipe> consumer) {
