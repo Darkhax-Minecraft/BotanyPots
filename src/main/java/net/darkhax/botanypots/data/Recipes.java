@@ -120,6 +120,14 @@ public class Recipes extends RecipeProvider {
                         new HarvestEntry(0.05F, new ItemStack(Items.FERN), 1, 2),
                         new HarvestEntry(0.05F, new ItemStack(Items.LARGE_FERN), 1, 1))
                 .build(consumer, loc(Items.FERN));
+        CropBuilder.create().setSeed(Items.GRASS)
+                .addVisibleBlocks(Blocks.GRASS)
+                .addCategories("grass")
+                .setGrowthTicks(600)
+                .addResults(new HarvestEntry(0.75F, new ItemStack(Items.GRASS), 1, 1),
+                        new HarvestEntry(0.05F, new ItemStack(Items.GRASS), 1, 2),
+                        new HarvestEntry(0.05F, new ItemStack(Items.TALL_GRASS), 1, 1))
+                .build(consumer, loc(Items.GRASS));
         CropBuilder.create().setSeed(Items.LILY_OF_THE_VALLEY)
                 .addVisibleBlocks(Blocks.LILY_OF_THE_VALLEY)
                 .addCategories("dirt")
