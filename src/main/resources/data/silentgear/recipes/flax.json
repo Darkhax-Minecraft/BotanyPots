@@ -1,0 +1,44 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "silentgear"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "silentgear:flax_seeds"
+    }
+  ],
+  "seed": {
+    "item": "silentgear:flax_seeds"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1900,
+  "display": {
+    "block": "silentgear:flax_plant",
+    "properties": {
+      "age": 7
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "silentgear:flax_fiber"
+      },
+      "minRolls": 1,
+      "maxRolls": 3
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "silentgear:flax_seeds"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}
