@@ -11,8 +11,8 @@ build/
 .gradle/
 run/
 /libs
-.cache
 /logs
+.cache
 
 #Eclipse
 .classpath
