@@ -74,7 +74,8 @@ public class BlockBotanyPot extends Block implements IGrowable {
         
         if (world.isRemote) {
             
-            // Forces all the logic to run on the server. Returning fail or pass on the client
+            // Forces all the logic to run on the server. Returning fail or pass on the
+            // client
             // will cause the click packet not to be sent to the server.
             return ActionResultType.SUCCESS;
         }
@@ -299,7 +300,8 @@ public class BlockBotanyPot extends Block implements IGrowable {
     @Override
     public boolean canUseBonemeal (World worldIn, Random rand, BlockPos pos, BlockState state) {
         
-        // We have custom logic for bone meal and other fertilizer. See the fertilizer data
+        // We have custom logic for bone meal and other fertilizer. See the fertilizer
+        // data
         // pack type.
         return false;
     }

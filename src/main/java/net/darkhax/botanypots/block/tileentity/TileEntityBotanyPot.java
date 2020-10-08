@@ -203,13 +203,15 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         // Reset the growth time.
         this.currentGrowthTicks = 0;
         
-        // To help deal with desyncs caused by reload, every reset will also reset the cached
+        // To help deal with desyncs caused by reload, every reset will also reset the
+        // cached
         // soila and crop references.
         if (this.soil != null) {
             
             this.soil = BotanyPotHelper.getSoil(this.soil.getId());
             
-            // Check if the soil was removed. If so kill the crop, because crop needs a soil.
+            // Check if the soil was removed. If so kill the crop, because crop needs a
+            // soil.
             if (this.soil == null) {
                 
                 this.crop = null;
