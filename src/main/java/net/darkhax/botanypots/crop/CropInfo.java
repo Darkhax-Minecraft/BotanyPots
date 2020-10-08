@@ -13,6 +13,7 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
 public class CropInfo extends RecipeDataBase {
     
@@ -167,6 +168,7 @@ public class CropInfo extends RecipeDataBase {
     
     public ITextComponent getName () {
         
-        return this.getDisplayState()[0].getBlock().getTranslatedName();
+        // TODO Ask forge to give me the old code back.
+        return new TranslationTextComponent(this.getDisplayState()[0].getBlock().getTranslationKey());
     }
 }

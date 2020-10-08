@@ -11,6 +11,7 @@ import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
 public class SoilInfo extends RecipeDataBase {
     
@@ -92,7 +93,8 @@ public class SoilInfo extends RecipeDataBase {
     
     public ITextComponent getName () {
         
-        return this.getRenderState().getBlock().getTranslatedName();
+        // TODO Ask forge to give me the old code back.
+        return new TranslationTextComponent(this.getRenderState().getBlock().getTranslationKey());
     }
     
     @Override
