@@ -16,7 +16,7 @@
   "categories": [
     "imperium"
   ],
-  "growthTicks": 1200,
+  "growthTicks": 1900,
   "display": {
     "block": "mysticalagriculture:netherite_crop",
     "properties": {
