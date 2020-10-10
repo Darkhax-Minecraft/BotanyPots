@@ -1,0 +1,103 @@
+{
+
+  "type": "botanypots:crop",
+
+  "conditions": [
+
+    {
+
+      "type": "forge:mod_loaded",
+
+      "modid": "mysticalagriculture"
+
+    },
+
+    {
+
+      "type": "mysticalagriculture:crop_enabled",
+
+      "crop": "mysticalagriculture:compressed_iron"
+
+    }
+
+  ],
+
+  "seed": {
+
+    "item": "mysticalagriculture:compressed_iron_seeds"
+
+  },
+
+  "categories": [
+
+    "imperium"
+
+  ],
+
+  "growthTicks": 1200,
+
+  "display": {
+
+    "block": "mysticalagriculture:compressed_iron_crop",
+
+    "properties": {
+
+      "age": 7
+
+    }
+
+  },
+
+  "results": [
+
+    {
+
+      "chance": 0.75,
+
+      "output": {
+
+        "item": "mysticalagriculture:compressed_iron_essence"
+
+      },
+
+      "minRolls": 1,
+
+      "maxRolls": 1
+
+    },
+
+    {
+
+      "chance": 0.05,
+
+      "output": {
+
+        "item": "mysticalagriculture:compressed_iron_seeds"
+
+      },
+
+      "minRolls": 1,
+
+      "maxRolls": 1
+
+    },
+
+    {
+
+      "chance": 0.01,
+
+      "output": {
+
+        "item": "mysticalagriculture:fertilized_essence"
+
+      },
+
+      "minRolls": 1,
+
+      "maxRolls": 1
+
+    }
+
+  ]
+
+}
