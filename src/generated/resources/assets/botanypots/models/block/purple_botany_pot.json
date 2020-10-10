@@ -1,0 +1,6 @@
+{
+  "parent": "botanypots:block/botany_pot_base",
+  "textures": {
+    "terracotta": "minecraft:block/purple_terracotta"
+  }
+}

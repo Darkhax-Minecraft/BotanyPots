@@ -17,6 +17,7 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(BotanyPots.MOD_ID)
@@ -45,6 +46,7 @@ public class BotanyPots {
         
         this.registry.initialize(FMLJavaModLoadingContext.get().getModEventBus());
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::data);
     }
     
     private void setup (FMLCommonSetupEvent event) {
@@ -53,6 +55,10 @@ public class BotanyPots {
             
             InterModComms.sendTo("theoneprobe", "getTheOneProbe", TOPPlugin::new);
         }
+    }
+    
+    private void data (GatherDataEvent event) {
+        if (event.includeClient()) event.getGenerator().addProvider(new PotStateProvider(event.getGenerator(), event.getExistingFileHelper()));
     }
     
     public Content getContent () {
