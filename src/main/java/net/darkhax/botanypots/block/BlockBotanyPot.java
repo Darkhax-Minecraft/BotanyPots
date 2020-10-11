@@ -75,8 +75,7 @@ public class BlockBotanyPot extends Block implements IGrowable {
         if (world.isRemote) {
             
             // Forces all the logic to run on the server. Returning fail or pass on the
-            // client
-            // will cause the click packet not to be sent to the server.
+            // client will cause the click packet not to be sent to the server.
             return ActionResultType.SUCCESS;
         }
         
@@ -301,8 +300,7 @@ public class BlockBotanyPot extends Block implements IGrowable {
     public boolean canUseBonemeal (World worldIn, Random rand, BlockPos pos, BlockState state) {
         
         // We have custom logic for bone meal and other fertilizer. See the fertilizer
-        // data
-        // pack type.
+        // data pack type.
         return false;
     }
     
@@ -333,5 +331,46 @@ public class BlockBotanyPot extends Block implements IGrowable {
     protected void fillStateContainer (StateContainer.Builder<Block, BlockState> builder) {
         
         builder.add(BlockStateProperties.POWERED);
+    }
+    
+    @Override
+    public int getLightValue (BlockState state, IBlockReader world, BlockPos pos) {
+        
+        int light = super.getLightValue(state, world, pos);
+        
+        final TileEntity tile = world.getTileEntity(pos);
+        
+        if (tile instanceof TileEntityBotanyPot) {
+            
+            final TileEntityBotanyPot pot = (TileEntityBotanyPot) tile;
+            
+            if (pot.getSoil() != null) {
+                
+                final int soilLight = pot.getSoil().getLightLevel(world, pos);
+                
+                if (soilLight > light) {
+                    
+                    light = soilLight;
+                }
+            }
+            
+            if (pot.getCrop() != null) {
+                
+                final int cropLight = pot.getCrop().getLightLevel(world, pos);
+                
+                if (cropLight > light) {
+                    
+                    light = cropLight;
+                }
+            }
+        }
+        
+        return light;
+    }
+    
+    @Override
+    public int getOpacity (BlockState state, IBlockReader worldIn, BlockPos pos) {
+        
+        return 0;
     }
 }

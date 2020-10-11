@@ -10,8 +10,10 @@ import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.IBlockReader;
 
 public class SoilInfo extends RecipeDataBase {
     
@@ -94,7 +96,14 @@ public class SoilInfo extends RecipeDataBase {
     public ITextComponent getName () {
         
         // TODO Ask forge to give me the old code back.
+        // TODO Allow JSON override
         return new TranslationTextComponent(this.getRenderState().getBlock().getTranslationKey());
+    }
+    
+    public int getLightLevel (IBlockReader world, BlockPos pos) {
+        
+        // TODO allow json override
+        return this.renderState.getLightValue(world, pos);
     }
     
     @Override

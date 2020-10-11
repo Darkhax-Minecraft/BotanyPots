@@ -15,6 +15,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
@@ -97,6 +99,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         if (!this.world.isRemote) {
             
             this.sync();
+            this.world.getChunkProvider().getLightManager().checkBlock(this.pos);
         }
     }
     
@@ -108,6 +111,13 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             final IPacket<?> packet = this.getUpdatePacket();
             sendToTracking((ServerWorld) this.world, this.getChunkPos(), this.pos, packet, false);
         }
+    }
+    
+    @Override
+    public void onDataPacket (NetworkManager net, SUpdateTileEntityPacket packet) {
+        
+        super.onDataPacket(net, packet);
+        this.world.getLightManager().checkBlock(this.pos);
     }
     
     /**
