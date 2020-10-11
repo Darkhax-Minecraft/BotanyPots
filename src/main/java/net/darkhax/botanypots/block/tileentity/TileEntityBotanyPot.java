@@ -494,6 +494,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         return this.cropStack;
     }
     
+    @Override
     public ChunkPos getChunkPos () {
         
         if (this.chunkPos == null) {

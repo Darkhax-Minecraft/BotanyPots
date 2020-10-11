@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.openzen.zencode.java.ZenCodeType;
@@ -26,9 +27,14 @@ public class ZenCrop {
     
     private final CropInfo internal;
     
+    public ZenCrop(String id, IIngredient seed, MCBlockState[] display, int ticks, String[] categories, int lightLevel) {
+        
+        this(new CropInfo(ResourceLocation.tryCreate(id), seed.asVanillaIngredient(), new HashSet<>(Arrays.asList(categories)), ticks, new ArrayList<>(), getBlockStates(display), Optional.of(lightLevel)));
+    }
+    
     public ZenCrop(String id, IIngredient seed, MCBlockState[] display, int ticks, String[] categories) {
         
-        this(new CropInfo(ResourceLocation.tryCreate(id), seed.asVanillaIngredient(), new HashSet<>(Arrays.asList(categories)), ticks, new ArrayList<>(), getBlockStates(display)));
+        this(new CropInfo(ResourceLocation.tryCreate(id), seed.asVanillaIngredient(), new HashSet<>(Arrays.asList(categories)), ticks, new ArrayList<>(), getBlockStates(display), Optional.empty()));
     }
     
     public ZenCrop(CropInfo crop) {
@@ -116,6 +122,13 @@ public class ZenCrop {
     public ZenCrop setDisplay (MCBlockState[] states) {
         
         this.internal.setDisplayBlock(getBlockStates(states));
+        return this;
+    }
+    
+    @ZenCodeType.Method
+    public ZenCrop setLightLevel (int lightLevel) {
+        
+        this.internal.setLightLevel(lightLevel);
         return this;
     }
     

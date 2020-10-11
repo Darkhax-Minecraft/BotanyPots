@@ -1,6 +1,7 @@
 package net.darkhax.botanypots.crop;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import net.darkhax.bookshelf.crafting.RecipeDataBase;
@@ -44,7 +45,13 @@ public class CropInfo extends RecipeDataBase {
      */
     private BlockState[] displayBlocks;
     
-    public CropInfo(ResourceLocation id, Ingredient seed, Set<String> soilCategories, int growthTicks, List<HarvestEntry> results, BlockState[] displayStates) {
+    /**
+     * The light level of the soil when placed in the crop. If this is not specified the light
+     * level of the first block in {@link #displayBlocks} will be used.
+     */
+    private Optional<Integer> lightLevel;
+    
+    public CropInfo(ResourceLocation id, Ingredient seed, Set<String> soilCategories, int growthTicks, List<HarvestEntry> results, BlockState[] displayStates, Optional<Integer> lightLevel) {
         
         super(id);
         this.seed = seed;
@@ -52,6 +59,7 @@ public class CropInfo extends RecipeDataBase {
         this.growthTicks = growthTicks;
         this.results = results;
         this.displayBlocks = displayStates;
+        this.lightLevel = lightLevel;
     }
     
     /**
@@ -175,9 +183,18 @@ public class CropInfo extends RecipeDataBase {
         return new TranslationTextComponent(this.getDisplayState()[0].getBlock().getTranslationKey());
     }
     
+    public void setLightLevel (int lightLevel) {
+        
+        this.lightLevel = Optional.of(lightLevel);
+    }
+    
+    public Optional<Integer> getLightLevel () {
+        
+        return this.lightLevel;
+    }
+    
     public int getLightLevel (IBlockReader world, BlockPos pos) {
         
-        // TODO allow json override
-        return this.getDisplayState()[0].getLightValue(world, pos);
+        return this.getLightLevel().orElseGet( () -> this.getDisplayState()[0].getLightValue(world, pos));
     }
 }
