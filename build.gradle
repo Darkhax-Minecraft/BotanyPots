@@ -105,11 +105,6 @@ repositories {
         name = "TehNut's Maven (HWYLA)"
 		url "https://maven.tehnut.info" 
 	}
-	
-    maven {
-        name = "ModMaven"
-        url = "https://modmaven.k-4u.nl"
-    }
     
     maven {
         name = "Curios"
