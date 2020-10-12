@@ -1,0 +1,22 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:brain_coral_fan"
+  },
+  "categories":["water"],
+  "growthTicks": 900,
+  "display": {
+    "block": "minecraft:brain_coral_fan",
+    "renderFluid": false
+  },
+  "results": [
+    {
+      "chance": 0.60,
+      "output": {
+        "item": "minecraft:brain_coral_fan"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}
