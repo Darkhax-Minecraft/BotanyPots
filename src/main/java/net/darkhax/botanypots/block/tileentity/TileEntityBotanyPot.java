@@ -381,7 +381,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             if (chunk instanceof Chunk) {
                 
                 // TODO remove the need to cast this.
-                BotanyPots.NETWORK.sendToChunk((Chunk) chunk, new BreakEffectsMessage(this.pos, this.crop.getDisplayState()[0]));
+                BotanyPots.NETWORK.sendToChunk((Chunk) chunk, new BreakEffectsMessage(this.pos, this.crop.getDisplayState()[0].getState()));
             }
         }
     }

@@ -2,9 +2,8 @@ package net.darkhax.botanypots.block.tileentity;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 
-import net.darkhax.bookshelf.util.RenderUtils;
+import net.darkhax.bookshelf.block.DisplayableBlockState;
 import net.darkhax.botanypots.BotanyPots;
-import net.minecraft.block.BlockState;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
@@ -32,7 +31,7 @@ public class RendererBotanyPot extends TileEntityRenderer<TileEntityBotanyPot> {
             matrix.push();
             matrix.scale(0.625f, 0.384f, 0.625f);
             matrix.translate(0.3, 0.01, 0.3);
-            RenderUtils.renderState(tile.getSoil().getRenderState(), tile.getWorld(), tile.getPos(), matrix, buffer, light, overlay, true, SOIL_SIDES);
+            tile.getSoil().getRenderState().render(tile.getWorld(), tile.getPos(), matrix, buffer, light, overlay, SOIL_SIDES);
             matrix.pop();
         }
         
@@ -50,12 +49,12 @@ public class RendererBotanyPot extends TileEntityRenderer<TileEntityBotanyPot> {
             
             matrix.translate(-0.5, 0, -0.5);
             
-            final BlockState[] cropStates = tile.getCrop().getDisplayState();
+            final DisplayableBlockState[] cropStates = tile.getCrop().getDisplayState();
             
             for (int i = 0; i < cropStates.length; i++) {
                 
                 matrix.translate(0, i, 0);
-                RenderUtils.renderState(cropStates[i], tile.getWorld(), tile.getPos(), matrix, buffer, light, overlay, true, CROP_SIDES);
+                cropStates[i].render(tile.getWorld(), tile.getPos(), matrix, buffer, light, overlay, CROP_SIDES);
                 matrix.translate(0, -i, 0);
             }
             

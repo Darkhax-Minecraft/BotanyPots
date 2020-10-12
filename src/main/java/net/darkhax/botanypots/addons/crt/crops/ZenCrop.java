@@ -15,6 +15,7 @@ import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.impl.blocks.MCBlockState;
 
+import net.darkhax.bookshelf.block.DisplayableBlockState;
 import net.darkhax.botanypots.crop.CropInfo;
 import net.darkhax.botanypots.crop.HarvestEntry;
 import net.minecraft.block.BlockState;
@@ -147,9 +148,9 @@ public class ZenCrop {
         return states.stream().map(MCBlockState::new).collect(Collectors.toList());
     }
     
-    public static BlockState[] getBlockStates (MCBlockState... states) {
+    public static DisplayableBlockState[] getBlockStates (MCBlockState... states) {
         
-        return Arrays.stream(states).map(MCBlockState::getInternal).toArray(BlockState[]::new);
+        return Arrays.stream(states).map(state -> new DisplayableBlockState(state.getInternal())).toArray(DisplayableBlockState[]::new);
     }
     
     public static MCBlockState[] getMCBlockStates (BlockState... states) {

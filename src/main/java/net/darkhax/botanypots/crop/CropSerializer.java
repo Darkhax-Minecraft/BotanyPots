@@ -9,10 +9,10 @@ import java.util.Set;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import net.darkhax.bookshelf.block.DisplayableBlockState;
 import net.darkhax.bookshelf.serialization.Serializers;
 import net.darkhax.bookshelf.util.PacketUtils;
 import net.darkhax.botanypots.BotanyPots;
-import net.minecraft.block.BlockState;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.network.PacketBuffer;
@@ -33,7 +33,7 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
         final List<HarvestEntry> results = deserializeCropEntries(id, json);
         final Optional<Integer> lightLevel = Serializers.INT.readOptional(json, "lightLevel");
         final JsonElement element = json.get("display");
-        final BlockState[] states = Serializers.BLOCK_STATE.readList(element).toArray(new BlockState[0]);
+        final DisplayableBlockState[] states = Serializers.DISPLAY_STATE.readList(element).toArray(new DisplayableBlockState[0]);
         
         if (growthTicks <= 0) {
             
@@ -61,12 +61,7 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
                 results.add(HarvestEntry.deserialize(buf));
             }
             
-            final BlockState[] displayStates = new BlockState[buf.readInt()];
-            
-            for (int i = 0; i < displayStates.length; i++) {
-                
-                displayStates[i] = PacketUtils.deserializeBlockState(buf);
-            }
+            final DisplayableBlockState[] displayStates = Serializers.DISPLAY_STATE.readList(buf).toArray(new DisplayableBlockState[0]);
             
             final Optional<Integer> lightLevel = Serializers.INT.readOptional(buf);
             
@@ -97,9 +92,9 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
             
             buffer.writeInt(info.getDisplayState().length);
             
-            for (final BlockState state : info.getDisplayState()) {
+            for (final DisplayableBlockState state : info.getDisplayState()) {
                 
-                PacketUtils.serializeBlockState(buffer, state);
+                Serializers.DISPLAY_STATE.write(buffer, state);
             }
             
             Serializers.INT.writeOptional(buffer, info.getLightLevel());

@@ -6,9 +6,9 @@ import java.util.Set;
 
 import com.google.gson.JsonObject;
 
+import net.darkhax.bookshelf.block.DisplayableBlockState;
 import net.darkhax.bookshelf.serialization.Serializers;
 import net.darkhax.bookshelf.util.PacketUtils;
-import net.minecraft.block.BlockState;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.network.PacketBuffer;
@@ -24,7 +24,7 @@ public class SoilSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
     public SoilInfo read (ResourceLocation id, JsonObject json) {
         
         final Ingredient input = Ingredient.deserialize(json.getAsJsonObject("input"));
-        final BlockState renderState = Serializers.BLOCK_STATE.read(json.get("display"));
+        final DisplayableBlockState renderState = Serializers.DISPLAY_STATE.read(json.get("display"));
         final float growthModifier = JSONUtils.getFloat(json, "growthModifier");
         final Set<String> categories = Serializers.STRING.readSet(json, "categories");
         final Optional<Integer> lightLevel = Serializers.INT.readOptional(json, "lightLevel");
@@ -51,7 +51,7 @@ public class SoilSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
     public SoilInfo read (ResourceLocation id, PacketBuffer buf) {
         
         final Ingredient ingredient = Ingredient.read(buf);
-        final BlockState renderState = PacketUtils.deserializeBlockState(buf);
+        final DisplayableBlockState renderState = Serializers.DISPLAY_STATE.read(buf);
         final float growthModifier = buf.readFloat();
         final Set<String> categories = new HashSet<>();
         PacketUtils.deserializeStringCollection(buf, categories);
@@ -64,7 +64,7 @@ public class SoilSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
     public void write (PacketBuffer buffer, SoilInfo info) {
         
         info.getIngredient().write(buffer);
-        PacketUtils.serializeBlockState(buffer, info.getRenderState());
+        Serializers.DISPLAY_STATE.write(buffer, info.getRenderState());
         buffer.writeFloat(info.getGrowthModifier());
         PacketUtils.serializeStringCollection(buffer, info.getCategories());
         Serializers.INT.writeOptional(buffer, info.getLightLevel());
