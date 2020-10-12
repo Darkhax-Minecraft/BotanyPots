@@ -1,0 +1,21 @@
+{
+  "type": "botanypots:soil",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "byg:sythian_nylium"
+    }
+  ],
+  "input": {
+    "item": "byg:sythian_nylium"
+  },
+  "display": {
+    "block": "byg:sythian_nylium"
+  },
+  "categories": ["dirt", "sythian_nylium", "nylium", "mushroom"],
+  "growthModifier": 0.05
+}

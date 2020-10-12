@@ -1,0 +1,36 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "byg:cyan_rose"
+    }
+  ],
+  "seed": {
+    "item": "byg:cyan_rose"
+  },
+  "categories": ["dirt"],
+  "growthTicks": 1600,
+  "display": {
+    "block": "byg:cyan_rose"
+  },
+  "results": [{
+    "chance": 0.75,
+    "output": {
+      "item": "byg:cyan_rose"
+    },
+    "minRolls": 1,
+    "maxRolls": 1
+  }, {
+    "chance": 0.05,
+    "output": {
+      "item": "byg:cyan_rose"
+    },
+    "minRolls": 1,
+    "maxRolls": 2
+  }]
+}

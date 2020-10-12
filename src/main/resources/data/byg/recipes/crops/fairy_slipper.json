@@ -1,0 +1,36 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "byg:fairy_slipper"
+    }
+  ],
+  "seed": {
+    "item": "byg:fairy_slipper"
+  },
+  "categories": ["dirt"],
+  "growthTicks": 1600,
+  "display": {
+    "block": "byg:fairy_slipper"
+  },
+  "results": [{
+    "chance": 0.75,
+    "output": {
+      "item": "byg:fairy_slipper"
+    },
+    "minRolls": 1,
+    "maxRolls": 1
+  }, {
+    "chance": 0.05,
+    "output": {
+      "item": "byg:fairy_slipper"
+    },
+    "minRolls": 1,
+    "maxRolls": 2
+  }]
+}

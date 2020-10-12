@@ -1,0 +1,19 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:blue_glowcane"
+  },
+  "categories": ["glowcelium"],
+  "growthTicks": 800,
+  "display": {
+    "block": "byg:blue_glowcane"
+  },
+  "results": [{
+    "chance": 0.75,
+    "output": {
+      "item": "byg:blue_glowcane"
+    },
+    "minRolls": 1,
+    "maxRolls": 1
+  }]
+}
