@@ -18,8 +18,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -60,7 +58,6 @@ public class BlockBotanyPot extends Block implements IGrowable {
         
         super(properties);
         this.hopper = hopper;
-        this.setDefaultState(this.stateContainer.getBaseState().with(BlockStateProperties.POWERED, false));
         botanyPots.add(this);
     }
     
@@ -324,13 +321,17 @@ public class BlockBotanyPot extends Block implements IGrowable {
     @Override
     public int getComparatorInputOverride (BlockState blockState, World world, BlockPos pos) {
         
-        return blockState.get(BlockStateProperties.POWERED) ? 15 : 0;
-    }
-    
-    @Override
-    protected void fillStateContainer (StateContainer.Builder<Block, BlockState> builder) {
+        if (world.isBlockLoaded(pos)) {
+            
+            final TileEntity tile = world.getTileEntity(pos);
+            
+            if (tile instanceof TileEntityBotanyPot) {
+                
+                return ((TileEntityBotanyPot) tile).isDoneGrowing() ? 15 : super.getComparatorInputOverride(blockState, world, pos);
+            }
+        }
         
-        builder.add(BlockStateProperties.POWERED);
+        return super.getComparatorInputOverride(blockState, world, pos);
     }
     
     @Override
