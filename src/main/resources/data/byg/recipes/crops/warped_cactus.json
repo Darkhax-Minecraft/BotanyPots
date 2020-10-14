@@ -1,5 +1,15 @@
 {
   "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "byg:warped_cactus"
+    }
+  ],
   "seed": {
     "item": "byg:warped_cactus"
   },
