@@ -163,6 +163,12 @@ public class CropInfo extends RecipeDataBase {
         
         this.displayBlocks = displayBlocks;
     }
+
+    @Override
+    public boolean isDynamic() {
+
+        return true;
+    }
     
     @Override
     public IRecipeSerializer<?> getSerializer () {
