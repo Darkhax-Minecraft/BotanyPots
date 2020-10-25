@@ -1,0 +1,36 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "byg:allium_flower_bush"
+    }
+  ],
+  "seed": {
+    "item": "byg:allium_flower_bush"
+  },
+  "categories": ["dirt"],
+  "growthTicks": 1600,
+  "display": {
+    "block": "byg:allium_flower_bush"
+  },
+  "results": [{
+    "chance": 0.75,
+    "output": {
+      "item": "byg:allium_flower_bush"
+    },
+    "minRolls": 1,
+    "maxRolls": 1
+  }, {
+    "chance": 0.05,
+    "output": {
+      "item": "byg:allium_flower_bush"
+    },
+    "minRolls": 1,
+    "maxRolls": 2
+  }]
+}

@@ -1,0 +1,22 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:fire_coral"
+  },
+  "categories":["water"],
+  "growthTicks": 900,
+  "display": {
+    "block": "minecraft:fire_coral",
+    "renderFluid": false
+  },
+  "results": [
+    {
+      "chance": 0.60,
+      "output": {
+        "item": "minecraft:fire_coral"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

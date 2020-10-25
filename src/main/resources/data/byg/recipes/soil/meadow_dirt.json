@@ -1,0 +1,21 @@
+{
+  "type": "botanypots:soil",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "byg:meadow_dirt"
+    }
+  ],
+  "input": {
+    "item": "byg:meadow_dirt"
+  },
+  "display": {
+    "block": "byg:meadow_dirt"
+  },
+  "categories": ["dirt"],
+  "growthModifier": 0
+}

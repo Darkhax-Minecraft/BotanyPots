@@ -18,8 +18,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -60,7 +58,6 @@ public class BlockBotanyPot extends Block implements IGrowable {
         
         super(properties);
         this.hopper = hopper;
-        this.setDefaultState(this.stateContainer.getBaseState().with(BlockStateProperties.POWERED, false));
         botanyPots.add(this);
     }
     
@@ -75,8 +72,7 @@ public class BlockBotanyPot extends Block implements IGrowable {
         if (world.isRemote) {
             
             // Forces all the logic to run on the server. Returning fail or pass on the
-            // client
-            // will cause the click packet not to be sent to the server.
+            // client will cause the click packet not to be sent to the server.
             return ActionResultType.SUCCESS;
         }
         
@@ -301,8 +297,7 @@ public class BlockBotanyPot extends Block implements IGrowable {
     public boolean canUseBonemeal (World worldIn, Random rand, BlockPos pos, BlockState state) {
         
         // We have custom logic for bone meal and other fertilizer. See the fertilizer
-        // data
-        // pack type.
+        // data pack type.
         return false;
     }
     
@@ -326,12 +321,57 @@ public class BlockBotanyPot extends Block implements IGrowable {
     @Override
     public int getComparatorInputOverride (BlockState blockState, World world, BlockPos pos) {
         
-        return blockState.get(BlockStateProperties.POWERED) ? 15 : 0;
+        if (world.isBlockLoaded(pos)) {
+            
+            final TileEntity tile = world.getTileEntity(pos);
+            
+            if (tile instanceof TileEntityBotanyPot) {
+                
+                return ((TileEntityBotanyPot) tile).isDoneGrowing() ? 15 : super.getComparatorInputOverride(blockState, world, pos);
+            }
+        }
+        
+        return super.getComparatorInputOverride(blockState, world, pos);
     }
     
     @Override
-    protected void fillStateContainer (StateContainer.Builder<Block, BlockState> builder) {
+    public int getLightValue (BlockState state, IBlockReader world, BlockPos pos) {
         
-        builder.add(BlockStateProperties.POWERED);
+        int light = super.getLightValue(state, world, pos);
+        
+        final TileEntity tile = world.getTileEntity(pos);
+        
+        if (tile instanceof TileEntityBotanyPot) {
+            
+            final TileEntityBotanyPot pot = (TileEntityBotanyPot) tile;
+            
+            if (pot.getSoil() != null) {
+                
+                final int soilLight = pot.getSoil().getLightLevel(world, pos);
+                
+                if (soilLight > light) {
+                    
+                    light = soilLight;
+                }
+            }
+            
+            if (pot.getCrop() != null) {
+                
+                final int cropLight = pot.getCrop().getLightLevel(world, pos);
+                
+                if (cropLight > light) {
+                    
+                    light = cropLight;
+                }
+            }
+        }
+        
+        return light;
+    }
+    
+    @Override
+    public int getOpacity (BlockState state, IBlockReader worldIn, BlockPos pos) {
+        
+        return 0;
     }
 }

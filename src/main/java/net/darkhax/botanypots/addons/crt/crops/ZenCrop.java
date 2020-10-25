@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.openzen.zencode.java.ZenCodeType;
@@ -14,6 +15,7 @@ import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 import com.blamejared.crafttweaker.impl.blocks.MCBlockState;
 
+import net.darkhax.bookshelf.block.DisplayableBlockState;
 import net.darkhax.botanypots.crop.CropInfo;
 import net.darkhax.botanypots.crop.HarvestEntry;
 import net.minecraft.block.BlockState;
@@ -26,9 +28,14 @@ public class ZenCrop {
     
     private final CropInfo internal;
     
+    public ZenCrop(String id, IIngredient seed, MCBlockState[] display, int ticks, String[] categories, int lightLevel) {
+        
+        this(new CropInfo(ResourceLocation.tryCreate(id), seed.asVanillaIngredient(), new HashSet<>(Arrays.asList(categories)), ticks, new ArrayList<>(), getBlockStates(display), Optional.of(lightLevel)));
+    }
+    
     public ZenCrop(String id, IIngredient seed, MCBlockState[] display, int ticks, String[] categories) {
         
-        this(new CropInfo(ResourceLocation.tryCreate(id), seed.asVanillaIngredient(), new HashSet<>(Arrays.asList(categories)), ticks, new ArrayList<>(), getBlockStates(display)));
+        this(new CropInfo(ResourceLocation.tryCreate(id), seed.asVanillaIngredient(), new HashSet<>(Arrays.asList(categories)), ticks, new ArrayList<>(), getBlockStates(display), Optional.empty()));
     }
     
     public ZenCrop(CropInfo crop) {
@@ -119,6 +126,13 @@ public class ZenCrop {
         return this;
     }
     
+    @ZenCodeType.Method
+    public ZenCrop setLightLevel (int lightLevel) {
+        
+        this.internal.setLightLevel(lightLevel);
+        return this;
+    }
+    
     public CropInfo getInternal () {
         
         return this.internal;
@@ -134,9 +148,9 @@ public class ZenCrop {
         return states.stream().map(MCBlockState::new).collect(Collectors.toList());
     }
     
-    public static BlockState[] getBlockStates (MCBlockState... states) {
+    public static DisplayableBlockState[] getBlockStates (MCBlockState... states) {
         
-        return Arrays.stream(states).map(MCBlockState::getInternal).toArray(BlockState[]::new);
+        return Arrays.stream(states).map(state -> new DisplayableBlockState(state.getInternal())).toArray(DisplayableBlockState[]::new);
     }
     
     public static MCBlockState[] getMCBlockStates (BlockState... states) {

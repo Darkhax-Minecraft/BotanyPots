@@ -1,0 +1,29 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "byg:pink_glowcane"
+    }
+  ],
+  "seed": {
+    "item": "byg:pink_glowcane"
+  },
+  "categories": ["glowcelium"],
+  "growthTicks": 800,
+  "display": {
+    "block": "byg:pink_glowcane"
+  },
+  "results": [{
+    "chance": 0.75,
+    "output": {
+      "item": "byg:pink_glowcane"
+    },
+    "minRolls": 1,
+    "maxRolls": 1
+  }]
+}

@@ -1,7 +1,9 @@
 package net.darkhax.botanypots.soil;
 
+import java.util.Optional;
 import java.util.Set;
 
+import net.darkhax.bookshelf.block.DisplayableBlockState;
 import net.darkhax.bookshelf.crafting.RecipeDataBase;
 import net.darkhax.botanypots.BotanyPots;
 import net.minecraft.block.BlockState;
@@ -10,8 +12,10 @@ import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.IBlockReader;
 
 public class SoilInfo extends RecipeDataBase {
     
@@ -23,7 +27,7 @@ public class SoilInfo extends RecipeDataBase {
     /**
      * The blockstate used to render the soil.
      */
-    private BlockState renderState;
+    private DisplayableBlockState renderState;
     
     /**
      * A modifier applied to the growth time of the crop.
@@ -35,13 +39,25 @@ public class SoilInfo extends RecipeDataBase {
      */
     private Set<String> categories;
     
-    public SoilInfo(ResourceLocation id, Ingredient ingredient, BlockState renderState, float growthModifier, Set<String> categories) {
+    /**
+     * The light level of the soil when placed in the crop. If this is not specified the light
+     * level of {@link #renderState} will be used.
+     */
+    private Optional<Integer> lightLevel;
+    
+    public SoilInfo(ResourceLocation id, Ingredient ingredient, BlockState renderState, float growthModifier, Set<String> categories, Optional<Integer> lightLevel) {
+        
+        this(id, ingredient, new DisplayableBlockState(renderState), growthModifier, categories, lightLevel);
+    }
+    
+    public SoilInfo(ResourceLocation id, Ingredient ingredient, DisplayableBlockState renderState, float growthModifier, Set<String> categories, Optional<Integer> lightLevel) {
         
         super(id);
         this.ingredient = ingredient;
         this.renderState = renderState;
         this.growthModifier = growthModifier;
         this.categories = categories;
+        this.lightLevel = lightLevel;
     }
     
     public float getGrowthModifier () {
@@ -54,7 +70,7 @@ public class SoilInfo extends RecipeDataBase {
         return this.ingredient;
     }
     
-    public BlockState getRenderState () {
+    public DisplayableBlockState getRenderState () {
         
         return this.renderState;
     }
@@ -78,6 +94,11 @@ public class SoilInfo extends RecipeDataBase {
     
     public void setRenderState (BlockState renderState) {
         
+        this.setRenderState(new DisplayableBlockState(renderState));
+    }
+    
+    public void setRenderState (DisplayableBlockState renderState) {
+        
         this.renderState = renderState;
     }
     
@@ -94,9 +115,31 @@ public class SoilInfo extends RecipeDataBase {
     public ITextComponent getName () {
         
         // TODO Ask forge to give me the old code back.
-        return new TranslationTextComponent(this.getRenderState().getBlock().getTranslationKey());
+        // TODO Allow JSON override
+        return new TranslationTextComponent(this.getRenderState().getState().getBlock().getTranslationKey());
     }
     
+    public void setLightLevel (int lightLevel) {
+        
+        this.lightLevel = Optional.of(lightLevel);
+    }
+    
+    public Optional<Integer> getLightLevel () {
+        
+        return this.lightLevel;
+    }
+    
+    public int getLightLevel (IBlockReader world, BlockPos pos) {
+        
+        return this.getLightLevel().orElseGet( () -> this.renderState.getState().getLightValue(world, pos));
+    }
+
+    @Override
+    public boolean isDynamic() {
+
+        return true;
+    }
+
     @Override
     public IRecipeSerializer<?> getSerializer () {
         

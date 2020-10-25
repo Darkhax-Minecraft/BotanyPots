@@ -11,11 +11,11 @@ import net.darkhax.botanypots.crop.CropInfo;
 import net.darkhax.botanypots.network.BreakEffectsMessage;
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
-import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -97,6 +97,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         if (!this.world.isRemote) {
             
             this.sync();
+            this.world.getChunkProvider().getLightManager().checkBlock(this.pos);
         }
     }
     
@@ -108,6 +109,13 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             final IPacket<?> packet = this.getUpdatePacket();
             sendToTracking((ServerWorld) this.world, this.getChunkPos(), this.pos, packet, false);
         }
+    }
+    
+    @Override
+    public void onDataPacket (NetworkManager net, SUpdateTileEntityPacket packet) {
+        
+        super.onDataPacket(net, packet);
+        this.world.getLightManager().checkBlock(this.pos);
     }
     
     /**
@@ -223,8 +231,8 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             this.crop = BotanyPotHelper.getCrop(this.crop.getId());
         }
         
-        this.autoHarvestCooldown = 2;
-        this.world.setBlockState(this.pos, this.getState().with(BlockStateProperties.POWERED, false));
+        this.autoHarvestCooldown = 5;
+        this.world.updateComparatorOutputLevel(this.pos, this.getBlockState().getBlock());
         
         if (!this.world.isRemote) {
             
@@ -275,13 +283,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             
             if (this.isDoneGrowing()) {
                 
-                final BlockState state = this.getState();
-                
-                if (!state.get(BlockStateProperties.POWERED)) {
-                    
-                    this.world.setBlockState(this.pos, state.with(BlockStateProperties.POWERED, true));
-                }
-                
+                this.world.updateComparatorOutputLevel(this.pos, this.getBlockState().getBlock());
                 this.attemptAutoHarvest();
             }
             
@@ -371,7 +373,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             if (chunk instanceof Chunk) {
                 
                 // TODO remove the need to cast this.
-                BotanyPots.NETWORK.sendToChunk((Chunk) chunk, new BreakEffectsMessage(this.pos, this.crop.getDisplayState()[0]));
+                BotanyPots.NETWORK.sendToChunk((Chunk) chunk, new BreakEffectsMessage(this.pos, this.crop.getDisplayState()[0].getState()));
             }
         }
     }
@@ -484,6 +486,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         return this.cropStack;
     }
     
+    @Override
     public ChunkPos getChunkPos () {
         
         if (this.chunkPos == null) {

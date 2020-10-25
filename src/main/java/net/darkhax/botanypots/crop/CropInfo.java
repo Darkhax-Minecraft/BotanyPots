@@ -1,19 +1,22 @@
 package net.darkhax.botanypots.crop;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
+import net.darkhax.bookshelf.block.DisplayableBlockState;
 import net.darkhax.bookshelf.crafting.RecipeDataBase;
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.soil.SoilInfo;
-import net.minecraft.block.BlockState;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.IBlockReader;
 
 public class CropInfo extends RecipeDataBase {
     
@@ -40,9 +43,15 @@ public class CropInfo extends RecipeDataBase {
     /**
      * The BlockState to render for the crop.
      */
-    private BlockState[] displayBlocks;
+    private DisplayableBlockState[] displayBlocks;
     
-    public CropInfo(ResourceLocation id, Ingredient seed, Set<String> soilCategories, int growthTicks, List<HarvestEntry> results, BlockState[] displayStates) {
+    /**
+     * The light level of the soil when placed in the crop. If this is not specified the light
+     * level of the first block in {@link #displayBlocks} will be used.
+     */
+    private Optional<Integer> lightLevel;
+    
+    public CropInfo(ResourceLocation id, Ingredient seed, Set<String> soilCategories, int growthTicks, List<HarvestEntry> results, DisplayableBlockState[] displayStates, Optional<Integer> lightLevel) {
         
         super(id);
         this.seed = seed;
@@ -50,6 +59,7 @@ public class CropInfo extends RecipeDataBase {
         this.growthTicks = growthTicks;
         this.results = results;
         this.displayBlocks = displayStates;
+        this.lightLevel = lightLevel;
     }
     
     /**
@@ -87,7 +97,7 @@ public class CropInfo extends RecipeDataBase {
      * 
      * @return The state to display when rendering the crop.
      */
-    public BlockState[] getDisplayState () {
+    public DisplayableBlockState[] getDisplayState () {
         
         return this.displayBlocks;
     }
@@ -149,9 +159,15 @@ public class CropInfo extends RecipeDataBase {
         this.results = results;
     }
     
-    public void setDisplayBlock (BlockState[] displayBlocks) {
+    public void setDisplayBlock (DisplayableBlockState[] displayBlocks) {
         
         this.displayBlocks = displayBlocks;
+    }
+
+    @Override
+    public boolean isDynamic() {
+
+        return true;
     }
     
     @Override
@@ -169,6 +185,22 @@ public class CropInfo extends RecipeDataBase {
     public ITextComponent getName () {
         
         // TODO Ask forge to give me the old code back.
-        return new TranslationTextComponent(this.getDisplayState()[0].getBlock().getTranslationKey());
+        // TODO allow json override
+        return new TranslationTextComponent(this.getDisplayState()[0].getState().getBlock().getTranslationKey());
+    }
+    
+    public void setLightLevel (int lightLevel) {
+        
+        this.lightLevel = Optional.of(lightLevel);
+    }
+    
+    public Optional<Integer> getLightLevel () {
+        
+        return this.lightLevel;
+    }
+    
+    public int getLightLevel (IBlockReader world, BlockPos pos) {
+        
+        return this.getLightLevel().orElseGet( () -> this.getDisplayState()[0].getState().getLightValue(world, pos));
     }
 }

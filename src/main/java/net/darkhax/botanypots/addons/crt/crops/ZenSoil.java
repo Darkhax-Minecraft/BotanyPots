@@ -2,6 +2,7 @@ package net.darkhax.botanypots.addons.crt.crops;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Optional;
 
 import org.openzen.zencode.java.ZenCodeType;
 
@@ -18,9 +19,14 @@ public class ZenSoil {
     
     private final SoilInfo internal;
     
+    public ZenSoil(String id, IIngredient ingredient, MCBlockState renderState, float growthModifier, String[] categories, int lightLevel) {
+        
+        this(new SoilInfo(ResourceLocation.tryCreate(id), ingredient.asVanillaIngredient(), renderState.getInternal(), growthModifier, new HashSet<>(Arrays.asList(categories)), Optional.of(lightLevel)));
+    }
+    
     public ZenSoil(String id, IIngredient ingredient, MCBlockState renderState, float growthModifier, String[] categories) {
         
-        this(new SoilInfo(ResourceLocation.tryCreate(id), ingredient.asVanillaIngredient(), renderState.getInternal(), growthModifier, new HashSet<>(Arrays.asList(categories))));
+        this(new SoilInfo(ResourceLocation.tryCreate(id), ingredient.asVanillaIngredient(), renderState.getInternal(), growthModifier, new HashSet<>(Arrays.asList(categories)), Optional.empty()));
     }
     
     public ZenSoil(SoilInfo info) {
@@ -67,6 +73,12 @@ public class ZenSoil {
     public ZenSoil setGrowthModifier (float modifier) {
         
         this.internal.setGrowthModifier(modifier);
+        return this;
+    }
+    
+    public ZenSoil setLightLevel (int lightLevel) {
+        
+        this.internal.setLightLevel(lightLevel);
         return this;
     }
     

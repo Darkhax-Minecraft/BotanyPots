@@ -1,0 +1,36 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "byg"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "byg:green_tulip"
+    }
+  ],
+  "seed": {
+    "item": "byg:green_tulip"
+  },
+  "categories": ["dirt"],
+  "growthTicks": 1600,
+  "display": {
+    "block": "byg:green_tulip"
+  },
+  "results": [{
+    "chance": 0.75,
+    "output": {
+      "item": "byg:green_tulip"
+    },
+    "minRolls": 1,
+    "maxRolls": 1
+  }, {
+    "chance": 0.05,
+    "output": {
+      "item": "byg:green_tulip"
+    },
+    "minRolls": 1,
+    "maxRolls": 2
+  }]
+}

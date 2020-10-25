@@ -1,0 +1,40 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "forbidden_arcanus"
+    }
+  ],
+  "seed": {
+    "item": "forbidden_arcanus:golden_orchid_seeds"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 900,
+  "display": {
+    "block": "forbidden_arcanus:golden_orchid",
+    "properties": {
+      "age": 2
+    }
+  },
+  "results": [
+    {
+      "chance": 0.70,
+      "output": {
+        "item": "forbidden_arcanus:arcane_gold_nugget"
+      },
+      "minRolls": 1.0,
+      "maxRolls": 1.0
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "forbidden_arcanus:golden_orchid_seeds"
+      },
+      "minRolls": 1.0,
+      "maxRolls": 1.0
+    }
+  ]
+}
