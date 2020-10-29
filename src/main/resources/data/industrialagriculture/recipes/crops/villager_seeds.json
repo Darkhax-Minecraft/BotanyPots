@@ -7,18 +7,18 @@
 		},
 		{
 			"type":"mysticalagriculture:crop_enabled",
-			"crop":"industrialagriculture:vindicator"
+			"crop":"industrialagriculture:villager"
 		}
 	],
 	"seed":{
-		"item":"mysticalagriculture:vindicator_seeds"
+		"item":"mysticalagriculture:villager_seeds"
 	},
 	"categories":[
 		"imperium"
 	],
 	"growthTicks":1200,
 	"display":{
-		"block":"mysticalagriculture:vindicator_crop",
+		"block":"mysticalagriculture:villager_crop",
 		"properties":{
 			"age":7
 		}
@@ -27,7 +27,7 @@
 		{
 			"chance":0.75,
 			"output":{
-				"item":"mysticalagriculture:vindicator_essence"
+				"item":"mysticalagriculture:villager_essence"
 			},
 			"minRolls":1,
 			"maxRolls":1
@@ -35,7 +35,7 @@
 		{
 			"chance":0.05,
 			"output":{
-				"item":"mysticalagriculture:vindicator_seeds"
+				"item":"mysticalagriculture:villager_seeds"
 			},
 			"minRolls":1,
 			"maxRolls":1
