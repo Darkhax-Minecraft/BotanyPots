@@ -7,18 +7,18 @@
 		},
 		{
 			"type":"mysticalagriculture:crop_enabled",
-			"crop":"industrialagriculture:polar_bear"
+			"crop":"industrialagriculture:pillager"
 		}
 	],
 	"seed":{
-		"item":"mysticalagriculture:polar_bear_seeds"
+		"item":"mysticalagriculture:pillager_seeds"
 	},
 	"categories":[
 		"tertium"
 	],
 	"growthTicks":1200,
 	"display":{
-		"block":"mysticalagriculture:polar_bear_crop",
+		"block":"mysticalagriculture:pillager_crop",
 		"properties":{
 			"age":7
 		}
@@ -27,7 +27,7 @@
 		{
 			"chance":0.75,
 			"output":{
-				"item":"mysticalagriculture:polar_bear_essence"
+				"item":"mysticalagriculture:pillager_essence"
 			},
 			"minRolls":1,
 			"maxRolls":1
@@ -35,7 +35,7 @@
 		{
 			"chance":0.05,
 			"output":{
-				"item":"mysticalagriculture:polar_bear_seeds"
+				"item":"mysticalagriculture:pillager_seeds"
 			},
 			"minRolls":1,
 			"maxRolls":1
