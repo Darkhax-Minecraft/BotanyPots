@@ -1,0 +1,32 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:dandelion"
+  },
+  "display": {
+    "block": "minecraft:dandelion",
+    "properties": {}
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:dandelion"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:dandelion"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

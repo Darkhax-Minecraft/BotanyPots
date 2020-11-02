@@ -1,0 +1,17 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:soul_soil"
+  },
+  "display": {
+    "properties": {
+      "block": "minecraft:soul_soil",
+      "properties": {}
+    }
+  },
+  "categories": [
+    "soul_sand",
+    "nether"
+  ],
+  "growthModifier": 0.0
+}

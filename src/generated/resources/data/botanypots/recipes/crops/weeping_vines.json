@@ -1,0 +1,30 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:weeping_vines"
+  },
+  "display": [
+    {
+      "block": "minecraft:weeping_vines_plant",
+      "properties": {}
+    },
+    {
+      "block": "minecraft:weeping_vines_plant",
+      "properties": {}
+    }
+  ],
+  "categories": [
+    "crimson_nylium"
+  ],
+  "growthTicks": 1600,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:weeping_vines"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

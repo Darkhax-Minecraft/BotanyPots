@@ -1,0 +1,16 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:netherrack"
+  },
+  "display": {
+    "properties": {
+      "block": "minecraft:netherrack",
+      "properties": {}
+    }
+  },
+  "categories": [
+    "nether"
+  ],
+  "growthModifier": 0.0
+}

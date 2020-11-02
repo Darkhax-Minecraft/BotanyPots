@@ -1,0 +1,17 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:red_sand"
+  },
+  "display": {
+    "properties": {
+      "block": "minecraft:red_sand",
+      "properties": {}
+    }
+  },
+  "categories": [
+    "sand",
+    "red_sand"
+  ],
+  "growthModifier": 0.0
+}

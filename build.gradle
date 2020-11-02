@@ -75,7 +75,25 @@ minecraft {
                 }
             }
         }
+
+        data {
+            workingDirectory project.file('run')
+            taskName "${mod_name}".replaceAll("\\s","") + 'Data'
+            jvmArg "-Dmixin.env.disableRefMap=true"
+            property 'forge.logging.console.level', 'debug'
+            args '--mod', 'botanypots', '--all', '--output', file('src/generated/resources/')
+
+            mods {
+                botanypots {
+                    source sourceSets.main
+                }
+            }
+        }
     }
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
 }
 
 repositories {

@@ -1,4 +1,5 @@
 #IntelliJ IDEA
+*.idea
 *.class
 *.iml
 *.ipr
@@ -11,6 +12,7 @@ build/
 run/
 /libs
 /logs
+.cache
 
 #Eclipse
 .classpath

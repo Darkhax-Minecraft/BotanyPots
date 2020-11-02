@@ -1,0 +1,42 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:lilac"
+  },
+  "display": [
+    {
+      "block": "minecraft:lilac",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "minecraft:lilac",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:lilac"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:lilac"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

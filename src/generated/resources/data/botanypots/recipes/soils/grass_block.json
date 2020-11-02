@@ -1,0 +1,19 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:grass_block"
+  },
+  "display": {
+    "properties": {
+      "block": "minecraft:grass_block",
+      "properties": {
+        "snowy": false
+      }
+    }
+  },
+  "categories": [
+    "dirt",
+    "grass"
+  ],
+  "growthModifier": 0.05
+}
