@@ -1,0 +1,41 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "autumnity"
+    }
+  ],
+  "seed": {
+    "item": "autumnity:foul_berries"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1100,
+  "display": {
+    "block": "autumnity:tall_foul_berry_bush",
+    "properties": {
+      "half": "upper",
+      "age": 3
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "autumnity:foul_berries"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    },
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "autumnity:foul_berry_leaf"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}
