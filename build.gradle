@@ -39,6 +39,10 @@ archivesBaseName = "${mod_name}-${minecraft_version}"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
+sourceSets {
+    main.resources.srcDirs += 'src/generated/resources'
+}
+
 minecraft {
 
     mappings channel: 'snapshot', version: "${mcp_version}".toString()
@@ -69,6 +73,18 @@ minecraft {
 			jvmArg "-Dmixin.env.disableRefMap=true"
 			property 'forge.logging.console.level', 'debug'
 			
+            mods {
+                botanypots {
+                    source sourceSets.main
+                }
+            }
+        }
+        
+        data {
+            workingDirectory project.file('run')
+            taskName "${mod_name}".replaceAll("\\s","") + 'Data'
+            args '--mod', 'botanypots', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
+
             mods {
                 botanypots {
                     source sourceSets.main

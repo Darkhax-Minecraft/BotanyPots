@@ -1,6 +1,7 @@
 {
     "parent": "block/block",
     "textures": {
+        "particle": "#terracotta",
         "hopper_overlay": "botanypots:block/hopper_overlay"
     },
     "elements": [
