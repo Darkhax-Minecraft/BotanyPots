@@ -1,21 +1,24 @@
 {
-  "type": "botanypots:soil",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:peat"
+        }
+    ],
+    "input": {
+        "item": "byg:peat"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:peat"
-    }
-  ],
-  "input": {
-    "item": "byg:peat"
-  },
-  "display": {
-    "block": "byg:peat"
-  },
-  "categories": ["dirt", "mushroom"],
-  "growthModifier": 0.25
+    "display": {
+        "block": "byg:peat"
+    },
+    "categories": [
+        "dirt",
+        "mushroom"
+    ],
+    "growthModifier": 0.25
 }

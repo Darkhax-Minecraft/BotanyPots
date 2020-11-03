@@ -1,36 +1,41 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:winter_succulent"
+        }
+    ],
+    "seed": {
+        "item": "byg:winter_succulent"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:winter_succulent"
-    }
-  ],
-  "seed": {
-    "item": "byg:winter_succulent"
-  },
-  "categories": ["grass"],
-  "growthTicks": 1600,
-  "display": {
-    "block": "byg:winter_succulent"
-  },
-  "results": [{
-    "chance": 0.75,
-    "output": {
-      "item": "byg:winter_succulent"
+    "categories": [
+        "grass"
+    ],
+    "growthTicks": 1600,
+    "display": {
+        "block": "byg:winter_succulent"
     },
-    "minRolls": 1,
-    "maxRolls": 1
-  }, {
-    "chance": 0.05,
-    "output": {
-      "item": "byg:winter_succulent"
-    },
-    "minRolls": 1,
-    "maxRolls": 2
-  }]
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "byg:winter_succulent"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "byg:winter_succulent"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

@@ -1,47 +1,53 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:prairie_grass"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:tall_prairie_grass"
+        }
+    ],
+    "seed": {
+        "item": "byg:prairie_grass"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:prairie_grass"
+    "categories": [
+        "grass"
+    ],
+    "growthTicks": 600,
+    "display": {
+        "block": "byg:prairie_grass"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:tall_prairie_grass"
-    }
-  ],
-  "seed": {
-    "item": "byg:prairie_grass"
-  },
-  "categories": ["grass"],
-  "growthTicks": 600,
-  "display": {
-    "block": "byg:prairie_grass"
-  },
-  "results": [{
-    "chance": 0.75,
-    "output": {
-      "item": "byg:prairie_grass"
-    },
-    "minRolls": 1,
-    "maxRolls": 1
-  }, {
-    "chance": 0.05,
-    "output": {
-      "item": "byg:prairie_grass"
-    },
-    "minRolls": 1,
-    "maxRolls": 2
-  }, {
-    "chance": 0.05,
-    "output": {
-      "item": "byg:tall_prairie_grass"
-    },
-    "minRolls": 1,
-    "maxRolls": 1
-  }]
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "byg:prairie_grass"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "byg:prairie_grass"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "byg:tall_prairie_grass"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }

@@ -1,36 +1,41 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:daffodil"
+        }
+    ],
+    "seed": {
+        "item": "byg:daffodil"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:daffodil"
-    }
-  ],
-  "seed": {
-    "item": "byg:daffodil"
-  },
-  "categories": ["dirt"],
-  "growthTicks": 1600,
-  "display": {
-    "block": "byg:daffodil"
-  },
-  "results": [{
-    "chance": 0.75,
-    "output": {
-      "item": "byg:daffodil"
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1600,
+    "display": {
+        "block": "byg:daffodil"
     },
-    "minRolls": 1,
-    "maxRolls": 1
-  }, {
-    "chance": 0.05,
-    "output": {
-      "item": "byg:daffodil"
-    },
-    "minRolls": 1,
-    "maxRolls": 2
-  }]
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "byg:daffodil"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "byg:daffodil"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

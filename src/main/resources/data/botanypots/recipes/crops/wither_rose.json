@@ -1,21 +1,23 @@
 {
-  "type": "botanypots:crop",
-  "seed": {
-    "item": "minecraft:wither_rose"
-  },
-  "categories":["soul_sand"],
-  "growthTicks": 1800,
-  "display": {
-    "block": "minecraft:wither_rose"
-  },
-  "results": [
-    {
-      "chance": 0.60,
-      "output": {
+    "type": "botanypots:crop",
+    "seed": {
         "item": "minecraft:wither_rose"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
-    }
-  ]
+    },
+    "categories": [
+        "soul_sand"
+    ],
+    "growthTicks": 1800,
+    "display": {
+        "block": "minecraft:wither_rose"
+    },
+    "results": [
+        {
+            "chance": 0.60,
+            "output": {
+                "item": "minecraft:wither_rose"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }

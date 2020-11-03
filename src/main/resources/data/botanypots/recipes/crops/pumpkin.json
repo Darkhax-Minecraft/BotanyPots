@@ -1,29 +1,31 @@
 {
-  "type": "botanypots:crop",
-  "seed": {
-    "tag": "forge:seeds/pumpkin"
-  },
-  "categories":["dirt"],
-  "growthTicks": 1800,
-  "display": {
-    "block": "minecraft:pumpkin"
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
-        "item": "minecraft:pumpkin"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
+    "type": "botanypots:crop",
+    "seed": {
+        "tag": "forge:seeds/pumpkin"
     },
-    {
-      "chance": 0.05,
-      "output": {
-        "item": "minecraft:pumpkin_seeds"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
-    }
-  ]
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1800,
+    "display": {
+        "block": "minecraft:pumpkin"
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "minecraft:pumpkin"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "minecraft:pumpkin_seeds"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

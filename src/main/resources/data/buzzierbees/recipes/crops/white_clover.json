@@ -1,27 +1,29 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "buzzierbees"
-    }
-  ],
-  "seed": {
-    "item": "buzzierbees:white_clover"
-  },
-  "categories":["dirt"],
-  "growthTicks": 1200,
-  "display": {
-    "block": "buzzierbees:white_clover"
-  },
-  "results": [
-    {
-      "chance": 0.65,
-      "output": {
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "buzzierbees"
+        }
+    ],
+    "seed": {
         "item": "buzzierbees:white_clover"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
-    }
-  ]
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "buzzierbees:white_clover"
+    },
+    "results": [
+        {
+            "chance": 0.65,
+            "output": {
+                "item": "buzzierbees:white_clover"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }

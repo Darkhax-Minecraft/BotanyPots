@@ -1,37 +1,39 @@
 {
-  "type": "botanypots:crop",
-  "seed": {
-    "item": "minecraft:grass"
-  },
-  "categories":["grass"],
-  "growthTicks": 600,
-  "display": {
-    "block": "minecraft:grass"
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
+    "type": "botanypots:crop",
+    "seed": {
         "item": "minecraft:grass"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
     },
-    {
-      "chance": 0.05,
-      "output": {
-        "item": "minecraft:grass"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
+    "categories": [
+        "grass"
+    ],
+    "growthTicks": 600,
+    "display": {
+        "block": "minecraft:grass"
     },
-    {
-      "chance": 0.05,
-      "output": {
-        "item": "minecraft:tall_grass"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
-    }
-  ]
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "minecraft:grass"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "minecraft:grass"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "minecraft:tall_grass"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }

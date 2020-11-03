@@ -1,29 +1,31 @@
 {
-  "type": "botanypots:crop",
-  "seed": {
-    "item": "minecraft:dandelion"
-  },
-  "categories":["dirt"],
-  "growthTicks": 1200,
-  "display": {
-    "block": "minecraft:dandelion"
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
+    "type": "botanypots:crop",
+    "seed": {
         "item": "minecraft:dandelion"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
     },
-    {
-      "chance": 0.05,
-      "output": {
-        "item": "minecraft:dandelion"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
-    }
-  ]
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "minecraft:dandelion"
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "minecraft:dandelion"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "minecraft:dandelion"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

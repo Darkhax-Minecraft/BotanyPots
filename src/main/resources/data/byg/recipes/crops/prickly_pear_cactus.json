@@ -1,29 +1,33 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:prickly_pear_cactus"
+        }
+    ],
+    "seed": {
+        "item": "byg:prickly_pear_cactus"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:prickly_pear_cactus"
-    }
-  ],
-  "seed": {
-    "item": "byg:prickly_pear_cactus"
-  },
-  "categories": ["sand"],
-  "growthTicks": 1600,
-  "display": {
-    "block": "byg:prickly_pear_cactus"
-  },
-  "results": [{
-    "chance": 0.75,
-    "output": {
-      "item": "byg:prickly_pear_cactus"
+    "categories": [
+        "sand"
+    ],
+    "growthTicks": 1600,
+    "display": {
+        "block": "byg:prickly_pear_cactus"
     },
-    "minRolls": 1,
-    "maxRolls": 1
-  }]
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "byg:prickly_pear_cactus"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }

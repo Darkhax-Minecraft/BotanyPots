@@ -1,36 +1,41 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:sythian_stalk_block"
+        }
+    ],
+    "seed": {
+        "item": "byg:sythian_stalk_block"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:sythian_stalk_block"
-    }
-  ],
-  "seed": {
-    "item": "byg:sythian_stalk_block"
-  },
-  "categories": ["sythian_nylium"],
-  "growthTicks": 1800,
-  "display": {
-    "block": "byg:sythian_stalk_block"
-  },
-  "results": [{
-    "chance": 0.75,
-    "output": {
-      "item": "byg:sythian_stalk_block"
+    "categories": [
+        "sythian_nylium"
+    ],
+    "growthTicks": 1800,
+    "display": {
+        "block": "byg:sythian_stalk_block"
     },
-    "minRolls": 1,
-    "maxRolls": 3
-  }, {
-    "chance": 0.05,
-    "output": {
-      "item": "byg:sythian_stalk_block"
-    },
-    "minRolls": 1,
-    "maxRolls": 3
-  }]
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "byg:sythian_stalk_block"
+            },
+            "minRolls": 1,
+            "maxRolls": 3
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "byg:sythian_stalk_block"
+            },
+            "minRolls": 1,
+            "maxRolls": 3
+        }
+    ]
 }

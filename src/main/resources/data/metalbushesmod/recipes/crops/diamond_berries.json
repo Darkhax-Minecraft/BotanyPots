@@ -1,30 +1,32 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "metalbushesmod"
-    }
-  ],
-  "seed": {
-    "item": "metalbushesmod:diamond_bush"
-  },
-  "categories":["dirt"],
-  "growthTicks": 2400,
-  "display": {
-    "block": "metalbushesmod:diamond_bush",
-    "properties": {
-      "age": 3
-    }
-  },
-  "results": [
-    {
-      "chance": 0.80,
-      "output": {
-        "item": "metalbushesmod:diamond_nugget"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
-    }
-  ]
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "metalbushesmod"
+        }
+    ],
+    "seed": {
+        "item": "metalbushesmod:diamond_bush"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 2400,
+    "display": {
+        "block": "metalbushesmod:diamond_bush",
+        "properties": {
+            "age": 3
+        }
+    },
+    "results": [
+        {
+            "chance": 0.80,
+            "output": {
+                "item": "metalbushesmod:diamond_nugget"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }

@@ -1,44 +1,44 @@
 {
-	"type":"botanypots:crop",
-	"conditions":[
-		{
-			"type":"forge:mod_loaded",
-			"modid":"thermal"
-		},
-		{
-			"type":"thermal:crop_enabled",
-			"crop":"thermal:onion"
-		}
-	],
-	"seed":{
-		"item":"thermal:onion_seeds"
-	},
-	"categories":[
-		"dirt"
-	],
-	"growthTicks":1200,
-	"display":{
-		"block":"thermal:onion",
-		"properties":{
-			"age":7
-		}
-	},
-	"results":[
-		{
-			"chance":0.75,
-			"output":{
-				"item":"thermal:onion"
-			},
-			"minRolls":1,
-			"maxRolls":1
-		},
-		{
-			"chance":0.05,
-			"output":{
-				"item":"thermal:onion_seeds"
-			},
-			"minRolls":1,
-			"maxRolls":1
-		}
-	]
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "thermal"
+        },
+        {
+            "type": "thermal:crop_enabled",
+            "crop": "thermal:onion"
+        }
+    ],
+    "seed": {
+        "item": "thermal:onion_seeds"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "thermal:onion",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "thermal:onion"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "thermal:onion_seeds"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }

@@ -1,17 +1,21 @@
 {
-  "type": "botanypots:soil",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "botania"
-    }
-  ],
-  "input": {
-    "item": "botania:infused_grass"
-  },
-  "display": {
-    "block": "botania:infused_grass"
-  },
-  "categories": ["dirt", "grass", "botania"],
-  "growthModifier": 0.15
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "botania"
+        }
+    ],
+    "input": {
+        "item": "botania:infused_grass"
+    },
+    "display": {
+        "block": "botania:infused_grass"
+    },
+    "categories": [
+        "dirt",
+        "grass",
+        "botania"
+    ],
+    "growthModifier": 0.15
 }

@@ -1,21 +1,27 @@
 {
-  "type": "botanypots:soil",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:nylium_soul_sand"
+        }
+    ],
+    "input": {
+        "item": "byg:nylium_soul_sand"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:nylium_soul_sand"
-    }
-  ],
-  "input": {
-    "item": "byg:nylium_soul_sand"
-  },
-  "display": {
-    "block": "byg:nylium_soul_sand"
-  },
-  "categories": ["nylium_soul_sand", "nylium_soul_soil", "soul_sand", "soul_soil", "nether"],
-  "growthModifier": 0
+    "display": {
+        "block": "byg:nylium_soul_sand"
+    },
+    "categories": [
+        "nylium_soul_sand",
+        "nylium_soul_soil",
+        "soul_sand",
+        "soul_soil",
+        "nether"
+    ],
+    "growthModifier": 0
 }

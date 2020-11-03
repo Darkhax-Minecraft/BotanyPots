@@ -1,35 +1,37 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "quark"
-    }
-  ],
-  "seed": {
-    "item": "quark:glowshroom"
-  },
-  "categories":["glowcelium"],
-  "growthTicks": 1600,
-  "display": {
-    "block": "quark:glowshroom"
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "quark"
+        }
+    ],
+    "seed": {
         "item": "quark:glowshroom"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
     },
-    {
-      "chance": 0.05,
-      "output": {
-        "item": "quark:glowshroom"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
-    }
-  ]
+    "categories": [
+        "glowcelium"
+    ],
+    "growthTicks": 1600,
+    "display": {
+        "block": "quark:glowshroom"
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "quark:glowshroom"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "quark:glowshroom"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

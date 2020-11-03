@@ -1,21 +1,24 @@
 {
-  "type": "botanypots:soil",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:meadow_grass_block"
+        }
+    ],
+    "input": {
+        "item": "byg:meadow_grass_block"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:meadow_grass_block"
-    }
-  ],
-  "input": {
-    "item": "byg:meadow_grass_block"
-  },
-  "display": {
-    "block": "byg:meadow_grass_block"
-  },
-  "categories": ["dirt", "grass"],
-  "growthModifier": 0.05
+    "display": {
+        "block": "byg:meadow_grass_block"
+    },
+    "categories": [
+        "dirt",
+        "grass"
+    ],
+    "growthModifier": 0.05
 }

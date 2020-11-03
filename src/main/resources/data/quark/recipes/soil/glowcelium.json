@@ -1,19 +1,19 @@
 {
-  "type": "botanypots:soil",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "quark"
-    }
-  ],
-  "input": {
-    "item": "quark:glowcelium"
-  },
-  "display": {
-    "block": "quark:glowcelium"
-  },
-  "categories": [
-    "glowcelium"
-  ],
-  "growthModifier": 0.05
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "quark"
+        }
+    ],
+    "input": {
+        "item": "quark:glowcelium"
+    },
+    "display": {
+        "block": "quark:glowcelium"
+    },
+    "categories": [
+        "glowcelium"
+    ],
+    "growthModifier": 0.05
 }

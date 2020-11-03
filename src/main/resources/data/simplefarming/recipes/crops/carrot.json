@@ -1,38 +1,40 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "simplefarming"
-    }
-  ],
-  "seed": {
-    "item": "simplefarming:carrot_seeds"
-  },
-  "categories":["dirt"],
-  "growthTicks": 1100,
-  "display": {
-    "block": "simplefarming:carrot_crop",
-    "properties": {
-      "age": 7
-    }
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
-        "item": "minecraft:carrot"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
-    },
-	{
-      "chance": 0.3,
-      "output": {
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "simplefarming"
+        }
+    ],
+    "seed": {
         "item": "simplefarming:carrot_seeds"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
-    }
-  ]
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1100,
+    "display": {
+        "block": "simplefarming:carrot_crop",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "minecraft:carrot"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        },
+        {
+            "chance": 0.3,
+            "output": {
+                "item": "simplefarming:carrot_seeds"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

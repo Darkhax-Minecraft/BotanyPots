@@ -1,17 +1,20 @@
 {
-  "type": "botanypots:soil",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "snad"
-    }
-  ],
-  "input": {
-    "item": "snad:red_snad"
-  },
-  "display": {
-    "block": "snad:red_snad"
-  },
-  "categories": ["sand", "red_sand"],
-  "growthModifier": 0.5
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "snad"
+        }
+    ],
+    "input": {
+        "item": "snad:red_snad"
+    },
+    "display": {
+        "block": "snad:red_snad"
+    },
+    "categories": [
+        "sand",
+        "red_sand"
+    ],
+    "growthModifier": 0.5
 }

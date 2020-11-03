@@ -1,14 +1,14 @@
 {
-  "type": "botanypots:fertilizer",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "botania"
-    }
-  ],
-  "fertilizer": {
-    "item": "botania:fertilizer"
-  },
-  "minTicks": 200,
-  "maxTicks": 250
+    "type": "botanypots:fertilizer",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "botania"
+        }
+    ],
+    "fertilizer": {
+        "item": "botania:fertilizer"
+    },
+    "minTicks": 200,
+    "maxTicks": 250
 }

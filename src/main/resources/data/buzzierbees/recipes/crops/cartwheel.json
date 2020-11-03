@@ -1,27 +1,29 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "buzzierbees"
-    }
-  ],
-  "seed": {
-    "item": "buzzierbees:cartwheel"
-  },
-  "categories":["dirt"],
-  "growthTicks": 1200,
-  "display": {
-    "block": "buzzierbees:cartwheel"
-  },
-  "results": [
-    {
-      "chance": 0.65,
-      "output": {
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "buzzierbees"
+        }
+    ],
+    "seed": {
         "item": "buzzierbees:cartwheel"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
-    }
-  ]
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "buzzierbees:cartwheel"
+    },
+    "results": [
+        {
+            "chance": 0.65,
+            "output": {
+                "item": "buzzierbees:cartwheel"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }

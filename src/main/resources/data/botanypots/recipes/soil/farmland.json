@@ -1,14 +1,17 @@
 {
-  "type": "botanypots:soil",
-  "input": {
-    "item": "minecraft:farmland"
-  },
-  "display": {
-    "block": "minecraft:farmland",
-    "properties": {
-      "moisture": 7
-    }
-  },
-  "categories": ["dirt", "farmland"],
-  "growthModifier": 0.15
+    "type": "botanypots:soil",
+    "input": {
+        "item": "minecraft:farmland"
+    },
+    "display": {
+        "block": "minecraft:farmland",
+        "properties": {
+            "moisture": 7
+        }
+    },
+    "categories": [
+        "dirt",
+        "farmland"
+    ],
+    "growthModifier": 0.15
 }

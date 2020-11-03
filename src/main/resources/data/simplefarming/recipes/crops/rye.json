@@ -1,38 +1,40 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "simplefarming"
-    }
-  ],
-  "seed": {
-    "item": "simplefarming:rye_seeds"
-  },
-  "categories":["dirt"],
-  "growthTicks": 800,
-  "display": {
-    "block": "simplefarming:rye_crop",
-    "properties": {
-      "age": 7
-    }
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
-        "item": "simplefarming:rye"
-      },
-      "minRolls": 1,
-      "maxRolls": 3
-    },
-	{
-      "chance": 0.25,
-      "output": {
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "simplefarming"
+        }
+    ],
+    "seed": {
         "item": "simplefarming:rye_seeds"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
-    }
-  ]
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 800,
+    "display": {
+        "block": "simplefarming:rye_crop",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "simplefarming:rye"
+            },
+            "minRolls": 1,
+            "maxRolls": 3
+        },
+        {
+            "chance": 0.25,
+            "output": {
+                "item": "simplefarming:rye_seeds"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }

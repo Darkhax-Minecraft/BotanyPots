@@ -1,38 +1,40 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "simplefarming"
-    }
-  ],
-  "seed": {
-    "item": "simplefarming:ginger_seeds"
-  },
-  "categories":["dirt"],
-  "growthTicks": 1200,
-  "display": {
-    "block": "simplefarming:ginger_crop",
-    "properties": {
-      "age": 7
-    }
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
-        "item": "simplefarming:ginger"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
-    },
-	{
-      "chance": 0.25,
-      "output": {
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "simplefarming"
+        }
+    ],
+    "seed": {
         "item": "simplefarming:ginger_seeds"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
-    }
-  ]
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "simplefarming:ginger_crop",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "simplefarming:ginger"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.25,
+            "output": {
+                "item": "simplefarming:ginger_seeds"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }

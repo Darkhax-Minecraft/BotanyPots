@@ -1,15 +1,15 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "botanypots:brown_botany_pot"
-    },
-    {
-      "item": "minecraft:hopper"
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "botanypots:brown_botany_pot"
+        },
+        {
+            "item": "minecraft:hopper"
+        }
+    ],
+    "result": {
+        "item": "botanypots:hopper_brown_botany_pot",
+        "count": 1
     }
-  ],
-  "result": {
-    "item": "botanypots:hopper_brown_botany_pot",
-    "count": 1
-  }
 }

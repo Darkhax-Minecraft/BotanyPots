@@ -1,21 +1,27 @@
 {
-  "type": "botanypots:soil",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:embur_nylium"
+        }
+    ],
+    "input": {
+        "item": "byg:embur_nylium"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:embur_nylium"
-    }
-  ],
-  "input": {
-    "item": "byg:embur_nylium"
-  },
-  "display": {
-    "block": "byg:embur_nylium"
-  },
-  "categories": ["dirt", "embur_nylium", "nylium", "blue_netherrack", "mushroom"],
-  "growthModifier": 0.05
+    "display": {
+        "block": "byg:embur_nylium"
+    },
+    "categories": [
+        "dirt",
+        "embur_nylium",
+        "nylium",
+        "blue_netherrack",
+        "mushroom"
+    ],
+    "growthModifier": 0.05
 }
