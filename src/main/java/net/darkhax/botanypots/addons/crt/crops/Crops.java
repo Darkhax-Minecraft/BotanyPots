@@ -39,7 +39,7 @@ public class Crops implements IRecipeManager {
     }
     
     @ZenCodeType.Method
-    public ZenCrop get (String id) {
+    public ZenCrop getCrop (String id) {
         
         final IRecipe<?> info = this.getRecipes().get(ResourceLocation.tryCreate(id));
         
