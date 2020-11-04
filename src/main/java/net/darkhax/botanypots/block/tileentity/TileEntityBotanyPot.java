@@ -13,16 +13,13 @@ import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunk;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.EmptyHandler;
 
@@ -96,18 +93,8 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         
         if (!this.world.isRemote) {
             
-            this.sync();
+            this.sync(false);
             this.world.getChunkProvider().getLightManager().checkBlock(this.pos);
-        }
-    }
-    
-    @Override
-    public void sync () {
-        
-        if (this.world instanceof ServerWorld) {
-            
-            final IPacket<?> packet = this.getUpdatePacket();
-            sendToTracking((ServerWorld) this.world, this.getChunkPos(), this.pos, packet, false);
         }
     }
     
@@ -144,7 +131,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         
         if (!this.world.isRemote) {
             
-            this.sync();
+            this.sync(false);
         }
     }
     
@@ -236,7 +223,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         
         if (!this.world.isRemote) {
             
-            this.sync();
+            this.sync(false);
         }
     }
     
@@ -257,7 +244,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         
         if (!this.world.isRemote) {
             
-            this.sync();
+            this.sync(false);
         }
     }
     
@@ -495,10 +482,5 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         }
         
         return this.chunkPos;
-    }
-    
-    public static void sendToTracking (ServerWorld world, ChunkPos chunkPos, BlockPos blockPos, IPacket<?> packet, boolean boundaryOnly) {
-        
-        world.getChunkProvider().chunkManager.getTrackingPlayers(chunkPos, boundaryOnly).forEach(p -> p.connection.sendPacket(packet));
     }
 }
