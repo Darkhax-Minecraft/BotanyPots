@@ -1,0 +1,26 @@
+{
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "zycraft"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "zycraft:zychorium_soil"
+        }
+    ],
+    "input": {
+        "item": "zycraft:zychorium_soil"
+    },
+    "display": {
+        "block": "zycraft:zychorium_soil"
+    },
+    "categories": [
+        "dirt",
+        "grass",
+        "farmland",
+        "zychorium"
+    ],
+    "growthModifier": 0.5
+} 
