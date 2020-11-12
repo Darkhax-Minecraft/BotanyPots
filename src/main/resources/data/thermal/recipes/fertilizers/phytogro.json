@@ -1,5 +1,15 @@
 {
     "type": "botanypots:fertilizer",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "thermal"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "thermal:phytogro"
+        }
+    ],
     "fertilizer": {
         "item": "thermal:phytogro"
     },
