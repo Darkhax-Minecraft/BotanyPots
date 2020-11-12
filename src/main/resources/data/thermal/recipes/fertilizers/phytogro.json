@@ -1,0 +1,8 @@
+{
+    "type": "botanypots:fertilizer",
+    "fertilizer": {
+        "item": "thermal:phytogro"
+    },
+    "minTicks": 240,
+    "maxTicks": 340
+}
