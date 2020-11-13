@@ -317,6 +317,7 @@ task publishDiluv (type: TaskDiluvUpload) {
     projectId = findProperty('diluv_project')
     projectVersion = project.version
     uploadFile = jar
+    addDependency(1); // bookshelf
     
     doLast {
     
