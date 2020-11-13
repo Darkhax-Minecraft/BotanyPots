@@ -374,3 +374,34 @@ task publishDiluv (type: TaskDiluvUpload) {
         webhook.sendMessage(message);
     }
 }
+
+
+// Jar Signing
+import net.minecraftforge.gradle.common.task.SignJar
+
+task signJar(type: SignJar, dependsOn: jar) {
+
+    onlyIf {
+    
+        project.hasProperty('keyStore')
+    }
+    
+    if (project.hasProperty('keyStore')) {
+    
+        project.logger.info('Signing jar ' + jar.archivePath.getName());
+    
+        keyStore = project.findProperty('keyStore')
+        alias = project.findProperty('keyStoreAlias')
+        storePass = project.findProperty('keyStorePass')
+        keyPass = project.findProperty('keyStoreKeyPass')
+        inputFile = jar.archivePath
+        outputFile = jar.archivePath
+    }
+
+    else {
+    
+        project.logger.warn('Could not sign ' + jar.archivePath.getName() + '. No keyStore property could be found')
+    }
+}
+
+build.dependsOn signJar
