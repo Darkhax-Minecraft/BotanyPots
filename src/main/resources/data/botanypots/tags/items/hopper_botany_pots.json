@@ -1,22 +1,22 @@
 {
-  "replace": false,
-  "values": [
-    "botanypots:hopper_botany_pot",
-    "botanypots:hopper_white_botany_pot",
-    "botanypots:hopper_orange_botany_pot",
-    "botanypots:hopper_magenta_botany_pot",
-    "botanypots:hopper_light_blue_botany_pot",
-    "botanypots:hopper_yellow_botany_pot",
-    "botanypots:hopper_lime_botany_pot",
-    "botanypots:hopper_pink_botany_pot",
-    "botanypots:hopper_gray_botany_pot",
-    "botanypots:hopper_light_gray_botany_pot",
-    "botanypots:hopper_cyan_botany_pot",
-    "botanypots:hopper_purple_botany_pot",
-    "botanypots:hopper_blue_botany_pot",
-    "botanypots:hopper_brown_botany_pot",
-    "botanypots:hopper_green_botany_pot",
-    "botanypots:hopper_red_botany_pot",
-    "botanypots:hopper_black_botany_pot"
-  ]
+    "replace": false,
+    "values": [
+        "botanypots:hopper_botany_pot",
+        "botanypots:hopper_white_botany_pot",
+        "botanypots:hopper_orange_botany_pot",
+        "botanypots:hopper_magenta_botany_pot",
+        "botanypots:hopper_light_blue_botany_pot",
+        "botanypots:hopper_yellow_botany_pot",
+        "botanypots:hopper_lime_botany_pot",
+        "botanypots:hopper_pink_botany_pot",
+        "botanypots:hopper_gray_botany_pot",
+        "botanypots:hopper_light_gray_botany_pot",
+        "botanypots:hopper_cyan_botany_pot",
+        "botanypots:hopper_purple_botany_pot",
+        "botanypots:hopper_blue_botany_pot",
+        "botanypots:hopper_brown_botany_pot",
+        "botanypots:hopper_green_botany_pot",
+        "botanypots:hopper_red_botany_pot",
+        "botanypots:hopper_black_botany_pot"
+    ]
 }

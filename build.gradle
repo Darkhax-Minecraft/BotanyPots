@@ -8,6 +8,7 @@ buildscript {
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
         classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.4.0'
+        classpath group: 'gradle.plugin.com.diluv.diluvgradle', name: 'DiluvGradle', version: '1.2.4'
 		classpath group: 'com.diluv.schoomp', name: 'Schoomp', version: '1.1.0'
     }
 }
@@ -22,6 +23,7 @@ apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Co
 apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/minecraft/artifacts.gradle'
 apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/minecraft/maven_nomcp.gradle'
 apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/generic/patreon.gradle'
+apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/generic/format_json.gradle'
 
 import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
@@ -121,9 +123,9 @@ dependencies {
 
     minecraft "net.minecraftforge:forge:${forge_version}"
 	
-	compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.16.3:${bookshelf_version}")
+	compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.16.4:${bookshelf_version}")
     compile fg.deobf("mezz.jei:jei-1.16.2:${jei_version}")
-    compile fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.3:${crafttweaker_version}")  
+    compile fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.4:${crafttweaker_version}")  
     compile fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}")
     compile fg.deobf( "mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
 }
@@ -302,3 +304,105 @@ task updateVersionTracker {
         println "VersionCheck Response: ${req.getInputStream().getText()}"
     }
 }
+
+// Diluv Publishing
+import com.diluv.diluvgradle.TaskDiluvUpload
+
+task publishDiluv (type: TaskDiluvUpload) {
+
+    //failSilently = true;
+    apiURL = findProperty('diluv_api')
+    token = findProperty('diluv_token')
+    changelog = getGitChangelog() + "\n\nHuge thanks to my supporters on [Patreon](https://www.patreon.com/Darkhax?MCChangelog?${mod_name})\n\n" + getPledgeLog()
+    projectId = findProperty('diluv_project')
+    projectVersion = project.version
+    uploadFile = jar
+    addDependency(1); // bookshelf
+    
+    doLast {
+    
+        def webhook = new Webhook(findProperty('diluv_discord_webhook'), "${project.findProperty('mod_name')} Gradle Upload");
+        def message = new Message();
+        
+        message.setUsername(findProperty('mod_name'));
+            
+        if (wasUploadSuccessful()) {
+        
+            message.setContent("${project.findProperty('mod_name')} ${version} for Minecraft ${findProperty('minecraft_version')} has been released! The download will be publicly usable soon.");
+        
+            def embed = new Embed();
+            embed.addField('Download', "[**NodeCDN Download Link**](${uploadInfo.downloadURL})", false);
+            embed.addField('Change Log', "${getGitChangelog() ?: 'Unavailable :('}", false);
+            embed.setFooter(new Footer("Uploaded by ${uploadInfo.uploaderDisplayName}"));
+            embed.setColor(0x009944);
+            
+            try {
+                
+                def connection = new URL("${apiURL}/v1/projects/${projectId}").openConnection() as HttpURLConnection;
+                connection.setRequestProperty('User-Agent', 'Gradle Webhook');
+                connection.setRequestProperty('Accept', 'application/json');
+                
+                def response = connection.inputStream.withCloseable {inStream -> new JsonSlurper().parse(inStream as InputStream)};
+                
+                if (connection.responseCode == 200) {
+                    
+                    message.setAvatarUrl(response.logo);
+                }
+            }
+            
+            catch (IOException e) {}
+            
+            message.addEmbed(embed);
+        }
+        
+        else {
+            
+            message.setContent("There was an error uploading to Diluv :(");
+            
+            if (errorInfo != null) {
+            
+                def embed = new Embed();
+                embed.addField("Project Version", version, true);
+                embed.addField("Project ID", findProperty('diluv_project'), true);
+                embed.addField("Type", errorInfo.type, false);
+                embed.addField("Message", errorInfo.message, false);
+                embed.setColor(0xcf000f);
+                
+                message.addEmbed(embed);
+            }
+        }
+        
+        webhook.sendMessage(message);
+    }
+}
+
+
+// Jar Signing
+import net.minecraftforge.gradle.common.task.SignJar
+
+task signJar(type: SignJar, dependsOn: jar) {
+
+    onlyIf {
+    
+        project.hasProperty('keyStore')
+    }
+    
+    if (project.hasProperty('keyStore')) {
+    
+        project.logger.info('Signing jar ' + jar.archivePath.getName());
+    
+        keyStore = project.findProperty('keyStore')
+        alias = project.findProperty('keyStoreAlias')
+        storePass = project.findProperty('keyStorePass')
+        keyPass = project.findProperty('keyStoreKeyPass')
+        inputFile = jar.archivePath
+        outputFile = jar.archivePath
+    }
+
+    else {
+    
+        project.logger.warn('Could not sign ' + jar.archivePath.getName() + '. No keyStore property could be found')
+    }
+}
+
+build.dependsOn signJar

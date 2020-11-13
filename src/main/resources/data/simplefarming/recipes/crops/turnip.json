@@ -1,38 +1,40 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "simplefarming"
-    }
-  ],
-  "seed": {
-    "item": "simplefarming:turnip_seeds"
-  },
-  "categories":["dirt"],
-  "growthTicks": 1800,
-  "display": {
-    "block": "simplefarming:turnip_crop",
-    "properties": {
-      "age": 7
-    }
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
-        "item": "simplefarming:turnip"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
-    },
-	{
-      "chance": 0.20,
-      "output": {
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "simplefarming"
+        }
+    ],
+    "seed": {
         "item": "simplefarming:turnip_seeds"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
-    }
-  ]
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1800,
+    "display": {
+        "block": "simplefarming:turnip_crop",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "simplefarming:turnip"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        },
+        {
+            "chance": 0.20,
+            "output": {
+                "item": "simplefarming:turnip_seeds"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }

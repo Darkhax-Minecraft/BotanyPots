@@ -38,7 +38,7 @@ public class Fertilizers implements IRecipeManager {
     }
     
     @ZenCodeType.Method
-    public ZenFertilizer get (String id) {
+    public ZenFertilizer getFertilizer (String id) {
         
         final IRecipe<?> info = this.getRecipes().get(ResourceLocation.tryCreate(id));
         

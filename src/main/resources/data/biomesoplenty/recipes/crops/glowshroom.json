@@ -1,35 +1,37 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "biomesoplenty"
-    }
-  ],
-  "seed": {
-    "item": "biomesoplenty:glowshroom"
-  },
-  "categories":["mushroom"],
-  "growthTicks": 1600,
-  "display": {
-    "block": "biomesoplenty:glowshroom"
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "biomesoplenty"
+        }
+    ],
+    "seed": {
         "item": "biomesoplenty:glowshroom"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
     },
-    {
-      "chance": 0.05,
-      "output": {
-        "item": "biomesoplenty:glowshroom"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
-    }
-  ]
+    "categories": [
+        "mushroom"
+    ],
+    "growthTicks": 1600,
+    "display": {
+        "block": "biomesoplenty:glowshroom"
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "biomesoplenty:glowshroom"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "biomesoplenty:glowshroom"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

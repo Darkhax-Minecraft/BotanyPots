@@ -1,11 +1,15 @@
 {
-  "type": "botanypots:soil",
-  "input": {
-    "item": "minecraft:water_bucket"
-  },
-  "display": {
-    "block": "minecraft:water"
-  },
-  "categories": ["water", "fluid", "liquid"],
-  "growthModifier": 0
+    "type": "botanypots:soil",
+    "input": {
+        "item": "minecraft:water_bucket"
+    },
+    "display": {
+        "block": "minecraft:water"
+    },
+    "categories": [
+        "water",
+        "fluid",
+        "liquid"
+    ],
+    "growthModifier": 0
 }

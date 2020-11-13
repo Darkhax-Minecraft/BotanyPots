@@ -14,10 +14,7 @@
 	],
 	"growthTicks":1200,
 	"display":{
-		"block":"thermal:frost_melon",
-		"properties":{
-			"age":7
-		}
+		"block":"thermal:frost_melon"
 	},
 	"results":[
 		{

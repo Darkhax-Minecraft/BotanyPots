@@ -1,53 +1,53 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
-    },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:embur_roots"
-    },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:tall_embur_roots"
-    }
-  ],
-  "seed": {
-    "item": "byg:embur_roots"
-  },
-  "categories": [
-    "embur_nylium"
-  ],
-  "growthTicks": 1400,
-  "display": {
-    "block": "byg:embur_roots"
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:embur_roots"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:tall_embur_roots"
+        }
+    ],
+    "seed": {
         "item": "byg:embur_roots"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
     },
-    {
-      "chance": 0.05,
-      "output": {
-        "item": "byg:embur_roots"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
+    "categories": [
+        "embur_nylium"
+    ],
+    "growthTicks": 1400,
+    "display": {
+        "block": "byg:embur_roots"
     },
-    {
-      "chance": 0.05,
-      "output": {
-        "item": "byg:tall_embur_roots"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
-    }
-  ]
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "byg:embur_roots"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "byg:embur_roots"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "byg:tall_embur_roots"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }

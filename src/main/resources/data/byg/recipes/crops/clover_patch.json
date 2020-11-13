@@ -1,36 +1,41 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:clover_patch"
+        }
+    ],
+    "seed": {
+        "item": "byg:clover_patch"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:clover_patch"
-    }
-  ],
-  "seed": {
-    "item": "byg:clover_patch"
-  },
-  "categories": ["dirt"],
-  "growthTicks": 1600,
-  "display": {
-    "block": "byg:clover_patch"
-  },
-  "results": [{
-    "chance": 0.75,
-    "output": {
-      "item": "byg:clover_patch"
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1600,
+    "display": {
+        "block": "byg:clover_patch"
     },
-    "minRolls": 1,
-    "maxRolls": 1
-  }, {
-    "chance": 0.05,
-    "output": {
-      "item": "byg:clover_patch"
-    },
-    "minRolls": 1,
-    "maxRolls": 2
-  }]
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "byg:clover_patch"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "byg:clover_patch"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

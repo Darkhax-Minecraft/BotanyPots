@@ -1,41 +1,41 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
-    },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:sythian_sprout"
-    }
-  ],
-  "seed": {
-    "item": "byg:sythian_sprout"
-  },
-  "categories": [
-    "sythian_nylium"
-  ],
-  "growthTicks": 1400,
-  "display": {
-    "block": "byg:sythian_sprout"
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:sythian_sprout"
+        }
+    ],
+    "seed": {
         "item": "byg:sythian_sprout"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
     },
-    {
-      "chance": 0.05,
-      "output": {
-        "item": "byg:sythian_sprout"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
-    }
-  ]
+    "categories": [
+        "sythian_nylium"
+    ],
+    "growthTicks": 1400,
+    "display": {
+        "block": "byg:sythian_sprout"
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "byg:sythian_sprout"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "byg:sythian_sprout"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

@@ -1,32 +1,34 @@
 {
-  "type": "botanypots:crop",
-  "seed": {
-    "item": "minecraft:nether_wart"
-  },
-  "categories":["soul_sand"],
-  "growthTicks": 1600,
-  "display": {
-    "block": "minecraft:nether_wart",
-    "properties": {
-      "age": 3
-    }
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
+    "type": "botanypots:crop",
+    "seed": {
         "item": "minecraft:nether_wart"
-      },
-      "minRolls": 1,
-      "maxRolls": 3
     },
-    {
-      "chance": 0.05,
-      "output": {
-        "item": "minecraft:nether_wart"
-      },
-      "minRolls": 1,
-      "maxRolls": 3
-    }
-  ]
+    "categories": [
+        "soul_sand"
+    ],
+    "growthTicks": 1600,
+    "display": {
+        "block": "minecraft:nether_wart",
+        "properties": {
+            "age": 3
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "minecraft:nether_wart"
+            },
+            "minRolls": 1,
+            "maxRolls": 3
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "minecraft:nether_wart"
+            },
+            "minRolls": 1,
+            "maxRolls": 3
+        }
+    ]
 }

@@ -1,21 +1,25 @@
 {
-  "type": "botanypots:soil",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:glowcelium_block"
+        }
+    ],
+    "input": {
+        "item": "byg:glowcelium_block"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:glowcelium_block"
-    }
-  ],
-  "input": {
-    "item": "byg:glowcelium_block"
-  },
-  "display": {
-    "block": "byg:glowcelium_block"
-  },
-  "categories": ["dirt", "glowcelium", "mushroom"],
-  "growthModifier": 0.05
+    "display": {
+        "block": "byg:glowcelium_block"
+    },
+    "categories": [
+        "dirt",
+        "glowcelium",
+        "mushroom"
+    ],
+    "growthModifier": 0.05
 }

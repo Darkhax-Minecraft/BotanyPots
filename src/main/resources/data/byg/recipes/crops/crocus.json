@@ -1,36 +1,41 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:crocus"
+        }
+    ],
+    "seed": {
+        "item": "byg:crocus"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:crocus"
-    }
-  ],
-  "seed": {
-    "item": "byg:crocus"
-  },
-  "categories": ["dirt"],
-  "growthTicks": 1600,
-  "display": {
-    "block": "byg:crocus"
-  },
-  "results": [{
-    "chance": 0.75,
-    "output": {
-      "item": "byg:crocus"
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1600,
+    "display": {
+        "block": "byg:crocus"
     },
-    "minRolls": 1,
-    "maxRolls": 1
-  }, {
-    "chance": 0.05,
-    "output": {
-      "item": "byg:crocus"
-    },
-    "minRolls": 1,
-    "maxRolls": 2
-  }]
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "byg:crocus"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "byg:crocus"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

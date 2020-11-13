@@ -1,29 +1,33 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:warped_cactus"
+        }
+    ],
+    "seed": {
+        "item": "byg:warped_cactus"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:warped_cactus"
-    }
-  ],
-  "seed": {
-    "item": "byg:warped_cactus"
-  },
-  "categories": ["nylium_soul_sand"],
-  "growthTicks": 1600,
-  "display": {
-    "block": "byg:warped_cactus"
-  },
-  "results": [{
-    "chance": 0.75,
-    "output": {
-      "item": "byg:warped_cactus"
+    "categories": [
+        "nylium_soul_sand"
+    ],
+    "growthTicks": 1600,
+    "display": {
+        "block": "byg:warped_cactus"
     },
-    "minRolls": 1,
-    "maxRolls": 1
-  }]
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "byg:warped_cactus"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }

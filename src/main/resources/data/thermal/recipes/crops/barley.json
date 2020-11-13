@@ -10,7 +10,7 @@
 		"item":"thermal:barley_seeds"
 	},
 	"categories":[
-		"dirt"
+		"farmland"
 	],
 	"growthTicks":1200,
 	"display":{

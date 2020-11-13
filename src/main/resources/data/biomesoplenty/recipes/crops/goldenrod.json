@@ -1,38 +1,40 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "biomesoplenty"
-    }
-  ],
-  "seed": {
-    "item": "biomesoplenty:goldenrod"
-  },
-  "categories":["dirt"],
-  "growthTicks": 1200,
-  "display": {
-    "block": "biomesoplenty:goldenrod",
-    "properties": {
-      "half": "upper"
-    }
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "biomesoplenty"
+        }
+    ],
+    "seed": {
         "item": "biomesoplenty:goldenrod"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
     },
-    {
-      "chance": 0.05,
-      "output": {
-        "item": "biomesoplenty:goldenrod"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
-    }
-  ]
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "biomesoplenty:goldenrod",
+        "properties": {
+            "half": "upper"
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "biomesoplenty:goldenrod"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "biomesoplenty:goldenrod"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

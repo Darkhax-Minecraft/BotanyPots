@@ -1,22 +1,24 @@
 {
-  "type": "botanypots:crop",
-  "seed": {
-    "item": "minecraft:brain_coral_block"
-  },
-  "categories":["water"],
-  "growthTicks": 900,
-  "display": {
-    "block": "minecraft:brain_coral_block",
-    "renderFluid": false
-  },
-  "results": [
-    {
-      "chance": 0.60,
-      "output": {
+    "type": "botanypots:crop",
+    "seed": {
         "item": "minecraft:brain_coral_block"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
-    }
-  ]
+    },
+    "categories": [
+        "water"
+    ],
+    "growthTicks": 900,
+    "display": {
+        "block": "minecraft:brain_coral_block",
+        "renderFluid": false
+    },
+    "results": [
+        {
+            "chance": 0.60,
+            "output": {
+                "item": "minecraft:brain_coral_block"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }

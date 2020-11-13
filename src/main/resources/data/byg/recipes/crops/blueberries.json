@@ -1,39 +1,44 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:blueberries"
+        }
+    ],
+    "seed": {
+        "item": "byg:blueberries"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:blueberries"
-    }
-  ],
-  "seed": {
-    "item": "byg:blueberries"
-  },
-  "categories": ["dirt"],
-  "growthTicks": 800,
-  "display": {
-    "block": "byg:blueberry_bush",
-    "properties": {
-      "age": 3
-    }
-  },
-  "results": [{
-    "chance": 0.90,
-    "output": {
-      "item": "byg:blueberries"
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 800,
+    "display": {
+        "block": "byg:blueberry_bush",
+        "properties": {
+            "age": 3
+        }
     },
-    "minRolls": 1,
-    "maxRolls": 1
-  }, {
-    "chance": 0.05,
-    "output": {
-      "item": "byg:blueberries"
-    },
-    "minRolls": 1,
-    "maxRolls": 2
-  }]
+    "results": [
+        {
+            "chance": 0.90,
+            "output": {
+                "item": "byg:blueberries"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "byg:blueberries"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

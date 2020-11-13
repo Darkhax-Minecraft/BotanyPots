@@ -1,40 +1,40 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "pamhc2crops"
-    }
-  ],
-  "seed": {
-    "item": "pamhc2crops:barleyseeditem"
-  },
-  "categories": [
-    "dirt"
-  ],
-  "growthTicks": 1800.0,
-  "display": {
-    "block": "pamhc2crops:pambarleycrop",
-    "properties": {
-      "age": 7
-    }
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
-        "item": "pamhc2crops:barleyitem"
-      },
-      "minRolls": 1.0,
-      "maxRolls": 1.0
-    },
-    {
-      "chance": 0.25,
-      "output": {
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "pamhc2crops"
+        }
+    ],
+    "seed": {
         "item": "pamhc2crops:barleyseeditem"
-      },
-      "minRolls": 1.0,
-      "maxRolls": 2.0
-    }
-  ]
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1800.0,
+    "display": {
+        "block": "pamhc2crops:pambarleycrop",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "pamhc2crops:barleyitem"
+            },
+            "minRolls": 1.0,
+            "maxRolls": 1.0
+        },
+        {
+            "chance": 0.25,
+            "output": {
+                "item": "pamhc2crops:barleyseeditem"
+            },
+            "minRolls": 1.0,
+            "maxRolls": 2.0
+        }
+    ]
 }

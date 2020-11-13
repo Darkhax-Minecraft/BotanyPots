@@ -1,29 +1,31 @@
 {
-  "type": "botanypots:crop",
-  "seed": {
-    "item": "minecraft:red_mushroom"
-  },
-  "categories":["mushroom"],
-  "growthTicks": 1600,
-  "display": {
-    "block": "minecraft:red_mushroom"
-  },
-  "results": [
-    {
-      "chance": 0.75,
-      "output": {
+    "type": "botanypots:crop",
+    "seed": {
         "item": "minecraft:red_mushroom"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
     },
-    {
-      "chance": 0.05,
-      "output": {
-        "item": "minecraft:red_mushroom"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
-    }
-  ]
+    "categories": [
+        "mushroom"
+    ],
+    "growthTicks": 1600,
+    "display": {
+        "block": "minecraft:red_mushroom"
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "minecraft:red_mushroom"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "minecraft:red_mushroom"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

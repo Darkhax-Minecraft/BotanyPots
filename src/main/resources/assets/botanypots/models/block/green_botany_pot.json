@@ -1,7 +1,7 @@
 {
-  "parent": "botanypots:block/botany_pot_base",
-  "textures": {
-    "terracotta": "minecraft:block/green_terracotta",
-    "particle": "minecraft:block/green_terracotta"
-  }
+    "parent": "botanypots:block/botany_pot_base",
+    "textures": {
+        "terracotta": "minecraft:block/green_terracotta",
+        "particle": "minecraft:block/green_terracotta"
+    }
 }

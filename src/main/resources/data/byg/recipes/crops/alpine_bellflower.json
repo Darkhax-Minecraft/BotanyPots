@@ -1,36 +1,41 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:alpine_bellflower"
+        }
+    ],
+    "seed": {
+        "item": "byg:alpine_bellflower"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:alpine_bellflower"
-    }
-  ],
-  "seed": {
-    "item": "byg:alpine_bellflower"
-  },
-  "categories": ["dirt"],
-  "growthTicks": 1600,
-  "display": {
-    "block": "byg:alpine_bellflower"
-  },
-  "results": [{
-    "chance": 0.75,
-    "output": {
-      "item": "byg:alpine_bellflower"
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1600,
+    "display": {
+        "block": "byg:alpine_bellflower"
     },
-    "minRolls": 1,
-    "maxRolls": 1
-  }, {
-    "chance": 0.05,
-    "output": {
-      "item": "byg:alpine_bellflower"
-    },
-    "minRolls": 1,
-    "maxRolls": 2
-  }]
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "byg:alpine_bellflower"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "byg:alpine_bellflower"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

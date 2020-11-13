@@ -1,21 +1,26 @@
 {
-  "type": "botanypots:soil",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:podzol_dacite"
+        }
+    ],
+    "input": {
+        "item": "byg:podzol_dacite"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:podzol_dacite"
-    }
-  ],
-  "input": {
-    "item": "byg:podzol_dacite"
-  },
-  "display": {
-    "block": "byg:podzol_dacite"
-  },
-  "categories": ["dirt", "grass", "podzol", "mushroom"],
-  "growthModifier": 0.05
+    "display": {
+        "block": "byg:podzol_dacite"
+    },
+    "categories": [
+        "dirt",
+        "grass",
+        "podzol",
+        "mushroom"
+    ],
+    "growthModifier": 0.05
 }

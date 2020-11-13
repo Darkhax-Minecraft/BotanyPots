@@ -1,20 +1,25 @@
 {
-  "type": "botanypots:soil",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "mysticalagriculture"
-    }
-  ],
-  "input": {
-    "item": "mysticalagriculture:prudentium_farmland"
-  },
-  "display": {
-    "block": "mysticalagriculture:prudentium_farmland",
-    "properties": {
-      "moisture": 7
-    }
-  },
-  "categories": ["dirt", "farmland", "inferium", "prudentium"],
-  "growthModifier": 0.25
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "mysticalagriculture"
+        }
+    ],
+    "input": {
+        "item": "mysticalagriculture:prudentium_farmland"
+    },
+    "display": {
+        "block": "mysticalagriculture:prudentium_farmland",
+        "properties": {
+            "moisture": 7
+        }
+    },
+    "categories": [
+        "dirt",
+        "farmland",
+        "inferium",
+        "prudentium"
+    ],
+    "growthModifier": 0.25
 }

@@ -1,36 +1,41 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "byg"
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "byg"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "byg:japanese_orchid"
+        }
+    ],
+    "seed": {
+        "item": "byg:japanese_orchid"
     },
-    {
-      "type": "forge:item_exists",
-      "item": "byg:japanese_orchid"
-    }
-  ],
-  "seed": {
-    "item": "byg:japanese_orchid"
-  },
-  "categories": ["dirt"],
-  "growthTicks": 1600,
-  "display": {
-    "block": "byg:japanese_orchid"
-  },
-  "results": [{
-    "chance": 0.75,
-    "output": {
-      "item": "byg:japanese_orchid"
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1600,
+    "display": {
+        "block": "byg:japanese_orchid"
     },
-    "minRolls": 1,
-    "maxRolls": 1
-  }, {
-    "chance": 0.05,
-    "output": {
-      "item": "byg:japanese_orchid"
-    },
-    "minRolls": 1,
-    "maxRolls": 2
-  }]
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "byg:japanese_orchid"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "byg:japanese_orchid"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
 }

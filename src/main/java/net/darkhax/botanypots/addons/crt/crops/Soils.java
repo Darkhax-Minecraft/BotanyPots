@@ -39,7 +39,7 @@ public class Soils implements IRecipeManager {
     }
     
     @ZenCodeType.Method
-    public ZenSoil get (String id) {
+    public ZenSoil getSoil (String id) {
         
         final IRecipe<?> info = this.getRecipes().get(ResourceLocation.tryCreate(id));
         
