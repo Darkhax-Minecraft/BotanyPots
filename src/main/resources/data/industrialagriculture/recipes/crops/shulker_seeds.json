@@ -1,0 +1,52 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "industrialagriculture"
+        },
+        {
+            "type": "mysticalagriculture:crop_enabled",
+            "crop": "industrialagriculture:shulker"
+        }
+    ],
+    "seed": {
+        "item": "mysticalagriculture:shulker_seeds"
+    },
+    "categories": [
+        "imperium"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "mysticalagriculture:shulker_crop",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "mysticalagriculture:shulker_essence"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "mysticalagriculture:shulker_seeds"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.01,
+            "output": {
+                "item": "mysticalagriculture:fertilized_essence"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
+}

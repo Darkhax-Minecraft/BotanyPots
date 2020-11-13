@@ -1,0 +1,52 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "industrialagriculture"
+        },
+        {
+            "type": "mysticalagriculture:crop_enabled",
+            "crop": "industrialagriculture:parrot"
+        }
+    ],
+    "seed": {
+        "item": "mysticalagriculture:parrot_seeds"
+    },
+    "categories": [
+        "prudentium"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "mysticalagriculture:parrot_crop",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "mysticalagriculture:parrot_essence"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "mysticalagriculture:parrot_seeds"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.01,
+            "output": {
+                "item": "mysticalagriculture:fertilized_essence"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
+}
