@@ -4,10 +4,6 @@
         {
             "type": "forge:mod_loaded",
             "modid": "thermal"
-        },
-        {
-            "type": "thermal:crop_enabled",
-            "crop": "thermal:peanut"
         }
     ],
     "seed": {

@@ -4,17 +4,13 @@
         {
             "type": "forge:mod_loaded",
             "modid": "thermal"
-        },
-        {
-            "type": "thermal:crop_enabled",
-            "crop": "thermal:barley"
         }
     ],
     "seed": {
         "item": "thermal:barley_seeds"
     },
     "categories": [
-        "dirt"
+        "farmland"
     ],
     "growthTicks": 1200,
     "display": {

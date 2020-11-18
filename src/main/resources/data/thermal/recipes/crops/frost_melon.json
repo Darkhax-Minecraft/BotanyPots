@@ -4,10 +4,6 @@
         {
             "type": "forge:mod_loaded",
             "modid": "thermal"
-        },
-        {
-            "type": "thermal:crop_enabled",
-            "crop": "thermal:frost_melon"
         }
     ],
     "seed": {
@@ -18,10 +14,7 @@
     ],
     "growthTicks": 1200,
     "display": {
-        "block": "thermal:frost_melon",
-        "properties": {
-            "age": 7
-        }
+        "block": "thermal:frost_melon"
     },
     "results": [
         {
