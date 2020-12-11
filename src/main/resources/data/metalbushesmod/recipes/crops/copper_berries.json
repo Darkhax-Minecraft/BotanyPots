@@ -1,33 +1,38 @@
 {
-"type":"botanypots:crop",
-"conditions":[
+	"type":"botanypots:crop",
+	"conditions":[
+		{
+			"type":"forge:mod_loaded",
+			"modid":"metalbushesmod"
+		},
+		{
+			"type":"forge:mod_loaded",
+			"modid":"mekanism"
+		}
+	],
+	"seed":
 	{
-		"type":"forge:mod_loaded",
-		"modid":"metalbushesmod"
+		"item":"metalbushesmod:copper_bush"
 	},
-	{
-		"type":"forge:mod_loaded",
-		"modid":"mekanism"
-	}
-],
-"seed":
-{
-	"item":"metalbushesmod:copper_bush"
-},
-"categories":["dirt"],
-"growthTicks":2400,
-"display":{
-"block":"metalbushesmod:copper_bush",
-"properties":{
-	"age":3
+	"categories":[
+		"dirt"
+	],
+	"growthTicks":2400,
+	"display":{
+		"block":"metalbushesmod:copper_bush",
+		"properties":{
+			"age":3
+		}
+	},
+	"results":[
+		{
+			"chance":0.90,
+			"output":
+			{
+				"item":"metalbushesmod:copper_nugget"
+			},
+			"minRolls":1,
+			"maxRolls":1
+		}
+	]
 }
-},"results":[
-{
-	"chance":0.90,
-	"output":
-	{
-		"item":"metalbushesmod:copper_nugget"},
-		"minRolls":1,
-		"maxRolls":1
-	}
-]}
