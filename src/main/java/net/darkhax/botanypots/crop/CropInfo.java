@@ -163,10 +163,10 @@ public class CropInfo extends RecipeDataBase {
         
         this.displayBlocks = displayBlocks;
     }
-
+    
     @Override
-    public boolean isDynamic() {
-
+    public boolean isDynamic () {
+        
         return true;
     }
     

@@ -93,10 +93,10 @@ public class FertilizerInfo extends RecipeDataBase {
         
         this.maxTicks = maxTicks;
     }
-
+    
     @Override
-    public boolean isDynamic() {
-
+    public boolean isDynamic () {
+        
         return true;
     }
     
