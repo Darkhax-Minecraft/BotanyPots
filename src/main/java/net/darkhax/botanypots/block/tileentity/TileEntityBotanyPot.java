@@ -261,11 +261,6 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     @Override
     public void onTileTick () {
         
-        if (this.world.isBlockPowered(this.pos)) {
-            
-            return;
-        }
-        
         if (this.hasSoilAndCrop()) {
             
             if (this.isDoneGrowing()) {
