@@ -18,6 +18,8 @@
             "block": "thermal:corn",
             "properties": {
                 "age": "9"
+            }
+            {
                 "top": "false"
             }
         },
@@ -25,7 +27,10 @@
             "block": "thermal:corn",
             "properties": {
                 "age": "9"
+            }
+            {
                 "top": "true"
+            }
         }
     ],
     "results": [
