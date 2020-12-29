@@ -133,13 +133,13 @@ public class SoilInfo extends RecipeDataBase {
         
         return this.getLightLevel().orElseGet( () -> this.renderState.getState().getLightValue(world, pos));
     }
-
+    
     @Override
-    public boolean isDynamic() {
-
+    public boolean isDynamic () {
+        
         return true;
     }
-
+    
     @Override
     public IRecipeSerializer<?> getSerializer () {
         

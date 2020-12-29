@@ -20,6 +20,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunk;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.EmptyHandler;
 
@@ -261,11 +263,6 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     @Override
     public void onTileTick () {
         
-        if (this.world.isBlockPowered(this.pos)) {
-            
-            return;
-        }
-        
         if (this.hasSoilAndCrop()) {
             
             if (this.isDoneGrowing()) {
@@ -482,5 +479,12 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         }
         
         return this.chunkPos;
+    }
+    
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public double getMaxRenderDistanceSquared () {
+        
+        return BotanyPots.CLIENT_CONFIG.getRenderDistance();
     }
 }
