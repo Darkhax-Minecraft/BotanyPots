@@ -1,0 +1,40 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "farmersdelight"
+        }
+    ],
+    "seed": {
+        "item": "farmersdelight:cabbage_seeds"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "farmersdelight:cabbage_crop",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "farmersdelight:cabbage"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        },
+        {
+            "chance": 0.20,
+            "output": {
+                "item": "farmersdelight:cabbage_seeds"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
+}
