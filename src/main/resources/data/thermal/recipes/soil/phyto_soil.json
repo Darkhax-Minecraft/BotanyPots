@@ -1,0 +1,25 @@
+{
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "thermal"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "thermal:phytosoil"
+        }
+    ],
+    "input": {
+        "item": "thermal:phytosoil"
+    },
+    "display": {
+        "block": "thermal:phytosoil"
+    },
+    "categories": [
+        "dirt",
+        "grass",
+        "sand"
+    ],
+    "growthModifier": 0.50
+}
