@@ -1,0 +1,17 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+        "item": "undergarden:deepsoil_farmland"
+    },
+    "display": {
+        "block": "undergarden:deepsoil_farmland",
+        "properties": {
+            "moisture": 7
+        }
+    },
+    "categories": [
+        "dirt",
+        "farmland"
+    ],
+    "growthModifier": 0.15
+}
