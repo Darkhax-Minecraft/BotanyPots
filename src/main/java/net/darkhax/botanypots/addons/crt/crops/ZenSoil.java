@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
 
+import net.minecraft.block.*;
 import org.openzen.zencode.java.ZenCodeType;
 
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
-import com.blamejared.crafttweaker.impl.blocks.MCBlockState;
 
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.util.ResourceLocation;
@@ -19,14 +19,14 @@ public class ZenSoil {
     
     private final SoilInfo internal;
     
-    public ZenSoil(String id, IIngredient ingredient, MCBlockState renderState, float growthModifier, String[] categories, int lightLevel) {
+    public ZenSoil(String id, IIngredient ingredient, BlockState renderState, float growthModifier, String[] categories, int lightLevel) {
         
-        this(new SoilInfo(ResourceLocation.tryCreate(id), ingredient.asVanillaIngredient(), renderState.getInternal(), growthModifier, new HashSet<>(Arrays.asList(categories)), Optional.of(lightLevel)));
+        this(new SoilInfo(ResourceLocation.tryCreate(id), ingredient.asVanillaIngredient(), renderState, growthModifier, new HashSet<>(Arrays.asList(categories)), Optional.of(lightLevel)));
     }
     
-    public ZenSoil(String id, IIngredient ingredient, MCBlockState renderState, float growthModifier, String[] categories) {
+    public ZenSoil(String id, IIngredient ingredient, BlockState renderState, float growthModifier, String[] categories) {
         
-        this(new SoilInfo(ResourceLocation.tryCreate(id), ingredient.asVanillaIngredient(), renderState.getInternal(), growthModifier, new HashSet<>(Arrays.asList(categories)), Optional.empty()));
+        this(new SoilInfo(ResourceLocation.tryCreate(id), ingredient.asVanillaIngredient(), renderState, growthModifier, new HashSet<>(Arrays.asList(categories)), Optional.empty()));
     }
     
     public ZenSoil(SoilInfo info) {
@@ -63,9 +63,9 @@ public class ZenSoil {
     }
     
     @ZenCodeType.Method
-    public ZenSoil setDisplay (MCBlockState state) {
+    public ZenSoil setDisplay (BlockState state) {
         
-        this.internal.setRenderState(state.getInternal());
+        this.internal.setRenderState(state);
         return this;
     }
     
@@ -76,6 +76,7 @@ public class ZenSoil {
         return this;
     }
     
+    @ZenCodeType.Method
     public ZenSoil setLightLevel (int lightLevel) {
         
         this.internal.setLightLevel(lightLevel);
