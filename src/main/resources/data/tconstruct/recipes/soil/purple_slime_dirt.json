@@ -1,0 +1,23 @@
+{
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "tconstruct"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "tconstruct:purple_slime_dirt"
+        }
+    ],
+    "input": {
+        "item": "tconstruct:purple_slime_dirt"
+    },
+    "display": {
+        "block": "tconstruct:purple_slime_dirt"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthModifier": 0
+}
