@@ -1,23 +1,25 @@
 package net.darkhax.botanypots;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import net.darkhax.bookshelf.item.ItemGroupBase;
 import net.darkhax.bookshelf.network.NetworkHelper;
 import net.darkhax.bookshelf.registry.RegistryHelper;
 import net.darkhax.bookshelf.util.ModUtils;
+import net.darkhax.botanypots.addons.crt.CraftTweakerEventSubscription;
 import net.darkhax.botanypots.addons.top.TOPPlugin;
 import net.darkhax.botanypots.network.BreakEffectsMessage;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Mod(BotanyPots.MOD_ID)
 public class BotanyPots {
@@ -45,6 +47,15 @@ public class BotanyPots {
         
         this.registry.initialize(FMLJavaModLoadingContext.get().getModEventBus());
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+
+        registerModSupport();
+    }
+
+    private void registerModSupport () {
+
+        if (ModList.get().isLoaded("crafttweaker")) {
+            MinecraftForge.EVENT_BUS.register(CraftTweakerEventSubscription.class);
+        }
     }
     
     private void setup (FMLCommonSetupEvent event) {
