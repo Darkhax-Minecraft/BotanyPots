@@ -1,5 +1,11 @@
 {
     "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "undergarden"
+        }
+    ],
     "input": {
         "item": "undergarden:coarse_deepsoil"
     },

@@ -1,5 +1,11 @@
 {
     "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "forbidden_arcanus"
+        }
+    ],
     "input": {
         "item": "forbidden_arcanus:magical_farmland"
     },
