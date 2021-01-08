@@ -1,0 +1,17 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+        "item": "farmingforblockheads:fertilized_farmland_healthy_stable"
+    },
+    "display": {
+        "block": "farmingforblockheads:fertilized_farmland_healthy_stable",
+        "properties": {
+            "moisture": 7
+        }
+    },
+    "categories": [
+        "dirt",
+        "farmland"
+    ],
+    "growthModifier": 0.15
+}

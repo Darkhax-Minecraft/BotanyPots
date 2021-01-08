@@ -1,0 +1,14 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+        "item": "undergarden:coarse_deepsoil"
+    },
+    "display": {
+        "block": "undergarden:coarse_deepsoil"
+    },
+    "categories": [
+        "dirt",
+        "coarse_dirt"
+    ],
+    "growthModifier": -0.65
+}

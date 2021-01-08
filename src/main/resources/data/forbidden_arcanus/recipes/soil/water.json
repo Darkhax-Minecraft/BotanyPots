@@ -1,0 +1,15 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+        "item": "forbidden_arcanus:edelwood_water_bucket"
+    },
+    "display": {
+        "block": "minecraft:water"
+    },
+    "categories": [
+        "water",
+        "fluid",
+        "liquid"
+    ],
+    "growthModifier": 0
+}

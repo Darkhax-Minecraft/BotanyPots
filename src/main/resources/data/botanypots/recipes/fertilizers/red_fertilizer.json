@@ -1,0 +1,8 @@
+{
+    "type": "botanypots:fertilizer",
+    "fertilizer": {
+        "item": "farmingforblockheads:red_fertilizer"
+    },
+    "minTicks": 120,
+    "maxTicks": 170
+}

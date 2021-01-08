@@ -1,0 +1,15 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+        "item": "forbidden_arcanus:edelwood_lava_bucket"
+    },
+    "display": {
+        "block": "minecraft:lava"
+    },
+    "categories": [
+        "lava",
+        "fluid",
+        "liquid"
+    ],
+    "growthModifier": 0
+}
