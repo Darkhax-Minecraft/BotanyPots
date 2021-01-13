@@ -1,5 +1,15 @@
 {
     "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "forbidden_arcanus"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "forbidden_arcanus:edelwood_water_bucket"
+        }
+    ],
     "input": {
         "item": "forbidden_arcanus:edelwood_water_bucket"
     },

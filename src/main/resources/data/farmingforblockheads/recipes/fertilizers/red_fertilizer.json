@@ -4,6 +4,10 @@
         {
             "type": "forge:mod_loaded",
             "modid": "farmingforblockheads"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "farmingforblockheads:red_fertilizer"
         }
     ],
     "fertilizer": {
