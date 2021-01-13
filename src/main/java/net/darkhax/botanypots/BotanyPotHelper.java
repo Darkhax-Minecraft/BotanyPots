@@ -51,7 +51,7 @@ public class BotanyPotHelper {
         
         return Collections.emptyMap();
     }
-
+    
     public static Map<ResourceLocation, FertilizerInfo> getFertilizerData (RecipeManager manager) {
         
         if (manager != null) {

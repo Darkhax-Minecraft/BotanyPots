@@ -1,6 +1,5 @@
 package net.darkhax.botanypots.addons.crt.crops;
 
-import net.minecraft.block.*;
 import org.openzen.zencode.java.ZenCodeType;
 
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
@@ -11,6 +10,7 @@ import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
 
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.soil.SoilInfo;
+import net.minecraft.block.BlockState;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.ResourceLocation;
