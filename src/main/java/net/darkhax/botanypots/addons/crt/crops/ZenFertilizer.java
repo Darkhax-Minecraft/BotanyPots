@@ -5,6 +5,7 @@ import org.openzen.zencode.java.ZenCodeType;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 
+import net.darkhax.botanypots.addons.crt.CrTSidedExecutor;
 import net.darkhax.botanypots.fertilizer.FertilizerInfo;
 import net.minecraft.util.ResourceLocation;
 
@@ -27,21 +28,25 @@ public class ZenFertilizer {
     @ZenCodeType.Method
     public ZenFertilizer setInput (IIngredient input) {
         
-        this.internal.setIngredient(input.asVanillaIngredient());
+        CrTSidedExecutor.runOnServer( () -> this.internal.setIngredient(input.asVanillaIngredient()));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenFertilizer setGrowthAmount (int ticks) {
         
-        return this.setGrowthAmount(ticks, ticks);
+        CrTSidedExecutor.runOnServer( () -> this.setGrowthAmount(ticks, ticks));
+        return this;
     }
     
     @ZenCodeType.Method
     public ZenFertilizer setGrowthAmount (int min, int max) {
         
-        this.internal.setMaxTicks(min);
-        this.internal.setMinTicks(max);
+        CrTSidedExecutor.runOnServer( () -> {
+            this.internal.setMaxTicks(min);
+            this.internal.setMinTicks(max);
+        });
+        
         return this;
     }
     

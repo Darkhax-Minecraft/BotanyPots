@@ -9,6 +9,7 @@ import org.openzen.zencode.java.ZenCodeType;
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 
+import net.darkhax.botanypots.addons.crt.CrTSidedExecutor;
 import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.ResourceLocation;
@@ -37,49 +38,49 @@ public class ZenSoil {
     @ZenCodeType.Method
     public ZenSoil addCategory (String category) {
         
-        this.internal.getCategories().add(category);
+        CrTSidedExecutor.runOnServer( () -> this.internal.getCategories().add(category));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenSoil removeCategory (String category) {
         
-        this.internal.getCategories().remove(category);
+        CrTSidedExecutor.runOnServer( () -> this.internal.getCategories().remove(category));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenSoil clearCategories () {
         
-        this.internal.getCategories().clear();
+        CrTSidedExecutor.runOnServer( () -> this.internal.getCategories().clear());
         return this;
     }
     
     @ZenCodeType.Method
     public ZenSoil setInput (IIngredient ingredient) {
         
-        this.internal.setIngredient(ingredient.asVanillaIngredient());
+        CrTSidedExecutor.runOnServer( () -> this.internal.setIngredient(ingredient.asVanillaIngredient()));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenSoil setDisplay (BlockState state) {
         
-        this.internal.setRenderState(state);
+        CrTSidedExecutor.runOnServer( () -> this.internal.setRenderState(state));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenSoil setGrowthModifier (float modifier) {
         
-        this.internal.setGrowthModifier(modifier);
+        CrTSidedExecutor.runOnServer( () -> this.internal.setGrowthModifier(modifier));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenSoil setLightLevel (int lightLevel) {
         
-        this.internal.setLightLevel(lightLevel);
+        CrTSidedExecutor.runOnServer( () -> this.internal.setLightLevel(lightLevel));
         return this;
     }
     

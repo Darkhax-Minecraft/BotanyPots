@@ -12,6 +12,7 @@ import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.item.IItemStack;
 
 import net.darkhax.bookshelf.block.DisplayableBlockState;
+import net.darkhax.botanypots.addons.crt.CrTSidedExecutor;
 import net.darkhax.botanypots.crop.CropInfo;
 import net.darkhax.botanypots.crop.HarvestEntry;
 import net.minecraft.block.BlockState;
@@ -42,21 +43,21 @@ public class ZenCrop {
     @ZenCodeType.Method
     public ZenCrop addCategory (String category) {
         
-        this.internal.getSoilCategories().add(category);
+        CrTSidedExecutor.runOnServer( () -> this.internal.getSoilCategories().add(category));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenCrop removeCategory (String category) {
         
-        this.internal.getSoilCategories().remove(category);
+        CrTSidedExecutor.runOnServer( () -> this.internal.getSoilCategories().remove(category));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenCrop clearCategories () {
         
-        this.internal.getSoilCategories().clear();
+        CrTSidedExecutor.runOnServer( () -> this.internal.getSoilCategories().clear());
         return this;
     }
     
@@ -75,57 +76,62 @@ public class ZenCrop {
     @ZenCodeType.Method
     public ZenCrop addDrop (IItemStack item, float chance, int min, int max) {
         
-        this.internal.getResults().add(new HarvestEntry(chance, item.getInternal(), min, max));
+        CrTSidedExecutor.runOnServer( () -> this.internal.getResults().add(new HarvestEntry(chance, item.getInternal(), min, max)));
+        
         return this;
     }
     
     @ZenCodeType.Method
     public ZenCrop clearDrops () {
         
-        this.internal.getResults().clear();
+        CrTSidedExecutor.runOnServer( () -> this.internal.getResults().clear());
         return this;
     }
     
     @ZenCodeType.Method
     public ZenCrop removeDrop (IIngredient toRemove) {
         
-        final Ingredient ingredient = toRemove.asVanillaIngredient();
-        this.internal.getResults().removeIf(drop -> ingredient.test(drop.getItem()));
+        CrTSidedExecutor.runOnServer( () -> {
+            
+            final Ingredient ingredient = toRemove.asVanillaIngredient();
+            this.internal.getResults().removeIf(drop -> ingredient.test(drop.getItem()));
+        });
+        
         return this;
     }
     
     @ZenCodeType.Method
     public ZenCrop setGrowthTicks (int ticks) {
         
-        this.internal.setGrowthTicks(ticks);
+        CrTSidedExecutor.runOnServer( () -> this.internal.setGrowthTicks(ticks));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenCrop setSeed (IIngredient seed) {
         
-        this.internal.setSeed(seed.asVanillaIngredient());
+        CrTSidedExecutor.runOnServer( () -> this.internal.setSeed(seed.asVanillaIngredient()));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenCrop setDisplay (BlockState state) {
         
-        this.internal.setDisplayBlock(getBlockStates(state));
+        CrTSidedExecutor.runOnServer( () -> this.internal.setDisplayBlock(getBlockStates(state)));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenCrop setDisplay (BlockState[] states) {
         
-        this.internal.setDisplayBlock(getBlockStates(states));
+        CrTSidedExecutor.runOnServer( () -> this.internal.setDisplayBlock(getBlockStates(states)));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenCrop setLightLevel (int lightLevel) {
         
-        this.internal.setLightLevel(lightLevel);
+        CrTSidedExecutor.runOnServer( () -> this.internal.setLightLevel(lightLevel));
         return this;
     }
     
