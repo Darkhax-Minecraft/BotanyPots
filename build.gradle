@@ -81,17 +81,6 @@ minecraft {
 }
 
 repositories {
-	
-	maven {
-	    name = "Curse"
-        url = "https://www.cursemaven.com"
-    }
-	
-    maven {
-
-        name = "MMD (Bookshelf)"
-        url 'https://maven.mcmoddev.com'
-    }
     
     maven {
 		name = "Progwml6 maven (JEI)"
@@ -109,11 +98,6 @@ repositories {
 	}
     
     maven {
-        name = "Curios"
-        url = "https://maven.theillusivec4.top/"
-    }
-    
-    maven {
         name 'tterrag maven'
         url "https://maven.tterrag.com/"
     }
@@ -124,7 +108,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${forge_version}"
 	
 	compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.16.4:${bookshelf_version}")
-    compile fg.deobf("mezz.jei:jei-1.16.2:${jei_version}")
+    compile fg.deobf("mezz.jei:jei-1.16.4:${jei_version}")
     compile fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.4:${crafttweaker_version}")  
     compile fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}")
     compile fg.deobf( "mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
