@@ -1,5 +1,6 @@
 package net.darkhax.botanypots.addons.crt.crops;
 
+import net.minecraft.block.*;
 import org.openzen.zencode.java.ZenCodeType;
 
 import com.blamejared.crafttweaker.api.CraftTweakerAPI;
@@ -7,7 +8,6 @@ import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
-import com.blamejared.crafttweaker.impl.blocks.MCBlockState;
 
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.soil.SoilInfo;
@@ -25,13 +25,13 @@ public class Soils implements IRecipeManager {
     }
     
     @ZenCodeType.Method
-    public ZenSoil create (String id, IIngredient ingredient, MCBlockState renderState, float growthModifier, String categories) {
+    public ZenSoil create (String id, IIngredient ingredient, BlockState renderState, float growthModifier, String categories) {
         
         return this.create(id, ingredient, renderState, growthModifier, new String[] { categories });
     }
     
     @ZenCodeType.Method
-    public ZenSoil create (String id, IIngredient ingredient, MCBlockState renderState, float growthModifier, String[] categories) {
+    public ZenSoil create (String id, IIngredient ingredient, BlockState renderState, float growthModifier, String[] categories) {
         
         final ZenSoil soil = new ZenSoil(id, ingredient, renderState, growthModifier, categories);
         CraftTweakerAPI.apply(new ActionAddRecipe(this, soil.getInternal(), ""));

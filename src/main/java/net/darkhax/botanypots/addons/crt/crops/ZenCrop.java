@@ -1,26 +1,15 @@
 package net.darkhax.botanypots.addons.crt.crops;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import com.blamejared.crafttweaker.api.annotations.*;
+import com.blamejared.crafttweaker.api.item.*;
+import net.darkhax.bookshelf.block.*;
+import net.darkhax.botanypots.crop.*;
+import net.minecraft.block.*;
+import net.minecraft.item.crafting.*;
+import net.minecraft.util.*;
+import org.openzen.zencode.java.*;
 
-import org.openzen.zencode.java.ZenCodeType;
-
-import com.blamejared.crafttweaker.api.annotations.ZenRegister;
-import com.blamejared.crafttweaker.api.item.IIngredient;
-import com.blamejared.crafttweaker.api.item.IItemStack;
-import com.blamejared.crafttweaker.impl.blocks.MCBlockState;
-
-import net.darkhax.bookshelf.block.DisplayableBlockState;
-import net.darkhax.botanypots.crop.CropInfo;
-import net.darkhax.botanypots.crop.HarvestEntry;
-import net.minecraft.block.BlockState;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
+import java.util.*;
 
 @ZenRegister
 @ZenCodeType.Name("mods.botanypots.ZenCrop")
@@ -28,12 +17,12 @@ public class ZenCrop {
     
     private final CropInfo internal;
     
-    public ZenCrop(String id, IIngredient seed, MCBlockState[] display, int ticks, String[] categories, int lightLevel) {
+    public ZenCrop(String id, IIngredient seed, BlockState[] display, int ticks, String[] categories, int lightLevel) {
         
         this(new CropInfo(ResourceLocation.tryCreate(id), seed.asVanillaIngredient(), new HashSet<>(Arrays.asList(categories)), ticks, new ArrayList<>(), getBlockStates(display), Optional.of(lightLevel)));
     }
     
-    public ZenCrop(String id, IIngredient seed, MCBlockState[] display, int ticks, String[] categories) {
+    public ZenCrop(String id, IIngredient seed, BlockState[] display, int ticks, String[] categories) {
         
         this(new CropInfo(ResourceLocation.tryCreate(id), seed.asVanillaIngredient(), new HashSet<>(Arrays.asList(categories)), ticks, new ArrayList<>(), getBlockStates(display), Optional.empty()));
     }
@@ -113,14 +102,14 @@ public class ZenCrop {
     }
     
     @ZenCodeType.Method
-    public ZenCrop setDisplay (MCBlockState state) {
+    public ZenCrop setDisplay (BlockState state) {
         
         this.internal.setDisplayBlock(getBlockStates(state));
         return this;
     }
     
     @ZenCodeType.Method
-    public ZenCrop setDisplay (MCBlockState[] states) {
+    public ZenCrop setDisplay (BlockState[] states) {
         
         this.internal.setDisplayBlock(getBlockStates(states));
         return this;
@@ -138,23 +127,7 @@ public class ZenCrop {
         return this.internal;
     }
     
-    public static List<BlockState> getBlockStates (Collection<MCBlockState> states) {
-        
-        return states.stream().map(MCBlockState::getInternal).collect(Collectors.toList());
-    }
-    
-    public static List<MCBlockState> getMCBlockStates (Collection<BlockState> states) {
-        
-        return states.stream().map(MCBlockState::new).collect(Collectors.toList());
-    }
-    
-    public static DisplayableBlockState[] getBlockStates (MCBlockState... states) {
-        
-        return Arrays.stream(states).map(state -> new DisplayableBlockState(state.getInternal())).toArray(DisplayableBlockState[]::new);
-    }
-    
-    public static MCBlockState[] getMCBlockStates (BlockState... states) {
-        
-        return Arrays.stream(states).map(MCBlockState::new).toArray(MCBlockState[]::new);
+    public static DisplayableBlockState[] getBlockStates (BlockState... states) {
+        return Arrays.stream(states).map(DisplayableBlockState::new).toArray(DisplayableBlockState[]::new);
     }
 }

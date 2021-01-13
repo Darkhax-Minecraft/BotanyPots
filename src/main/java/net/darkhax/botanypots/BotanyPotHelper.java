@@ -32,7 +32,6 @@ public class BotanyPotHelper {
         return manager != null ? manager : SidedExecutor.callForSide( () -> () -> Minecraft.getInstance().player.connection.getRecipeManager(), () -> () -> ServerLifecycleHooks.getCurrentServer().getRecipeManager());
     }
     
-    @Nullable
     public static Map<ResourceLocation, SoilInfo> getSoilData (RecipeManager manager) {
         
         if (manager != null) {
@@ -43,7 +42,6 @@ public class BotanyPotHelper {
         return Collections.emptyMap();
     }
     
-    @Nullable
     public static Map<ResourceLocation, CropInfo> getCropData (RecipeManager manager) {
         
         if (manager != null) {
@@ -53,8 +51,7 @@ public class BotanyPotHelper {
         
         return Collections.emptyMap();
     }
-    
-    @Nullable
+
     public static Map<ResourceLocation, FertilizerInfo> getFertilizerData (RecipeManager manager) {
         
         if (manager != null) {
