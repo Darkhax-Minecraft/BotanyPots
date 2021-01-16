@@ -35,3 +35,10 @@ ${mod_description}
     versionRange="[9,)"
     ordering="AFTER"
     side="BOTH"
+    
+[[dependencies.botanypots]]
+    modId="crafttweaker"
+    mandatory=false
+    versionRange="[7.1,)"
+    ordering="AFTER"
+    side="BOTH"
