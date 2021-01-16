@@ -7,10 +7,10 @@ import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
 import com.blamejared.crafttweaker.api.managers.IRecipeManager;
 import com.blamejared.crafttweaker.impl.actions.recipes.ActionAddRecipe;
-import com.blamejared.crafttweaker.impl.blocks.MCBlockState;
 
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.crop.CropInfo;
+import net.minecraft.block.BlockState;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.ResourceLocation;
@@ -25,13 +25,13 @@ public class Crops implements IRecipeManager {
     }
     
     @ZenCodeType.Method
-    public ZenCrop create (String id, IIngredient seed, MCBlockState display, int ticks, String categories) {
+    public ZenCrop create (String id, IIngredient seed, BlockState display, int ticks, String categories) {
         
-        return this.create(id, seed, new MCBlockState[] { display }, ticks, new String[] { categories });
+        return this.create(id, seed, new BlockState[] { display }, ticks, new String[] { categories });
     }
     
     @ZenCodeType.Method
-    public ZenCrop create (String id, IIngredient seed, MCBlockState[] display, int ticks, String[] categories) {
+    public ZenCrop create (String id, IIngredient seed, BlockState[] display, int ticks, String[] categories) {
         
         final ZenCrop crop = new ZenCrop(id, seed, display, ticks, categories);
         CraftTweakerAPI.apply(new ActionAddRecipe(this, crop.getInternal(), ""));

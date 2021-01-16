@@ -1,5 +1,15 @@
 {
     "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "farmingforblockheads"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "farmingforblockheads:fertilized_farmland_healthy_stable"
+        }
+    ],
     "input": {
         "item": "farmingforblockheads:fertilized_farmland_healthy_stable"
     },

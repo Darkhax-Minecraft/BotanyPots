@@ -3,38 +3,38 @@
     "conditions": [
         {
             "type": "forge:mod_loaded",
-            "modid": "farmersdelight"
+            "modid": "druidcraft"
         }
     ],
     "seed": {
-        "item": "farmersdelight:tomato_seeds"
+        "item": "druidcraft:hemp_seeds"
     },
     "categories": [
         "dirt"
     ],
-    "growthTicks": 1200,
+    "growthTicks": 1000,
     "display": {
-        "block": "farmersdelight:wild_tomatoes",
+        "block": "druidcraft:hemp_seeds",
         "properties": {
-            "age": 7
+            "age": 3
         }
     },
     "results": [
         {
             "chance": 0.75,
             "output": {
-                "item": "farmersdelight:tomato"
-            },
-            "minRolls": 1,
-            "maxRolls": 2
-        },
-        {
-            "chance": 0.20,
-            "output": {
-                "item": "farmersdelight:tomato_seeds"
+                "item": "druidcraft:hemp"
             },
             "minRolls": 1,
             "maxRolls": 1
+        },
+        {
+            "chance": 0.25,
+            "output": {
+                "item": "druidcraft:hemp_seeds"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
         }
     ]
 }

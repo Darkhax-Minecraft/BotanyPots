@@ -3,23 +3,21 @@
     "conditions": [
         {
             "type": "forge:mod_loaded",
-            "modid": "forbidden_arcanus"
+            "modid": "tconstruct"
         },
         {
             "type": "forge:item_exists",
-            "item": "forbidden_arcanus:edelwood_water_bucket"
+            "item": "tconstruct:blue_slime_dirt"
         }
     ],
     "input": {
-        "item": "forbidden_arcanus:edelwood_water_bucket"
+        "item": "tconstruct:blue_slime_dirt"
     },
     "display": {
-        "block": "minecraft:water"
+        "block": "tconstruct:blue_slime_dirt"
     },
     "categories": [
-        "water",
-        "fluid",
-        "liquid"
+        "dirt"
     ],
     "growthModifier": 0
 }

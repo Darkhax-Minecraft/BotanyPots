@@ -8,9 +8,10 @@ import org.openzen.zencode.java.ZenCodeType;
 
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
-import com.blamejared.crafttweaker.impl.blocks.MCBlockState;
 
+import net.darkhax.botanypots.addons.crt.CrTSidedExecutor;
 import net.darkhax.botanypots.soil.SoilInfo;
+import net.minecraft.block.BlockState;
 import net.minecraft.util.ResourceLocation;
 
 @ZenRegister
@@ -19,14 +20,14 @@ public class ZenSoil {
     
     private final SoilInfo internal;
     
-    public ZenSoil(String id, IIngredient ingredient, MCBlockState renderState, float growthModifier, String[] categories, int lightLevel) {
+    public ZenSoil(String id, IIngredient ingredient, BlockState renderState, float growthModifier, String[] categories, int lightLevel) {
         
-        this(new SoilInfo(ResourceLocation.tryCreate(id), ingredient.asVanillaIngredient(), renderState.getInternal(), growthModifier, new HashSet<>(Arrays.asList(categories)), Optional.of(lightLevel)));
+        this(new SoilInfo(ResourceLocation.tryCreate(id), ingredient.asVanillaIngredient(), renderState, growthModifier, new HashSet<>(Arrays.asList(categories)), Optional.of(lightLevel)));
     }
     
-    public ZenSoil(String id, IIngredient ingredient, MCBlockState renderState, float growthModifier, String[] categories) {
+    public ZenSoil(String id, IIngredient ingredient, BlockState renderState, float growthModifier, String[] categories) {
         
-        this(new SoilInfo(ResourceLocation.tryCreate(id), ingredient.asVanillaIngredient(), renderState.getInternal(), growthModifier, new HashSet<>(Arrays.asList(categories)), Optional.empty()));
+        this(new SoilInfo(ResourceLocation.tryCreate(id), ingredient.asVanillaIngredient(), renderState, growthModifier, new HashSet<>(Arrays.asList(categories)), Optional.empty()));
     }
     
     public ZenSoil(SoilInfo info) {
@@ -37,48 +38,49 @@ public class ZenSoil {
     @ZenCodeType.Method
     public ZenSoil addCategory (String category) {
         
-        this.internal.getCategories().add(category);
+        CrTSidedExecutor.runOnServer( () -> this.internal.getCategories().add(category));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenSoil removeCategory (String category) {
         
-        this.internal.getCategories().remove(category);
+        CrTSidedExecutor.runOnServer( () -> this.internal.getCategories().remove(category));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenSoil clearCategories () {
         
-        this.internal.getCategories().clear();
+        CrTSidedExecutor.runOnServer( () -> this.internal.getCategories().clear());
         return this;
     }
     
     @ZenCodeType.Method
     public ZenSoil setInput (IIngredient ingredient) {
         
-        this.internal.setIngredient(ingredient.asVanillaIngredient());
+        CrTSidedExecutor.runOnServer( () -> this.internal.setIngredient(ingredient.asVanillaIngredient()));
         return this;
     }
     
     @ZenCodeType.Method
-    public ZenSoil setDisplay (MCBlockState state) {
+    public ZenSoil setDisplay (BlockState state) {
         
-        this.internal.setRenderState(state.getInternal());
+        CrTSidedExecutor.runOnServer( () -> this.internal.setRenderState(state));
         return this;
     }
     
     @ZenCodeType.Method
     public ZenSoil setGrowthModifier (float modifier) {
         
-        this.internal.setGrowthModifier(modifier);
+        CrTSidedExecutor.runOnServer( () -> this.internal.setGrowthModifier(modifier));
         return this;
     }
     
+    @ZenCodeType.Method
     public ZenSoil setLightLevel (int lightLevel) {
         
-        this.internal.setLightLevel(lightLevel);
+        CrTSidedExecutor.runOnServer( () -> this.internal.setLightLevel(lightLevel));
         return this;
     }
     

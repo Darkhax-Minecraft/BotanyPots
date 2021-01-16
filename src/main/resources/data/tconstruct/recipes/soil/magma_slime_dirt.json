@@ -3,18 +3,18 @@
     "conditions": [
         {
             "type": "forge:mod_loaded",
-            "modid": "byg"
+            "modid": "tconstruct"
         },
         {
             "type": "forge:item_exists",
-            "item": "byg:meadow_dirt"
+            "item": "tconstruct:magma_slime_dirt"
         }
     ],
     "input": {
-        "item": "byg:meadow_dirt"
+        "item": "tconstruct:magma_slime_dirt"
     },
     "display": {
-        "block": "byg:meadow_dirt"
+        "block": "tconstruct:magma_slime_dirt"
     },
     "categories": [
         "dirt"

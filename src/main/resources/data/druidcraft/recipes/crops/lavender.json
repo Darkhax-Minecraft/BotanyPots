@@ -3,38 +3,35 @@
     "conditions": [
         {
             "type": "forge:mod_loaded",
-            "modid": "farmersdelight"
+            "modid": "druidcraft"
         }
     ],
     "seed": {
-        "item": "farmersdelight:tomato_seeds"
+        "item": "druidcraft:lavender"
     },
     "categories": [
         "dirt"
     ],
-    "growthTicks": 1200,
+    "growthTicks": 1000,
     "display": {
-        "block": "farmersdelight:wild_tomatoes",
-        "properties": {
-            "age": 7
-        }
+        "block": "druidcraft:lavender"
     },
     "results": [
         {
             "chance": 0.75,
             "output": {
-                "item": "farmersdelight:tomato"
-            },
-            "minRolls": 1,
-            "maxRolls": 2
-        },
-        {
-            "chance": 0.20,
-            "output": {
-                "item": "farmersdelight:tomato_seeds"
+                "item": "druidcraft:lavender"
             },
             "minRolls": 1,
             "maxRolls": 1
+        },
+        {
+            "chance": 0.25,
+            "output": {
+                "item": "druidcraft:lavender"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
         }
     ]
 }
