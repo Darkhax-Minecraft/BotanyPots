@@ -8,9 +8,7 @@ import com.blamejared.crafttweaker.impl.commands.script_examples.ExampleCollecti
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-@EventBusSubscriber
 public class CraftTweakerEventSubscription {
     
     @SubscribeEvent
