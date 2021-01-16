@@ -14,7 +14,7 @@
     ],
     "growthTicks": 1000,
     "display": {
-        "block": "druidcraft:hemp_seeds",
+        "block": "druidcraft:hemp_crop",
         "properties": {
             "age": 3
         }
