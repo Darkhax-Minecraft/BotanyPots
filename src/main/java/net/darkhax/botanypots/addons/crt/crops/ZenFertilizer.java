@@ -50,6 +50,12 @@ public class ZenFertilizer {
         return this;
     }
     
+    @ZenCodeType.Method
+    public ResourceLocation getId () {
+        
+        return this.internal.getId();
+    }
+    
     public FertilizerInfo getInternal () {
         
         return this.internal;

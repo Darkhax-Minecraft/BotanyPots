@@ -84,6 +84,12 @@ public class ZenSoil {
         return this;
     }
     
+    @ZenCodeType.Method
+    public ResourceLocation getId () {
+        
+        return this.internal.getId();
+    }
+    
     public SoilInfo getInternal () {
         
         return this.internal;

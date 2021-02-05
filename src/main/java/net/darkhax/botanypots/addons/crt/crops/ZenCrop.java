@@ -135,6 +135,12 @@ public class ZenCrop {
         return this;
     }
     
+    @ZenCodeType.Method
+    public ResourceLocation getId () {
+        
+        return this.internal.getId();
+    }
+    
     public CropInfo getInternal () {
         
         return this.internal;
