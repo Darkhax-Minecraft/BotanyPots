@@ -22,10 +22,19 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunk;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.EmptyHandler;
 
 public class TileEntityBotanyPot extends TileEntityBasicTickable {
+    
+    /**
+     * A useless inventory used to allow other blocks to visually connect to the botany pot.
+     */
+    private static ItemStackHandler DUMMY_INV = new ItemStackHandler(0);
     
     /**
      * The current soil in the botany pot. Can be null.
@@ -486,5 +495,16 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     public double getMaxRenderDistanceSquared () {
         
         return BotanyPots.CLIENT_CONFIG.getRenderDistance();
+    }
+    
+    @Override
+    public <T> LazyOptional<T> getCapability (Capability<T> cap, Direction side) {
+        
+        if (!this.removed && cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && side == Direction.DOWN) {
+            
+            return LazyOptional.of( () -> DUMMY_INV).cast();
+        }
+        
+        return super.getCapability(cap, side);
     }
 }
