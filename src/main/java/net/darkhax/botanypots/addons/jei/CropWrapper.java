@@ -1,5 +1,6 @@
 package net.darkhax.botanypots.addons.jei;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +21,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 
 public class CropWrapper implements IRecipeCategoryExtension {
+    
+    public static final DecimalFormat FORMAT = new DecimalFormat("#.##");
     
     private final CropInfo cropInfo;
     private final List<ItemStack> seedItems = NonNullList.create();
@@ -114,7 +117,7 @@ public class CropWrapper implements IRecipeCategoryExtension {
                 if (outputIndex < this.drops.size()) {
                     
                     final HarvestEntry entry = this.drops.get(outputIndex);
-                    tooltip.add(new TranslationTextComponent("botanypots.tooltip.jei.dropchance", entry.getChance() * 100f).mergeStyle(TextFormatting.GRAY));
+                    tooltip.add(new TranslationTextComponent("botanypots.tooltip.jei.dropchance", FORMAT.format(entry.getChance() * 100f)).mergeStyle(TextFormatting.GRAY));
                     
                     final int rollMin = entry.getMinRolls();
                     final int rollMax = entry.getMaxRolls();
