@@ -34,9 +34,9 @@ public class BotanyDump implements CTCommands.CommandCallerPlayer {
     @Override
     public int executeCommand (PlayerEntity player, ItemStack stack) {
         
-        final RecipeManager recipeManager = player.getEntityWorld().getRecipeManager();      
-        CraftTweakerAPI.logDump("List of all known %s:", this.dumpedContentName);       
-        this.dumpConverter.apply(recipeManager).keySet().forEach(id -> CraftTweakerAPI.logDump("- %s", id));       
+        final RecipeManager recipeManager = player.getEntityWorld().getRecipeManager();
+        CraftTweakerAPI.logDump("List of all known %s:", this.dumpedContentName);
+        this.dumpConverter.apply(recipeManager).keySet().forEach(id -> CraftTweakerAPI.logDump("- %s", id));
         player.sendMessage(this.positiveFeedback, CraftTweaker.CRAFTTWEAKER_UUID);
         return 0;
     }
@@ -44,6 +44,6 @@ public class BotanyDump implements CTCommands.CommandCallerPlayer {
     public void registerTo (CTCommandCollectionEvent event) {
         
         final String description = String.format("Outputs all known %s names to the log.", this.dumpedContentName);
-        event.registerDump(this.dumpCommandName, description, this);        
+        event.registerDump(this.dumpCommandName, description, this);
     }
 }
