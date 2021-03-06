@@ -14,7 +14,7 @@
     ],
     "growthTicks": 1200,
     "display": {
-        "block": "farmersdelight:wild_cabbages",
+        "block": "farmersdelight:cabbages",
         "properties": {
             "age": 7
         }
