@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.addons.crt.crops;
+package net.darkhax.botanypots.addons.crt.recipes;
 
 import org.openzen.zencode.java.ZenCodeType;
 
@@ -17,9 +17,9 @@ import net.minecraft.util.ResourceLocation;
 
 @ZenRegister
 @ZenCodeType.Name("mods.botanypots.Soils")
-public class Soils implements IRecipeManager {
+public class SoilManager implements IRecipeManager {
     
-    public Soils() {
+    public SoilManager() {
         
         // This is needed for CraftTweaker
     }

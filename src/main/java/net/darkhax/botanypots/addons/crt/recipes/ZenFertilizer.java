@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.addons.crt.crops;
+package net.darkhax.botanypots.addons.crt.recipes;
 
 import org.openzen.zencode.java.ZenCodeType;
 
