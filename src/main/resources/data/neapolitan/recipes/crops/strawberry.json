@@ -1,0 +1,52 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "neapolitan"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "neapolitan:strawberry_pips"
+        }
+    ],
+    "seed": {
+        "item": "neapolitan:strawberry_pips"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "neapolitan:strawberry_bush",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "neapolitan:strawberry"
+            },
+            "minRolls": 1,
+            "maxRolls": 3
+        },
+        {
+            "chance": 0.5,
+            "output": {
+                "item": "neapolitan:white_strawberry"
+            },
+            "minRolls": 1,
+            "maxRolls": 3
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "neapolitan:strawberry_pips"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
+}
