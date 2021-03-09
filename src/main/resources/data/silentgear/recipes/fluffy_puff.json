@@ -1,0 +1,44 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "silentgear"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "silentgear:fluffy_puff_seeds"
+        }
+    ],
+    "seed": {
+        "item": "silentgear:fluffy_puff_seeds"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "silentgear:fluffy_puff_plant",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "silentgear:fluffy_puff"
+            },
+            "minRolls": 1,
+            "maxRolls": 3
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "silentgear:fluffy_puff_seeds"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
+}
