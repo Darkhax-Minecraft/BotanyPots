@@ -137,6 +137,12 @@ public class CropSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> imp
         
         final List<HarvestEntry> crops = new ArrayList<>();
         
+        if (!json.has("results")) {
+            
+            BotanyPots.LOGGER.warn("The crop {} has no results array. This means it won't drop anything!", ownerId);
+            return crops;
+        }
+        
         for (final JsonElement entry : json.getAsJsonArray("results")) {
             
             if (!entry.isJsonObject()) {
