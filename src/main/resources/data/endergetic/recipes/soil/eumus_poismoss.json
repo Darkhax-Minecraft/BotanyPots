@@ -1,0 +1,20 @@
+{
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "endergetic"
+        }
+    ],
+    "input": {
+        "item": "endergetic:eumus_poismoss"
+    },
+    "display": {
+        "block": "endergetic:eumus_poismoss"
+    },
+    "categories": [
+        "moss",
+        "poismoss"
+    ],
+    "growthModifier": 0
+}

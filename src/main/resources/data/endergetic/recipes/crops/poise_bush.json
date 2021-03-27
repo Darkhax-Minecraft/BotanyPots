@@ -1,0 +1,54 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "endergetic"
+        }
+    ],
+    "seed": {
+        "item": "endergetic:poise_bush"
+    },
+    "categories": [
+        "poismoss",
+        "moss"
+    ],
+    "growthTicks": 1500,
+    "display": {
+        "block": "endergetic:poise_bush"
+    },
+    "results": [
+        {
+            "chance": 0.8,
+            "output": {
+                "item": "endergetic:poise_bush"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        },
+        {
+            "chance": 0.2,
+            "output": {
+                "item": "endergetic:tall_poise_bush"
+            },
+            "minRolls": 0,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.2,
+            "output": {
+                "item": "endergetic:poise_stem"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "endergetic:glowing_poise_stem"
+            },
+            "minRolls": 0,
+            "maxRolls": 1
+        }
+    ]
+}
