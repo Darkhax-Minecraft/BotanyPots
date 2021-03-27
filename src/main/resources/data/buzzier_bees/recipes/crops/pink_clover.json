@@ -3,24 +3,24 @@
     "conditions": [
         {
             "type": "forge:mod_loaded",
-            "modid": "buzzierbees"
+            "modid": "buzzier_bees"
         }
     ],
     "seed": {
-        "item": "buzzierbees:cartwheel"
+        "item": "buzzier_bees:pink_clover"
     },
     "categories": [
         "dirt"
     ],
     "growthTicks": 1200,
     "display": {
-        "block": "buzzierbees:cartwheel"
+        "block": "buzzier_bees:pink_clover"
     },
     "results": [
         {
             "chance": 0.65,
             "output": {
-                "item": "buzzierbees:cartwheel"
+                "item": "buzzier_bees:pink_clover"
             },
             "minRolls": 1,
             "maxRolls": 1

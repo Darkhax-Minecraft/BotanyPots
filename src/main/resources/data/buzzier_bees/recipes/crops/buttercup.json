@@ -3,24 +3,24 @@
     "conditions": [
         {
             "type": "forge:mod_loaded",
-            "modid": "buzzierbees"
+            "modid": "buzzier_bees"
         }
     ],
     "seed": {
-        "item": "buzzierbees:bluebell"
+        "item": "buzzier_bees:buttercup"
     },
     "categories": [
         "dirt"
     ],
     "growthTicks": 1200,
     "display": {
-        "block": "buzzierbees:bluebell"
+        "block": "buzzier_bees:buttercup"
     },
     "results": [
         {
             "chance": 0.65,
             "output": {
-                "item": "buzzierbees:bluebell"
+                "item": "buzzier_bees:buttercup"
             },
             "minRolls": 1,
             "maxRolls": 1

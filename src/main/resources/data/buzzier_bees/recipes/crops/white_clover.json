@@ -3,24 +3,24 @@
     "conditions": [
         {
             "type": "forge:mod_loaded",
-            "modid": "buzzierbees"
+            "modid": "buzzier_bees"
         }
     ],
     "seed": {
-        "item": "buzzierbees:orange_hibiscus"
+        "item": "buzzier_bees:white_clover"
     },
     "categories": [
         "dirt"
     ],
     "growthTicks": 1200,
     "display": {
-        "block": "buzzierbees:orange_hibiscus"
+        "block": "buzzier_bees:white_clover"
     },
     "results": [
         {
             "chance": 0.65,
             "output": {
-                "item": "buzzierbees:orange_hibiscus"
+                "item": "buzzier_bees:white_clover"
             },
             "minRolls": 1,
             "maxRolls": 1
