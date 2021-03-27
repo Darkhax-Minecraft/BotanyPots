@@ -1,0 +1,38 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "upgrade_aquatic"
+        }
+    ],
+    "seed": {
+        "item": "upgrade_aquatic:purple_pickerelweed"
+    },
+    "categories": [
+        "dirt",
+        "mud"
+    ],
+    "growthTicks": 1000,
+    "display": {
+        "block": "upgrade_aquatic:purple_pickerelweed"
+    },
+    "results": [
+        {
+            "chance": 1,
+            "output": {
+                "item": "upgrade_aquatic:purple_pickerelweed"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.30,
+            "output": {
+                "item": "upgrade_aquatic:purple_pickerelweed"
+            },
+            "minRolls": 0,
+            "maxRolls": 1
+        }
+    ]
+}

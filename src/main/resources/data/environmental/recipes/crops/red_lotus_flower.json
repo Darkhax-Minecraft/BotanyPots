@@ -1,0 +1,29 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "environmental"
+        }
+    ],
+    "seed": {
+        "item": "environmental:red_lotus_flower"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "environmental:red_lotus_flower"
+    },
+    "results": [
+        {
+            "chance": 0.65,
+            "output": {
+                "item": "environmental:red_lotus_flower"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
+}

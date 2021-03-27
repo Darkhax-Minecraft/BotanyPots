@@ -1,0 +1,45 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "atmospheric"
+        }
+    ],
+    "seed": {
+        "item": "atmospheric:scalding_monkey_brush"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1400,
+    "display": {
+        "block": "atmospheric:scalding_monkey_brush"
+    },
+    "results": [
+        {
+            "chance": 1,
+            "output": {
+                "item": "atmospheric:scalding_monkey_brush"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.5,
+            "output": {
+                "item": "atmospheric:hot_monkey_brush"
+            },
+            "minRolls": 0,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.5,
+            "output": {
+                "item": "atmospheric:warm_monkey_brush"
+            },
+            "minRolls": 0,
+            "maxRolls": 1
+        }
+    ]
+}

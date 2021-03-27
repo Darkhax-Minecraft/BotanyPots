@@ -1,0 +1,20 @@
+{
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "atmospheric"
+        }
+    ],
+    "input": {
+        "item": "atmospheric:arid_sand"
+    },
+    "display": {
+        "block": "atmospheric:arid_sand"
+    },
+    "categories": [
+        "sand",
+        "arid_sand"
+    ],
+    "growthModifier": 0
+}
