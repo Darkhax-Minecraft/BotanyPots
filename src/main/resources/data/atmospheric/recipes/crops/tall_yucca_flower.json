@@ -1,0 +1,38 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "atmospheric"
+        }
+    ],
+    "seed": {
+        "item": "atmospheric:tall_yucca_flower"
+    },
+    "categories": [
+        "dirt",
+        "sand"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "atmospheric:tall_yucca_flower"
+    },
+    "results": [
+        {
+            "chance": 0.9,
+            "output": {
+                "item": "atmospheric:yucca_flower"
+            },
+            "minRolls": 1,
+            "maxRolls": 3
+        },
+        {
+            "chance": 0.1,
+            "output": {
+                "item": "atmospheric:tall_yucca_flower"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
+}
