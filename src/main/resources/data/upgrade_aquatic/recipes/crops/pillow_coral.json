@@ -1,0 +1,45 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "upgrade_aquatic"
+        }
+    ],
+    "seed": {
+        "item": "upgrade_aquatic:pillow_coral"
+    },
+    "categories": [
+        "water"
+    ],
+    "growthTicks": 1300,
+    "display": {
+        "block": "upgrade_aquatic:pillow_coral_block"
+    },
+    "results": [
+        {
+            "chance": 1,
+            "output": {
+                "item": "upgrade_aquatic:pillow_coral_block"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.30,
+            "output": {
+                "item": "upgrade_aquatic:pillow_coral"
+            },
+            "minRolls": 0,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.30,
+            "output": {
+                "item": "upgrade_aquatic:pillow_coral_fan"
+            },
+            "minRolls": 0,
+            "maxRolls": 1
+        }
+    ]
+}
