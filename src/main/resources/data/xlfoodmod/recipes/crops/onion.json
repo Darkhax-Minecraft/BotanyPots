@@ -7,7 +7,7 @@
         }
     ],
     "seed": {
-        "item": "xlfoodmod:onion_seeds"
+        "item": "xlfoodmod:onion"
     },
     "categories": [
         "dirt"
@@ -21,7 +21,7 @@
     },
     "results": [
         {
-            "chance": 0.75,
+            "chance": 0.55,
             "output": {
                 "item": "xlfoodmod:onion"
             },
@@ -31,7 +31,7 @@
         {
             "chance": 0.20,
             "output": {
-                "item": "xlfoodmod:onion_seeds"
+                "item": "xlfoodmod:onion"
             },
             "minRolls": 1,
             "maxRolls": 1
