@@ -12,16 +12,16 @@
     "categories": [
         "dirt"
     ],
-    "growthTicks": 1000,
+    "growthTicks": 1100,
     "display": {
-        "block": "druidcraft:hemp_seeds",
+        "block": "druidcraft:hemp_crop",
         "properties": {
             "age": 3
         }
     },
     "results": [
         {
-            "chance": 0.75,
+            "chance": 0.45,
             "output": {
                 "item": "druidcraft:hemp"
             },
@@ -29,7 +29,7 @@
             "maxRolls": 1
         },
         {
-            "chance": 0.25,
+            "chance": 0.15,
             "output": {
                 "item": "druidcraft:hemp_seeds"
             },
