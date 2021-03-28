@@ -14,7 +14,7 @@
     ],
     "growthTicks": 1200,
     "display": {
-        "block": "farmersdelight:wild_tomatoes",
+        "block": "farmersdelight:tomatoes",
         "properties": {
             "age": 7
         }
