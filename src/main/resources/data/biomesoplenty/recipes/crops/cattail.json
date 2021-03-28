@@ -32,14 +32,6 @@
             },
             "minRolls": 1,
             "maxRolls": 2
-        },
-        {
-            "chance": 0.05,
-            "output": {
-                "item": "biomesoplenty:tall_cattail"
-            },
-            "minRolls": 1,
-            "maxRolls": 1
         }
     ]
 }
