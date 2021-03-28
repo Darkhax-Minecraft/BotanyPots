@@ -25,20 +25,20 @@
     },
     "results": [
         {
-            "chance": 0.75,
+            "chance": 0.55,
             "output": {
-                "item": "neapolitan:strawberry"
+                "item": "neapolitan:strawberries"
             },
             "minRolls": 1,
             "maxRolls": 3
         },
         {
-            "chance": 0.5,
+            "chance": 0.10,
             "output": {
-                "item": "neapolitan:white_strawberry"
+                "item": "neapolitan:white_strawberries"
             },
-            "minRolls": 1,
-            "maxRolls": 3
+            "minRolls": 0,
+            "maxRolls": 2
         },
         {
             "chance": 0.05,

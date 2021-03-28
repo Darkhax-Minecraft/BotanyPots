@@ -16,12 +16,9 @@
     "categories": [
         "dirt"
     ],
-    "growthTicks": 1200,
+    "growthTicks": 1400,
     "display": {
-        "block": "neapolitan:vanilla_vine",
-        "properties": {
-            "age": 7
-        }
+        "block": "neapolitan:vanilla_vine"
     },
     "results": [
         {
