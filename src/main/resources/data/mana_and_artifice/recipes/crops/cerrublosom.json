@@ -14,10 +14,7 @@
     ],
     "growthTicks": 1900,
     "display": {
-        "block": "mana-and-artifice:cerublossom_crop",
-        "properties": {
-            "age": 7
-        }
+        "block": "mana-and-artifice:cerublossom"
     },
     "results": [
         {

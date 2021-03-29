@@ -14,10 +14,7 @@
     ],
     "growthTicks": 2000,
     "display": {
-        "block": "mana-and-artifice:tarma_root_crop",
-        "properties": {
-            "age": 7
-        }
+        "block": "mana-and-artifice:tarma_root"
     },
     "results": [
         {
