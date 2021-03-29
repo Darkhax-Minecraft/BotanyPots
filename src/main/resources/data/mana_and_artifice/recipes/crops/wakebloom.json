@@ -1,0 +1,32 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "mana-and-artifice"
+        }
+    ],
+    "seed": {
+        "item": "mana-and-artifice:wakebloom"
+    },
+    "categories": [
+        "water"
+    ],
+    "growthTicks": 1900,
+    "display": {
+        "block": "mana-and-artifice:wakebloom_crop",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.65,
+            "output": {
+                "item": "mana-and-artifice:wakebloom"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
+}

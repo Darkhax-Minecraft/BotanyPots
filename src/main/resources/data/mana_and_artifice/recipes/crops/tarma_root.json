@@ -1,0 +1,32 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "mana-and-artifice"
+        }
+    ],
+    "seed": {
+        "item": "mana-and-artifice:tarma_root"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 2000,
+    "display": {
+        "block": "mana-and-artifice:tarma_root_crop",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.65,
+            "output": {
+                "item": "mana-and-artifice:tarma_root"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
+}
