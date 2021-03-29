@@ -7,11 +7,11 @@
         },
         {
             "type": "forge:item_exists",
-            "item": "silentgear:fluffy_puff_seeds"
+            "item": "silentgear:fluffy_seeds"
         }
     ],
     "seed": {
-        "item": "silentgear:fluffy_puff_seeds"
+        "item": "silentgear:fluffy_seeds"
     },
     "categories": [
         "dirt"
@@ -35,7 +35,7 @@
         {
             "chance": 0.05,
             "output": {
-                "item": "silentgear:fluffy_puff_seeds"
+                "item": "silentgear:fluffy_seeds"
             },
             "minRolls": 1,
             "maxRolls": 2
