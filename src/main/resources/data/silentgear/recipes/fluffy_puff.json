@@ -18,7 +18,7 @@
     ],
     "growthTicks": 1200,
     "display": {
-        "block": "silentgear:fluffy_puff_plant",
+        "block": "silentgear:fluffy_plant",
         "properties": {
             "age": 7
         }
