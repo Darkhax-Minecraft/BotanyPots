@@ -202,7 +202,7 @@ public class BlockBotanyPot extends Block implements IGrowable {
                     pot.onCropHarvest();
                     pot.resetGrowthTime();
                     
-                    for (final ItemStack stack : BotanyPotHelper.getHarvestStacks(world, pot.getCrop())) {
+                    for (final ItemStack stack : BotanyPotHelper.generateDrop(world.rand, pot.getCrop())) {
                         
                         dropItem(stack, world, pos);
                     }

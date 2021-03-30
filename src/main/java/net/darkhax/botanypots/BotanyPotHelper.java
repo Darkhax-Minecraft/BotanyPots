@@ -2,6 +2,7 @@ package net.darkhax.botanypots;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Nullable;
 
@@ -17,7 +18,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 public class BotanyPotHelper {
@@ -181,23 +181,21 @@ public class BotanyPotHelper {
     }
     
     /**
-     * Calculates and gathers the harvested drops of a given crop. This is used to get the
-     * actual items to yield when a crop is harvested.
+     * Generates loot for a given crop.
      * 
-     * @param world The world instance.
-     * @param crop The crop being harvested.
-     * @return A list containing all the yielded ItemStack from harvesting. These are all fresh
-     *         copies of the original harvest stacks.
+     * @param rand The random number generator.
+     * @param crop The crop to generate loot for.
+     * @return A list of generated loot.
      */
-    public static NonNullList<ItemStack> getHarvestStacks (World world, CropInfo crop) {
+    public static NonNullList<ItemStack> generateDrop (Random rand, CropInfo crop) {
         
         final NonNullList<ItemStack> drops = NonNullList.create();
         
         for (final HarvestEntry cropEntry : crop.getResults()) {
             
-            if (world.rand.nextFloat() <= cropEntry.getChance()) {
+            if (rand.nextFloat() <= cropEntry.getChance()) {
                 
-                final int rolls = MathsUtils.nextIntInclusive(world.rand, cropEntry.getMinRolls(), cropEntry.getMaxRolls());
+                final int rolls = MathsUtils.nextIntInclusive(rand, cropEntry.getMinRolls(), cropEntry.getMaxRolls());
                 
                 if (rolls > 0) {
                     

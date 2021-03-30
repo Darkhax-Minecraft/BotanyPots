@@ -324,7 +324,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                 
                 boolean didAutoHarvest = false;
                 
-                for (final ItemStack item : BotanyPotHelper.getHarvestStacks(this.world, this.getCrop())) {
+                for (final ItemStack item : BotanyPotHelper.generateDrop(this.world.rand, this.getCrop())) {
                     
                     // Iterate every valid slot of the inventory
                     for (int slot = 0; slot < inventory.getSlots(); slot++) {
