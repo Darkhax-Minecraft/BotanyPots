@@ -22,5 +22,5 @@
         "slime",
         "ender_slime"
     ],
-    "growthModifier": 0.25
+    "growthModifier": 0.05
 }
