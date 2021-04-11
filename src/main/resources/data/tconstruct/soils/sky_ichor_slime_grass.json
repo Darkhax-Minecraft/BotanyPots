@@ -7,17 +7,21 @@
         },
         {
             "type": "forge:item_exists",
-            "item": "tconstruct:purple_slime_dirt"
+            "item": "tconstruct:sky_ichor_slime_grass"
         }
     ],
     "input": {
-        "item": "tconstruct:purple_slime_dirt"
+        "item": "tconstruct:sky_ichor_slime_grass"
     },
     "display": {
-        "block": "tconstruct:purple_slime_dirt"
+        "block": "tconstruct:sky_ichor_slime_grass"
     },
     "categories": [
-        "dirt"
+        "dirt",
+        "grass",
+        "slime",
+        "sky_slime",
+        "ichor_slime"
     ],
-    "growthModifier": 0
+    "growthModifier": 0.05
 }

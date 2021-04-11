@@ -7,17 +7,19 @@
         },
         {
             "type": "forge:item_exists",
-            "item": "tconstruct:blue_slime_dirt"
+            "item": "tconstruct:earth_slime_dirt"
         }
     ],
     "input": {
-        "item": "tconstruct:blue_slime_dirt"
+        "item": "tconstruct:earth_slime_dirt"
     },
     "display": {
-        "block": "tconstruct:blue_slime_dirt"
+        "block": "tconstruct:earth_slime_dirt"
     },
     "categories": [
-        "dirt"
+        "dirt",
+        "slime",
+        "earth_slime"
     ],
     "growthModifier": 0
 }

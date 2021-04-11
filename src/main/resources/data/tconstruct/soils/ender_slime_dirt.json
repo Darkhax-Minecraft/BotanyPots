@@ -7,17 +7,19 @@
         },
         {
             "type": "forge:item_exists",
-            "item": "tconstruct:green_slime_dirt"
+            "item": "tconstruct:ender_slime_dirt"
         }
     ],
     "input": {
-        "item": "tconstruct:green_slime_dirt"
+        "item": "tconstruct:ender_slime_dirt"
     },
     "display": {
-        "block": "tconstruct:green_slime_dirt"
+        "block": "tconstruct:ender_slime_dirt"
     },
     "categories": [
-        "dirt"
+        "dirt",
+        "slime",
+        "ender_slime"
     ],
     "growthModifier": 0
 }

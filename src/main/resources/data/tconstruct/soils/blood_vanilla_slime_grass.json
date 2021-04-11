@@ -7,17 +7,20 @@
         },
         {
             "type": "forge:item_exists",
-            "item": "tconstruct:magma_slime_dirt"
+            "item": "tconstruct:blood_vanilla_slime_grass"
         }
     ],
     "input": {
-        "item": "tconstruct:magma_slime_dirt"
+        "item": "tconstruct:blood_vanilla_slime_grass"
     },
     "display": {
-        "block": "tconstruct:magma_slime_dirt"
+        "block": "tconstruct:blood_vanilla_slime_grass"
     },
     "categories": [
-        "dirt"
+        "dirt",
+        "grass",
+        "slime",
+        "blood_slime"
     ],
-    "growthModifier": 0
+    "growthModifier": 0.05
 }

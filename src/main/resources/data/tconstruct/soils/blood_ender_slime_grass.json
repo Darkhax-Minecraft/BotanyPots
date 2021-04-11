@@ -1,0 +1,27 @@
+{
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "tconstruct"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "tconstruct:blood_ender_slime_grass"
+        }
+    ],
+    "input": {
+        "item": "tconstruct:blood_ender_slime_grass"
+    },
+    "display": {
+        "block": "tconstruct:blood_ender_slime_grass"
+    },
+    "categories": [
+        "dirt",
+        "grass",
+        "slime",
+        "blood_slime",
+        "ender_slime"
+    ],
+    "growthModifier": 0.05
+}
