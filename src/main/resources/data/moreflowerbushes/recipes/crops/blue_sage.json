@@ -1,0 +1,52 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "moreflowerbushes"
+        },
+        {
+            "type": "forge:item_exists",
+            "item": "moreflowerbushes:blue_sage"
+        }
+    ],
+    "seed": {
+        "item": "moreflowerbushes:blue_sage"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": [
+        {
+            "block": "moreflowerbushes:blue_sage",
+            "properties": {
+                "half": "lower"
+            }
+        },
+        {
+            "block": "moreflowerbushes:blue_sage",
+            "properties": {
+                "half": "upper"
+            }
+        }
+    ],
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "moreflowerbushes:blue_sage"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "moreflowerbushes:blue_sage"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
+}
