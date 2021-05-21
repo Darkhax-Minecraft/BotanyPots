@@ -103,12 +103,6 @@ public class CropInfo extends RecipeDataBase {
     }
     
     /**
-     * Gets the growth tick factor for the crop.
-     * 
-     * @return The crop's growth tick factor.
-     */
-    
-    /**
      * Gets the amount of ticks the crop needs to grow under normal circumstances.
      * 
      * @return The growth time for the crop under normal circumstances.
@@ -164,24 +158,6 @@ public class CropInfo extends RecipeDataBase {
         this.displayBlocks = displayBlocks;
     }
     
-    @Override
-    public boolean isDynamic () {
-        
-        return true;
-    }
-    
-    @Override
-    public IRecipeSerializer<?> getSerializer () {
-        
-        return BotanyPots.instance.getContent().recipeSerializerCrop;
-    }
-    
-    @Override
-    public IRecipeType<?> getType () {
-        
-        return BotanyPots.instance.getContent().recipeTypeCrop;
-    }
-    
     public ITextComponent getName () {
         
         // TODO Ask forge to give me the old code back.
@@ -202,5 +178,23 @@ public class CropInfo extends RecipeDataBase {
     public int getLightLevel (IBlockReader world, BlockPos pos) {
         
         return this.getLightLevel().orElseGet( () -> this.getDisplayState()[0].getState().getLightValue(world, pos));
+    }
+    
+    @Override
+    public boolean isDynamic () {
+        
+        return true;
+    }
+    
+    @Override
+    public IRecipeSerializer<?> getSerializer () {
+        
+        return BotanyPots.instance.getContent().recipeSerializerCrop;
+    }
+    
+    @Override
+    public IRecipeType<?> getType () {
+        
+        return BotanyPots.instance.getContent().recipeTypeCrop;
     }
 }

@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 import org.openzen.zencode.java.ZenCodeType;
+import org.openzen.zencode.java.ZenCodeType.Getter;
+import org.openzen.zencode.java.ZenCodeType.Setter;
 
 import com.blamejared.crafttweaker.api.annotations.ZenRegister;
 import com.blamejared.crafttweaker.api.item.IIngredient;
@@ -38,6 +41,27 @@ public class ZenCrop {
     public ZenCrop(CropInfo crop) {
         
         this.internal = crop;
+    }
+    
+    @ZenCodeType.Method
+    @Setter("seed")
+    public ZenCrop setSeed (IIngredient seed) {
+        
+        CrTSidedExecutor.runOnServer( () -> this.internal.setSeed(seed.asVanillaIngredient()));
+        return this;
+    }
+    
+    @ZenCodeType.Method
+    @Getter("seed")
+    public IIngredient getSeed () {
+        
+        return IIngredient.fromIngredient(this.internal.getSeed());
+    }
+    
+    @ZenCodeType.Method
+    public Set<String> getCategories () {
+        
+        return this.internal.getSoilCategories();
     }
     
     @ZenCodeType.Method
@@ -101,16 +125,17 @@ public class ZenCrop {
     }
     
     @ZenCodeType.Method
-    public ZenCrop setGrowthTicks (int ticks) {
+    @Getter("growthTicks")
+    public int getGrowthTicks () {
         
-        CrTSidedExecutor.runOnServer( () -> this.internal.setGrowthTicks(ticks));
-        return this;
+        return this.internal.getGrowthTicks();
     }
     
     @ZenCodeType.Method
-    public ZenCrop setSeed (IIngredient seed) {
+    @Setter("growthTicks")
+    public ZenCrop setGrowthTicks (int ticks) {
         
-        CrTSidedExecutor.runOnServer( () -> this.internal.setSeed(seed.asVanillaIngredient()));
+        CrTSidedExecutor.runOnServer( () -> this.internal.setGrowthTicks(ticks));
         return this;
     }
     
@@ -146,7 +171,7 @@ public class ZenCrop {
         return this.internal;
     }
     
-    public static DisplayableBlockState[] getBlockStates (BlockState... states) {
+    private static DisplayableBlockState[] getBlockStates (BlockState... states) {
         
         return Arrays.stream(states).map(DisplayableBlockState::new).toArray(DisplayableBlockState[]::new);
     }
