@@ -28,12 +28,12 @@ public class BotanyPotComponentProvider implements IComponentProvider {
             
             if (config.get(BotanyPotsHwylaPlugin.KEY_SHOW_SOIL) && pot.getSoil() != null) {
                 
-                tooltip.add(new TranslationTextComponent("botanypots.tooltip.soil", pot.getSoil().getName()));
+                tooltip.add(new TranslationTextComponent("botanypots.tooltip.soil", pot.getSoil().getRenderState().getState().getBlock().getTranslatedName()));
             }
             
             if (config.get(BotanyPotsHwylaPlugin.KEY_SHOW_CROP) && pot.getCrop() != null) {
                 
-                tooltip.add(new TranslationTextComponent("botanypots.tooltip.crop", pot.getCrop().getName()));
+                tooltip.add(new TranslationTextComponent("botanypots.tooltip.crop", pot.getCrop().getDisplayState()[0].getState().getBlock().getTranslatedName()));
             }
             
             if (config.get(BotanyPotsHwylaPlugin.KEY_SHOW_PROGRESS) && pot.getCrop() != null && pot.getSoil() != null) {

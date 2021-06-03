@@ -58,12 +58,16 @@ public class TOPPlugin implements Function<ITheOneProbe, Void>, IProbeInfoProvid
         
         if (pot.getSoil() != null) {
             
-            info.text(new TranslationTextComponent("botanypots.tooltip.soil", pot.getSoil().getName()));
+            // I would like to use Block#getTranslatedName but it is client only and this is a
+            // server environment.
+            info.text(new TranslationTextComponent("botanypots.tooltip.soil", new TranslationTextComponent(pot.getSoil().getRenderState().getState().getBlock().getTranslationKey())));
         }
         
         if (pot.getCrop() != null) {
             
-            info.text(new TranslationTextComponent("botanypots.tooltip.crop", pot.getCrop().getName()));
+            // I would like to use Block#getTranslatedName but it is client only and this is a
+            // server environment.
+            info.text(new TranslationTextComponent("botanypots.tooltip.crop", new TranslationTextComponent(pot.getCrop().getDisplayState()[0].getState().getBlock().getTranslationKey())));
         }
         
         if (pot.getCurrentGrowthTicks() > 0) {

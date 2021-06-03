@@ -14,8 +14,6 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 
 public class CropInfo extends RecipeDataBase {
@@ -156,13 +154,6 @@ public class CropInfo extends RecipeDataBase {
     public void setDisplayBlock (DisplayableBlockState[] displayBlocks) {
         
         this.displayBlocks = displayBlocks;
-    }
-    
-    public ITextComponent getName () {
-        
-        // TODO Ask forge to give me the old code back.
-        // TODO allow json override
-        return new TranslationTextComponent(this.getDisplayState()[0].getState().getBlock().getTranslationKey());
     }
     
     public void setLightLevel (int lightLevel) {
