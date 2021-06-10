@@ -111,4 +111,10 @@ public class FertilizerInfo extends RecipeDataBase {
         
         return BotanyPots.instance.getContent().recipeTypeFertilizer;
     }
+    
+    @Override
+    public String toString () {
+        
+        return this.getId().toString();
+    }
 }

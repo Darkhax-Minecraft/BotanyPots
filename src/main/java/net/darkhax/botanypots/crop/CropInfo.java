@@ -188,4 +188,10 @@ public class CropInfo extends RecipeDataBase {
         
         return BotanyPots.instance.getContent().recipeTypeCrop;
     }
+    
+    @Override
+    public String toString () {
+        
+        return this.getId().toString();
+    }
 }

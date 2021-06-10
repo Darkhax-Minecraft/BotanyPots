@@ -142,4 +142,10 @@ public class SoilInfo extends RecipeDataBase {
         
         return BotanyPots.instance.getContent().recipeTypeSoil;
     }
+    
+    @Override
+    public String toString () {
+        
+        return this.getId().toString();
+    }
 }
