@@ -5,6 +5,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import net.darkhax.bookshelf.util.MathsUtils;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.api.events.BotanyPotHarvestedEvent;
 import net.darkhax.botanypots.api.events.CropPlaceEvent;
@@ -383,7 +384,8 @@ public class BlockBotanyPot extends Block implements IGrowable {
         
         if (tile instanceof TileEntityBotanyPot) {
             
-            ((TileEntityBotanyPot) tile).onTileTick();
+            // Grow crop by 3 to 15 seconds.
+            ((TileEntityBotanyPot) tile).addGrowth(MathsUtils.nextIntInclusive(random, 3, 15) * 20);
         }
     }
     
