@@ -9,6 +9,7 @@ import net.darkhax.bookshelf.util.InventoryUtils;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.BotanyPots;
 import net.darkhax.botanypots.api.events.BotanyPotHarvestedEvent;
+import net.darkhax.botanypots.api.events.BotanyPotTickEvent;
 import net.darkhax.botanypots.block.BlockBotanyPot;
 import net.darkhax.botanypots.crop.CropInfo;
 import net.darkhax.botanypots.network.BreakEffectsMessage;
@@ -284,6 +285,8 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     @Override
     public void onTileTick () {
         
+        MinecraftForge.EVENT_BUS.post(new BotanyPotTickEvent.Pre(this));
+        
         if (this.hasSoilAndCrop()) {
             
             if (this.isDoneGrowing()) {
@@ -304,6 +307,8 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             // Reset tick counts
             this.resetGrowthTime();
         }
+        
+        MinecraftForge.EVENT_BUS.post(new BotanyPotTickEvent.Post(this));
     }
     
     public boolean hasSoilAndCrop () {
