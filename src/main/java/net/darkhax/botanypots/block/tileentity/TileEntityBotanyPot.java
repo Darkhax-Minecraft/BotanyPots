@@ -1,5 +1,7 @@
 package net.darkhax.botanypots.block.tileentity;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import net.darkhax.bookshelf.block.tileentity.TileEntityBasicTickable;
@@ -17,6 +19,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.util.Direction;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.chunk.Chunk;
@@ -74,6 +77,12 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
      * The current chunk pos. Not saved to nbt.
      */
     private ChunkPos chunkPos;
+    
+    /**
+     * In some circumstances the pot may not be able to deposit it's drops. In these
+     * circumstances those drops are cached here to prevent players from abusing them.
+     */
+    private List<ItemStack> dropsCache = NonNullList.create();
     
     public TileEntityBotanyPot() {
         
@@ -330,41 +339,39 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                 
                 boolean didAutoHarvest = false;
                 
-                final BotanyPotHarvestedEvent.LootGenerated event = new BotanyPotHarvestedEvent.LootGenerated(this, null, BotanyPotHelper.generateDrop(this.world.rand, this.getCrop()));
+                final List<ItemStack> drops = this.getDrops();
                 
-                if (!MinecraftForge.EVENT_BUS.post(event) && !event.getDrops().isEmpty()) {
+                for (final ItemStack item : drops) {
                     
-                    for (final ItemStack item : event.getDrops()) {
+                    // Iterate every valid slot of the inventory
+                    for (int slot = 0; slot < inventory.getSlots(); slot++) {
                         
-                        // Iterate every valid slot of the inventory
-                        for (int slot = 0; slot < inventory.getSlots(); slot++) {
+                        // Check if the simulated insert stack can be accepted into the
+                        // inventory.
+                        if (inventory.isItemValid(slot, item) && inventory.insertItem(slot, item, true).getCount() != item.getCount()) {
                             
-                            // Check if the simulated insert stack can be accepted into the
-                            // inventory.
-                            if (inventory.isItemValid(slot, item) && inventory.insertItem(slot, item, true).getCount() != item.getCount()) {
-                                
-                                // Actually insert the stack.
-                                
-                                // Insert the items. We don't care about the remainder and
-                                // it can be safely voided.
-                                inventory.insertItem(slot, item, false);
-                                
-                                // Set auto harvest to true. This will cause a reset for
-                                // the next growth cycle.
-                                didAutoHarvest = true;
-                                
-                                // Exit the inventory for this loop. Will then move on to
-                                // the next item and start over.
-                                break;
-                            }
+                            // Actually insert the stack.
+                            
+                            // Insert the items. We don't care about the remainder and
+                            // it can be safely voided.
+                            inventory.insertItem(slot, item, false);
+                            
+                            // Set auto harvest to true. This will cause a reset for
+                            // the next growth cycle.
+                            didAutoHarvest = true;
+                            
+                            // Exit the inventory for this loop. Will then move on to
+                            // the next item and start over.
+                            break;
                         }
                     }
                 }
                 
-                if (didAutoHarvest || event.getDrops().isEmpty()) {
+                if (didAutoHarvest || drops.isEmpty()) {
                     
                     this.onCropHarvest();
                     this.resetGrowthTime();
+                    this.dropsCache = null;
                     MinecraftForge.EVENT_BUS.post(new BotanyPotHarvestedEvent.Post(this, null));
                 }
             }
@@ -522,5 +529,25 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         }
         
         return super.getCapability(cap, side);
+    }
+    
+    private List<ItemStack> getDrops () {
+        
+        if (this.dropsCache == null) {
+            
+            final BotanyPotHarvestedEvent.LootGenerated event = new BotanyPotHarvestedEvent.LootGenerated(this, null, BotanyPotHelper.generateDrop(this.world.rand, this.getCrop()));
+            
+            if (!MinecraftForge.EVENT_BUS.post(event)) {
+                
+                this.dropsCache = event.getDrops();
+            }
+            
+            else {
+                
+                this.dropsCache = NonNullList.create();
+            }
+        }
+        
+        return this.dropsCache;
     }
 }
