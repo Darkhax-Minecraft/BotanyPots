@@ -6,6 +6,7 @@ import net.darkhax.bookshelf.block.tileentity.TileEntityBasicTickable;
 import net.darkhax.bookshelf.util.InventoryUtils;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.BotanyPots;
+import net.darkhax.botanypots.api.events.BotanyPotHarvestedEvent;
 import net.darkhax.botanypots.block.BlockBotanyPot;
 import net.darkhax.botanypots.crop.CropInfo;
 import net.darkhax.botanypots.network.BreakEffectsMessage;
@@ -308,6 +309,11 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
     
     private void attemptAutoHarvest () {
         
+        if (MinecraftForge.EVENT_BUS.post(new BotanyPotHarvestedEvent.Pre(this, null))) {
+            
+            return;
+        }
+        
         final Block block = this.getBlockState().getBlock();
         
         if (block instanceof BlockBotanyPot && ((BlockBotanyPot) block).isHopper()) {
@@ -324,28 +330,33 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                 
                 boolean didAutoHarvest = false;
                 
-                for (final ItemStack item : BotanyPotHelper.generateDrop(this.world.rand, this.getCrop())) {
+                final BotanyPotHarvestedEvent.LootGenerated event = new BotanyPotHarvestedEvent.LootGenerated(this, null, BotanyPotHelper.generateDrop(this.world.rand, this.getCrop()));
+                
+                if (!MinecraftForge.EVENT_BUS.post(event) && !event.getDrops().isEmpty()) {
                     
-                    // Iterate every valid slot of the inventory
-                    for (int slot = 0; slot < inventory.getSlots(); slot++) {
+                    for (final ItemStack item : event.getDrops()) {
                         
-                        // Check if the simulated insert stack can be accepted into the
-                        // inventory.
-                        if (inventory.isItemValid(slot, item) && inventory.insertItem(slot, item, true).getCount() != item.getCount()) {
+                        // Iterate every valid slot of the inventory
+                        for (int slot = 0; slot < inventory.getSlots(); slot++) {
                             
-                            // Actually insert the stack.
-                            
-                            // Insert the items. We don't care about the remainder and
-                            // it can be safely voided.
-                            inventory.insertItem(slot, item, false);
-                            
-                            // Set auto harvest to true. This will cause a reset for
-                            // the next growth cycle.
-                            didAutoHarvest = true;
-                            
-                            // Exit the inventory for this loop. Will then move on to
-                            // the next item and start over.
-                            break;
+                            // Check if the simulated insert stack can be accepted into the
+                            // inventory.
+                            if (inventory.isItemValid(slot, item) && inventory.insertItem(slot, item, true).getCount() != item.getCount()) {
+                                
+                                // Actually insert the stack.
+                                
+                                // Insert the items. We don't care about the remainder and
+                                // it can be safely voided.
+                                inventory.insertItem(slot, item, false);
+                                
+                                // Set auto harvest to true. This will cause a reset for
+                                // the next growth cycle.
+                                didAutoHarvest = true;
+                                
+                                // Exit the inventory for this loop. Will then move on to
+                                // the next item and start over.
+                                break;
+                            }
                         }
                     }
                 }
@@ -354,6 +365,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                     
                     this.onCropHarvest();
                     this.resetGrowthTime();
+                    MinecraftForge.EVENT_BUS.post(new BotanyPotHarvestedEvent.Post(this, null));
                 }
             }
         }

@@ -6,6 +6,14 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import net.darkhax.botanypots.BotanyPotHelper;
+import net.darkhax.botanypots.api.events.BotanyPotHarvestedEvent;
+import net.darkhax.botanypots.api.events.CropPlaceEvent;
+import net.darkhax.botanypots.api.events.CropRemovedEvent;
+import net.darkhax.botanypots.api.events.FertilizerUsedEvent;
+import net.darkhax.botanypots.api.events.LookupEvent;
+import net.darkhax.botanypots.api.events.SoilPlaceEvent;
+import net.darkhax.botanypots.api.events.SoilRemoveEvent;
+import net.darkhax.botanypots.api.events.SoilValidForCropEvent;
 import net.darkhax.botanypots.block.tileentity.TileEntityBotanyPot;
 import net.darkhax.botanypots.crop.CropInfo;
 import net.darkhax.botanypots.fertilizer.FertilizerInfo;
@@ -34,6 +42,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
 
 public class BlockBotanyPot extends Block implements IGrowable {
     
@@ -90,12 +99,25 @@ public class BlockBotanyPot extends Block implements IGrowable {
                 // If a crop exists, remove it.
                 if (crop != null) {
                     
-                    final ItemStack seedStack = pot.getCropStack();
+                    if (MinecraftForge.EVENT_BUS.post(new CropRemovedEvent.Pre(pot, player, crop))) {
+                        
+                        // Return out of the method here. Prevents the soil from being removed
+                        // instead.
+                        return ActionResultType.FAIL;
+                    }
                     
-                    if (!seedStack.isEmpty() && pot.canSetCrop(null)) {
+                    else if (pot.canSetCrop(null)) {
+                        
+                        final ItemStack seedStack = pot.getCropStack();
+                        
+                        if (!seedStack.isEmpty()) {
+                            
+                            dropItem(seedStack.copy(), world, pos);
+                        }
                         
                         pot.setCrop(null, ItemStack.EMPTY);
-                        dropItem(seedStack.copy(), world, pos);
+                        
+                        MinecraftForge.EVENT_BUS.post(new CropRemovedEvent.Post(pot, player, crop));
                         return ActionResultType.SUCCESS;
                     }
                 }
@@ -105,7 +127,7 @@ public class BlockBotanyPot extends Block implements IGrowable {
                     
                     final SoilInfo soil = pot.getSoil();
                     
-                    if (soil != null) {
+                    if (soil != null && !MinecraftForge.EVENT_BUS.post(new SoilRemoveEvent.Pre(pot, soil, player))) {
                         
                         final ItemStack soilStack = pot.getSoilStack();
                         
@@ -113,6 +135,7 @@ public class BlockBotanyPot extends Block implements IGrowable {
                             
                             pot.setSoil(null, ItemStack.EMPTY);
                             dropItem(soilStack.copy(), world, pos);
+                            MinecraftForge.EVENT_BUS.post(new SoilRemoveEvent.Post(pot, soil, player));
                             return ActionResultType.SUCCESS;
                         }
                     }
@@ -132,80 +155,132 @@ public class BlockBotanyPot extends Block implements IGrowable {
                     // Attempt soil add first
                     if (pot.getSoil() == null) {
                         
-                        final SoilInfo soilForStack = BotanyPotHelper.getSoilForItem(heldItem);
+                        SoilInfo soilForStack = BotanyPotHelper.getSoilForItem(heldItem);
+                        final LookupEvent.Soil lookupEvent = new LookupEvent.Soil(pot, player, soilForStack, heldItem);
                         
-                        if (soilForStack != null && pot.canSetSoil(soilForStack)) {
+                        if (!MinecraftForge.EVENT_BUS.post(lookupEvent) && lookupEvent.getCurrentLookup() != null) {
                             
-                            final ItemStack inStack = heldItem.copy();
-                            inStack.setCount(1);
+                            soilForStack = lookupEvent.getCurrentLookup();
                             
-                            pot.setSoil(soilForStack, inStack);
+                            final SoilPlaceEvent.Pre preEvent = new SoilPlaceEvent.Pre(pot, soilForStack, player);
                             
-                            if (!player.isCreative()) {
+                            if (!MinecraftForge.EVENT_BUS.post(preEvent) && preEvent.getCurrentSoil() != null) {
                                 
-                                heldItem.shrink(1);
+                                soilForStack = preEvent.getCurrentSoil();
+                                
+                                if (soilForStack != null && pot.canSetSoil(soilForStack)) {
+                                    
+                                    final ItemStack inStack = heldItem.copy();
+                                    inStack.setCount(1);
+                                    
+                                    pot.setSoil(soilForStack, inStack);
+                                    
+                                    if (!player.isCreative()) {
+                                        
+                                        heldItem.shrink(1);
+                                    }
+                                    
+                                    MinecraftForge.EVENT_BUS.post(new SoilPlaceEvent.Post(pot, soilForStack, player));
+                                    return ActionResultType.SUCCESS;
+                                }
                             }
-                            
-                            return ActionResultType.SUCCESS;
                         }
                     }
                     
                     // Attempt crop add second.
                     else if (pot.getCrop() == null) {
                         
-                        final CropInfo cropForStack = BotanyPotHelper.getCropForItem(heldItem);
+                        CropInfo cropForStack = BotanyPotHelper.getCropForItem(heldItem);
+                        final LookupEvent<CropInfo> lookupEvent = new LookupEvent.Crop(pot, player, cropForStack, heldItem);
                         
-                        if (cropForStack != null && BotanyPotHelper.isSoilValidForCrop(pot.getSoil(), cropForStack) && pot.canSetCrop(cropForStack)) {
+                        if (!MinecraftForge.EVENT_BUS.post(lookupEvent) && lookupEvent.getCurrentLookup() != null) {
                             
-                            final ItemStack inStack = heldItem.copy();
-                            inStack.setCount(1);
+                            cropForStack = lookupEvent.getCurrentLookup();
+                            final CropPlaceEvent.Pre preEvent = new CropPlaceEvent.Pre(pot, player, cropForStack);
                             
-                            pot.setCrop(cropForStack, inStack);
-                            
-                            if (!player.isCreative()) {
+                            if (!MinecraftForge.EVENT_BUS.post(preEvent) && preEvent.getCurrentCrop() != null) {
                                 
-                                heldItem.shrink(1);
+                                cropForStack = preEvent.getCurrentCrop();
+                                
+                                boolean isSoilValid = BotanyPotHelper.isSoilValidForCrop(pot.getSoil(), cropForStack);
+                                final SoilValidForCropEvent validSoilEvent = new SoilValidForCropEvent(pot, player, pot.getSoil(), cropForStack, isSoilValid);
+                                isSoilValid = !MinecraftForge.EVENT_BUS.post(validSoilEvent) && validSoilEvent.isSoilValid();
+                                
+                                if (isSoilValid && pot.canSetCrop(cropForStack)) {
+                                    
+                                    final ItemStack inStack = heldItem.copy();
+                                    inStack.setCount(1);
+                                    
+                                    pot.setCrop(cropForStack, inStack);
+                                    
+                                    if (!player.isCreative()) {
+                                        
+                                        heldItem.shrink(1);
+                                    }
+                                    
+                                    MinecraftForge.EVENT_BUS.post(new CropPlaceEvent.Post(pot, player, cropForStack));
+                                    return ActionResultType.SUCCESS;
+                                }
                             }
-                            
-                            return ActionResultType.SUCCESS;
                         }
                     }
                     
                     // Attempt fertilizer.
                     else if (!pot.canHarvest()) {
                         
-                        final FertilizerInfo fertilizerForStack = BotanyPotHelper.getFertilizerForItem(heldItem);
+                        FertilizerInfo fertilizerForStack = BotanyPotHelper.getFertilizerForItem(heldItem);
+                        final LookupEvent.Fertilizer lookupEvent = new LookupEvent.Fertilizer(pot, player, fertilizerForStack, heldItem);
                         
-                        if (fertilizerForStack != null) {
+                        if (!MinecraftForge.EVENT_BUS.post(lookupEvent) && lookupEvent.getCurrentLookup() != null) {
                             
-                            final int ticksToGrow = fertilizerForStack.getTicksToGrow(world.rand, pot.getSoil(), pot.getCrop());
-                            pot.addGrowth(ticksToGrow);
+                            fertilizerForStack = lookupEvent.getCurrentLookup();
                             
-                            if (!world.isRemote) {
+                            if (fertilizerForStack != null) {
                                 
-                                world.playEvent(2005, tile.getPos(), 0);
-                            }
-                            
-                            if (!player.isCreative()) {
+                                int ticksToGrow = fertilizerForStack.getTicksToGrow(world.rand, pot.getSoil(), pot.getCrop());
                                 
-                                heldItem.shrink(1);
+                                final FertilizerUsedEvent.Pre preEvent = new FertilizerUsedEvent.Pre(pot, player, fertilizerForStack, heldItem, ticksToGrow);
+                                
+                                if (!MinecraftForge.EVENT_BUS.post(preEvent) && preEvent.getCurrentGrowthTicks() > 0) {
+                                    
+                                    ticksToGrow = preEvent.getCurrentGrowthTicks();
+                                    
+                                    pot.addGrowth(ticksToGrow);
+                                    
+                                    if (!world.isRemote) {
+                                        
+                                        world.playEvent(2005, tile.getPos(), 0);
+                                    }
+                                    
+                                    if (!player.isCreative()) {
+                                        
+                                        heldItem.shrink(1);
+                                    }
+                                    
+                                    MinecraftForge.EVENT_BUS.post(new FertilizerUsedEvent.Post(pot, player, fertilizerForStack, heldItem, ticksToGrow));
+                                    return ActionResultType.SUCCESS;
+                                }
                             }
-                            
-                            return ActionResultType.SUCCESS;
                         }
                     }
                 }
                 
                 // Check if the pot can be harvested
-                if (!this.isHopper() && pot.canHarvest()) {
+                if (!this.isHopper() && pot.canHarvest() && !MinecraftForge.EVENT_BUS.post(new BotanyPotHarvestedEvent.Pre(pot, player))) {
+                    
+                    final BotanyPotHarvestedEvent.LootGenerated event = new BotanyPotHarvestedEvent.LootGenerated(pot, player, BotanyPotHelper.generateDrop(world.rand, pot.getCrop()));
+                    
+                    if (!MinecraftForge.EVENT_BUS.post(event) && !event.getDrops().isEmpty()) {
+                        
+                        for (final ItemStack stack : event.getDrops()) {
+                            
+                            dropItem(stack, world, pos);
+                        }
+                    }
                     
                     pot.onCropHarvest();
                     pot.resetGrowthTime();
-                    
-                    for (final ItemStack stack : BotanyPotHelper.generateDrop(world.rand, pot.getCrop())) {
-                        
-                        dropItem(stack, world, pos);
-                    }
+                    MinecraftForge.EVENT_BUS.post(new BotanyPotHarvestedEvent.Post(pot, player));
                     
                     return ActionResultType.SUCCESS;
                 }
