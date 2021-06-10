@@ -361,7 +361,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
                     }
                 }
                 
-                if (didAutoHarvest) {
+                if (didAutoHarvest || event.getDrops().isEmpty()) {
                     
                     this.onCropHarvest();
                     this.resetGrowthTime();
