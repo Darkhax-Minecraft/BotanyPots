@@ -6,17 +6,8 @@
             "modid": "metalbushesmod"
         },
         {
-            "values": [
-                {
-                    "type": "forge:mod_loaded",
-                    "modid": "mekanism"
-                },
-                {
-                    "type": "forge:mod_loaded",
-                    "modid": "create"
-                }
-            ],
-            "type": "forge:or"
+            "type": "forge:mod_loaded",
+            "modid": "mekanism"
         }
     ],
     "seed": {

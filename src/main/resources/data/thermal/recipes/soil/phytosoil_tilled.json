@@ -1,25 +1,25 @@
 {
-    "type": "botanypots:soil",
-    "conditions": [
-        {
-            "type": "forge:mod_loaded",
-            "modid": "thermal"
-        },
-        {
-            "type": "forge:item_exists",
-            "item": "thermal:phytosoil_tilled"
-        }
-    ],
-    "input": {
-        "item": "thermal:phytosoil_tilled"
+  "type": "botanypots:soil",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
     },
-    "display": {
-        "block": "thermal:phytosoil_tilled"
-    },
-    "categories": [
-        "dirt",
-        "grass",
-        "sand"
-    ],
-    "growthModifier": 0.35
+    {
+      "type": "forge:item_exists",
+      "item": "thermal:phytosoil_tilled"
+    }
+  ],
+  "input": {
+    "item": "thermal:phytosoil_tilled"
+  },
+  "display": {
+    "block": "thermal:phytosoil_tilled"
+  },
+  "categories": [
+    "dirt",
+    "grass",
+    "sand"
+  ],
+  "growthModifier": 0.35
 }
