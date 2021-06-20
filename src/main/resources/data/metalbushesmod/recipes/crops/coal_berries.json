@@ -23,7 +23,7 @@
         {
             "chance": 0.90,
             "output": {
-                "item": "minecraft:coal"
+                "item": "metalbushesmod:coal_nugget"
             },
             "minRolls": 1,
             "maxRolls": 1
