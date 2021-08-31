@@ -1,32 +1,32 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
-    {
-      "type": "forge:mod_loaded",
-      "modid": "metalbushesmod"
-    }
-  ],
-  "seed": {
-    "item": "metalbushesmod:blaze_bush"
-  },
-  "categories": [
-    "sand"
-  ],
-  "growthTicks": 1800,
-  "display": {
-    "block": "metalbushesmod:blaze_bush",
-    "properties": {
-      "age": 3
-    }
-  },
-  "results": [
-    {
-      "chance": 0.90,
-      "output": {
-        "item": "metalbushesmod:tiny_blaze_powder"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
-    }
-  ]
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "metalbushesmod"
+        }
+    ],
+    "seed": {
+        "item": "metalbushesmod:blaze_bush"
+    },
+    "categories": [
+        "sand"
+    ],
+    "growthTicks": 1800,
+    "display": {
+        "block": "metalbushesmod:blaze_bush",
+        "properties": {
+            "age": 3
+        }
+    },
+    "results": [
+        {
+            "chance": 0.90,
+            "output": {
+                "item": "metalbushesmod:tiny_blaze_powder"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
 }
