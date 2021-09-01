@@ -84,7 +84,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
      * In some circumstances the pot may not be able to deposit it's drops. In these
      * circumstances those drops are cached here to prevent players from abusing them.
      */
-    private List<ItemStack> dropsCache = NonNullList.create();
+    private List<ItemStack> dropsCache = null;
     
     public TileEntityBotanyPot() {
         
