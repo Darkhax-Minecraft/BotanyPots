@@ -22,13 +22,21 @@ import net.darkhax.botanypots.soil.SoilInfo;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.IWaterLoggable;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.BooleanProperty;
+import net.minecraft.state.StateContainer;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
@@ -39,13 +47,14 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 
-public class BlockBotanyPot extends Block implements IGrowable {
+public class BlockBotanyPot extends Block implements IGrowable, IWaterLoggable {
     
     private static final ITextComponent TOOLTIP_NORMAL = new TranslationTextComponent("botanypots.tooltip.pot.normal").mergeStyle(TextFormatting.GRAY);
     
@@ -54,7 +63,9 @@ public class BlockBotanyPot extends Block implements IGrowable {
     private static final VoxelShape SHAPE = Block.makeCuboidShape(2, 0, 2, 14, 8, 14);
     
     private static final Properties properties = Properties.create(Material.CLAY).hardnessAndResistance(1.25F, 4.2F).notSolid();
-    
+
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+
     private final boolean hopper;
     
     public static List<Block> botanyPots = NonNullList.create();
@@ -69,6 +80,7 @@ public class BlockBotanyPot extends Block implements IGrowable {
         super(properties);
         this.hopper = hopper;
         botanyPots.add(this);
+        this.setDefaultState(this.getStateContainer().getBaseState().with(WATERLOGGED, false));
     }
     
     public boolean isHopper () {
@@ -450,5 +462,26 @@ public class BlockBotanyPot extends Block implements IGrowable {
     public int getOpacity (BlockState state, IBlockReader worldIn, BlockPos pos) {
         
         return 0;
+    }
+
+    public BlockState getStateForPlacement(BlockItemUseContext context) {
+        FluidState fluidstate = context.getWorld().getFluidState(context.getPos());
+        return this.getDefaultState().with(WATERLOGGED, fluidstate.getFluid() == Fluids.WATER);
+    }
+
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+        builder.add(WATERLOGGED);
+    }
+
+    public FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+    }
+
+    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+        if (stateIn.get(WATERLOGGED)) {
+            worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
+        }
+
+        return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 }
