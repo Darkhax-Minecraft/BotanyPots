@@ -1,0 +1,52 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "mysticalagriculture"
+        },
+        {
+            "type": "mysticalagriculture:crop_enabled",
+            "crop": "mysticalagradditions:awakened_draconium"
+        }
+    ],
+    "seed": {
+        "item": "mysticalagriculture:awakened_draconium_seeds"
+    },
+    "categories": [
+        "supremium"
+    ],
+    "growthTicks": 4500,
+    "display": {
+        "block": "mysticalagriculture:awakened_draconium_crop",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "mysticalagriculture:awakened_draconium_essence"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "mysticalagriculture:awakened_draconium_seeds"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.01,
+            "output": {
+                "item": "mysticalagriculture:fertilized_essence"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        }
+    ]
+}
