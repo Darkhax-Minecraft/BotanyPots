@@ -27,7 +27,7 @@
         {
             "chance": 0.75,
             "output": {
-                "item": "powah:crystal_nitro"
+                "item": "mysticalagriculture:nitro_crystal_essence"
             },
             "minRolls": 1,
             "maxRolls": 1
