@@ -7,7 +7,7 @@
         },
         {
             "type": "mysticalagriculture:crop_enabled",
-            "crop": "mysticalagriculture:nitro_crystal"
+            "crop": "mysticalagradditions:nitro_crystal"
         }
     ],
     "seed": {
