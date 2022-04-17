@@ -43,8 +43,8 @@ public class ZenFertilizer {
     public ZenFertilizer setGrowthAmount (int min, int max) {
         
         CrTSidedExecutor.runOnServer( () -> {
-            this.internal.setMaxTicks(min);
-            this.internal.setMinTicks(max);
+            this.internal.setMaxTicks(max);
+            this.internal.setMinTicks(min);
         });
         
         return this;
