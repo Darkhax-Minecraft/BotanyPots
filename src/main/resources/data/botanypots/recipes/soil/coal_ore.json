@@ -1,0 +1,13 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+        "item": "minecraft:coal_ore"
+    },
+    "display": {
+        "block": "minecraft:coal_ore"
+    },
+    "categories": [
+        "coal"
+    ],
+    "growthModifier": 0
+}

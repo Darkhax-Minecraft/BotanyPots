@@ -1,0 +1,13 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+        "item": "minecraft:lapis_ore"
+    },
+    "display": {
+        "block": "minecraft:lapis_ore"
+    },
+    "categories": [
+        "lapis"
+    ],
+    "growthModifier": 0
+}

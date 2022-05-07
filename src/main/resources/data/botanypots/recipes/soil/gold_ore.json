@@ -1,0 +1,13 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+        "item": "minecraft:gold_ore"
+    },
+    "display": {
+        "block": "minecraft:gold_ore"
+    },
+    "categories": [
+        "gold"
+    ],
+    "growthModifier": 0
+}
