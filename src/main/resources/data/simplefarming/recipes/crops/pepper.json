@@ -35,6 +35,14 @@
             },
             "minRolls": 1,
             "maxRolls": 1
+        },
+        {
+            "chance": 0.03,
+            "output": {
+                "item": "simplefarming:habanero"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
         }
     ]
 }
