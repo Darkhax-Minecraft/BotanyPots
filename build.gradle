@@ -107,11 +107,11 @@ dependencies {
 
     minecraft "net.minecraftforge:forge:${forge_version}"
     
-    compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.16.5:${bookshelf_version}")
-    compile fg.deobf("mezz.jei:jei-1.16.4:${jei_version}")
+    compile fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-1.16.5:${bookshelf_version}")
+    compile fg.deobf("mezz.jei:jei-1.16.5:${jei_version}")
     compile fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:${crafttweaker_version}")  
     compile fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}")
-    compile fg.deobf( "mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
+    compile fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
 }
 
 jar {
