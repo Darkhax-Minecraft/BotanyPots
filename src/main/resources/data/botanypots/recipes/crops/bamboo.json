@@ -7,7 +7,7 @@
         "dirt",
         "sand"
     ],
-    "growthTicks": 1800,
+    "growthTicks": 600,
     "display": {
         "block": "minecraft:bamboo"
     },
