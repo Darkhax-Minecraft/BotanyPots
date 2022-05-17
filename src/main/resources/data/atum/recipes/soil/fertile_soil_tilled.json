@@ -1,0 +1,20 @@
+{
+    "type": "botanypots:soil",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "atum"
+        }
+    ],
+    "input": {
+        "item": "atum:fertile_soil_tilled"
+    },
+    "display": {
+        "block": "atum:fertile_soil_tilled"
+    },
+    "categories": [
+        "dirt",
+        "farmland"
+    ],
+    "growthModifier": 0.15
+}
