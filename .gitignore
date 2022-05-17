@@ -4,6 +4,7 @@
 *.ipr
 *.iws
 out/
+.idea/
 
 #ForgeGradle
 build/

@@ -1,0 +1,40 @@
+{
+    "type": "botanypots:crop",
+    "conditions": [
+        {
+            "type": "forge:mod_loaded",
+            "modid": "atum"
+        }
+    ],
+    "seed": {
+        "item": "atum:flax_seeds"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1000,
+    "display": {
+        "block": "atum:flax_block",
+        "properties": {
+            "age": 7
+        }
+    },
+    "results": [
+        {
+            "chance": 0.75,
+            "output": {
+                "item": "atum:flax"
+            },
+            "minRolls": 1.0,
+            "maxRolls": 1.0
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "atum:flax_seeds"
+            },
+            "minRolls": 1.0,
+            "maxRolls": 1.0
+        }
+    ]
+}
