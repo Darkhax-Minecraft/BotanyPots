@@ -446,11 +446,17 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         if (dataTag.contains("Soil")) {
             
             final String rawSoilId = dataTag.getString("Soil");
-            final ResourceLocation soilId = ResourceLocation.tryCreate(rawSoilId);
+            ResourceLocation soilId = ResourceLocation.tryCreate(rawSoilId);
 
             if(soilId == null) {
-                BotanyPots.LOGGER.error("Botany Pot at {} has invalid soil type {}. Soil and crop will be discarded.", this.pos, rawSoilId);
-                return;
+                final SoilInfo recoveredSoil = BotanyPotHelper.getSoilForItem(soilStack);
+//                System.out.print(recoveredSoil);
+                if(recoveredSoil != null) {
+                    soilId = recoveredSoil.getId();
+                } else {
+                    BotanyPots.LOGGER.error("Botany Pot at {} has invalid soil type {}. Soil and crop will be discarded.", this.pos, rawSoilId);
+                    return;
+                }
             }
 
             final SoilInfo foundSoil = BotanyPotHelper.getSoil(soilId);
@@ -466,11 +472,17 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
             if (dataTag.contains("Crop")) {
 
                 final String rawCropId = dataTag.getString("Crop");
-                final ResourceLocation cropId = ResourceLocation.tryCreate(rawCropId);
+                ResourceLocation cropId = ResourceLocation.tryCreate(rawCropId);
 
                 if(cropId == null) {
-                    BotanyPots.LOGGER.error("Botany Pot at {} has an invalid crop Id of {}. The crop will be discarded.", this.pos, rawCropId);
-                    return;
+                    final CropInfo recoveredCrop = BotanyPotHelper.getCropForItem(cropStack);
+//                    System.out.print(recoveredCrop);
+                    if(recoveredCrop != null) {
+                        cropId = recoveredCrop.getId();
+                    } else {
+                        BotanyPots.LOGGER.error("Botany Pot at {} has an invalid crop Id of {}. The crop will be discarded.", this.pos, rawCropId);
+                        return;
+                    }
                 }
 
                 final CropInfo cropInfo = BotanyPotHelper.getCrop(cropId);
