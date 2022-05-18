@@ -439,7 +439,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         // Recover soil from id.
         if (dataTag.contains("Soil")) {
             final String rawSoilId = dataTag.getString("Soil");
-            ResourceLocation soilId = ResourceLocation.tryCreate(rawSoilId);
+            final ResourceLocation soilId = ResourceLocation.tryCreate(rawSoilId);
 
             if (soilId == null) {
                 BotanyPots.LOGGER.error("Botany Pot at {} has invalid soil type {}. Soil and crop will be discarded.", this.pos, rawSoilId);
@@ -466,7 +466,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         // Recover crop from id.
         if (dataTag.contains("Crop")) {
             final String rawCropId = dataTag.getString("Crop");
-            ResourceLocation cropId = ResourceLocation.tryCreate(rawCropId);
+            final ResourceLocation cropId = ResourceLocation.tryCreate(rawCropId);
 
             if(cropId == null){
                 BotanyPots.LOGGER.error("Botany Pot at {} has an invalid crop Id of {}. The crop will be discarded.", this.pos, rawCropId);
