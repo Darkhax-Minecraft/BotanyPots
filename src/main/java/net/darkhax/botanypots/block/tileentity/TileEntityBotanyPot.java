@@ -433,75 +433,66 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         this.soil = null;
         this.crop = null;
         
-        if (dataTag.contains("CropStack")) {
-            
-            this.cropStack = ItemStack.read(dataTag.getCompound("CropStack"));
-        }
-        
-        if (dataTag.contains("SoilStack")) {
-            
-            this.soilStack = ItemStack.read(dataTag.getCompound("SoilStack"));
-        }
-        
+        if (dataTag.contains("SoilStack")) this.soilStack = ItemStack.read(dataTag.getCompound("SoilStack"));
+        if (dataTag.contains("CropStack")) this.cropStack = ItemStack.read(dataTag.getCompound("CropStack"));
+
+        // Recover soil from id.
         if (dataTag.contains("Soil")) {
-            
             final String rawSoilId = dataTag.getString("Soil");
             ResourceLocation soilId = ResourceLocation.tryCreate(rawSoilId);
 
-            if(soilId == null) {
-                final SoilInfo recoveredSoil = BotanyPotHelper.getSoilForItem(soilStack);
-//                System.out.print(recoveredSoil);
-                if(recoveredSoil != null) {
-                    soilId = recoveredSoil.getId();
+            if (soilId == null) {
+                BotanyPots.LOGGER.error("Botany Pot at {} has invalid soil type {}. Soil and crop will be discarded.", this.pos, rawSoilId);
+            } else {
+                final SoilInfo foundSoil = BotanyPotHelper.getSoil(soilId);
+
+                if (foundSoil == null) {
+                    BotanyPots.LOGGER.error("Botany Pot at {} had a soil of type {} which no longer exists. Soil and crop will be discarded.", this.pos, rawSoilId);
                 } else {
-                    BotanyPots.LOGGER.error("Botany Pot at {} has invalid soil type {}. Soil and crop will be discarded.", this.pos, rawSoilId);
-                    return;
+                    this.soil = foundSoil;
                 }
-            }
-
-            final SoilInfo foundSoil = BotanyPotHelper.getSoil(soilId);
-
-            if(foundSoil == null) {
-                BotanyPots.LOGGER.error("Botany Pot at {} had a soil of type {} which no longer exists. Soil and crop will be discarded.", this.pos, rawSoilId);
-                return;
-            }
-                    
-            this.soil = foundSoil;
-
-            // Crops are only loaded if the soil exists.
-            if (dataTag.contains("Crop")) {
-
-                final String rawCropId = dataTag.getString("Crop");
-                ResourceLocation cropId = ResourceLocation.tryCreate(rawCropId);
-
-                if(cropId == null) {
-                    final CropInfo recoveredCrop = BotanyPotHelper.getCropForItem(cropStack);
-//                    System.out.print(recoveredCrop);
-                    if(recoveredCrop != null) {
-                        cropId = recoveredCrop.getId();
-                    } else {
-                        BotanyPots.LOGGER.error("Botany Pot at {} has an invalid crop Id of {}. The crop will be discarded.", this.pos, rawCropId);
-                        return;
-                    }
-                }
-
-                final CropInfo cropInfo = BotanyPotHelper.getCrop(cropId);
-
-                if(cropInfo == null) {
-                    BotanyPots.LOGGER.error("Botany Pot at {} had a crop of type {} but that crop does not exist. The crop will be discarded.", this.pos, rawCropId);
-                    return;
-                }
-
-                this.crop = cropInfo;
-
-                // Growth ticks are only loaded if a crop and soil exist.
-                this.currentGrowthTicks = dataTag.getInt("GrowthTicks");
-
-                // Reset total growth ticks on tile load to account for data
-                // changes.
-                this.totalGrowthTicks = this.crop.getGrowthTicksForSoil(this.soil);
             }
         }
+
+        // Recover soil from stack.
+        if (soil == null && this.soilStack != ItemStack.EMPTY) {
+            final SoilInfo recoveredSoil = BotanyPotHelper.getSoilForItem(soilStack);
+            if (recoveredSoil != null) this.soil = recoveredSoil;
+        }
+
+        // Crops are only loaded if the soil exists.
+        if(this.soil == null) return;
+
+        // Recover crop from id.
+        if (dataTag.contains("Crop")) {
+            final String rawCropId = dataTag.getString("Crop");
+            ResourceLocation cropId = ResourceLocation.tryCreate(rawCropId);
+
+            if(cropId == null){
+                BotanyPots.LOGGER.error("Botany Pot at {} has an invalid crop Id of {}. The crop will be discarded.", this.pos, rawCropId);
+            }else{
+                final CropInfo cropInfo = BotanyPotHelper.getCrop(cropId);
+                if(cropInfo == null){
+                    BotanyPots.LOGGER.error("Botany Pot at {} had a crop of type {} but that crop does not exist. The crop will be discarded.", this.pos, rawCropId);
+                }else{
+                    this.crop = cropInfo;
+                }
+            }
+        }
+
+        // Recover crop from stack.
+        if (crop == null && this.cropStack != ItemStack.EMPTY) {
+            final CropInfo recoveredCrop = BotanyPotHelper.getCropForItem(cropStack);
+            if (recoveredCrop != null) this.crop = recoveredCrop;
+        }
+
+        // Growth ticks are only loaded a crop exists too.
+        if(this.crop == null) return;
+
+        this.currentGrowthTicks = dataTag.contains("GrowthTicks") ? dataTag.getInt("GrowthTicks") : 0;
+
+        // Reset total growth ticks on tile load to account for data changes.
+        this.totalGrowthTicks = this.crop.getGrowthTicksForSoil(this.soil);
     }
     
     public ItemStack getSoilStack () {
