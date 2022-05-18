@@ -489,7 +489,7 @@ public class TileEntityBotanyPot extends TileEntityBasicTickable {
         // Growth ticks are only loaded a crop exists too.
         if(this.crop == null) return;
 
-        this.currentGrowthTicks = dataTag.contains("GrowthTicks") ? dataTag.getInt("GrowthTicks") : 0;
+        this.currentGrowthTicks = dataTag.getInt("GrowthTicks");
 
         // Reset total growth ticks on tile load to account for data changes.
         this.totalGrowthTicks = this.crop.getGrowthTicksForSoil(this.soil);
