@@ -6,7 +6,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.4.0'
         classpath group: 'gradle.plugin.com.diluv.diluvgradle', name: 'DiluvGradle', version: '1.3.0'
         classpath group: 'com.diluv.schoomp', name: 'Schoomp', version: '1.1.0'
@@ -92,11 +92,6 @@ repositories {
         url "https://maven.blamejared.com"
     }
     
-    maven { 
-        name = "TehNut's Maven (HWYLA)"
-        url "https://maven.tehnut.info" 
-    }
-    
     maven {
         name 'tterrag maven'
         url "https://maven.tterrag.com/"
@@ -106,12 +101,11 @@ repositories {
 dependencies {
 
     minecraft "net.minecraftforge:forge:${forge_version}"
-    
-    compile fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-1.16.5:${bookshelf_version}")
-    compile fg.deobf("mezz.jei:jei-1.16.5:${jei_version}")
-    compile fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:${crafttweaker_version}")  
-    compile fg.deobf("mcp.mobius.waila:Hwyla:${hwyla_version}")
-    compile fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
+
+    compile fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-1.18.2:${bookshelf_version}")
+    compile fg.deobf("mezz.jei:jei-1.18.2:${jei_version}")
+    compile fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.18.2:${crafttweaker_version}")
+    compile fg.deobf("mcjty.theoneprobe:TheOneProbe-1.18:${top_version}")
 }
 
 jar {
@@ -367,14 +361,14 @@ import net.minecraftforge.gradle.common.task.SignJar
 task signJar(type: SignJar, dependsOn: jar) {
 
     onlyIf {
-    
+
         project.hasProperty('keyStore')
     }
-    
+
     if (project.hasProperty('keyStore')) {
-    
+
         project.logger.info('Signing jar ' + jar.archivePath.getName());
-    
+
         keyStore = project.findProperty('keyStore')
         alias = project.findProperty('keyStoreAlias')
         storePass = project.findProperty('keyStorePass')
@@ -384,7 +378,7 @@ task signJar(type: SignJar, dependsOn: jar) {
     }
 
     else {
-    
+
         project.logger.warn('Could not sign ' + jar.archivePath.getName() + '. No keyStore property could be found')
     }
 }
