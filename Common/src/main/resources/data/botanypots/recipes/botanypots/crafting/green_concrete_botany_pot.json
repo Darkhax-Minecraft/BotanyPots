@@ -1,0 +1,20 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "S S",
+        "SPS",
+        " S "
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:green_concrete"
+        },
+        "P": {
+            "item": "minecraft:flower_pot"
+        }
+    },
+    "result": {
+        "item": "botanypots:green_concrete_botany_pot",
+        "count": 1
+    }
+}

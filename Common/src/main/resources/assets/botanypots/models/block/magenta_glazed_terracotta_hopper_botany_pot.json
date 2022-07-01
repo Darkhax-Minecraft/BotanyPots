@@ -1,0 +1,7 @@
+{
+    "parent": "botanypots:block/hopper_botany_pot_base",
+    "textures": {
+        "terracotta": "minecraft:block/magenta_glazed_terracotta",
+        "particle": "minecraft:block/magenta_glazed_terracotta"
+    }
+}

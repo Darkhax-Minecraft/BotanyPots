@@ -1,0 +1,20 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "S S",
+        "SPS",
+        " S "
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:blue_glazed_terracotta"
+        },
+        "P": {
+            "item": "minecraft:flower_pot"
+        }
+    },
+    "result": {
+        "item": "botanypots:blue_glazed_terracotta_botany_pot",
+        "count": 1
+    }
+}

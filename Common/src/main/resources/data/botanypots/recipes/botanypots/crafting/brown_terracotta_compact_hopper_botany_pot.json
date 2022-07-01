@@ -1,0 +1,23 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "SHS",
+        "SPS",
+        " S "
+    ],
+    "key": {
+        "S": {
+            "item": "minecraft:brown_terracotta"
+        },
+        "P": {
+            "item": "minecraft:flower_pot"
+        },
+        "H": {
+            "item": "minecraft:hopper"
+        }
+    },
+    "result": {
+        "item": "botanypots:brown_terracotta_hopper_botany_pot",
+        "count": 1
+    }
+}

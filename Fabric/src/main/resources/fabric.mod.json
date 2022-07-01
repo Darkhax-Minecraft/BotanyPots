@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": [
+    "${mod_author}"
+  ],
+  "contributors": [
+    "This project is made possible with Patreon support from players like you. Thank you!",
+    "${mod_supporters}"
+  ],
+  "contact": {
+    "homepage": "${mod_homepage}",
+    "sources": "${mod_source}",
+    "issues": "${mod_issues}"
+  },
+  "icon": "logo.png",
+  "license": "${mod_license}",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.darkhax.botanypots.BotanyPotsFabric"
+    ],
+    "client": [
+      "net.darkhax.botanypots.BotanyPotsFabricClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.13",
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "java": ">=17",
+    "bookshelf": ">=13"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.twitter": "${mod_twitter}",
+        "modmenu.discord": "${mod_discord}",
+        "modmenu.curseforge": "${mod_homepage}",
+        "modmenu.patreon": "${patreon.campaignUrlTracked}"
+      }
+    }
+  }
+}
