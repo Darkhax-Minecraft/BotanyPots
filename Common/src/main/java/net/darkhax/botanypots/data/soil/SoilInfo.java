@@ -1,6 +1,7 @@
 package net.darkhax.botanypots.data.soil;
 
-import net.darkhax.botanypots.tempshelf.DisplayableBlockState;
+import net.darkhax.botanypots.tempshelf.DisplayState;
+import net.darkhax.botanypots.tempshelf.SimpleDisplayState;
 import net.darkhax.bookshelf.api.data.recipes.RecipeBaseData;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.minecraft.resources.ResourceLocation;
@@ -22,7 +23,7 @@ public class SoilInfo extends RecipeBaseData<Container> {
     /**
      * The blockstate used to render the soil.
      */
-    private DisplayableBlockState renderState;
+    private DisplayState renderState;
 
     /**
      * A modifier applied to the growth time of the crop.
@@ -39,7 +40,7 @@ public class SoilInfo extends RecipeBaseData<Container> {
      */
     private int lightLevel;
 
-    public SoilInfo(ResourceLocation id, Ingredient ingredient, DisplayableBlockState renderState, float growthModifier, Set<String> categories, int lightLevel) {
+    public SoilInfo(ResourceLocation id, Ingredient ingredient, DisplayState renderState, float growthModifier, Set<String> categories, int lightLevel) {
 
         super(id);
         this.ingredient = ingredient;
@@ -59,7 +60,7 @@ public class SoilInfo extends RecipeBaseData<Container> {
         return this.ingredient;
     }
 
-    public DisplayableBlockState getRenderState() {
+    public DisplayState getRenderState() {
 
         return this.renderState;
     }
@@ -74,12 +75,7 @@ public class SoilInfo extends RecipeBaseData<Container> {
         this.ingredient = ingredient;
     }
 
-    public void setRenderState(BlockState renderState) {
-
-        this.setRenderState(new DisplayableBlockState(renderState));
-    }
-
-    public void setRenderState(DisplayableBlockState renderState) {
+    public void setRenderState(DisplayState renderState) {
 
         this.renderState = renderState;
     }

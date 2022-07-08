@@ -4,10 +4,9 @@ import net.darkhax.bookshelf.api.Services;
 import net.darkhax.bookshelf.api.block.IBindRenderLayer;
 import net.darkhax.bookshelf.api.block.InventoryBlock;
 import net.darkhax.bookshelf.api.serialization.Serializers;
-import net.darkhax.botanypots.Constants;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -16,8 +15,11 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -37,7 +39,7 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
     private final boolean hasInventory;
 
     public BlockBotanyPot(boolean hasInventory) {
-
+        
         this(DEFAULT_PROPERTIES, hasInventory);
     }
 
@@ -51,6 +53,12 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
     public boolean hasInventory() {
 
         return this.hasInventory;
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState $$0) {
+
+        return RenderShape.MODEL;
     }
 
     @Override
@@ -100,9 +108,7 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
 
-        final BlockEntityBotanyPot pot = new BlockEntityBotanyPot(pos, state);
-        pot.setHopper(this.hasInventory());
-        return pot;
+        return new BlockEntityBotanyPot(pos, state);
     }
 
     @Override
@@ -120,6 +126,12 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
         }
 
         return super.use(state, world, pos, player, hand, hitResult);
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level worldLevel, BlockState state, BlockEntityType<T> blockEntityType) {
+
+        return createTickerHelper(blockEntityType, BlockEntityBotanyPot.POT_TYPE.get(), BlockEntityBotanyPot::tickPot);
     }
 
     @Override

@@ -1,17 +1,24 @@
 package net.darkhax.botanypots;
 
 import java.util.Optional;
+import java.util.Random;
 import javax.annotation.Nullable;
 
 import net.darkhax.bookshelf.api.function.CachedSupplier;
+import net.darkhax.bookshelf.api.util.MathsHelper;
 import net.darkhax.botanypots.data.crop.CropInfo;
+import net.darkhax.botanypots.data.crop.HarvestEntry;
 import net.darkhax.botanypots.data.soil.SoilInfo;
+import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.commands.SetBlockCommand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
 
 public class BotanyPotHelper {
 
@@ -46,13 +53,22 @@ public class BotanyPotHelper {
     }
 
     @Nullable
-    public static SoilInfo getSoil (RecipeManager manager, ItemStack item) {
+    public static SoilInfo getSoil (@Nullable Level worldLevel, ItemStack item) {
 
-        for (final SoilInfo soilInfo : manager.getAllRecipesFor(SOIL_TYPE.get())) {
+        return worldLevel != null ? getSoil(worldLevel.getRecipeManager(), item) : null;
+    }
 
-            if (soilInfo.getIngredient().test(item)) {
+    @Nullable
+    public static SoilInfo getSoil (@Nullable RecipeManager manager, ItemStack item) {
 
-                return soilInfo;
+        if (manager != null && !item.isEmpty()) {
+
+            for (final SoilInfo soilInfo : manager.getAllRecipesFor(SOIL_TYPE.get())) {
+
+                if (soilInfo.getIngredient().test(item)) {
+
+                    return soilInfo;
+                }
             }
         }
 
@@ -60,13 +76,22 @@ public class BotanyPotHelper {
     }
 
     @Nullable
+    public static CropInfo getCrop (@Nullable Level worldLevel, ItemStack item) {
+
+        return worldLevel != null ? getCrop(worldLevel.getRecipeManager(), item) : null;
+    }
+
+    @Nullable
     public static CropInfo getCrop (RecipeManager manager, ItemStack item) {
 
-        for (final CropInfo cropInfo : manager.getAllRecipesFor(CROP_TYPE.get())) {
+        if (!item.isEmpty()) {
 
-            if (cropInfo.getSeed().test(item)) {
+            for (final CropInfo cropInfo : manager.getAllRecipesFor(CROP_TYPE.get())) {
 
-                return cropInfo;
+                if (cropInfo.getSeed().test(item)) {
+
+                    return cropInfo;
+                }
             }
         }
 
@@ -82,6 +107,11 @@ public class BotanyPotHelper {
      */
     public static boolean isSoilValidForCrop (SoilInfo soil, CropInfo crop) {
 
+        if (soil == null || crop == null) {
+
+            return false;
+        }
+
         for (final String soilCategory : soil.getCategories()) {
 
             for (final String cropCategory : crop.getSoilCategories()) {
@@ -94,5 +124,28 @@ public class BotanyPotHelper {
         }
 
         return false;
+    }
+
+    public static NonNullList<ItemStack> generateDrop (Random rand, CropInfo crop) {
+
+        final NonNullList<ItemStack> drops = NonNullList.create();
+
+        for (final HarvestEntry cropEntry : crop.getResults()) {
+
+            if (rand.nextFloat() <= cropEntry.getChance()) {
+
+                final int rolls = MathsHelper.nextIntInclusive(rand, cropEntry.getMinRolls(), cropEntry.getMaxRolls());
+
+                if (rolls > 0) {
+
+                    for (int roll = 0; roll < rolls; roll++) {
+
+                        drops.add(cropEntry.getItem().copy());
+                    }
+                }
+            }
+        }
+
+        return drops;
     }
 }

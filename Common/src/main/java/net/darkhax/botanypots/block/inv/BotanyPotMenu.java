@@ -94,4 +94,9 @@ public class BotanyPotMenu extends AbstractContainerMenu {
 
         return this.potInv.stillValid(player);
     }
+
+    public BotanyPotContainer getPotInventory() {
+
+        return this.potInv;
+    }
 }

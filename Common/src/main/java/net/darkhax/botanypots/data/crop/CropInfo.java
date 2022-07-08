@@ -1,6 +1,7 @@
 package net.darkhax.botanypots.data.crop;
 
-import net.darkhax.botanypots.tempshelf.DisplayableBlockState;
+import net.darkhax.botanypots.tempshelf.DisplayState;
+import net.darkhax.botanypots.tempshelf.SimpleDisplayState;
 import net.darkhax.bookshelf.api.data.recipes.RecipeBaseData;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.data.soil.SoilInfo;
@@ -39,7 +40,7 @@ public class CropInfo extends RecipeBaseData<Container> {
     /**
      * The BlockState to render for the crop.
      */
-    private DisplayableBlockState[] displayBlocks;
+    private List<DisplayState> displayBlocks;
 
     /**
      * The light level of the soil when placed in the crop. If this is not specified the light
@@ -47,7 +48,7 @@ public class CropInfo extends RecipeBaseData<Container> {
      */
     private int lightLevel;
 
-    public CropInfo(ResourceLocation id, Ingredient seed, Set<String> soilCategories, int growthTicks, List<HarvestEntry> results, DisplayableBlockState[] displayStates, int lightLevel) {
+    public CropInfo(ResourceLocation id, Ingredient seed, Set<String> soilCategories, int growthTicks, List<HarvestEntry> results, List<DisplayState> displayStates, int lightLevel) {
 
         super(id);
         this.seed = seed;
@@ -93,7 +94,7 @@ public class CropInfo extends RecipeBaseData<Container> {
      *
      * @return The state to display when rendering the crop.
      */
-    public DisplayableBlockState[] getDisplayState () {
+    public List<DisplayState> getDisplayState () {
 
         return this.displayBlocks;
     }
@@ -121,12 +122,13 @@ public class CropInfo extends RecipeBaseData<Container> {
         final float requiredGrowthTicks = this.growthTicks;
         final float growthModifier = soil.getGrowthModifier();
 
-        if (growthModifier > -1) {
 
-            return Mth.floor(requiredGrowthTicks * (1 + growthModifier * -1));
+        if (growthModifier >= 0) {
+
+            return Mth.floor(requiredGrowthTicks * growthModifier);
         }
 
-        return -1;
+        return Integer.MAX_VALUE;
     }
 
     public void setSeed (Ingredient seed) {
@@ -149,7 +151,7 @@ public class CropInfo extends RecipeBaseData<Container> {
         this.results = results;
     }
 
-    public void setDisplayBlock (DisplayableBlockState[] displayBlocks) {
+    public void setDisplayBlock (List<DisplayState> displayBlocks) {
 
         this.displayBlocks = displayBlocks;
     }

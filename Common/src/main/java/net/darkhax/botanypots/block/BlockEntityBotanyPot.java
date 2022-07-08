@@ -3,6 +3,9 @@ package net.darkhax.botanypots.block;
 import net.darkhax.bookshelf.api.Services;
 import net.darkhax.bookshelf.api.block.entity.WorldlyInventoryBlockEntity;
 import net.darkhax.bookshelf.api.function.CachedSupplier;
+import net.darkhax.bookshelf.api.inventory.ContainerInventoryAccess;
+import net.darkhax.bookshelf.api.inventory.IInventoryAccess;
+import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.block.inv.BotanyPotContainer;
@@ -10,6 +13,8 @@ import net.darkhax.botanypots.block.inv.BotanyPotMenu;
 import net.darkhax.botanypots.data.crop.CropInfo;
 import net.darkhax.botanypots.data.soil.SoilInfo;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -17,21 +22,20 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+
 public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotContainer> {
 
-    private static final CachedSupplier<BlockEntityType<?>> POT_TYPE = CachedSupplier.cache(() -> Services.REGISTRIES.blockEntities().get(new ResourceLocation(Constants.MOD_ID, "botany_pot")));
+    protected static final CachedSupplier<BlockEntityType<BlockEntityBotanyPot>> POT_TYPE = CachedSupplier.cache(() -> (BlockEntityType<BlockEntityBotanyPot>) Services.REGISTRIES.blockEntities().get(new ResourceLocation(Constants.MOD_ID, "botany_pot")));
     private static final Component DEFAULT_NAME = new TranslatableComponent("block.botanypots.terracotta_botany_pot");
 
-    private boolean isHopper = false;
-    private SoilInfo soil = null;
-    private CropInfo crop = null;
-
-    protected int growthDuration = -1;
+    protected int growthTime = -1;
     protected boolean doneGrowing = false;
     protected int prevComparatorLevel = 0;
     protected int comparatorLevel = 0;
@@ -43,22 +47,34 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
 
     public boolean isHopper() {
 
-        return this.isHopper;
+        if (this.getLevel() != null && this.getLevel().getBlockState(this.getBlockPos()).getBlock() instanceof BlockBotanyPot potBlock) {
+
+            return potBlock.hasInventory();
+        }
+
+        return false;
     }
 
-    protected void setHopper(boolean isHopper) {
+    @Nullable
+    public CropInfo getCropInfo() {
 
-        this.isHopper = isHopper;
+        return this.getInventory().getCropInfo();
+    }
+
+    @Nullable
+    public SoilInfo getSoilInfo() {
+
+        return this.getInventory().getSoilInfo();
     }
 
     public boolean isGrowing() {
 
-        return this.growthDuration > 0;
+        return this.growthTime > 0;
     }
 
     public boolean areGrowthConditionsMet() {
 
-        return this.soil != null && this.crop != null;
+        return BotanyPotHelper.isSoilValidForCrop(this.getSoilInfo(), this.getCropInfo());
     }
 
     public boolean isCropHarvestable() {
@@ -68,9 +84,17 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
 
     public int getLightLevel() {
 
-        final int soilLight = this.soil != null ? this.soil.getLightLevel() : 0;
-        final int cropLight = this.crop != null ? this.crop.getLightLevel() : 0;
+        final SoilInfo soil = this.getSoilInfo();
+        final CropInfo crop = this.getCropInfo();
+
+        final int soilLight = soil != null ? soil.getLightLevel() : 0;
+        final int cropLight = crop != null ? crop.getLightLevel() : 0;
         return Math.max(soilLight, cropLight);
+    }
+
+    public int getGrowthTime() {
+
+        return this.growthTime;
     }
 
     public int getComparatorLevel() {
@@ -78,40 +102,94 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
         return this.comparatorLevel;
     }
 
-    public void refreshGrowingInfo() {
-
-        if (this.getLevel() != null) {
-
-            final RecipeManager manager = this.getLevel().getRecipeManager();
-            this.soil = BotanyPotHelper.getSoil(manager, this.getInventory().getSoil());
-            this.crop = BotanyPotHelper.getCrop(manager, this.getInventory().getCrop());
-        }
-
-        this.markDirty();
-    }
-
     public boolean isValidSoil(ItemStack stack) {
 
-        return !stack.isEmpty() && !this.isRemoved() && this.getLevel() != null && BotanyPotHelper.getSoil(this.getLevel().getRecipeManager(), stack) != null;
+        return BotanyPotHelper.getSoil(this.getLevel(), stack) != null;
     }
 
     public boolean isValidSeed(ItemStack stack) {
 
-        return !stack.isEmpty() && !this.isRemoved() && this.getLevel() != null && BotanyPotHelper.getCrop(this.getLevel().getRecipeManager(), stack) != null;
+        return BotanyPotHelper.getCrop(this.getLevel(), stack) != null;
     }
+
+    public void attemptAutoHarvest() {
+
+        // TODO Spawn Block Break Particles
+        if (this.getLevel() != null && !this.getLevel().isClientSide) {
+
+            final ContainerInventoryAccess<BotanyPotContainer> inventory = new ContainerInventoryAccess<>(this.getInventory());
+
+            for (ItemStack drop : this.drops) {
+
+                for (int slot : BotanyPotContainer.STORAGE_SLOT) {
+
+                    if (drop.isEmpty()) {
+
+                        break;
+                    }
+
+                    drop = inventory.insert(slot, drop, Direction.UP, true, true);
+                }
+            }
+        }
+    }
+
+    private void attemptExport() {
+
+        if (this.getLevel() != null && !this.getLevel().isClientSide) {
+
+            final IInventoryAccess exportTo = Services.INVENTORY_HELPER.getInventory(this.getLevel(), this.getBlockPos().below(), Direction.UP);
+
+            if (exportTo != null) {
+
+                for (int potSlotId : BotanyPotContainer.STORAGE_SLOT) {
+
+                    final ItemStack potStack = this.getInventory().getItem(potSlotId);
+
+                    if (!potStack.isEmpty()) {
+
+                        for (int exportSlotId : exportTo.getAvailableSlots()) {
+
+                            if (exportTo.insert(exportSlotId, potStack, Direction.UP, false).getCount() != potStack.getCount()) {
+
+                                this.getInventory().setItem(potSlotId, exportTo.insert(exportSlotId, potStack, Direction.UP, true));
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private List<ItemStack> drops = new ArrayList<>();
 
     public static void tickPot(Level level, BlockPos pos, BlockState state, BlockEntityBotanyPot pot) {
 
         // Don't try to update unloaded pots.
-        if (pot.isRemoved() || pot.level == null) {
+        if (pot.isRemoved() || pot.getLevel() == null) {
 
             return;
         }
 
         // Harvesting Logic
-        if (pot.isHopper && pot.isCropHarvestable()) {
+        if (pot.isHopper()) {
 
-            // TODO harvest the crop
+            if (pot.isCropHarvestable() && pot.getCropInfo() != null) {
+
+                pot.drops = BotanyPotHelper.generateDrop(pot.getLevel().random, pot.getCropInfo());
+                pot.attemptAutoHarvest();
+
+                // Reset Growth
+                pot.growthTime = -1;
+                pot.comparatorLevel = 0;
+                pot.doneGrowing = false;
+            }
+
+            if (pot.getLevel().getGameTime() % 20 == 0) {
+
+                pot.attemptExport();
+            }
         }
 
         // Growth Logic
@@ -119,18 +197,17 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
 
             if (!pot.doneGrowing) {
 
-                pot.growthDuration++;
+                pot.growthTime++;
                 pot.prevComparatorLevel = pot.comparatorLevel;
 
-                final int requiredGrowthTicks = pot.crop.getGrowthTicksForSoil(pot.soil);
-                pot.comparatorLevel = Mth.floor(15f * ((float) pot.growthDuration / requiredGrowthTicks));
-                pot.doneGrowing = pot.growthDuration >= requiredGrowthTicks;
+                pot.comparatorLevel = Mth.floor(15f * ((float) pot.growthTime / pot.getInventory().getRequiredGrowthTime()));
+                pot.doneGrowing = pot.growthTime >= pot.getInventory().getRequiredGrowthTime();
             }
         }
 
         else {
 
-            pot.growthDuration = -1;
+            pot.growthTime = -1;
             pot.comparatorLevel = 0;
             pot.doneGrowing = false;
         }
@@ -140,6 +217,28 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
 
             pot.level.updateNeighbourForOutputSignal(pot.worldPosition, pot.getBlockState().getBlock());
         }
+    }
+
+    @Override
+    public void load(CompoundTag tag) {
+
+        super.load(tag);
+
+        this.growthTime = Serializers.INT.fromNBT(tag, "GrowthTime", 0);
+        this.doneGrowing = Serializers.BOOLEAN.fromNBT(tag, "DoneGrowing", false);
+        this.prevComparatorLevel = Serializers.INT.fromNBT(tag, "PrevComparatorLevel", 0);
+        this.comparatorLevel = Serializers.INT.fromNBT(tag, "ComparatorLevel", 0);
+    }
+
+    @Override
+    public void saveAdditional(CompoundTag tag) {
+
+        super.saveAdditional(tag);
+
+        Serializers.INT.toNBT(tag, "GrowthTime", this.growthTime);
+        Serializers.BOOLEAN.toNBT(tag, "DoneGrowing", this.doneGrowing);
+        Serializers.INT.toNBT(tag, "PrevComparatorLevel", this.prevComparatorLevel);
+        Serializers.INT.toNBT(tag, "ComparatorLevel", this.comparatorLevel);
     }
 
     @Override

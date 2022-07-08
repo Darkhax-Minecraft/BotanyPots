@@ -4,18 +4,17 @@
         "item": "minecraft:wheat_seeds"
     },
     "categories": [
-        "dirt"
+        "dirt",
+        "farmland"
     ],
-    "growthTicks": 1000,
+    "growthTicks": 5,
     "display": {
-        "block": "minecraft:wheat",
-        "properties": {
-            "age": 7
-        }
+        "type": "botanypots:aging",
+        "block": "minecraft:wheat"
     },
     "drops": [
         {
-            "chance": 0.75,
+            "chance": 1.00,
             "output": {
                 "item": "minecraft:wheat"
             },
@@ -23,7 +22,7 @@
             "maxRolls": 1
         },
         {
-            "chance": 0.05,
+            "chance": 0.15,
             "output": {
                 "item": "minecraft:wheat"
             },

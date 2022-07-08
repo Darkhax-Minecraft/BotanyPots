@@ -1,7 +1,8 @@
 package net.darkhax.botanypots.data.crop;
 
 import com.google.gson.JsonObject;
-import net.darkhax.botanypots.tempshelf.DisplayableBlockState;
+import net.darkhax.botanypots.tempshelf.DisplayState;
+import net.darkhax.botanypots.tempshelf.SimpleDisplayState;
 import net.darkhax.bookshelf.api.data.recipes.IRecipeSerializer;
 import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.minecraft.network.FriendlyByteBuf;
@@ -23,7 +24,7 @@ public final class CropRecipeSerializer extends IRecipeSerializer<CropInfo> {
         final int growthTicks = Serializers.INT.fromJSON(json, "growthTicks");
         final List<HarvestEntry> results = SerializerHarvestEntry.SERIALIZER.fromJSONList(json, "drops");
         final int lightLevel = Serializers.INT.fromJSON(json, "lightLevel", 0);
-        final DisplayableBlockState[] states = null; // TODO
+        final List<DisplayState> states = DisplayState.SERIALIZER.fromJSONList(json, "display");
 
         if (growthTicks <= 0) {
 
@@ -40,7 +41,7 @@ public final class CropRecipeSerializer extends IRecipeSerializer<CropInfo> {
         final Set<String> validSoils = Serializers.STRING.readByteBufSet(buffer);
         final int growthTicks = Serializers.INT.fromByteBuf(buffer);
         final List<HarvestEntry> results = SerializerHarvestEntry.SERIALIZER.fromByteBufList(buffer);
-        final DisplayableBlockState[] displayStates = null; // TODO
+        final List<DisplayState> displayStates = DisplayState.SERIALIZER.fromByteBufList(buffer);
         final int lightLevel = Serializers.INT.fromByteBuf(buffer);
 
         return new CropInfo(id, seed, validSoils, growthTicks, results, displayStates, lightLevel);
@@ -53,7 +54,7 @@ public final class CropRecipeSerializer extends IRecipeSerializer<CropInfo> {
         Serializers.STRING.writeByteBufSet(buffer, toWrite.getSoilCategories());
         Serializers.INT.toByteBuf(buffer, toWrite.getGrowthTicks());
         SerializerHarvestEntry.SERIALIZER.toByteBufList(buffer, toWrite.getResults());
-        // TOOD write block states
+        DisplayState.SERIALIZER.toByteBufList(buffer, toWrite.getDisplayState());
         Serializers.INT.toByteBuf(buffer, toWrite.getLightLevel());
     }
 }

@@ -1,6 +1,16 @@
 {
   "itemGroup.botanypots.creative_tab": "Botany Pots",
 
+  "tooltip.botanypots.invalid_soil": "This item is not a usable soil.",
+  "tooltip.botanypots.invalid_seed": "This item is not a usable seed.",
+  "tooltip.botanypots.incorrect_soil": "The soil can not sustain the current seed.",
+  "tooltip.botanypots.incorrect_seed": "The seed can not grow in the current soil.",
+  "tooltip.botanypots.missing_soil": "The seed requires soil material to grow.",
+  "tooltip.botanypots.missing_seed": "Place a seed to start growing.",
+  "tooltip.botanypots.soil_modifier": "Seeds will grow at %sX speed.",
+  "tooltip.botanypots.seed_item": "Seed Item",
+  "tooltip.botanypots.soil_item": "Soil Item",
+
   "block.botanypots.terracotta_botany_pot": "Botany Pot",
   "block.botanypots.terracotta_hopper_botany_pot": "Hopper Botany Pot",
 

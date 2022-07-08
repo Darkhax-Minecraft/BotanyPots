@@ -2,7 +2,8 @@ package net.darkhax.botanypots.data.soil;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import net.darkhax.botanypots.tempshelf.DisplayableBlockState;
+import net.darkhax.botanypots.tempshelf.DisplayState;
+import net.darkhax.botanypots.tempshelf.SimpleDisplayState;
 import net.darkhax.bookshelf.api.data.recipes.IRecipeSerializer;
 import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.minecraft.network.FriendlyByteBuf;
@@ -21,7 +22,7 @@ public final class SoilRecipeSerializer extends IRecipeSerializer<SoilInfo> {
     public SoilInfo fromJson(ResourceLocation id, JsonObject json) {
 
         final Ingredient input = Serializers.INGREDIENT.fromJSON(json, "input");
-        final DisplayableBlockState renderState = null; // TODO
+        final DisplayState renderState = DisplayState.SERIALIZER.fromJSON(json, "display");
         final float growthModifier = Serializers.FLOAT.fromJSON(json, "growthModifier", 1f);
         final Set<String> categories = Serializers.STRING.fromJSONSet(json, "categories");
         final int lightLevel = Serializers.INT.fromJSON(json, "lightLevel", 0);
@@ -43,7 +44,7 @@ public final class SoilRecipeSerializer extends IRecipeSerializer<SoilInfo> {
     public SoilInfo fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
 
         final Ingredient ingredient = Serializers.INGREDIENT.fromByteBuf(buffer);
-        final DisplayableBlockState renderState = null; // TODO
+        final DisplayState renderState = DisplayState.SERIALIZER.fromByteBuf(buffer);
         final float growthModifier = Serializers.FLOAT.fromByteBuf(buffer);
         final Set<String> categories = new HashSet<>(Serializers.STRING.fromByteBufList(buffer));
         final int lightLevel = Serializers.INT.fromByteBuf(buffer);
@@ -55,7 +56,7 @@ public final class SoilRecipeSerializer extends IRecipeSerializer<SoilInfo> {
     public void toNetwork(FriendlyByteBuf buffer, SoilInfo soilInfo) {
 
         Serializers.INGREDIENT.toByteBuf(buffer, soilInfo.getIngredient());
-        // TODO write block state
+        DisplayState.SERIALIZER.toByteBuf(buffer, soilInfo.getRenderState());
         Serializers.FLOAT.toByteBuf(buffer, soilInfo.getGrowthModifier());
         Serializers.STRING.toByteBufList(buffer, new ArrayList<>(soilInfo.getCategories()));
     }
