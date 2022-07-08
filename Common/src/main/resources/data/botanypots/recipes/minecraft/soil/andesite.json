@@ -1,0 +1,15 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:andesite"
+  },
+  "display": {
+    "block": "minecraft:andesite"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "andesite"
+  ],
+  "growthModifier": 1
+}

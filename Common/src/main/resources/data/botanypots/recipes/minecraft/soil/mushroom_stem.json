@@ -1,0 +1,13 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:mushroom_stem"
+  },
+  "display": {
+    "block": "minecraft:mushroom_stem"
+  },
+  "categories": [
+    "mushroom"
+  ],
+  "growthModifier": 0.95
+}

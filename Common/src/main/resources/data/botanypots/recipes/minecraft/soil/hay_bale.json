@@ -1,0 +1,13 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:hay_block"
+  },
+  "display": {
+    "block": "minecraft:hay_block"
+  },
+  "categories": [
+    "mulch"
+  ],
+  "growthModifier": 1.05
+}

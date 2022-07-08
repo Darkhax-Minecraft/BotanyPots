@@ -1,0 +1,28 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:sugar_cane"
+  },
+  "categories": [
+    "sand"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "minecraft:sugar_cane"
+    },
+    {
+      "block": "minecraft:sugar_cane"
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:sugar_cane"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

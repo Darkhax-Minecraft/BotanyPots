@@ -1,0 +1,41 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "minecraft:potato"
+    },
+    "categories": [
+        "dirt",
+        "farmland"
+    ],
+    "growthTicks": 300,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "minecraft:potatoes"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "minecraft:potato"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.15,
+            "output": {
+                "item": "minecraft:potato"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "minecraft:potato"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
+}

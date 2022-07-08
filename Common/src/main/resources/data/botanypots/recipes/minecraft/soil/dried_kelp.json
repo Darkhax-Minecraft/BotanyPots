@@ -1,0 +1,13 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:dried_kelp_block"
+  },
+  "display": {
+    "block": "minecraft:dried_kelp_block"
+  },
+  "categories": [
+    "mulch"
+  ],
+  "growthModifier": 1
+}

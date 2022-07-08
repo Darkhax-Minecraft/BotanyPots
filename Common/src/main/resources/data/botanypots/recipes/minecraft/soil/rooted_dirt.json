@@ -1,0 +1,14 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:rooted_dirt"
+  },
+  "display": {
+    "block": "minecraft:rooted_dirt"
+  },
+  "categories": [
+    "dirt",
+    "rooted_dirt"
+  ],
+  "growthModifier": 0.95
+}

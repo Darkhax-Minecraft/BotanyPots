@@ -1,0 +1,16 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:podzol"
+  },
+  "display": {
+    "block": "minecraft:podzol"
+  },
+  "categories": [
+    "dirt",
+    "podzol",
+    "mulch",
+    "mushroom"
+  ],
+  "growthModifier": 1
+}

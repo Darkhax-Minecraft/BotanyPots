@@ -1,0 +1,13 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:lava_bucket"
+  },
+  "display": {
+    "block": "minecraft:lava"
+  },
+  "categories": [
+    "lava"
+  ],
+  "growthModifier": 1
+}

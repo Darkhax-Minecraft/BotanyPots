@@ -1,0 +1,15 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:diorite"
+  },
+  "display": {
+    "block": "minecraft:diorite"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "diorite"
+  ],
+  "growthModifier": 1
+}

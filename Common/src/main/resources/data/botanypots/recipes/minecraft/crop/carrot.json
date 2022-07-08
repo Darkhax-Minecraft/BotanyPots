@@ -1,0 +1,41 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "minecraft:carrot"
+    },
+    "categories": [
+        "dirt",
+        "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "minecraft:carrots"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "minecraft:carrot"
+            },
+            "minRolls": 1,
+            "maxRolls": 1
+        },
+        {
+            "chance": 0.15,
+            "output": {
+                "item": "minecraft:carrot"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "minecraft:carrot"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
+}

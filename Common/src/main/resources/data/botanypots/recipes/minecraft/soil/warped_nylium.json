@@ -1,0 +1,18 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:warped_nylium"
+  },
+  "display": {
+    "block": "minecraft:warped_nylium"
+  },
+  "categories": [
+    "warped",
+    "nylium",
+    "warped_nylium",
+    "mushroom",
+    "netherrack",
+    "nether"
+  ],
+  "growthModifier": 1
+}

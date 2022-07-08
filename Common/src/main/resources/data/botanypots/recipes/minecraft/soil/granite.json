@@ -1,0 +1,15 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:granite"
+  },
+  "display": {
+    "block": "minecraft:granite"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "granite"
+  ],
+  "growthModifier": 1
+}

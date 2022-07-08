@@ -1,0 +1,13 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:moss_block"
+  },
+  "display": {
+    "block": "minecraft:moss_block"
+  },
+  "categories": [
+    "moss"
+  ],
+  "growthModifier": 0.95
+}

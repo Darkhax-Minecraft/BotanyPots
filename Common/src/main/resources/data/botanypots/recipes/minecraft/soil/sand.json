@@ -1,0 +1,14 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:sand"
+  },
+  "display": {
+    "block": "minecraft:sand"
+  },
+  "categories": [
+    "sand",
+    "yellow_sand"
+  ],
+  "growthModifier": 1
+}

@@ -1,0 +1,14 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:gravel"
+  },
+  "display": {
+    "block": "minecraft:gravel"
+  },
+  "categories": [
+    "gravel",
+    "loose_soil"
+  ],
+  "growthModifier": 1
+}

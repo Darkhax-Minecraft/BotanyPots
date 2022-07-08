@@ -1,0 +1,16 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:mossy_cobblestone"
+  },
+  "display": {
+    "block": "minecraft:mossy_cobblestone"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "moss",
+    "mossy_cobblestone"
+  ],
+  "growthModifier": 1
+}

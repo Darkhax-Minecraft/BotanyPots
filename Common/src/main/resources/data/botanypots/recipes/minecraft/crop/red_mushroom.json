@@ -1,0 +1,25 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:red_mushroom"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "mulch"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:red_mushroom"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:red_mushroom"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:dripstone_block"
+  },
+  "display": {
+    "block": "minecraft:dripstone_block"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "dripstone"
+  ],
+  "growthModifier": 1
+}
