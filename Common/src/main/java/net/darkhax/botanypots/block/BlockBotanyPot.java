@@ -152,6 +152,6 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
     @Override
     public RenderType getRenderLayerToBind() {
 
-        return RenderType.translucent();
+        return RenderType.cutout();
     }
 }
