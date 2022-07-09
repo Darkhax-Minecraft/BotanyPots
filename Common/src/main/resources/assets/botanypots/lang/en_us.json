@@ -10,6 +10,8 @@
   "tooltip.botanypots.soil_modifier": "Seeds will grow at %sX speed.",
   "tooltip.botanypots.seed_item": "Seed Item",
   "tooltip.botanypots.soil_item": "Soil Item",
+  "tooltip.botanypots.soil_id": "Soil ID: %s",
+  "tooltip.botanypots.crop_id": "Crop ID: %s",
 
   "block.botanypots.terracotta_botany_pot": "Botany Pot",
   "block.botanypots.terracotta_hopper_botany_pot": "Hopper Botany Pot",

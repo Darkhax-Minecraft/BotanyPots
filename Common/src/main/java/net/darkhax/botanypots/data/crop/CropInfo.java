@@ -1,9 +1,8 @@
 package net.darkhax.botanypots.data.crop;
 
-import net.darkhax.botanypots.tempshelf.DisplayState;
-import net.darkhax.botanypots.tempshelf.SimpleDisplayState;
 import net.darkhax.bookshelf.api.data.recipes.RecipeBaseData;
 import net.darkhax.botanypots.BotanyPotHelper;
+import net.darkhax.botanypots.data.displaystate.DisplayState;
 import net.darkhax.botanypots.data.soil.SoilInfo;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;

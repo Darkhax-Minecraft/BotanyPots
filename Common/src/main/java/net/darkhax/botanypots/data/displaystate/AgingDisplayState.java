@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.tempshelf;
+package net.darkhax.botanypots.data.displaystate;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

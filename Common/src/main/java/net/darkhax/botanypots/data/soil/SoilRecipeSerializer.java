@@ -2,10 +2,9 @@ package net.darkhax.botanypots.data.soil;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import net.darkhax.botanypots.tempshelf.DisplayState;
-import net.darkhax.botanypots.tempshelf.SimpleDisplayState;
 import net.darkhax.bookshelf.api.data.recipes.IRecipeSerializer;
 import net.darkhax.bookshelf.api.serialization.Serializers;
+import net.darkhax.botanypots.data.displaystate.DisplayState;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -59,5 +58,6 @@ public final class SoilRecipeSerializer extends IRecipeSerializer<SoilInfo> {
         DisplayState.SERIALIZER.toByteBuf(buffer, soilInfo.getRenderState());
         Serializers.FLOAT.toByteBuf(buffer, soilInfo.getGrowthModifier());
         Serializers.STRING.toByteBufList(buffer, new ArrayList<>(soilInfo.getCategories()));
+        Serializers.INT.toByteBuf(buffer, soilInfo.getLightLevel());
     }
 }

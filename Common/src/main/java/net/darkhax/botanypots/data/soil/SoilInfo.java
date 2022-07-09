@@ -1,15 +1,13 @@
 package net.darkhax.botanypots.data.soil;
 
-import net.darkhax.botanypots.tempshelf.DisplayState;
-import net.darkhax.botanypots.tempshelf.SimpleDisplayState;
 import net.darkhax.bookshelf.api.data.recipes.RecipeBaseData;
 import net.darkhax.botanypots.BotanyPotHelper;
+import net.darkhax.botanypots.data.displaystate.DisplayState;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Set;
 

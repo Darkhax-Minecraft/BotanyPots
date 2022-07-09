@@ -33,6 +33,6 @@ side = "BOTH"
 [[dependencies.${ mod_id }]]
 modId = "bookshelf"
 mandatory = true
-versionRange = "[13.2.30,)"
+versionRange = "[13.2.36,)"
 ordering = "NONE"
 side = "BOTH"

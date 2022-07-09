@@ -1,10 +1,9 @@
 package net.darkhax.botanypots.data.crop;
 
 import com.google.gson.JsonObject;
-import net.darkhax.botanypots.tempshelf.DisplayState;
-import net.darkhax.botanypots.tempshelf.SimpleDisplayState;
 import net.darkhax.bookshelf.api.data.recipes.IRecipeSerializer;
 import net.darkhax.bookshelf.api.serialization.Serializers;
+import net.darkhax.botanypots.data.displaystate.DisplayState;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;

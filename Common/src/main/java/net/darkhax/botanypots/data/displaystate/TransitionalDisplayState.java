@@ -1,17 +1,12 @@
-package net.darkhax.botanypots.tempshelf;
+package net.darkhax.botanypots.data.displaystate;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.darkhax.botanypots.Constants;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.Level;
 
 import java.util.List;
 
@@ -20,17 +15,11 @@ public class TransitionalDisplayState extends DisplayState {
     public static final ResourceLocation ID = new ResourceLocation(Constants.MOD_ID, "transitional");
     public static final DisplayStateSerializer<TransitionalDisplayState> SERIALIZER = new TransitionalDisplayState.Serializer();
 
-    private final List<DisplayState> phases;
+    public final List<DisplayState> phases;
 
     public TransitionalDisplayState(List<DisplayState> phases) {
 
         this.phases = phases;
-    }
-
-    @Override
-    public void render(PoseStack stack, Level level, BlockPos pos, MultiBufferSource bufferSource, int light, int overlay, float progress) {
-
-        phases.get(Math.min(Mth.floor(phases.size() * progress), phases.size() - 1)).render(stack, level, pos, bufferSource, light, overlay, progress);
     }
 
     @Override

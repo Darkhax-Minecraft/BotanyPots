@@ -7,7 +7,6 @@ import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.block.inv.BotanyPotMenu;
 import net.darkhax.botanypots.data.crop.CropRecipeSerializer;
 import net.darkhax.botanypots.data.soil.SoilRecipeSerializer;
-import net.minecraft.client.gui.screens.inventory.FurnaceScreen;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;

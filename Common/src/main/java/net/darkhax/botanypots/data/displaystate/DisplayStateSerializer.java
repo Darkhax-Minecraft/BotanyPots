@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.tempshelf;
+package net.darkhax.botanypots.data.displaystate;
 
 
 import net.darkhax.bookshelf.api.serialization.ISerializer;

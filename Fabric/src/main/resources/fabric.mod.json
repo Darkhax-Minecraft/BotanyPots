@@ -32,7 +32,7 @@
     "fabric": "*",
     "minecraft": "1.18.x",
     "java": ">=17",
-    "bookshelf": ">=13"
+    "bookshelf": ">=13.0.36"
   },
   "custom": {
     "modmenu": {

@@ -1,7 +1,7 @@
 package net.darkhax.botanypots;
 
 import net.darkhax.bookshelf.api.Services;
-import net.darkhax.botanypots.tempshelf.DisplayState;
+import net.darkhax.botanypots.data.displaystate.DisplayState;
 
 public class BotanyPotsCommon {
 

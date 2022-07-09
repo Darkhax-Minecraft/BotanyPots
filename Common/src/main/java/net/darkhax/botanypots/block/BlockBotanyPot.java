@@ -4,19 +4,23 @@ import net.darkhax.bookshelf.api.Services;
 import net.darkhax.bookshelf.api.block.IBindRenderLayer;
 import net.darkhax.bookshelf.api.block.InventoryBlock;
 import net.darkhax.bookshelf.api.serialization.Serializers;
+import net.darkhax.botanypots.BotanyPotHelper;
+import net.darkhax.botanypots.block.inv.BotanyPotContainer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -117,6 +121,17 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
         if (world.getBlockEntity(pos) instanceof BlockEntityBotanyPot potEntity) {
 
             if (player instanceof ServerPlayer serverPlayer) {
+
+                if (!player.isCrouching() && !potEntity.isHopper() && potEntity.doneGrowing && potEntity.getCropInfo() != null) {
+
+                    for (ItemStack drop : BotanyPotHelper.generateDrop(world.random, potEntity.getCropInfo())) {
+
+                        popResource(world, pos, drop);
+                    }
+
+                    potEntity.resetGrowth();
+                    return InteractionResult.CONSUME;
+                }
 
                 Services.INVENTORY_HELPER.openMenu(serverPlayer, potEntity, buf -> Serializers.BLOCK_POS.toByteBuf(buf, pos));
                 return InteractionResult.CONSUME;

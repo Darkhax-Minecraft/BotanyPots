@@ -1,17 +1,13 @@
-package net.darkhax.botanypots.tempshelf;
+package net.darkhax.botanypots.data.displaystate;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.darkhax.bookshelf.api.serialization.ISerializer;
 import net.darkhax.bookshelf.api.serialization.Serializers;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
@@ -21,13 +17,6 @@ public abstract class DisplayState {
 
     private static final Map<ResourceLocation, ISerializer<? extends DisplayState>> DISPLAY_TYPES = new HashMap<>();
     public static final ISerializer<DisplayState> SERIALIZER = new Serializer();
-
-    public void render(PoseStack stack, Level level, BlockPos pos, MultiBufferSource bufferSource, int light, int overlay) {
-
-        this.render(stack, level, pos, bufferSource, light, overlay, 1f);
-    }
-
-    public abstract void render(PoseStack stack, Level level, BlockPos pos, MultiBufferSource bufferSource, int light, int overlay, float progress);
 
     @Nullable
     public static ISerializer<? extends DisplayState> getSerializer(ResourceLocation id) {

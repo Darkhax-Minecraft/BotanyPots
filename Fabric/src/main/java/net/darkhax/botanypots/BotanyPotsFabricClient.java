@@ -6,6 +6,7 @@ import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.block.BotanyPotRenderer;
 import net.darkhax.botanypots.block.inv.BotanyPotMenu;
 import net.darkhax.botanypots.block.inv.BotanyPotScreen;
+import net.darkhax.botanypots.data.displaystate.render.DisplayStateRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -25,5 +26,6 @@ public class BotanyPotsFabricClient implements ClientModInitializer {
         MenuType<BotanyPotMenu> menu = (MenuType<BotanyPotMenu>) MENU_TYPE.get();
         MenuScreens.register(menu, BotanyPotScreen::new);
         BlockEntityRendererRegistry.register(POT_TYPE.get(), BotanyPotRenderer::new);
+        DisplayStateRenderer.init();
     }
 }

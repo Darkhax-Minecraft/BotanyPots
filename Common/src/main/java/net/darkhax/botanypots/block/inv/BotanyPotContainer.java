@@ -1,7 +1,6 @@
 package net.darkhax.botanypots.block.inv;
 
 import net.darkhax.botanypots.BotanyPotHelper;
-import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.data.crop.CropInfo;
 import net.darkhax.botanypots.data.soil.SoilInfo;
@@ -11,8 +10,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.Hopper;
-import net.minecraft.world.level.block.entity.HopperBlockEntity;
+import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 
 import javax.annotation.Nullable;
 import java.util.stream.IntStream;
@@ -58,6 +56,17 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
     public BlockEntityBotanyPot getPotEntity() {
 
         return this.potEntity;
+    }
+
+    public void update() {
+
+        final boolean revalidateSoil = !this.getSoilStack().isEmpty() && this.soil == null && BotanyPotHelper.getSoil(this.potEntity.getLevel(), this.getSoilStack()) != null;
+        final boolean revalidateCrop = !this.getCropStack().isEmpty() && this.crop == null && BotanyPotHelper.getCrop(this.potEntity.getLevel(), this.getCropStack()) != null;
+
+        if (revalidateSoil || revalidateCrop) {
+
+            this.setChanged();
+        }
     }
 
     @Override

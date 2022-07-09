@@ -6,6 +6,7 @@ import net.darkhax.bookshelf.api.function.CachedSupplier;
 import net.darkhax.bookshelf.api.inventory.ContainerInventoryAccess;
 import net.darkhax.bookshelf.api.inventory.IInventoryAccess;
 import net.darkhax.bookshelf.api.serialization.Serializers;
+import net.darkhax.bookshelf.api.util.WorldHelper;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.block.inv.BotanyPotContainer;
@@ -17,7 +18,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -115,11 +120,11 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
     public void attemptAutoHarvest() {
 
         // TODO Spawn Block Break Particles
-        if (this.getLevel() != null && !this.getLevel().isClientSide) {
+        if (this.getLevel() != null && !this.getLevel().isClientSide && this.getCropInfo() != null) {
 
             final ContainerInventoryAccess<BotanyPotContainer> inventory = new ContainerInventoryAccess<>(this.getInventory());
 
-            for (ItemStack drop : this.drops) {
+            for (ItemStack drop : BotanyPotHelper.generateDrop(this.getLevel().random, this.getCropInfo())) {
 
                 for (int slot : BotanyPotContainer.STORAGE_SLOT) {
 
@@ -162,8 +167,6 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
         }
     }
 
-    private List<ItemStack> drops = new ArrayList<>();
-
     public static void tickPot(Level level, BlockPos pos, BlockState state, BlockEntityBotanyPot pot) {
 
         // Don't try to update unloaded pots.
@@ -172,18 +175,15 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
             return;
         }
 
+        pot.getInventory().update();
+
         // Harvesting Logic
         if (pot.isHopper()) {
 
             if (pot.isCropHarvestable() && pot.getCropInfo() != null) {
 
-                pot.drops = BotanyPotHelper.generateDrop(pot.getLevel().random, pot.getCropInfo());
                 pot.attemptAutoHarvest();
-
-                // Reset Growth
-                pot.growthTime = -1;
-                pot.comparatorLevel = 0;
-                pot.doneGrowing = false;
+                pot.resetGrowth();
             }
 
             if (pot.getLevel().getGameTime() % 20 == 0) {
@@ -201,21 +201,45 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
                 pot.prevComparatorLevel = pot.comparatorLevel;
 
                 pot.comparatorLevel = Mth.floor(15f * ((float) pot.growthTime / pot.getInventory().getRequiredGrowthTime()));
-                pot.doneGrowing = pot.growthTime >= pot.getInventory().getRequiredGrowthTime();
+
+                final boolean finishedGrowing = pot.growthTime >= pot.getInventory().getRequiredGrowthTime();
+
+                if (pot.doneGrowing != finishedGrowing) {
+
+                    pot.doneGrowing = finishedGrowing;
+                    pot.markDirty();
+                }
             }
         }
 
-        else {
+        else if (pot.growthTime != -1 || pot.doneGrowing || pot.comparatorLevel != 0) {
 
-            pot.growthTime = -1;
-            pot.comparatorLevel = 0;
-            pot.doneGrowing = false;
+            pot.resetGrowth();
         }
 
         // Update Comparators if they need it.
         if (pot.comparatorLevel != pot.prevComparatorLevel) {
 
+            pot.prevComparatorLevel = pot.comparatorLevel;
             pot.level.updateNeighbourForOutputSignal(pot.worldPosition, pot.getBlockState().getBlock());
+        }
+    }
+
+    public void resetGrowth() {
+
+        this.growthTime = -1;
+        this.comparatorLevel = 0;
+        this.prevComparatorLevel = 0;
+        this.doneGrowing = false;
+        this.markDirty();
+    }
+
+    public void markDirty() {
+
+        if (this.level != null && !this.level.isClientSide) {
+
+            super.markDirty();
+            WorldHelper.updateBlockEntity(this, false);
         }
     }
 
@@ -239,6 +263,20 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
         Serializers.BOOLEAN.toNBT(tag, "DoneGrowing", this.doneGrowing);
         Serializers.INT.toNBT(tag, "PrevComparatorLevel", this.prevComparatorLevel);
         Serializers.INT.toNBT(tag, "ComparatorLevel", this.comparatorLevel);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+
+        final CompoundTag updateTag = super.getUpdateTag();
+        this.saveAdditional(updateTag);
+        return updateTag;
+    }
+
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 
     @Override

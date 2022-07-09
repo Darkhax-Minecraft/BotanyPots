@@ -33,6 +33,8 @@ public class BotanyPotScreen extends AbstractContainerScreen<BotanyPotMenu> {
     private static final Component TOOLTIP_INCORRECT_SEED = new TranslatableComponent("tooltip.botanypots.incorrect_seed").withStyle(ChatFormatting.RED);
     private static final Component TOOLTIP_MISSING_SOIL = new TranslatableComponent("tooltip.botanypots.missing_soil").withStyle(ChatFormatting.RED);
     private static final Component TOOLTIP_MISSING_SEED = new TranslatableComponent("tooltip.botanypots.missing_seed").withStyle(ChatFormatting.RED);
+    private static final Component TOOLTIP_SOIL_ITEM = new TranslatableComponent("tooltip.botanypots.soil_item").withStyle(ChatFormatting.GREEN);
+    private static final Component TOOLTIP_SEED_ITEM = new TranslatableComponent("tooltip.botanypots.seed_item").withStyle(ChatFormatting.GREEN);
 
     private static final ResourceLocation RECIPE_BUTTON_LOCATION = new ResourceLocation("textures/gui/recipe_button.png");
     private final ResourceLocation backgroundTexture;
@@ -142,14 +144,28 @@ public class BotanyPotScreen extends AbstractContainerScreen<BotanyPotMenu> {
 
             else {
 
-                if (BotanyPotHelper.getSoil(pot.getLevel(), stack) != null) {
+                final SoilInfo hoverSoil = BotanyPotHelper.getSoil(pot.getLevel(), stack);
 
-                    tooltips.add(new TranslatableComponent("tooltip.botanypots.soil_item").withStyle(ChatFormatting.GREEN));
+                if (hoverSoil != null) {
+
+                    tooltips.add(TOOLTIP_SOIL_ITEM);
+
+                    if (isAdvanced) {
+
+                        tooltips.add(new TranslatableComponent("tooltip.botanypots.soil_id", hoverSoil.getId().toString()).withStyle(ChatFormatting.GRAY));
+                    }
                 }
 
-                if (BotanyPotHelper.getCrop(pot.getLevel(), stack) != null) {
+                final CropInfo hoveredCrop = BotanyPotHelper.getCrop(pot.getLevel(), stack);
 
-                    tooltips.add(new TranslatableComponent("tooltip.botanypots.seed_item").withStyle(ChatFormatting.GREEN));
+                if (hoveredCrop != null) {
+
+                    tooltips.add(TOOLTIP_SEED_ITEM);
+
+                    if (isAdvanced) {
+
+                        tooltips.add(new TranslatableComponent("tooltip.botanypots.crop_id", hoveredCrop.getId().toString()).withStyle(ChatFormatting.GRAY));
+                    }
                 }
             }
         }

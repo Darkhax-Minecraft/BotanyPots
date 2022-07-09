@@ -6,6 +6,7 @@ import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.block.BotanyPotRenderer;
 import net.darkhax.botanypots.block.inv.BotanyPotMenu;
 import net.darkhax.botanypots.block.inv.BotanyPotScreen;
+import net.darkhax.botanypots.data.displaystate.render.DisplayStateRenderer;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -30,6 +31,7 @@ public class BotanyPotsForgeClient {
 
             MenuType<BotanyPotMenu> menu = (MenuType<BotanyPotMenu>) MENU_TYPE.get();
             MenuScreens.register(menu, BotanyPotScreen::new);
+            DisplayStateRenderer.init();
         });
     }
 
