@@ -36,8 +36,8 @@ public class BotanyPotRenderer implements BlockEntityRenderer<BlockEntityBotanyP
             if (pot.getCropInfo() != null && BotanyPotHelper.isSoilValidForCrop(pot.getSoilInfo(), pot.getCropInfo())) {
 
                 pose.pushPose();
-
-                pose.translate(0.5, 0.398125f, 0.5);
+                
+                pose.translate(0.5, 0.40625, 0.5);
 
                 {
                     final float cropScale = Mth.clamp((0.25f + growthProgress * 0.75f) * 0.625f, 0.15625f, 0.625f);
