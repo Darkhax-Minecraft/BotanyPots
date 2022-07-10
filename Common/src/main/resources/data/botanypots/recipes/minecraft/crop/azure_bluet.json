@@ -1,0 +1,23 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:azure_bluet"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:azure_bluet"
+  },
+  "results": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:azure_bluet"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:cornflower"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:cornflower"
+  },
+  "results": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:cornflower"
+      }
+    }
+  ]
+}

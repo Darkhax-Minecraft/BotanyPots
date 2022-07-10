@@ -1,0 +1,32 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:rose_bush"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "minecraft:rose_bush",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "minecraft:rose_bush",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "results": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:rose_bush"
+      }
+    }
+  ]
+}

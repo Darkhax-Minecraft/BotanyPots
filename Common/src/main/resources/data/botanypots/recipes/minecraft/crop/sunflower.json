@@ -1,0 +1,32 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:sunflower"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "minecraft:sunflower",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "minecraft:sunflower",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "results": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:sunflower"
+      }
+    }
+  ]
+}

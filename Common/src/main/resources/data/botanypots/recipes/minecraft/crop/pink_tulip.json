@@ -1,0 +1,21 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:pink_tulip"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:pink_tulip"
+  },
+  "results": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:pink_tulip"
+      }
+    }
+  ]
+}
