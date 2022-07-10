@@ -21,8 +21,8 @@ public final class SerializerHarvestEntry implements ISerializer<HarvestEntry> {
 
             final Float chance = Serializers.FLOAT.fromJSON(obj, "chance");
             final ItemStack output = Serializers.ITEM_STACK.fromJSON(obj, "output");
-            final int minRolls = Serializers.INT.fromJSON(obj, "minRolls");
-            final int maxRolls = Serializers.INT.fromJSON(obj, "maxRolls");
+            final int minRolls = Serializers.INT.fromJSON(obj, "minRolls", 1);
+            final int maxRolls = Serializers.INT.fromJSON(obj, "maxRolls", 1);
             return new HarvestEntry(chance, output, minRolls, maxRolls);
         }
 
