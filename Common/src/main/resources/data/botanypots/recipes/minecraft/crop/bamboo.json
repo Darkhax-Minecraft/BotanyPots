@@ -1,0 +1,54 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:bamboo"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "block": "minecraft:bamboo",
+        "properties": {
+          "age": 1,
+          "leaves": "none"
+        }
+      },
+      {
+        "block": "minecraft:bamboo",
+        "properties": {
+          "age": 1,
+          "leaves": "small"
+        }
+      },
+      {
+        "block": "minecraft:bamboo",
+        "properties": {
+          "age": 1,
+          "leaves": "large"
+        }
+      }
+    ]
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:bamboo"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.15,
+      "output": {
+        "item": "minecraft:bamboo"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}
