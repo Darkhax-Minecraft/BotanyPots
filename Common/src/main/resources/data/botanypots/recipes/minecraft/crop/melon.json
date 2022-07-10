@@ -1,0 +1,28 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:melon_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:melon"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:melon"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:melon_seeds"
+      }
+    }
+  ]
+}

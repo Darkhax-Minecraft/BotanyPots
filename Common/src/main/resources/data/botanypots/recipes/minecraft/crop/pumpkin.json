@@ -1,0 +1,28 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:pumpkin_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:pumpkin"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:pumpkin"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:pumpkin_seeds"
+      }
+    }
+  ]
+}
