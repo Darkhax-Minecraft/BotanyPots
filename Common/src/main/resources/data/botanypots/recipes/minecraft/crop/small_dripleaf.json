@@ -1,0 +1,27 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:small_dripleaf"
+  },
+  "categories": [
+    "dirt",
+    "clay"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:small_dripleaf",
+    "properties": {
+      "half": "upper"
+    }
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:small_dripleaf"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}
