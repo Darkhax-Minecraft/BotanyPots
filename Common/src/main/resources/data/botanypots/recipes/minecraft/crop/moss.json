@@ -1,0 +1,22 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:moss_block"
+  },
+  "categories": [
+    "dirt",
+    "stone"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:moss_carpet"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:moss_block"
+      }
+    }
+  ]
+}

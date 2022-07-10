@@ -1,0 +1,21 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:nether_sprouts"
+  },
+  "categories": [
+    "warped_nylium"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:nether_sprouts"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:nether_sprouts"
+      }
+    }
+  ]
+}
