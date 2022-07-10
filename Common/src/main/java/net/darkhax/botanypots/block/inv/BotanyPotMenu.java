@@ -2,6 +2,7 @@ package net.darkhax.botanypots.block.inv;
 
 import net.darkhax.bookshelf.api.function.CachedSupplier;
 import net.darkhax.bookshelf.api.serialization.Serializers;
+import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.minecraft.core.BlockPos;
@@ -81,7 +82,86 @@ public class BotanyPotMenu extends AbstractContainerMenu {
     @Override
     public ItemStack quickMoveStack(Player player, int slotId) {
 
-        return ItemStack.EMPTY;
+        final Slot slot = this.slots.get(slotId);
+
+        ItemStack unmovedItems = ItemStack.EMPTY;
+
+        if (slot.hasItem()) {
+
+            ItemStack slotStack = slot.getItem();
+            unmovedItems = slotStack.copy();
+
+            // Output Slots
+            if (slotId >= 2 && slotId <= 13) {
+
+                // Attempt moving to player inventory.
+                if (!this.moveItemStackTo(slotStack, 14, 50, true)) {
+
+                    return ItemStack.EMPTY;
+                }
+
+                slot.onQuickCraft(slotStack, unmovedItems);
+            }
+
+            // Soil and Seed slots
+            else if (slotId == 0 || slotId == 1) {
+
+                // Attempt moving to player inventory.
+                if (!this.moveItemStackTo(slotStack, 14, 50, true)) {
+
+                    return ItemStack.EMPTY;
+                }
+            }
+
+            else if (slotId >= 14 || slotId <= 49) {
+
+                final Slot soilSlot = this.slots.get(0);
+
+                // Try to insert a soil
+                if (!soilSlot.hasItem() && BotanyPotHelper.getSoil(this.potInv.getPotEntity().getLevel(), slotStack) != null) {
+
+                    soilSlot.set(slotStack.split(1));
+                    slot.set(slotStack);
+
+                    if (slotStack.isEmpty()) {
+
+                        return ItemStack.EMPTY;
+                    }
+                }
+
+                final Slot cropSlot = this.slots.get(1);
+
+                if (!cropSlot.hasItem() && BotanyPotHelper.getCrop(this.potInv.getPotEntity().getLevel(), slotStack) != null) {
+
+                    cropSlot.set(slotStack.split(1));
+                    slot.set(slotStack);
+
+                    if (slotStack.isEmpty()) {
+
+                        return ItemStack.EMPTY;
+                    }
+                }
+            }
+
+            if (slotStack.isEmpty()) {
+
+                slot.set(ItemStack.EMPTY);
+            }
+
+            else {
+
+                slot.setChanged();
+            }
+
+            if (slotStack.getCount() == unmovedItems.getCount()) {
+
+                return ItemStack.EMPTY;
+            }
+
+            slot.onTake(player, slotStack);
+        }
+
+        return unmovedItems;
     }
 
     public boolean isHopper() {
