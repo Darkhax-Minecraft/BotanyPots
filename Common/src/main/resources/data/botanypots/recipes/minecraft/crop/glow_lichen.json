@@ -1,0 +1,24 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:glow_lichen"
+  },
+  "categories": [
+    "dirt",
+    "stone",
+    "moss",
+    "clay"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:glow_lichen"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:glow_lichen"
+      }
+    }
+  ]
+}

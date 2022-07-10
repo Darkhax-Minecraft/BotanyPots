@@ -1,0 +1,22 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:vine"
+  },
+  "categories": [
+    "dirt",
+    "stone"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:vine"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:vine"
+      }
+    }
+  ]
+}
