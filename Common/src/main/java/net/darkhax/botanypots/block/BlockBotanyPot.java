@@ -5,10 +5,8 @@ import net.darkhax.bookshelf.api.block.IBindRenderLayer;
 import net.darkhax.bookshelf.api.block.InventoryBlock;
 import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.darkhax.botanypots.BotanyPotHelper;
-import net.darkhax.botanypots.block.inv.BotanyPotContainer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -20,7 +18,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -43,7 +40,7 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
     private final boolean hasInventory;
 
     public BlockBotanyPot(boolean hasInventory) {
-        
+
         this(DEFAULT_PROPERTIES, hasInventory);
     }
 
@@ -89,6 +86,12 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
     public int getLightBlock(BlockState state, BlockGetter level, BlockPos pos) {
 
         return level.getBlockEntity(pos) instanceof BlockEntityBotanyPot pot ? pot.getLightLevel() : 0;
+    }
+
+    @Override
+    public boolean propagatesSkylightDown(BlockState state, BlockGetter level, BlockPos pos) {
+
+        return state.getFluidState().isEmpty();
     }
 
     @Override
