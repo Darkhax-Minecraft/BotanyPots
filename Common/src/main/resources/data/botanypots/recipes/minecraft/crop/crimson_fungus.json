@@ -15,17 +15,13 @@
       "chance": 1.00,
       "output": {
         "item": "minecraft:crimson_fungus"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
+      }
     },
     {
       "chance": 0.05,
       "output": {
         "item": "minecraft:shroomlight"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
+      }
     }
   ]
 }

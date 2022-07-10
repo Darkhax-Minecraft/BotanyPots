@@ -19,9 +19,7 @@
       "chance": 1.00,
       "output": {
         "item": "minecraft:small_dripleaf"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
+      }
     }
   ]
 }

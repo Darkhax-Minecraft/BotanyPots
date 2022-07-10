@@ -20,9 +20,7 @@
       "chance": 1.00,
       "output": {
         "item": "minecraft:sugar_cane"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
+      }
     }
   ]
 }

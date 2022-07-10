@@ -18,14 +18,6 @@
         "item": "minecraft:nether_wart"
       },
       "minRolls": 1,
-      "maxRolls": 1
-    },
-    {
-      "chance": 0.15,
-      "output": {
-        "item": "minecraft:nether_wart"
-      },
-      "minRolls": 1,
       "maxRolls": 2
     }
   ]

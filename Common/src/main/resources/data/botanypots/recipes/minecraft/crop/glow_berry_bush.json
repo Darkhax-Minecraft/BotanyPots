@@ -40,17 +40,13 @@
       "chance": 1.00,
       "output": {
         "item": "minecraft:glow_berries"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
+      }
     },
     {
       "chance": 0.05,
       "output": {
         "item": "minecraft:glow_berries"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
+      }
     }
   ]
 }

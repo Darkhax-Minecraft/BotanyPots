@@ -18,9 +18,7 @@
       "chance": 1.00,
       "output": {
         "item": "minecraft:spore_blossom"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
+      }
     }
   ]
 }

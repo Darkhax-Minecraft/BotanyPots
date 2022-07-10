@@ -17,9 +17,7 @@
       "chance": 1.00,
       "output": {
         "item": "minecraft:brown_mushroom"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
+      }
     }
   ]
 }
