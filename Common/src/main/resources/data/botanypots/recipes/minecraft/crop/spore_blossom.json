@@ -8,7 +8,7 @@
     "farmland",
     "moss"
   ],
-  "growthTicks": 2400,
+  "growthTicks": 1200,
   "display": {
     "block": "minecraft:spore_blossom",
     "rotation": "X_180"
