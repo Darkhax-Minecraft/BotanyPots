@@ -5,8 +5,11 @@ import net.darkhax.botanypots.data.displaystate.SimpleDisplayState;
 import net.darkhax.botanypots.data.displaystate.math.AxisAlignedRotation;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
 
 public class SimpleDisplayStateRenderer extends DisplayStateRenderer<SimpleDisplayState> {
 
@@ -33,9 +36,21 @@ public class SimpleDisplayStateRenderer extends DisplayStateRenderer<SimpleDispl
             pose.translate(rotation.offset.x(), rotation.offset.y(), rotation.offset.z());
         }
 
+        final BlockState blockState = displayState.getRenderState(progress);
+
         // TODO color is wrong
         // TODO water does not render
-        Minecraft.getInstance().getBlockRenderer().renderSingleBlock(displayState.getRenderState(progress), pose, bufferSource, light, overlay);
+        if (displayState.renderFluid) {
+
+            final FluidState fluidState = blockState.getFluidState();
+
+            if (fluidState != null && !fluidState.isEmpty()) {
+
+                //Minecraft.getInstance().getBlockRenderer().renderLiquid(pos, )
+            }
+        }
+
+        Minecraft.getInstance().getBlockRenderer().renderSingleBlock(blockState, pose, bufferSource, light, OverlayTexture.NO_OVERLAY);
 
         pose.popPose();
     }
