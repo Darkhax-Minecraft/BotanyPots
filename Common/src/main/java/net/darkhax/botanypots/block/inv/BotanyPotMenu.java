@@ -84,6 +84,9 @@ public class BotanyPotMenu extends AbstractContainerMenu {
 
         final Slot slot = this.slots.get(slotId);
 
+        final int firstSlot = this.isHopper() ? 14 : 2;
+        final int lastSlot = this.isHopper() ? 50 : 38;
+
         ItemStack unmovedItems = ItemStack.EMPTY;
 
         if (slot.hasItem()) {
@@ -92,10 +95,10 @@ public class BotanyPotMenu extends AbstractContainerMenu {
             unmovedItems = slotStack.copy();
 
             // Output Slots
-            if (slotId >= 2 && slotId <= 13) {
+            if (this.isHopper() && slotId >= 2 && slotId <= 13) {
 
                 // Attempt moving to player inventory.
-                if (!this.moveItemStackTo(slotStack, 14, 50, true)) {
+                if (!this.moveItemStackTo(slotStack, firstSlot, lastSlot, true)) {
 
                     return ItemStack.EMPTY;
                 }
@@ -107,13 +110,13 @@ public class BotanyPotMenu extends AbstractContainerMenu {
             else if (slotId == 0 || slotId == 1) {
 
                 // Attempt moving to player inventory.
-                if (!this.moveItemStackTo(slotStack, 14, 50, true)) {
+                if (!this.moveItemStackTo(slotStack, firstSlot, lastSlot, true)) {
 
                     return ItemStack.EMPTY;
                 }
             }
 
-            else if (slotId >= 14 || slotId <= 49) {
+            else if (slotId >= firstSlot && slotId <= lastSlot) {
 
                 final Slot soilSlot = this.slots.get(0);
 
