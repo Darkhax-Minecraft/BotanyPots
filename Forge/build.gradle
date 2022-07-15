@@ -65,13 +65,24 @@ minecraft {
     }
 }
 
+repositories {
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+}
+
 dependencies {
 
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-${project.ext.minecraft_version}:${project.ext.bookshelf_version}")
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
-  
+
+    runtimeOnly fg.deobf("curse.maven:ae2-223794:3859642")
+
     compileOnly project(":Common")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
