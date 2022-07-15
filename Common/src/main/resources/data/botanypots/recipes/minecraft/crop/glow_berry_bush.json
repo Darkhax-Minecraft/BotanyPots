@@ -8,6 +8,7 @@
     "stone"
   ],
   "growthTicks": 1200,
+  "lightLevel": 14,
   "display": {
     "type": "botanypots:transitional",
     "phases": [

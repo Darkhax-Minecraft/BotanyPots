@@ -13,6 +13,7 @@
   "display": {
     "block": "minecraft:glow_lichen"
   },
+  "lightLevel": 7,
   "drops": [
     {
       "chance": 1.00,

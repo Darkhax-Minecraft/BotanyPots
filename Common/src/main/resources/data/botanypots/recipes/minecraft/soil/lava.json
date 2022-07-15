@@ -9,5 +9,6 @@
   "categories": [
     "lava"
   ],
-  "growthModifier": 1
+  "growthModifier": 1,
+  "lightLevel": 15
 }
