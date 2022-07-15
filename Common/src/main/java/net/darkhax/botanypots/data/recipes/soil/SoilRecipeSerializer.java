@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.data.soil;
+package net.darkhax.botanypots.data.recipes.soil;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;

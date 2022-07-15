@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.data.soil;
+package net.darkhax.botanypots.data.recipes.soil;
 
 import net.darkhax.bookshelf.api.data.recipes.RecipeBaseData;
 import net.darkhax.botanypots.BotanyPotHelper;

@@ -1,9 +1,9 @@
-package net.darkhax.botanypots.data.crop;
+package net.darkhax.botanypots.data.recipes.crop;
 
 import net.darkhax.bookshelf.api.data.recipes.RecipeBaseData;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.data.displaystate.DisplayState;
-import net.darkhax.botanypots.data.soil.SoilInfo;
+import net.darkhax.botanypots.data.recipes.soil.SoilInfo;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;

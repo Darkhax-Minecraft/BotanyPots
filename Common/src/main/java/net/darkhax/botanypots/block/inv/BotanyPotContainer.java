@@ -2,8 +2,8 @@ package net.darkhax.botanypots.block.inv;
 
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
-import net.darkhax.botanypots.data.crop.CropInfo;
-import net.darkhax.botanypots.data.soil.SoilInfo;
+import net.darkhax.botanypots.data.recipes.crop.CropInfo;
+import net.darkhax.botanypots.data.recipes.soil.SoilInfo;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.SimpleContainer;

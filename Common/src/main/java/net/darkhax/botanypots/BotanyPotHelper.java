@@ -2,9 +2,9 @@ package net.darkhax.botanypots;
 
 import net.darkhax.bookshelf.api.function.CachedSupplier;
 import net.darkhax.bookshelf.api.util.MathsHelper;
-import net.darkhax.botanypots.data.crop.CropInfo;
-import net.darkhax.botanypots.data.crop.HarvestEntry;
-import net.darkhax.botanypots.data.soil.SoilInfo;
+import net.darkhax.botanypots.data.recipes.crop.CropInfo;
+import net.darkhax.botanypots.data.recipes.crop.HarvestEntry;
+import net.darkhax.botanypots.data.recipes.soil.SoilInfo;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;

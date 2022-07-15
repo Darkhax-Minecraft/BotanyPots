@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.data.crop;
+package net.darkhax.botanypots.data.recipes.crop;
 
 import net.minecraft.world.item.ItemStack;
 
