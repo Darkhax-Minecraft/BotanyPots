@@ -14,7 +14,7 @@ authors = "${mod_author}"
 description = '''
 ${mod_description}
 '''
-itemIcon = "darkutils:vector_plate"
+itemIcon = "botanypots:terracotta_botany_pot"
 
 [[dependencies.${ mod_id }]]
 modId = "forge"
@@ -33,6 +33,6 @@ side = "BOTH"
 [[dependencies.${ mod_id }]]
 modId = "bookshelf"
 mandatory = true
-versionRange = "[13.2.36,)"
+versionRange = "[13.2.39,)"
 ordering = "NONE"
 side = "BOTH"
