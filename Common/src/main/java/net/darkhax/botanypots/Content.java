@@ -7,6 +7,7 @@ import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.block.inv.BotanyPotMenu;
 import net.darkhax.botanypots.data.crop.CropRecipeSerializer;
 import net.darkhax.botanypots.data.soil.SoilRecipeSerializer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -22,7 +23,7 @@ public class Content extends RegistryDataProvider {
 
         super(Constants.MOD_ID);
 
-        this.withCreativeTab(() -> Items.SWEET_BERRIES);
+        this.withCreativeTab(() -> Services.REGISTRIES.items().get(new ResourceLocation(Constants.MOD_ID, "terracotta_botany_pot")));
         this.withAutoItemBlocks();
         this.bindBlockRenderLayers();
 
