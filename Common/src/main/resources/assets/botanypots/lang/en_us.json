@@ -13,6 +13,11 @@
   "tooltip.botanypots.soil_id": "Soil ID: %s",
   "tooltip.botanypots.crop_id": "Crop ID: %s",
 
+  "advancements.botany_pots.get_pot.title": "Let It Grow",
+  "advancements.botany_pots.get_pot.description": "Get a Botany Pot",
+  "advancements.botany_pots.get_hopper_pot.title": "Now You're Growing With Hoppers",
+  "advancements.botany_pots.get_hopper_pot.description": "Get a Hopper Botany Pot",
+
   "block.botanypots.terracotta_botany_pot": "Botany Pot",
   "block.botanypots.terracotta_hopper_botany_pot": "Hopper Botany Pot",
 

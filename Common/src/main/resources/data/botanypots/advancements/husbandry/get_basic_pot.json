@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:husbandry/plant_seed",
+  "display": {
+    "icon": {
+      "item": "botanypots:terracotta_botany_pot"
+    },
+    "title": {
+      "translate": "advancements.botany_pots.get_pot.title"
+    },
+    "description": {
+      "translate": "advancements.botany_pots.get_pot.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_botany_pot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "botanypots:basic_botany_pots"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_botany_pot"
+    ]
+  ]
+}
