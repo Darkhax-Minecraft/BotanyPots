@@ -10,7 +10,7 @@
   "display": {
     "block": "minecraft:lily_of_the_valley"
   },
-  "results": [
+  "drops": [
     {
       "chance": 1.00,
       "output": {

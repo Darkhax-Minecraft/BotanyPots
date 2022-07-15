@@ -10,7 +10,7 @@
   "display": {
     "block": "minecraft:oxeye_daisy"
   },
-  "results": [
+  "drops": [
     {
       "chance": 1.00,
       "output": {

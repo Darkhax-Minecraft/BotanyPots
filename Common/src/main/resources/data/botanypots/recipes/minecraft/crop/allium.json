@@ -10,7 +10,7 @@
   "display": {
     "block": "minecraft:allium"
   },
-  "results": [
+  "drops": [
     {
       "chance": 1.00,
       "output": {

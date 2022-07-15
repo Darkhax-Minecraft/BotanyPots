@@ -10,7 +10,7 @@
   "display": {
     "block": "minecraft:wither_rose"
   },
-  "results": [
+  "drops": [
     {
       "chance": 1,
       "output": {

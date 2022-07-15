@@ -10,14 +10,12 @@
   "display": {
     "block": "minecraft:azure_bluet"
   },
-  "results": [
+  "drops": [
     {
       "chance": 1.00,
       "output": {
         "item": "minecraft:azure_bluet"
-      },
-      "minRolls": 1,
-      "maxRolls": 1
+      }
     }
   ]
 }

@@ -10,7 +10,7 @@
   "display": {
     "block": "minecraft:orange_tulip"
   },
-  "results": [
+  "drops": [
     {
       "chance": 1.00,
       "output": {
