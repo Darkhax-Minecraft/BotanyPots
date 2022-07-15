@@ -9,7 +9,6 @@ import net.darkhax.botanypots.data.crop.CropRecipeSerializer;
 import net.darkhax.botanypots.data.soil.SoilRecipeSerializer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;

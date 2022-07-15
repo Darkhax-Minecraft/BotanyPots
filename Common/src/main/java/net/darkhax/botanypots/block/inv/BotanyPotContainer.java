@@ -10,7 +10,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import javax.annotation.Nullable;
 import java.util.stream.IntStream;
@@ -78,6 +78,13 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
         this.crop = BotanyPotHelper.getCrop(this.potEntity.getLevel(), this.getCropStack());
         this.requiredGrowthTime = BotanyPotHelper.getRequiredGrowthTicks(this.crop, this.soil);
         this.getPotEntity().markDirty();
+
+        final int potLight = this.getPotEntity().getLightLevel();
+
+        if (this.getPotEntity().getBlockState().getValue(BlockStateProperties.LEVEL) != potLight) {
+
+            this.getPotEntity().getLevel().setBlockAndUpdate(this.potEntity.getBlockPos(), this.getPotEntity().getBlockState().setValue(BlockStateProperties.LEVEL, potLight));
+        }
     }
 
     @Nullable

@@ -1,22 +1,9 @@
 package net.darkhax.botanypots.data.displaystate.math;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
 import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
 import net.darkhax.bookshelf.api.serialization.ISerializer;
-import net.darkhax.bookshelf.api.serialization.NBTParseException;
 import net.darkhax.bookshelf.api.serialization.SerializerEnum;
-import net.darkhax.bookshelf.api.serialization.Serializers;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.StringTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.FriendlyByteBuf;
-import org.apache.commons.lang3.EnumUtils;
-
-import java.util.Locale;
 
 /**
  * This enum contains rotational state data that can be used to rotate a render while retaining alignment with the world

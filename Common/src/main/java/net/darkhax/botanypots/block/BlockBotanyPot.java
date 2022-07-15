@@ -7,6 +7,7 @@ import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -35,7 +36,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedBlock, IBindRenderLayer {
 
     private static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 8, 14);
-    private static final Properties DEFAULT_PROPERTIES = Block.Properties.of(Material.CLAY, MaterialColor.COLOR_ORANGE).strength(1.25F, 4.2F).noOcclusion();
+    private static final Properties DEFAULT_PROPERTIES = Block.Properties.of(Material.CLAY, MaterialColor.COLOR_ORANGE).strength(1.25F, 4.2F).noOcclusion().lightLevel(state -> state.getValue(BlockStateProperties.LEVEL));
 
     private final boolean hasInventory;
 
@@ -47,7 +48,13 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
     public BlockBotanyPot(Block.Properties properties, boolean hasInventory) {
 
         super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
+
+        BlockState defaultState = this.getStateDefinition().any();
+        defaultState = defaultState.setValue(BlockStateProperties.WATERLOGGED, false);
+        defaultState = defaultState.setValue(BlockStateProperties.LEVEL, 0);
+        defaultState = defaultState.setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH);
+        this.registerDefaultState(defaultState);
+
         this.hasInventory = hasInventory;
     }
 
@@ -83,12 +90,6 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
     }
 
     @Override
-    public int getLightBlock(BlockState state, BlockGetter level, BlockPos pos) {
-
-        return level.getBlockEntity(pos) instanceof BlockEntityBotanyPot pot ? pot.getLightLevel() : 0;
-    }
-
-    @Override
     public boolean propagatesSkylightDown(BlockState state, BlockGetter level, BlockPos pos) {
 
         return state.getFluidState().isEmpty();
@@ -109,7 +110,7 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 
-        builder.add(BlockStateProperties.WATERLOGGED);
+        builder.add(BlockStateProperties.WATERLOGGED, BlockStateProperties.LEVEL, BlockStateProperties.HORIZONTAL_FACING);
     }
 
     @Override
