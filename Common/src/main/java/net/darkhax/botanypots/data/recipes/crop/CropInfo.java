@@ -42,8 +42,8 @@ public class CropInfo extends RecipeBaseData<Container> {
     private List<DisplayState> displayBlocks;
 
     /**
-     * The light level of the soil when placed in the crop. If this is not specified the light
-     * level of the first block in {@link #displayBlocks} will be used.
+     * The light level of the soil when placed in the crop. If this is not specified the light level of the first block
+     * in {@link #displayBlocks} will be used.
      */
     private int lightLevel;
 
@@ -63,7 +63,7 @@ public class CropInfo extends RecipeBaseData<Container> {
      *
      * @return An ingredient that can used to match an ItemStack as a seed for the crop.
      */
-    public Ingredient getSeed () {
+    public Ingredient getSeed() {
 
         return this.seed;
     }
@@ -73,7 +73,7 @@ public class CropInfo extends RecipeBaseData<Container> {
      *
      * @return An array of valid soil categories for this crop.
      */
-    public Set<String> getSoilCategories () {
+    public Set<String> getSoilCategories() {
 
         return this.soilCategories;
     }
@@ -83,7 +83,7 @@ public class CropInfo extends RecipeBaseData<Container> {
      *
      * @return An array of harvest results for the crop.
      */
-    public List<HarvestEntry> getResults () {
+    public List<HarvestEntry> getResults() {
 
         return this.results;
     }
@@ -93,7 +93,7 @@ public class CropInfo extends RecipeBaseData<Container> {
      *
      * @return The state to display when rendering the crop.
      */
-    public List<DisplayState> getDisplayState () {
+    public List<DisplayState> getDisplayState() {
 
         return this.displayBlocks;
     }
@@ -103,20 +103,18 @@ public class CropInfo extends RecipeBaseData<Container> {
      *
      * @return The growth time for the crop under normal circumstances.
      */
-    public int getGrowthTicks () {
+    public int getGrowthTicks() {
 
         return this.growthTicks;
     }
 
     /**
-     * Calculates the total world ticks for this crop to reach maturity if planted on a given
-     * soil.
+     * Calculates the total world ticks for this crop to reach maturity if planted on a given soil.
      *
      * @param soil The soil to calculate growth time with.
-     * @return The amount of world ticks it would take for this crop to reach maturity when
-     *         planted on the given soil.
+     * @return The amount of world ticks it would take for this crop to reach maturity when planted on the given soil.
      */
-    public int getGrowthTicksForSoil (SoilInfo soil) {
+    public int getGrowthTicksForSoil(SoilInfo soil) {
 
         final float requiredGrowthTicks = this.growthTicks;
         final float growthModifier = soil.getGrowthModifier();
@@ -130,37 +128,37 @@ public class CropInfo extends RecipeBaseData<Container> {
         return Integer.MAX_VALUE;
     }
 
-    public void setSeed (Ingredient seed) {
+    public void setSeed(Ingredient seed) {
 
         this.seed = seed;
     }
 
-    public void setSoilCategories (Set<String> soilCategories) {
+    public void setSoilCategories(Set<String> soilCategories) {
 
         this.soilCategories = soilCategories;
     }
 
-    public void setGrowthTicks (int growthTicks) {
+    public void setGrowthTicks(int growthTicks) {
 
         this.growthTicks = growthTicks;
     }
 
-    public void setResults (List<HarvestEntry> results) {
+    public void setResults(List<HarvestEntry> results) {
 
         this.results = results;
     }
 
-    public void setDisplayBlock (List<DisplayState> displayBlocks) {
+    public void setDisplayBlock(List<DisplayState> displayBlocks) {
 
         this.displayBlocks = displayBlocks;
     }
 
-    public void setLightLevel (int lightLevel) {
+    public void setLightLevel(int lightLevel) {
 
         this.lightLevel = lightLevel;
     }
 
-    public int getLightLevel () {
+    public int getLightLevel() {
 
         return this.lightLevel;
     }

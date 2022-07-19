@@ -9,17 +9,12 @@ import net.darkhax.botanypots.data.recipes.potinteraction.PotInteraction;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.commands.FunctionCommand;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -132,7 +127,7 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
 
             // Attempt right click interaction recipes.
             final ItemStack heldStack = player.getItemInHand(hand);
-            final PotInteraction interaction = BotanyPotHelper.findPotInteraction(state, world, pos, player, hand, heldStack,potEntity);
+            final PotInteraction interaction = BotanyPotHelper.findPotInteraction(state, world, pos, player, hand, heldStack, potEntity);
 
             if (interaction != null) {
 
@@ -157,7 +152,7 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
             }
 
             // Open the pot GUI
-            else if (player instanceof ServerPlayer serverPlayer){
+            else if (player instanceof ServerPlayer serverPlayer) {
 
                 Services.INVENTORY_HELPER.openMenu(serverPlayer, potEntity, buf -> Serializers.BLOCK_POS.toByteBuf(buf, pos));
                 return InteractionResult.CONSUME;

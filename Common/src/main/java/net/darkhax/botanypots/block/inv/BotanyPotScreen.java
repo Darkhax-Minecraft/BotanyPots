@@ -51,7 +51,8 @@ public class BotanyPotScreen extends AbstractContainerScreen<BotanyPotMenu> {
         super.init();
 
         int recipeOffset = this.leftPos + (this.menu.isHopper() ? 13 : 33);
-        this.addRenderableWidget(new ImageButton(recipeOffset, this.height / 2 - 49, 20, 18, 0, 0, 19, RECIPE_BUTTON_LOCATION, (btn) -> {}));
+        this.addRenderableWidget(new ImageButton(recipeOffset, this.height / 2 - 49, 20, 18, 0, 0, 19, RECIPE_BUTTON_LOCATION, (btn) -> {
+        }));
     }
 
     @Override
@@ -79,7 +80,8 @@ public class BotanyPotScreen extends AbstractContainerScreen<BotanyPotMenu> {
         if (this.minecraft != null) {
 
             final boolean isAdvanced = this.minecraft.options.advancedItemTooltips;
-            final BlockEntityBotanyPot pot = this.menu.getPotInventory().getPotEntity();;
+            final BlockEntityBotanyPot pot = this.menu.getPotInventory().getPotEntity();
+            ;
 
             // Add soil slot tooltips.
             if (this.hoveredSlot instanceof SlotSoil soilSlot) {

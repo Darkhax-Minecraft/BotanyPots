@@ -4,8 +4,8 @@
 import groovy.json.JsonSlurper
 
 project.ext.patreon = [
-    campaignUrl       : '',
-    campaignUrlTracked: ''
+        campaignUrl       : '',
+        campaignUrlTracked: ''
 ]
 
 project.ext.mod_supporters = 'No supporters loaded.'

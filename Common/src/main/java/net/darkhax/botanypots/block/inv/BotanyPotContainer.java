@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
-public class BotanyPotContainer extends SimpleContainer implements WorldlyContainer  {
+public class BotanyPotContainer extends SimpleContainer implements WorldlyContainer {
 
     public static final int SOIL_SLOT = 0;
     public static final int CROP_SLOT = 1;

@@ -5,7 +5,7 @@ issueTrackerURL = "${mod_issues}"
 
 [[mods]]
 modId = "${mod_id}"
-updateJSONURL="https://updates.blamejared.com/get?n=${mod_id}&gv=${minecraft_version}"
+updateJSONURL = "https://updates.blamejared.com/get?n=${mod_id}&gv=${minecraft_version}"
 version = "${file.jarVersion}"
 displayName = "${mod_name}"
 displayURL = "${mod_homepage}"

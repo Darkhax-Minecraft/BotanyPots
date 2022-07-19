@@ -1,6 +1,5 @@
 {
   "itemGroup.botanypots.creative_tab": "Botany Pots",
-
   "tooltip.botanypots.invalid_soil": "This item is not a usable soil.",
   "tooltip.botanypots.invalid_seed": "This item is not a usable seed.",
   "tooltip.botanypots.incorrect_soil": "The soil can not sustain the current seed.",
@@ -12,15 +11,12 @@
   "tooltip.botanypots.soil_item": "Soil Item",
   "tooltip.botanypots.soil_id": "Soil ID: %s",
   "tooltip.botanypots.crop_id": "Crop ID: %s",
-
   "advancements.botany_pots.get_pot.title": "Let It Grow",
   "advancements.botany_pots.get_pot.description": "Get a Botany Pot",
   "advancements.botany_pots.get_hopper_pot.title": "Now You're Growing With Hoppers",
   "advancements.botany_pots.get_hopper_pot.description": "Get a Hopper Botany Pot",
-
   "block.botanypots.terracotta_botany_pot": "Botany Pot",
   "block.botanypots.terracotta_hopper_botany_pot": "Hopper Botany Pot",
-
   "block.botanypots.white_terracotta_botany_pot": "White Botany Pot",
   "block.botanypots.white_terracotta_hopper_botany_pot": "White Hopper Botany Pot",
   "block.botanypots.orange_terracotta_botany_pot": "Orange Botany Pot",
@@ -53,7 +49,6 @@
   "block.botanypots.red_terracotta_hopper_botany_pot": "Red Hopper Botany Pot",
   "block.botanypots.black_terracotta_botany_pot": "Black Botany Pot",
   "block.botanypots.black_terracotta_hopper_botany_pot": "Black Hopper Botany Pot",
-
   "block.botanypots.white_concrete_botany_pot": "White Botany Pot",
   "block.botanypots.white_concrete_hopper_botany_pot": "White Hopper Botany Pot",
   "block.botanypots.orange_concrete_botany_pot": "Orange Botany Pot",
@@ -86,7 +81,6 @@
   "block.botanypots.red_concrete_hopper_botany_pot": "Red Hopper Botany Pot",
   "block.botanypots.black_concrete_botany_pot": "Black Botany Pot",
   "block.botanypots.black_concrete_hopper_botany_pot": "Black Hopper Botany Pot",
-
   "block.botanypots.white_glazed_terracotta_botany_pot": "White Glazed Botany Pot",
   "block.botanypots.white_glazed_terracotta_hopper_botany_pot": "White Glazed Hopper Botany Pot",
   "block.botanypots.orange_glazed_terracotta_botany_pot": "Orange Glazed Botany Pot",

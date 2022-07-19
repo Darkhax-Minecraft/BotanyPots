@@ -53,7 +53,7 @@ subprojects {
             name = 'BlameJared Maven (CrT / Bookshelf)'
             url = 'https://maven.blamejared.com'
         }
-        
+
         maven {
             name = 'Progwml6 Maven (JEI)'
             url = 'https://dvs1.progwml6.com/files/maven/'

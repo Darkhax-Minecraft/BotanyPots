@@ -7,7 +7,6 @@ import net.darkhax.bookshelf.api.data.sound.Sound;
 import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
@@ -62,7 +61,7 @@ public final class SimplePotInteractionSerializer extends IRecipeSerializer<Simp
     public void toNetwork(FriendlyByteBuf buffer, SimplePotInteraction toWrite) {
 
         Serializers.INGREDIENT.toByteBuf(buffer, toWrite.heldTest);
-        Serializers.BOOLEAN.toByteBuf(buffer,toWrite.damageHeld);
+        Serializers.BOOLEAN.toByteBuf(buffer, toWrite.damageHeld);
         Serializers.INGREDIENT.toByteBufNullable(buffer, toWrite.soilTest);
         Serializers.INGREDIENT.toByteBufNullable(buffer, toWrite.seedTest);
         Serializers.ITEM_STACK.toByteBufNullable(buffer, toWrite.newSoilStack);

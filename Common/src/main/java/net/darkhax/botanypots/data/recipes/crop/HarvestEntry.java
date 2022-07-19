@@ -47,7 +47,7 @@ public class HarvestEntry {
      *
      * @return The chance for the entry to happen.
      */
-    public float getChance () {
+    public float getChance() {
 
         return this.chance;
     }
@@ -57,7 +57,7 @@ public class HarvestEntry {
      *
      * @return The item to give.
      */
-    public ItemStack getItem () {
+    public ItemStack getItem() {
 
         return this.item;
     }
@@ -67,7 +67,7 @@ public class HarvestEntry {
      *
      * @return The minimum amount of items to give.
      */
-    public int getMinRolls () {
+    public int getMinRolls() {
 
         return this.minRolls;
     }
@@ -77,7 +77,7 @@ public class HarvestEntry {
      *
      * @return The maximum amount of items to give.
      */
-    public int getMaxRolls () {
+    public int getMaxRolls() {
 
         return this.maxRolls;
     }

@@ -1,7 +1,7 @@
 {
-    "variants": {
-        "": {
-            "model": "botanypots:block/yellow_terracotta_hopper_botany_pot"
-        }
+  "variants": {
+    "": {
+      "model": "botanypots:block/yellow_terracotta_hopper_botany_pot"
     }
+  }
 }

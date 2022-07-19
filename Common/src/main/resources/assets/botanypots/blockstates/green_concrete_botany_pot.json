@@ -1,7 +1,7 @@
 {
-    "variants": {
-        "": {
-            "model": "botanypots:block/green_concrete_botany_pot"
-        }
+  "variants": {
+    "": {
+      "model": "botanypots:block/green_concrete_botany_pot"
     }
+  }
 }

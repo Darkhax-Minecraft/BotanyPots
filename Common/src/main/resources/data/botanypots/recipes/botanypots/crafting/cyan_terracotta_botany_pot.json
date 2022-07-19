@@ -1,20 +1,20 @@
 {
-    "type": "crafting_shaped",
-    "pattern": [
-        "S S",
-        "SPS",
-        " S "
-    ],
-    "key": {
-        "S": {
-            "item": "minecraft:cyan_terracotta"
-        },
-        "P": {
-            "item": "minecraft:flower_pot"
-        }
+  "type": "crafting_shaped",
+  "pattern": [
+    "S S",
+    "SPS",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:cyan_terracotta"
     },
-    "result": {
-        "item": "botanypots:cyan_terracotta_botany_pot",
-        "count": 1
+    "P": {
+      "item": "minecraft:flower_pot"
     }
+  },
+  "result": {
+    "item": "botanypots:cyan_terracotta_botany_pot",
+    "count": 1
+  }
 }

@@ -291,6 +291,6 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
     @Override
     public AbstractContainerMenu createMenu(int windowId, Inventory inventory) {
 
-        return new BotanyPotMenu(windowId, this.getInventory(),inventory);
+        return new BotanyPotMenu(windowId, this.getInventory(), inventory);
     }
 }

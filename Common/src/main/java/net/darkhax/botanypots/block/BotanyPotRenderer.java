@@ -36,7 +36,7 @@ public class BotanyPotRenderer implements BlockEntityRenderer<BlockEntityBotanyP
             if (pot.getCropInfo() != null && BotanyPotHelper.isSoilValidForCrop(pot.getSoilInfo(), pot.getCropInfo())) {
 
                 pose.pushPose();
-                
+
                 pose.translate(0.5, 0.40625, 0.5);
 
                 {
