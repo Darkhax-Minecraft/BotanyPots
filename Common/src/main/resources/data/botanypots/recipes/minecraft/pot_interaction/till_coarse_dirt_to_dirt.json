@@ -4,10 +4,10 @@
     "tag": "bookshelf:hoes"
   },
   "soil_ingredient": {
-    "item": "minecraft:dirt"
+    "item": "minecraft:coarse_dirt"
   },
   "soil_output": {
-    "item": "minecraft:farmland",
+    "item": "minecraft:dirt",
     "count": 1
   },
   "sound": {

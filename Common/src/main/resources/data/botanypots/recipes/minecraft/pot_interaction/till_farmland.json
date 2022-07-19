@@ -3,9 +3,17 @@
   "held_ingredient": {
     "tag": "bookshelf:hoes"
   },
-  "soil_ingredient": {
-    "item": "minecraft:grass_block"
-  },
+  "soil_ingredient": [
+    {
+      "item": "minecraft:grass_block"
+    },
+    {
+      "item": "minecraft:dirt"
+    },
+    {
+      "item": "minecraft:dirt_path"
+    }
+  ],
   "soil_output": {
     "item": "minecraft:farmland",
     "count": 1
