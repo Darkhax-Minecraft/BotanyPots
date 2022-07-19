@@ -1,0 +1,17 @@
+{
+  "type": "botanypots:simple_pot_interaction",
+  "held_ingredient": {
+    "tag": "bookshelf:hoes"
+  },
+  "soil_ingredient": {
+    "item": "minecraft:dirt"
+  },
+  "soil_output": {
+    "item": "minecraft:farmland",
+    "count": 1
+  },
+  "sound": {
+    "sound": "minecraft:item.hoe.till",
+    "category": "blocks"
+  }
+}

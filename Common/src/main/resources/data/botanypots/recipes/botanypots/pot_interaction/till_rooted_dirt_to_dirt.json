@@ -1,0 +1,22 @@
+{
+  "type": "botanypots:simple_pot_interaction",
+  "held_ingredient": {
+    "tag": "bookshelf:hoes"
+  },
+  "soil_ingredient": {
+    "item": "minecraft:rooted_dirt"
+  },
+  "soil_output": {
+    "item": "minecraft:dirt",
+    "count": 1
+  },
+  "sound": {
+    "sound": "minecraft:item.hoe.till",
+    "category": "blocks"
+  },
+  "drops": [
+    {
+      "item": "minecraft:hanging_roots"
+    }
+  ]
+}

@@ -1,18 +1,25 @@
 package net.darkhax.botanypots;
 
 import net.darkhax.bookshelf.api.function.CachedSupplier;
+import net.darkhax.bookshelf.api.registry.RegistryObject;
 import net.darkhax.bookshelf.api.util.MathsHelper;
+import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.data.recipes.crop.CropInfo;
 import net.darkhax.botanypots.data.recipes.crop.HarvestEntry;
+import net.darkhax.botanypots.data.recipes.potinteraction.PotInteraction;
 import net.darkhax.botanypots.data.recipes.soil.SoilInfo;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
@@ -20,11 +27,14 @@ import java.util.Random;
 
 public class BotanyPotHelper {
 
-    public static final CachedSupplier<RecipeType<SoilInfo>> SOIL_TYPE = CachedSupplier.cache(() -> (RecipeType<SoilInfo>) Registry.RECIPE_TYPE.get(new ResourceLocation(Constants.MOD_ID, "soil")));
-    public static final CachedSupplier<RecipeSerializer<?>> SOIL_SERIALIZER = CachedSupplier.cache(() -> Registry.RECIPE_SERIALIZER.get(new ResourceLocation(Constants.MOD_ID, "soil")));
+    public static final CachedSupplier<RecipeType<SoilInfo>> SOIL_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "soil").cast();
+    public static final CachedSupplier<RecipeSerializer<?>> SOIL_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "soil").cast();
 
-    public static final CachedSupplier<RecipeType<CropInfo>> CROP_TYPE = CachedSupplier.cache(() -> (RecipeType<CropInfo>) Registry.RECIPE_TYPE.get(new ResourceLocation(Constants.MOD_ID, "crop")));
-    public static final CachedSupplier<RecipeSerializer<?>> CROP_SERIALIZER = CachedSupplier.cache(() -> Registry.RECIPE_SERIALIZER.get(new ResourceLocation(Constants.MOD_ID, "crop")));
+    public static final CachedSupplier<RecipeType<CropInfo>> CROP_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "crop").cast();
+    public static final CachedSupplier<RecipeSerializer<?>> CROP_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "crop").cast();
+
+    public static final CachedSupplier<RecipeType<PotInteraction>> POT_INTERACTION_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "pot_interaction").cast();
+    public static final CachedSupplier<RecipeSerializer<?>> SIMPLE_POT_INTERACTION_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "simple_pot_interaction").cast();
 
     public static Optional<SoilInfo> getSoil (RecipeManager manager, ResourceLocation id) {
 
@@ -122,6 +132,23 @@ public class BotanyPotHelper {
         }
 
         return false;
+    }
+
+    @Nullable
+    public static PotInteraction findPotInteraction(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot) {
+
+        if (!heldStack.isEmpty()) {
+
+            for (final PotInteraction interaction : world.getRecipeManager().getAllRecipesFor(POT_INTERACTION_TYPE.get())) {
+
+                if (interaction.canApply(state, world, pos, player, hand, heldStack, pot)) {
+
+                    return interaction;
+                }
+            }
+        }
+
+        return null;
     }
 
     public static NonNullList<ItemStack> generateDrop (Random rand, CropInfo crop) {

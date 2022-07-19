@@ -5,15 +5,21 @@ import net.darkhax.bookshelf.api.block.IBindRenderLayer;
 import net.darkhax.bookshelf.api.block.InventoryBlock;
 import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.darkhax.botanypots.BotanyPotHelper;
+import net.darkhax.botanypots.data.recipes.potinteraction.PotInteraction;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.commands.FunctionCommand;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -124,9 +130,20 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
 
         if (world.getBlockEntity(pos) instanceof BlockEntityBotanyPot potEntity) {
 
-            if (player instanceof ServerPlayer serverPlayer) {
+            // Attempt right click interaction recipes.
+            final ItemStack heldStack = player.getItemInHand(hand);
+            final PotInteraction interaction = BotanyPotHelper.findPotInteraction(state, world, pos, player, hand, heldStack,potEntity);
 
-                if (!player.isCrouching() && !potEntity.isHopper() && potEntity.doneGrowing && potEntity.getCropInfo() != null) {
+            if (interaction != null) {
+
+                interaction.apply(state, world, pos, player, hand, heldStack, potEntity);
+                return InteractionResult.CONSUME;
+            }
+
+            // Attempt harvesting the pot.
+            else if (!player.isCrouching() && !potEntity.isHopper() && potEntity.doneGrowing && potEntity.getCropInfo() != null) {
+
+                if (!world.isClientSide) {
 
                     for (ItemStack drop : BotanyPotHelper.generateDrop(world.random, potEntity.getCropInfo())) {
 
@@ -134,8 +151,13 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
                     }
 
                     potEntity.resetGrowth();
-                    return InteractionResult.CONSUME;
                 }
+
+                return InteractionResult.CONSUME;
+            }
+
+            // Open the pot GUI
+            else if (player instanceof ServerPlayer serverPlayer){
 
                 Services.INVENTORY_HELPER.openMenu(serverPlayer, potEntity, buf -> Serializers.BLOCK_POS.toByteBuf(buf, pos));
                 return InteractionResult.CONSUME;
