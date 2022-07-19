@@ -40,7 +40,7 @@ public class BotanyPotRenderer implements BlockEntityRenderer<BlockEntityBotanyP
                 pose.translate(0.5, 0.40625, 0.5);
 
                 {
-                    final float cropScale = Mth.clamp((0.25f + growthProgress * 0.75f) * 0.625f, 0.15625f, 0.625f);
+                    final float cropScale = Mth.clamp((0.40f + growthProgress * 0.60f) * 0.625f, 0.15625f, 0.625f);
                     pose.scale(cropScale, cropScale, cropScale);
                 }
 
