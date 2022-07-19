@@ -1,0 +1,8 @@
+{
+  "type": "botanypots:basic_fertilizer",
+  "ingredient": {
+    "item": "minecraft:bone_meal"
+  },
+  "min_growth": 400,
+  "max_growth": 550
+}

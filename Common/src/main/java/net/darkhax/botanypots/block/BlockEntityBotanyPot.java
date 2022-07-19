@@ -293,4 +293,10 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
 
         return new BotanyPotMenu(windowId, this.getInventory(), inventory);
     }
+
+    public void addGrowth(int nextIntInclusive) {
+
+        this.growthTime += nextIntInclusive;
+        this.markDirty();
+    }
 }

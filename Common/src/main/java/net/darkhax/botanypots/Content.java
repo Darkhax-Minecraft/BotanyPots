@@ -6,6 +6,7 @@ import net.darkhax.botanypots.block.BlockBotanyPot;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.block.inv.BotanyPotMenu;
 import net.darkhax.botanypots.data.recipes.crop.CropRecipeSerializer;
+import net.darkhax.botanypots.data.recipes.fertilizer.BasicFertilizerSerializer;
 import net.darkhax.botanypots.data.recipes.potinteraction.SimplePotInteractionSerializer;
 import net.darkhax.botanypots.data.recipes.soil.SoilRecipeSerializer;
 import net.minecraft.resources.ResourceLocation;
@@ -31,11 +32,13 @@ public class Content extends RegistryDataProvider {
         this.recipeTypes.add("soil");
         this.recipeTypes.add("crop");
         this.recipeTypes.add("pot_interaction");
+        this.recipeTypes.add("fertilizer");
 
         // Recipe Serializers
         this.recipeSerializers.add(() -> SoilRecipeSerializer.SERIALIZER, "soil");
         this.recipeSerializers.add(() -> CropRecipeSerializer.SERIALIZER, "crop");
         this.recipeSerializers.add(() -> SimplePotInteractionSerializer.SERIALIZER, "simple_pot_interaction");
+        this.recipeSerializers.add(() -> BasicFertilizerSerializer.SERIALIZER, "basic_fertilizer");
 
         // Basic Pot
         this.blocks.add(() -> new BlockBotanyPot(false), "terracotta_botany_pot");

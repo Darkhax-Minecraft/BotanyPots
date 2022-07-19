@@ -6,6 +6,7 @@ import net.darkhax.bookshelf.api.util.MathsHelper;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.data.recipes.crop.CropInfo;
 import net.darkhax.botanypots.data.recipes.crop.HarvestEntry;
+import net.darkhax.botanypots.data.recipes.fertilizer.Fertilizer;
 import net.darkhax.botanypots.data.recipes.potinteraction.PotInteraction;
 import net.darkhax.botanypots.data.recipes.soil.SoilInfo;
 import net.minecraft.core.BlockPos;
@@ -35,6 +36,9 @@ public class BotanyPotHelper {
 
     public static final CachedSupplier<RecipeType<PotInteraction>> POT_INTERACTION_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "pot_interaction").cast();
     public static final CachedSupplier<RecipeSerializer<?>> SIMPLE_POT_INTERACTION_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "simple_pot_interaction").cast();
+
+    public static final CachedSupplier<RecipeType<Fertilizer>> FERTILIZER_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "fertilizer").cast();
+    public static final CachedSupplier<RecipeSerializer<?>> BASIC_FERTILIZER_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "basic_fertilizer").cast();
 
     public static Optional<SoilInfo> getSoil(RecipeManager manager, ResourceLocation id) {
 
@@ -143,6 +147,23 @@ public class BotanyPotHelper {
                 if (interaction.canApply(state, world, pos, player, hand, heldStack, pot)) {
 
                     return interaction;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    @Nullable
+    public static Fertilizer findFertilizer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot) {
+
+        if (!heldStack.isEmpty()) {
+
+            for (final Fertilizer fertilizer : world.getRecipeManager().getAllRecipesFor(FERTILIZER_TYPE.get())) {
+
+                if (fertilizer.canApply(state, world, pos, player, hand, heldStack, pot)) {
+
+                    return fertilizer;
                 }
             }
         }

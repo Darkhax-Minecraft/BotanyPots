@@ -5,6 +5,7 @@ import net.darkhax.bookshelf.api.block.IBindRenderLayer;
 import net.darkhax.bookshelf.api.block.InventoryBlock;
 import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.darkhax.botanypots.BotanyPotHelper;
+import net.darkhax.botanypots.data.recipes.fertilizer.Fertilizer;
 import net.darkhax.botanypots.data.recipes.potinteraction.PotInteraction;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
@@ -125,8 +126,21 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
 
         if (world.getBlockEntity(pos) instanceof BlockEntityBotanyPot potEntity) {
 
-            // Attempt right click interaction recipes.
             final ItemStack heldStack = player.getItemInHand(hand);
+
+            // Apply fertilizers, only if a valid crop is growing.
+            if (potEntity.areGrowthConditionsMet() && potEntity.getGrowthTime() > 0 && !potEntity.doneGrowing) {
+
+                final Fertilizer fertilizer = BotanyPotHelper.findFertilizer(state, world, pos, player, hand, heldStack, potEntity);
+
+                if (fertilizer != null) {
+
+                    fertilizer.apply(state, world, pos, player, hand, heldStack, potEntity);
+                    return InteractionResult.CONSUME;
+                }
+            }
+
+            // Attempt right click interaction recipes.
             final PotInteraction interaction = BotanyPotHelper.findPotInteraction(state, world, pos, player, hand, heldStack, potEntity);
 
             if (interaction != null) {
