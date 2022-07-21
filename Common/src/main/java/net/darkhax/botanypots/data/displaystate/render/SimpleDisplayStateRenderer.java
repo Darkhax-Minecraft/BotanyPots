@@ -1,13 +1,18 @@
 package net.darkhax.botanypots.data.displaystate.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.darkhax.bookshelf.api.client.FluidRenderer;
 import net.darkhax.botanypots.data.displaystate.SimpleDisplayState;
 import net.darkhax.botanypots.data.displaystate.math.AxisAlignedRotation;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 
@@ -38,19 +43,29 @@ public class SimpleDisplayStateRenderer extends DisplayStateRenderer<SimpleDispl
 
         final BlockState blockState = displayState.getRenderState(progress);
 
-        // TODO color is wrong
-        // TODO water does not render
+        // Render Fluid
         if (displayState.renderFluid) {
 
             final FluidState fluidState = blockState.getFluidState();
 
             if (fluidState != null && !fluidState.isEmpty()) {
 
-                //Minecraft.getInstance().getBlockRenderer().renderLiquid(pos, )
+                FluidRenderer.get().render(pose, fluidState, level, pos, bufferSource, light, OverlayTexture.NO_OVERLAY);
             }
         }
 
-        Minecraft.getInstance().getBlockRenderer().renderSingleBlock(blockState, pose, bufferSource, light, OverlayTexture.NO_OVERLAY);
+        // Render Model
+        if (blockState.getRenderShape() == RenderShape.MODEL) {
+
+            final BakedModel blockModel = Minecraft.getInstance().getBlockRenderer().getBlockModel(blockState);
+            final VertexConsumer builder = bufferSource.getBuffer(RenderType.cutout());
+            final int tintColor = Minecraft.getInstance().getBlockColors().getColor(blockState, level, pos, 0);
+            final float red = (float) (tintColor >> 16 & 255) / 255f;
+            final float green = (float) (tintColor >> 8 & 255) / 255f;
+            final float blue = (float) (tintColor & 255) / 255f;
+
+            Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(pose.last(), builder, blockState, blockModel, red, green, blue, light, OverlayTexture.NO_OVERLAY);
+        }
 
         pose.popPose();
     }

@@ -4,7 +4,8 @@
     "item": "minecraft:lava_bucket"
   },
   "display": {
-    "block": "minecraft:lava"
+    "block": "minecraft:lava",
+    "renderFluid": true
   },
   "categories": [
     "lava"

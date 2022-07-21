@@ -4,7 +4,8 @@
     "item": "minecraft:water_bucket"
   },
   "display": {
-    "block": "minecraft:water"
+    "block": "minecraft:water",
+    "renderFluid": true
   },
   "categories": [
     "water"
