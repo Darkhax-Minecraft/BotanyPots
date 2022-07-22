@@ -1,0 +1,51 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:sea_pickle"
+  },
+  "categories": [
+    "water"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "block": "minecraft:sea_pickle",
+        "properties": {
+          "pickles": 1
+        },
+        "renderFluid": false
+      },
+      {
+        "block": "minecraft:sea_pickle",
+        "properties": {
+          "pickles": 2
+        },
+        "renderFluid": false
+      },
+      {
+        "block": "minecraft:sea_pickle",
+        "properties": {
+          "pickles": 3
+        },
+        "renderFluid": false
+      },
+      {
+        "block": "minecraft:sea_pickle",
+        "properties": {
+          "pickles": 4
+        },
+        "renderFluid": false
+      }
+    ]
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:sea_pickle"
+      }
+    }
+  ]
+}

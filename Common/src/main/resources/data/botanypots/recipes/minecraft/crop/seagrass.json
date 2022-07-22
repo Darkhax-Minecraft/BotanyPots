@@ -1,0 +1,21 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:seagrass"
+  },
+  "categories": [
+    "water"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:seagrass"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:seagrass"
+      }
+    }
+  ]
+}

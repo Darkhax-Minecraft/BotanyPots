@@ -1,0 +1,32 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:large_fern"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "minecraft:large_fern",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "minecraft:large_fern",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:large_fern"
+      }
+    }
+  ]
+}

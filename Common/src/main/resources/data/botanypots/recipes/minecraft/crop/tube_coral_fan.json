@@ -1,0 +1,22 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:tube_coral"
+  },
+  "categories": [
+    "water"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:tube_coral",
+    "renderFluid": false
+  },
+  "drops": [
+    {
+      "chance": 0.60,
+      "output": {
+        "item": "minecraft:tube_coral"
+      }
+    }
+  ]
+}

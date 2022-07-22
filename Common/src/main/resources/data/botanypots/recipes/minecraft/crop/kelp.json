@@ -1,0 +1,24 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:kelp"
+  },
+  "categories": [
+    "water"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:kelp",
+    "properties": {
+      "age": 25
+    }
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:kelp"
+      }
+    }
+  ]
+}

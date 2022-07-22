@@ -1,0 +1,48 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:sweet_berries"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "lightLevel": 14,
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "block": "minecraft:sweet_berry_bush",
+        "properties": {
+          "age": 0
+        }
+      },
+      {
+        "block": "minecraft:sweet_berry_bush",
+        "properties": {
+          "age": 1
+        }
+      },
+      {
+        "block": "minecraft:sweet_berry_bush",
+        "properties": {
+          "age": 2
+        }
+      }
+    ]
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:sweet_berries"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:sweet_berries"
+      }
+    }
+  ]
+}
