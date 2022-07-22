@@ -10,6 +10,8 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.HopperBlock;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import javax.annotation.Nullable;
@@ -77,14 +79,15 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
         this.soil = BotanyPotHelper.getSoil(this.potEntity.getLevel(), this.getSoilStack());
         this.crop = BotanyPotHelper.getCrop(this.potEntity.getLevel(), this.getCropStack());
         this.requiredGrowthTime = BotanyPotHelper.getRequiredGrowthTicks(this.crop, this.soil);
-        this.getPotEntity().markDirty();
 
         final int potLight = this.getPotEntity().getLightLevel();
 
-        if (this.getPotEntity().getBlockState().getValue(BlockStateProperties.LEVEL) != potLight) {
+        if (this.getPotEntity().getLevel() != null && this.getPotEntity().getBlockState().getValue(BlockStateProperties.LEVEL) != potLight) {
 
-            this.getPotEntity().getLevel().setBlockAndUpdate(this.potEntity.getBlockPos(), this.getPotEntity().getBlockState().setValue(BlockStateProperties.LEVEL, potLight));
+            this.getPotEntity().getLevel().setBlock(this.potEntity.getBlockPos(), this.getPotEntity().getBlockState().setValue(BlockStateProperties.LEVEL, potLight), 3);
         }
+
+        this.getPotEntity().markDirty();
     }
 
     @Nullable
