@@ -4,7 +4,8 @@
     "item": "minecraft:sugar_cane"
   },
   "categories": [
-    "sand"
+    "sand",
+    "dirt"
   ],
   "growthTicks": 1200,
   "display": [
