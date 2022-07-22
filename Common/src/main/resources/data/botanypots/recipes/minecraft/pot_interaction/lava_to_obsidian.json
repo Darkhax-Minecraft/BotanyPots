@@ -1,0 +1,17 @@
+{
+  "type": "botanypots:simple_pot_interaction",
+  "held_ingredient": {
+    "item": "minecraft:water_bucket"
+  },
+  "soil_ingredient": {
+    "item": "minecraft:lava_bucket"
+  },
+  "soil_output": {
+    "item": "minecraft:obsidian",
+    "count": 1
+  },
+  "sound": {
+    "sound": "minecraft:block.fire.extinguish",
+    "category": "blocks"
+  }
+}
