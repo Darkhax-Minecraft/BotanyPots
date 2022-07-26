@@ -1,5 +1,5 @@
 {
-  "type": "botanypots:basic_fertilizer",
+  "type": "botanypots:fertilizer",
   "ingredient": {
     "item": "minecraft:bone_meal"
   },

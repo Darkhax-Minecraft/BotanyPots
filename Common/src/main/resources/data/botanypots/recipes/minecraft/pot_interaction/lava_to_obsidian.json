@@ -1,5 +1,5 @@
 {
-  "type": "botanypots:simple_pot_interaction",
+  "type": "botanypots:pot_interaction",
   "held_ingredient": {
     "item": "minecraft:water_bucket"
   },
