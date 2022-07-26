@@ -15,6 +15,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 public class BotanyPotMenu extends AbstractContainerMenu {
 
@@ -82,6 +83,9 @@ public class BotanyPotMenu extends AbstractContainerMenu {
     @Override
     public ItemStack quickMoveStack(Player player, int slotId) {
 
+        final BlockEntityBotanyPot pot = this.potInv.getPotEntity();
+        final Level level = pot.getLevel();
+        final BlockPos pos = pot.getBlockPos();
         final Slot slot = this.slots.get(slotId);
 
         final int firstSlot = this.isHopper() ? 14 : 2;
@@ -121,7 +125,7 @@ public class BotanyPotMenu extends AbstractContainerMenu {
                 final Slot soilSlot = this.slots.get(0);
 
                 // Try to insert a soil
-                if (!soilSlot.hasItem() && BotanyPotHelper.getSoil(this.potInv.getPotEntity().getLevel(), slotStack) != null) {
+                if (!soilSlot.hasItem() && BotanyPotHelper.findSoil(level, pos, pot, slotStack) != null) {
 
                     soilSlot.set(slotStack.split(1));
                     slot.set(slotStack);
@@ -134,7 +138,7 @@ public class BotanyPotMenu extends AbstractContainerMenu {
 
                 final Slot cropSlot = this.slots.get(1);
 
-                if (!cropSlot.hasItem() && BotanyPotHelper.getCrop(this.potInv.getPotEntity().getLevel(), slotStack) != null) {
+                if (!cropSlot.hasItem() && BotanyPotHelper.findCrop(level, pos, pot, slotStack) != null) {
 
                     cropSlot.set(slotStack.split(1));
                     slot.set(slotStack);

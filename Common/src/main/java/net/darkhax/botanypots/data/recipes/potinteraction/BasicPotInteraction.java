@@ -20,7 +20,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class SimplePotInteraction extends PotInteraction {
+public class BasicPotInteraction extends PotInteraction {
 
     protected final Ingredient heldTest;
 
@@ -43,7 +43,7 @@ public class SimplePotInteraction extends PotInteraction {
 
     protected final List<ItemStack> extraDrops;
 
-    public SimplePotInteraction(ResourceLocation id, Ingredient heldTest, boolean damageHeld, @Nullable Ingredient soilTest, @Nullable Ingredient seedTest, @Nullable ItemStack newSoilStack, @Nullable ItemStack newSeedStack, @Nullable Sound sound, List<ItemStack> extraDrops) {
+    public BasicPotInteraction(ResourceLocation id, Ingredient heldTest, boolean damageHeld, @Nullable Ingredient soilTest, @Nullable Ingredient seedTest, @Nullable ItemStack newSoilStack, @Nullable ItemStack newSeedStack, @Nullable Sound sound, List<ItemStack> extraDrops) {
 
         super(id);
 

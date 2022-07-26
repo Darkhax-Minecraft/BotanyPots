@@ -2,17 +2,14 @@ package net.darkhax.botanypots;
 
 import net.darkhax.bookshelf.api.function.CachedSupplier;
 import net.darkhax.bookshelf.api.registry.RegistryObject;
-import net.darkhax.bookshelf.api.util.MathsHelper;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
-import net.darkhax.botanypots.data.recipes.crop.CropInfo;
-import net.darkhax.botanypots.data.recipes.crop.HarvestEntry;
+import net.darkhax.botanypots.data.recipes.crop.Crop;
 import net.darkhax.botanypots.data.recipes.fertilizer.Fertilizer;
 import net.darkhax.botanypots.data.recipes.potinteraction.PotInteraction;
-import net.darkhax.botanypots.data.recipes.soil.SoilInfo;
+import net.darkhax.botanypots.data.recipes.soil.Soil;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -23,120 +20,138 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
-import java.util.Optional;
-import java.util.Random;
+import java.util.List;
 
 public class BotanyPotHelper {
 
-    public static final CachedSupplier<RecipeType<SoilInfo>> SOIL_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "soil").cast();
+    public static final CachedSupplier<RecipeType<Soil>> SOIL_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "soil").cast();
     public static final CachedSupplier<RecipeSerializer<?>> SOIL_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "soil").cast();
 
-    public static final CachedSupplier<RecipeType<CropInfo>> CROP_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "crop").cast();
+    public static final CachedSupplier<RecipeType<Crop>> CROP_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "crop").cast();
     public static final CachedSupplier<RecipeSerializer<?>> CROP_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "crop").cast();
 
     public static final CachedSupplier<RecipeType<PotInteraction>> POT_INTERACTION_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "pot_interaction").cast();
-    public static final CachedSupplier<RecipeSerializer<?>> SIMPLE_POT_INTERACTION_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "simple_pot_interaction").cast();
+    public static final CachedSupplier<RecipeSerializer<?>> SIMPLE_POT_INTERACTION_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "pot_interaction").cast();
 
     public static final CachedSupplier<RecipeType<Fertilizer>> FERTILIZER_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "fertilizer").cast();
-    public static final CachedSupplier<RecipeSerializer<?>> BASIC_FERTILIZER_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "basic_fertilizer").cast();
+    public static final CachedSupplier<RecipeSerializer<?>> BASIC_FERTILIZER_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "fertilizer").cast();
 
-    public static Optional<SoilInfo> getSoil(RecipeManager manager, ResourceLocation id) {
+    /**
+     * Calculates the amount of growth ticks required for a crop to be considered fully grown.
+     *
+     * @param level The level of the world that the crop is growing in.
+     * @param pos   The position of the pot growing the crop.
+     * @param pot   The pot growing the crop.
+     * @param crop  The crop being grown.
+     * @param soil  The soil being grown.
+     * @return The amount of growth ticks required for a crop to be fully grown. A result of -1 indicates that the crop
+     * can not grow.
+     */
+    public static int getRequiredGrowthTicks(Level level, BlockPos pos, BlockEntityBotanyPot pot, @Nullable Crop crop, @Nullable Soil soil) {
 
-        return (Optional<SoilInfo>) manager.byKey(id);
-    }
+        if (crop == null || soil == null) {
 
-    public static Optional<CropInfo> getCrop(RecipeManager manager, ResourceLocation id) {
+            return -1;
+        }
 
-        return (Optional<CropInfo>) manager.byKey(id);
+        final float requiredGrowthTicks = crop.getGrowthTicks(level, pos, pot, soil);
+        final float growthModifier = soil.getGrowthModifier(level, pos, pot, crop);
+
+        if (growthModifier >= 0) {
+
+            return Mth.floor(requiredGrowthTicks * growthModifier);
+        }
+
+        return -1;
     }
 
     /**
-     * Gets the total amount of world ticks required for a specific crop to reach maturity when planted in a given
-     * soil.
+     * Tests if a crop can grow in the specified growing condition.s
      *
-     * @param crop The crop to calculate.
-     * @param soil The soil to calculate.
-     * @return The total amount of world ticks for the crop to reach maturity when planted in the given soil.
+     * @param level The level of the world that the crop is growing in.
+     * @param pos   The position of the pot growing the crop.
+     * @param pot   The pot that the crop is growing in.
+     * @param soil  The soil that the crop is growing in.
+     * @param crop  The crop being grown.
+     * @return Whether the crop can grow or not.
      */
-    public static int getRequiredGrowthTicks(@Nullable CropInfo crop, @Nullable SoilInfo soil) {
-
-        return crop == null || soil == null ? -1 : crop.getGrowthTicksForSoil(soil);
-    }
-
-    @Nullable
-    public static SoilInfo getSoil(@Nullable Level worldLevel, ItemStack item) {
-
-        return worldLevel != null ? getSoil(worldLevel.getRecipeManager(), item) : null;
-    }
-
-    @Nullable
-    public static SoilInfo getSoil(@Nullable RecipeManager manager, ItemStack item) {
-
-        if (manager != null && !item.isEmpty()) {
-
-            for (final SoilInfo soilInfo : manager.getAllRecipesFor(SOIL_TYPE.get())) {
-
-                if (soilInfo.getIngredient().test(item)) {
-
-                    return soilInfo;
-                }
-            }
-        }
-
-        return null;
-    }
-
-    @Nullable
-    public static CropInfo getCrop(@Nullable Level worldLevel, ItemStack item) {
-
-        return worldLevel != null ? getCrop(worldLevel.getRecipeManager(), item) : null;
-    }
-
-    @Nullable
-    public static CropInfo getCrop(RecipeManager manager, ItemStack item) {
-
-        if (!item.isEmpty()) {
-
-            for (final CropInfo cropInfo : manager.getAllRecipesFor(CROP_TYPE.get())) {
-
-                if (cropInfo.getSeed().test(item)) {
-
-                    return cropInfo;
-                }
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Checks if a crop can be planted in a given soil.
-     *
-     * @param soil The soil to plant in.
-     * @param crop The crop to plant.
-     * @return Whether the soil is valid for the crop or not.
-     */
-    public static boolean isSoilValidForCrop(SoilInfo soil, CropInfo crop) {
+    public static boolean canCropGrow(Level level, BlockPos pos, BlockEntityBotanyPot pot, Soil soil, Crop crop) {
 
         if (soil == null || crop == null) {
 
             return false;
         }
 
-        for (final String soilCategory : soil.getCategories()) {
+        return soil.canGrowCrop(level, pos, pot, crop) && crop.canGrowInSoil(level, pos, pot, soil);
+    }
 
-            for (final String cropCategory : crop.getSoilCategories()) {
+    /**
+     * Attempts to find a soil entry in the game recipe manager.
+     *
+     * @param level     The level of the world that the soil is being placed.
+     * @param pos       The position of the pot.
+     * @param pot       The pot that the soil would go into.
+     * @param soilStack The item being used.
+     * @return A soil that is applicable for the provided context. If no soil is found the result will be null.
+     */
+    @Nullable
+    public static Soil findSoil(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack soilStack) {
 
-                if (soilCategory.equalsIgnoreCase(cropCategory)) {
+        if (level != null && !soilStack.isEmpty()) {
 
-                    return true;
+            final RecipeManager manager = level.getRecipeManager();
+
+            for (final Soil Soil : manager.getAllRecipesFor(SOIL_TYPE.get())) {
+
+                if (Soil.matchesLookup(level, pos, pot, soilStack)) {
+
+                    return Soil;
                 }
             }
         }
 
-        return false;
+        return null;
     }
 
+    /**
+     * Attempts to find a crop entry in the game recipe manager.
+     *
+     * @param level The level of the world that the crop is being placed.
+     * @param pos   The position of the pot.
+     * @param pot   The pot that the crop would go into.
+     * @param stack The item being used.
+     * @return A crop that is applicable for the provided context. If no crop is found the result will be null.
+     */
+    @Nullable
+    public static Crop findCrop(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack) {
+
+        if (level != null && !stack.isEmpty()) {
+
+            for (final Crop Crop : level.getRecipeManager().getAllRecipesFor(CROP_TYPE.get())) {
+
+                if (Crop.matchesLookup(level, pos, pot, stack)) {
+
+                    return Crop;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Attempts to find a pot interaction based on the provided context.
+     *
+     * @param state     The state of the pot being interacted with.
+     * @param world     The world the pot is in.
+     * @param pos       The position of the pot.
+     * @param player    The player interacting with the pot.
+     * @param hand      The hand being used.
+     * @param heldStack The stack being used.
+     * @param pot       The pot being interacted with.
+     * @return A pot interaction applicable for the provided context. If no interaction could be found the result will
+     * be null.
+     */
     @Nullable
     public static PotInteraction findPotInteraction(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot) {
 
@@ -154,6 +169,19 @@ public class BotanyPotHelper {
         return null;
     }
 
+    /**
+     * Attempts to find a fertilizer based on the provided context.
+     *
+     * @param state     The state of the pot being interacted with.
+     * @param world     The world the pot is in.
+     * @param pos       The position of the pot.
+     * @param player    The player interacting with the pot.
+     * @param hand      The hand being used.
+     * @param heldStack The stack being used.
+     * @param pot       The pot being interacted with.
+     * @return A fertilizer applicable for the provided context. If no fertilizer could be found the result will be
+     * null.
+     */
     @Nullable
     public static Fertilizer findFertilizer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot) {
 
@@ -171,26 +199,17 @@ public class BotanyPotHelper {
         return null;
     }
 
-    public static NonNullList<ItemStack> generateDrop(Random rand, CropInfo crop) {
+    /**
+     * Generates the harvested drops for a crop.
+     *
+     * @param level The world the pot is in.
+     * @param pos   The position of the pot.
+     * @param pot   The pot being harvested from.
+     * @param crop  The crop being harvested.
+     * @return A list of drops generated by harvesting the crop.
+     */
+    public static List<ItemStack> generateDrop(Level level, BlockPos pos, BlockEntityBotanyPot pot, Crop crop) {
 
-        final NonNullList<ItemStack> drops = NonNullList.create();
-
-        for (final HarvestEntry cropEntry : crop.getResults()) {
-
-            if (rand.nextFloat() <= cropEntry.getChance()) {
-
-                final int rolls = MathsHelper.nextIntInclusive(rand, cropEntry.getMinRolls(), cropEntry.getMaxRolls());
-
-                if (rolls > 0) {
-
-                    for (int roll = 0; roll < rolls; roll++) {
-
-                        drops.add(cropEntry.getItem().copy());
-                    }
-                }
-            }
-        }
-
-        return drops;
+        return crop.generateDrops(level, pos, pot);
     }
 }

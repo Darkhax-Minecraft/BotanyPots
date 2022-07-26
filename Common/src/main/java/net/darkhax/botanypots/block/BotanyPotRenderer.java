@@ -7,7 +7,9 @@ import net.darkhax.botanypots.data.displaystate.render.DisplayStateRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.Level;
 
 public class BotanyPotRenderer implements BlockEntityRenderer<BlockEntityBotanyPot> {
 
@@ -18,7 +20,10 @@ public class BotanyPotRenderer implements BlockEntityRenderer<BlockEntityBotanyP
     @Override
     public void render(BlockEntityBotanyPot pot, float tickDelta, PoseStack pose, MultiBufferSource bufferSource, int light, int overlay) {
 
-        if (pot.getSoilInfo() != null) {
+        if (pot.getSoil() != null) {
+
+            final Level level = pot.getLevel();
+            final BlockPos pos = pot.getBlockPos();
 
             final int maxGrowth = pot.getInventory().getRequiredGrowthTime();
             final float partialOffset = pot.getGrowthTime() < maxGrowth ? tickDelta : 0f;
@@ -29,11 +34,11 @@ public class BotanyPotRenderer implements BlockEntityRenderer<BlockEntityBotanyP
             pose.scale(0.625f, 0.375f, 0.625f);
             pose.translate(0.3, 0.0625, 0.3);
 
-            DisplayStateRenderer.renderState(pot.getSoilInfo().getRenderState(), pose, pot.getLevel(), pot.getBlockPos(), bufferSource, light, overlay, growthProgress);
+            DisplayStateRenderer.renderState(pot.getSoil().getDisplayState(level, pos, pot), pose, level, pos, bufferSource, light, overlay, growthProgress);
 
             pose.popPose();
 
-            if (pot.getCropInfo() != null && BotanyPotHelper.isSoilValidForCrop(pot.getSoilInfo(), pot.getCropInfo())) {
+            if (pot.getCrop() != null && BotanyPotHelper.canCropGrow(level, pos, pot, pot.getSoil(), pot.getCrop())) {
 
                 pose.pushPose();
 
@@ -48,7 +53,7 @@ public class BotanyPotRenderer implements BlockEntityRenderer<BlockEntityBotanyP
 
                 int previousBlocks = 0;
 
-                for (DisplayState state : pot.getCropInfo().getDisplayState()) {
+                for (DisplayState state : pot.getCrop().getDisplayState(level, pos, pot)) {
 
                     if (previousBlocks > 0) {
 

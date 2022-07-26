@@ -13,12 +13,12 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class SimplePotInteractionSerializer extends IRecipeSerializer<SimplePotInteraction> {
+public final class BasicPotInteractionSerializer extends IRecipeSerializer<BasicPotInteraction> {
 
-    public static final IRecipeSerializer<?> SERIALIZER = new SimplePotInteractionSerializer();
+    public static final IRecipeSerializer<?> SERIALIZER = new BasicPotInteractionSerializer();
 
     @Override
-    public SimplePotInteraction fromJson(ResourceLocation id, JsonObject json) {
+    public BasicPotInteraction fromJson(ResourceLocation id, JsonObject json) {
 
         final Ingredient heldTest = Serializers.INGREDIENT.fromJSON(json, "held_ingredient");
         final boolean damageHeld = Serializers.BOOLEAN.fromJSON(json, "damage_held", true);
@@ -39,11 +39,11 @@ public final class SimplePotInteractionSerializer extends IRecipeSerializer<Simp
             throw new JsonParseException("Recipe requires at least one output.");
         }
 
-        return new SimplePotInteraction(id, heldTest, damageHeld, soilTest, seedTest, soilOutput, seedOutput, sound, extraDrops);
+        return new BasicPotInteraction(id, heldTest, damageHeld, soilTest, seedTest, soilOutput, seedOutput, sound, extraDrops);
     }
 
     @Override
-    public SimplePotInteraction fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
+    public BasicPotInteraction fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
 
         final Ingredient heldTest = Serializers.INGREDIENT.fromByteBuf(buffer);
         final boolean damageHeld = Serializers.BOOLEAN.fromByteBuf(buffer);
@@ -54,11 +54,11 @@ public final class SimplePotInteractionSerializer extends IRecipeSerializer<Simp
         final Sound sound = Serializers.SOUND.fromByteBufNullable(buffer);
         final List<ItemStack> extraDrops = Serializers.ITEM_STACK.fromByteBufList(buffer);
 
-        return new SimplePotInteraction(id, heldTest, damageHeld, soilTest, seedTest, soilOutput, seedOutput, sound, extraDrops);
+        return new BasicPotInteraction(id, heldTest, damageHeld, soilTest, seedTest, soilOutput, seedOutput, sound, extraDrops);
     }
 
     @Override
-    public void toNetwork(FriendlyByteBuf buffer, SimplePotInteraction toWrite) {
+    public void toNetwork(FriendlyByteBuf buffer, BasicPotInteraction toWrite) {
 
         Serializers.INGREDIENT.toByteBuf(buffer, toWrite.heldTest);
         Serializers.BOOLEAN.toByteBuf(buffer, toWrite.damageHeld);

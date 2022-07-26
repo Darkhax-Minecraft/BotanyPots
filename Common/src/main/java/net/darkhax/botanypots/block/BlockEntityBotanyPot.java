@@ -11,8 +11,8 @@ import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.block.inv.BotanyPotContainer;
 import net.darkhax.botanypots.block.inv.BotanyPotMenu;
-import net.darkhax.botanypots.data.recipes.crop.CropInfo;
-import net.darkhax.botanypots.data.recipes.soil.SoilInfo;
+import net.darkhax.botanypots.data.recipes.crop.Crop;
+import net.darkhax.botanypots.data.recipes.soil.Soil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -58,15 +58,15 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
     }
 
     @Nullable
-    public CropInfo getCropInfo() {
+    public Crop getCrop() {
 
-        return this.getInventory().getCropInfo();
+        return this.getInventory().getCrop();
     }
 
     @Nullable
-    public SoilInfo getSoilInfo() {
+    public Soil getSoil() {
 
-        return this.getInventory().getSoilInfo();
+        return this.getInventory().getSoil();
     }
 
     public boolean isGrowing() {
@@ -76,7 +76,7 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
 
     public boolean areGrowthConditionsMet() {
 
-        return BotanyPotHelper.isSoilValidForCrop(this.getSoilInfo(), this.getCropInfo());
+        return BotanyPotHelper.canCropGrow(this.level, this.getBlockPos(), this, this.getSoil(), this.getCrop());
     }
 
     public boolean isCropHarvestable() {
@@ -86,11 +86,11 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
 
     public int getLightLevel() {
 
-        final SoilInfo soil = this.getSoilInfo();
-        final CropInfo crop = this.getCropInfo();
+        final Soil soil = this.getSoil();
+        final Crop crop = this.getCrop();
 
-        final int soilLight = soil != null ? soil.getLightLevel() : 0;
-        final int cropLight = crop != null ? crop.getLightLevel() : 0;
+        final int soilLight = soil != null ? soil.getLightLevel(this.level, this.getBlockPos(), this) : 0;
+        final int cropLight = crop != null ? crop.getLightLevel(this.level, this.getBlockPos(), this) : 0;
         return Math.max(soilLight, cropLight);
     }
 
@@ -106,22 +106,22 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
 
     public boolean isValidSoil(ItemStack stack) {
 
-        return BotanyPotHelper.getSoil(this.getLevel(), stack) != null;
+        return BotanyPotHelper.findSoil(this.level, this.getBlockPos(), this, stack) != null;
     }
 
     public boolean isValidSeed(ItemStack stack) {
 
-        return BotanyPotHelper.getCrop(this.getLevel(), stack) != null;
+        return BotanyPotHelper.findCrop(this.level, this.getBlockPos(), this, stack) != null;
     }
 
     public void attemptAutoHarvest() {
 
         // TODO Spawn Block Break Particles
-        if (this.getLevel() != null && !this.getLevel().isClientSide && this.getCropInfo() != null) {
+        if (this.getLevel() != null && !this.getLevel().isClientSide && this.getCrop() != null) {
 
             final ContainerInventoryAccess<BotanyPotContainer> inventory = new ContainerInventoryAccess<>(this.getInventory());
 
-            for (ItemStack drop : BotanyPotHelper.generateDrop(this.getLevel().random, this.getCropInfo())) {
+            for (ItemStack drop : BotanyPotHelper.generateDrop(this.level, this.getBlockPos(), this, this.getCrop())) {
 
                 for (int slot : BotanyPotContainer.STORAGE_SLOT) {
 
@@ -174,10 +174,23 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
 
         pot.getInventory().update();
 
+        final Soil soil = pot.getSoil();
+        final Crop crop = pot.getCrop();
+
+        if (soil != null) {
+
+            soil.onTick(level, pos, pot);
+        }
+
+        if (crop != null) {
+
+            crop.onTick(level, pos, pot);
+        }
+
         // Harvesting Logic
         if (pot.isHopper()) {
 
-            if (pot.isCropHarvestable() && pot.getCropInfo() != null) {
+            if (pot.isCropHarvestable() && crop != null) {
 
                 pot.attemptAutoHarvest();
                 pot.resetGrowth();
@@ -190,13 +203,15 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
         }
 
         // Growth Logic
-        if (pot.areGrowthConditionsMet()) {
+        if (soil != null && crop != null && pot.areGrowthConditionsMet()) {
 
             if (!pot.doneGrowing) {
 
                 pot.growthTime++;
-                pot.prevComparatorLevel = pot.comparatorLevel;
+                soil.onGrowthTick(level, pos, pot, crop);
+                crop.onGrowthTick(level, pos, pot, soil);
 
+                pot.prevComparatorLevel = pot.comparatorLevel;
                 pot.comparatorLevel = Mth.floor(15f * ((float) pot.growthTime / pot.getInventory().getRequiredGrowthTime()));
 
                 final boolean finishedGrowing = pot.growthTime >= pot.getInventory().getRequiredGrowthTime();

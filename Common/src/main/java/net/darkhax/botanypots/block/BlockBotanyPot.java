@@ -150,11 +150,11 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
             }
 
             // Attempt harvesting the pot.
-            else if (!player.isCrouching() && !potEntity.isHopper() && potEntity.doneGrowing && potEntity.getCropInfo() != null) {
+            else if (!player.isCrouching() && !potEntity.isHopper() && potEntity.doneGrowing && potEntity.getCrop() != null) {
 
                 if (!world.isClientSide) {
 
-                    for (ItemStack drop : BotanyPotHelper.generateDrop(world.random, potEntity.getCropInfo())) {
+                    for (ItemStack drop : BotanyPotHelper.generateDrop(world, pos, potEntity, potEntity.getCrop())) {
 
                         popResource(world, pos, drop);
                     }

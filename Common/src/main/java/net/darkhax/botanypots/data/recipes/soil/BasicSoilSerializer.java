@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public final class SoilRecipeSerializer extends IRecipeSerializer<SoilInfo> {
+public final class BasicSoilSerializer extends IRecipeSerializer<BasicSoil> {
 
-    public static SoilRecipeSerializer SERIALIZER = new SoilRecipeSerializer();
+    public static BasicSoilSerializer SERIALIZER = new BasicSoilSerializer();
 
     @Override
-    public SoilInfo fromJson(ResourceLocation id, JsonObject json) {
+    public BasicSoil fromJson(ResourceLocation id, JsonObject json) {
 
         final Ingredient input = Serializers.INGREDIENT.fromJSON(json, "input");
         final DisplayState renderState = DisplayState.SERIALIZER.fromJSON(json, "display");
@@ -36,11 +36,11 @@ public final class SoilRecipeSerializer extends IRecipeSerializer<SoilInfo> {
             throw new JsonParseException("Soil " + id + " has an invalid light level. Light levels must be between 0 and 15. Light level was " + lightLevel);
         }
 
-        return new SoilInfo(id, input, renderState, growthModifier, categories, lightLevel);
+        return new BasicSoil(id, input, renderState, growthModifier, categories, lightLevel);
     }
 
     @Override
-    public SoilInfo fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
+    public BasicSoil fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
 
         final Ingredient ingredient = Serializers.INGREDIENT.fromByteBuf(buffer);
         final DisplayState renderState = DisplayState.SERIALIZER.fromByteBuf(buffer);
@@ -48,16 +48,16 @@ public final class SoilRecipeSerializer extends IRecipeSerializer<SoilInfo> {
         final Set<String> categories = new HashSet<>(Serializers.STRING.fromByteBufList(buffer));
         final int lightLevel = Serializers.INT.fromByteBuf(buffer);
 
-        return new SoilInfo(id, ingredient, renderState, growthModifier, categories, lightLevel);
+        return new BasicSoil(id, ingredient, renderState, growthModifier, categories, lightLevel);
     }
 
     @Override
-    public void toNetwork(FriendlyByteBuf buffer, SoilInfo soilInfo) {
+    public void toNetwork(FriendlyByteBuf buffer, BasicSoil soilInfo) {
 
-        Serializers.INGREDIENT.toByteBuf(buffer, soilInfo.getIngredient());
-        DisplayState.SERIALIZER.toByteBuf(buffer, soilInfo.getRenderState());
-        Serializers.FLOAT.toByteBuf(buffer, soilInfo.getGrowthModifier());
-        Serializers.STRING.toByteBufList(buffer, new ArrayList<>(soilInfo.getCategories()));
-        Serializers.INT.toByteBuf(buffer, soilInfo.getLightLevel());
+        Serializers.INGREDIENT.toByteBuf(buffer, soilInfo.ingredient);
+        DisplayState.SERIALIZER.toByteBuf(buffer, soilInfo.displayState);
+        Serializers.FLOAT.toByteBuf(buffer, soilInfo.growthModifier);
+        Serializers.STRING.toByteBufList(buffer, new ArrayList<>(soilInfo.categories));
+        Serializers.INT.toByteBuf(buffer, soilInfo.lightLevel);
     }
 }

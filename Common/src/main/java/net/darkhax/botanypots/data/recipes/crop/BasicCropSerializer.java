@@ -11,12 +11,12 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.List;
 import java.util.Set;
 
-public final class CropRecipeSerializer extends IRecipeSerializer<CropInfo> {
+public final class BasicCropSerializer extends IRecipeSerializer<BasicCrop> {
 
-    public static CropRecipeSerializer SERIALIZER = new CropRecipeSerializer();
+    public static BasicCropSerializer SERIALIZER = new BasicCropSerializer();
 
     @Override
-    public CropInfo fromJson(ResourceLocation id, JsonObject json) {
+    public BasicCrop fromJson(ResourceLocation id, JsonObject json) {
 
         final Ingredient seed = Serializers.INGREDIENT.fromJSON(json, "seed");
         final Set<String> validSoils = Serializers.STRING.fromJSONSet(json, "categories");
@@ -30,11 +30,11 @@ public final class CropRecipeSerializer extends IRecipeSerializer<CropInfo> {
             throw new IllegalArgumentException("Crop " + id + " has an invalid growth tick rate. It must use a positive integer.");
         }
 
-        return new CropInfo(id, seed, validSoils, growthTicks, results, states, lightLevel);
+        return new BasicCrop(id, seed, validSoils, growthTicks, results, states, lightLevel);
     }
 
     @Override
-    public CropInfo fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
+    public BasicCrop fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
 
         final Ingredient seed = Serializers.INGREDIENT.fromByteBuf(buffer);
         final Set<String> validSoils = Serializers.STRING.readByteBufSet(buffer);
@@ -43,17 +43,17 @@ public final class CropRecipeSerializer extends IRecipeSerializer<CropInfo> {
         final List<DisplayState> displayStates = DisplayState.SERIALIZER.fromByteBufList(buffer);
         final int lightLevel = Serializers.INT.fromByteBuf(buffer);
 
-        return new CropInfo(id, seed, validSoils, growthTicks, results, displayStates, lightLevel);
+        return new BasicCrop(id, seed, validSoils, growthTicks, results, displayStates, lightLevel);
     }
 
     @Override
-    public void toNetwork(FriendlyByteBuf buffer, CropInfo toWrite) {
+    public void toNetwork(FriendlyByteBuf buffer, BasicCrop toWrite) {
 
-        Serializers.INGREDIENT.toByteBuf(buffer, toWrite.getSeed());
-        Serializers.STRING.writeByteBufSet(buffer, toWrite.getSoilCategories());
-        Serializers.INT.toByteBuf(buffer, toWrite.getGrowthTicks());
-        SerializerHarvestEntry.SERIALIZER.toByteBufList(buffer, toWrite.getResults());
-        DisplayState.SERIALIZER.toByteBufList(buffer, toWrite.getDisplayState());
-        Serializers.INT.toByteBuf(buffer, toWrite.getLightLevel());
+        Serializers.INGREDIENT.toByteBuf(buffer, toWrite.seed);
+        Serializers.STRING.writeByteBufSet(buffer, toWrite.soilCategories);
+        Serializers.INT.toByteBuf(buffer, toWrite.growthTicks);
+        SerializerHarvestEntry.SERIALIZER.toByteBufList(buffer, toWrite.results);
+        DisplayState.SERIALIZER.toByteBufList(buffer, toWrite.displayStates);
+        Serializers.INT.toByteBuf(buffer, toWrite.lightLevel);
     }
 }

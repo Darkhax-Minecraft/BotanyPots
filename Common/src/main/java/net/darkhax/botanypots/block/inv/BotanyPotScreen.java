@@ -5,19 +5,22 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
-import net.darkhax.botanypots.data.recipes.crop.CropInfo;
-import net.darkhax.botanypots.data.recipes.soil.SoilInfo;
+import net.darkhax.botanypots.data.recipes.crop.Crop;
+import net.darkhax.botanypots.data.recipes.soil.Soil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -80,8 +83,11 @@ public class BotanyPotScreen extends AbstractContainerScreen<BotanyPotMenu> {
         if (this.minecraft != null) {
 
             final boolean isAdvanced = this.minecraft.options.advancedItemTooltips;
-            final BlockEntityBotanyPot pot = this.menu.getPotInventory().getPotEntity();
+            final Player player = minecraft.player;
             ;
+            final BlockEntityBotanyPot pot = this.menu.getPotInventory().getPotEntity();
+            final Level level = pot.getLevel();
+            final BlockPos pos = pot.getBlockPos();
 
             // Add soil slot tooltips.
             if (this.hoveredSlot instanceof SlotSoil soilSlot) {
@@ -96,24 +102,25 @@ public class BotanyPotScreen extends AbstractContainerScreen<BotanyPotMenu> {
 
                 else {
 
-                    final SoilInfo soil = BotanyPotHelper.getSoil(pot.getLevel(), stack);
+                    final Soil soil = BotanyPotHelper.findSoil(level, pos, pot, stack);
 
                     // Add information about how the soil behaves.
                     if (soil != null) {
 
-                        if (pot.getCropInfo() == null) {
+                        if (pot.getCrop() == null) {
 
                             tooltips.add(TOOLTIP_MISSING_SEED);
                         }
 
-                        else if (!BotanyPotHelper.isSoilValidForCrop(soil, pot.getCropInfo())) {
+                        else if (!BotanyPotHelper.canCropGrow(level, pos, pot, soil, pot.getCrop())) {
 
                             tooltips.add(TOOLTIP_INCORRECT_SOIL);
                         }
 
                         else {
 
-                            final MutableComponent multiplier = new TextComponent(MULTIPLIER_FORMAT.format(soil.getGrowthModifier())).withStyle(soil.getGrowthModifier() > 1 ? ChatFormatting.GREEN : soil.getGrowthModifier() < 1 ? ChatFormatting.RED : ChatFormatting.GRAY);
+                            final float growthModifier = soil.getGrowthModifier(level, pos, pot, pot.getCrop());
+                            final MutableComponent multiplier = new TextComponent(MULTIPLIER_FORMAT.format(growthModifier)).withStyle(growthModifier > 1 ? ChatFormatting.GREEN : growthModifier < 1 ? ChatFormatting.RED : ChatFormatting.GRAY);
                             tooltips.add(new TranslatableComponent("tooltip.botanypots.soil_modifier", multiplier).withStyle(ChatFormatting.GRAY));
                         }
                     }
@@ -128,16 +135,16 @@ public class BotanyPotScreen extends AbstractContainerScreen<BotanyPotMenu> {
                     tooltips.add(TOOLTIP_INVALID_CROP);
                 }
 
-                final CropInfo crop = BotanyPotHelper.getCrop(pot.getLevel(), stack);
+                final Crop crop = BotanyPotHelper.findCrop(level, pos, pot, stack);
 
                 if (crop != null) {
 
-                    if (pot.getSoilInfo() == null) {
+                    if (pot.getSoil() == null) {
 
                         tooltips.add(TOOLTIP_MISSING_SOIL);
                     }
 
-                    else if (!BotanyPotHelper.isSoilValidForCrop(pot.getSoilInfo(), crop)) {
+                    else if (!BotanyPotHelper.canCropGrow(level, pos, pot, pot.getSoil(), crop)) {
 
                         tooltips.add(TOOLTIP_INCORRECT_SEED);
                     }
@@ -146,7 +153,7 @@ public class BotanyPotScreen extends AbstractContainerScreen<BotanyPotMenu> {
 
             else {
 
-                final SoilInfo hoverSoil = BotanyPotHelper.getSoil(pot.getLevel(), stack);
+                final Soil hoverSoil = BotanyPotHelper.findSoil(level, pos, pot, stack);
 
                 if (hoverSoil != null) {
 
@@ -158,7 +165,7 @@ public class BotanyPotScreen extends AbstractContainerScreen<BotanyPotMenu> {
                     }
                 }
 
-                final CropInfo hoveredCrop = BotanyPotHelper.getCrop(pot.getLevel(), stack);
+                final Crop hoveredCrop = BotanyPotHelper.findCrop(level, pos, pot, stack);
 
                 if (hoveredCrop != null) {
 

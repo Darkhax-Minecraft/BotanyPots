@@ -2,16 +2,15 @@ package net.darkhax.botanypots.block.inv;
 
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
-import net.darkhax.botanypots.data.recipes.crop.CropInfo;
-import net.darkhax.botanypots.data.recipes.soil.SoilInfo;
+import net.darkhax.botanypots.data.recipes.crop.Crop;
+import net.darkhax.botanypots.data.recipes.soil.Soil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.HopperBlock;
-import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import javax.annotation.Nullable;
@@ -27,10 +26,10 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
     private final BlockEntityBotanyPot potEntity;
 
     @Nullable
-    private SoilInfo soil = null;
+    private Soil soil = null;
 
     @Nullable
-    private CropInfo crop = null;
+    private Crop crop = null;
 
     private int requiredGrowthTime = -1;
 
@@ -62,8 +61,11 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
 
     public void update() {
 
-        final boolean revalidateSoil = !this.getSoilStack().isEmpty() && this.soil == null && BotanyPotHelper.getSoil(this.potEntity.getLevel(), this.getSoilStack()) != null;
-        final boolean revalidateCrop = !this.getCropStack().isEmpty() && this.crop == null && BotanyPotHelper.getCrop(this.potEntity.getLevel(), this.getCropStack()) != null;
+        final Level level = this.potEntity.getLevel();
+        final BlockPos pos = this.potEntity.getBlockPos();
+
+        final boolean revalidateSoil = !this.getSoilStack().isEmpty() && this.soil == null && BotanyPotHelper.findSoil(level, pos, potEntity, this.getSoilStack()) != null;
+        final boolean revalidateCrop = !this.getCropStack().isEmpty() && this.crop == null && BotanyPotHelper.findCrop(level, pos, potEntity, this.getCropStack()) != null;
 
         if (revalidateSoil || revalidateCrop) {
 
@@ -76,9 +78,12 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
 
         super.setChanged();
 
-        this.soil = BotanyPotHelper.getSoil(this.potEntity.getLevel(), this.getSoilStack());
-        this.crop = BotanyPotHelper.getCrop(this.potEntity.getLevel(), this.getCropStack());
-        this.requiredGrowthTime = BotanyPotHelper.getRequiredGrowthTicks(this.crop, this.soil);
+        final Level level = this.potEntity.getLevel();
+        final BlockPos pos = this.potEntity.getBlockPos();
+
+        this.soil = BotanyPotHelper.findSoil(level, pos, potEntity, this.getSoilStack());
+        this.crop = BotanyPotHelper.findCrop(level, pos, potEntity, this.getCropStack());
+        this.requiredGrowthTime = BotanyPotHelper.getRequiredGrowthTicks(potEntity.getLevel(), potEntity.getBlockPos(), potEntity, this.crop, this.soil);
 
         final int potLight = this.getPotEntity().getLightLevel();
 
@@ -91,13 +96,13 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
     }
 
     @Nullable
-    public CropInfo getCropInfo() {
+    public Crop getCrop() {
 
         return this.crop;
     }
 
     @Nullable
-    public SoilInfo getSoilInfo() {
+    public Soil getSoil() {
 
         return this.soil;
     }
@@ -105,16 +110,19 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
     @Override
     public boolean canPlaceItem(int slotId, ItemStack toPlace) {
 
+        final Level level = this.potEntity.getLevel();
+        final BlockPos pos = this.potEntity.getBlockPos();
+
         // Only allow soils in the soil slot.
         if (slotId == SOIL_SLOT && this.getItem(slotId).isEmpty()) {
 
-            return BotanyPotHelper.getSoil(this.potEntity.getLevel(), toPlace) != null;
+            return BotanyPotHelper.findSoil(level, pos, potEntity, toPlace) != null;
         }
 
         // Only allow crop seeds in the crop slot.
         if (slotId == CROP_SLOT && this.getItem(slotId).isEmpty()) {
 
-            return BotanyPotHelper.getCrop(this.potEntity.getLevel(), toPlace) != null;
+            return BotanyPotHelper.findCrop(level, pos, potEntity, toPlace) != null;
         }
 
         // Other slots are not accessible with automation.
