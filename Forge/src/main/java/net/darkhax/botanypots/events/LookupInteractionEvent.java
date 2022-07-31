@@ -14,13 +14,13 @@ import javax.annotation.Nullable;
 
 @Cancelable
 public class LookupInteractionEvent extends BotanyPotEvent {
-    
+
     private final BlockState state;
-    
+
     private final Player player;
-    
+
     private final InteractionHand hand;
-    
+
     private final ItemStack stack;
 
     @Nullable

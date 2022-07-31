@@ -23,7 +23,7 @@ public interface ICropDropListener {
      * @param pot           The pot growing the crop.
      * @param crop          The crop being harvested.
      * @param originalDrops The original drops for the crop.
-     * @param drops The new items to drop.
+     * @param drops         The new items to drop.
      */
     void generateDrop(Random rng, Level level, BlockPos pos, BlockEntityBotanyPot pot, Crop crop, List<ItemStack> originalDrops, List<ItemStack> drops);
 }
