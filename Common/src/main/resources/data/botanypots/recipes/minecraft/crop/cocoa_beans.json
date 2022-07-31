@@ -1,0 +1,69 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:cocoa_beans"
+  },
+  "categories": [
+    "jungle_wood"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "block": "minecraft:cocoa",
+        "properties": {
+          "age": "0"
+        },
+        "rotation": "X_270",
+        "offset": [
+          0,
+          -0.1,
+          0
+        ]
+      },
+      {
+        "block": "minecraft:cocoa",
+        "properties": {
+          "age": "1"
+        },
+        "rotation": "X_270",
+        "offset": [
+          0,
+          -0.1,
+          0
+        ]
+      },
+      {
+        "block": "minecraft:cocoa",
+        "properties": {
+          "age": "2"
+        },
+        "rotation": "X_270",
+        "offset": [
+          0,
+          -0.1,
+          0
+        ]
+      }
+    ]
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:cocoa_beans"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:cocoa_beans"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

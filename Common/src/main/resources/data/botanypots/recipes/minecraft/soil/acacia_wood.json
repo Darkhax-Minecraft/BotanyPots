@@ -1,0 +1,22 @@
+{
+  "type": "botanypots:soil",
+  "input": [
+    {
+      "item": "minecraft:acacia_log"
+    },
+    {
+      "item": "minecraft:acacia_wood"
+    }
+  ],
+  "display": {
+    "block": "minecraft:acacia_wood"
+  },
+  "categories": [
+    "wood",
+    "log",
+    "mushroom",
+    "acacia",
+    "acacia_wood"
+  ],
+  "growthModifier": 1
+}

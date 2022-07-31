@@ -1,0 +1,22 @@
+{
+  "type": "botanypots:soil",
+  "input": [
+    {
+      "item": "minecraft:jungle_log"
+    },
+    {
+      "item": "minecraft:jungle_wood"
+    }
+  ],
+  "display": {
+    "block": "minecraft:jungle_wood"
+  },
+  "categories": [
+    "wood",
+    "log",
+    "mushroom",
+    "jungle",
+    "jungle_wood"
+  ],
+  "growthModifier": 1
+}

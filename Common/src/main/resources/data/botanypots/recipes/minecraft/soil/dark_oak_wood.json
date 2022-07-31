@@ -1,0 +1,22 @@
+{
+  "type": "botanypots:soil",
+  "input": [
+    {
+      "item": "minecraft:dark_oak_log"
+    },
+    {
+      "item": "minecraft:dark_oak_wood"
+    }
+  ],
+  "display": {
+    "block": "minecraft:dark_oak_wood"
+  },
+  "categories": [
+    "wood",
+    "log",
+    "mushroom",
+    "dark_oak",
+    "dark_oak_wood"
+  ],
+  "growthModifier": 1
+}

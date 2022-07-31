@@ -1,0 +1,22 @@
+{
+  "type": "botanypots:soil",
+  "input": [
+    {
+      "item": "minecraft:spruce_log"
+    },
+    {
+      "item": "minecraft:spruce_wood"
+    }
+  ],
+  "display": {
+    "block": "minecraft:spruce_wood"
+  },
+  "categories": [
+    "wood",
+    "log",
+    "mushroom",
+    "spruce",
+    "spruce_wood"
+  ],
+  "growthModifier": 1
+}

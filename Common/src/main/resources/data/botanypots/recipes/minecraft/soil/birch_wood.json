@@ -1,0 +1,22 @@
+{
+  "type": "botanypots:soil",
+  "input": [
+    {
+      "item": "minecraft:birch_log"
+    },
+    {
+      "item": "minecraft:birch_wood"
+    }
+  ],
+  "display": {
+    "block": "minecraft:birch_wood"
+  },
+  "categories": [
+    "wood",
+    "log",
+    "mushroom",
+    "birch",
+    "birch_wood"
+  ],
+  "growthModifier": 1
+}
