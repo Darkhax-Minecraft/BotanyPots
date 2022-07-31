@@ -1,5 +1,6 @@
 package net.darkhax.botanypots;
 
+import net.darkhax.bookshelf.api.Services;
 import net.darkhax.bookshelf.api.function.CachedSupplier;
 import net.darkhax.bookshelf.api.registry.RegistryObject;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
@@ -7,6 +8,7 @@ import net.darkhax.botanypots.data.recipes.crop.Crop;
 import net.darkhax.botanypots.data.recipes.fertilizer.Fertilizer;
 import net.darkhax.botanypots.data.recipes.potinteraction.PotInteraction;
 import net.darkhax.botanypots.data.recipes.soil.Soil;
+import net.darkhax.botanypots.events.BotanyPotEventDispatcher;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.util.Mth;
@@ -36,6 +38,8 @@ public class BotanyPotHelper {
 
     public static final CachedSupplier<RecipeType<Fertilizer>> FERTILIZER_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "fertilizer").cast();
     public static final CachedSupplier<RecipeSerializer<?>> BASIC_FERTILIZER_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "fertilizer").cast();
+
+    public static final BotanyPotEventDispatcher EVENT_DISPATCHER = Services.load(BotanyPotEventDispatcher.class);
 
     /**
      * Calculates the amount of growth ticks required for a crop to be considered fully grown.
@@ -98,20 +102,23 @@ public class BotanyPotHelper {
     @Nullable
     public static Soil findSoil(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack soilStack) {
 
+        Soil result = null;
+
         if (level != null && !soilStack.isEmpty()) {
 
             final RecipeManager manager = level.getRecipeManager();
 
-            for (final Soil Soil : manager.getAllRecipesFor(SOIL_TYPE.get())) {
+            for (final Soil soil : manager.getAllRecipesFor(SOIL_TYPE.get())) {
 
-                if (Soil.matchesLookup(level, pos, pot, soilStack)) {
+                if (soil.matchesLookup(level, pos, pot, soilStack)) {
 
-                    return Soil;
+                    result = soil;
+                    break;
                 }
             }
         }
 
-        return null;
+        return EVENT_DISPATCHER.postSoilLookup(level, pos, pot, soilStack, result);
     }
 
     /**
@@ -126,18 +133,21 @@ public class BotanyPotHelper {
     @Nullable
     public static Crop findCrop(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack) {
 
+        Crop result = null;
+
         if (level != null && !stack.isEmpty()) {
 
-            for (final Crop Crop : level.getRecipeManager().getAllRecipesFor(CROP_TYPE.get())) {
+            for (final Crop crop : level.getRecipeManager().getAllRecipesFor(CROP_TYPE.get())) {
 
-                if (Crop.matchesLookup(level, pos, pot, stack)) {
+                if (crop.matchesLookup(level, pos, pot, stack)) {
 
-                    return Crop;
+                    result = crop;
+                    break;
                 }
             }
         }
 
-        return null;
+        return EVENT_DISPATCHER.postCropLookup(level, pos, pot, stack, result);
     }
 
     /**
@@ -156,18 +166,21 @@ public class BotanyPotHelper {
     @Nullable
     public static PotInteraction findPotInteraction(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot) {
 
+        PotInteraction result = null;
+
         if (!heldStack.isEmpty()) {
 
             for (final PotInteraction interaction : world.getRecipeManager().getAllRecipesFor(POT_INTERACTION_TYPE.get())) {
 
                 if (interaction.canApply(state, world, pos, player, hand, heldStack, pot)) {
 
-                    return interaction;
+                    result = interaction;
+                    break;
                 }
             }
         }
 
-        return null;
+        return EVENT_DISPATCHER.postInteractionLookup(state, world, pos, player, hand, heldStack, pot, result);
     }
 
     /**
@@ -186,18 +199,21 @@ public class BotanyPotHelper {
     @Nullable
     public static Fertilizer findFertilizer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot) {
 
+        Fertilizer result = null;
+
         if (!heldStack.isEmpty()) {
 
             for (final Fertilizer fertilizer : world.getRecipeManager().getAllRecipesFor(FERTILIZER_TYPE.get())) {
 
                 if (fertilizer.canApply(state, world, pos, player, hand, heldStack, pot)) {
 
-                    return fertilizer;
+                    result = fertilizer;
+                    break;
                 }
             }
         }
 
-        return null;
+        return EVENT_DISPATCHER.postFertilizerLookup(state, world, pos, player, hand, heldStack, pot, result);
     }
 
     /**
@@ -211,6 +227,6 @@ public class BotanyPotHelper {
      */
     public static List<ItemStack> generateDrop(Random rng, Level level, BlockPos pos, BlockEntityBotanyPot pot, Crop crop) {
 
-        return crop.generateDrops(rng, level, pos, pot);
+        return EVENT_DISPATCHER.postCropDrops(rng, level, pos, pot, crop, crop.generateDrops(rng, level, pos, pot));
     }
 }
