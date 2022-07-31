@@ -154,7 +154,7 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
 
                 if (!world.isClientSide) {
 
-                    for (ItemStack drop : BotanyPotHelper.generateDrop(world, pos, potEntity, potEntity.getCrop())) {
+                    for (ItemStack drop : BotanyPotHelper.generateDrop(potEntity.rng, world, pos, potEntity, potEntity.getCrop())) {
 
                         popResource(world, pos, drop);
                     }

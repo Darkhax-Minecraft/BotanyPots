@@ -14,6 +14,7 @@ import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 public abstract class Crop extends RecipeBaseData<Container> {
@@ -101,7 +102,7 @@ public abstract class Crop extends RecipeBaseData<Container> {
      * @param pot   The pot growing the crop.
      * @return A list of drops to spawn when the crop is harvested.
      */
-    public abstract List<ItemStack> generateDrops(Level level, BlockPos pos, BlockEntityBotanyPot pot);
+    public abstract List<ItemStack> generateDrops(Random rng, Level level, BlockPos pos, BlockEntityBotanyPot pot);
 
     /**
      * A hook that is invoked when a botany pot using the crop is ticked. This is invoked every tick, regardless of if

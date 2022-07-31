@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 public class BasicCrop extends Crop {
@@ -109,15 +110,15 @@ public class BasicCrop extends Crop {
     }
 
     @Override
-    public List<ItemStack> generateDrops(Level level, BlockPos pos, BlockEntityBotanyPot pot) {
+    public List<ItemStack> generateDrops(Random rng, Level level, BlockPos pos, BlockEntityBotanyPot pot) {
 
         final NonNullList<ItemStack> drops = NonNullList.create();
 
         for (final HarvestEntry cropEntry : this.results) {
 
-            if (level.random.nextFloat() <= cropEntry.getChance()) {
+            if (rng.nextFloat() <= cropEntry.getChance()) {
 
-                final int rolls = MathsHelper.nextIntInclusive(level.random, cropEntry.getMinRolls(), cropEntry.getMaxRolls());
+                final int rolls = MathsHelper.nextIntInclusive(rng, cropEntry.getMinRolls(), cropEntry.getMaxRolls());
 
                 if (rolls > 0) {
 
