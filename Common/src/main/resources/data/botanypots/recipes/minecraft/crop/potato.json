@@ -7,7 +7,7 @@
     "dirt",
     "farmland"
   ],
-  "growthTicks": 300,
+  "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
     "block": "minecraft:potatoes"
