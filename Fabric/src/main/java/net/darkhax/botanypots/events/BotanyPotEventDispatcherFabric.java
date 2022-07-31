@@ -133,6 +133,7 @@ public class BotanyPotEventDispatcherFabric implements BotanyPotEventDispatcher 
     public List<ItemStack> postCropDrops(Random rng, Level level, BlockPos pos, BlockEntityBotanyPot pot, Crop crop, List<ItemStack> originalDrops) {
 
         final List<ItemStack> drops = NonNullList.create();
+        drops.addAll(originalDrops);
         CROP_DROPS.invoker().generateDrop(rng, level, pos, pot, crop, originalDrops, drops);
         return drops;
     }
