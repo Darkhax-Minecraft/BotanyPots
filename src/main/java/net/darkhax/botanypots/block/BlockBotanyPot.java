@@ -331,14 +331,14 @@ public class BlockBotanyPot extends Block implements IGrowable, IWaterLoggable {
             if (tileEntity instanceof TileEntityBotanyPot) {
                 
                 final TileEntityBotanyPot pot = (TileEntityBotanyPot) tileEntity;
-                
-                if (pot.getSoil() != null) {
-                    
+
+                if (!pot.getSoilStack().isEmpty()) {
+
                     dropItem(pot.getSoilStack(), worldIn, pos);
                 }
-                
-                if (pot.getCrop() != null) {
-                    
+
+                if (!pot.getCropStack().isEmpty()) {
+
                     dropItem(pot.getCropStack(), worldIn, pos);
                 }
             }
