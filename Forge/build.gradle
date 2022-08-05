@@ -83,6 +83,11 @@ dependencies {
 
     runtimeOnly fg.deobf("curse.maven:ae2-223794:3859642")
 
+    runtimeOnly fg.deobf("curse.maven:xnet-260912:3711553")
+    runtimeOnly fg.deobf("curse.maven:mcjtylib-233105:3906995")
+    runtimeOnly fg.deobf("curse.maven:rftoolsbase-326041:3825686")
+    implementation fg.deobf("curse.maven:top-245211:${top_version}")
+
     compileOnly project(":Common")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
