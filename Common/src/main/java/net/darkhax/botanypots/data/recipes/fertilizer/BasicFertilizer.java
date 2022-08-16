@@ -54,6 +54,11 @@ public class BasicFertilizer extends Fertilizer {
 
             // Bonemeal particles
             world.levelEvent(1505, pos, 0);
+
+            if (!player.isCreative()) {
+
+                heldStack.shrink(1);
+            }
         }
     }
 
