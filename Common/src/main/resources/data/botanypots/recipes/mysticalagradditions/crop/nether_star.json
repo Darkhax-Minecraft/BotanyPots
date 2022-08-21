@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:nether_star_seeds",
+        "mysticalagriculture:nether_star_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:nether_star_seeds"
+  },
+  "categories": [
+    "insanium"
+  ],
+  "growthTicks": 4800,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:nether_star_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:nether_star_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:nether_star_seeds"
+      }
+    }
+  ]
+}
