@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:queens_slime_seeds",
+        "mysticalagriculture:queens_slime_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:queens_slime_seeds"
+  },
+  "categories": [
+    "supremium"
+  ],
+  "growthTicks": 4200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:queens_slime_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:queens_slime_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:queens_slime_seeds"
+      }
+    }
+  ]
+}

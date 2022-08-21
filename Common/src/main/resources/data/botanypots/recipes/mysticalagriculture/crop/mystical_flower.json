@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:mystical_flower_seeds",
+        "mysticalagriculture:mystical_flower_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:mystical_flower_seeds"
+  },
+  "categories": [
+    "prudentium"
+  ],
+  "growthTicks": 2400,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:mystical_flower_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:mystical_flower_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:mystical_flower_seeds"
+      }
+    }
+  ]
+}

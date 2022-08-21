@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:manyullyn_seeds",
+        "mysticalagriculture:manyullyn_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:manyullyn_seeds"
+  },
+  "categories": [
+    "supremium"
+  ],
+  "growthTicks": 4200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:manyullyn_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:manyullyn_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:manyullyn_seeds"
+      }
+    }
+  ]
+}

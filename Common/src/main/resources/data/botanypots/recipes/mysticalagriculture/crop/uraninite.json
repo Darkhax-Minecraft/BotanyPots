@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:uraninite_seeds",
+        "mysticalagriculture:uraninite_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:uraninite_seeds"
+  },
+  "categories": [
+    "supremium"
+  ],
+  "growthTicks": 4200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:uraninite_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:uraninite_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:uraninite_seeds"
+      }
+    }
+  ]
+}

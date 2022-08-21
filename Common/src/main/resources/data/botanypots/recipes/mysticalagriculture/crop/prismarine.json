@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:prismarine_seeds",
+        "mysticalagriculture:prismarine_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:prismarine_seeds"
+  },
+  "categories": [
+    "tertium"
+  ],
+  "growthTicks": 3000,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:prismarine_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:prismarine_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:prismarine_seeds"
+      }
+    }
+  ]
+}

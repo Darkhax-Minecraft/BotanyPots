@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:honey_seeds",
+        "mysticalagriculture:honey_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:honey_seeds"
+  },
+  "categories": [
+    "prudentium"
+  ],
+  "growthTicks": 2400,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:honey_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:honey_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:honey_seeds"
+      }
+    }
+  ]
+}

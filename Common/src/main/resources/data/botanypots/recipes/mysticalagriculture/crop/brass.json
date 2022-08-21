@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:brass_seeds",
+        "mysticalagriculture:brass_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:brass_seeds"
+  },
+  "categories": [
+    "tertium"
+  ],
+  "growthTicks": 3000,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:brass_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:brass_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:brass_seeds"
+      }
+    }
+  ]
+}

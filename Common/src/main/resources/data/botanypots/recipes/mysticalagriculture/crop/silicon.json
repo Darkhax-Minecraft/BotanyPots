@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:silicon_seeds",
+        "mysticalagriculture:silicon_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:silicon_seeds"
+  },
+  "categories": [
+    "prudentium"
+  ],
+  "growthTicks": 2400,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:silicon_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:silicon_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:silicon_seeds"
+      }
+    }
+  ]
+}

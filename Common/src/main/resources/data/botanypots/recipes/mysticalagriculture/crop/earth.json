@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:earth_seeds",
+        "mysticalagriculture:earth_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:earth_seeds"
+  },
+  "categories": [
+    "inferium"
+  ],
+  "growthTicks": 1800,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:earth_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:earth_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:earth_seeds"
+      }
+    }
+  ]
+}

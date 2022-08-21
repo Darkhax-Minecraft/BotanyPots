@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:uranium_seeds",
+        "mysticalagriculture:uranium_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:uranium_seeds"
+  },
+  "categories": [
+    "imperium"
+  ],
+  "growthTicks": 3600,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:uranium_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:uranium_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:uranium_seeds"
+      }
+    }
+  ]
+}

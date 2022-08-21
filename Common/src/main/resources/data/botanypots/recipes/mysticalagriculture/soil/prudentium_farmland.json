@@ -1,0 +1,22 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "mysticalagriculture:prudentium_farmland"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "mysticalagriculture:prudentium_farmland"
+  },
+  "display": {
+    "block": "mysticalagriculture:prudentium_farmland"
+  },
+  "categories": [
+    "dirt",
+    "farmland",
+    "inferium",
+    "prudentium"
+  ],
+  "growthModifier": 1.15
+}

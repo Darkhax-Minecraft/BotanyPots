@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:lead_seeds",
+        "mysticalagriculture:lead_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:lead_seeds"
+  },
+  "categories": [
+    "tertium"
+  ],
+  "growthTicks": 3000,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:lead_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:lead_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:lead_seeds"
+      }
+    }
+  ]
+}

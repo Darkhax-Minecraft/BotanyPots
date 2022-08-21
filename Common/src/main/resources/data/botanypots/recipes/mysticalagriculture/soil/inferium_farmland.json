@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "mysticalagriculture:inferium_farmland"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "mysticalagriculture:inferium_farmland"
+  },
+  "display": {
+    "block": "mysticalagriculture:inferium_farmland"
+  },
+  "categories": [
+    "dirt",
+    "farmland",
+    "inferium"
+  ],
+  "growthModifier": 1.10
+}

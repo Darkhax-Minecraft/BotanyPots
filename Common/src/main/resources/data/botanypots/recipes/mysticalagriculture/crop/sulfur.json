@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:sulfur_seeds",
+        "mysticalagriculture:sulfur_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:sulfur_seeds"
+  },
+  "categories": [
+    "prudentium"
+  ],
+  "growthTicks": 2400,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:sulfur_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:sulfur_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:sulfur_seeds"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:inferium_seeds",
+        "mysticalagriculture:inferium_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:inferium_seeds"
+  },
+  "categories": [
+    "inferium"
+  ],
+  "growthTicks": 1800,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:inferium_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:inferium_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:inferium_seeds"
+      }
+    }
+  ]
+}

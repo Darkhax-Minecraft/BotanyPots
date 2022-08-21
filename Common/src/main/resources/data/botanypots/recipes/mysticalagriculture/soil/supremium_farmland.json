@@ -1,0 +1,25 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "mysticalagriculture:supremium_farmland"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "mysticalagriculture:supremium_farmland"
+  },
+  "display": {
+    "block": "mysticalagriculture:supremium_farmland"
+  },
+  "categories": [
+    "dirt",
+    "farmland",
+    "inferium",
+    "prudentium",
+    "tertium",
+    "imperium",
+    "supremium"
+  ],
+  "growthModifier": 1.30
+}

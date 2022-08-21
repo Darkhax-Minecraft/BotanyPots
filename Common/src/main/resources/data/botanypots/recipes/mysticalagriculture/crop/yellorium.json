@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:yellorium_seeds",
+        "mysticalagriculture:yellorium_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:yellorium_seeds"
+  },
+  "categories": [
+    "supremium"
+  ],
+  "growthTicks": 4200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:yellorium_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:yellorium_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:yellorium_seeds"
+      }
+    }
+  ]
+}

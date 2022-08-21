@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:gold_seeds",
+        "mysticalagriculture:gold_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:gold_seeds"
+  },
+  "categories": [
+    "imperium"
+  ],
+  "growthTicks": 3600,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:gold_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:gold_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:gold_seeds"
+      }
+    }
+  ]
+}

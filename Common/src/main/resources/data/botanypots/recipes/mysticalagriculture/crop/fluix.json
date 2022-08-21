@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:fluix_seeds",
+        "mysticalagriculture:fluix_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:fluix_seeds"
+  },
+  "categories": [
+    "imperium"
+  ],
+  "growthTicks": 3600,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:fluix_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:fluix_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:fluix_seeds"
+      }
+    }
+  ]
+}

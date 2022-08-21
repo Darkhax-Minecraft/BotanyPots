@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:titanium_seeds",
+        "mysticalagriculture:titanium_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:titanium_seeds"
+  },
+  "categories": [
+    "imperium"
+  ],
+  "growthTicks": 3600,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:titanium_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:titanium_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:titanium_seeds"
+      }
+    }
+  ]
+}

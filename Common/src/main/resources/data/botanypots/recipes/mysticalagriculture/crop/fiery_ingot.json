@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:fiery_ingot_seeds",
+        "mysticalagriculture:fiery_ingot_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:fiery_ingot_seeds"
+  },
+  "categories": [
+    "imperium"
+  ],
+  "growthTicks": 3600,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:fiery_ingot_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:fiery_ingot_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:fiery_ingot_seeds"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:saltpeter_seeds",
+        "mysticalagriculture:saltpeter_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:saltpeter_seeds"
+  },
+  "categories": [
+    "prudentium"
+  ],
+  "growthTicks": 2400,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:saltpeter_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:saltpeter_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:saltpeter_seeds"
+      }
+    }
+  ]
+}
