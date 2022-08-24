@@ -1,0 +1,29 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "farmersdelight:cabbage_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "minecraft:cabbages"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "farmersdelight:cabbage"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "farmersdelight:cabbage_seeds"
+      }
+    }
+  ]
+}

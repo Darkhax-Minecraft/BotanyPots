@@ -1,0 +1,29 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "farmersdelight:tomato_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "minecraft:tomatoes"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "farmersdelight:tomato"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "farmersdelight:tomato_seeds"
+      }
+    }
+  ]
+}
