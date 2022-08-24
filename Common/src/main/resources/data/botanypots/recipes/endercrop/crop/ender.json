@@ -1,0 +1,29 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "endercrop:ender_seeds"
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "endercrop:ender_seeds"
+  },
+  "categories": [
+    "end_farmland",
+    "end_stone"
+  ],
+  "growthTicks": 2400,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "endercrop:ender_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:ender_pearl"
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "endercrop:tilled_end_stone"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "endercrop:tilled_end_stone"
+  },
+  "display": {
+    "block": "endercrop:tilled_end_stone"
+  },
+  "categories": [
+    "end",
+    "end_stone",
+    "end_farmland"
+  ],
+  "growthModifier": 1.05
+}
