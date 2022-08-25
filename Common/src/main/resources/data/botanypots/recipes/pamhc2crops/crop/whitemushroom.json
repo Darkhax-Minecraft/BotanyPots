@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "pamhc2crops:whitemushroomseeditem",
+        "pamhc2crops:whitemushroomitem"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "pamhc2crops:whitemushroomseeditem"
+  },
+  "categories": [
+    "mushroom",
+    "mulch"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "pamhc2crops:pamwhitemushroomcrop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "pamhc2crops:whitemushroomitem"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "pamhc2crops:whitemushroomseeditem"
+      }
+    }
+  ]
+}

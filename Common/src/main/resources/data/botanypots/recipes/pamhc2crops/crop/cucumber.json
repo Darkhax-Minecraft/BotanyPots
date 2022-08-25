@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "pamhc2crops:cucumberseeditem",
+        "pamhc2crops:cucumberitem"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "pamhc2crops:cucumberseeditem"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "pamhc2crops:pamcucumbercrop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "pamhc2crops:cucumberitem"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "pamhc2crops:cucumberseeditem"
+      }
+    }
+  ]
+}
