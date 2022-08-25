@@ -88,6 +88,12 @@ public class AgingDisplayState extends TransitionalDisplayState {
             if (json instanceof JsonObject obj) {
 
                 final Block block = Serializers.BLOCK.fromJSON(obj, "block");
+
+                if (block == null) {
+
+                    throw new JsonParseException("Could not read block! " + obj.get("block"));
+                }
+
                 return new AgingDisplayState(block);
             }
 
