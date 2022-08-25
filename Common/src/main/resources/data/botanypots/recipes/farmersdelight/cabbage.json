@@ -1,4 +1,13 @@
 {
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "farmersdelight:cabbage_seeds",
+        "farmersdelight:cabbage"
+      ]
+    }
+  ],
   "type": "botanypots:crop",
   "seed": {
     "item": "farmersdelight:cabbage_seeds"
@@ -10,7 +19,7 @@
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "minecraft:cabbages"
+    "block": "farmersdelight:cabbages"
   },
   "drops": [
     {

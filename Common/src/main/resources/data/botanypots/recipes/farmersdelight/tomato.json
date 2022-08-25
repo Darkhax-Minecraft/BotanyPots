@@ -1,4 +1,13 @@
 {
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "farmersdelight:tomato_seeds",
+        "farmersdelight:tomato"
+      ]
+    }
+  ],
   "type": "botanypots:crop",
   "seed": {
     "item": "farmersdelight:tomato_seeds"
@@ -10,7 +19,7 @@
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "minecraft:tomatoes"
+    "block": "farmersdelight:tomatoes"
   },
   "drops": [
     {
