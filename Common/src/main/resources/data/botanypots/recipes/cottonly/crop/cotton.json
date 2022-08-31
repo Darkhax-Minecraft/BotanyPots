@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "cottonly:cotton_seeds",
+        "cottonly:ball"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "cottonly:cotton_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "cottonly:cotton_plant"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "cottonly:ball"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "cottonly:cotton_seeds"
+      }
+    }
+  ]
+}
