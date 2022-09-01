@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "oreberriesreplanted:essence_berry_bush",
+        "oreberriesreplanted:essence_berry"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "oreberriesreplanted:essence_berry_bush"
+  },
+  "categories": [
+    "stone"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "oreberriesreplanted:essence_berry_bush"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "oreberriesreplanted:essence_berry"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "oreberriesreplanted:essence_berry_bush"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "oreberriesreplanted:uranium_oreberry_bush",
+        "oreberriesreplanted:uranium_oreberry"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "oreberriesreplanted:uranium_oreberry_bush"
+  },
+  "categories": [
+    "stone"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "oreberriesreplanted:uranium_oreberry_bush"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "oreberriesreplanted:uranium_oreberry"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "oreberriesreplanted:uranium_oreberry_bush"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "oreberriesreplanted:osmium_oreberry_bush",
+        "oreberriesreplanted:osmium_oreberry"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "oreberriesreplanted:osmium_oreberry_bush"
+  },
+  "categories": [
+    "stone"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "oreberriesreplanted:osmium_oreberry_bush"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "oreberriesreplanted:osmium_oreberry"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "oreberriesreplanted:osmium_oreberry_bush"
+      }
+    }
+  ]
+}
