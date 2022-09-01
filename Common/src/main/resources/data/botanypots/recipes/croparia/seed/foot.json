@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "croparia:seed_crop_foot",
+        "croparia:fruit_foot"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "croparia:seed_crop_foot"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "croparia:block_crop_foot"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "croparia:fruit_foot"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "croparia:seed_crop_foot"
+      }
+    }
+  ]
+}

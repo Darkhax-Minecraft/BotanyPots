@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "croparia:seed_crop_vine",
+        "croparia:fruit_vine"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "croparia:seed_crop_vine"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "croparia:block_crop_vine"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "croparia:fruit_vine"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "croparia:seed_crop_vine"
+      }
+    }
+  ]
+}

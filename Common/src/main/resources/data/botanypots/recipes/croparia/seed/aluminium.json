@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "croparia:seed_crop_aluminium",
+        "croparia:fruit_aluminium"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "croparia:seed_crop_aluminium"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "croparia:block_crop_aluminium"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "croparia:fruit_aluminium"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "croparia:seed_crop_aluminium"
+      }
+    }
+  ]
+}
