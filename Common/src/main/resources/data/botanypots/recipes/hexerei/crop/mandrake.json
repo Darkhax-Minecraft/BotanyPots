@@ -1,0 +1,44 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "hexerei:mandrake_flowers",
+        "hexerei:mandrake_root",
+        "hexerei:mandrake_flower"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "hexerei:mandrake_flower"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "hexerei:mandrake_flower"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "hexerei:mandrake_flowers"
+      }
+    },
+    {
+      "chance": 0.40,
+      "output": {
+        "item": "hexerei:mandrake_root"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hexerei:mandrake_flower"
+      }
+    }
+  ]
+}

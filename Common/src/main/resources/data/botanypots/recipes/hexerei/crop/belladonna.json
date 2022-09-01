@@ -1,0 +1,44 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "hexerei:belladonna_berries",
+        "hexerei:belladonna_flowers",
+        "hexerei:belladonna_flower"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "hexerei:belladonna_flower"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "hexerei:belladonna_flower"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "hexerei:belladonna_flowers"
+      }
+    },
+    {
+      "chance": 0.40,
+      "output": {
+        "item": "hexerei:belladonna_berries"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hexerei:belladonna_flower"
+      }
+    }
+  ]
+}

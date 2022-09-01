@@ -1,0 +1,60 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "hexerei:yellow_dock_bush",
+        "hexerei:yellow_dock_leaves",
+        "hexerei:yellow_dock_flowers"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "hexerei:yellow_dock_bush"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "type": "botanypots:aging",
+      "block": {
+        "block": "hexerei:yellow_dock_bush",
+        "properties": {
+          "half": "lower"
+        }
+      }
+    },
+    {
+      "type": "botanypots:aging",
+      "block": {
+        "block": "hexerei:yellow_dock_bush",
+        "properties": {
+          "half": "upper"
+        }
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "hexerei:yellow_dock_leaves"
+      }
+    },
+    {
+      "chance": 0.40,
+      "output": {
+        "item": "hexerei:yellow_dock_flowers"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hexerei:yellow_dock_bush"
+      }
+    }
+  ]
+}

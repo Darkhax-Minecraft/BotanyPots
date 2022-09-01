@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "hexerei:sage_seed",
+        "hexerei:sage"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "hexerei:sage_seed"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "hexerei:sage_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "hexerei:sage"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hexerei:sage_seed"
+      }
+    }
+  ]
+}
