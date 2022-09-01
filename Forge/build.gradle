@@ -80,13 +80,7 @@ dependencies {
     implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-${project.ext.minecraft_version}:${project.ext.bookshelf_version}")
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
-
-    runtimeOnly fg.deobf("curse.maven:ae2-223794:3859642")
-
-    runtimeOnly fg.deobf("curse.maven:xnet-260912:3711553")
-    runtimeOnly fg.deobf("curse.maven:mcjtylib-233105:3906995")
-    runtimeOnly fg.deobf("curse.maven:rftoolsbase-326041:3825686")
-    implementation fg.deobf("curse.maven:top-245211:${top_version}")
+    compileOnly fg.deobf("curse.maven:top-245211:${top_version}")
 
     compileOnly project(":Common")
 
