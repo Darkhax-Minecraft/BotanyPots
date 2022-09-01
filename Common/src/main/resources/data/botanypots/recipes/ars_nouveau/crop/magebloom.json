@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "ars_nouveau:magebloom_crop",
+        "ars_nouveau:magebloom"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "ars_nouveau:magebloom_crop"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "ars_nouveau:magebloom_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "ars_nouveau:magebloom"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "ars_nouveau:magebloom_crop"
+      }
+    }
+  ]
+}

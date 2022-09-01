@@ -1,0 +1,31 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "ars_nouveau:source_berry"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "ars_nouveau:source_berry"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "ars_nouveau:sourceberry_bush"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "ars_nouveau:source_berry"
+      }
+    }
+  ]
+}
