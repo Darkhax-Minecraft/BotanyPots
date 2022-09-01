@@ -10,6 +10,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 
@@ -21,12 +22,12 @@ public class AgingDisplayState extends TransitionalDisplayState {
     public static final ResourceLocation ID = new ResourceLocation(Constants.MOD_ID, "aging");
     public static final DisplayStateSerializer<AgingDisplayState> SERIALIZER = new AgingDisplayState.Serializer();
 
-    private final Block block;
+    private final BlockState defaultState;
 
-    public AgingDisplayState(Block block) {
+    public AgingDisplayState(BlockState defaultState) {
 
-        super(calculatePhases(block));
-        this.block = block;
+        super(calculatePhases(defaultState));
+        this.defaultState = defaultState;
     }
 
     @Override
@@ -52,8 +53,9 @@ public class AgingDisplayState extends TransitionalDisplayState {
         return null;
     }
 
-    private static List<DisplayState> calculatePhases(Block block) {
+    private static List<DisplayState> calculatePhases(BlockState defaultState) {
 
+        final Block block = defaultState.getBlock();
         final List<DisplayState> phases = new ArrayList<>();
 
         final IntegerProperty ageProp = getAgeProperty(block);
@@ -62,13 +64,13 @@ public class AgingDisplayState extends TransitionalDisplayState {
 
             for (int age : ageProp.getPossibleValues()) {
 
-                phases.add(new SimpleDisplayState(block.defaultBlockState().setValue(ageProp, age)));
+                phases.add(new SimpleDisplayState(defaultState.setValue(ageProp, age)));
             }
         }
 
         else {
 
-            phases.add(new SimpleDisplayState(block.defaultBlockState()));
+            phases.add(new SimpleDisplayState(defaultState));
         }
 
         return phases;
@@ -87,14 +89,14 @@ public class AgingDisplayState extends TransitionalDisplayState {
 
             if (json instanceof JsonObject obj) {
 
-                final Block block = Serializers.BLOCK.fromJSON(obj, "block");
+                final BlockState defaultState = Serializers.BLOCK_STATE.fromJSON(obj, "block");
 
-                if (block == null) {
+                if (defaultState == null) {
 
                     throw new JsonParseException("Could not read block! " + obj.get("block"));
                 }
 
-                return new AgingDisplayState(block);
+                return new AgingDisplayState(defaultState);
             }
 
             throw new JsonParseException("Expected AgingDisplayState to be a JSON object.");
@@ -104,21 +106,21 @@ public class AgingDisplayState extends TransitionalDisplayState {
         public JsonElement toJSON(AgingDisplayState toWrite) {
 
             final JsonObject json = new JsonObject();
-            Serializers.BLOCK.toJSON(json, "block", toWrite.block);
+            Serializers.BLOCK_STATE.toJSON(json, "block", toWrite.defaultState);
             return json;
         }
 
         @Override
         public AgingDisplayState fromByteBuf(FriendlyByteBuf buffer) {
 
-            final Block block = Serializers.BLOCK.fromByteBuf(buffer);
+            final BlockState block = Serializers.BLOCK_STATE.fromByteBuf(buffer);
             return new AgingDisplayState(block);
         }
 
         @Override
         public void toByteBuf(FriendlyByteBuf buffer, AgingDisplayState toWrite) {
 
-            Serializers.BLOCK.toByteBuf(buffer, toWrite.block);
+            Serializers.BLOCK_STATE.toByteBuf(buffer, toWrite.defaultState);
         }
 
         @Override
