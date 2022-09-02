@@ -2,7 +2,7 @@ package net.darkhax.botanypots.data.displaystate.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.darkhax.bookshelf.api.client.FluidRenderer;
+import net.darkhax.bookshelf.api.client.RenderHelper;
 import net.darkhax.botanypots.data.displaystate.SimpleDisplayState;
 import net.darkhax.botanypots.data.displaystate.math.AxisAlignedRotation;
 import net.minecraft.client.Minecraft;
@@ -50,7 +50,7 @@ public class SimpleDisplayStateRenderer extends DisplayStateRenderer<SimpleDispl
 
             if (fluidState != null && !fluidState.isEmpty()) {
 
-                FluidRenderer.get().render(pose, fluidState, level, pos, bufferSource, light, OverlayTexture.NO_OVERLAY);
+                RenderHelper.get().renderFluidBox(pose, fluidState, level, pos, bufferSource, light, OverlayTexture.NO_OVERLAY);
             }
         }
 

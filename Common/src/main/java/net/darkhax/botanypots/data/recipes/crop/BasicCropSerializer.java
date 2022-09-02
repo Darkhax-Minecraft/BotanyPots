@@ -1,17 +1,17 @@
 package net.darkhax.botanypots.data.recipes.crop;
 
 import com.google.gson.JsonObject;
-import net.darkhax.bookshelf.api.data.recipes.IRecipeSerializer;
 import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.darkhax.botanypots.data.displaystate.DisplayState;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 
 import java.util.List;
 import java.util.Set;
 
-public final class BasicCropSerializer extends IRecipeSerializer<BasicCrop> {
+public final class BasicCropSerializer implements RecipeSerializer<BasicCrop> {
 
     public static BasicCropSerializer SERIALIZER = new BasicCropSerializer();
 

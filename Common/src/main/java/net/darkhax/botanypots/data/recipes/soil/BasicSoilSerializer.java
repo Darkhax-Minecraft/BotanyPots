@@ -2,18 +2,18 @@ package net.darkhax.botanypots.data.recipes.soil;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import net.darkhax.bookshelf.api.data.recipes.IRecipeSerializer;
 import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.darkhax.botanypots.data.displaystate.DisplayState;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public final class BasicSoilSerializer extends IRecipeSerializer<BasicSoil> {
+public final class BasicSoilSerializer implements RecipeSerializer<BasicSoil> {
 
     public static BasicSoilSerializer SERIALIZER = new BasicSoilSerializer();
 

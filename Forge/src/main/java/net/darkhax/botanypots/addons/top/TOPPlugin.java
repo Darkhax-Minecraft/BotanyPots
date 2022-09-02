@@ -10,7 +10,7 @@ import mcjty.theoneprobe.apiimpl.styles.ProgressStyle;
 import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.block.inv.BotanyPotContainer;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
@@ -47,14 +47,14 @@ public class TOPPlugin implements IProbeInfoProvider, Function<ITheOneProbe, Voi
 
                 final IProbeInfo soilInfo = info.horizontal(info.defaultLayoutStyle().alignment(ElementAlignment.ALIGN_CENTER));
                 soilInfo.item(inv.getSoilStack());
-                soilInfo.mcText(new TranslatableComponent("tooltip.botanypots.soil", inv.getSoilStack().getHoverName()));
+                soilInfo.mcText(Component.translatable("tooltip.botanypots.soil", inv.getSoilStack().getHoverName()));
             }
 
             if (!inv.getCropStack().isEmpty()) {
 
                 final IProbeInfo seedInfo = info.horizontal(info.defaultLayoutStyle().alignment(ElementAlignment.ALIGN_CENTER));
                 seedInfo.item(inv.getCropStack());
-                seedInfo.mcText(new TranslatableComponent("tooltip.botanypots.seed", inv.getCropStack().getHoverName()));
+                seedInfo.mcText(Component.translatable("tooltip.botanypots.seed", inv.getCropStack().getHoverName()));
             }
 
             if (pot.isGrowing()) {

@@ -2,15 +2,15 @@ package net.darkhax.botanypots.data.recipes.fertilizer;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import net.darkhax.bookshelf.api.data.recipes.IRecipeSerializer;
 import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 
-public final class BasicFertilizerSerializer extends IRecipeSerializer<BasicFertilizer> {
+public final class BasicFertilizerSerializer implements RecipeSerializer<BasicFertilizer> {
 
-    public static final IRecipeSerializer<?> SERIALIZER = new BasicFertilizerSerializer();
+    public static final RecipeSerializer<?> SERIALIZER = new BasicFertilizerSerializer();
 
     @Override
     public BasicFertilizer fromJson(ResourceLocation id, JsonObject json) {

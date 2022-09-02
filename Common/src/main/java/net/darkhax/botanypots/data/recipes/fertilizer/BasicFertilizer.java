@@ -1,6 +1,5 @@
 package net.darkhax.botanypots.data.recipes.fertilizer;
 
-import net.darkhax.bookshelf.api.util.MathsHelper;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.minecraft.core.BlockPos;
@@ -50,7 +49,7 @@ public class BasicFertilizer extends Fertilizer {
 
         if (!world.isClientSide) {
 
-            pot.addGrowth(MathsHelper.nextIntInclusive(world.random, this.minTicks, this.maxTicks));
+            pot.addGrowth(world.random.nextIntBetweenInclusive(this.minTicks, this.maxTicks));
 
             // Bonemeal particles
             world.levelEvent(1505, pos, 0);

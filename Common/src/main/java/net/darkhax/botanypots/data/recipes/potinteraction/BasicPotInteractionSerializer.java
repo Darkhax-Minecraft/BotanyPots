@@ -2,20 +2,20 @@ package net.darkhax.botanypots.data.recipes.potinteraction;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import net.darkhax.bookshelf.api.data.recipes.IRecipeSerializer;
 import net.darkhax.bookshelf.api.data.sound.Sound;
 import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public final class BasicPotInteractionSerializer extends IRecipeSerializer<BasicPotInteraction> {
+public final class BasicPotInteractionSerializer implements RecipeSerializer<BasicPotInteraction> {
 
-    public static final IRecipeSerializer<?> SERIALIZER = new BasicPotInteractionSerializer();
+    public static final RecipeSerializer<?> SERIALIZER = new BasicPotInteractionSerializer();
 
     @Override
     public BasicPotInteraction fromJson(ResourceLocation id, JsonObject json) {

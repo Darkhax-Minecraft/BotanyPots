@@ -19,7 +19,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -37,7 +36,7 @@ import java.util.Random;
 public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotContainer> {
 
     public static final CachedSupplier<BlockEntityType<BlockEntityBotanyPot>> POT_TYPE = RegistryObject.deferred(Registry.BLOCK_ENTITY_TYPE, Constants.MOD_ID, "botany_pot").cast();
-    private static final Component DEFAULT_NAME = new TranslatableComponent("block.botanypots.terracotta_botany_pot");
+    private static final Component DEFAULT_NAME = Component.translatable("block.botanypots.terracotta_botany_pot");
 
     protected int growthTime = -1;
     protected boolean doneGrowing = false;
