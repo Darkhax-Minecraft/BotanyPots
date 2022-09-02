@@ -1,0 +1,28 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "botania:yellow_mushroom"
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "botania:yellow_mushroom"
+  },
+  "categories": [
+    "mushroom"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "botania:yellow_mushroom"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "botania:yellow_mushroom"
+      }
+    }
+  ]
+}

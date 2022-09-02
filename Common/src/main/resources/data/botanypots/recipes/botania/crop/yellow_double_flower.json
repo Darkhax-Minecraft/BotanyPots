@@ -1,0 +1,46 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "botania:yellow_double_flower"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "botania:yellow_double_flower"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1800,
+  "display": [
+    {
+      "type": "botanypots:aging",
+      "block": {
+        "block": "botania:yellow_double_flower",
+        "properties": {
+          "half": "lower"
+        }
+      }
+    },
+    {
+      "type": "botanypots:aging",
+      "block": {
+        "block": "botania:yellow_double_flower",
+        "properties": {
+          "half": "upper"
+        }
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "botania:yellow_double_flower"
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "botania:magenta_mystical_flower"
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "botania:magenta_mystical_flower"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "botania:magenta_mystical_flower"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "botania:magenta_mystical_flower"
+      }
+    }
+  ]
+}

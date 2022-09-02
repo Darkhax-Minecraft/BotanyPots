@@ -1,0 +1,28 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "botania:green_mushroom"
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "botania:green_mushroom"
+  },
+  "categories": [
+    "mushroom"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "botania:green_mushroom"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "botania:green_mushroom"
+      }
+    }
+  ]
+}

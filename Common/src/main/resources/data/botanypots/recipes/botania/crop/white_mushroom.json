@@ -1,0 +1,28 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "botania:white_mushroom"
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "botania:white_mushroom"
+  },
+  "categories": [
+    "mushroom"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "botania:white_mushroom"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "botania:white_mushroom"
+      }
+    }
+  ]
+}
