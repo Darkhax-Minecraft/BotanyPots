@@ -1,0 +1,8 @@
+{
+  "screens": [
+    {
+      "class": "net.darkhax.botanypots.block.inv.BotanyPotScreen",
+      "texture": "botanypots:textures/gui/container/hopper_botany_pot_gui.png"
+    }
+  ]
+}
