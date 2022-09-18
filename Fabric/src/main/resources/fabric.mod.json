@@ -25,6 +25,9 @@
     ],
     "client": [
       "net.darkhax.botanypots.BotanyPotsFabricClient"
+    ],
+    "top_plugin": [
+      "net.darkhax.botanypots.addons.top.TOPPlugin"
     ]
   },
   "depends": {

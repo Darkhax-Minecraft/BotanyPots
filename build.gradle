@@ -58,6 +58,18 @@ subprojects {
             name = 'Progwml6 Maven (JEI)'
             url = 'https://dvs1.progwml6.com/files/maven/'
         }
+
+        maven {
+            url "https://cursemaven.com"
+            content {
+                includeGroup "curse.maven"
+            }
+        }
+
+        maven {
+            name = 'Wisp Forest (TOP Fabric)'
+            url "https://maven.wispforest.io"
+        }
     }
 }
 
