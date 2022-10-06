@@ -64,7 +64,7 @@ public class BotanyPotHelper {
 
         if (growthModifier >= 0) {
 
-            return Mth.floor(requiredGrowthTicks * growthModifier);
+            return Mth.floor(requiredGrowthTicks / growthModifier);
         }
 
         return -1;
