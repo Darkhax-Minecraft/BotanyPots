@@ -2,6 +2,7 @@ package net.darkhax.botanypots.data.recipes.crop;
 
 import com.google.gson.JsonObject;
 import net.darkhax.bookshelf.api.serialization.Serializers;
+import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.data.displaystate.DisplayState;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -26,8 +27,7 @@ public final class BasicCropSerializer implements RecipeSerializer<BasicCrop> {
         final List<DisplayState> states = DisplayState.SERIALIZER.fromJSONList(json, "display");
 
         if (growthTicks <= 0) {
-
-            throw new IllegalArgumentException("Crop " + id + " has an invalid growth tick rate. It must use a positive integer.");
+            Constants.LOG.warn("Crop {} has a negative growth tick rate. It will not be able to grow.", id);
         }
 
         return new BasicCrop(id, seed, validSoils, growthTicks, results, states, lightLevel);
