@@ -62,7 +62,7 @@ public class BotanyPotHelper {
         final float requiredGrowthTicks = crop.getGrowthTicks(level, pos, pot, soil);
         final float growthModifier = soil.getGrowthModifier(level, pos, pot, crop);
 
-        if (growthModifier >= 0) {
+        if (growthModifier >= 0 && requiredGrowthTicks >= 0) {
 
             return Mth.floor(requiredGrowthTicks / growthModifier);
         }
