@@ -87,7 +87,7 @@ public class BotanyPotHelper {
             return false;
         }
 
-        return soil.canGrowCrop(level, pos, pot, crop) && crop.canGrowInSoil(level, pos, pot, soil);
+        return soil.canGrowCrop(level, pos, pot, crop) && crop.canGrowInSoil(level, pos, pot, soil) && crop.getGrowthTicks(level, pos, pot, soil) >= 0;
     }
 
     /**
