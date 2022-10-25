@@ -30,10 +30,12 @@
             "maxRolls": 1
         }
     ],
-    "conditions": [
+    "bookshelf:load_conditions": [
         {
-            "type": "forge:mod_loaded",
-            "modid": "croptopia"
+            "type": "bookshelf:item_exists",
+            "values": [
+                "croptopia:chile_pepper_seed"
+            ]
         }
     ]
 }
