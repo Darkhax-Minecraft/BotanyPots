@@ -64,14 +64,30 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
         final Level level = this.potEntity.getLevel();
         final BlockPos pos = this.potEntity.getBlockPos();
 
-        final boolean revalidateSoil = !this.getSoilStack().isEmpty() && this.soil == null && BotanyPotHelper.findSoil(level, pos, potEntity, this.getSoilStack()) != null;
-        final boolean revalidateCrop = !this.getCropStack().isEmpty() && this.crop == null && BotanyPotHelper.findCrop(level, pos, potEntity, this.getCropStack()) != null;
+        boolean hasChanged = false;
 
-        if (revalidateSoil || revalidateCrop) {
+        ItemStack soilStack = this.getSoilStack();
+        if (!soilStack.isEmpty() && this.soil == null) {
+            this.soil = BotanyPotHelper.findSoil(level, pos, potEntity, soilStack);
+            this.prevSoilStack = soilStack;
 
+            hasChanged = this.soil != null;
+        }
+
+        ItemStack cropStack = this.getCropStack();
+        if (!cropStack.isEmpty() && this.crop == null) {
+            this.crop = BotanyPotHelper.findCrop(level, pos, potEntity, cropStack);
+            this.prevCropStack = cropStack;
+
+            hasChanged |= this.crop != null;
+        }
+
+        if (hasChanged) {
             this.setChanged();
         }
     }
+
+    private ItemStack prevSoilStack, prevCropStack;
 
     @Override
     public void setChanged() {
@@ -81,8 +97,18 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
         final Level level = this.potEntity.getLevel();
         final BlockPos pos = this.potEntity.getBlockPos();
 
-        this.soil = BotanyPotHelper.findSoil(level, pos, potEntity, this.getSoilStack());
-        this.crop = BotanyPotHelper.findCrop(level, pos, potEntity, this.getCropStack());
+        ItemStack soilStack = this.getSoilStack();
+        if (this.prevSoilStack != soilStack) {
+            this.soil = BotanyPotHelper.findSoil(level, pos, potEntity, soilStack);
+            this.prevSoilStack = soilStack;
+        }
+
+        ItemStack cropStack = this.getCropStack();
+        if (this.prevCropStack != cropStack) {
+            this.crop = BotanyPotHelper.findCrop(level, pos, potEntity, cropStack);
+            this.prevCropStack = cropStack;
+        }
+
         this.requiredGrowthTime = BotanyPotHelper.getRequiredGrowthTicks(potEntity.getLevel(), potEntity.getBlockPos(), potEntity, this.crop, this.soil);
 
         final int potLight = this.getPotEntity().getLightLevel();
