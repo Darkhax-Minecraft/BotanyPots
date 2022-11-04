@@ -70,7 +70,7 @@ public abstract class Soil extends RecipeBaseData<Container> {
      * @param crop  The crop being tested.
      * @return Whether the crop can grow in the soil or not.
      */
-    public abstract boolean canGrowCrop(Level level, BlockPos pos, BlockEntityBotanyPot pot, Crop crop);
+    public abstract boolean canGrowCrop(@Nullable Level level, @Nullable BlockPos pos, @Nullable BlockEntityBotanyPot pot, Crop crop);
 
     /**
      * Gets a set of soil categories associated with the soil.
@@ -80,7 +80,7 @@ public abstract class Soil extends RecipeBaseData<Container> {
      * @param pot   The pot using the soil.
      * @return A set of soil categories associated with the soil.
      */
-    public abstract Set<String> getCategories(Level level, BlockPos pos, BlockEntityBotanyPot pot);
+    public abstract Set<String> getCategories(@Nullable Level level, @Nullable BlockPos pos, @Nullable BlockEntityBotanyPot pot);
 
     /**
      * Gets the display state for the soil. This will be used to render the soil in the pot.

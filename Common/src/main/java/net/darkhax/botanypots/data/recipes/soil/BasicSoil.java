@@ -110,4 +110,24 @@ public class BasicSoil extends Soil {
 
         return BotanyPotHelper.SOIL_SERIALIZER.get();
     }
+
+    public Ingredient getIngredient() {
+        return ingredient;
+    }
+
+    public DisplayState getDisplayState() {
+        return displayState;
+    }
+
+    public float getGrowthModifier() {
+        return growthModifier;
+    }
+
+    public Set<String> getCategories() {
+        return categories;
+    }
+
+    public int getLightLevel() {
+        return lightLevel;
+    }
 }
