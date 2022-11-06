@@ -32,6 +32,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Random;
 
 public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotContainer> {
@@ -130,15 +131,21 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
 
     public boolean attemptAutoHarvest() {
 
-        boolean didCollect = false;
-
         if (this.getLevel() != null && !this.getLevel().isClientSide && this.getCrop() != null) {
 
             final ContainerInventoryAccess<BotanyPotContainer> inventory = new ContainerInventoryAccess<>(this.getInventory());
 
             this.rng.setSeed(this.rngSeed);
+            final List<ItemStack> drops = BotanyPotHelper.generateDrop(rng, this.level, this.getBlockPos(), this, this.getCrop());
 
-            for (ItemStack drop : BotanyPotHelper.generateDrop(rng, this.level, this.getBlockPos(), this, this.getCrop())) {
+            if (drops.isEmpty()) {
+
+                return true;
+            }
+
+            boolean didCollect = false;
+
+            for (ItemStack drop : drops) {
 
                 if (!drop.isEmpty()) {
 
@@ -160,9 +167,11 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
                     }
                 }
             }
+
+            return didCollect;
         }
 
-        return didCollect;
+        return false;
     }
 
     private void attemptExport() {
