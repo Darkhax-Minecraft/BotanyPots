@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "byg:purple_bulbis_oddity"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "byg:purple_bulbis_oddity"
+    },
+    "categories": [
+      "stone",
+      "mushroom",
+      "mulch"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "block": "byg:purple_bulbis_oddity"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "byg:purple_bulbis_oddity"
+        }
+      }
+    ]
+  }

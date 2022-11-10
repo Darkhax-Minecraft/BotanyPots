@@ -1,0 +1,26 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "byg:wailing_nylium"
+        ]
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "byg:wailing_nylium"
+    },
+    "display": {
+      "block": "byg:wailing_nylium"
+    },
+    "categories": [
+      "wailing",
+      "nylium",
+      "wailing_nylium",
+      "mushroom",
+      "soul_sand",
+      "nether"
+    ],
+    "growthModifier": 1
+  }

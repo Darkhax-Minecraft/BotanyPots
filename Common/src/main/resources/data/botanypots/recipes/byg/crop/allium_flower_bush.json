@@ -1,0 +1,30 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "byg:allium_flower_bush"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "byg:allium_flower_bush"
+    },
+    "categories": [
+      "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "byg:allium_flower_bush"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "byg:allium_flower_bush"
+        }
+      }
+    ]
+  }

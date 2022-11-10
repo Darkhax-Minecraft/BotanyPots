@@ -1,0 +1,21 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "byg:magmatic_stone"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "byg:magmatic_stone"
+    },
+    "display": {
+      "block": "byg:magmatic_stone"
+    },
+    "categories": [
+      "stone",
+      "mushroom",
+      "magmatic_stone"
+    ],
+    "growthModifier": 1.00
+  }

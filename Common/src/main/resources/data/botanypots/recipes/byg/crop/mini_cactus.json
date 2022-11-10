@@ -1,0 +1,30 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "byg:mini_cactus"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "byg:mini_cactus"
+    },
+    "categories": [
+      "sand"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "byg:mini_cactus"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "byg:mini_cactus"
+        }
+      }
+    ]
+  }

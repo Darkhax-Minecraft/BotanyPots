@@ -1,0 +1,30 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "byg:flower_patch"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "byg:flower_patch"
+    },
+    "categories": [
+      "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "byg:flower_patch"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "byg:flower_patch"
+        }
+      }
+    ]
+  }

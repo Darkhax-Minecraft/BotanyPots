@@ -1,0 +1,26 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "byg:embur_nylium"
+        ]
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "byg:embur_nylium"
+    },
+    "display": {
+      "block": "byg:embur_nylium"
+    },
+    "categories": [
+      "embur",
+      "nylium",
+      "embur_nylium",
+      "mushroom",
+      "netherrack",
+      "nether"
+    ],
+    "growthModifier": 1
+  }

@@ -1,0 +1,20 @@
+  {
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "byg:peat"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "byg:peat"
+    },
+    "display": {
+      "block": "byg:peat"
+    },
+    "categories": [
+      "dirt",
+      "peat"
+    ],
+    "growthModifier": 1.00
+  }

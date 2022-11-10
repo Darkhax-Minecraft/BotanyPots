@@ -1,0 +1,21 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "byg:soapstone"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "byg:soapstone"
+    },
+    "display": {
+      "block": "byg:soapstone"
+    },
+    "categories": [
+      "stone",
+      "mushroom",
+      "soapstone"
+    ],
+    "growthModifier": 1.00
+  }

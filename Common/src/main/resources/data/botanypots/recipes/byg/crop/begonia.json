@@ -1,0 +1,30 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "byg:begonia"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "byg:begonia"
+    },
+    "categories": [
+      "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "byg:begonia"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "byg:begonia"
+        }
+      }
+    ]
+  }

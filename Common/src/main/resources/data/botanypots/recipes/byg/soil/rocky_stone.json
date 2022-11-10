@@ -1,0 +1,21 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "byg:rocky_stone"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "byg:rocky_stone"
+    },
+    "display": {
+      "block": "byg:rocky_stone"
+    },
+    "categories": [
+      "stone",
+      "mushroom",
+      "rocky_stone"
+    ],
+    "growthModifier": 1.00
+  }

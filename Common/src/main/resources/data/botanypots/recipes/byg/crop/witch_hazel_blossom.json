@@ -1,0 +1,32 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "byg:witch_hazel_blossom"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "byg:witch_hazel_blossom"
+    },
+    "categories": [
+      "dirt",
+      "farmland",
+      "moss"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "block": "byg:witch_hazel_blossom",
+      "rotation": "X_180"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "byg:witch_hazel_blossom"
+        }
+      }
+    ]
+  }

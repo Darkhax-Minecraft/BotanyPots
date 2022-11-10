@@ -1,0 +1,21 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "byg:cryptic_stone"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "byg:cryptic_stone"
+    },
+    "display": {
+      "block": "byg:cryptic_stone"
+    },
+    "categories": [
+      "stone",
+      "mushroom",
+      "cryptic_stone"
+    ],
+    "growthModifier": 1.00
+  }
