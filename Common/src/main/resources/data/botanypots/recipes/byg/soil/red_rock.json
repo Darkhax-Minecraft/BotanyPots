@@ -1,0 +1,21 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "byg:red_rock"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "byg:red_rock"
+    },
+    "display": {
+      "block": "byg:red_rock"
+    },
+    "categories": [
+      "stone",
+      "mushroom",
+      "red_rock"
+    ],
+    "growthModifier": 1.00
+  }

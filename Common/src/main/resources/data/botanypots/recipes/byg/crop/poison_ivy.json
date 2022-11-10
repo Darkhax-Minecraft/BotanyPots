@@ -1,0 +1,37 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "byg:poison_ivy"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "byg:poison_ivy"
+    },
+    "categories": [
+      "dirt",
+      "stone"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "block": "byg:poison_ivy",
+      "properties": {
+        "north": "true",
+        "east": "true",
+        "south": "true",
+        "west": "true",
+        "up": "true"
+      }
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "byg:poison_ivy"
+        }
+      }
+    ]
+  }

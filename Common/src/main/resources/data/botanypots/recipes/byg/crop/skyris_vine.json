@@ -1,0 +1,36 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "byg:skyris_vine"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "byg:skyris_vine"
+    },
+    "categories": [
+      "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "block": "byg:skyris_vine",
+      "properties": {
+        "north": "true",
+        "east": "true",
+        "south": "true",
+        "west": "true",
+        "up": "true"
+      }
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "byg:skyris_vine"
+        }
+      }
+    ]
+  }

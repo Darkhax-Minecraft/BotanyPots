@@ -1,0 +1,20 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "byg:mud_block"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "byg:mud_block"
+    },
+    "display": {
+      "block": "byg:mud_block"
+    },
+    "categories": [
+      "dirt",
+      "mud"
+    ],
+    "growthModifier": 1.00
+  }

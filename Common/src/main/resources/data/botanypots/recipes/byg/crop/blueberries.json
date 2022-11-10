@@ -1,0 +1,56 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "byg:blueberries"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "byg:blueberries"
+    },
+    "categories": [
+      "dirt"
+    ],
+    "growthTicks": 1200,
+    "lightLevel": 14,
+    "display": {
+      "type": "botanypots:transitional",
+      "phases": [
+        {
+          "block": "byg:blueberry_bush",
+          "properties": {
+            "age": 0
+          }
+        },
+        {
+          "block": "byg:blueberry_bush",
+          "properties": {
+            "age": 1
+          }
+        },
+        {
+          "block": "byg:blueberry_bush",
+          "properties": {
+            "age": 3
+          }
+        }
+      ]
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "byg:blueberries"
+        }
+      },
+      {
+        "chance": 0.05,
+        "output": {
+          "item": "byg:blueberries"
+        }
+      }
+    ]
+  }

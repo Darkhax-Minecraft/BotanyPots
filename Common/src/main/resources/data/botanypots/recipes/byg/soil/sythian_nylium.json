@@ -1,0 +1,26 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "byg:sythian_nylium"
+        ]
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "byg:sythian_nylium"
+    },
+    "display": {
+      "block": "byg:sythian_nylium"
+    },
+    "categories": [
+      "sythian",
+      "nylium",
+      "sythian_nylium",
+      "mushroom",
+      "netherrack",
+      "nether"
+    ],
+    "growthModifier": 1
+  }

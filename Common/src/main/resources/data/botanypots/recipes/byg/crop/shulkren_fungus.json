@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "byg:shulkren_fungus"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "byg:shulkren_fungus"
+    },
+    "categories": [
+      "stone",
+      "mushroom",
+      "mulch"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "block": "byg:shulkren_fungus"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "byg:shulkren_fungus"
+        }
+      }
+    ]
+  }

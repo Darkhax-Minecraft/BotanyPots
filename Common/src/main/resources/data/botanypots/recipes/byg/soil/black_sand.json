@@ -1,0 +1,20 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "byg:black_sand"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "byg:black_sand"
+    },
+    "display": {
+      "block": "byg:black_sand"
+    },
+    "categories": [
+      "sand",
+      "black_sand"
+    ],
+    "growthModifier": 1.00
+  }

@@ -1,0 +1,22 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "byg:overgrown_netherrack"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "byg:overgrown_netherrack"
+    },
+    "display": {
+      "block": "byg:overgrown_netherrack"
+    },
+    "categories": [
+      "nether",
+      "netherrack",
+      "mushroom",
+      "overgrown_netherrack"
+    ],
+    "growthModifier": 1
+  }

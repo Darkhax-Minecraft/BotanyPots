@@ -1,0 +1,40 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "byg:foxglove"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:foxglove"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "byg:foxglove",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "byg:foxglove",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1,
+      "output": {
+        "item": "byg:foxglove"
+      }
+    }
+  ]
+}
