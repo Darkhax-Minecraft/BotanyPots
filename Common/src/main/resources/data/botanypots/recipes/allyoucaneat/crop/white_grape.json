@@ -1,0 +1,33 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "allyoucaneat:white_grape_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "allyoucaneat:white_grape_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "allyoucaneat:white_grape"
+        },
+        "minRolls": 1,
+        "maxRolls": 2
+      },
+      {
+        "chance": 0.05,
+        "output": {
+          "item": "allyoucaneat:white_grape_seeds"
+        },
+        "minRolls": 1,
+        "maxRolls": 2
+      }
+    ]
+  }

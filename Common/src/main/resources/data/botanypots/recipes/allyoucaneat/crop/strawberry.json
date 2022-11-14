@@ -1,0 +1,25 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "allyoucaneat:strawberry"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "allyoucaneat:strawberry_bush"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "allyoucaneat:strawberry"
+        },
+        "minRolls": 1,
+        "maxRolls": 2
+      }
+    ]
+  }
