@@ -1,0 +1,33 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "supplementaries:flax_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "supplementaries:flax"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "supplementaries:flax"
+        },
+        "minRolls": 1,
+        "maxRolls": 2
+      },
+      {
+        "chance": 0.05,
+        "output": {
+          "item": "supplementaries:flax_seeds"
+        },
+        "minRolls": 1,
+        "maxRolls": 2
+      }
+    ]
+  }
