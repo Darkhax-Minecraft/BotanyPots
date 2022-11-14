@@ -1,0 +1,33 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "simplefarming:cotton_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "simplefarming:cotton_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "simplefarming:cotton"
+        },
+        "minRolls": 1,
+        "maxRolls": 2
+      },
+      {
+        "chance": 0.05,
+        "output": {
+          "item": "simplefarming:cotton_seeds"
+        },
+        "minRolls": 1,
+        "maxRolls": 2
+      }
+    ]
+  }

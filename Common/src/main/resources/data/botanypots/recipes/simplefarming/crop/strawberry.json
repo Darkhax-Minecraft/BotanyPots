@@ -1,0 +1,25 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "simplefarming:strawberry_bush"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "simplefarming:strawberry_bush"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "simplefarming:strawberries"
+        },
+        "minRolls": 1,
+        "maxRolls": 2
+      }
+    ]
+  }
