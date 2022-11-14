@@ -1,0 +1,25 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "farmersdelight:onion"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "farmersdelight:onions"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "farmersdelight:onion"
+        },
+        "minRolls": 1,
+        "maxRolls": 2
+      }
+    ]
+  }
