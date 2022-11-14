@@ -10,7 +10,7 @@
     "growthTicks": 1200,
     "display": {
       "type": "botanypots:aging",
-      "block": "thermal:hops"
+      "block": "thermal:hops_block"
     },
     "drops": [
       {
