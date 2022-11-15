@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "pamhc2crops:nettlesseeditem",
+          "pamhc2crops:nettlesitem"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "pamhc2crops:nettlesseeditem"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "pamhc2crops:pamnettlescrop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "pamhc2crops:nettlesitem"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "pamhc2crops:nettlesseeditem"
+        }
+      }
+    ]
+  }

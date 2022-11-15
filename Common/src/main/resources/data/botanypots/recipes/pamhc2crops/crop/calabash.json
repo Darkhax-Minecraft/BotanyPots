@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "pamhc2crops:calabashseeditem",
+          "pamhc2crops:calabashitem"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "pamhc2crops:calabashseeditem"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "pamhc2crops:pamcalabashcrop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "pamhc2crops:calabashitem"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "pamhc2crops:calabashseeditem"
+        }
+      }
+    ]
+  }

@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "pamhc2crops:barrelcactusseeditem",
+          "pamhc2crops:barrelcactusitem"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "pamhc2crops:barrelcactusseeditem"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "pamhc2crops:pambarrelcactuscrop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "pamhc2crops:barrelcactusitem"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "pamhc2crops:barrelcactusseeditem"
+        }
+      }
+    ]
+  }

@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "pamhc2crops:truffleseeditem",
+          "pamhc2crops:truffleitem"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "pamhc2crops:truffleseeditem"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "pamhc2crops:pamtrufflecrop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "pamhc2crops:truffleitem"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "pamhc2crops:truffleseeditem"
+        }
+      }
+    ]
+  }
