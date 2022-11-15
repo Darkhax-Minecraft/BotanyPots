@@ -1,0 +1,33 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "ravageandcabbage:cabbage_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "ravageandcabbage:cabbage_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "ravageandcabbage:cabbage"
+        },
+        "minRolls": 1,
+        "maxRolls": 2
+      },
+      {
+        "chance": 0.50,
+        "output": {
+          "item": "ravageandcabbage:cabbage_seeds"
+        },
+        "minRolls": 1,
+        "maxRolls": 1
+      }
+    ]
+  }
