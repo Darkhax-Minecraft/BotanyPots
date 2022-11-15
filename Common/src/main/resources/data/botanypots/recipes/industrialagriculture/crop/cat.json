@@ -1,0 +1,45 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "mysticalagriculture:cat_seeds",
+          "mysticalagriculture:cat_essence"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "mysticalagriculture:cat_seeds"
+    },
+    "categories": [
+      "prudentium"
+    ],
+    "growthTicks": 3600,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "mysticalagriculture:cat_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "mysticalagriculture:cat_essence"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "mysticalagriculture:cat_seeds"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "mysticalagriculture:fertilized_essence"
+        },
+        "minRolls": 1,
+        "maxRolls": 1
+      }
+    ]
+  }

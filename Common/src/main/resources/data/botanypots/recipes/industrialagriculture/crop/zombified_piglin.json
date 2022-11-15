@@ -1,0 +1,45 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "mysticalagriculture:zombified_piglin_seeds",
+          "mysticalagriculture:zombified_piglin_essence"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "mysticalagriculture:zombified_piglin_seeds"
+    },
+    "categories": [
+      "tertium"
+    ],
+    "growthTicks": 3600,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "mysticalagriculture:zombified_piglin_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "mysticalagriculture:zombified_piglin_essence"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "mysticalagriculture:zombified_piglin_seeds"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "mysticalagriculture:fertilized_essence"
+        },
+        "minRolls": 1,
+        "maxRolls": 1
+      }
+    ]
+  }
