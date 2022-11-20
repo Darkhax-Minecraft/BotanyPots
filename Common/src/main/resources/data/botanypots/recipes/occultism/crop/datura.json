@@ -1,33 +1,38 @@
 {
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "occultism:datura_seeds"
-    },
-    "categories": [
-      "dirt",
-      "farmland"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "occultism:datura"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "occultism:datura"
-        },
-        "minRolls": 1,
-        "maxRolls": 2
-      },
-      {
-        "chance": 0.05,
-        "output": {
-          "item": "occultism:datura_seeds"
-        },
-        "minRolls": 1,
-        "maxRolls": 2
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "occultism:datura_seeds",
+        "occultism:datura"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "occultism:datura_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "occultism:datura_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "occultism:datura"
       }
-    ]
-  }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "occultism:datura_seeds"
+      }
+    }
+  ]
+}

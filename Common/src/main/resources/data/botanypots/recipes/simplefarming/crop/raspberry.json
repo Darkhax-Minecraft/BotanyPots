@@ -1,4 +1,12 @@
 {
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "simplefarming:raspberry_bush"
+      ]
+    }
+  ],
   "type": "botanypots:crop",
   "seed": {
     "item": "simplefarming:raspberry_bush"
@@ -7,7 +15,7 @@
     "dirt",
     "farmland"
   ],
-  "growthTicks": 1200,
+  "growthTicks": 3600,
   "display": {
     "type": "botanypots:aging",
     "block": "simplefarming:raspberry_bush"
@@ -17,9 +25,13 @@
       "chance": 1.00,
       "output": {
         "item": "simplefarming:raspberries"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "simplefarming:raspberry_bush"
+      }
     }
   ]
 }

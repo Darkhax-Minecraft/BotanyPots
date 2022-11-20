@@ -1,33 +1,38 @@
 {
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "thermal:sadiroot_seeds"
-    },
-    "categories": [
-      "dirt",
-      "farmland"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "thermal:sadiroot"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "thermal:sadiroot"
-        },
-        "minRolls": 1,
-        "maxRolls": 2
-      },
-      {
-        "chance": 0.05,
-        "output": {
-          "item": "thermal:sadiroot_seeds"
-        },
-        "minRolls": 1,
-        "maxRolls": 2
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "thermal:sadiroot_seeds",
+        "thermal:sadiroot"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "thermal:sadiroot_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "thermal:sadiroot"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "thermal:sadiroot"
       }
-    ]
-  }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "thermal:sadiroot_seeds"
+      }
+    }
+  ]
+}

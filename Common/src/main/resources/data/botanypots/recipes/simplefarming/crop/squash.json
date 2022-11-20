@@ -1,33 +1,38 @@
 {
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "simplefarming:squash_seeds"
-    },
-    "categories": [
-      "dirt",
-      "farmland"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "simplefarming:squash_crop"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "simplefarming:squash"
-        },
-        "minRolls": 1,
-        "maxRolls": 2
-      },
-      {
-        "chance": 0.05,
-        "output": {
-          "item": "simplefarming:squash_seeds"
-        },
-        "minRolls": 1,
-        "maxRolls": 2
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "simplefarming:squash_seeds",
+        "simplefarming:squash"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "simplefarming:squash_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "simplefarming:squash_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "simplefarming:squash"
       }
-    ]
-  }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "simplefarming:squash_seeds"
+      }
+    }
+  ]
+}

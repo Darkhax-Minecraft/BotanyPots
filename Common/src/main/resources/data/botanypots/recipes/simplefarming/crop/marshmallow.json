@@ -1,25 +1,31 @@
 {
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "simplefarming:marshmallow_root"
-    },
-    "categories": [
-      "dirt",
-      "farmland"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "simplefarming:marshmallow"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "simplefarming:marshmallow_root"
-        },
-        "minRolls": 1,
-        "maxRolls": 2
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "simplefarming:marshmallow_root"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "simplefarming:marshmallow_root"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "simplefarming:marshmallow"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "simplefarming:marshmallow_root"
       }
-    ]
-  }
+    }
+  ]
+}

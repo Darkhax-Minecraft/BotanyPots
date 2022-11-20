@@ -1,4 +1,12 @@
 {
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "simplefarming:blueberry_bush"
+      ]
+    }
+  ],
   "type": "botanypots:crop",
   "seed": {
     "item": "simplefarming:blueberry_bush"
@@ -17,9 +25,13 @@
       "chance": 1.00,
       "output": {
         "item": "simplefarming:blueberries"
-      },
-      "minRolls": 1,
-      "maxRolls": 2
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "simplefarming:blueberry_bush"
+      }
     }
   ]
 }

@@ -1,33 +1,38 @@
 {
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "simplefarming:cantaloupe_seeds"
-    },
-    "categories": [
-      "dirt",
-      "farmland"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "simplefarming:cantaloupe_crop"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "simplefarming:cantaloupe"
-        },
-        "minRolls": 1,
-        "maxRolls": 2
-      },
-      {
-        "chance": 0.05,
-        "output": {
-          "item": "simplefarming:cantaloupe_seeds"
-        },
-        "minRolls": 1,
-        "maxRolls": 2
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "simplefarming:cantaloupe_seeds",
+        "simplefarming:cantaloupe"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "simplefarming:cantaloupe_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "simplefarming:cantaloupe_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "simplefarming:cantaloupe"
       }
-    ]
-  }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "simplefarming:cantaloupe_seeds"
+      }
+    }
+  ]
+}
