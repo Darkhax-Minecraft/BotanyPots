@@ -18,7 +18,7 @@
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "simplefarming:cumin_crop"
+    "block": "simplefarming:cumin"
   },
   "drops": [
     {
