@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "blue_skies:fiery_bean_seeds",
+          "blue_skies:fiery_beans"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "blue_skies:fiery_bean_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "blue_skies:fiery_beans"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "blue_skies:fiery_beans"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "blue_skies:fiery_bean_seeds"
+        }
+      }
+    ]
+  }

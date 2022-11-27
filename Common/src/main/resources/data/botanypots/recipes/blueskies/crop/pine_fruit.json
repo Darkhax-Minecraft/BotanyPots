@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "blue_skies:pine_fruit_seeds",
+          "blue_skies:pine_fruit"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "blue_skies:pine_fruit_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "blue_skies:pine_fruits"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "blue_skies:pine_fruit"
+        }
+      },
+      {
+        "chance": 0.2,
+        "output": {
+          "item": "blue_skies:pine_fruit_seeds"
+        }
+      }
+    ]
+  }

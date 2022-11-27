@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "createcafe:coffee_beans"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "createcafe:coffee_beans"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "createcafe:coffee_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "createcafe:coffee_beans"
+        }
+      }
+    ]
+  }

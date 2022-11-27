@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "blue_skies:winter_leaf_seeds",
+          "blue_skies:winter_leaves"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "blue_skies:winter_leaf_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "blue_skies:winter_leaves"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "blue_skies:winter_leaves"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "blue_skies:winter_leaf_seeds"
+        }
+      }
+    ]
+  }
