@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "ms:crop/grey_tulip_seeds",
+          "ms:plant/grey_tulip"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "ms:crop/grey_tulip_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "ms:plant/grey_tulip_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "ms:plant/grey_tulip"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "ms:crop/grey_tulip_seeds"
+        }
+      }
+    ]
+  }
