@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "ms:food/lettuceseeds",
+          "ms:food/lettuce"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "ms:food/lettuceseeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "ms:crop/lettuceplant"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "ms:food/lettuce"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "ms:food/lettuceseeds"
+        }
+      }
+    ]
+  }

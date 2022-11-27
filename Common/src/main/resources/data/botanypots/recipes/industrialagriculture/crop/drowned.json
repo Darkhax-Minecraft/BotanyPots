@@ -1,0 +1,45 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "mysticalagriculture:drowned_seeds",
+          "mysticalagriculture:drowned_essence"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "mysticalagriculture:drowned_seeds"
+    },
+    "categories": [
+      "tertium"
+    ],
+    "growthTicks": 3600,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "mysticalagriculture:drowned_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "mysticalagriculture:drowned_essence"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "mysticalagriculture:drowned_seeds"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "mysticalagriculture:fertilized_essence"
+        },
+        "minRolls": 1,
+        "maxRolls": 1
+      }
+    ]
+  }

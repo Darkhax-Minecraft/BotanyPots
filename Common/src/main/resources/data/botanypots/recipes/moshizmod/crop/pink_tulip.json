@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "ms:crop/pink_tulip_seeds",
+          "minecraft:pink_tulip"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "ms:crop/pink_tulip_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "minecraft:pink_tulip"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "minecraft:pink_tulip"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "ms:crop/pink_tulip_seeds"
+        }
+      }
+    ]
+  }

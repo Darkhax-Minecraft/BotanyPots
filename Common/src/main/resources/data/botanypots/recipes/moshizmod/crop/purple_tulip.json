@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "ms:crop/purple_tulip_seeds",
+          "ms:plant/purple_tulip"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "ms:crop/purple_tulip_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "ms:plant/purple_tulip_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "ms:plant/purple_tulip"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "ms:crop/purple_tulip_seeds"
+        }
+      }
+    ]
+  }

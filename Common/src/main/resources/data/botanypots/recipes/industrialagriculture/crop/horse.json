@@ -1,0 +1,45 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "mysticalagriculture:horse_seeds",
+          "mysticalagriculture:horse_essence"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "mysticalagriculture:horse_seeds"
+    },
+    "categories": [
+      "tertium"
+    ],
+    "growthTicks": 3600,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "mysticalagriculture:horse_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "mysticalagriculture:horse_essence"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "mysticalagriculture:horse_seeds"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "mysticalagriculture:fertilized_essence"
+        },
+        "minRolls": 1,
+        "maxRolls": 1
+      }
+    ]
+  }

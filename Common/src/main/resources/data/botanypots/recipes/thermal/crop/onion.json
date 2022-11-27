@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "thermal:onion_seeds",
+        "thermal:onion"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "thermal:onion_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "thermal:onion"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "thermal:onion"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "thermal:onion_seeds"
+      }
+    }
+  ]
+}

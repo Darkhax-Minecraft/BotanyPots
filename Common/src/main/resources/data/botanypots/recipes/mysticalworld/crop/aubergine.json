@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalworld:aubergine_seeds",
+        "mysticalworld:aubergine"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalworld:aubergine_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalworld:aubergine_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalworld:aubergine"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "mysticalworld:aubergine_seeds"
+      }
+    }
+  ]
+}

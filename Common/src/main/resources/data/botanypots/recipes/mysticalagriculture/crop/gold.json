@@ -32,6 +32,14 @@
       "output": {
         "item": "mysticalagriculture:gold_seeds"
       }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:fertilized_essence"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
     }
   ]
 }

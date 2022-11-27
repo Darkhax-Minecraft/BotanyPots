@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "ms:crop/white_tulip_seeds",
+          "minecraft:white_tulip"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "ms:crop/white_tulip_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "minecraft:white_tulip"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "minecraft:white_tulip"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "ms:crop/white_tulip_seeds"
+        }
+      }
+    ]
+  }
