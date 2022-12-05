@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "enhancedfarming:pineapple_seeds",
+          "enhancedfarming:pineapple"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "enhancedfarming:pineapple_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "enhancedfarming:pineapple_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "enhancedfarming:pineapple"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "enhancedfarming:pineapple_seeds"
+        }
+      }
+    ]
+  }

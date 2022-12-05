@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "enhancedfarming:aubergine_seeds",
+          "enhancedfarming:aubergine"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "enhancedfarming:aubergine_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "enhancedfarming:aubergine_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "enhancedfarming:aubergine"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "enhancedfarming:aubergine_seeds"
+        }
+      }
+    ]
+  }

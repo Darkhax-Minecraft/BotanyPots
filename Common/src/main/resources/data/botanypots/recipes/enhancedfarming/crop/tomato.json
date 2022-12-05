@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "enhancedfarming:tomato_seeds",
+          "enhancedfarming:tomato"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "enhancedfarming:tomato_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "enhancedfarming:tomato_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "enhancedfarming:tomato"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "enhancedfarming:tomato_seeds"
+        }
+      }
+    ]
+  }
