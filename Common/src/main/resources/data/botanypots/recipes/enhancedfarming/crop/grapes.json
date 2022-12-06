@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "enhancedfarming:grape_seeds",
+          "enhancedfarming:grapes"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "enhancedfarming:grape_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "enhancedfarming:grape_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "enhancedfarming:grapes"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "enhancedfarming:grape_seeds"
+        }
+      }
+    ]
+  }
