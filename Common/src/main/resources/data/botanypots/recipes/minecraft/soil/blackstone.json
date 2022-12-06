@@ -2,18 +2,20 @@
     "bookshelf:load_conditions": [
       {
         "type": "bookshelf:item_exists",
-        "values": "minecraft:netherrack"
+        "values": "minecraft:blackstone"
       }
     ],
     "type": "botanypots:soil",
     "input": {
-      "item": "minecraft:netherrack"
+      "item": "minecraft:blackstone"
     },
     "display": {
-      "block": "minecraft:netherrack"
+      "block": "minecraft:blackstone"
     },
     "categories": [
-      "netherrack"
+      "blackstone",
+      "stone",
+      "mushroom"
     ],
     "growthModifier": 1.00
   }
