@@ -2,19 +2,20 @@
   "bookshelf:load_conditions": [
     {
       "type": "bookshelf:item_exists",
-      "values": "biomesoplenty:mud"
+      "values": "minecraft:blackstone"
     }
   ],
   "type": "botanypots:soil",
   "input": {
-    "item": "biomesoplenty:mud"
+    "item": "minecraft:blackstone"
   },
   "display": {
-    "block": "biomesoplenty:mud"
+    "block": "minecraft:blackstone"
   },
   "categories": [
-    "dirt",
-    "mud"
+    "blackstone",
+    "stone",
+    "mushroom"
   ],
   "growthModifier": 1.00
 }
