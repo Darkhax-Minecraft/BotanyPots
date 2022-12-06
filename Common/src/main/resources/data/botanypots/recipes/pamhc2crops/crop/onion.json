@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "pamhc2crops:onionseeditem",
+        "pamhc2crops:onionitem"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "pamhc2crops:onionseeditem"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "pamhc2crops:pamonioncrop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "pamhc2crops:onionitem"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "pamhc2crops:onionseeditem"
+      }
+    }
+  ]
+}

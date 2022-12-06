@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "pamhc2crops:cranberryseeditem",
+        "pamhc2crops:cranberryitem"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "pamhc2crops:cranberryseeditem"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "pamhc2crops:pamcranberrycrop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "pamhc2crops:cranberryitem"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "pamhc2crops:cranberryseeditem"
+      }
+    }
+  ]
+}

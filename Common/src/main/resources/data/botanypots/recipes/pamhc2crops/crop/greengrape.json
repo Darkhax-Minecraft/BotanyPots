@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "pamhc2crops:greengrapeseeditem",
+        "pamhc2crops:greengrapeitem"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "pamhc2crops:greengrapeseeditem"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "pamhc2crops:pamgreengrapecrop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "pamhc2crops:greengrapeitem"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "pamhc2crops:greengrapeseeditem"
+      }
+    }
+  ]
+}
