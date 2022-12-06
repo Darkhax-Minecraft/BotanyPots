@@ -1,0 +1,20 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "minecraft:netherrack"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "minecraft:netherrack"
+    },
+    "display": {
+      "block": "minecraft:netherrack"
+    },
+    "categories": [
+      "dirt",
+      "netherrack"
+    ],
+    "growthModifier": 1.00
+  }

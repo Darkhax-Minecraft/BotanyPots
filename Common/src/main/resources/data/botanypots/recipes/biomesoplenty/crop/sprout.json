@@ -1,0 +1,32 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "biomesoplenty:sprout"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "biomesoplenty:sprout"
+    },
+    "categories": [
+      "dirt",
+      "grass",
+      "netherrack"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "biomesoplenty:sprout"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "biomesoplenty:sprout"
+        }
+      }
+    ]
+  }

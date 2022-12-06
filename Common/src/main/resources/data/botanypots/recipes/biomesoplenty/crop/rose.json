@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "biomesoplenty:rose"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "biomesoplenty:rose"
+    },
+    "categories": [
+      "dirt",
+      "origin_grass"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "biomesoplenty:rose"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "biomesoplenty:rose"
+        }
+      }
+    ]
+  }

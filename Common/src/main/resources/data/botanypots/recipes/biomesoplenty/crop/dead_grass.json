@@ -1,0 +1,32 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "biomesoplenty:dead_grass"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "biomesoplenty:dead_grass"
+    },
+    "categories": [
+      "dirt",
+      "grass",
+      "netherrack"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "biomesoplenty:dead_grass"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "biomesoplenty:dead_grass"
+        }
+      }
+    ]
+  }
