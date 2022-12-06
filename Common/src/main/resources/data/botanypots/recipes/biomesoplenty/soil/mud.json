@@ -2,18 +2,19 @@
     "bookshelf:load_conditions": [
       {
         "type": "bookshelf:item_exists",
-        "values": "minecraft:netherrack"
+        "values": "minecraft:mud"
       }
     ],
     "type": "botanypots:soil",
     "input": {
-      "item": "minecraft:netherrack"
+      "item": "minecraft:mud"
     },
     "display": {
-      "block": "minecraft:netherrack"
+      "block": "biomesoplenty:mud"
     },
     "categories": [
-      "netherrack"
+      "dirt",
+      "mud"
     ],
     "growthModifier": 1.00
   }

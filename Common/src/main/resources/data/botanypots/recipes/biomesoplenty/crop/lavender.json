@@ -3,29 +3,27 @@
       {
         "type": "bookshelf:item_exists",
         "values": [
-          "biomesoplenty:dead_grass"
+          "biomesoplenty:lavender"
         ]
       }
     ],
     "type": "botanypots:crop",
     "seed": {
-      "item": "biomesoplenty:dead_grass"
+      "item": "biomesoplenty:lavender"
     },
     "categories": [
-      "dirt",
-      "grass",
-      "netherrack"
+      "dirt"
     ],
     "growthTicks": 1200,
     "display": {
       "type": "botanypots:aging",
-      "block": "biomesoplenty:dead_grass"
+      "block": "biomesoplenty:lavender"
     },
     "drops": [
       {
         "chance": 1.00,
         "output": {
-          "item": "biomesoplenty:dead_grass"
+          "item": "biomesoplenty:lavender"
         }
       }
     ]

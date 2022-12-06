@@ -14,7 +14,8 @@
     },
     "categories": [
       "dirt",
-      "origin_grass"
+      "origin_grass",
+      "grass"
     ],
     "growthModifier": 1.00
   }

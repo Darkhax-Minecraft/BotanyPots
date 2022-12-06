@@ -3,13 +3,13 @@
       {
         "type": "bookshelf:item_exists",
         "values": [
-          "biomesoplenty:violet"
+          "biomesoplenty:wilted_lily"
         ]
       }
     ],
     "type": "botanypots:crop",
     "seed": {
-      "item": "biomesoplenty:violet"
+      "item": "biomesoplenty:wilted_lily"
     },
     "categories": [
       "dirt"
@@ -17,13 +17,13 @@
     "growthTicks": 1200,
     "display": {
       "type": "botanypots:aging",
-      "block": "biomesoplenty:violet"
+      "block": "biomesoplenty:wilted_lily"
     },
     "drops": [
       {
         "chance": 1.00,
         "output": {
-          "item": "biomesoplenty:violet"
+          "item": "biomesoplenty:wilted_lily"
         }
       }
     ]
