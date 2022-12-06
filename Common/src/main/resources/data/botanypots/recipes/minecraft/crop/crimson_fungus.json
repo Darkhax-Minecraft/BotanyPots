@@ -18,6 +18,18 @@
       }
     },
     {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:crimson_stem"
+      }
+    },
+    {
+      "chance": 0.25,
+      "output": {
+        "item": "minecraft:nether_wart_block"
+      }
+    },
+    {
       "chance": 0.05,
       "output": {
         "item": "minecraft:shroomlight"

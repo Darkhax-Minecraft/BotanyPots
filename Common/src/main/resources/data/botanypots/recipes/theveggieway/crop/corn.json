@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "veggie_way:corn_seeds",
+          "veggie_way:corn"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "veggie_way:corn_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "veggie_way:plant_corn"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "veggie_way:corn"
+        }
+      },
+      {
+        "chance": 0.05,
+        "output": {
+          "item": "veggie_way:corn_seeds"
+        }
+      }
+    ]
+  }

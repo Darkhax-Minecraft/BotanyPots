@@ -1,21 +1,21 @@
 {
   "type": "botanypots:crop",
   "seed": {
-    "item": "minecraft:bubble_coral"
+    "item": "minecraft:bubble_coral_fan"
   },
   "categories": [
     "water"
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "minecraft:bubble_coral",
+    "block": "minecraft:bubble_coral_fan",
     "renderFluid": false
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "minecraft:bubble_coral"
+        "item": "minecraft:bubble_coral_fan"
       }
     }
   ]
