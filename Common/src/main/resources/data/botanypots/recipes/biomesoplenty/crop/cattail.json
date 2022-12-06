@@ -1,0 +1,30 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "biomesoplenty:cattail"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "biomesoplenty:cattail"
+    },
+    "categories": [
+      "water"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "biomesoplenty:cattail"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "biomesoplenty:cattail"
+        }
+      }
+    ]
+  }

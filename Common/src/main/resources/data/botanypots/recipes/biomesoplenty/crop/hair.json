@@ -1,0 +1,30 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "biomesoplenty:hair"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "biomesoplenty:hair"
+    },
+    "categories": [
+      "flesh"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "biomesoplenty:hair"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "biomesoplenty:hair"
+        }
+      }
+    ]
+  }
