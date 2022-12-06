@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "ms:crop/orange_tulip_seeds",
+          "minecraft:orange_tulip"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "ms:crop/orange_tulip_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "minecraft:orange_tulip"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "minecraft:orange_tulip"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "ms:crop/orange_tulip_seeds"
+        }
+      }
+    ]
+  }

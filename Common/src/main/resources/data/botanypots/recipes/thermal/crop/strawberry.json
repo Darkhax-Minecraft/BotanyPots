@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "thermal:strawberry_seeds",
+        "thermal:strawberry"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "thermal:strawberry_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "thermal:strawberry"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "thermal:strawberry"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "thermal:strawberry_seeds"
+      }
+    }
+  ]
+}

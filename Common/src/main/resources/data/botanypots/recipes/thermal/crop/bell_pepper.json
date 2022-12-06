@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "thermal:bell_pepper_seeds",
+        "thermal:bell_pepper"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "thermal:bell_pepper_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "thermal:bell_pepper"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "thermal:bell_pepper"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "thermal:bell_pepper_seeds"
+      }
+    }
+  ]
+}
