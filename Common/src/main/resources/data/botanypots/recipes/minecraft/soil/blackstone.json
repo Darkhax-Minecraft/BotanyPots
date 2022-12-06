@@ -1,0 +1,21 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "minecraft:blackstone"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "minecraft:blackstone"
+    },
+    "display": {
+      "block": "minecraft:blackstone"
+    },
+    "categories": [
+      "blackstone",
+      "stone",
+      "mushroom"
+    ],
+    "growthModifier": 1.00
+  }
