@@ -1,0 +1,39 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:crimson_fungus"
+  },
+  "categories": [
+    "crimson_nylium"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:crimson_fungus"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:crimson_fungus"
+      }
+    },
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:crimson_stem"
+      }
+    },
+    {
+      "chance": 0.25,
+      "output": {
+        "item": "minecraft:nether_wart_block"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:shroomlight"
+      }
+    }
+  ]
+}
