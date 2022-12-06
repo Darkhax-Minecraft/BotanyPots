@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "simplefarming:cotton_seeds",
+        "simplefarming:cotton"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "simplefarming:cotton_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "simplefarming:cotton_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "simplefarming:cotton"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "simplefarming:cotton_seeds"
+      }
+    }
+  ]
+}

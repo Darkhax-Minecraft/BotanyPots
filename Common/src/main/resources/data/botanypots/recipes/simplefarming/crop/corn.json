@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "simplefarming:corn_seeds",
+        "simplefarming:corn"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "simplefarming:corn_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "simplefarming:corn_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "simplefarming:corn"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "simplefarming:corn_seeds"
+      }
+    }
+  ]
+}

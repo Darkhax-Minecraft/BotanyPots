@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "simplefarming:rye_seeds",
+        "simplefarming:rye"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "simplefarming:rye_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "simplefarming:rye_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "simplefarming:rye"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "simplefarming:rye_seeds"
+      }
+    }
+  ]
+}

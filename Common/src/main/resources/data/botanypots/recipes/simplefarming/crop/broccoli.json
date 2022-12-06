@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "simplefarming:broccoli_seeds",
+        "simplefarming:broccoli"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "simplefarming:broccoli_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "simplefarming:broccoli_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "simplefarming:broccoli"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "simplefarming:broccoli_seeds"
+      }
+    }
+  ]
+}

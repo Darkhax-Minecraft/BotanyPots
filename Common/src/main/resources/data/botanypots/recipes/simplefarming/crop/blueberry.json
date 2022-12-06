@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "simplefarming:blueberry_bush"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "simplefarming:blueberry_bush"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "simplefarming:blueberry_bush"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "simplefarming:blueberries"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "simplefarming:blueberry_bush"
+      }
+    }
+  ]
+}

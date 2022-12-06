@@ -1,0 +1,45 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "mysticalagriculture:vindicator_seeds",
+          "mysticalagriculture:vindicator_essence"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "mysticalagriculture:vindicator_seeds"
+    },
+    "categories": [
+      "imperium"
+    ],
+    "growthTicks": 3600,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "mysticalagriculture:vindicator_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "mysticalagriculture:vindicator_essence"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "mysticalagriculture:vindicator_seeds"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "mysticalagriculture:fertilized_essence"
+        },
+        "minRolls": 1,
+        "maxRolls": 1
+      }
+    ]
+  }

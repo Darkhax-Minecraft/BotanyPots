@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "simplefarming:honeydew_seeds",
+          "simplefarming:honeydew"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "simplefarming:honeydew_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "simplefarming:honeydew_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "simplefarming:honeydew"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "simplefarming:honeydew_seeds"
+        }
+      }
+    ]
+  }
