@@ -1,0 +1,23 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "tconstruct:earth_slime_fern"
+    },
+    "categories": [
+      "earth_slime",
+      "slime"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "block": "tconstruct:earth_slime_fern",
+      "renderFluid": false
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "tconstruct:earth_slime_fern"
+        }
+      }
+    ]
+  }

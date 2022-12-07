@@ -1,0 +1,23 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "tconstruct:sky_slime_fern"
+    },
+    "categories": [
+      "sky_slime",
+      "slime"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "block": "tconstruct:sky_slime_fern",
+      "renderFluid": false
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "tconstruct:sky_slime_fern"
+        }
+      }
+    ]
+  }
