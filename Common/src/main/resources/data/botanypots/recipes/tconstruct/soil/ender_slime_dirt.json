@@ -1,0 +1,15 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+      "item": "tconstruct:ender_slime_dirt"
+    },
+    "display": {
+      "block": "tconstruct:ender_slime_dirt"
+    },
+    "categories": [
+      "dirt",
+      "ender_slime",
+      "slime"
+    ],
+    "growthModifier": 0.95
+  }

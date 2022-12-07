@@ -1,0 +1,23 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "tconstruct:ender_slime_tall_grass"
+    },
+    "categories": [
+      "ender_slime",
+      "slime"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "block": "tconstruct:ender_slime_tall_grass",
+      "renderFluid": false
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "tconstruct:ender_slime_tall_grass"
+        }
+      }
+    ]
+  }
