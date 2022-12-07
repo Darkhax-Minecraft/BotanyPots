@@ -1,0 +1,16 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+      "item": "tconstruct:earth_earth_slime_grass"
+    },
+    "display": {
+      "block": "tconstruct:earth_earth_slime_grass"
+    },
+    "categories": [
+      "dirt",
+      "grass",
+      "earth_slime",
+      "slime"
+    ],
+    "growthModifier": 0.95
+  }

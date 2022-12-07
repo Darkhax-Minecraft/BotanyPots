@@ -1,0 +1,16 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+      "item": "tconstruct:blood_vanilla_slime_grass"
+    },
+    "display": {
+      "block": "tconstruct:blood_vanilla_slime_grass"
+    },
+    "categories": [
+      "dirt",
+      "grass",
+      "blood_slime",
+      "slime"
+    ],
+    "growthModifier": 0.95
+  }
