@@ -9,8 +9,8 @@
     ],
     "growthTicks": 1200,
     "display": {
-      "block": "tconstruct:earth_slime_tall_grass",
-      "renderFluid": false
+      "type": "botanypots:aging",
+      "block": "tconstruct:earth_slime_tall_grass"
     },
     "drops": [
       {

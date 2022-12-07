@@ -9,8 +9,8 @@
     ],
     "growthTicks": 1200,
     "display": {
-      "block": "tconstruct:sky_slime_fern",
-      "renderFluid": false
+      "type": "botanypots:aging",
+      "block": "tconstruct:sky_slime_fern"
     },
     "drops": [
       {
