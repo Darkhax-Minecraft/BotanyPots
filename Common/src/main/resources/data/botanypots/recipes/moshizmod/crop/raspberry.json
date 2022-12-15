@@ -3,14 +3,14 @@
       {
         "type": "bookshelf:item_exists",
         "values": [
-          "ms:food/raspberryseeds",
+          "ms:berries/raspberry",
           "ms:food/raspberry"
         ]
       }
     ],
     "type": "botanypots:crop",
     "seed": {
-      "item": "ms:food/raspberryseeds"
+      "item": "ms:berries/raspberry"
     },
     "categories": [
       "dirt",
@@ -19,7 +19,7 @@
     "growthTicks": 1200,
     "display": {
       "type": "botanypots:aging",
-      "block": "ms:crop/raspberryplant"
+      "block": "ms:berries/raspberry"
     },
     "drops": [
       {
@@ -31,7 +31,7 @@
       {
         "chance": 0.01,
         "output": {
-          "item": "ms:food/raspberryseeds"
+          "item": "ms:berries/raspberry"
         }
       }
     ]

@@ -3,35 +3,35 @@
       {
         "type": "bookshelf:item_exists",
         "values": [
-          "ms:food/onion_seeds",
-          "ms:food/onion"
+          "ms:food/murky_gourd_seeds",
+          "ms:plant/murky_gourd"
         ]
       }
     ],
     "type": "botanypots:crop",
     "seed": {
-      "item": "ms:food/onion_seeds"
+      "item": "ms:food/murky_gourd_seeds"
     },
     "categories": [
-      "dirt",
-      "farmland"
+      "soul_soil",
+      "soul_soil_farmland"
     ],
     "growthTicks": 1200,
     "display": {
       "type": "botanypots:aging",
-      "block": "ms:crop/onion"
+      "block": "ms:crop/murky_gourd_stem"
     },
     "drops": [
       {
         "chance": 1.00,
         "output": {
-          "item": "ms:food/onion"
+          "item": "ms:plant/murky_gourd"
         }
       },
       {
         "chance": 0.01,
         "output": {
-          "item": "ms:food/onion_seeds"
+          "item": "ms:food/murky_gourd_seeds"
         }
       }
     ]

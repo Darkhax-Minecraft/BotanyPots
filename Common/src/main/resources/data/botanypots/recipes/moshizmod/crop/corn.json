@@ -3,14 +3,14 @@
       {
         "type": "bookshelf:item_exists",
         "values": [
-          "ms:food/cornseeds",
-          "ms:food/corncob"
+          "ms:food/corn_seeds",
+          "ms:food/corn"
         ]
       }
     ],
     "type": "botanypots:crop",
     "seed": {
-      "item": "ms:food/cornseeds"
+      "item": "ms:food/corn_seeds"
     },
     "categories": [
       "dirt",
@@ -19,19 +19,19 @@
     "growthTicks": 1200,
     "display": {
       "type": "botanypots:aging",
-      "block": "ms:crop/cornstalks"
+      "block": "ms:crop/corn"
     },
     "drops": [
       {
         "chance": 1.00,
         "output": {
-          "item": "ms:food/corncob"
+          "item": "ms:food/corn"
         }
       },
       {
         "chance": 0.01,
         "output": {
-          "item": "ms:food/cornseeds"
+          "item": "ms:food/corn_seeds"
         }
       }
     ]

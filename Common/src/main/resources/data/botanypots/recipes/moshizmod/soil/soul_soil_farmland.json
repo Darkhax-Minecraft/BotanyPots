@@ -1,0 +1,22 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "ms:misc/soul_soil_farmland"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "ms:misc/soul_soil_farmland"
+    },
+    "display": {
+      "block": "ms:misc/soul_soil_farmland"
+    },
+    "categories": [
+      "nether",
+      "soul_soil",
+      "soul_sand",
+      "farmland"
+    ],
+    "growthModifier": 1.00
+  }
