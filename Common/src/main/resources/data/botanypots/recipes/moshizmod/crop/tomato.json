@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "ms:food/tomato_seeds",
+          "ms:food/tomato"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "ms:food/tomato_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "ms:crop/tomato"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "ms:food/tomato"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "ms:food/tomato_seeds"
+        }
+      }
+    ]
+  }

@@ -1,0 +1,29 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "finallyfarmabledyes:black"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "finallyfarmabledyes:black"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "finallyfarmabledyes:black"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "finallyfarmabledyes:black"
+            }
+        }
+    ]
+}

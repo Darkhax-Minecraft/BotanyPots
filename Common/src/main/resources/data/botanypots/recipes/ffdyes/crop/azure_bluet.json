@@ -1,0 +1,29 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "finallyfarmabledyes:azure_bluet"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "finallyfarmabledyes:azure_bluet"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "finallyfarmabledyes:azure_bluet"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "finallyfarmabledyes:azure_bluet"
+            }
+        }
+    ]
+}
