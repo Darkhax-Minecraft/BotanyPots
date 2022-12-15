@@ -3,14 +3,14 @@
       {
         "type": "bookshelf:item_exists",
         "values": [
-          "ms:food/strawberryseeds",
+          "ms:food/strawberry_seeds",
           "ms:food/strawberry"
         ]
       }
     ],
     "type": "botanypots:crop",
     "seed": {
-      "item": "ms:food/strawberryseeds"
+      "item": "ms:food/strawberry_seeds"
     },
     "categories": [
       "dirt",
@@ -19,7 +19,7 @@
     "growthTicks": 1200,
     "display": {
       "type": "botanypots:aging",
-      "block": "ms:crop/strawberryplant"
+      "block": "ms:crop/strawberry"
     },
     "drops": [
       {
@@ -31,7 +31,7 @@
       {
         "chance": 0.01,
         "output": {
-          "item": "ms:food/strawberryseeds"
+          "item": "ms:food/strawberry_seeds"
         }
       }
     ]
