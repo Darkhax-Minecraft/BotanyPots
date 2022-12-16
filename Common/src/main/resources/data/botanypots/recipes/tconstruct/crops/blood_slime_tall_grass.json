@@ -1,0 +1,31 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "tconstruct:blood_slime_tall_grass"
+      ]
+    }
+  ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "tconstruct:blood_slime_tall_grass"
+    },
+    "categories": [
+      "blood_slime",
+      "slime"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "tconstruct:blood_slime_tall_grass"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "tconstruct:blood_slime_tall_grass"
+        }
+      }
+    ]
+  }

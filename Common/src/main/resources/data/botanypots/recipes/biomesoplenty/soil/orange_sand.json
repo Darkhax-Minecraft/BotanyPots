@@ -1,0 +1,19 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "biomesoplenty:orange_sand"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "biomesoplenty:orange_sand"
+    },
+    "display": {
+      "block": "biomesoplenty:orange_sand"
+    },
+    "categories": [
+      "sand"
+    ],
+    "growthModifier": 1.00
+  }

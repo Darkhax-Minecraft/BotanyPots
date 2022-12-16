@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "enhancedfarming:mint_seeds",
+          "enhancedfarming:mint"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "enhancedfarming:mint_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "enhancedfarming:mint_crop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "enhancedfarming:mint"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "enhancedfarming:mint_seeds"
+        }
+      }
+    ]
+  }

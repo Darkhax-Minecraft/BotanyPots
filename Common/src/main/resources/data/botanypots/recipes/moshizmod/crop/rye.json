@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "ms:food/rye_seeds",
+          "ms:food/rye"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "ms:food/rye_seeds"
+    },
+    "categories": [
+      "soul_soil",
+      "soul_soil_farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "ms:crop/rye"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "ms:food/rye"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "ms:food/rye_seeds"
+        }
+      }
+    ]
+  }

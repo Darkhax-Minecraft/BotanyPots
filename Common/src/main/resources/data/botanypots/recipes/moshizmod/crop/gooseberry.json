@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "ms:berries/gooseberry",
+          "ms:food/gooseberry"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "ms:berries/gooseberry"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "ms:berries/gooseberry"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "ms:food/gooseberry"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "ms:berries/gooseberry"
+        }
+      }
+    ]
+  }

@@ -1,4 +1,12 @@
 {
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "minecraft:warped_fungus"
+      ]
+    }
+  ],
   "type": "botanypots:crop",
   "seed": {
     "item": "minecraft:warped_fungus"
@@ -18,10 +26,24 @@
       }
     },
     {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:warped_stem"
+      }
+    },
+    {
+      "chance": 0.25,
+      "output": {
+        "item": "minecraft:warped_wart_block"
+      }
+    },
+    {
       "chance": 0.05,
       "output": {
         "item": "minecraft:shroomlight"
-      }
+      },
+      "minRolls": 1,
+      "maxRolls": 1
     }
   ]
 }

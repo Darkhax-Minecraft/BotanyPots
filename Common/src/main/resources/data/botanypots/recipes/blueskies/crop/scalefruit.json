@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "blue_skies:scalefruit_seeds",
+          "blue_skies:scalefruit"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "blue_skies:scalefruit_seeds"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "blue_skies:scalefruits"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "blue_skies:scalefruit"
+        }
+      },
+      {
+        "chance": 0.2,
+        "output": {
+          "item": "blue_skies:scalefruit_seeds"
+        }
+      }
+    ]
+  }

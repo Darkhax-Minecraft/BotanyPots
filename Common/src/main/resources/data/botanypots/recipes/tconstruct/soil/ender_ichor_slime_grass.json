@@ -1,0 +1,25 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "tconstruct:ender_ichor_slime_grass"
+      ]
+    }
+  ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "tconstruct:ender_ichor_slime_grass"
+    },
+    "display": {
+      "block": "tconstruct:ender_ichor_slime_grass"
+    },
+    "categories": [
+      "dirt",
+      "grass",
+      "ichor_slime",
+      "ender_slime",
+      "slime"
+    ],
+    "growthModifier": 0.95
+  }

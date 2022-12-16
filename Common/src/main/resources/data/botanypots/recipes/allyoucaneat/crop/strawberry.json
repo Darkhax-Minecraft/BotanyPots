@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "allyoucaneat:strawberry_seeds",
+        "allyoucaneat:strawberry"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "allyoucaneat:strawberry_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "allyoucaneat:strawberry_bush"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "allyoucaneat:strawberry"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "allyoucaneat:strawberry_seeds"
+      }
+    }
+  ]
+}

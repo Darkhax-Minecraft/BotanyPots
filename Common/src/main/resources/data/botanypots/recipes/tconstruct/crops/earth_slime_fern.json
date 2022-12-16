@@ -1,0 +1,31 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "tconstruct:earth_slime_fern"
+      ]
+    }
+  ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "tconstruct:earth_slime_fern"
+    },
+    "categories": [
+      "earth_slime",
+      "slime"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "tconstruct:earth_slime_fern"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "tconstruct:earth_slime_fern"
+        }
+      }
+    ]
+  }
