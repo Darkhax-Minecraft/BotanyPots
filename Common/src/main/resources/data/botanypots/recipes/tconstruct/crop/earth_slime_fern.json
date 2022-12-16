@@ -1,4 +1,12 @@
 {
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "tconstruct:earth_slime_fern"
+      ]
+    }
+  ],
     "type": "botanypots:crop",
     "seed": {
       "item": "tconstruct:earth_slime_fern"
