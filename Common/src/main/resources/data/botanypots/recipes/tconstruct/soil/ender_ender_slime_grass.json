@@ -1,4 +1,12 @@
 {
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "tconstruct:ender_ender_slime_grass"
+      ]
+    }
+  ],
     "type": "botanypots:soil",
     "input": {
       "item": "tconstruct:ender_ender_slime_grass"

@@ -1,4 +1,12 @@
 {
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "tconstruct:sky_slime_dirt"
+      ]
+    }
+  ],
     "type": "botanypots:soil",
     "input": {
       "item": "tconstruct:sky_slime_dirt"
