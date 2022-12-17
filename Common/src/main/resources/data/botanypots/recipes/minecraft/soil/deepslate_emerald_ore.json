@@ -1,0 +1,18 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+      "item": "minecraft:deepslate_emerald_ore"
+    },
+    "display": {
+      "block": "minecraft:deepslate_emerald_ore"
+    },
+    "categories": [
+      "emerald_ore",
+      "mushroom",
+      "stone",
+      "deepslate",
+      "deepslate_emerald_ore",
+      "ore"
+    ],
+    "growthModifier": 1
+  }
