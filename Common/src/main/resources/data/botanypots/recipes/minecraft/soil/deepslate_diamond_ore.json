@@ -10,6 +10,8 @@
       "diamond_ore",
       "mushroom",
       "stone",
+      "deepslate",
+      "deepslate_diamond_ore",
       "ore"
     ],
     "growthModifier": 1

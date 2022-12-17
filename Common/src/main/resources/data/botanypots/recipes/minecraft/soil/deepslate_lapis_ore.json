@@ -10,6 +10,8 @@
       "lapis_ore",
       "mushroom",
       "stone",
+      "deepslate",
+      "deepslate_lapis_ore",
       "ore"
     ],
     "growthModifier": 1

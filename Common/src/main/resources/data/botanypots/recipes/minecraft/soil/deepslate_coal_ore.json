@@ -10,6 +10,8 @@
       "coal_ore",
       "mushroom",
       "stone",
+      "deepslate",
+      "deepslate_coal_ore",
       "ore"
     ],
     "growthModifier": 1

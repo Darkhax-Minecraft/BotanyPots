@@ -10,6 +10,8 @@
       "emerald_ore",
       "mushroom",
       "stone",
+      "deepslate",
+      "deepslate_emerald_ore",
       "ore"
     ],
     "growthModifier": 1
