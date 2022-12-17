@@ -1,0 +1,16 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+      "item": "minecraft:deepslate_lapis_ore"
+    },
+    "display": {
+      "block": "minecraft:deepslate_lapis_ore"
+    },
+    "categories": [
+      "lapis_ore",
+      "mushroom",
+      "stone",
+      "ore"
+    ],
+    "growthModifier": 1
+  }
