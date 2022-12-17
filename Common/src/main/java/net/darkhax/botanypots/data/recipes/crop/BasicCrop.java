@@ -14,6 +14,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -137,5 +138,33 @@ public class BasicCrop extends Crop {
     public RecipeSerializer<?> getSerializer() {
 
         return BotanyPotHelper.CROP_SERIALIZER.get();
+    }
+
+    public Ingredient getSeed() {
+        return seed;
+    }
+
+    public Set<String> getSoilCategories() {
+
+        return Collections.unmodifiableSet(soilCategories);
+    }
+
+    public int getGrowthTicks() {
+
+        return growthTicks;
+    }
+
+    public List<HarvestEntry> getResults() {
+
+        return Collections.unmodifiableList(results);
+    }
+
+    public List<DisplayState> getDisplayStates() {
+
+        return Collections.unmodifiableList(displayStates);
+    }
+
+    public int getLightLevel() {
+        return lightLevel;
     }
 }

@@ -7,6 +7,7 @@
   "tooltip.botanypots.missing_soil": "The seed requires soil material to grow.",
   "tooltip.botanypots.missing_seed": "Place a seed to start growing.",
   "tooltip.botanypots.soil_modifier": "Seeds will grow at %sX speed.",
+
   "tooltip.botanypots.seed_item": "Seed Item",
   "tooltip.botanypots.soil_item": "Soil Item",
   "tooltip.botanypots.soil_id": "Soil ID: %s",
@@ -14,10 +15,17 @@
   "tooltip.botanypots.soil": "Soil: %s",
   "tooltip.botanypots.seed": "Seed: %s",
   "tooltip.botanypots.progress": "Progress: ",
+  "tooltip.botanypots.chance": "Chance: %s",
+  "tooltip.botanypots.rolls": "Rolls: %s",
+  "tooltip.botanypots.rollrange": "Rolls: %s - %s",
+  "tooltip.botanypots.grow_time": "Grow Time: %s",
+  "tooltip.botanypots.modifier": "Speed: %sX",
+
   "advancements.botany_pots.get_pot.title": "Let It Grow",
   "advancements.botany_pots.get_pot.description": "Get a Botany Pot",
   "advancements.botany_pots.get_hopper_pot.title": "Now You're Growing With Hoppers",
   "advancements.botany_pots.get_hopper_pot.description": "Get a Hopper Botany Pot",
+
   "block.botanypots.terracotta_botany_pot": "Botany Pot",
   "block.botanypots.terracotta_hopper_botany_pot": "Hopper Botany Pot",
   "block.botanypots.white_terracotta_botany_pot": "White Botany Pot",
@@ -115,5 +123,7 @@
   "block.botanypots.red_glazed_terracotta_botany_pot": "Red Glazed Botany Pot",
   "block.botanypots.red_glazed_terracotta_hopper_botany_pot": "Red Glazed Hopper Botany Pot",
   "block.botanypots.black_glazed_terracotta_botany_pot": "Black Glazed Botany Pot",
-  "block.botanypots.black_glazed_terracotta_hopper_botany_pot": "Black Glazed Hopper Botany Pot"
+  "block.botanypots.black_glazed_terracotta_hopper_botany_pot": "Black Glazed Hopper Botany Pot",
+
+  "gui.jei.category.botanypots.crop": "Crops"
 }
