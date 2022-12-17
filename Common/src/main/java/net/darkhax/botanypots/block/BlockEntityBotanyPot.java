@@ -49,9 +49,9 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
     final Random rng = new Random();
     private long rngSeed;
 
-    public BlockEntityBotanyPot(BlockPos pos, BlockState state) {
+    public BlockEntityBotanyPot(BlockEntityType potType, BlockPos pos, BlockState state) {
 
-        super(POT_TYPE.get(), pos, state);
+        super(potType, pos, state);
         this.refreshRandom();
     }
 
