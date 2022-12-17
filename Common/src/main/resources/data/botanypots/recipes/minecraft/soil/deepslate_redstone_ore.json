@@ -10,6 +10,8 @@
       "redstone_ore",
       "mushroom",
       "stone",
+      "deepslate",
+      "deepslate_redstone_ore",
       "ore"
     ],
     "growthModifier": 1
