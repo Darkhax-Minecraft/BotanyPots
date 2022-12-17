@@ -1,0 +1,16 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+      "item": "minecraft:deepslate_copper_ore"
+    },
+    "display": {
+      "block": "minecraft:deepslate_copper_ore"
+    },
+    "categories": [
+      "copper_ore",
+      "mushroom",
+      "stone",
+      "ore"
+    ],
+    "growthModifier": 1
+  }

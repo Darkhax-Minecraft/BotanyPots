@@ -1,0 +1,16 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+      "item": "minecraft:redstone_ore"
+    },
+    "display": {
+      "block": "minecraft:redstone_ore"
+    },
+    "categories": [
+      "redstone_ore",
+      "mushroom",
+      "stone",
+      "ore"
+    ],
+    "growthModifier": 1
+  }
