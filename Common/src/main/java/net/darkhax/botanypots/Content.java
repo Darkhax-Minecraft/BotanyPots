@@ -61,7 +61,7 @@ public class Content extends RegistryDataProvider {
             this.blocks.add(() -> new BlockBotanyPot(properties, true), color.getName() + "_glazed_terracotta_hopper_botany_pot");
         }
 
-        this.blockEntities.add(() -> Services.CONSTRUCTS.blockEntityType(BlockEntityBotanyPot::new, this::getAllPots).get(), "botany_pot");
+        this.blockEntities.add(() -> Services.CONSTRUCTS.blockEntityType((pos, state) -> new BlockEntityBotanyPot(BlockEntityBotanyPot.POT_TYPE.get(), pos, state), this::getAllPots).get(), "botany_pot");
         this.menus.add(() -> Services.CONSTRUCTS.menuType(BotanyPotMenu::fromNetwork), "pot_menu");
     }
 
