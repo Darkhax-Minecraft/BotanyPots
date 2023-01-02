@@ -118,7 +118,7 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
 
-        return new BlockEntityBotanyPot(pos, state);
+        return new BlockEntityBotanyPot(BlockEntityBotanyPot.POT_TYPE.get(), pos, state);
     }
 
     @Override

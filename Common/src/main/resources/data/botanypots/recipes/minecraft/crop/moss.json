@@ -9,7 +9,7 @@
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "minecraft:moss_carpet"
+    "block": "minecraft:moss_block"
   },
   "drops": [
     {
