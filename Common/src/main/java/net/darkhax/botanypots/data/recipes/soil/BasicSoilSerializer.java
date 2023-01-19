@@ -3,6 +3,7 @@ package net.darkhax.botanypots.data.recipes.soil;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import net.darkhax.bookshelf.api.serialization.Serializers;
+import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.data.displaystate.DisplayState;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -19,6 +20,12 @@ public final class BasicSoilSerializer implements RecipeSerializer<BasicSoil> {
 
     @Override
     public BasicSoil fromJson(ResourceLocation id, JsonObject json) {
+
+        if (id.getNamespace().equalsIgnoreCase("farmersdelight")) {
+
+            Constants.LOG.warn("Soil {} has been disabled by the BotanyPot devs to improve compatibility.", id);
+            return null;
+        }
 
         final Ingredient input = Serializers.INGREDIENT.fromJSON(json, "input");
         final DisplayState renderState = DisplayState.SERIALIZER.fromJSON(json, "display");

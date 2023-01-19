@@ -13,8 +13,7 @@
     "item": "farmersdelight:tomato_seeds"
   },
   "categories": [
-    "dirt",
-    "farmland"
+    "dirt"
   ],
   "growthTicks": 1200,
   "display": {
@@ -26,13 +25,25 @@
       "chance": 1.00,
       "output": {
         "item": "farmersdelight:tomato"
-      }
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "farmersdelight:tomato"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
     },
     {
       "chance": 0.05,
       "output": {
         "item": "farmersdelight:tomato_seeds"
-      }
+      },
+      "minRolls": 1,
+      "maxRolls": 2
     }
   ]
 }
