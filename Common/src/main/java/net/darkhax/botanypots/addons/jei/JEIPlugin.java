@@ -55,8 +55,8 @@ public class JEIPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
 
         final RecipeManager recipeManager = Minecraft.getInstance().level.getRecipeManager();
-        final List<Soil> soils = recipeManager.getAllRecipesFor(BotanyPotHelper.SOIL_TYPE.get());
-        final List<Crop> crops = recipeManager.getAllRecipesFor(BotanyPotHelper.CROP_TYPE.get());
+        final List<Soil> soils = BotanyPotHelper.getAllRecipes(recipeManager, BotanyPotHelper.SOIL_TYPE.get());
+        final List<Crop> crops = BotanyPotHelper.getAllRecipes(recipeManager, BotanyPotHelper.CROP_TYPE.get());
 
         crops.forEach(crop -> {
 

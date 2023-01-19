@@ -11,10 +11,13 @@ import net.darkhax.botanypots.data.recipes.soil.Soil;
 import net.darkhax.botanypots.events.BotanyPotEventDispatcher;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -106,9 +109,7 @@ public class BotanyPotHelper {
 
         if (level != null && !soilStack.isEmpty()) {
 
-            final RecipeManager manager = level.getRecipeManager();
-
-            for (final Soil soil : manager.getAllRecipesFor(SOIL_TYPE.get())) {
+            for (final Soil soil : getAllRecipes(level.getRecipeManager(), SOIL_TYPE.get())) {
 
                 if (soil.matchesLookup(level, pos, pot, soilStack)) {
 
@@ -137,7 +138,7 @@ public class BotanyPotHelper {
 
         if (level != null && !stack.isEmpty()) {
 
-            for (final Crop crop : level.getRecipeManager().getAllRecipesFor(CROP_TYPE.get())) {
+            for (final Crop crop : getAllRecipes(level.getRecipeManager(), CROP_TYPE.get())) {
 
                 if (crop.matchesLookup(level, pos, pot, stack)) {
 
@@ -148,6 +149,11 @@ public class BotanyPotHelper {
         }
 
         return EVENT_DISPATCHER.postCropLookup(level, pos, pot, stack, result);
+    }
+
+    public static <C extends Container, T extends Recipe<C>> List<T> getAllRecipes(RecipeManager manager, RecipeType<T> type) {
+
+        return manager.getAllRecipesFor(type);
     }
 
     /**
@@ -170,7 +176,7 @@ public class BotanyPotHelper {
 
         if (!heldStack.isEmpty()) {
 
-            for (final PotInteraction interaction : world.getRecipeManager().getAllRecipesFor(POT_INTERACTION_TYPE.get())) {
+            for (final PotInteraction interaction : getAllRecipes(world.getRecipeManager(), POT_INTERACTION_TYPE.get())) {
 
                 if (interaction.canApply(state, world, pos, player, hand, heldStack, pot)) {
 
@@ -203,7 +209,7 @@ public class BotanyPotHelper {
 
         if (!heldStack.isEmpty()) {
 
-            for (final Fertilizer fertilizer : world.getRecipeManager().getAllRecipesFor(FERTILIZER_TYPE.get())) {
+            for (final Fertilizer fertilizer : getAllRecipes(world.getRecipeManager(), FERTILIZER_TYPE.get())) {
 
                 if (fertilizer.canApply(state, world, pos, player, hand, heldStack, pot)) {
 

@@ -16,6 +16,7 @@ import net.darkhax.botanypots.data.recipes.soil.BasicSoil;
 import net.darkhax.botanypots.data.recipes.soil.Soil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.text.DecimalFormat;
@@ -33,7 +34,7 @@ public class BasicCropDisplayInfo extends CropDisplayInfo {
             if (soil instanceof BasicSoil basicSoil && crop.canGrowInSoil(null, null, null, soil)) {
 
                 final int ticks = BotanyPotHelper.getRequiredGrowthTicks(null, null, null, crop, soil);
-                info.add(new BasicCropDisplayInfo(crop.getSeed(), basicSoil.getIngredient(), crop.getResults(), ticks, basicSoil.getGrowthModifier()));
+                info.add(new BasicCropDisplayInfo(crop.getId(), crop.getSeed(), basicSoil.getIngredient(), crop.getResults(), ticks, basicSoil.getGrowthModifier()));
             }
         }
 
@@ -42,19 +43,21 @@ public class BasicCropDisplayInfo extends CropDisplayInfo {
 
     private static final DecimalFormat FORMAT = new DecimalFormat("#.##");
 
+    private final ResourceLocation id;
     private final List<Ingredient> seeds;
     private final List<Ingredient> soils;
     private final List<HarvestEntry> drops;
     private final int growthTime;
     private final float modifier;
 
-    public BasicCropDisplayInfo(Ingredient seeds, Ingredient soils, List<HarvestEntry> drops, int growthTime, float modifier) {
+    public BasicCropDisplayInfo(ResourceLocation id, Ingredient seeds, Ingredient soils, List<HarvestEntry> drops, int growthTime, float modifier) {
 
-        this(List.of(seeds), List.of(soils), drops, growthTime, modifier);
+        this(id, List.of(seeds), List.of(soils), drops, growthTime, modifier);
     }
 
-    public BasicCropDisplayInfo(List<Ingredient> seeds, List<Ingredient> soils, List<HarvestEntry> drops, int growthTime, float modifier) {
+    public BasicCropDisplayInfo(ResourceLocation id, List<Ingredient> seeds, List<Ingredient> soils, List<HarvestEntry> drops, int growthTime, float modifier) {
 
+        this.id = id;
         this.seeds = seeds;
         this.soils = soils;
         this.drops = drops;
@@ -139,6 +142,12 @@ public class BasicCropDisplayInfo extends CropDisplayInfo {
 
             slot.draw(stack, 80 + 18 * (nextSlotId % 4), 18 * (nextSlotId / 4));
         }
+    }
+
+    @Override
+    public ResourceLocation getCropId() {
+
+        return this.id;
     }
 
     private static String ticksToTime (int ticks) {

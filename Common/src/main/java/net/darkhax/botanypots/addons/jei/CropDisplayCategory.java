@@ -69,4 +69,10 @@ public class CropDisplayCategory implements IRecipeCategory<CropDisplayInfo> {
 
         return this.icon;
     }
+
+    @Override
+    public ResourceLocation getRegistryName(CropDisplayInfo recipe) {
+
+        return recipe.getCropId();
+    }
 }
