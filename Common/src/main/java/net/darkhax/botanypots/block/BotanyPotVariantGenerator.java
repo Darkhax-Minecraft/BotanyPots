@@ -2,6 +2,8 @@ package net.darkhax.botanypots.block;
 
 import net.darkhax.botanypots.Constants;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -83,7 +85,7 @@ public class BotanyPotVariantGenerator {
 
         try {
 
-            final ResourceLocation blockId = Registry.BLOCK.getKey(block);
+            final ResourceLocation blockId = BuiltInRegistries.BLOCK.getKey(block);
 
             Constants.LOG.info("botanypots:" + blockId.getPath() + "_botany_pot");
             Constants.LOG.info("botanypots:" + blockId.getPath() + "_hopper_botany_pot");

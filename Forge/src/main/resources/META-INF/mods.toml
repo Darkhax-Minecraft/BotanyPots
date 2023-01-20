@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[43,)"
+loaderVersion = "[44,)"
 license = "${mod_license}"
 issueTrackerURL = "${mod_issues}"
 
@@ -19,20 +19,20 @@ itemIcon = "botanypots:terracotta_botany_pot"
 [[dependencies.${ mod_id }]]
 modId = "forge"
 mandatory = true
-versionRange = "[43,)"
+versionRange = "[44,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.${ mod_id }]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.2,)"
+versionRange = "[1.19.3,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.${ mod_id }]]
 modId = "bookshelf"
 mandatory = true
-versionRange = "[16.1.5,)"
+versionRange = "[17,)"
 ordering = "NONE"
 side = "BOTH"

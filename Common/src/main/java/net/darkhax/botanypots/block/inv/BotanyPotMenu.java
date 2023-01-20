@@ -7,6 +7,7 @@ import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -19,7 +20,7 @@ import net.minecraft.world.level.Level;
 
 public class BotanyPotMenu extends AbstractContainerMenu {
 
-    private static final CachedSupplier<MenuType<?>> MENU_TYPE = CachedSupplier.cache(() -> Registry.MENU.get(new ResourceLocation(Constants.MOD_ID, "pot_menu")));
+    private static final CachedSupplier<MenuType<?>> MENU_TYPE = CachedSupplier.cache(() -> BuiltInRegistries.MENU.get(new ResourceLocation(Constants.MOD_ID, "pot_menu")));
     private final BotanyPotContainer potInv;
     private final Inventory playerInv;
 

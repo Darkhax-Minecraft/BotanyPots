@@ -1,8 +1,8 @@
 package net.darkhax.botanypots.data.displaystate;
 
-import com.mojang.math.Vector3f;
 import net.darkhax.botanypots.data.displaystate.math.AxisAlignedRotation;
 import net.minecraft.world.level.block.state.BlockState;
+import org.joml.Vector3f;
 
 import java.util.List;
 import java.util.Optional;

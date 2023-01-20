@@ -3,7 +3,6 @@ package net.darkhax.botanypots.data.displaystate;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.mojang.math.Vector3f;
 import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.data.displaystate.math.AxisAlignedRotation;
@@ -11,6 +10,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
+import org.joml.Vector3f;
 
 import java.util.ArrayList;
 import java.util.List;

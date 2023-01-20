@@ -9,8 +9,11 @@ import net.darkhax.botanypots.data.recipes.crop.BasicCropSerializer;
 import net.darkhax.botanypots.data.recipes.fertilizer.BasicFertilizerSerializer;
 import net.darkhax.botanypots.data.recipes.potinteraction.BasicPotInteractionSerializer;
 import net.darkhax.botanypots.data.recipes.soil.BasicSoilSerializer;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -24,7 +27,7 @@ public class Content extends RegistryDataProvider {
 
         super(Constants.MOD_ID);
 
-        this.withCreativeTab(() -> Services.REGISTRIES.items().get(new ResourceLocation(Constants.MOD_ID, "terracotta_botany_pot")));
+        this.withItemTab(() -> new ItemStack(BuiltInRegistries.ITEM.get(new ResourceLocation(Constants.MOD_ID, "terracotta_botany_pot"))));
         this.withAutoItemBlocks();
         this.bindBlockRenderLayers();
 

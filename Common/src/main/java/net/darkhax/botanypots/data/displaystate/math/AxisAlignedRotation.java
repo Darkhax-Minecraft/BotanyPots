@@ -1,9 +1,10 @@
 package net.darkhax.botanypots.data.displaystate.math;
 
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.darkhax.bookshelf.api.serialization.ISerializer;
 import net.darkhax.bookshelf.api.serialization.SerializerEnum;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 /**
  * This enum contains rotational state data that can be used to rotate a render while retaining alignment with the world
@@ -32,7 +33,7 @@ public enum AxisAlignedRotation {
      * A Quaternion that contains the rotational information. In this case it represents a 0, 90, 180, or 270-degree
      * rotation along the X, Y, or Z axis.
      */
-    public final Quaternion rotation;
+    public final Quaternionf rotation;
 
     /**
      * A predetermined offset that will realign the render when translated.
@@ -55,23 +56,23 @@ public enum AxisAlignedRotation {
      */
     public enum RotationAxis {
 
-        X(Vector3f.XP, Vector3f.ZERO, new Vector3f(0, 0, -1), new Vector3f(0, -1, -1), new Vector3f(0, -1, 0)),
-        Y(Vector3f.YP, Vector3f.ZERO, new Vector3f(-1, 0, 0), new Vector3f(-1, 0, -1), new Vector3f(0, 0, -1)),
-        Z(Vector3f.ZP, Vector3f.ZERO, new Vector3f(0, -1, 0), new Vector3f(-1, -1, 0), new Vector3f(-1, 0, 0));
+        X(Axis.XP, new Vector3f(0, 0, 0), new Vector3f(0, 0, -1), new Vector3f(0, -1, -1), new Vector3f(0, -1, 0)),
+        Y(Axis.YP, new Vector3f(0, 0, 0), new Vector3f(-1, 0, 0), new Vector3f(-1, 0, -1), new Vector3f(0, 0, -1)),
+        Z(Axis.ZP, new Vector3f(0, 0, 0), new Vector3f(0, -1, 0), new Vector3f(-1, -1, 0), new Vector3f(-1, 0, 0));
 
         /**
          * The rotation quaternions for 0, 90, 180, and 270 degrees along the axis.
          */
-        private final Quaternion[] quaternions;
+        private final Quaternionf[] quaternions;
 
         /**
          * The translation offsets to snap the render back to the original axis aligned position.
          */
         private final Vector3f[] offsets;
 
-        RotationAxis(Vector3f axisVect, Vector3f offsetA, Vector3f offsetB, Vector3f offsetC, Vector3f offsetD) {
+        RotationAxis(Axis axisVect, Vector3f offsetA, Vector3f offsetB, Vector3f offsetC, Vector3f offsetD) {
 
-            this.quaternions = new Quaternion[]{axisVect.rotationDegrees(0), axisVect.rotationDegrees(90f), axisVect.rotationDegrees(180f), axisVect.rotationDegrees(270f)};
+            this.quaternions = new Quaternionf[]{axisVect.rotationDegrees(0), axisVect.rotationDegrees(90f), axisVect.rotationDegrees(180f), axisVect.rotationDegrees(270f)};
             this.offsets = new Vector3f[]{offsetA, offsetB, offsetC, offsetD};
         }
     }

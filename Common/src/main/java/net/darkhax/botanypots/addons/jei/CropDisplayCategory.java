@@ -13,6 +13,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.darkhax.bookshelf.api.Services;
 import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.addons.jei.ui.CropDisplayInfo;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -29,7 +30,7 @@ public class CropDisplayCategory implements IRecipeCategory<CropDisplayInfo> {
 
         this.guiHelper = gui;
         this.type = type;
-        this.icon = gui.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(Services.REGISTRIES.items().get(new ResourceLocation(Constants.MOD_ID, "terracotta_botany_pot"))));
+        this.icon = gui.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BuiltInRegistries.ITEM.get(new ResourceLocation(Constants.MOD_ID, "terracotta_botany_pot"))));
         this.background = gui.createBlankDrawable(155, 57);
         this.localizedName = Component.translatable("gui.jei.category.botanypots.crop");
     }

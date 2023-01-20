@@ -10,8 +10,7 @@ import net.darkhax.botanypots.data.recipes.potinteraction.PotInteraction;
 import net.darkhax.botanypots.data.recipes.soil.Soil;
 import net.darkhax.botanypots.events.BotanyPotEventDispatcher;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
@@ -30,17 +29,17 @@ import java.util.Random;
 
 public class BotanyPotHelper {
 
-    public static final CachedSupplier<RecipeType<Soil>> SOIL_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "soil").cast();
-    public static final CachedSupplier<RecipeSerializer<?>> SOIL_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "soil").cast();
+    public static final CachedSupplier<RecipeType<Soil>> SOIL_TYPE = RegistryObject.deferred(BuiltInRegistries.RECIPE_TYPE, Constants.MOD_ID, "soil").cast();
+    public static final CachedSupplier<RecipeSerializer<?>> SOIL_SERIALIZER = RegistryObject.deferred(BuiltInRegistries.RECIPE_SERIALIZER, Constants.MOD_ID, "soil").cast();
 
-    public static final CachedSupplier<RecipeType<Crop>> CROP_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "crop").cast();
-    public static final CachedSupplier<RecipeSerializer<?>> CROP_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "crop").cast();
+    public static final CachedSupplier<RecipeType<Crop>> CROP_TYPE = RegistryObject.deferred(BuiltInRegistries.RECIPE_TYPE, Constants.MOD_ID, "crop").cast();
+    public static final CachedSupplier<RecipeSerializer<?>> CROP_SERIALIZER = RegistryObject.deferred(BuiltInRegistries.RECIPE_SERIALIZER, Constants.MOD_ID, "crop").cast();
 
-    public static final CachedSupplier<RecipeType<PotInteraction>> POT_INTERACTION_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "pot_interaction").cast();
-    public static final CachedSupplier<RecipeSerializer<?>> SIMPLE_POT_INTERACTION_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "pot_interaction").cast();
+    public static final CachedSupplier<RecipeType<PotInteraction>> POT_INTERACTION_TYPE = RegistryObject.deferred(BuiltInRegistries.RECIPE_TYPE, Constants.MOD_ID, "pot_interaction").cast();
+    public static final CachedSupplier<RecipeSerializer<?>> SIMPLE_POT_INTERACTION_SERIALIZER = RegistryObject.deferred(BuiltInRegistries.RECIPE_SERIALIZER, Constants.MOD_ID, "pot_interaction").cast();
 
-    public static final CachedSupplier<RecipeType<Fertilizer>> FERTILIZER_TYPE = RegistryObject.deferred(Registry.RECIPE_TYPE, Constants.MOD_ID, "fertilizer").cast();
-    public static final CachedSupplier<RecipeSerializer<?>> BASIC_FERTILIZER_SERIALIZER = RegistryObject.deferred(Registry.RECIPE_SERIALIZER, Constants.MOD_ID, "fertilizer").cast();
+    public static final CachedSupplier<RecipeType<Fertilizer>> FERTILIZER_TYPE = RegistryObject.deferred(BuiltInRegistries.RECIPE_TYPE, Constants.MOD_ID, "fertilizer").cast();
+    public static final CachedSupplier<RecipeSerializer<?>> BASIC_FERTILIZER_SERIALIZER = RegistryObject.deferred(BuiltInRegistries.RECIPE_SERIALIZER, Constants.MOD_ID, "fertilizer").cast();
 
     public static final BotanyPotEventDispatcher EVENT_DISPATCHER = Services.load(BotanyPotEventDispatcher.class);
 
