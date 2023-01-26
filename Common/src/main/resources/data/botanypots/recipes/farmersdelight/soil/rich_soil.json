@@ -1,8 +1,10 @@
 {
   "conditions": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "botanypots"
+      "type": "bookshelf:item_exists",
+      "values": [
+        "farmersdelight:rich_soil"
+      ]
     }
   ],
   "type": "botanypots:soil",
