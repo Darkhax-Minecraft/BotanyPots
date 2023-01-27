@@ -1,5 +1,5 @@
 {
-  "conditions": [
+  "bookshelf:load_conditions": [
     {
       "type": "bookshelf:item_exists",
       "values": [
