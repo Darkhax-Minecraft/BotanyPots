@@ -65,7 +65,7 @@ public class TOPPlugin implements IProbeInfoProvider, Function<ITheOneProbe, Voi
                 style.prefix("tooltip.botanypots.progress");
                 style.suffix("%");
 
-                final int f = Mth.floor((float) (pot.getGrowthTime() / inv.getRequiredGrowthTime()) * 100f);
+                final int f = Mth.floor((float) pot.getGrowthTime() / inv.getRequiredGrowthTime() * 100f);
                 info.progress(f, 100, style);
             }
         }
