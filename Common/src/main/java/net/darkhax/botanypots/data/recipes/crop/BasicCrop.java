@@ -66,6 +66,19 @@ public class BasicCrop extends Crop {
     @Override
     public boolean matchesLookup(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack placedStack) {
 
+        if (pot != null) {
+
+            final Soil soil = pot.getSoil();
+
+            // When a soil exists, check if the soil is valid first. This is slightly redundant but allows multiple
+            // seeds with the same item to change crop type based on conditions such as soil by failing the lookup
+            // stage and passing the lookup on to other candidates.
+            if (soil != null && !BotanyPotHelper.canCropGrow(level, pos, pot, soil, this)) {
+
+                return false;
+            }
+        }
+
         return this.seed.test(placedStack);
     }
 
