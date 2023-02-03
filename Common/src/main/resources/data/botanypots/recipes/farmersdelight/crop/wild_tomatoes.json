@@ -1,0 +1,33 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "farmersdelight:wild_tomatoes",
+        "farmersdelight:tomato"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "farmersdelight:wild_tomatoes"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "farmersdelight:wild_tomatoes"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "farmersdelight:tomato"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

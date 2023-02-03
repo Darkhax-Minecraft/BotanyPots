@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "farmersdelight:brown_mushroom_colony"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "farmersdelight:brown_mushroom_colony"
+  },
+  "categories": ["mushroom"],
+  "growthTicks": 1400,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "farmersdelight:brown_mushroom_colony"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:brown_mushroom"
+      },
+      "minRolls": 1,
+      "maxRolls": 3
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:brown_mushroom"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

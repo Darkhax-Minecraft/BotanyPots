@@ -1,0 +1,41 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "farmersdelight:wild_onions",
+        "farmersdelight:onion"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "farmersdelight:wild_onions"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "farmersdelight:wild_onions"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "farmersdelight:onion"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:allium"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

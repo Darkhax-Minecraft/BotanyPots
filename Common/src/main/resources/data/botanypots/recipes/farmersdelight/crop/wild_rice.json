@@ -1,0 +1,43 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "farmersdelight:wild_rice",
+        "farmersdelight:rice_panicle"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "farmersdelight:wild_rice"
+  },
+  "categories": [
+    "water"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "farmersdelight:wild_rice",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "farmersdelight:wild_rice",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "farmersdelight:rice_panicle"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "farmersdelight:sandy_shrub"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "farmersdelight:sandy_shrub"
+  },
+  "categories": [
+    "dirt",
+    "sand"
+  ],
+  "growthTicks": 900,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "farmersdelight:sandy_shrub"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "farmersdelight:sandy_shrub"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}
