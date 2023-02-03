@@ -3,6 +3,7 @@ package net.darkhax.botanypots.data.recipes.crop;
 import com.google.gson.JsonObject;
 import net.darkhax.bookshelf.api.data.recipes.IRecipeSerializer;
 import net.darkhax.bookshelf.api.serialization.Serializers;
+import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.data.displaystate.DisplayState;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -17,6 +18,12 @@ public final class BasicCropSerializer extends IRecipeSerializer<BasicCrop> {
 
     @Override
     public BasicCrop fromJson(ResourceLocation id, JsonObject json) {
+
+        if (id.getNamespace().equalsIgnoreCase("farmersdelight")) {
+
+            Constants.LOG.warn("Crop {} has been disabled by the BotanyPot devs to improve compatibility.", id);
+            return null;
+        }
 
         final Ingredient seed = Serializers.INGREDIENT.fromJSON(json, "seed");
         final Set<String> validSoils = Serializers.STRING.fromJSONSet(json, "categories");
