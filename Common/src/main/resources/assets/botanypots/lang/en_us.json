@@ -20,6 +20,8 @@
   "tooltip.botanypots.rollrange": "Rolls: %s - %s",
   "tooltip.botanypots.grow_time": "Grow Time: %s",
   "tooltip.botanypots.modifier": "Speed: %sX",
+  "tooltip.botanypots.time": "Time: %s",
+  "tooltip.botanypots.harvestable": "Harvestable",
 
   "advancements.botany_pots.get_pot.title": "Let It Grow",
   "advancements.botany_pots.get_pot.description": "Get a Botany Pot",
