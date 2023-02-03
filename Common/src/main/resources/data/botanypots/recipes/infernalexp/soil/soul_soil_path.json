@@ -1,0 +1,21 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "infernalexp:soul_soil_path"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "infernalexp:soul_soil_path"
+    },
+    "display": {
+      "block": "infernalexp:soul_soil_path"
+    },
+    "categories": [
+      "nether",
+      "soul_sand",
+      "soul_soil"
+    ],
+    "growthModifier": 0.5
+  }

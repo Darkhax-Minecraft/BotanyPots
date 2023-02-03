@@ -1,0 +1,44 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "infernalexp:luminous_fungus"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "infernalexp:luminous_fungus"
+    },
+    "categories": [
+        "dirt",
+        "mushroom",
+        "shimmer"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "infernalexp:luminous_fungus"
+    },
+    "drops": [
+        {
+            "chance": 1,
+            "output": {
+                "item": "infernalexp:luminous_fungus"
+            }
+        },
+        {
+            "chance": 1,
+            "output": {
+                "item": "infernalexp:dullthorns_block"
+            }
+        },
+        {
+            "chance": 0.25,
+            "output": {
+                "item": "infernalexp:luminous_wart_block"
+            }
+        }
+    ]
+}

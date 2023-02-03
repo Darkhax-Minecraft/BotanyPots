@@ -1,0 +1,20 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "infernalexp:glowdust_stone"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "infernalexp:glowdust_stone"
+    },
+    "display": {
+      "block": "infernalexp:glowdust_stone"
+    },
+    "categories": [
+      "shimmer",
+      "stone"
+    ],
+    "growthModifier": 1
+  }

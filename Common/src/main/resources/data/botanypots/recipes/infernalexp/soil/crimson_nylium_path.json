@@ -1,0 +1,24 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "infernalexp:crimson_nylium_path"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "infernalexp:crimson_nylium_path"
+    },
+    "display": {
+      "block": "infernalexp:crimson_nylium_path"
+    },
+    "categories": [
+      "crimson",
+      "nylium",
+      "crimson_nylium",
+      "mushroom",
+      "netherrack",
+      "nether"
+    ],
+    "growthModifier": 0.5
+  }

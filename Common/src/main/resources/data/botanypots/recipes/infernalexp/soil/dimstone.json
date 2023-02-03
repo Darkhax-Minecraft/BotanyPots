@@ -1,0 +1,20 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "infernalexp:dimstone"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "infernalexp:dimstone"
+    },
+    "display": {
+      "block": "infernalexp:dimstone"
+    },
+    "categories": [
+      "shimmer",
+      "stone"
+    ],
+    "growthModifier": 1
+  }

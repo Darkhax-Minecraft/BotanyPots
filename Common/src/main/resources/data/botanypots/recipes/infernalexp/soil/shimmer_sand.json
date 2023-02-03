@@ -1,0 +1,20 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "infernalexp:glowdust_sand"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "infernalexp:glowdust_sand"
+    },
+    "display": {
+      "block": "infernalexp:glowdust_sand"
+    },
+    "categories": [
+      "shimmer",
+      "sand"
+    ],
+    "growthModifier": 1
+  }

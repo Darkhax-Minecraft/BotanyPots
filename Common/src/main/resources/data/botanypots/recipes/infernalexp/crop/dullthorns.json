@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "infernalexp:dullthorns"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "infernalexp:dullthorns"
+    },
+    "categories": [
+        "dirt",
+        "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "infernalexp:dullthorns"
+    },
+    "drops": [
+        {
+            "chance": 1,
+            "output": {
+                "item": "infernalexp:dullthorns"
+            }
+        }
+    ]
+}

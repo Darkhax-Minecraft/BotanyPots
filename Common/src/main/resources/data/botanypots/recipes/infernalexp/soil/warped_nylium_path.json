@@ -1,0 +1,24 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "infernalexp:warped_nylium_path"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "infernalexp:warped_nylium_path"
+    },
+    "display": {
+      "block": "infernalexp:warped_nylium_path"
+    },
+    "categories": [
+      "warped",
+      "nylium",
+      "warped_nylium",
+      "mushroom",
+      "netherrack",
+      "nether"
+    ],
+    "growthModifier": 0.5
+  }
