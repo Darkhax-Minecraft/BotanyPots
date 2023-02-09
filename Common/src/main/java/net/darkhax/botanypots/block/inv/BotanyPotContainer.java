@@ -80,19 +80,24 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
 
         final Level level = this.potEntity.getLevel();
         final BlockPos pos = this.potEntity.getBlockPos();
+        final Soil newSoil = BotanyPotHelper.findSoil(level, pos, potEntity, this.getSoilStack());
+        final Crop newCrop = BotanyPotHelper.findCrop(level, pos, potEntity, this.getCropStack());
 
-        this.soil = BotanyPotHelper.findSoil(level, pos, potEntity, this.getSoilStack());
-        this.crop = BotanyPotHelper.findCrop(level, pos, potEntity, this.getCropStack());
-        this.requiredGrowthTime = BotanyPotHelper.getRequiredGrowthTicks(potEntity.getLevel(), potEntity.getBlockPos(), potEntity, this.crop, this.soil);
+        if (this.soil != newSoil || this.crop != newCrop) {
 
-        final int potLight = this.getPotEntity().getLightLevel();
+            this.soil = newSoil;
+            this.crop = newCrop;
+            this.requiredGrowthTime = BotanyPotHelper.getRequiredGrowthTicks(potEntity.getLevel(), potEntity.getBlockPos(), potEntity, this.crop, this.soil);
 
-        if (this.getPotEntity().getLevel() != null && this.getPotEntity().getBlockState().getValue(BlockStateProperties.LEVEL) != potLight) {
+            final int potLight = this.getPotEntity().getLightLevel();
 
-            this.getPotEntity().getLevel().setBlock(this.potEntity.getBlockPos(), this.getPotEntity().getBlockState().setValue(BlockStateProperties.LEVEL, potLight), 3);
+            if (this.getPotEntity().getLevel() != null && this.getPotEntity().getBlockState().getValue(BlockStateProperties.LEVEL) != potLight) {
+
+                this.getPotEntity().getLevel().setBlock(this.potEntity.getBlockPos(), this.getPotEntity().getBlockState().setValue(BlockStateProperties.LEVEL, potLight), 3);
+            }
+
+            this.getPotEntity().markDirty();
         }
-
-        this.getPotEntity().markDirty();
     }
 
     @Nullable
