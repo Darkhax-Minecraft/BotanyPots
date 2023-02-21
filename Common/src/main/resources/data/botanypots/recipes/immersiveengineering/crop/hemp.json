@@ -1,11 +1,13 @@
 {
-  "type": "botanypots:crop",
-  "conditions": [
+  "bookshelf:load_conditions": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "immersiveengineering"
+      "type": "bookshelf:item_exists",
+      "values": [
+        "immersiveengineering:seed"
+      ]
     }
   ],
+  "type": "botanypots:crop",
   "seed": {
     "item": "immersiveengineering:seed"
   },
