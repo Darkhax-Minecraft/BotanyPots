@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "xps:xp_berries_seeds",
+        "xps:xp_berries"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "xps:xp_berries_seeds"
+  },
+  "categories": [
+    "soul_soil"
+  ],
+  "growthTicks": 1600,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "xps:xp_berrie_bush_block"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "xps:xp_berries"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "xps:xp_berries_seeds"
+      }
+    }
+  ]
+}
