@@ -9,6 +9,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -25,8 +26,12 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
 
     private final BlockEntityBotanyPot potEntity;
 
+    private ItemStack lastSoilStack = ItemStack.EMPTY;
+
     @Nullable
     private Soil soil = null;
+
+    private ItemStack lastCropStack = ItemStack.EMPTY;
 
     @Nullable
     private Crop crop = null;
@@ -59,35 +64,39 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
         return this.potEntity;
     }
 
-    public void update() {
+    public Crop lookupCrop(Level level, BlockPos pos) {
 
-        final Level level = this.potEntity.getLevel();
-        final BlockPos pos = this.potEntity.getBlockPos();
+        final ItemStack currentCropStack = this.getCropStack();
 
-        boolean hasChanged = false;
+        // Looking up recipes can be expensive. If the ItemStack has the same
+        // identity as before we can assume it hasn't changed and can skip this
+        // lookup. While false positives are possible, they have a low cost.
+        if (this.lastCropStack != currentCropStack) {
 
-        ItemStack soilStack = this.getSoilStack();
-        if (!soilStack.isEmpty() && this.soil == null) {
-            this.soil = BotanyPotHelper.findSoil(level, pos, potEntity, soilStack);
-            this.prevSoilStack = soilStack;
-
-            hasChanged = this.soil != null;
+            this.lastCropStack = currentCropStack;
+            return BotanyPotHelper.findCrop(level, pos, potEntity, currentCropStack);
         }
 
-        ItemStack cropStack = this.getCropStack();
-        if (!cropStack.isEmpty() && this.crop == null) {
-            this.crop = BotanyPotHelper.findCrop(level, pos, potEntity, cropStack);
-            this.prevCropStack = cropStack;
-
-            hasChanged |= this.crop != null;
-        }
-
-        if (hasChanged) {
-            this.setChanged();
-        }
+        return this.crop;
     }
 
-    private ItemStack prevSoilStack, prevCropStack;
+    public Soil lookupSoil(Level level, BlockPos pos) {
+
+        final ItemStack currentSoilStack = this.getSoilStack();
+
+        if (this.lastSoilStack != currentSoilStack) {
+
+            this.lastSoilStack = currentSoilStack;
+            return BotanyPotHelper.findSoil(level, pos, potEntity, currentSoilStack);
+        }
+
+        return this.soil;
+    }
+
+    public void update() {
+
+        this.setChanged();
+    }
 
     @Override
     public void setChanged() {
@@ -96,29 +105,24 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
 
         final Level level = this.potEntity.getLevel();
         final BlockPos pos = this.potEntity.getBlockPos();
+        final Soil newSoil = lookupSoil(level, pos);
+        final Crop newCrop = lookupCrop(level, pos);
 
-        ItemStack soilStack = this.getSoilStack();
-        if (this.prevSoilStack != soilStack) {
-            this.soil = BotanyPotHelper.findSoil(level, pos, potEntity, soilStack);
-            this.prevSoilStack = soilStack;
+        if (this.soil != newSoil || this.crop != newCrop) {
+
+            this.soil = newSoil;
+            this.crop = newCrop;
+            this.requiredGrowthTime = BotanyPotHelper.getRequiredGrowthTicks(potEntity.getLevel(), potEntity.getBlockPos(), potEntity, this.crop, this.soil);
+
+            final int potLight = this.getPotEntity().getLightLevel();
+
+            if (this.getPotEntity().getLevel() != null && this.getPotEntity().getBlockState().getValue(BlockStateProperties.LEVEL) != potLight) {
+
+                this.getPotEntity().getLevel().setBlock(this.potEntity.getBlockPos(), this.getPotEntity().getBlockState().setValue(BlockStateProperties.LEVEL, potLight), 3);
+            }
+
+            this.getPotEntity().markDirty();
         }
-
-        ItemStack cropStack = this.getCropStack();
-        if (this.prevCropStack != cropStack) {
-            this.crop = BotanyPotHelper.findCrop(level, pos, potEntity, cropStack);
-            this.prevCropStack = cropStack;
-        }
-
-        this.requiredGrowthTime = BotanyPotHelper.getRequiredGrowthTicks(potEntity.getLevel(), potEntity.getBlockPos(), potEntity, this.crop, this.soil);
-
-        final int potLight = this.getPotEntity().getLightLevel();
-
-        if (this.getPotEntity().getLevel() != null && this.getPotEntity().getBlockState().getValue(BlockStateProperties.LEVEL) != potLight) {
-
-            this.getPotEntity().getLevel().setBlock(this.potEntity.getBlockPos(), this.getPotEntity().getBlockState().setValue(BlockStateProperties.LEVEL, potLight), 3);
-        }
-
-        this.getPotEntity().markDirty();
     }
 
     @Nullable
