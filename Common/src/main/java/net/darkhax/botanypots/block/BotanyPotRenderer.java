@@ -18,6 +18,12 @@ public class BotanyPotRenderer implements BlockEntityRenderer<BlockEntityBotanyP
     }
 
     @Override
+    public int getViewDistance() {
+
+        return 32;
+    }
+
+    @Override
     public void render(BlockEntityBotanyPot pot, float tickDelta, PoseStack pose, MultiBufferSource bufferSource, int light, int overlay) {
 
         if (pot.getSoil() != null) {
@@ -29,6 +35,7 @@ public class BotanyPotRenderer implements BlockEntityRenderer<BlockEntityBotanyP
             final float partialOffset = pot.getGrowthTime() < maxGrowth ? tickDelta : 0f;
             final float growthProgress = Math.max((pot.getGrowthTime() + partialOffset) / maxGrowth, 0f);
 
+            // Soil
             pose.pushPose();
 
             pose.scale(0.625f, 0.375f, 0.625f);
@@ -38,6 +45,7 @@ public class BotanyPotRenderer implements BlockEntityRenderer<BlockEntityBotanyP
 
             pose.popPose();
 
+            // Crop
             if (pot.getCrop() != null && BotanyPotHelper.canCropGrow(level, pos, pot, pot.getSoil(), pot.getCrop())) {
 
                 pose.pushPose();
