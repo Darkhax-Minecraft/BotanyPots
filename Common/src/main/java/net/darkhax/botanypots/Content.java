@@ -29,7 +29,6 @@ public class Content extends RegistryDataProvider {
 
         this.withItemTab(() -> new ItemStack(BuiltInRegistries.ITEM.get(new ResourceLocation(Constants.MOD_ID, "terracotta_botany_pot"))));
         this.withAutoItemBlocks();
-        this.bindBlockRenderLayers();
 
         // Recipe Types
         this.recipeTypes.add("soil");

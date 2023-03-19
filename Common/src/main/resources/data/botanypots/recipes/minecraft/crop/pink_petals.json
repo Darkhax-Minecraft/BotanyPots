@@ -1,0 +1,33 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "minecraft:pink_petals"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:pink_petals"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display":       {
+    "block": "minecraft:pink_petals",
+    "properties": {
+      "flower_amount": 4
+    },
+    "renderFluid": false
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:pink_petals"
+      }
+    }
+  ]
+}

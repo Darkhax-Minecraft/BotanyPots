@@ -77,7 +77,7 @@ dependencies {
 
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-${project.ext.minecraft_version}:${project.ext.bookshelf_version}")
-    implementation fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-1.19.3-forge:${jei_version}")
     compileOnly fg.deobf("curse.maven:top-245211:${top_version}")
 
     compileOnly project(":Common")

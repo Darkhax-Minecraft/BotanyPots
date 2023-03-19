@@ -14,7 +14,7 @@ dependencies {
     compileOnly group: 'org.spongepowered', name: 'mixin', version: '0.8.5'
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     compileOnly group: 'net.darkhax.bookshelf', name: "Bookshelf-Common-${minecraft_version}", version: bookshelf_version
-    compileOnly group: 'mezz.jei', name: "jei-${minecraft_version}-common-api", version: jei_version
+    compileOnly group: 'mezz.jei', name: "jei-1.19.3-common-api", version: jei_version
 }
 
 processResources {
