@@ -22,6 +22,7 @@ public final class BasicPotInteractionSerializer implements RecipeSerializer<Bas
 
         final Ingredient heldTest = Serializers.INGREDIENT.fromJSON(json, "held_ingredient");
         final boolean damageHeld = Serializers.BOOLEAN.fromJSON(json, "damage_held", true);
+        final boolean consumeHeld = Serializers.BOOLEAN.fromJSON(json, "consume_held", false);
         final Ingredient soilTest = Serializers.INGREDIENT.fromJSONNullable(json, "soil_ingredient");
         final Ingredient seedTest = Serializers.INGREDIENT.fromJSONNullable(json, "seed_ingredient");
         final ItemStack soilOutput = Serializers.ITEM_STACK.fromJSONNullable(json, "soil_output");
@@ -39,7 +40,7 @@ public final class BasicPotInteractionSerializer implements RecipeSerializer<Bas
             throw new JsonParseException("Recipe requires at least one output.");
         }
 
-        return new BasicPotInteraction(id, heldTest, damageHeld, soilTest, seedTest, soilOutput, seedOutput, sound, extraDrops);
+        return new BasicPotInteraction(id, heldTest, damageHeld, consumeHeld, soilTest, seedTest, soilOutput, seedOutput, sound, extraDrops);
     }
 
     @Override
@@ -47,6 +48,7 @@ public final class BasicPotInteractionSerializer implements RecipeSerializer<Bas
 
         final Ingredient heldTest = Serializers.INGREDIENT.fromByteBuf(buffer);
         final boolean damageHeld = Serializers.BOOLEAN.fromByteBuf(buffer);
+        final boolean consumeHeld = Serializers.BOOLEAN.fromByteBuf(buffer);
         final Ingredient soilTest = Serializers.INGREDIENT.fromByteBufNullable(buffer);
         final Ingredient seedTest = Serializers.INGREDIENT.fromByteBufNullable(buffer);
         final ItemStack soilOutput = Serializers.ITEM_STACK.fromByteBufNullable(buffer);
@@ -54,7 +56,7 @@ public final class BasicPotInteractionSerializer implements RecipeSerializer<Bas
         final Sound sound = Serializers.SOUND.fromByteBufNullable(buffer);
         final List<ItemStack> extraDrops = Serializers.ITEM_STACK.fromByteBufList(buffer);
 
-        return new BasicPotInteraction(id, heldTest, damageHeld, soilTest, seedTest, soilOutput, seedOutput, sound, extraDrops);
+        return new BasicPotInteraction(id, heldTest, damageHeld, consumeHeld, soilTest, seedTest, soilOutput, seedOutput, sound, extraDrops);
     }
 
     @Override
@@ -62,6 +64,7 @@ public final class BasicPotInteractionSerializer implements RecipeSerializer<Bas
 
         Serializers.INGREDIENT.toByteBuf(buffer, toWrite.heldTest);
         Serializers.BOOLEAN.toByteBuf(buffer, toWrite.damageHeld);
+        Serializers.BOOLEAN.toByteBuf(buffer, toWrite.consumeHeld);
         Serializers.INGREDIENT.toByteBufNullable(buffer, toWrite.soilTest);
         Serializers.INGREDIENT.toByteBufNullable(buffer, toWrite.seedTest);
         Serializers.ITEM_STACK.toByteBufNullable(buffer, toWrite.newSoilStack);

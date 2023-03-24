@@ -26,6 +26,8 @@ public class BasicPotInteraction extends PotInteraction {
 
     protected final boolean damageHeld;
 
+    protected final boolean consumeHeld;
+
     @Nullable
     protected final Ingredient soilTest;
 
@@ -43,12 +45,13 @@ public class BasicPotInteraction extends PotInteraction {
 
     protected final List<ItemStack> extraDrops;
 
-    public BasicPotInteraction(ResourceLocation id, Ingredient heldTest, boolean damageHeld, @Nullable Ingredient soilTest, @Nullable Ingredient seedTest, @Nullable ItemStack newSoilStack, @Nullable ItemStack newSeedStack, @Nullable Sound sound, List<ItemStack> extraDrops) {
+    public BasicPotInteraction(ResourceLocation id, Ingredient heldTest, boolean damageHeld, boolean consumeHeld, @Nullable Ingredient soilTest, @Nullable Ingredient seedTest, @Nullable ItemStack newSoilStack, @Nullable ItemStack newSeedStack, @Nullable Sound sound, List<ItemStack> extraDrops) {
 
         super(id);
 
         this.heldTest = heldTest;
         this.damageHeld = damageHeld;
+        this.consumeHeld = consumeHeld;
         this.soilTest = soilTest;
         this.seedTest = seedTest;
         this.newSoilStack = newSoilStack;
@@ -108,7 +111,7 @@ public class BasicPotInteraction extends PotInteraction {
                 Services.INVENTORY_HELPER.damageStack(heldStack, 1, player, hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
             }
 
-            else {
+            if (this.consumeHeld) {
 
                 final ItemStack remainder = Services.INVENTORY_HELPER.getCraftingRemainder(heldStack);
 

@@ -1,5 +1,6 @@
 {
   "type": "botanypots:pot_interaction",
+  "consume_held": true,
   "held_ingredient": {
     "item": "minecraft:lava_bucket"
   },
