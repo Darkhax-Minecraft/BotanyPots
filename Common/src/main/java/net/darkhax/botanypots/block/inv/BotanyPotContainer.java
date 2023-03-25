@@ -64,35 +64,6 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
         return this.potEntity;
     }
 
-    public Crop lookupCrop(Level level, BlockPos pos) {
-
-        final ItemStack currentCropStack = this.getCropStack();
-
-        // Looking up recipes can be expensive. If the ItemStack has the same
-        // identity as before we can assume it hasn't changed and can skip this
-        // lookup. While false positives are possible, they have a low cost.
-        if (this.lastCropStack != currentCropStack) {
-
-            this.lastCropStack = currentCropStack;
-            return BotanyPotHelper.findCrop(level, pos, potEntity, currentCropStack);
-        }
-
-        return this.crop;
-    }
-
-    public Soil lookupSoil(Level level, BlockPos pos) {
-
-        final ItemStack currentSoilStack = this.getSoilStack();
-
-        if (this.lastSoilStack != currentSoilStack) {
-
-            this.lastSoilStack = currentSoilStack;
-            return BotanyPotHelper.findSoil(level, pos, potEntity, currentSoilStack);
-        }
-
-        return this.soil;
-    }
-
     public void update() {
 
         this.setChanged();
@@ -105,8 +76,8 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
 
         final Level level = this.potEntity.getLevel();
         final BlockPos pos = this.potEntity.getBlockPos();
-        final Soil newSoil = lookupSoil(level, pos);
-        final Crop newCrop = lookupCrop(level, pos);
+        final Soil newSoil = BotanyPotHelper.findSoil(level, pos, potEntity, this.getSoilStack());
+        final Crop newCrop = BotanyPotHelper.findCrop(level, pos, potEntity, this.getCropStack());
 
         if (this.soil != newSoil || this.crop != newCrop) {
 
