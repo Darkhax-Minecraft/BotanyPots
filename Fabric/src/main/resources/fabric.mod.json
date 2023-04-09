@@ -25,6 +25,9 @@
     ],
     "client": [
       "net.darkhax.botanypots.BotanyPotsFabricClient"
+    ],
+    "jei_mod_plugin": [
+      "net.darkhax.botanypots.addons.jei.JEIPlugin"
     ]
   },
   "depends": {

@@ -19,7 +19,7 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 
     modImplementation "net.darkhax.bookshelf:Bookshelf-Fabric-${minecraft_version}:${bookshelf_version}"
-    //modCompileOnly "mezz.jei:jei-1.19.3-fabric:${jei_version}"
+    modImplementation "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
 
     implementation project(":Common")
 }
