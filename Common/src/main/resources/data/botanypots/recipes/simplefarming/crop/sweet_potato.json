@@ -19,7 +19,7 @@
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "simplefarming:sweet_potato_crop"
+    "block": "simplefarming:sweet_potatoes"
   },
   "drops": [
     {

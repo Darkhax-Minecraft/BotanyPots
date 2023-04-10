@@ -19,7 +19,7 @@
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "simplefarming:spinach_crop"
+    "block": "simplefarming:spinach"
   },
   "drops": [
     {

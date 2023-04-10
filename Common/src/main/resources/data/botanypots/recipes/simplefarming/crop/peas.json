@@ -3,8 +3,8 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "simplefarming:peas_seeds",
-        "simplefarming:peas"
+        "simplefarming:pea_seeds",
+        "simplefarming:pea_pod"
       ]
     }
   ],
@@ -19,7 +19,7 @@
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "simplefarming:pea_crop"
+    "block": "simplefarming:peas"
   },
   "drops": [
     {

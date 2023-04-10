@@ -19,7 +19,7 @@
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "simplefarming:tomato_crop"
+    "block": "simplefarming:tomatoes"
   },
   "drops": [
     {

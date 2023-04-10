@@ -3,8 +3,7 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "simplefarming:grape_seeds",
-        "simplefarming:grape"
+        "simplefarming:grape_seeds"
       ]
     }
   ],
@@ -19,19 +18,14 @@
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "simplefarming:grape_plant"
+    "block": "simplefarming:grapevine",
+    "rotation": "X_180"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "simplefarming:grape"
-      }
-    },
-    {
-      "chance": 0.01,
-      "output": {
-        "item": "simplefarming:grape_seeds"
+        "item": "simplefarming:grapes"
       }
     }
   ]

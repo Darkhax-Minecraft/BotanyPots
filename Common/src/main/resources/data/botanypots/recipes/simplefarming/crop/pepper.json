@@ -19,7 +19,7 @@
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "simplefarming:pepper_crop"
+    "block": "simplefarming:peppers"
   },
   "drops": [
     {
