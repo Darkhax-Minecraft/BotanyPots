@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "corn_delight:corn_seeds",
+        "corn_delight:corn"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "corn_delight:corn_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "corn_delight:corn_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "corn_delight:corn"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "corn_delight:corn_seeds"
+      }
+    }
+  ]
+}
