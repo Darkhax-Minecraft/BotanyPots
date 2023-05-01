@@ -1,0 +1,31 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "blockus:rainbow_rose"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "blockus:rainbow_rose"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "blockus:rainbow_rose"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "blockus:rainbow_rose"
+      }
+    }
+  ]
+}
