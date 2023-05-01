@@ -5,7 +5,7 @@ import net.darkhax.botanypots.data.displaystate.DisplayState;
 
 public class BotanyPotsCommon {
 
-    public final Content content;
+    public static Content content;
 
     public BotanyPotsCommon() {
 

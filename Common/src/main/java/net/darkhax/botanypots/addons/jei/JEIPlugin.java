@@ -8,9 +8,11 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.darkhax.botanypots.BotanyPotHelper;
+import net.darkhax.botanypots.BotanyPotsCommon;
 import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.addons.jei.ui.BasicCropDisplayInfo;
 import net.darkhax.botanypots.addons.jei.ui.CropDisplayInfo;
+import net.darkhax.botanypots.block.BlockBotanyPot;
 import net.darkhax.botanypots.data.recipes.crop.BasicCrop;
 import net.darkhax.botanypots.data.recipes.crop.Crop;
 import net.darkhax.botanypots.data.recipes.fertilizer.Fertilizer;
@@ -18,6 +20,8 @@ import net.darkhax.botanypots.data.recipes.potinteraction.PotInteraction;
 import net.darkhax.botanypots.data.recipes.soil.Soil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeManager;
 
 import java.util.List;
@@ -48,7 +52,11 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-
+        for (Item potItem : BotanyPotsCommon.content.items) {
+            if (potItem instanceof BlockItem blockItem && blockItem.getBlock() instanceof BlockBotanyPot pot) {
+                registration.addRecipeCatalyst(potItem.getDefaultInstance(), CROP);
+            }
+        }
     }
 
     @Override
