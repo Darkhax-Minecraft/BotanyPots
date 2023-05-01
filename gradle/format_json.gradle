@@ -1,0 +1,19 @@
+/*
+ This script provides a Gradle task that will format all JSON files in your resources source
+ directories. Formatting a JSON file will verify that it is a valid schema, and also modify
+ the structure of the file to match the "pretty printing" output. This means things like
+ indents will become four spaces instead of tabs or other quantities of spaces. It also means
+ that collections will be expanded onto new lines.
+*/
+import groovy.json.JsonSlurper
+import groovy.json.JsonOutput
+
+task formatJson {
+    description = 'Formats all JSON files in the resources dir with pretty printing.'
+    for (File dirName : sourceSets.main.resources.srcDirs) {
+        fileTree(dir: dirName, include: '**/*.json').each {
+            File file = it;
+            file.text = JsonOutput.prettyPrint(JsonOutput.toJson(new JsonSlurper().parse(file)));
+        }
+    }
+}

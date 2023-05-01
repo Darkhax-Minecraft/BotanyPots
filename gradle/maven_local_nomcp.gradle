@@ -1,0 +1,69 @@
+/*
+ This Gradle script provides the basic setup for uploading Minecraft mod artifacts to a Maven.
+ This version of the maven script will check dependencies for the MCP version string. If this
+ string is found the artifact will be removed. This fixes/sidesteps a bug in ForgeGradle 3 
+ which will error out if all dependencies are not using the same MCP and Forge version.
+ 
+ This script is set up to upload the following Jars to maven.
+ - The compiled/obfuscated jar.
+ - The non obfuscated (deobf) jar.
+ - The source code jar.
+ - The JavaDoc jar.
+ 
+ Requirements!
+ - maven-publish Gradle plugin must be applied in your build script.
+ - https://github.com/MinecraftModDevelopment/Gradle-Collection/blob/master/minecraft/artifacts.gradle
+ - The urlMaven, userMaven, and authMaven must be mapped to valid properties.
+*/
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId project.group
+            artifactId project.archivesBaseName
+            version project.version
+            from components.java
+
+            // Allows the maven pom file to be modified.
+            pom.withXml {
+                // Go through all the dependencies.
+                asNode().dependencies.dependency.each { dep ->    
+
+                    // Check if the dependency has been mapped with MCP
+                    if (dep.version.last().value().last().contains('_mapped_snapshot_') || dep.version.last().value().last().contains('_mapped_stable_')) {    
+
+                        // Remove the MCP mapped artifact from the dependency list.
+                        println 'Surpressing MCP mapped artifact ' + dep.artifactId.last().value().last() + ' from maven dependencies.'
+                        assert dep.parent().remove(dep)
+                    }
+                }
+            }
+
+            // Adds the sources as an artifact.
+            artifact sourcesJar {
+                classifier 'sources'
+            }
+
+            // Adds the javadocs as an artifact.
+            artifact javadocJar {
+                classifier 'javadoc'
+            }
+
+            // Adds the deobfuscated jar as an artifact.
+            artifact deobfJar {
+                classifier 'deobf'
+            }
+            
+            artifact forgelibJar {
+                classifier 'forgelib'
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            // Sets the maven URL
+            url findProperty('localMaven')
+        }
+    }
+}

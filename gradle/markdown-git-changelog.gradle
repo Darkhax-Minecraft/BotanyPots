@@ -1,0 +1,50 @@
+/*
+ This Gradle script provides a markdown changelog based on the commit messages since the last
+ build. The resulting changelog is in the markdown format. This supports Jenkins and Travis.
+ 
+ Note: This script is originally from the Inventory Tweaks mod under the MIT license!
+ https://github.com/Inventory-Tweaks/inventory-tweaks/blob/develop/build.gradle
+ 
+ Requirements!
+ - Git must be installed, and the the executor must have the required git perms. 
+*/
+
+def getGitChangelog() {
+    try {
+        def stdout = new ByteArrayOutputStream()
+        def gitHash = System.getenv('GIT_COMMIT')
+        def gitPrevHash = System.getenv('GIT_PREVIOUS_COMMIT')
+        def travisRange = System.getenv('TRAVIS_COMMIT_RANGE')
+        if(gitHash && gitPrevHash) {
+            exec {
+                commandLine 'git', 'log', '--pretty=tformat:- %s - %aN', '' + gitPrevHash + '...' + gitHash
+                standardOutput = stdout
+            }
+            return stdout.toString().trim()
+        } 
+        
+        else if (gitHash) {
+            exec {
+                commandLine 'git', 'log', '--pretty=tformat:- %s - %aN', '-1', '' + gitHash
+                standardOutput = stdout
+            }
+            return stdout.toString().trim()
+        }
+        else if(travisRange) {
+            exec {
+                commandLine 'git', 'log', '--pretty=tformat:- %s - %aN', '' + travisRange
+                standardOutput = stdout
+            }
+            return stdout.toString().trim()
+        } else {
+            return "";
+        }
+    } catch(ignored) {
+        return "";
+    }
+}
+
+ext {
+
+    getGitChangelog = this.&getGitChangelog
+}
