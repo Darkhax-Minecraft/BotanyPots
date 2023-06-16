@@ -1,0 +1,38 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:pitcher_pod"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 2400,
+  "display": [
+    {
+      "block": "minecraft:pitcher_plant",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "minecraft:pitcher_plant",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:pitcher_plant"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "minecraft:pitcher_pod"
+      }
+    }
+  ]
+}

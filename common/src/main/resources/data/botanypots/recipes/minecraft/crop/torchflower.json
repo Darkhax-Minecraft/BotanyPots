@@ -1,0 +1,27 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "minecraft:torchflower_seeds"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 2400,
+  "display": {
+    "block": "minecraft:torchflower"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:torchflower"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "minecraft:torchflower_seeds"
+      }
+    }
+  ]
+}
