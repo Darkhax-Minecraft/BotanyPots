@@ -28,6 +28,9 @@
     ],
     "jei_mod_plugin": [
       "net.darkhax.botanypots.addons.jei.JEIPlugin"
+    ],
+    "rei_client": [
+      "net.darkhax.botanypots.addons.rei.REIPlugin"
     ]
   },
   "depends": {
