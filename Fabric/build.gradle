@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' version '1.0-SNAPSHOT'
     id 'net.darkhax.curseforgegradle' version '1.0.11'
+    id 'com.modrinth.minotaur' version "2.8.1"
     id 'idea'
 }
 
@@ -132,5 +133,26 @@ task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge)
 
             project.ext.curse_file_url = "${mod_homepage}/files/${mainFile.curseFileId}"
         }
+    }
+}
+
+// Modrinth
+modrinth {
+
+    def patreonInfo = project.findProperty('patreon')
+    def changelogText = project.ext.mod_changelog
+
+    if (patreonInfo) {
+        changelogText += "\n\nThis project is made possible by [Patreon](${patreonInfo.campaignUrlTracked}) support from players like you. Thank you!\n\n${patreonInfo.pledgeLog}"
+    }
+
+    token.set(project.findProperty('modrinth_auth'))
+    projectId.set(modrinth_project)
+    changelog = changelogText
+    versionName.set("${mod_name}-Fabric-${minecraft_version}-$version")
+    versionType.set("release")
+    uploadFile.set(tasks.remapJar)
+    dependencies {
+        required.project("fabric-api")
     }
 }
