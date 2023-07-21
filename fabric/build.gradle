@@ -23,6 +23,7 @@ dependencies {
 
     modImplementation "net.darkhax.bookshelf:Bookshelf-Fabric-${minecraft_version}:${bookshelf_version}"
     modImplementation "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
+    modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${rei_version}"
 
     implementation project(':common')
 }
