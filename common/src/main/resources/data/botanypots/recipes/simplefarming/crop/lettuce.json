@@ -19,7 +19,7 @@
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "simplefarming:lettuce_crop"
+    "block": "simplefarming:lettuce"
   },
   "drops": [
     {

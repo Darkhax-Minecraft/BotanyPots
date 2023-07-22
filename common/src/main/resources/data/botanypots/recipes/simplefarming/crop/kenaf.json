@@ -18,7 +18,7 @@
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "simplefarming:kenaf_crop"
+    "block": "simplefarming:kenaf"
   },
   "drops": [
     {
