@@ -1,7 +1,7 @@
 {
   "type": "botanypots:pot_interaction",
   "held_ingredient": {
-    "tag": "bookshelf:shovels"
+    "tag": "minecraft:shovels"
   },
   "soil_ingredient": [
     {
