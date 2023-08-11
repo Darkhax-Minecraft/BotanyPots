@@ -3,8 +3,7 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "simplefarming:quinoa_seeds",
-        "simplefarming:quinoa"
+        "simplefarming:quinoa_seeds"
       ]
     }
   ],
@@ -25,7 +24,7 @@
     {
       "chance": 1.00,
       "output": {
-        "item": "simplefarming:quinoa"
+        "item": "simplefarming:quinoa_seeds"
       }
     },
     {

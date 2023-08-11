@@ -3,14 +3,14 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "simplefarming:quinoa_seeds",
-        "simplefarming:quinoa"
+        "simplefarming:radish_seeds",
+        "simplefarming:radish"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "simplefarming:quinoa_seeds"
+    "item": "simplefarming:radish_seeds"
   },
   "categories": [
     "dirt",
@@ -19,19 +19,19 @@
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "simplefarming:quinoa"
+    "block": "simplefarming:radishes"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "simplefarming:quinoa"
+        "item": "simplefarming:radish"
       }
     },
     {
       "chance": 0.01,
       "output": {
-        "item": "simplefarming:quinoa_seeds"
+        "item": "simplefarming:radish_seeds"
       }
     }
   ]
