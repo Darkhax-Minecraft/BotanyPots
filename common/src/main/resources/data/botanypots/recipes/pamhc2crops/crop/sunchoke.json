@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "pamhc2crops:sunchokeseeditem",
+          "pamhc2crops:sunchokeitem"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "pamhc2crops:sunchokeseeditem"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "pamhc2crops:pamsunchokecrop"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "pamhc2crops:sunchokeitem"
+        }
+      },
+      {
+        "chance": 0.01,
+        "output": {
+          "item": "pamhc2crops:sunchokeseeditem"
+        }
+      }
+    ]
+  }
