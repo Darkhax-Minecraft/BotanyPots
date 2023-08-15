@@ -1,0 +1,40 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "pizzacraft:cucumber_seeds",
+        "pizzacraft:cucumber"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "pizzacraft:cucumber_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "pizzacraft:cucumbers"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "pizzacraft:cucumber"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "pizzacraft:cucumber_seeds"
+      }
+    }
+  ]
+}

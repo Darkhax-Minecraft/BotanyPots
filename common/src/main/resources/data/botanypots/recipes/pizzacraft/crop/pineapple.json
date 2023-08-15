@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "pizzacraft:pineapple_seeds",
+        "pizzacraft:pineapple"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "pizzacraft:pineapple_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "pizzacraft:pineapple"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "pizzacraft:pineapple"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "pizzacraft:pineapple_seeds"
+      }
+    }
+  ]
+}

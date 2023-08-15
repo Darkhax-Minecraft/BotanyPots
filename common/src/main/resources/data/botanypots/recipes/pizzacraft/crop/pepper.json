@@ -1,0 +1,40 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "pizzacraft:pepper_seeds",
+        "pizzacraft:pepper"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "pizzacraft:pepper_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "pizzacraft:peppers"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "pizzacraft:pepper"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "pizzacraft:pepper_seeds"
+      }
+    }
+  ]
+}
