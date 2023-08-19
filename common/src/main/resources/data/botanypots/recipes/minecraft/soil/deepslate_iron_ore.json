@@ -1,18 +1,18 @@
 {
-    "type": "botanypots:soil",
-    "input": {
-      "item": "minecraft:deepslate_iron_ore"
-    },
-    "display": {
-      "block": "minecraft:deepslate_iron_ore"
-    },
-    "categories": [
-      "iron_ore",
-      "mushroom",
-      "stone",
-      "deepslate",
-      "deepslate_iron_ore",
-      "ore"
-    ],
-    "growthModifier": 1
-  }
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:deepslate_iron_ore"
+  },
+  "display": {
+    "block": "minecraft:deepslate_iron_ore"
+  },
+  "categories": [
+    "iron_ore",
+    "mushroom",
+    "stone",
+    "deepslate",
+    "deepslate_iron_ore",
+    "ore"
+  ],
+  "growthModifier": 1
+}

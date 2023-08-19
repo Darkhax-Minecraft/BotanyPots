@@ -7,25 +7,25 @@
       ]
     }
   ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "tconstruct:blood_slime_fern"
-    },
-    "categories": [
-      "blood_slime",
-      "slime"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "tconstruct:blood_slime_fern"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "tconstruct:blood_slime_fern"
-        }
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "tconstruct:blood_slime_fern"
+  },
+  "categories": [
+    "blood_slime",
+    "slime"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "tconstruct:blood_slime_fern"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "tconstruct:blood_slime_fern"
       }
-    ]
-  }
+    }
+  ]
+}

@@ -1,21 +1,21 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": "byg:purpur_stone"
-      }
-    ],
-    "type": "botanypots:soil",
-    "input": {
-      "item": "byg:purpur_stone"
-    },
-    "display": {
-      "block": "byg:purpur_stone"
-    },
-    "categories": [
-      "stone",
-      "mushroom",
-      "purpur_stone"
-    ],
-    "growthModifier": 1.00
-  }
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "byg:purpur_stone"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "byg:purpur_stone"
+  },
+  "display": {
+    "block": "byg:purpur_stone"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "purpur_stone"
+  ],
+  "growthModifier": 1.00
+}

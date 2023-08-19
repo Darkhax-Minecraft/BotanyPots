@@ -1,21 +1,21 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": "byg:ether_stone"
-      }
-    ],
-    "type": "botanypots:soil",
-    "input": {
-      "item": "byg:ether_stone"
-    },
-    "display": {
-      "block": "byg:ether_stone"
-    },
-    "categories": [
-      "stone",
-      "mushroom",
-      "ether_stone"
-    ],
-    "growthModifier": 1.00
-  }
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "byg:ether_stone"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "byg:ether_stone"
+  },
+  "display": {
+    "block": "byg:ether_stone"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "ether_stone"
+  ],
+  "growthModifier": 1.00
+}

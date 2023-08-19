@@ -11,7 +11,9 @@
   "seed": {
     "item": "farmersdelight:brown_mushroom_colony"
   },
-  "categories": ["mushroom"],
+  "categories": [
+    "mushroom"
+  ],
   "growthTicks": 1400,
   "display": {
     "type": "botanypots:aging",

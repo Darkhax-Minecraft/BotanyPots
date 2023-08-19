@@ -1,41 +1,41 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "byg:cattail_sprout"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "byg:cattail_sprout"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:cattail_sprout"
+  },
+  "categories": [
+    "dirt",
+    "sand"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "byg:cattail",
+      "properties": {
+        "half": "lower"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "byg:cattail_sprout"
     },
-    "categories": [
-      "dirt",
-      "sand"
-    ],
-    "growthTicks": 1200,
-    "display": [
-      {
-        "block": "byg:cattail",
-        "properties": {
-          "half": "lower"
-        }
-      },
-      {
-        "block": "byg:cattail",
-        "properties": {
-          "half": "upper"
-        }
+    {
+      "block": "byg:cattail",
+      "properties": {
+        "half": "upper"
       }
-    ],
-    "drops": [
-      {
-        "chance": 1,
-        "output": {
-          "item": "byg:cattail_sprout"
-        }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1,
+      "output": {
+        "item": "byg:cattail_sprout"
       }
-    ]
-  }
+    }
+  ]
+}

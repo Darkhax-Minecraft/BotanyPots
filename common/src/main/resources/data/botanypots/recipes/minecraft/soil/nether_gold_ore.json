@@ -1,17 +1,17 @@
 {
-    "type": "botanypots:soil",
-    "input": {
-      "item": "minecraft:nether_gold_ore"
-    },
-    "display": {
-      "block": "minecraft:nether_gold_ore"
-    },
-    "categories": [
-      "gold_ore",
-      "netherrack",
-      "mushroom",
-      "stone",
-      "ore"
-    ],
-    "growthModifier": 1
-  }
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:nether_gold_ore"
+  },
+  "display": {
+    "block": "minecraft:nether_gold_ore"
+  },
+  "categories": [
+    "gold_ore",
+    "netherrack",
+    "mushroom",
+    "stone",
+    "ore"
+  ],
+  "growthModifier": 1
+}

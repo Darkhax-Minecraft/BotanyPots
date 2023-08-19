@@ -7,18 +7,18 @@
       ]
     }
   ],
-    "type": "botanypots:soil",
-    "input": {
-      "item": "tconstruct:ender_ender_slime_grass"
-    },
-    "display": {
-      "block": "tconstruct:ender_ender_slime_grass"
-    },
-    "categories": [
-      "dirt",
-      "grass",
-      "ender_slime",
-      "slime"
-    ],
-    "growthModifier": 0.95
-  }
+  "type": "botanypots:soil",
+  "input": {
+    "item": "tconstruct:ender_ender_slime_grass"
+  },
+  "display": {
+    "block": "tconstruct:ender_ender_slime_grass"
+  },
+  "categories": [
+    "dirt",
+    "grass",
+    "ender_slime",
+    "slime"
+  ],
+  "growthModifier": 0.95
+}

@@ -1,29 +1,29 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "finallyfarmabledyes:oxeye_daisy"
-        ]
-      }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "finallyfarmabledyes:oxeye_daisy"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "finallyfarmabledyes:oxeye_daisy"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "finallyfarmabledyes:oxeye_daisy"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
         "item": "finallyfarmabledyes:oxeye_daisy"
-    },
-    "categories": [
-        "dirt"
-    ],
-    "growthTicks": 1200,
-    "display": {
-        "block": "finallyfarmabledyes:oxeye_daisy"
-    },
-    "drops": [
-        {
-            "chance": 1.00,
-            "output": {
-                "item": "finallyfarmabledyes:oxeye_daisy"
-            }
-        }
-    ]
+      }
+    }
+  ]
 }

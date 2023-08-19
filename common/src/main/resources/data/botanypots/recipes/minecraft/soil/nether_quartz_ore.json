@@ -1,16 +1,16 @@
 {
-    "type": "botanypots:soil",
-    "input": {
-      "item": "minecraft:nether_quartz_ore"
-    },
-    "display": {
-      "block": "minecraft:nether_quartz_ore"
-    },
-    "categories": [
-      "nether_quartz_ore",
-      "mushroom",
-      "stone",
-      "ore"
-    ],
-    "growthModifier": 1
-  }
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:nether_quartz_ore"
+  },
+  "display": {
+    "block": "minecraft:nether_quartz_ore"
+  },
+  "categories": [
+    "nether_quartz_ore",
+    "mushroom",
+    "stone",
+    "ore"
+  ],
+  "growthModifier": 1
+}

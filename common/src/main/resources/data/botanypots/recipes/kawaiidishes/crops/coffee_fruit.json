@@ -1,33 +1,33 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "kawaiidishes:coffee_fruit"
-        ]
-      }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "kawaiidishes:coffee_fruit"
-    },
-    "categories": [
-      "dirt",
-      "farmland"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "kawaiidishes:coffee_bush"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "kawaiidishes:coffee_fruit"
-        },
-        "minRolls": 1,
-        "maxRolls": 3
-      }
-    ]
-  }
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "kawaiidishes:coffee_fruit"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "kawaiidishes:coffee_fruit"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "kawaiidishes:coffee_bush"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "kawaiidishes:coffee_fruit"
+      },
+      "minRolls": 1,
+      "maxRolls": 3
+    }
+  ]
+}

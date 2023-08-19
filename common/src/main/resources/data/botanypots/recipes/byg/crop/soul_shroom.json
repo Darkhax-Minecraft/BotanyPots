@@ -1,31 +1,31 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "byg:soul_shroom"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "byg:soul_shroom"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:soul_shroom"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "mulch"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "byg:soul_shroom"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "byg:soul_shroom"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "byg:soul_shroom"
-    },
-    "categories": [
-      "stone",
-      "mushroom",
-      "mulch"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "block": "byg:soul_shroom"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "byg:soul_shroom"
-        }
-      }
-    ]
-  }
+    }
+  ]
+}
