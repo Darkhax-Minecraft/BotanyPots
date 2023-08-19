@@ -1,8 +1,13 @@
 {
   "type": "botanypots:crop",
-  "seed": {
-    "item": "minecraft:chorus_fruit"
-  },
+  "seed": [
+    {
+      "item": "minecraft:chorus_fruit"
+    },
+    {
+      "item": "minecraft:chorus_flower"
+    }
+  ],
   "categories": [
     "end_stone"
   ],

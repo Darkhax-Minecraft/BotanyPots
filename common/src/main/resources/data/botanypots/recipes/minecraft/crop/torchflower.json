@@ -1,8 +1,13 @@
 {
   "type": "botanypots:crop",
-  "seed": {
-    "item": "minecraft:torchflower_seeds"
-  },
+  "seed": [
+    {
+      "item": "minecraft:torchflower_seeds"
+    },
+    {
+      "item": "minecraft:torchflower"
+    }
+  ],
   "categories": [
     "dirt"
   ],

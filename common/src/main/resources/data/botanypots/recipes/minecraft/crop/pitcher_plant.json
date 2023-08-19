@@ -1,8 +1,13 @@
 {
   "type": "botanypots:crop",
-  "seed": {
-    "item": "minecraft:pitcher_pod"
-  },
+  "seed": [
+    {
+      "item": "minecraft:pitcher_pod"
+    },
+    {
+      "item": "minecraft:pitcher_plant"
+    }
+  ],
   "categories": [
     "dirt"
   ],
