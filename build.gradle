@@ -59,13 +59,13 @@ subprojects {
         }
 
         maven {
-            name = 'BlameJared Maven (CrT / Bookshelf)'
+            name = 'BlameJared Maven (CrT / Bookshelf / JEI)'
             url = 'https://maven.blamejared.com'
         }
 
         maven {
-            name = 'Progwml6 Maven (JEI)'
-            url = 'https://dvs1.progwml6.com/files/maven/'
+            name = 'shedaniel Maven (REI)'
+            url = 'https://maven.shedaniel.me/'
         }
     }
 }

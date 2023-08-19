@@ -72,11 +72,19 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-${project.ext.minecraft_version}:${project.ext.bookshelf_version}")
     implementation fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+    compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}")
+    compileOnly fg.deobf("dev.architectury:architectury-forge:8.1.87") // It doesn't actually matter which version we use as this is compileOnly
+    compileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:10.0.96") // It doesn't actually matter which version we use as this is compileOnly
     compileOnly fg.deobf("curse.maven:top-245211:${top_version}")
 
     compileOnly project(':common')
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+configurations {
+    // Fails without this as compileOnly dependencies do not get added to the test classpath
+    testCompileOnly.extendsFrom compileOnly
 }
 
 tasks.withType(JavaCompile).configureEach {
