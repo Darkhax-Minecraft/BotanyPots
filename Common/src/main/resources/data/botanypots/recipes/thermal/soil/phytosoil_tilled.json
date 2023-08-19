@@ -1,0 +1,19 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "thermal:phytosoil_tilled"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "thermal:phytosoil_tilled"
+    },
+    "display": {
+      "block": "thermal:phytosoil_tilled"
+    },
+    "categories": [
+      "sand"
+    ],
+    "growthModifier": 1.20
+  }

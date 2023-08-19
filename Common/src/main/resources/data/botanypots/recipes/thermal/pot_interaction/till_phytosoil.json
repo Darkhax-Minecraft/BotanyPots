@@ -1,0 +1,28 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "thermal:phytosoil_tilled",
+        "thermal:phytosoil"
+      ]
+    }
+  ],
+  "type": "botanypots:pot_interaction",
+  "held_ingredient": {
+    "tag": "bookshelf:hoes"
+  },
+  "soil_ingredient": [
+    {
+      "item": "thermal:phytosoil"
+    }
+  ],
+  "soil_output": {
+    "item": "thermal:phytosoil_tilled",
+    "count": 1
+  },
+  "sound": {
+    "sound": "minecraft:item.hoe.till",
+    "category": "blocks"
+  }
+}
