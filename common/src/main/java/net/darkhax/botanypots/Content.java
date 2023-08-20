@@ -5,6 +5,7 @@ import net.darkhax.bookshelf.api.registry.RegistryDataProvider;
 import net.darkhax.botanypots.block.BlockBotanyPot;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.block.inv.BotanyPotMenu;
+import net.darkhax.botanypots.commands.BotanyPotsCommands;
 import net.darkhax.botanypots.data.recipes.crop.BasicCropSerializer;
 import net.darkhax.botanypots.data.recipes.fertilizer.BasicFertilizerSerializer;
 import net.darkhax.botanypots.data.recipes.potinteraction.BasicPotInteractionSerializer;
@@ -63,6 +64,7 @@ public class Content extends RegistryDataProvider {
 
         this.blockEntities.add(() -> Services.CONSTRUCTS.blockEntityType((pos, state) -> new BlockEntityBotanyPot(BlockEntityBotanyPot.POT_TYPE.get(), pos, state), this::getAllPots).get(), "botany_pot");
         this.menus.add(() -> Services.CONSTRUCTS.menuType(BotanyPotMenu::fromNetwork), "pot_menu");
+        this.commands.add(BotanyPotsCommands::new, "commands");
     }
 
     private Set<Block> getAllPots() {

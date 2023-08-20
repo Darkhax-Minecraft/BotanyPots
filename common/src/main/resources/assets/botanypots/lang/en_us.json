@@ -26,6 +26,10 @@
   "advancements.botany_pots.get_hopper_pot.title": "Now You're Growing With Hoppers",
   "advancements.botany_pots.get_hopper_pot.description": "Get a Hopper Botany Pot",
 
+  "commands.botanypots.mod_message": "[§aBotany Pots§r] %s",
+  "commands.botanypots.dump.no_results": "No results were found.",
+  "commands.botanypots.dump.missing_crops": "Found %d potential missing crops. This list is not exhaustive and may include false positives and false negatives. Clicking this message will copy the list to your clipboard.",
+
   "block.botanypots.terracotta_botany_pot": "Botany Pot",
   "block.botanypots.terracotta_hopper_botany_pot": "Hopper Botany Pot",
   "block.botanypots.white_terracotta_botany_pot": "White Botany Pot",
