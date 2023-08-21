@@ -1,0 +1,51 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "twilightforest:torchberry_plant"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "twilightforest:torchberry_plant"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "block": "twilightforest:torchberry_plant",
+        "properties": {
+          "has_torchberries": "false"
+        },
+        "rotation": "X_180"
+      },
+      {
+        "block": "twilightforest:torchberry_plant",
+        "properties": {
+          "has_torchberries": "true"
+        },
+        "rotation": "X_180"
+      }
+    ]
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "twilightforest:torchberries"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "twilightforest:torchberry_plant"
+      }
+    }
+  ]
+}
