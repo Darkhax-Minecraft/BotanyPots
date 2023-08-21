@@ -4,8 +4,7 @@
     "item": "minecraft:cactus"
   },
   "categories": [
-    "sand",
-    "farmland"
+    "sand"
   ],
   "growthTicks": 1200,
   "display": {
