@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "supplementaries:flax_seeds",
+        "supplementaries:wild_flax"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "supplementaries:wild_flax"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "supplementaries:wild_flax"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "supplementaries:wild_flax"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "supplementaries:flax_seeds"
+      }
+    }
+  ]
+}
