@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:blossom_berry_seed",
+        "betterend:blossom_berry"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betterend:blossom_berry_seed"
+  },
+  "categories": [
+    "pink_moss"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "betterend:blossom_berry_seed"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:blossom_berry"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betterend:blossom_berry_seed"
+      }
+    }
+  ]
+}

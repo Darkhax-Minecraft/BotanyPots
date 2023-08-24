@@ -1,0 +1,29 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:jungle_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betterend:jungle_grass"
+  },
+  "categories": [
+    "jungle_moss"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "betterend:jungle_grass"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:jungle_grass"
+      }
+    }
+  ]
+}

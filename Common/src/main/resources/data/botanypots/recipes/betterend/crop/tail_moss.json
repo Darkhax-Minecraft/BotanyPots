@@ -1,0 +1,30 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:tail_moss"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betterend:tail_moss"
+  },
+  "categories": [
+    "end"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "betterend:tail_moss",
+    "rotation": "X_90"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:tail_moss"
+      }
+    }
+  ]
+}

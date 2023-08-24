@@ -1,0 +1,22 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:crystal_moss"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betterend:crystal_moss"
+  },
+  "display": {
+    "block": "betterend:crystal_moss"
+  },
+  "categories": [
+    "end",
+    "crystal_moss"
+  ],
+  "growthModifier": 1
+}

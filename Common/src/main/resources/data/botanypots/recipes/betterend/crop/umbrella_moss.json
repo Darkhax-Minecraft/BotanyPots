@@ -1,0 +1,30 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:umbrella_moss"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betterend:umbrella_moss"
+  },
+  "categories": [
+    "end_moss",
+    "jungle_moss"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "betterend:umbrella_moss"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:umbrella_moss"
+      }
+    }
+  ]
+}

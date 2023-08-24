@@ -1,0 +1,30 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "twilightforest:moss_patch"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "twilightforest:moss_patch"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "twilightforest:moss_patch"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "twilightforest:moss_patch"
+      }
+    }
+  ]
+}

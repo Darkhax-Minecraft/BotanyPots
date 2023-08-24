@@ -1,0 +1,22 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:jungle_moss"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betterend:jungle_moss"
+  },
+  "display": {
+    "block": "betterend:jungle_moss"
+  },
+  "categories": [
+    "end",
+    "jungle_moss"
+  ],
+  "growthModifier": 1
+}

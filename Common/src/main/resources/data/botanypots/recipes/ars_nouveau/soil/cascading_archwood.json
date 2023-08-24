@@ -1,0 +1,31 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "ars_nouveau:blue_archwood_log",
+        "ars_nouveau:blue_archwood_wood"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": [
+    {
+      "item": "ars_nouveau:blue_archwood_log"
+    },
+    {
+      "item": "ars_nouveau:blue_archwood_wood"
+    }
+  ],
+  "display": {
+    "block": "ars_nouveau:blue_archwood_wood"
+  },
+  "categories": [
+    "wood",
+    "log",
+    "mushroom",
+    "blue_archwood",
+    "blue_archwood_wood"
+  ],
+  "growthModifier": 1
+}

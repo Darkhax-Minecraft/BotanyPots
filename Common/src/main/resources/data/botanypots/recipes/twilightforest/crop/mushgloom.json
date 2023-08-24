@@ -1,0 +1,32 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "twilightforest:mushgloom"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "twilightforest:mushgloom"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "mulch"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "twilightforest:mushgloom"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "twilightforest:mushgloom"
+      }
+    }
+  ]
+}

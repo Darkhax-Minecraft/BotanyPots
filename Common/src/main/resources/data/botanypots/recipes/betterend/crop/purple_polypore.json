@@ -1,0 +1,30 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:purple_polypore"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betterend:purple_polypore"
+  },
+  "categories": [
+    "end"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "betterend:purple_polypore",
+    "rotation": "X_90"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:purple_polypore"
+      }
+    }
+  ]
+}

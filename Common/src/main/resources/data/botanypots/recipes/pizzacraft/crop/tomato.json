@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "pizzacraft:tomato_seeds",
+        "pizzacraft:tomato"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "pizzacraft:tomato_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "pizzacraft:tomatoes"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "pizzacraft:tomato"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "pizzacraft:tomato_seeds"
+      }
+    }
+  ]
+}

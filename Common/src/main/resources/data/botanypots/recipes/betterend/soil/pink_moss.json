@@ -1,0 +1,22 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:pink_moss"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betterend:pink_moss"
+  },
+  "display": {
+    "block": "betterend:pink_moss"
+  },
+  "categories": [
+    "end",
+    "pink_moss"
+  ],
+  "growthModifier": 1
+}

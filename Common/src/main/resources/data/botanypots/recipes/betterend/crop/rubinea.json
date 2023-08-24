@@ -1,0 +1,33 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:rubinea"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betterend:rubinea"
+  },
+  "categories": [
+    "end"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "betterend:rubinea",
+    "rotation": "X_180",
+    "properties": {
+      "shape": "bottom"
+    }
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:rubinea"
+      }
+    }
+  ]
+}

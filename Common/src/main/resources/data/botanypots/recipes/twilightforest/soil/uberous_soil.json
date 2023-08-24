@@ -1,0 +1,19 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "twilightforest:uberous_soil"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "twilightforest:uberous_soil"
+  },
+  "display": {
+    "block": "twilightforest:uberous_soil"
+  },
+  "categories": [
+    "sand"
+  ],
+  "growthModifier": 1.20
+}

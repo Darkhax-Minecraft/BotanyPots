@@ -1,0 +1,36 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:lumecorn_seed"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betterend:lumecorn_seed"
+  },
+  "categories": [
+    "end_moss"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "betterend:lumecorn_seed"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:lumecorn_rod"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betterend:lumecorn_seed"
+      }
+    }
+  ]
+}

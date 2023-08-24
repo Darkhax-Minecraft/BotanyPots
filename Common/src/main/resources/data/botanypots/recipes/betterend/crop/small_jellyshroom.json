@@ -1,0 +1,30 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:small_jellyshroom"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betterend:small_jellyshroom"
+  },
+  "categories": [
+    "end"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "betterend:small_jellyshroom",
+    "rotation": "X_90"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:small_jellyshroom"
+      }
+    }
+  ]
+}

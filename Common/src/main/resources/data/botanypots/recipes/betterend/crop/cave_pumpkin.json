@@ -1,0 +1,36 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:cave_pumpkin_seed"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betterend:cave_pumpkin_seed"
+  },
+  "categories": [
+    "end"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "betterend:cave_pumpkin",
+    "rotation": "X_180"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:cave_pumpkin"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betterend:cave_pumpkin_seed"
+      }
+    }
+  ]
+}

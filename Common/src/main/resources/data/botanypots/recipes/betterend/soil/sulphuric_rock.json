@@ -1,0 +1,24 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:sulphuric_rock"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betterend:sulphuric_rock"
+  },
+  "display": {
+    "block": "betterend:sulphuric_rock"
+  },
+  "categories": [
+    "stone",
+    "rock",
+    "sulphur",
+    "sulphuric_rock"
+  ],
+  "growthModifier": 1
+}

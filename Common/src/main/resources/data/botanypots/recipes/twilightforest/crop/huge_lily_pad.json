@@ -1,0 +1,29 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "twilightforest:huge_lily_pad"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "twilightforest:huge_lily_pad"
+  },
+  "categories": [
+    "water"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "minecraft:lily_pad"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "twilightforest:huge_lily_pad"
+      }
+    }
+  ]
+}
