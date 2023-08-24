@@ -3,28 +3,27 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "ars_nouveau:sourceberry_bush"
+        "betterend:vaiolush_fern"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "ars_nouveau:sourceberry_bush"
+    "item": "betterend:vaiolush_fern"
   },
   "categories": [
-    "dirt",
-    "farmland"
+    "end_moss"
   ],
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "ars_nouveau:sourceberry_bush"
+    "block": "betterend:vaiolush_fern"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "ars_nouveau:sourceberry_bush"
+        "item": "betterend:vaiolush_fern"
       }
     }
   ]

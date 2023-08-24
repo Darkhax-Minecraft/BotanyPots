@@ -3,28 +3,34 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "ars_nouveau:sourceberry_bush"
+        "betterend:amber_root_seed",
+        "betterend:amber_root_raw"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "ars_nouveau:sourceberry_bush"
+    "item": "betterend:amber_root_seed"
   },
   "categories": [
-    "dirt",
-    "farmland"
+    "amber_moss"
   ],
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "ars_nouveau:sourceberry_bush"
+    "block": "betterend:amber_root_seed"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "ars_nouveau:sourceberry_bush"
+        "item": "betterend:amber_root_raw"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betterend:amber_root_seed"
       }
     }
   ]

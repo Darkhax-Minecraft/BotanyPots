@@ -3,28 +3,27 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "ars_nouveau:sourceberry_bush"
+        "betterend:small_jellyshroom"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "ars_nouveau:sourceberry_bush"
+    "item": "betterend:small_jellyshroom"
   },
   "categories": [
-    "dirt",
-    "farmland"
+    "end"
   ],
   "growthTicks": 1200,
   "display": {
-    "type": "botanypots:aging",
-    "block": "ars_nouveau:sourceberry_bush"
+    "block": "betterend:small_jellyshroom",
+    "rotation": "X_90"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "ars_nouveau:sourceberry_bush"
+        "item": "betterend:small_jellyshroom"
       }
     }
   ]

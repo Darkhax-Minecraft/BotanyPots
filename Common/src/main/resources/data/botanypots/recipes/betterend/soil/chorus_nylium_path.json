@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:chorus_nylium_path"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betterend:chorus_nylium_path"
+  },
+  "display": {
+    "block": "betterend:chorus_nylium_path"
+  },
+  "categories": [
+    "end",
+    "chorus_nylium",
+    "chorus_nylium_path"
+  ],
+  "growthModifier": 0.5
+}

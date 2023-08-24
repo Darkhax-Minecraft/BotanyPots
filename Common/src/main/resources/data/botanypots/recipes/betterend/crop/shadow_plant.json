@@ -3,28 +3,27 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "ars_nouveau:sourceberry_bush"
+        "betterend:shadow_plant"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "ars_nouveau:sourceberry_bush"
+    "item": "betterend:shadow_plant"
   },
   "categories": [
-    "dirt",
-    "farmland"
+    "shadow_grass"
   ],
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "ars_nouveau:sourceberry_bush"
+    "block": "betterend:shadow_plant"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "ars_nouveau:sourceberry_bush"
+        "item": "betterend:shadow_plant"
       }
     }
   ]

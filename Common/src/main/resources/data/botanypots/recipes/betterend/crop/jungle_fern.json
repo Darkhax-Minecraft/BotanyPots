@@ -3,28 +3,27 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "ars_nouveau:sourceberry_bush"
+        "betterend:jungle_fern"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "ars_nouveau:sourceberry_bush"
+    "item": "betterend:jungle_fern"
   },
   "categories": [
-    "dirt",
-    "farmland"
+    "end"
   ],
   "growthTicks": 1200,
   "display": {
-    "type": "botanypots:aging",
-    "block": "ars_nouveau:sourceberry_bush"
+    "block": "betterend:jungle_fern",
+    "rotation": "X_90"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "ars_nouveau:sourceberry_bush"
+        "item": "betterend:jungle_fern"
       }
     }
   ]

@@ -1,0 +1,22 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:cave_moss"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betterend:cave_moss"
+  },
+  "display": {
+    "block": "betterend:cave_moss"
+  },
+  "categories": [
+    "end",
+    "cave_moss"
+  ],
+  "growthModifier": 1
+}

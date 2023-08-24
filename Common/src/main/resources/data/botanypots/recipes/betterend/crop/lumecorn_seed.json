@@ -3,28 +3,33 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "ars_nouveau:sourceberry_bush"
+        "betterend:lumecorn_seed"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "ars_nouveau:sourceberry_bush"
+    "item": "betterend:lumecorn_seed"
   },
   "categories": [
-    "dirt",
-    "farmland"
+    "end_moss"
   ],
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "ars_nouveau:sourceberry_bush"
+    "block": "betterend:lumecorn_seed"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "ars_nouveau:sourceberry_bush"
+        "item": "betterend:lumecorn_rod"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betterend:lumecorn_seed"
       }
     }
   ]

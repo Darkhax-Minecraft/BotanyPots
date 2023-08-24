@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:sangnum_path"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betterend:sangnum_path"
+  },
+  "display": {
+    "block": "betterend:sangnum_path"
+  },
+  "categories": [
+    "end",
+    "sangnum",
+    "sangnum_path"
+  ],
+  "growthModifier": 0.5
+}

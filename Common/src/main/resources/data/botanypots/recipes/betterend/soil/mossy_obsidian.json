@@ -1,0 +1,25 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:mossy_obsidian"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betterend:mossy_obsidian"
+  },
+  "display": {
+    "block": "betterend:mossy_obsidian"
+  },
+  "categories": [
+    "end",
+    "moss",
+    "mossy",
+    "mossy_obsidian",
+    "obsidian"
+  ],
+  "growthModifier": 1.05
+}

@@ -1,0 +1,28 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:rutiscus",
+        "betterend:rutiscus_path"
+      ]
+    }
+  ],
+  "type": "botanypots:pot_interaction",
+  "held_ingredient": {
+    "tag": "minecraft:shovels"
+  },
+  "soil_ingredient": [
+    {
+      "item": "betterend:rutiscus"
+    }
+  ],
+  "soil_output": {
+    "item": "betterend:rutiscus_path",
+    "count": 1
+  },
+  "sound": {
+    "sound": "minecraft:item.shovel.flatten",
+    "category": "blocks"
+  }
+}

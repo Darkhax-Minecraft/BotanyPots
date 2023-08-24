@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:end_moss_path"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betterend:end_moss_path"
+  },
+  "display": {
+    "block": "betterend:end_moss_path"
+  },
+  "categories": [
+    "end",
+    "end_moss",
+    "end_moss_path"
+  ],
+  "growthModifier": 0.5
+}

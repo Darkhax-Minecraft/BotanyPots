@@ -3,13 +3,14 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "ars_nouveau:sourceberry_bush"
+        "pizzacraft:pineapple_seeds",
+        "pizzacraft:pineapple"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "ars_nouveau:sourceberry_bush"
+    "item": "pizzacraft:pineapple_seeds"
   },
   "categories": [
     "dirt",
@@ -18,13 +19,19 @@
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
-    "block": "ars_nouveau:sourceberry_bush"
+    "block": "pizzacraft:pineapple"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "ars_nouveau:sourceberry_bush"
+        "item": "pizzacraft:pineapple"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "pizzacraft:pineapple_seeds"
       }
     }
   ]

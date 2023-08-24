@@ -1,0 +1,26 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:sangnum",
+        "betterend:sangnum_path"
+      ]
+    }
+  ],
+  "type": "botanypots:pot_interaction",
+  "held_ingredient": {
+    "tag": "minecraft:shovels"
+  },
+  "soil_ingredient":     {
+    "item": "betterend:sangnum"
+  },
+  "soil_output": {
+    "item": "betterend:sangnum_path",
+    "count": 1
+  },
+  "sound": {
+    "sound": "minecraft:item.shovel.flatten",
+    "category": "blocks"
+  }
+}

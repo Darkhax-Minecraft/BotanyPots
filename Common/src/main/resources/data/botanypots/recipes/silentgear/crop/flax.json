@@ -1,0 +1,48 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "silentgear:flax_seeds",
+        "silentgear:flax_fiber"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "silentgear:flax_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "silentgear:flax_plant"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "silentgear:flax_fiber"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.25,
+      "output": {
+        "item": "silentgear:flax_flowers"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "silentgear:flax_seeds"
+      }
+    }
+  ]
+}

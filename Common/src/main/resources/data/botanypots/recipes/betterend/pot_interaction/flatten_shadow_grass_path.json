@@ -1,0 +1,26 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:shadow_grass",
+        "betterend:shadow_grass_path"
+      ]
+    }
+  ],
+  "type": "botanypots:pot_interaction",
+  "held_ingredient": {
+    "tag": "minecraft:shovels"
+  },
+  "soil_ingredient":     {
+    "item": "betterend:shadow_grass"
+  },
+  "soil_output": {
+    "item": "betterend:shadow_grass_path",
+    "count": 1
+  },
+  "sound": {
+    "sound": "minecraft:item.shovel.flatten",
+    "category": "blocks"
+  }
+}

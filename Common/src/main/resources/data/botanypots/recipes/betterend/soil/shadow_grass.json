@@ -1,0 +1,22 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:shadow_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betterend:shadow_grass"
+  },
+  "display": {
+    "block": "betterend:shadow_grass"
+  },
+  "categories": [
+    "end",
+    "shadow_grass"
+  ],
+  "growthModifier": 1
+}

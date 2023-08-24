@@ -3,28 +3,33 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "ars_nouveau:sourceberry_bush"
+        "betterend:cave_pumpkin_seed"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "ars_nouveau:sourceberry_bush"
+    "item": "betterend:cave_pumpkin_seed"
   },
   "categories": [
-    "dirt",
-    "farmland"
+    "end"
   ],
   "growthTicks": 1200,
   "display": {
-    "type": "botanypots:aging",
-    "block": "ars_nouveau:sourceberry_bush"
+    "block": "betterend:cave_pumpkin",
+    "rotation": "X_180"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "ars_nouveau:sourceberry_bush"
+        "item": "betterend:cave_pumpkin"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betterend:cave_pumpkin_seed"
       }
     }
   ]

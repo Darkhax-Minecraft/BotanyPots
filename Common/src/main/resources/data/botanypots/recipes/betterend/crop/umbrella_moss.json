@@ -3,28 +3,27 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "ars_nouveau:sourceberry_bush"
+        "betterend:umbrella_moss"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "ars_nouveau:sourceberry_bush"
+    "item": "betterend:umbrella_moss"
   },
   "categories": [
-    "dirt",
-    "farmland"
+    "end_moss",
+    "jungle_moss"
   ],
   "growthTicks": 1200,
   "display": {
-    "type": "botanypots:aging",
-    "block": "ars_nouveau:sourceberry_bush"
+    "block": "betterend:umbrella_moss"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "ars_nouveau:sourceberry_bush"
+        "item": "betterend:umbrella_moss"
       }
     }
   ]

@@ -3,28 +3,31 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "ars_nouveau:sourceberry_bush"
+        "twilightforest:root_strand"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "ars_nouveau:sourceberry_bush"
+    "item": "twilightforest:root_strand"
   },
   "categories": [
-    "dirt",
-    "farmland"
+    "dirt"
   ],
   "growthTicks": 1200,
-  "display": {
-    "type": "botanypots:aging",
-    "block": "ars_nouveau:sourceberry_bush"
-  },
+  "display": [
+    {
+      "block": "twilightforest:root_strand"
+    },
+    {
+      "block": "twilightforest:root_strand"
+    }
+  ],
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "ars_nouveau:sourceberry_bush"
+        "item": "twilightforest:root_strand"
       }
     }
   ]

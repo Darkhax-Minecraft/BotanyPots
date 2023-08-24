@@ -1,0 +1,73 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "ars_nouveau:bombegranate_pod"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "ars_nouveau:bombegranate_pod"
+  },
+  "categories": [
+    "red_archwood"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "block": "ars_nouveau:bombegranate_pod",
+        "properties": {
+          "age": "0"
+        },
+        "rotation": "X_270",
+        "offset": [
+          0,
+          -0.1,
+          0
+        ]
+      },
+      {
+        "block": "ars_nouveau:bombegranate_pod",
+        "properties": {
+          "age": "1"
+        },
+        "rotation": "X_270",
+        "offset": [
+          0,
+          -0.1,
+          0
+        ]
+      },
+      {
+        "block": "ars_nouveau:bombegranate_pod",
+        "properties": {
+          "age": "2"
+        },
+        "rotation": "X_270",
+        "offset": [
+          0,
+          -0.1,
+          0
+        ]
+      }
+    ]
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "ars_nouveau:bombegranate_pod"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "ars_nouveau:bombegranate_pod"
+      }
+    }
+  ]
+}
