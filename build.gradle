@@ -55,11 +55,6 @@ subprojects {
         }
 
         maven {
-            name = 'Progwml6 Maven (JEI)'
-            url = 'https://dvs1.progwml6.com/files/maven/'
-        }
-
-        maven {
             name = 'shedaniel Maven (REI)'
             url = 'https://maven.shedaniel.me/'
         }
