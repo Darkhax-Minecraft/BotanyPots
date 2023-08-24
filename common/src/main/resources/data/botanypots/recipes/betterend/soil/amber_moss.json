@@ -1,0 +1,22 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:amber_moss"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betterend:amber_moss"
+  },
+  "display": {
+    "block": "betterend:amber_moss"
+  },
+  "categories": [
+    "end",
+    "amber_moss"
+  ],
+  "growthModifier": 1
+}

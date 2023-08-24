@@ -1,0 +1,51 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:bulb_vine_seed",
+        "betterend:bulb_vine"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": [
+    {
+      "item": "betterend:bulb_vine"
+    },
+    {
+      "item": "betterend:bulb_vine_seed"
+    }
+  ],
+  "categories": [
+    "end"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "betterend:bulb_vine",
+    "properties": {
+      "shape": "bottom"
+    },
+    "rotation": "X_180"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:glowing_bulb"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betterend:bulb_vine_seed"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betterend:bulb_vine"
+      }
+    }
+  ]
+}

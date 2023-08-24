@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:pallidium_thin"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betterend:pallidium_thin"
+  },
+  "display": {
+    "block": "betterend:pallidium_thin"
+  },
+  "categories": [
+    "end",
+    "pallidium",
+    "pallidium_thin"
+  ],
+  "growthModifier": 1
+}

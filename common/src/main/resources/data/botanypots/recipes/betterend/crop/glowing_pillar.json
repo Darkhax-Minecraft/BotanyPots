@@ -1,0 +1,42 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:glowing_pillar_seed"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betterend:glowing_pillar_seed"
+  },
+  "categories": [
+    "amber_moss"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "betterend:glowing_pillar_luminophor"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:glowing_pillar_luminophor"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betterend:glowing_pillar_seed"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betterend:glowing_pillar_leaves"
+      }
+    }
+  ]
+}

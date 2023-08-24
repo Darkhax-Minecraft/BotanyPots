@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:rutiscus_path"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betterend:rutiscus_path"
+  },
+  "display": {
+    "block": "betterend:rutiscus_path"
+  },
+  "categories": [
+    "end",
+    "rutiscus",
+    "rutiscus_path"
+  ],
+  "growthModifier": 0.5
+}

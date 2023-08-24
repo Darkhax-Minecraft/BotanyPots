@@ -1,0 +1,39 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:end_lily_seed",
+        "betterend:end_lily_leaf"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betterend:end_lily_seed"
+  },
+  "categories": [
+    "water"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "betterend:end_lily",
+    "properties": {
+      "shape": "top" 
+    }
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:end_lily_leaf"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betterend:end_lily_seed"
+      }
+    }
+  ]
+}

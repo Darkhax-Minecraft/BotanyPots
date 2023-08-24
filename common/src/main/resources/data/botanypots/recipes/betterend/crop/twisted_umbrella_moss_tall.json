@@ -1,0 +1,41 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:twisted_umbrella_moss_tall"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betterend:twisted_umbrella_moss_tall"
+  },
+  "categories": [
+    "end_moss",
+    "jungle_moss"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "betterend:twisted_umbrella_moss_tall",
+      "properties": {
+        "top": "false"
+      }
+    },
+    {
+      "block": "betterend:twisted_umbrella_moss_tall",
+      "properties": {
+        "top": "true"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:twisted_umbrella_moss_tall"
+      }
+    }
+  ]
+}

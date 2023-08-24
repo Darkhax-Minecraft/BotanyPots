@@ -1,0 +1,26 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:mossy_dragon_bone"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betterend:mossy_dragon_bone"
+  },
+  "display": {
+    "block": "betterend:mossy_dragon_bone"
+  },
+  "categories": [
+    "end",
+    "moss",
+    "mossy",
+    "bone",
+    "dragon_bone",
+    "mossy_dragon_bone"
+  ],
+  "growthModifier": 1.05
+}

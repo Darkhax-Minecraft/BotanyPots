@@ -1,0 +1,48 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:hydralux_sapling"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betterend:hydralux_sapling"
+  },
+  "categories": [
+    "sulphuric_rock"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "betterend:hydralux",
+      "properties": {
+        "shape": "flower_small_bottom"
+      }
+    },
+    {
+      "block": "betterend:hydralux",
+      "properties": {
+        "shape": "flower_small_top"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:hydralux_petal"
+      },
+      "minRolls": 2,
+      "maxRolls": 4
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betterend:hydralux_sapling"
+      }
+    }
+  ]
+}

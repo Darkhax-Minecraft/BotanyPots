@@ -1,0 +1,36 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betterend:shadow_berry"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betterend:shadow_berry"
+  },
+  "categories": [
+    "shadow_grass"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "betterend:shadow_berry"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betterend:shadow_berry_raw"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betterend:shadow_berry"
+      }
+    }
+  ]
+}
