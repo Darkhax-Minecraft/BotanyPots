@@ -1,0 +1,27 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:sepia_mushroom_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betternether:sepia_mushroom_grass"
+  },
+  "display": {
+    "block": "betternether:sepia_mushroom_grass"
+  },
+  "categories": [
+    "nether",
+    "netherrack",
+    "grass",
+    "mushroom",
+    "mushroom_grass",
+    "sepian",
+    "sepian_mushroom_grass"
+  ],
+  "growthModifier": 1
+}

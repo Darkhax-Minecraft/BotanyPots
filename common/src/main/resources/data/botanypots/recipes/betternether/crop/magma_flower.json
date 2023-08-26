@@ -1,0 +1,39 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:magma_flower"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betternether:magma_flower"
+  },
+  "categories": [
+    "sand",
+    "red_sand",
+    "magma",
+    "magma_block"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "betternether:magma_flower"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betternether:magma_flower"
+      }
+    },
+    {
+      "chance": 0.15,
+      "output": {
+        "item": "minecraft:magma_cream"
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:stalagnate_seed"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betternether:stalagnate_seed"
+  },
+  "categories": [
+    "nether"
+  ],
+  "growthTicks": 2400,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "betternether:stalagnate_seed"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betternether:stalagnate_stem"
+      },
+      "minRolls": 2,
+      "maxRolls": 4
+    },
+    {
+      "chance": 0.15,
+      "output": {
+        "item": "betternether:stalagnate_seed"
+      }
+    }
+  ]
+}

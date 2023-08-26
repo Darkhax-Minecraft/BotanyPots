@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:black_apple",
+        "betternether:black_apple_seed"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betternether:black_apple_seed"
+  },
+  "categories": [
+    "nether"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "betternether:black_apple"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betternether:black_apple"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betternether:black_apple_seed"
+      }
+    }
+  ]
+}

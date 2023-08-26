@@ -1,0 +1,33 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:neon_equisetum"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betternether:neon_equisetum"
+  },
+  "categories": [
+    "nether"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "betternether:neon_equisetum",
+    "rotation": "X_180",
+    "properties": {
+      "shape": "bottom"
+    }
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betternether:neon_equisetum"
+      }
+    }
+  ]
+}

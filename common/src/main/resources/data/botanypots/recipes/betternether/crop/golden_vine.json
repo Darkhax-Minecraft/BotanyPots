@@ -1,0 +1,33 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:golden_vine"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betternether:golden_vine"
+  },
+  "categories": [
+    "nether"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "betternether:golden_vine",
+    "rotation": "X_180",
+    "properties": {
+      "bottom": "true"
+    }
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betternether:golden_vine"
+      }
+    }
+  ]
+}

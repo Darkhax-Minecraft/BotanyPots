@@ -1,0 +1,25 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:jungle_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betternether:jungle_grass"
+  },
+  "display": {
+    "block": "betternether:jungle_grass"
+  },
+  "categories": [
+    "nether",
+    "netherrack",
+    "grass",
+    "jungle",
+    "jungle_grass"
+  ],
+  "growthModifier": 1
+}

@@ -1,0 +1,36 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:feather_fern"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betternether:feather_fern"
+  },
+  "categories": [
+    "nether"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "betternether:feather_fern"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:feather"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betternether:feather_fern"
+      }
+    }
+  ]
+}
