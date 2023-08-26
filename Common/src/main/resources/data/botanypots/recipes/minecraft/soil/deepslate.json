@@ -1,15 +1,15 @@
 {
-    "type": "botanypots:soil",
-    "input": {
-      "item": "minecraft:deepslate"
-    },
-    "display": {
-      "block": "minecraft:deepslate"
-    },
-    "categories": [
-      "mushroom",
-      "stone",
-      "deepslate"
-    ],
-    "growthModifier": 1
-  }
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:deepslate"
+  },
+  "display": {
+    "block": "minecraft:deepslate"
+  },
+  "categories": [
+    "mushroom",
+    "stone",
+    "deepslate"
+  ],
+  "growthModifier": 1
+}

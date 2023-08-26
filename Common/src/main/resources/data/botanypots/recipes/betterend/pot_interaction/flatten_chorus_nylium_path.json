@@ -12,7 +12,7 @@
   "held_ingredient": {
     "tag": "minecraft:shovels"
   },
-  "soil_ingredient":     {
+  "soil_ingredient": {
     "item": "betterend:chorus_nylium"
   },
   "soil_output": {

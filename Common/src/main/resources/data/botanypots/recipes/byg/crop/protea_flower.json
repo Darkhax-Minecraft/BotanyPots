@@ -1,30 +1,30 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "byg:protea_flower"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "byg:protea_flower"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:protea_flower"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "byg:protea_flower"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "byg:protea_flower"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "byg:protea_flower"
-    },
-    "categories": [
-      "dirt"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "byg:protea_flower"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "byg:protea_flower"
-        }
-      }
-    ]
-  }
+    }
+  ]
+}

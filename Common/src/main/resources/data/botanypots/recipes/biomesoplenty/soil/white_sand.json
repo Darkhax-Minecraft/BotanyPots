@@ -1,19 +1,19 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": "biomesoplenty:white_sand"
-      }
-    ],
-    "type": "botanypots:soil",
-    "input": {
-      "item": "biomesoplenty:white_sand"
-    },
-    "display": {
-      "block": "biomesoplenty:white_sand"
-    },
-    "categories": [
-      "sand"
-    ],
-    "growthModifier": 1.00
-  }
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomesoplenty:white_sand"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomesoplenty:white_sand"
+  },
+  "display": {
+    "block": "biomesoplenty:white_sand"
+  },
+  "categories": [
+    "sand"
+  ],
+  "growthModifier": 1.00
+}

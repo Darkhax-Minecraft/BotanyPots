@@ -1,21 +1,21 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": "byg:scoria_stone"
-      }
-    ],
-    "type": "botanypots:soil",
-    "input": {
-      "item": "byg:scoria_stone"
-    },
-    "display": {
-      "block": "byg:scoria_stone"
-    },
-    "categories": [
-      "stone",
-      "mushroom",
-      "scoria_stone"
-    ],
-    "growthModifier": 1.00
-  }
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "byg:scoria_stone"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "byg:scoria_stone"
+  },
+  "display": {
+    "block": "byg:scoria_stone"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "scoria_stone"
+  ],
+  "growthModifier": 1.00
+}

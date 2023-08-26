@@ -1,61 +1,61 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "ms:food/bell_pepper_seeds"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "ms:food/bell_pepper_seeds"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "ms:food/bell_pepper_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "ms:crop/bell_pepper"
+  },
+  "drops": [
+    {
+      "chance": 0.20,
+      "output": {
+        "item": "ms:food/green_bell_pepper"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "ms:food/bell_pepper_seeds"
     },
-    "categories": [
-      "dirt",
-      "farmland"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "ms:crop/bell_pepper"
-    },
-    "drops": [
-      {
-        "chance": 0.20,
-        "output": {
-          "item": "ms:food/green_bell_pepper"
-        }
-      },
-      {
-        "chance": 0.20,
-        "output": {
-          "item": "ms:food/white_bell_pepper"
-        }
-      },
-      {
-        "chance": 0.20,
-        "output": {
-          "item": "ms:food/orange_bell_pepper"
-        }
-      },
-      {
-        "chance": 0.20,
-        "output": {
-          "item": "ms:food/yellow_bell_pepper"
-        }
-      },
-      {
-        "chance": 0.20,
-        "output": {
-          "item": "ms:food/red_bell_pepper"
-        }
-      },
-      {
-        "chance": 0.01,
-        "output": {
-          "item": "ms:food/bell_pepper_seeds"
-        }
+    {
+      "chance": 0.20,
+      "output": {
+        "item": "ms:food/white_bell_pepper"
       }
-    ]
-  }
+    },
+    {
+      "chance": 0.20,
+      "output": {
+        "item": "ms:food/orange_bell_pepper"
+      }
+    },
+    {
+      "chance": 0.20,
+      "output": {
+        "item": "ms:food/yellow_bell_pepper"
+      }
+    },
+    {
+      "chance": 0.20,
+      "output": {
+        "item": "ms:food/red_bell_pepper"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "ms:food/bell_pepper_seeds"
+      }
+    }
+  ]
+}

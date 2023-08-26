@@ -1,38 +1,38 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "druidcraftrg:hemp_seeds",
-          "druidcraftrg:hemp"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "druidcraftrg:hemp_seeds",
+        "druidcraftrg:hemp"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "druidcraftrg:hemp_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "druidcraftrg:hemp_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "druidcraftrg:hemp"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "druidcraftrg:hemp_seeds"
     },
-    "categories": [
-      "dirt",
-      "farmland"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "druidcraftrg:hemp_crop"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "druidcraftrg:hemp"
-        }
-      },
-      {
-        "chance": 0.01,
-        "output": {
-          "item": "druidcraftrg:hemp_seeds"
-        }
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "druidcraftrg:hemp_seeds"
       }
-    ]
-  }
+    }
+  ]
+}

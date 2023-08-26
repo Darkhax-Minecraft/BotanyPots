@@ -1,30 +1,30 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "biomesoplenty:goldenrod"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "biomesoplenty:goldenrod"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "biomesoplenty:goldenrod"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "biomesoplenty:goldenrod"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "biomesoplenty:goldenrod"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "biomesoplenty:goldenrod"
-    },
-    "categories": [
-      "dirt"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "biomesoplenty:goldenrod"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "biomesoplenty:goldenrod"
-        }
-      }
-    ]
-  }
+    }
+  ]
+}

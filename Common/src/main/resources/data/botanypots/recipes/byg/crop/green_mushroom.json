@@ -1,31 +1,31 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "byg:green_mushroom"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "byg:green_mushroom"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:green_mushroom"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "mulch"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "byg:green_mushroom"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "byg:green_mushroom"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "byg:green_mushroom"
-    },
-    "categories": [
-      "stone",
-      "mushroom",
-      "mulch"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "block": "byg:green_mushroom"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "byg:green_mushroom"
-        }
-      }
-    ]
-  }
+    }
+  ]
+}

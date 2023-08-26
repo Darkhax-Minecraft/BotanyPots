@@ -11,7 +11,9 @@
   "seed": {
     "item": "farmersdelight:onion"
   },
-  "categories": ["dirt"],
+  "categories": [
+    "dirt"
+  ],
   "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",

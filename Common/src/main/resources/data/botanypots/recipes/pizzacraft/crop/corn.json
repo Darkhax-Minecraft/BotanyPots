@@ -1,38 +1,43 @@
 {
-	"bookshelf:load_conditions": [{
-		"type": "bookshelf:item_exists",
-		"values": [
-			"pizzacraft:corn"
-		]
-	}],
-	"type": "botanypots:crop",
-	"seed": {
-		"item": "pizzacraft:corn"
-	},
-	"categories": [
-		"dirt",
-		"farmland"
-	],
-	"growthTicks": 1200,
-	"display": [{
-			"block": "pizzacraft:corns",
-			"properties": {
-				"half": "lower",
-				"age": "3"
-			}
-		},
-		{
-			"block": "pizzacraft:corns",
-			"properties": {
-				"half": "upper",
-				"age": "3"
-			}
-		}
-	],
-	"drops": [{
-		"chance": 1.00,
-		"output": {
-			"item": "pizzacraft:corn"
-		}
-	}]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "pizzacraft:corn"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "pizzacraft:corn"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "pizzacraft:corns",
+      "properties": {
+        "half": "lower",
+        "age": "3"
+      }
+    },
+    {
+      "block": "pizzacraft:corns",
+      "properties": {
+        "half": "upper",
+        "age": "3"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "pizzacraft:corn"
+      }
+    }
+  ]
 }

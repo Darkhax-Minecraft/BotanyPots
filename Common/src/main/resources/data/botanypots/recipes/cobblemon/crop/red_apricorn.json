@@ -1,47 +1,49 @@
 {
-	"bookshelf:load_conditions": [{
-		"type": "bookshelf:item_exists",
-		"values": [
-			"cobblemon:red_apricorn_seed"
-		]
-	}],
-	"type": "botanypots:crop",
-	"seed": {
-		"item": "cobblemon:red_apricorn_seed"
-	},
-	"categories": [
-		"dirt"
-	],
-	"growthTicks": 2400,
-	"display": {
-		"block": "cobblemon:red_apricorn_sapling"
-	},
-	"drops": [
-        {
-			"chance": 1.00,
-			"output": {
-				"item": "cobblemon:apricorn_log"
-			}
-		},
-		{
-			"chance": 0.25,
-			"output": {
-				"item": "minecraft:stick"
-			},
-			"minRolls": 1,
-			"maxRolls": 2
-		},
-        {
-			"chance": 1.00,
-			"output": {
-				"item": "cobblemon:red_apricorn"
-			}
-		},
-		{
-			"chance": 0.01,
-			"output": {
-				"item": "cobblemon:red_apricorn_seed"
-			}
-		}
-	]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "cobblemon:red_apricorn_seed"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "cobblemon:red_apricorn_seed"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 2400,
+  "display": {
+    "block": "cobblemon:red_apricorn_sapling"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "cobblemon:apricorn_log"
+      }
+    },
+    {
+      "chance": 0.25,
+      "output": {
+        "item": "minecraft:stick"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
+    },
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "cobblemon:red_apricorn"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "cobblemon:red_apricorn_seed"
+      }
+    }
+  ]
 }

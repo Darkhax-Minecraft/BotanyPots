@@ -1,27 +1,31 @@
 {
-	"bookshelf:load_conditions": [{
-		"type": "bookshelf:item_exists",
-		"values": [
-			"pizzacraft:onion"
-		]
-	}],
-	"type": "botanypots:crop",
-	"seed": {
-		"item": "pizzacraft:onion"
-	},
-	"categories": [
-		"dirt",
-		"farmland"
-	],
-	"growthTicks": 1200,
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "pizzacraft:onion"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "pizzacraft:onion"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
   "display": {
     "type": "botanypots:aging",
     "block": "pizzacraft:onions"
   },
-	"drops": [{
-		"chance": 1.00,
-		"output": {
-			"item": "pizzacraft:onion"
-		}
-	}]
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "pizzacraft:onion"
+      }
+    }
+  ]
 }

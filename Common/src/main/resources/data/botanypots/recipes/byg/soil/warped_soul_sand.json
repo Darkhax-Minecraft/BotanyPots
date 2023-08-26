@@ -1,22 +1,22 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": "byg:warped_soul_sand"
-      }
-    ],
-    "type": "botanypots:soil",
-    "input": {
-      "item": "byg:warped_soul_sand"
-    },
-    "display": {
-      "block": "byg:warped_soul_sand"
-    },
-    "categories": [
-      "soul_sand",
-      "warped",
-      "warped_soul_sand",
-      "soul"
-    ],
-    "growthModifier": 1
-  }
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "byg:warped_soul_sand"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "byg:warped_soul_sand"
+  },
+  "display": {
+    "block": "byg:warped_soul_sand"
+  },
+  "categories": [
+    "soul_sand",
+    "warped",
+    "warped_soul_sand",
+    "soul"
+  ],
+  "growthModifier": 1
+}

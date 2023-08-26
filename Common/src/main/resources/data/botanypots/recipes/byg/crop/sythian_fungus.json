@@ -1,31 +1,31 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "byg:sythian_fungus"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "byg:sythian_fungus"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:sythian_fungus"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "mulch"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "byg:sythian_fungus"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "byg:sythian_fungus"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "byg:sythian_fungus"
-    },
-    "categories": [
-      "stone",
-      "mushroom",
-      "mulch"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "block": "byg:sythian_fungus"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "byg:sythian_fungus"
-        }
-      }
-    ]
-  }
+    }
+  ]
+}

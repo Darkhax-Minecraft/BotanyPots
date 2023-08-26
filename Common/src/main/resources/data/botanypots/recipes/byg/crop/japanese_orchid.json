@@ -1,40 +1,40 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "byg:japanese_orchid"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "byg:japanese_orchid"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:japanese_orchid"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "byg:japanese_orchid",
+      "properties": {
+        "half": "lower"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "byg:japanese_orchid"
     },
-    "categories": [
-      "dirt"
-    ],
-    "growthTicks": 1200,
-    "display": [
-      {
-        "block": "byg:japanese_orchid",
-        "properties": {
-          "half": "lower"
-        }
-      },
-      {
-        "block": "byg:japanese_orchid",
-        "properties": {
-          "half": "upper"
-        }
+    {
+      "block": "byg:japanese_orchid",
+      "properties": {
+        "half": "upper"
       }
-    ],
-    "drops": [
-      {
-        "chance": 1,
-        "output": {
-          "item": "byg:japanese_orchid"
-        }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1,
+      "output": {
+        "item": "byg:japanese_orchid"
       }
-    ]
-  }
+    }
+  ]
+}

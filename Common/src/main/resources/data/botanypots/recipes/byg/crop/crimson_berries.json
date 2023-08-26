@@ -1,56 +1,56 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "byg:crimson_berries"
-        ]
-      }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "byg:crimson_berries"
-    },
-    "categories": [
-      "dirt"
-    ],
-    "growthTicks": 1200,
-    "lightLevel": 14,
-    "display": {
-      "type": "botanypots:transitional",
-      "phases": [
-        {
-          "block": "byg:crimson_berry_bush",
-          "properties": {
-            "age": 0
-          }
-        },
-        {
-          "block": "byg:crimson_berry_bush",
-          "properties": {
-            "age": 1
-          }
-        },
-        {
-          "block": "byg:crimson_berry_bush",
-          "properties": {
-            "age": 3
-          }
-        }
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "byg:crimson_berries"
       ]
-    },
-    "drops": [
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:crimson_berries"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "lightLevel": 14,
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
       {
-        "chance": 1.00,
-        "output": {
-          "item": "byg:crimson_berries"
+        "block": "byg:crimson_berry_bush",
+        "properties": {
+          "age": 0
         }
       },
       {
-        "chance": 0.05,
-        "output": {
-          "item": "byg:crimson_berries"
+        "block": "byg:crimson_berry_bush",
+        "properties": {
+          "age": 1
+        }
+      },
+      {
+        "block": "byg:crimson_berry_bush",
+        "properties": {
+          "age": 3
         }
       }
     ]
-  }
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "byg:crimson_berries"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "byg:crimson_berries"
+      }
+    }
+  ]
+}

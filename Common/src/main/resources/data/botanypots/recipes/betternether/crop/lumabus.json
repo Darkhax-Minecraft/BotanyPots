@@ -15,21 +15,21 @@
     "nether"
   ],
   "growthTicks": 1200,
-  "display": {  
+  "display": {
     "type": "botanypots:transitional",
     "phases": [
-  {
-    "block": "betternether:lumabus_seed",
-    "rotation": "X_180"
-  },
-  {
-    "block": "betternether:lumabus_vine",
-    "rotation": "X_180",
-    "properties": {
-      "shape": "bottom"
-    }
-  }
-  ]
+      {
+        "block": "betternether:lumabus_seed",
+        "rotation": "X_180"
+      },
+      {
+        "block": "betternether:lumabus_vine",
+        "rotation": "X_180",
+        "properties": {
+          "shape": "bottom"
+        }
+      }
+    ]
   },
   "drops": [
     {
@@ -38,7 +38,7 @@
         "item": "betternether:lumabus_seed"
       }
     },
-        {
+    {
       "chance": 1.00,
       "output": {
         "item": "betternether:glowstone_pile"

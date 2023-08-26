@@ -1,31 +1,31 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "byg:death_cap"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "byg:death_cap"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:death_cap"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "mulch"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "byg:death_cap"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "byg:death_cap"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "byg:death_cap"
-    },
-    "categories": [
-      "stone",
-      "mushroom",
-      "mulch"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "block": "byg:death_cap"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "byg:death_cap"
-        }
-      }
-    ]
-  }
+    }
+  ]
+}

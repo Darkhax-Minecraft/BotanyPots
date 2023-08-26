@@ -18,15 +18,15 @@
   "display": {
     "type": "botanypots:transitional",
     "phases": [
-        {
-          "block": "betternether:eye_seed",
-          "rotation": "X_180"
-        },
-        {
-          "block": "betternether:eyeball",
-          "rotation": "X_180"
-        }
-      ]
+      {
+        "block": "betternether:eye_seed",
+        "rotation": "X_180"
+      },
+      {
+        "block": "betternether:eyeball",
+        "rotation": "X_180"
+      }
+    ]
   },
   "drops": [
     {

@@ -1,18 +1,18 @@
 {
-    "type": "botanypots:soil",
-    "input": {
-      "item": "minecraft:deepslate_redstone_ore"
-    },
-    "display": {
-      "block": "minecraft:deepslate_redstone_ore"
-    },
-    "categories": [
-      "redstone_ore",
-      "mushroom",
-      "stone",
-      "deepslate",
-      "deepslate_redstone_ore",
-      "ore"
-    ],
-    "growthModifier": 1
-  }
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:deepslate_redstone_ore"
+  },
+  "display": {
+    "block": "minecraft:deepslate_redstone_ore"
+  },
+  "categories": [
+    "redstone_ore",
+    "mushroom",
+    "stone",
+    "deepslate",
+    "deepslate_redstone_ore",
+    "ore"
+  ],
+  "growthModifier": 1
+}

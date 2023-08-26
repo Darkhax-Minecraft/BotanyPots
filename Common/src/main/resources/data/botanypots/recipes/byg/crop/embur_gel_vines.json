@@ -1,33 +1,33 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "byg:embur_gel_vines"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "byg:embur_gel_vines"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:embur_gel_vines"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "byg:embur_gel_vines",
+    "rotation": "X_180",
+    "properties": {
+      "age": "7"
+    }
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "byg:embur_gel_vines"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "byg:embur_gel_vines"
-    },
-    "categories": [
-      "dirt"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "block": "byg:embur_gel_vines",
-      "rotation": "X_180",
-      "properties": {
-        "age": "7"
-      }
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "byg:embur_gel_vines"
-        }
-      }
-    ]
-  }
+    }
+  ]
+}
