@@ -1,30 +1,30 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "byg:hanging_sythian_roots"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "byg:hanging_sythian_roots"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:hanging_sythian_roots"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "byg:hanging_sythian_roots",
+    "rotation": "X_180"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "byg:hanging_sythian_roots"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "byg:hanging_sythian_roots"
-    },
-    "categories": [
-      "dirt"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "block": "byg:hanging_sythian_roots",
-      "rotation": "X_180"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "byg:hanging_sythian_roots"
-        }
-      }
-    ]
-  }
+    }
+  ]
+}

@@ -26,13 +26,13 @@
         "item": "minecraft:orange_dye"
       }
     },
-        {
+    {
       "chance": 1.00,
       "output": {
         "item": "minecraft:purple_dye"
       }
     },
-        {
+    {
       "chance": 1.00,
       "output": {
         "item": "betternether:orange_mushroom"

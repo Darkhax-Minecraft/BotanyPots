@@ -16,27 +16,27 @@
   ],
   "growthTicks": 1200,
   "display": [
-{
-    "block": "betternether:whispering_gourd_vine",
-    "rotation": "X_180",
-    "properties": {
-      "shape": "top"
+    {
+      "block": "betternether:whispering_gourd_vine",
+      "rotation": "X_180",
+      "properties": {
+        "shape": "top"
+      }
+    },
+    {
+      "block": "betternether:whispering_gourd_vine",
+      "rotation": "X_180",
+      "properties": {
+        "shape": "middle"
+      }
+    },
+    {
+      "block": "betternether:whispering_gourd_vine",
+      "rotation": "X_180",
+      "properties": {
+        "shape": "bottom"
+      }
     }
-  },
-{
-    "block": "betternether:whispering_gourd_vine",
-        "rotation": "X_180",
-    "properties": {
-      "shape": "middle"
-    }
-  },
-{
-    "block": "betternether:whispering_gourd_vine",
-        "rotation": "X_180",
-    "properties": {
-      "shape": "bottom"
-    }
-  }
   ],
   "drops": [
     {

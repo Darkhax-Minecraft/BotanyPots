@@ -18,19 +18,19 @@
   "display": {
     "type": "botanypots:transitional",
     "phases": [
-        {
-          "block": "betternether:egg_plant",
-          "properties": {
-            "destructed": "true"
-          }
-        },
-        {
-          "block": "betternether:egg_plant",
-          "properties": {
-            "destructed": "false"
-          }
+      {
+        "block": "betternether:egg_plant",
+        "properties": {
+          "destructed": "true"
         }
-      ]
+      },
+      {
+        "block": "betternether:egg_plant",
+        "properties": {
+          "destructed": "false"
+        }
+      }
+    ]
   },
   "drops": [
     {

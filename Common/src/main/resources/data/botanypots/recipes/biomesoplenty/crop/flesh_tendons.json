@@ -1,31 +1,31 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "biomesoplenty:flesh_tendons"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "biomesoplenty:flesh_tendons"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "biomesoplenty:flesh_tendons"
+  },
+  "categories": [
+    "flesh",
+    "porous_flesh"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "biomesoplenty:flesh_tendons"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "biomesoplenty:flesh_tendons"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "biomesoplenty:flesh_tendons"
-    },
-    "categories": [
-      "flesh",
-      "porous_flesh"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "biomesoplenty:flesh_tendons"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "biomesoplenty:flesh_tendons"
-        }
-      }
-    ]
-  }
+    }
+  ]
+}

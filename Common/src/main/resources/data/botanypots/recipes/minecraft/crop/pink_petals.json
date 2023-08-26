@@ -15,7 +15,7 @@
     "dirt"
   ],
   "growthTicks": 1200,
-  "display":       {
+  "display": {
     "block": "minecraft:pink_petals",
     "properties": {
       "flower_amount": 4

@@ -1,31 +1,31 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "byg:wood_blewit"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "byg:wood_blewit"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:wood_blewit"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "mulch"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "byg:wood_blewit"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "byg:wood_blewit"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "byg:wood_blewit"
-    },
-    "categories": [
-      "stone",
-      "mushroom",
-      "mulch"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "block": "byg:wood_blewit"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "byg:wood_blewit"
-        }
-      }
-    ]
-  }
+    }
+  ]
+}

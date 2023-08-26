@@ -1,30 +1,30 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "byg:weeping_roots"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "byg:weeping_roots"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:weeping_roots"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "byg:weeping_roots",
+    "rotation": "X_180"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "byg:weeping_roots"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "byg:weeping_roots"
-    },
-    "categories": [
-      "dirt"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "block": "byg:weeping_roots",
-      "rotation": "X_180"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "byg:weeping_roots"
-        }
-      }
-    ]
-  }
+    }
+  ]
+}

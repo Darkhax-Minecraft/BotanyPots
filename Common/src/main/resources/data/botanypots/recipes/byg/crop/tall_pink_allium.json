@@ -1,40 +1,40 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "byg:tall_pink_allium"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "byg:tall_pink_allium"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "byg:tall_pink_allium"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "byg:tall_pink_allium",
+      "properties": {
+        "half": "lower"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "byg:tall_pink_allium"
     },
-    "categories": [
-      "dirt"
-    ],
-    "growthTicks": 1200,
-    "display": [
-      {
-        "block": "byg:tall_pink_allium",
-        "properties": {
-          "half": "lower"
-        }
-      },
-      {
-        "block": "byg:tall_pink_allium",
-        "properties": {
-          "half": "upper"
-        }
+    {
+      "block": "byg:tall_pink_allium",
+      "properties": {
+        "half": "upper"
       }
-    ],
-    "drops": [
-      {
-        "chance": 1,
-        "output": {
-          "item": "byg:tall_pink_allium"
-        }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1,
+      "output": {
+        "item": "byg:tall_pink_allium"
       }
-    ]
-  }
+    }
+  ]
+}

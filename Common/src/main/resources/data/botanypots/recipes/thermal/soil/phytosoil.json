@@ -1,19 +1,19 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": "thermal:phytosoil"
-      }
-    ],
-    "type": "botanypots:soil",
-    "input": {
-      "item": "thermal:phytosoil"
-    },
-    "display": {
-      "block": "thermal:phytosoil"
-    },
-    "categories": [
-      "sand"
-    ],
-    "growthModifier": 1.15
-  }
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "thermal:phytosoil"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "thermal:phytosoil"
+  },
+  "display": {
+    "block": "thermal:phytosoil"
+  },
+  "categories": [
+    "sand"
+  ],
+  "growthModifier": 1.15
+}

@@ -1,21 +1,21 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": "byg:end_sand"
-      }
-    ],
-    "type": "botanypots:soil",
-    "input": {
-      "item": "byg:end_sand"
-    },
-    "display": {
-      "block": "byg:end_sand"
-    },
-    "categories": [
-      "sand",
-      "end_sand",
-      "end"
-    ],
-    "growthModifier": 1.00
-  }
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "byg:end_sand"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "byg:end_sand"
+  },
+  "display": {
+    "block": "byg:end_sand"
+  },
+  "categories": [
+    "sand",
+    "end_sand",
+    "end"
+  ],
+  "growthModifier": 1.00
+}

@@ -1,21 +1,21 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": "biomesoplenty:origin_grass_block"
-      }
-    ],
-    "type": "botanypots:soil",
-    "input": {
-      "item": "biomesoplenty:origin_grass_block"
-    },
-    "display": {
-      "block": "biomesoplenty:origin_grass_block"
-    },
-    "categories": [
-      "dirt",
-      "origin_grass",
-      "grass"
-    ],
-    "growthModifier": 1.00
-  }
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomesoplenty:origin_grass_block"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomesoplenty:origin_grass_block"
+  },
+  "display": {
+    "block": "biomesoplenty:origin_grass_block"
+  },
+  "categories": [
+    "dirt",
+    "origin_grass",
+    "grass"
+  ],
+  "growthModifier": 1.00
+}

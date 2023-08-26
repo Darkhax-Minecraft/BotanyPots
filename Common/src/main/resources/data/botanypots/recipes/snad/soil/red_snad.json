@@ -1,1 +1,20 @@
-{"bookshelf:load_conditions":[{"type":"bookshelf:item_exists","values":"snad:red_snad"}],"type":"botanypots:soil","input":{"item":"snad:red_snad"},"display":{"block":"snad:red_snad"},"categories":["sand","red_sand"],"growthModifier":1.5}
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "snad:red_snad"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "snad:red_snad"
+  },
+  "display": {
+    "block": "snad:red_snad"
+  },
+  "categories": [
+    "sand",
+    "red_sand"
+  ],
+  "growthModifier": 1.5
+}

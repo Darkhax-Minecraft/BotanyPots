@@ -1,21 +1,21 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": "byg:dacite"
-      }
-    ],
-    "type": "botanypots:soil",
-    "input": {
-      "item": "byg:dacite"
-    },
-    "display": {
-      "block": "byg:dacite"
-    },
-    "categories": [
-      "stone",
-      "mushroom",
-      "dacite"
-    ],
-    "growthModifier": 1.00
-  }
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "byg:dacite"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "byg:dacite"
+  },
+  "display": {
+    "block": "byg:dacite"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "dacite"
+  ],
+  "growthModifier": 1.00
+}

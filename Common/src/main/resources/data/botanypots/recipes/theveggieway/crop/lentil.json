@@ -1,38 +1,38 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "veggie_way:lentil_seeds",
-          "veggie_way:lentil"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "veggie_way:lentil_seeds",
+        "veggie_way:lentil"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "veggie_way:lentil_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "veggie_way:plant_lentil"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "veggie_way:lentil"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "veggie_way:lentil_seeds"
     },
-    "categories": [
-      "dirt",
-      "farmland"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "veggie_way:plant_lentil"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "veggie_way:lentil"
-        }
-      },
-      {
-        "chance": 0.05,
-        "output": {
-          "item": "veggie_way:lentil_seeds"
-        }
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "veggie_way:lentil_seeds"
       }
-    ]
-  }
+    }
+  ]
+}

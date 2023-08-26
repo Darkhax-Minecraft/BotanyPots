@@ -1,38 +1,38 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "veggie_way:cotton_seeds",
-          "veggie_way:cotton"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "veggie_way:cotton_seeds",
+        "veggie_way:cotton"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "veggie_way:cotton_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "veggie_way:plant_cotton"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "veggie_way:cotton"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "veggie_way:cotton_seeds"
     },
-    "categories": [
-      "dirt",
-      "farmland"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "veggie_way:plant_cotton"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "veggie_way:cotton"
-        }
-      },
-      {
-        "chance": 0.05,
-        "output": {
-          "item": "veggie_way:cotton_seeds"
-        }
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "veggie_way:cotton_seeds"
       }
-    ]
-  }
+    }
+  ]
+}

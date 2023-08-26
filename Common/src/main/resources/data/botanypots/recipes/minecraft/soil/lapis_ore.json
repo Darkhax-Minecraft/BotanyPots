@@ -1,16 +1,16 @@
 {
-    "type": "botanypots:soil",
-    "input": {
-      "item": "minecraft:lapis_ore"
-    },
-    "display": {
-      "block": "minecraft:lapis_ore"
-    },
-    "categories": [
-      "lapis_ore",
-      "mushroom",
-      "stone",
-      "ore"
-    ],
-    "growthModifier": 1
-  }
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:lapis_ore"
+  },
+  "display": {
+    "block": "minecraft:lapis_ore"
+  },
+  "categories": [
+    "lapis_ore",
+    "mushroom",
+    "stone",
+    "ore"
+  ],
+  "growthModifier": 1
+}

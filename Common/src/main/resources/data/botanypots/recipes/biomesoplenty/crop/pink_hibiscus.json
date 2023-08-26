@@ -1,30 +1,30 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": [
-          "biomesoplenty:pink_hibiscus"
-        ]
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "biomesoplenty:pink_hibiscus"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "biomesoplenty:pink_hibiscus"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "biomesoplenty:pink_hibiscus"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "biomesoplenty:pink_hibiscus"
       }
-    ],
-    "type": "botanypots:crop",
-    "seed": {
-      "item": "biomesoplenty:pink_hibiscus"
-    },
-    "categories": [
-      "dirt"
-    ],
-    "growthTicks": 1200,
-    "display": {
-      "type": "botanypots:aging",
-      "block": "biomesoplenty:pink_hibiscus"
-    },
-    "drops": [
-      {
-        "chance": 1.00,
-        "output": {
-          "item": "biomesoplenty:pink_hibiscus"
-        }
-      }
-    ]
-  }
+    }
+  ]
+}

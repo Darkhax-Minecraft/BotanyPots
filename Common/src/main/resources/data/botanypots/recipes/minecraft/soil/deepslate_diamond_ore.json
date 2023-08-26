@@ -1,18 +1,18 @@
 {
-    "type": "botanypots:soil",
-    "input": {
-      "item": "minecraft:deepslate_diamond_ore"
-    },
-    "display": {
-      "block": "minecraft:deepslate_diamond_ore"
-    },
-    "categories": [
-      "diamond_ore",
-      "mushroom",
-      "stone",
-      "deepslate",
-      "deepslate_diamond_ore",
-      "ore"
-    ],
-    "growthModifier": 1
-  }
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:deepslate_diamond_ore"
+  },
+  "display": {
+    "block": "minecraft:deepslate_diamond_ore"
+  },
+  "categories": [
+    "diamond_ore",
+    "mushroom",
+    "stone",
+    "deepslate",
+    "deepslate_diamond_ore",
+    "ore"
+  ],
+  "growthModifier": 1
+}

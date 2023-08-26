@@ -1,21 +1,21 @@
 {
-    "bookshelf:load_conditions": [
-      {
-        "type": "bookshelf:item_exists",
-        "values": "byg:travertine"
-      }
-    ],
-    "type": "botanypots:soil",
-    "input": {
-      "item": "byg:travertine"
-    },
-    "display": {
-      "block": "byg:travertine"
-    },
-    "categories": [
-      "stone",
-      "mushroom",
-      "travertine"
-    ],
-    "growthModifier": 1.00
-  }
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "byg:travertine"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "byg:travertine"
+  },
+  "display": {
+    "block": "byg:travertine"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "travertine"
+  ],
+  "growthModifier": 1.00
+}
