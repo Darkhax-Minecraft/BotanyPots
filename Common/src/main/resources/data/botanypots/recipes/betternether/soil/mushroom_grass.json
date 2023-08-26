@@ -1,0 +1,25 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:mushroom_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betternether:mushroom_grass"
+  },
+  "display": {
+    "block": "betternether:mushroom_grass"
+  },
+  "categories": [
+    "nether",
+    "netherrack",
+    "grass",
+    "mushroom",
+    "mushroom_grass"
+  ],
+  "growthModifier": 1
+}

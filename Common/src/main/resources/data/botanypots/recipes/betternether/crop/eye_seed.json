@@ -1,0 +1,39 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:eye_seed"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betternether:eye_seed"
+  },
+  "categories": [
+    "nether"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+        {
+          "block": "betternether:eye_seed",
+          "rotation": "X_180"
+        },
+        {
+          "block": "betternether:eyeball",
+          "rotation": "X_180"
+        }
+      ]
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betternether:eye_seed"
+      }
+    }
+  ]
+}
