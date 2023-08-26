@@ -1,0 +1,55 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:whispering_gourd_vine"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betternether:whispering_gourd_vine"
+  },
+  "categories": [
+    "nether"
+  ],
+  "growthTicks": 1200,
+  "display": [
+{
+    "block": "betternether:whispering_gourd_vine",
+    "rotation": "X_180",
+    "properties": {
+      "shape": "top"
+    }
+  },
+{
+    "block": "betternether:whispering_gourd_vine",
+        "rotation": "X_180",
+    "properties": {
+      "shape": "middle"
+    }
+  },
+{
+    "block": "betternether:whispering_gourd_vine",
+        "rotation": "X_180",
+    "properties": {
+      "shape": "bottom"
+    }
+  }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betternether:whispering_gourd"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "betternether:whispering_gourd_vine"
+      }
+    }
+  ]
+}

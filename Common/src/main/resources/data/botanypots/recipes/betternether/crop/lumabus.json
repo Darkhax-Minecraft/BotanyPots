@@ -1,0 +1,50 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:lumabus_seed"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betternether:lumabus_seed"
+  },
+  "categories": [
+    "nether"
+  ],
+  "growthTicks": 1200,
+  "display": {  
+    "type": "botanypots:transitional",
+    "phases": [
+  {
+    "block": "betternether:lumabus_seed",
+    "rotation": "X_180"
+  },
+  {
+    "block": "betternether:lumabus_vine",
+    "rotation": "X_180",
+    "properties": {
+      "shape": "bottom"
+    }
+  }
+  ]
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "betternether:lumabus_seed"
+      }
+    },
+        {
+      "chance": 1.00,
+      "output": {
+        "item": "betternether:glowstone_pile"
+      },
+      "mineRolls": 1,
+      "maxRolls": 3
+    }
+  ]
+}

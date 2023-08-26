@@ -1,0 +1,25 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:swampland_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betternether:swampland_grass"
+  },
+  "display": {
+    "block": "betternether:swampland_grass"
+  },
+  "categories": [
+    "nether",
+    "netherrack",
+    "grass",
+    "swampland",
+    "swampland_grass"
+  ],
+  "growthModifier": 1
+}

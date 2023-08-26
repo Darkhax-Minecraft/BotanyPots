@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:bone_tile"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betternether:bone_tile"
+  },
+  "display": {
+    "block": "betternether:bone_tile"
+  },
+  "categories": [
+    "bone"
+  ],
+  "growthModifier": 1
+}

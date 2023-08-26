@@ -1,0 +1,24 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:nether_mycelium"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "betternether:nether_mycelium"
+  },
+  "display": {
+    "block": "betternether:nether_mycelium"
+  },
+  "categories": [
+    "nether",
+    "mushroom",
+    "mycelium",
+    "nether_mycelium"
+  ],
+  "growthModifier": 1
+}

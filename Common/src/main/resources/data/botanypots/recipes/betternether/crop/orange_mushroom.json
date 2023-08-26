@@ -1,0 +1,42 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "betternether:orange_mushroom"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "betternether:orange_mushroom"
+  },
+  "categories": [
+    "nether_mycelium"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "betternether:orange_mushroom"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:orange_dye"
+      }
+    },
+        {
+      "chance": 1.00,
+      "output": {
+        "item": "minecraft:purple_dye"
+      }
+    },
+        {
+      "chance": 1.00,
+      "output": {
+        "item": "betternether:orange_mushroom"
+      }
+    }
+  ]
+}
