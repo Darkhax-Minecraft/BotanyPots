@@ -25,6 +25,10 @@
   "advancements.botany_pots.get_pot.description": "Stelle einen Botaniktopf her",
   "advancements.botany_pots.get_hopper_pot.title": "Jetzt auch mit Trichter",
   "advancements.botany_pots.get_hopper_pot.description": "Stelle einen Trichterbotaniktopf her",
+
+  "commands.botanypots.mod_message": "[§aBotany Pots§r] %s",
+  "commands.botanypots.dump.no_results": "Keine Ergebnisse gefunden.",
+  "commands.botanypots.dump.missing_crops": "%d potenziell fehlende Pflanzen gefunden. Diese Liste ist nicht vollständig und kann falsch positive und falsch negative Ergebnisse enthalten. Wenn du auf diese Meldung klickst, wird die Liste in deine Zwischenablage kopiert.",
     
   "block.botanypots.terracotta_botany_pot": "Botaniktopf",
   "block.botanypots.terracotta_hopper_botany_pot": "Trichterbotaniktopf",
@@ -108,7 +112,7 @@
   "block.botanypots.pink_glazed_terracotta_hopper_botany_pot": "Rosa glasierter Trichterbotaniktopf",
   "block.botanypots.gray_glazed_terracotta_botany_pot": "Grauer glasierter Botaniktopf",
   "block.botanypots.gray_glazed_terracotta_hopper_botany_pot": "Grauer glasierter Trichterbotaniktopf",
-  "block.botanypots.light_gray_glazed_terracotta_botany_pot": "Hellrauer glasierter Botaniktopf",
+  "block.botanypots.light_gray_glazed_terracotta_botany_pot": "Hellgrauer glasierter Botaniktopf",
   "block.botanypots.light_gray_glazed_terracotta_hopper_botany_pot": "Hellgrauer glasierter Trichterbotaniktopf",
   "block.botanypots.cyan_glazed_terracotta_botany_pot": "Türkiser glasierter Botaniktopf",
   "block.botanypots.cyan_glazed_terracotta_hopper_botany_pot": "Türkiser glasierter Trichterbotaniktopf",
