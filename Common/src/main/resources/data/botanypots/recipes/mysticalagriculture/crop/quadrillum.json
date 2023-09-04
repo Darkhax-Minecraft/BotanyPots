@@ -1,0 +1,45 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:quadrillum_seeds",
+        "mysticalagriculture:quadrillum_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:quadrillum_seeds"
+  },
+  "categories": [
+    "tertium"
+  ],
+  "growthTicks": 3000,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:quadrillum_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:quadrillum_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:quadrillum_seeds"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:fertilized_essence"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

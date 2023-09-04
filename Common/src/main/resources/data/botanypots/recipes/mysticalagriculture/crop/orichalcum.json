@@ -1,0 +1,45 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "mysticalagriculture:orichalcum_seeds",
+        "mysticalagriculture:orichalcum_essence"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "mysticalagriculture:orichalcum_seeds"
+  },
+  "categories": [
+    "tertium"
+  ],
+  "growthTicks": 3000,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "mysticalagriculture:orichalcum_crop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "mysticalagriculture:orichalcum_essence"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:orichalcum_seeds"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "mysticalagriculture:fertilized_essence"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}
