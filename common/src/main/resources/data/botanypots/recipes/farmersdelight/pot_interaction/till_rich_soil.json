@@ -10,7 +10,7 @@
   ],
   "type": "botanypots:pot_interaction",
   "held_ingredient": {
-    "tag": "bookshelf:hoes"
+    "tag": "minecraft:hoes"
   },
   "soil_ingredient": [
     {
