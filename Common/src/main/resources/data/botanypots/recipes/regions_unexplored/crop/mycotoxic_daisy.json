@@ -1,0 +1,31 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:mycotoxic_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:mycotoxic_grass"
+  },
+  "categories": [
+    "nylium",
+    "dirt",
+    "grass"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "regions_unexplored:mycotoxic_grass"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:mycotoxic_grass"
+      }
+    }
+  ]
+}

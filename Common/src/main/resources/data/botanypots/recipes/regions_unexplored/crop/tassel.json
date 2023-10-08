@@ -1,0 +1,40 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:sandy_tall_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:sandy_tall_grass"
+  },
+  "categories": [
+    "sand"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "regions_unexplored:sandy_tall_grass",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "regions_unexplored:sandy_tall_grass",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:sandy_tall_grass"
+      }
+    }
+  ]
+}
