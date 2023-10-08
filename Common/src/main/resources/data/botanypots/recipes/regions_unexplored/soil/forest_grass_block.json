@@ -1,0 +1,20 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "regions_unexplored:plains_grass_block"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "regions_unexplored:plains_grass_block"
+  },
+  "display": {
+    "block": "regions_unexplored:plains_grass_block"
+  },
+  "categories": [
+    "dirt",
+    "grass"
+  ],
+  "growthModifier": 1
+}
