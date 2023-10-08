@@ -1,0 +1,30 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:medium_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:medium_grass"
+  },
+  "categories": [
+    "sand",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "regions_unexplored:medium_grass"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:medium_grass"
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:plains_dirt",
+        "regions_unexplored:plains_coarse_dirt"
+      ]
+    }
+  ],
+  "type": "botanypots:pot_interaction",
+  "held_ingredient": {
+    "tag": "minecraft:hoes"
+  },
+  "soil_ingredient": [
+    {
+      "item": "regions_unexplored:plains_coarse_dirt"
+    }
+  ],
+  "soil_output": {
+    "item": "regions_unexplored:plains_dirt",
+    "count": 1
+  },
+  "sound": {
+    "sound": "minecraft:item.hoe.till",
+    "category": "blocks"
+  }
+}
