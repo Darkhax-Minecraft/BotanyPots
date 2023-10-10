@@ -50,21 +50,21 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
 
     final Random rng = new Random();
     private long rngSeed;
+    private boolean isHopper = false;
 
     public BlockEntityBotanyPot(BlockEntityType potType, BlockPos pos, BlockState state) {
 
         super(potType, pos, state);
         this.refreshRandom();
+
+        if (state.getBlock() instanceof BlockBotanyPot pot) {
+            this.isHopper = pot.hasInventory();
+        }
     }
 
     public boolean isHopper() {
 
-        if (this.getLevel() != null && this.getLevel().getBlockState(this.getBlockPos()).getBlock() instanceof BlockBotanyPot potBlock) {
-
-            return potBlock.hasInventory();
-        }
-
-        return false;
+        return this.isHopper;
     }
 
     public void refreshRandom() {
