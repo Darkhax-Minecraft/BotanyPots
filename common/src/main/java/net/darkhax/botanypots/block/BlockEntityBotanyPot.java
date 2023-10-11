@@ -239,7 +239,7 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
                 pot.harvestDelay--;
             }
 
-            if (pot.isCropHarvestable() && crop != null && pot.harvestDelay < 1) {
+            if (crop != null && pot.harvestDelay < 1 && pot.isCropHarvestable()) {
 
                 if (pot.attemptAutoHarvest()) {
 

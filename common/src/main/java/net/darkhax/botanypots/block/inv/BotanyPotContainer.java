@@ -64,8 +64,8 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
         final Level level = this.potEntity.getLevel();
         final BlockPos pos = this.potEntity.getBlockPos();
 
-        final boolean revalidateSoil = !this.getSoilStack().isEmpty() && this.soil == null && BotanyPotHelper.findSoil(level, pos, potEntity, this.getSoilStack()) != null;
-        final boolean revalidateCrop = !this.getCropStack().isEmpty() && this.crop == null && BotanyPotHelper.findCrop(level, pos, potEntity, this.getCropStack()) != null;
+        final boolean revalidateSoil = this.soil == null && !this.getSoilStack().isEmpty() && BotanyPotHelper.findSoil(level, pos, potEntity, this.getSoilStack()) != null;
+        final boolean revalidateCrop = this.crop == null && !this.getCropStack().isEmpty() && BotanyPotHelper.findCrop(level, pos, potEntity, this.getCropStack()) != null;
 
         if (revalidateSoil || revalidateCrop) {
 
