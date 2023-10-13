@@ -3,27 +3,26 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:medium_grass"
+        "regions_unexplored:seeded_grass"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:medium_grass"
+    "item": "regions_unexplored:seeded_grass"
   },
   "categories": [
-    "sand",
-    "farmland"
+    "dirt"
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "regions_unexplored:medium_grass"
+    "block": "regions_unexplored:seeded_grass"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:medium_grass"
+        "item": "regions_unexplored:seeded_grass"
       }
     }
   ]

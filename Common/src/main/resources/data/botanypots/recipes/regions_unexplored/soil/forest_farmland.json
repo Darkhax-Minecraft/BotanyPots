@@ -2,18 +2,18 @@
   "bookshelf:load_conditions": [
     {
       "type": "bookshelf:item_exists",
-      "values": "regions_unexplored:forest_dirt"
+      "values": "regions_unexplored:forest_farmland"
     }
   ],
   "type": "botanypots:soil",
   "input": {
-    "item": "regions_unexplored:forest_dirt"
+    "item": "regions_unexplored:forest_farmland"
   },
   "display": {
-    "block": "regions_unexplored:forest_dirt"
+    "block": "regions_unexplored:forest_farmland"
   },
   "categories": [
     "dirt"
   ],
-  "growthModifier": 1
+  "growthModifier": 1.05
 }

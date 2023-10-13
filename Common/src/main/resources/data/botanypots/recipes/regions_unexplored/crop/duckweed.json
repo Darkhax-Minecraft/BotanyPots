@@ -3,37 +3,26 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:sandy_tall_grass"
+        "regions_unexplored:duckweed"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:sandy_tall_grass"
+    "item": "regions_unexplored:duckweed"
   },
   "categories": [
-    "sand"
+    "water"
   ],
   "growthTicks": 1200,
-  "display": [
-    {
-      "block": "regions_unexplored:sandy_tall_grass",
-      "properties": {
-        "half": "lower"
-      }
-    },
-    {
-      "block": "regions_unexplored:sandy_tall_grass",
-      "properties": {
-        "half": "upper"
-      }
-    }
-  ],
+  "display": {
+    "block": "regions_unexplored:duckweed"
+  },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:sandy_tall_grass"
+        "item": "regions_unexplored:duckweed"
       }
     }
   ]

@@ -2,18 +2,22 @@
   "bookshelf:load_conditions": [
     {
       "type": "bookshelf:item_exists",
-      "values": "regions_unexplored:forest_dirt"
+      "values": "regions_unexplored:mycotoxic_moss"
     }
   ],
   "type": "botanypots:soil",
   "input": {
-    "item": "regions_unexplored:forest_dirt"
+    "item": "regions_unexplored:mycotoxic_moss"
   },
   "display": {
-    "block": "regions_unexplored:forest_dirt"
+    "block": "regions_unexplored:mycotoxic_moss"
   },
   "categories": [
-    "dirt"
+    "mushroom",
+    "nylium",
+    "mycotoxic_nylium",
+    "netherrack",
+    "nether"
   ],
   "growthModifier": 1
 }

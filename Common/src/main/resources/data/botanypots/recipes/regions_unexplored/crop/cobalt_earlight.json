@@ -4,28 +4,39 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:glistering_sprout"
+        "regions_unexplored:cobalt_earlight"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:glistering_sprout"
+    "item": "regions_unexplored:cobalt_earlight"
   },
   "categories": [
     "nylium",
+    "cobalt_nylium",
     "dirt",
     "grass"
   ],
-  "growthTicks": 1200,
-  "display": {
-    "block": "regions_unexplored:glistering_sprout"
-  },
+"display": [
+    {
+      "block": "regions_unexplored:cobalt_earlight",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "regions_unexplored:cobalt_earlight",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:glistering_sprout"
+        "item": "regions_unexplored:cobalt_earlight"
       }
     }
   ]

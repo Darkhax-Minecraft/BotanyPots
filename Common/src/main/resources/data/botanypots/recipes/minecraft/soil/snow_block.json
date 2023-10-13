@@ -1,10 +1,10 @@
 {
   "type": "botanypots:soil",
   "input": {
-    "item": "minecraft:snow"
+    "item": "minecraft:snow_block"
   },
   "display": {
-    "block": "minecraft:snow"
+    "block": "minecraft:snow_block"
   },
   "categories": [
     "snow"

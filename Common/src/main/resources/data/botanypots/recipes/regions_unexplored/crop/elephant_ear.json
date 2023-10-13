@@ -3,26 +3,37 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:steppe_grass"
+        "regions_unexplored:elephant_ear"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:steppe_grass"
+    "item": "regions_unexplored:elephant_ear"
   },
   "categories": [
     "dirt"
   ],
   "growthTicks": 1200,
-  "display": {
-    "block": "regions_unexplored:steppe_grass"
-  },
+  "display": [
+    {
+      "block": "regions_unexplored:elephant_ear",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "regions_unexplored:elephant_ear",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:steppe_grass"
+        "item": "regions_unexplored:felicia_daisy"
       }
     }
   ]

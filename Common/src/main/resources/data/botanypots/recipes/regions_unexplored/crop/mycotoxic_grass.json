@@ -3,26 +3,29 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:fireweed"
+        "regions_unexplored:mycotoxic_grass"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:fireweed"
+    "item": "regions_unexplored:mycotoxic_grass"
   },
   "categories": [
-    "dirt"
+    "nylium",
+    "dirt",
+    "grass",
+    "mycotoxic_nylium"
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "regions_unexplored:fireweed"
+    "block": "regions_unexplored:mycotoxic_grass"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:fireweed"
+        "item": "regions_unexplored:mycotoxic_grass"
       }
     }
   ]

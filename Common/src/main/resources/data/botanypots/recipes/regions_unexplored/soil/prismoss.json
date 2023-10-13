@@ -2,22 +2,21 @@
   "bookshelf:load_conditions": [
     {
       "type": "bookshelf:item_exists",
-      "values": "regions_unexplored:mycotoxic_moss"
+      "values": "regions_unexplored:prismoss"
     }
   ],
   "type": "botanypots:soil",
   "input": {
-    "item": "regions_unexplored:mycotoxic_moss"
+    "item": "regions_unexplored:prismoss"
   },
   "display": {
-    "block": "regions_unexplored:mycotoxic_moss"
+    "block": "regions_unexplored:prismoss"
   },
   "categories": [
     "mushroom",
-    "nylium",
-    "mycotoxic_nylium",
-    "netherrack",
-    "nether"
+    "moss",
+    "stone",
+    "grass"
   ],
   "growthModifier": 1
 }

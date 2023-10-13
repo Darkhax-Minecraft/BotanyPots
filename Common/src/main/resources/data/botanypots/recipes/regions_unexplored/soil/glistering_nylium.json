@@ -2,20 +2,20 @@
   "bookshelf:load_conditions": [
     {
       "type": "bookshelf:item_exists",
-      "values": "regions_unexplored:mycotoxic_moss"
+      "values": "regions_unexplored:glistering_nylium"
     }
   ],
   "type": "botanypots:soil",
   "input": {
-    "item": "regions_unexplored:mycotoxic_moss"
+    "item": "regions_unexplored:glistering_nylium"
   },
   "display": {
-    "block": "regions_unexplored:mycotoxic_moss"
+    "block": "regions_unexplored:glistering_nylium"
   },
   "categories": [
     "mushroom",
     "nylium",
-    "mycotoxic_nylium",
+    "glistering_nylium",
     "netherrack",
     "nether"
   ],

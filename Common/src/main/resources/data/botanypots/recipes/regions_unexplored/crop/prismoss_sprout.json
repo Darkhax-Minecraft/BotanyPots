@@ -12,7 +12,11 @@
     "item": "regions_unexplored:medium_grass"
   },
   "categories": [
-    "dirt"
+    "dirt",
+    "stone",
+    "grass",
+    "nylium",
+    "moss"
   ],
   "growthTicks": 1200,
   "display": {
