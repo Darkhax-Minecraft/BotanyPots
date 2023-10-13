@@ -3,28 +3,40 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:mycotoxic_grass"
+        "regions_unexplored:mycotoxic_daisy"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:mycotoxic_grass"
+    "item": "regions_unexplored:mycotoxic_daisy"
   },
   "categories": [
     "nylium",
     "dirt",
-    "grass"
+    "grass",
+    "mycotoxic_nylium"
   ],
   "growthTicks": 1200,
-  "display": {
-    "block": "regions_unexplored:mycotoxic_grass"
-  },
+  "display": [
+    {
+      "block": "regions_unexplored:mycotoxic_daisy",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "regions_unexplored:mycotoxic_daisy",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:mycotoxic_grass"
+        "item": "regions_unexplored:mycotoxic_daisy"
       }
     }
   ]

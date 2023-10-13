@@ -3,13 +3,13 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:tall_blackwood_sapling"
+        "regions_unexplored:tall_flowering_sapling"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:tall_blackwood_sapling"
+    "item": "regions_unexplored:tall_flowering_sapling"
   },
   "categories": [
     "dirt"
@@ -17,13 +17,13 @@
   "growthTicks": 1200,
   "display": [
     {
-      "block": "regions_unexplored:tall_blackwood_sapling",
+      "block": "regions_unexplored:tall_flowering_sapling",
       "properties": {
         "half": "lower"
       }
     },
     {
-      "block": "regions_unexplored:tall_blackwood_sapling",
+      "block": "regions_unexplored:tall_flowering_sapling",
       "properties": {
         "half": "upper"
       }
@@ -33,7 +33,7 @@
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:tall_blackwood_sapling"
+        "item": "regions_unexplored:tall_flowering_sapling"
       }
     }
   ]

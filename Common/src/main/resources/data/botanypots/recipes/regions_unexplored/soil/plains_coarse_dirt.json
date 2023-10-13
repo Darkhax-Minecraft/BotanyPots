@@ -2,22 +2,19 @@
   "bookshelf:load_conditions": [
     {
       "type": "bookshelf:item_exists",
-      "values": "regions_unexplored:sculk_grass_block"
+      "values": "regions_unexplored:plains_coarse_dirt"
     }
   ],
   "type": "botanypots:soil",
   "input": {
-    "item": "regions_unexplored:sculk_grass_block"
+    "item": "regions_unexplored:plains_coarse_dirt"
   },
   "display": {
-    "block": "regions_unexplored:sculk_grass_block"
+    "block": "regions_unexplored:plains_coarse_dirt"
   },
   "categories": [
-    "mushroom",
-    "skulk",
-    "grass",
-    "netherrack",
-    "nether"
+    "dirt",
+    "coarse_dirt"
   ],
   "growthModifier": 1
 }

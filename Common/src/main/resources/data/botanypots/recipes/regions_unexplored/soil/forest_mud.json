@@ -2,15 +2,15 @@
   "bookshelf:load_conditions": [
     {
       "type": "bookshelf:item_exists",
-      "values": "regions_unexplored:plains_mud"
+      "values": "regions_unexplored:forest_mud"
     }
   ],
   "type": "botanypots:soil",
   "input": {
-    "item": "regions_unexplored:plains_mud"
+    "item": "regions_unexplored:forest_mud"
   },
   "display": {
-    "block": "regions_unexplored:plains_mud"
+    "block": "regions_unexplored:forest_mud"
   },
   "categories": [
     "dirt"

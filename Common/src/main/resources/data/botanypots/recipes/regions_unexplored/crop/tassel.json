@@ -3,27 +3,27 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:sandy_tall_grass"
+        "regions_unexplored:tassel"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:sandy_tall_grass"
+    "item": "regions_unexplored:tassel"
   },
   "categories": [
-    "sand"
+    "dirt"
   ],
   "growthTicks": 1200,
   "display": [
     {
-      "block": "regions_unexplored:sandy_tall_grass",
+      "block": "regions_unexplored:tassel",
       "properties": {
         "half": "lower"
       }
     },
     {
-      "block": "regions_unexplored:sandy_tall_grass",
+      "block": "regions_unexplored:tassel",
       "properties": {
         "half": "upper"
       }
@@ -33,7 +33,7 @@
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:sandy_tall_grass"
+        "item": "regions_unexplored:tassel"
       }
     }
   ]

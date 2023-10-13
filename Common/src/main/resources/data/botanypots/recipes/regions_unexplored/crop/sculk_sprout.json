@@ -3,13 +3,13 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:sculk_tendril"
+        "regions_unexplored:sculk_sprout"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:sculk_tendril"
+    "item": "regions_unexplored:sculk_sprout"
   },
   "categories": [
     "dirt",
@@ -18,13 +18,13 @@
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "regions_unexplored:sculk_tendril"
+    "block": "regions_unexplored:sculk_sprout"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:sculk_tendril"
+        "item": "regions_unexplored:sculk_sprout"
       }
     }
   ]

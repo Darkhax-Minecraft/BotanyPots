@@ -3,26 +3,26 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:fireweed"
+        "regions_unexplored:frozen_grass"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:fireweed"
+    "item": "regions_unexplored:frozen_grass"
   },
   "categories": [
-    "dirt"
+    "snow"
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "regions_unexplored:fireweed"
+    "block": "regions_unexplored:frozen_grass"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:fireweed"
+        "item": "regions_unexplored:frozen_grass"
       }
     }
   ]

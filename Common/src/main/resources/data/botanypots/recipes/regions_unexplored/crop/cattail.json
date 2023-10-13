@@ -3,26 +3,27 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:tall_steppe_grass"
+        "regions_unexplored:cattail"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:tall_steppe_grass"
+    "item": "regions_unexplored:cattail"
   },
   "categories": [
-    "dirt"
+    "dirt",
+    "water"
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "regions_unexplored:tall_steppe_grass"
+    "block": "regions_unexplored:cattail"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:tall_steppe_grass"
+        "item": "regions_unexplored:cattail"
       }
     }
   ]

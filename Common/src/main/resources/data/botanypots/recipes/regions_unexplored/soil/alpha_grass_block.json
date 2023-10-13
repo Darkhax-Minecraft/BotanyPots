@@ -2,18 +2,20 @@
   "bookshelf:load_conditions": [
     {
       "type": "bookshelf:item_exists",
-      "values": "regions_unexplored:plains_mud"
+      "values": "regions_unexplored:alpha_grass_block"
     }
   ],
   "type": "botanypots:soil",
   "input": {
-    "item": "regions_unexplored:plains_mud"
+    "item": "regions_unexplored:alpha_grass_block"
   },
   "display": {
-    "block": "regions_unexplored:plains_mud"
+    "block": "regions_unexplored:alpha_grass_block"
   },
   "categories": [
-    "dirt"
+    "dirt",
+    "origin_grass",
+    "grass"
   ],
-  "growthModifier": 1.05
+  "growthModifier": 1
 }

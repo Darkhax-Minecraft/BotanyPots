@@ -2,19 +2,31 @@
   "bookshelf:load_conditions": [
     {
       "type": "bookshelf:item_exists",
-      "values": "regions_unexplored:plains_coarse_dirt"
+      "values": [
+        "regions_unexplored:cave_hyssop"
+      ]
     }
   ],
-  "type": "botanypots:soil",
-  "input": {
-    "item": "regions_unexplored:plains_coarse_dirt"
-  },
-  "display": {
-    "block": "regions_unexplored:plains_coarse_dirt"
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:cave_hyssop"
   },
   "categories": [
+    "stone",
     "dirt",
-    "coarse_dirt"
+    "grass",
+    "farmland"
   ],
-  "growthModifier": 1
+  "growthTicks": 1200,
+  "display": {
+    "block": "regions_unexplored:cave_hyssop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:cave_hyssop"
+      }
+    }
+  ]
 }

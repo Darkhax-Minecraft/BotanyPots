@@ -2,21 +2,20 @@
   "bookshelf:load_conditions": [
     {
       "type": "bookshelf:item_exists",
-      "values": "regions_unexplored:chalk_grass_block"
+      "values": "regions_unexplored:chalk"
     }
   ],
   "type": "botanypots:soil",
   "input": {
-    "item": "regions_unexplored:chalk_grass_block"
+    "item": "regions_unexplored:chalk"
   },
   "display": {
-    "block": "regions_unexplored:chalk_grass_block"
+    "block": "regions_unexplored:chalk"
   },
   "categories": [
     "mushroom",
     "stone",
-    "chalk",
-    "grass"
+    "chalk"
   ],
   "growthModifier": 1
 }

@@ -3,26 +3,28 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:medium_grass"
+        "regions_unexplored:cactus_flower"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:medium_grass"
+    "item": "regions_unexplored:cactus_flower"
   },
   "categories": [
-    "dirt"
+    "dirt",
+    "sand",
+    "farmland"
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "regions_unexplored:medium_grass"
+    "block": "regions_unexplored:cactus_flower"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:medium_grass"
+        "item": "regions_unexplored:cactus_flower"
       }
     }
   ]
