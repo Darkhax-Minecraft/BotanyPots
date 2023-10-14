@@ -12,20 +12,34 @@
     "item": "regions_unexplored:cactus_flower"
   },
   "categories": [
-    "dirt",
-    "sand",
-    "farmland"
+    "sand"
   ],
   "growthTicks": 1200,
-  "display": {
-    "block": "regions_unexplored:cactus_flower"
-  },
+  "display": [
+    {
+      "block": "regions_unexplored:saguaro_cactus",
+      "properties": {
+        "cactus_shape": "up_down"
+      }
+    },
+    {
+      "block": "regions_unexplored:cactus_flower"
+    }
+  ],
   "drops": [
     {
-      "chance": 1.00,
+      "chance": 0.15,
       "output": {
         "item": "regions_unexplored:cactus_flower"
       }
+    },
+    {
+      "chance": 1,
+      "output": {
+        "item": "regions_unexplored:saguaro_cactus"
+      },
+      "min": 1,
+      "max": 4
     }
   ]
 }
