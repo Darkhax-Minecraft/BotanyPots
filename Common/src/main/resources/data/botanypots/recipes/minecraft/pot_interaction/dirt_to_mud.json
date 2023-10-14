@@ -9,6 +9,7 @@
       "item": "minecraft:glass_bottle"
     }
   ],
+  "consume_held": true,
   "soil_ingredient": [
     {
       "item": "minecraft:dirt"

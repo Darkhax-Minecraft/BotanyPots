@@ -18,6 +18,7 @@
       "item": "minecraft:glass_bottle"
     }
   ],
+  "consume_held": true,
   "soil_ingredient": [
     {
       "item": "regions_unexplored:forest_dirt"
