@@ -3,27 +3,30 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:elephant_ear"
+        "regions_unexplored:tall_blue_bioshroom"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:elephant_ear"
+    "item": "regions_unexplored:tall_blue_bioshroom"
   },
   "categories": [
-    "dirt"
+    "mycelium",
+    "dirt",
+    "grass",
+    "mushroom"
   ],
   "growthTicks": 1200,
   "display": [
     {
-      "block": "regions_unexplored:elephant_ear",
+      "block": "regions_unexplored:tall_blue_bioshroom",
       "properties": {
         "half": "lower"
       }
     },
     {
-      "block": "regions_unexplored:elephant_ear",
+      "block": "regions_unexplored:tall_blue_bioshroom",
       "properties": {
         "half": "upper"
       }
@@ -33,7 +36,7 @@
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:elephant_ear"
+        "item": "regions_unexplored:tall_blue_bioshroom"
       }
     }
   ]

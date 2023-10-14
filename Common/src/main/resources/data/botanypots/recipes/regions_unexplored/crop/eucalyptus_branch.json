@@ -3,22 +3,22 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:dead_branch"
+        "regions_unexplored:eucalyptus_branch"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:dead_branch"
+    "item": "regions_unexplored:eucalyptus_branch"
   },
   "categories": [
-    "dead",
-    "dead_wood",
+    "eucalyptus",
+    "eucalyptus_wood",
     "log"
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "regions_unexplored:dead_branch",
+    "block": "regions_unexplored:eucalyptus_branch",
     "properties": {
       "facing": "north"
     },
@@ -28,7 +28,7 @@
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:dead_branch"
+        "item": "regions_unexplored:eucalyptus_branch"
       }
     }
   ]

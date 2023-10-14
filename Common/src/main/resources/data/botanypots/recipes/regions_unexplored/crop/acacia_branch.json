@@ -3,40 +3,32 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:glister_bulb"
+        "regions_unexplored:acacia_branch"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:glister_bulb"
+    "item": "regions_unexplored:acacia_branch"
   },
   "categories": [
-    "nylium",
-    "dirt",
-    "grass",
-    "glistering_nylium"
+    "acacia",
+    "acacia_wood",
+    "log"
   ],
   "growthTicks": 1200,
-  "display": [
-    {
-      "block": "regions_unexplored:glister_bulb",
-      "properties": {
-        "half": "lower"
-      }
+  "display": {
+    "block": "regions_unexplored:acacia_branch",
+    "properties": {
+      "facing": "north"
     },
-    {
-      "block": "regions_unexplored:glister_bulb",
-      "properties": {
-        "half": "upper"
-      }
-    }
-  ],
+    "rotation": "X_90"
+  },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:glister_bulb"
+        "item": "regions_unexplored:acacia_branch"
       }
     }
   ]
