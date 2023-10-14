@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:plains_mud",
+        "regions_unexplored:plains_dirt"
+      ]
+    }
+  ],
+  "type": "botanypots:pot_interaction",
+  "held_ingredient": {
+    "item": "minecraft:potion",
+    "nbt": "{Potion: \"minecraft:water\""
+  },
+  "drops": [
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "soil_ingredient": [
+    {
+      "item": "regions_unexplored:plains_dirt"
+    },
+    {
+      "item": "regions_unexplored:plains_coarse_dirt"
+    }
+  ],
+  "soil_output": {
+    "item": "regions_unexplored:plains_mud",
+    "count": 1
+  },
+  "sound": {
+    "sound": "minecraft:item.bottle.empty",
+    "category": "blocks"
+  }
+}
