@@ -3,22 +3,22 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:oak_branch"
+        "regions_unexplored:mangrove_branch"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:oak_branch"
+    "item": "regions_unexplored:mangrove_branch"
   },
   "categories": [
-    "oak",
-    "oak_wood",
+    "mangrove",
+    "mangrove_wood",
     "log"
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "regions_unexplored:oak_branch",
+    "block": "regions_unexplored:mangrove_branch",
     "properties": {
       "facing": "north"
     },
@@ -28,7 +28,7 @@
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:oak_branch"
+        "item": "regions_unexplored:mangrove_branch"
       }
     }
   ]

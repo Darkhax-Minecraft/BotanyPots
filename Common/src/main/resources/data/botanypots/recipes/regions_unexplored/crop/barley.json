@@ -3,30 +3,29 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:glister_bulb"
+        "regions_unexplored:barley"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:glister_bulb"
+    "item": "regions_unexplored:barley"
   },
   "categories": [
-    "nylium",
     "dirt",
     "grass",
-    "glistering_nylium"
+    "farmland"
   ],
   "growthTicks": 1200,
   "display": [
     {
-      "block": "regions_unexplored:glister_bulb",
+      "block": "regions_unexplored:barley",
       "properties": {
         "half": "lower"
       }
     },
     {
-      "block": "regions_unexplored:glister_bulb",
+      "block": "regions_unexplored:barley",
       "properties": {
         "half": "upper"
       }
@@ -36,7 +35,7 @@
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:glister_bulb"
+        "item": "regions_unexplored:barley"
       }
     }
   ]

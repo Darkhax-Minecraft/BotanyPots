@@ -3,22 +3,22 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:joshua_beard"
+        "regions_unexplored:palm_beard"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:joshua_beard"
+    "item": "regions_unexplored:palm_beard"
   },
   "categories": [
-    "joshua",
-    "joshua_wood",
+    "palm",
+    "palm_wood",
     "log"
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "regions_unexplored:joshua_beard",
+    "block": "regions_unexplored:palm_beard",
     "properties": {
       "facing": "north"
     },
@@ -28,7 +28,7 @@
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:joshua_beard"
+        "item": "regions_unexplored:palm_beard"
       }
     }
   ]

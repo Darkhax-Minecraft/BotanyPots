@@ -3,32 +3,29 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:birch_branch"
+        "regions_unexplored:blue_bioshroom"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:birch_branch"
+    "item": "regions_unexplored:blue_bioshroom"
   },
   "categories": [
-    "birch",
-    "birch_wood",
-    "log"
+    "mycelium",
+    "dirt",
+    "grass",
+    "mushroom"
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "regions_unexplored:birch_branch",
-    "properties": {
-      "facing": "north"
-    },
-    "rotation": "X_90"
+    "block": "regions_unexplored:blue_bioshroom"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:birch_branch"
+        "item": "regions_unexplored:blue_bioshroom"
       }
     }
   ]

@@ -3,22 +3,22 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:acacia_branch"
+        "regions_unexplored:willow_branch"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:acacia_branch"
+    "item": "regions_unexplored:willow_branch"
   },
   "categories": [
-    "acacia",
-    "acacia_wood",
+    "willow",
+    "willow_wood",
     "log"
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "regions_unexplored:acacia_branch",
+    "block": "regions_unexplored:willow_branch",
     "properties": {
       "facing": "north"
     },
@@ -28,7 +28,7 @@
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:acacia_branch"
+        "item": "regions_unexplored:willow_branch"
       }
     }
   ]
