@@ -14,7 +14,8 @@
   "categories": [
     "dirt",
     "nylium",
-    "moss"
+    "moss",
+    "sculk"
   ],
   "growthTicks": 1200,
   "display": {

@@ -2,22 +2,22 @@
   "bookshelf:load_conditions": [
     {
       "type": "bookshelf:item_exists",
-      "values": "regions_unexplored:sculk_grass_block"
+      "values": "regions_unexplored:joshua_log"
     }
   ],
   "type": "botanypots:soil",
   "input": {
-    "item": "regions_unexplored:sculk_grass_block"
+    "item": "regions_unexplored:joshua_log"
   },
   "display": {
-    "block": "regions_unexplored:sculk_grass_block"
+    "block": "regions_unexplored:joshua_log"
   },
   "categories": [
+    "wood",
+    "log",
+    "joshua",
     "mushroom",
-    "sculk",
-    "grass",
-    "netherrack",
-    "nether"
+    "joshua_wood"
   ],
   "growthModifier": 1
 }

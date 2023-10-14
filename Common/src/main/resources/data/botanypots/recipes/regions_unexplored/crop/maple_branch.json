@@ -3,29 +3,32 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:sculk_sprout"
+        "regions_unexplored:dead_branch"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:sculk_sprout"
+    "item": "regions_unexplored:dead_branch"
   },
   "categories": [
-    "dirt",
-    "nylium",
-    "moss",
-    "sculk"
+    "dead",
+    "dead_wood",
+    "log"
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "regions_unexplored:sculk_sprout"
+    "block": "regions_unexplored:dead_branch",
+    "properties": {
+      "facing": "north"
+    },
+    "rotation": "X_90"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:sculk_sprout"
+        "item": "regions_unexplored:dead_branch"
       }
     }
   ]

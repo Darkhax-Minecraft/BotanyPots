@@ -3,28 +3,30 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:cattail"
+        "regions_unexplored:glister_spire"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:cattail"
+    "item": "regions_unexplored:glister_spire"
   },
   "categories": [
+    "nylium",
     "dirt",
-    "water"
+    "grass",
+    "glistering_nylium"
   ],
   "growthTicks": 1200,
   "display": [
     {
-      "block": "regions_unexplored:cattail",
+      "block": "regions_unexplored:glister_spire",
       "properties": {
-        "half": "upper"
+        "half": "lower"
       }
     },
     {
-      "block": "regions_unexplored:cattail",
+      "block": "regions_unexplored:glister_spire",
       "properties": {
         "half": "upper"
       }
@@ -34,7 +36,7 @@
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:cattail"
+        "item": "regions_unexplored:glister_spire"
       }
     }
   ]

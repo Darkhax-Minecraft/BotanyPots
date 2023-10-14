@@ -1,4 +1,3 @@
-
 {
   "bookshelf:load_conditions": [
     {
@@ -18,20 +17,9 @@
     "dirt",
     "grass"
   ],
-"display": [
-    {
-      "block": "regions_unexplored:cobalt_earlight",
-      "properties": {
-        "half": "lower"
-      }
-    },
-    {
-      "block": "regions_unexplored:cobalt_earlight",
-      "properties": {
-        "half": "upper"
-      }
-    }
-  ],
+  "display": {
+    "block": "regions_unexplored:cobalt_earlight"
+  },
   "drops": [
     {
       "chance": 1.00,
@@ -39,5 +27,6 @@
         "item": "regions_unexplored:cobalt_earlight"
       }
     }
-  ]
+  ],
+  "growthTicks": 1200
 }
