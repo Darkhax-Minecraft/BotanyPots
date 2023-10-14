@@ -1,0 +1,24 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "regions_unexplored:sculkwood_log"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "regions_unexplored:sculkwood_log"
+  },
+  "display": {
+    "block": "regions_unexplored:sculkwood_log",
+    "rotation": "X_90"
+  },
+  "categories": [
+    "wood",
+    "log",
+    "sculkwood",
+    "mushroom",
+    "sculkwood_wood"
+  ],
+  "growthModifier": 1
+}

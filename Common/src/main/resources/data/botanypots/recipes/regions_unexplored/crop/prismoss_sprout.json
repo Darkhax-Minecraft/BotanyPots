@@ -3,13 +3,13 @@
     {
       "type": "bookshelf:item_exists",
       "values": [
-        "regions_unexplored:medium_grass"
+        "regions_unexplored:prismoss_sprout"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "regions_unexplored:medium_grass"
+    "item": "regions_unexplored:prismoss_sprout"
   },
   "categories": [
     "dirt",
@@ -20,13 +20,13 @@
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "regions_unexplored:medium_grass"
+    "block": "regions_unexplored:prismoss_sprout"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "regions_unexplored:medium_grass"
+        "item": "regions_unexplored:prismoss_sprout"
       }
     }
   ]

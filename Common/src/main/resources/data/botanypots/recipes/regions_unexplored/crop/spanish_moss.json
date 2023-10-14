@@ -16,7 +16,8 @@
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "regions_unexplored:spanish_moss"
+    "block": "regions_unexplored:spanish_moss",
+    "rotation": "X_180"
   },
   "drops": [
     {
