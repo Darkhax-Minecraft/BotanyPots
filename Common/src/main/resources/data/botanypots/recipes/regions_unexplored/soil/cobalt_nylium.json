@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "regions_unexplored:cobalt_nylium"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "regions_unexplored:cobalt_nylium"
+  },
+  "display": {
+    "block": "regions_unexplored:cobalt_nylium"
+  },
+  "categories": [
+    "mushroom",
+    "cobalt_nylium",
+    "nylium",
+    "blackstone",
+    "nether"
+  ],
+  "growthModifier": 1
+}

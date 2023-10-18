@@ -1,0 +1,29 @@
+{
+  "type": "botanypots:pot_interaction",
+  "held_ingredient": {
+    "item": "minecraft:potion",
+    "nbt": "{Potion: \"minecraft:water\""
+  },
+  "drops": [
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "consume_held": true,
+  "soil_ingredient": [
+    {
+      "item": "minecraft:dirt"
+    },
+    {
+      "item": "minecraft:coarse_dirt"
+    }
+  ],
+  "soil_output": {
+    "item": "minecraft:mud",
+    "count": 1
+  },
+  "sound": {
+    "sound": "minecraft:item.bottle.empty",
+    "category": "blocks"
+  }
+}

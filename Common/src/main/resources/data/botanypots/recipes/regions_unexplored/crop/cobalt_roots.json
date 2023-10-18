@@ -1,0 +1,33 @@
+
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:cobalt_roots"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:cobalt_roots"
+  },
+  "categories": [
+    "nylium",
+    "cobalt_nylium",
+    "dirt",
+    "grass"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "regions_unexplored:cobalt_roots"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:cobalt_roots"
+      }
+    }
+  ]
+}

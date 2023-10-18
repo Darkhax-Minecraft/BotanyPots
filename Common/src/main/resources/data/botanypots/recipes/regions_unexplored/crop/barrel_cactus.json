@@ -1,0 +1,30 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:barrel_cactus"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:barrel_cactus"
+  },
+  "categories": [
+    "sand",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "regions_unexplored:barrel_cactus"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:barrel_cactus"
+      }
+    }
+  ]
+}

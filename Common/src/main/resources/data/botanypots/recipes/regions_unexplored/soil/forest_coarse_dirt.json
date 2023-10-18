@@ -1,0 +1,20 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "regions_unexplored:forest_coarse_dirt"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "regions_unexplored:forest_coarse_dirt"
+  },
+  "display": {
+    "block": "regions_unexplored:forest_coarse_dirt"
+  },
+  "categories": [
+    "dirt",
+    "coarse_dirt"
+  ],
+  "growthModifier": 1
+}

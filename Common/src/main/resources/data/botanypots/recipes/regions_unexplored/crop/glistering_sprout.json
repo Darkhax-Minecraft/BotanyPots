@@ -1,0 +1,33 @@
+
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:glistering_sprout"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:glistering_sprout"
+  },
+  "categories": [
+    "nylium",
+    "dirt",
+    "grass",
+    "glistering_nylium"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "regions_unexplored:glistering_sprout"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:glistering_sprout"
+      }
+    }
+  ]
+}

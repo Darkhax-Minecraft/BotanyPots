@@ -1,0 +1,40 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:tall_pine_sapling"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:tall_pine_sapling"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "regions_unexplored:tall_pine_sapling",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "regions_unexplored:tall_pine_sapling",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:tall_pine_sapling"
+      }
+    }
+  ]
+}

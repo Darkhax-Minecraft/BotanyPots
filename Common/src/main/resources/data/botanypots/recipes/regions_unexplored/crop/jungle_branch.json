@@ -1,0 +1,35 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:jungle_branch"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:jungle_branch"
+  },
+  "categories": [
+    "jungle",
+    "jungle_wood",
+    "log"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "regions_unexplored:jungle_branch",
+    "properties": {
+      "facing": "north"
+    },
+    "rotation": "X_90"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:jungle_branch"
+      }
+    }
+  ]
+}

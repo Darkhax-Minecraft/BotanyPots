@@ -1,0 +1,19 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "regions_unexplored:plains_farmland"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "regions_unexplored:plains_farmland"
+  },
+  "display": {
+    "block": "regions_unexplored:plains_farmland"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthModifier": 1.05
+}

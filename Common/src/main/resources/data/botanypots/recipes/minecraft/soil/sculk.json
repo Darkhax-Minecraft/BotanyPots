@@ -1,0 +1,13 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:sculk"
+  },
+  "display": {
+    "block": "minecraft:sculk"
+  },
+  "categories": [
+    "sculk"
+  ],
+  "growthModifier": 1
+}

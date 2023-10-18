@@ -1,0 +1,13 @@
+{
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:powder_snow_bucket"
+  },
+  "display": {
+    "block": "minecraft:powder_snow"
+  },
+  "categories": [
+    "snow"
+  ],
+  "growthModifier": 1
+}

@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "regions_unexplored:baobab_log"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "regions_unexplored:baobab_log"
+  },
+  "display": {
+    "block": "regions_unexplored:baobab_wood"
+  },
+  "categories": [
+    "wood",
+    "log",
+    "baobab",
+    "mushroom",
+    "baobab_wood"
+  ],
+  "growthModifier": 1
+}

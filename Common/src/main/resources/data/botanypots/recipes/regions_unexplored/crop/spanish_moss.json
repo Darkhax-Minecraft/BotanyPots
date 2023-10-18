@@ -1,0 +1,30 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:spanish_moss"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:spanish_moss"
+  },
+  "categories": [
+    "log"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "regions_unexplored:spanish_moss",
+    "rotation": "X_180"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:spanish_moss"
+      }
+    }
+  ]
+}
