@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "regions_unexplored:joshua_log"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "regions_unexplored:joshua_log"
+  },
+  "display": {
+    "block": "regions_unexplored:joshua_log"
+  },
+  "categories": [
+    "wood",
+    "log",
+    "joshua",
+    "mushroom",
+    "joshua_wood"
+  ],
+  "growthModifier": 1
+}

@@ -1,0 +1,41 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:cattail"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:cattail"
+  },
+  "categories": [
+    "dirt",
+    "water"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "regions_unexplored:cattail",
+      "properties": {
+        "half": "upper"
+      }
+    },
+    {
+      "block": "regions_unexplored:cattail",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:cattail"
+      }
+    }
+  ]
+}

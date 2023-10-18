@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "regions_unexplored:eucalyptus_log"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "regions_unexplored:eucalyptus_log"
+  },
+  "display": {
+    "block": "regions_unexplored:eucalyptus_wood"
+  },
+  "categories": [
+    "wood",
+    "log",
+    "eucalyptus",
+    "mushroom",
+    "eucalyptus_wood"
+  ],
+  "growthModifier": 1
+}

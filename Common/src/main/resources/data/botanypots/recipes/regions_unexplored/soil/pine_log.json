@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "regions_unexplored:pine_log"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "regions_unexplored:pine_log"
+  },
+  "display": {
+    "block": "regions_unexplored:pine_wood"
+  },
+  "categories": [
+    "wood",
+    "log",
+    "pine",
+    "mushroom",
+    "pine_log"
+  ],
+  "growthModifier": 1
+}

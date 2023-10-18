@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "regions_unexplored:silver_birch_log_base"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "regions_unexplored:silver_birch_log_base"
+  },
+  "display": {
+    "block": "minecraft:birch_wood"
+  },
+  "categories": [
+    "wood",
+    "log",
+    "birch",
+    "mushroom",
+    "birch_wood"
+  ],
+  "growthModifier": 1
+}

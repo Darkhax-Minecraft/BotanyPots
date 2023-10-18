@@ -1,0 +1,31 @@
+
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:glistering_ivy"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:glistering_ivy"
+  },
+  "categories": [
+    "glistering_nylium"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "regions_unexplored:glistering_ivy",
+    "rotation": "X_180"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:glistering_ivy"
+      }
+    }
+  ]
+}

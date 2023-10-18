@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "regions_unexplored:deepslate_viridescent_nylium"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "regions_unexplored:deepslate_viridescent_nylium"
+  },
+  "display": {
+    "block": "regions_unexplored:deepslate_viridescent_nylium"
+  },
+  "categories": [
+    "mushroom",
+    "nylium",
+    "viridescent_nylium",
+    "stone",
+    "deepslate"
+  ],
+  "growthModifier": 1
+}

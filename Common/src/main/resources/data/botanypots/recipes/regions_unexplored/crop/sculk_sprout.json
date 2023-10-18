@@ -1,0 +1,32 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:sculk_sprout"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:sculk_sprout"
+  },
+  "categories": [
+    "dirt",
+    "nylium",
+    "moss",
+    "sculk"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "regions_unexplored:sculk_sprout"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:sculk_sprout"
+      }
+    }
+  ]
+}

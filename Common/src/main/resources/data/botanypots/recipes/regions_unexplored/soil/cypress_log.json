@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "regions_unexplored:cypress_log"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "regions_unexplored:cypress_log"
+  },
+  "display": {
+    "block": "regions_unexplored:cypress_wood"
+  },
+  "categories": [
+    "wood",
+    "log",
+    "cypress",
+    "mushroom",
+    "cypress_wood"
+  ],
+  "growthModifier": 1
+}

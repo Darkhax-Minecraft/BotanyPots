@@ -1,0 +1,32 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:cave_hyssop"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:cave_hyssop"
+  },
+  "categories": [
+    "stone",
+    "dirt",
+    "grass",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "regions_unexplored:cave_hyssop"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:cave_hyssop"
+      }
+    }
+  ]
+}

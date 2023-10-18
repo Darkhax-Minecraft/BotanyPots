@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "regions_unexplored:sculk_grass_block"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "regions_unexplored:sculk_grass_block"
+  },
+  "display": {
+    "block": "regions_unexplored:sculk_grass_block"
+  },
+  "categories": [
+    "mushroom",
+    "sculk",
+    "grass",
+    "netherrack",
+    "nether"
+  ],
+  "growthModifier": 1
+}

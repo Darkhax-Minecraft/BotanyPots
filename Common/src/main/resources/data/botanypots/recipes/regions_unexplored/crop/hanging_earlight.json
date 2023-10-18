@@ -1,0 +1,31 @@
+
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:hanging_earlight"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:hanging_earlight"
+  },
+  "categories": [
+    "cobalt_nylium"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "regions_unexplored:hanging_earlight",
+    "rotation": "X_180"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:hanging_earlight"
+      }
+    }
+  ]
+}

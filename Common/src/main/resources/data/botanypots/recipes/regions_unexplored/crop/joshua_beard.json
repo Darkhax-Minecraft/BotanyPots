@@ -1,0 +1,35 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:joshua_beard"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:joshua_beard"
+  },
+  "categories": [
+    "joshua",
+    "joshua_wood",
+    "log"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "regions_unexplored:joshua_beard",
+    "properties": {
+      "facing": "north"
+    },
+    "rotation": "X_90"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:joshua_beard"
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:barley"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:barley"
+  },
+  "categories": [
+    "dirt",
+    "grass",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "regions_unexplored:barley",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "regions_unexplored:barley",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:barley"
+      }
+    }
+  ]
+}

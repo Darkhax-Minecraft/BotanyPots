@@ -1,0 +1,35 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "regions_unexplored:cypress_branch"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "regions_unexplored:cypress_branch"
+  },
+  "categories": [
+    "cypress",
+    "cypress_wood",
+    "log"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "regions_unexplored:cypress_branch",
+    "properties": {
+      "facing": "north"
+    },
+    "rotation": "X_90"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "regions_unexplored:cypress_branch"
+      }
+    }
+  ]
+}
