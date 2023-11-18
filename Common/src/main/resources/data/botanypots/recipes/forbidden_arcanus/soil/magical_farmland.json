@@ -1,0 +1,21 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "forbidden_arcanus:magical_farmland"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "forbidden_arcanus:magical_farmland"
+    },
+    "display": {
+      "block": "forbidden_arcanus:magical_farmland"
+    },
+    "categories": [
+      "dirt",
+      "magical_farmland",
+      "farmland"
+    ],
+    "growthModifier": 1.00
+  }

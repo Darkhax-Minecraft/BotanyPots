@@ -1,0 +1,31 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "neapolitan:adzuki_beans"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "neapolitan:adzuki_beans"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1500,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "neapolitan:adzuki_sprouts"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "neapolitan:adzuki_beans"
+      }
+    }
+  ]
+}

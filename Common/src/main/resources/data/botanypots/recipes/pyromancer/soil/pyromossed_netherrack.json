@@ -1,0 +1,22 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "pyromancer:pyromossed_netherrack"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "pyromancer:pyromossed_netherrack"
+    },
+    "display": {
+      "block": "pyromancer:pyromossed_netherrack"
+    },
+    "categories": [
+      "nylium",
+      "pyromossed_netherrack",
+      "netherrack",
+      "nether"
+    ],
+    "growthModifier": 1
+  }

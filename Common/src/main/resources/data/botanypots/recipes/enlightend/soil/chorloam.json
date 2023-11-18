@@ -1,0 +1,13 @@
+{
+    "type": "botanypots:soil",
+    "input": {
+      "item": "enlightened_end:chorloam"
+    },
+    "display": {
+      "block": "enlightened_end:chorloam "
+    },
+    "categories": [
+      "chorloam"
+    ],
+    "growthModifier": 1
+  }

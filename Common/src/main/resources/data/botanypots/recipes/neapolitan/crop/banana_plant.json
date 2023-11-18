@@ -1,0 +1,48 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "neapolitan:banana_frond"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "neapolitan:banana_frond"
+    },
+    "categories": [
+      "dirt",
+      "sand",
+      "gravel"
+    ],
+    "growthTicks": 1500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "neapolitan:banana_frond"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+              "item": "neapolitan:banana"
+            },
+            "minRolls": 2,
+            "maxRolls": 4
+            },
+          {
+            "chance": 0.25,
+            "output": {
+              "item": "neapolitan:banana_stalk"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+            },
+          {
+            "chance": 0.25,
+            "output": {
+              "item": "neapolitan:banana_frond"
+        }
+      }
+    ]
+  }

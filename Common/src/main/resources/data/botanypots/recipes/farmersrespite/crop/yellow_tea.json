@@ -1,0 +1,46 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "farmersrespite:yellow_tea_leaves"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "farmersrespite:yellow_tea_leaves"
+    },
+    "categories": [
+      "dirt"
+    ],
+    "growthTicks": 1500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "farmersrespite:tea_bush"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "farmersrespite:yellow_tea_leaves"
+        },
+        "minRolls": 2,
+        "maxRolls": 4
+        },
+      {
+        "chance": 0.25,
+        "output": {
+          "item": "minecraft:stick"
+        },
+        "minRolls": 1,
+        "maxRolls": 2
+        },
+      {
+        "chance": 0.05,
+        "output": {
+          "item": "farmersrespite:tea_seeds"
+        }
+      }
+    ]
+  }
