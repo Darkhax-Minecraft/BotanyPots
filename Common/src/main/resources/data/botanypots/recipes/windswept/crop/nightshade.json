@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "windswept:nightshade"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "windswept:nightshade"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "windswept:nightshade"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "windswept:nightshade"
+        }
+      }
+    ]
+  }

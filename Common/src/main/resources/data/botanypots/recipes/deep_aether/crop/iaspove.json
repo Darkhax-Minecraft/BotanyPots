@@ -1,0 +1,33 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "deep_aether:iaspove"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "deep_aether:iaspove"
+    },
+    "categories": [
+      "dirt",
+      "grass",
+      "aether_grass",
+      "aether_dirt"
+    ],
+    "growthTicks": 1500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "deep_aether:iaspove"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "deep_aether:iaspove"
+        }
+      }
+    ]
+  }
