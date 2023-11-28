@@ -1,4 +1,12 @@
 {
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "enlightened_end:azure_berries"
+      ]
+    }
+  ],
     "type": "botanypots:soil",
     "input": {
       "item": "enlightened_end:chorloam"
