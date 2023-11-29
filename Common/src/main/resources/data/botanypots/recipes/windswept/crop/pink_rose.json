@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "windswept:pink_rose"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "windswept:pink_rose"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "windswept:pink_rose"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "windswept:pink_rose"
+        }
+      }
+    ]
+  }

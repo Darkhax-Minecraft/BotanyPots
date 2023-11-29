@@ -1,0 +1,33 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "deep_aether:golden_aspess"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "deep_aether:golden_aspess"
+    },
+    "categories": [
+      "dirt",
+      "grass",
+      "aether_grass",
+      "aether_dirt"
+    ],
+    "growthTicks": 1500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "deep_aether:golden_aspess"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "deep_aether:golden_aspess"
+        }
+      }
+    ]
+  }

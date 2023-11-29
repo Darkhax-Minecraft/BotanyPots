@@ -1,0 +1,20 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "undergarden:deepsoil"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "undergarden:deepsoil"
+    },
+    "display": {
+      "block": "undergarden:deepsoil"
+    },
+    "categories": [
+      "dirt",
+      "deepsoil"
+    ],
+    "growthModifier": 1.00
+  }

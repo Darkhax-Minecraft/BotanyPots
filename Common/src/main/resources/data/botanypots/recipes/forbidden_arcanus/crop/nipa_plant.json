@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "forbidden_arcanus:nipa"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "forbidden_arcanus:nipa"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 3250,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "forbidden_arcanus:nipa"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "forbidden_arcanus:arcane_crystal_dust_speck"
+        }
+      }
+    ]
+  }

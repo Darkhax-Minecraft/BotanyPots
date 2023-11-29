@@ -1,0 +1,22 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "undergarden:deepsoil_farmland"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "undergarden:deepsoil_farmland"
+    },
+    "display": {
+      "block": "undergarden:deepsoil_farmland"
+    },
+    "categories": [
+      "dirt",
+      "deepsoil",
+      "deepsoil_farmland",
+      "farmland"
+    ],
+    "growthModifier": 1.00
+  }

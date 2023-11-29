@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "environmental:blue_delphinium"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "environmental:blue_delphinium"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "environmental:blue_delphinium"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "environmental:blue_delphinium"
+        }
+      }
+    ]
+  }

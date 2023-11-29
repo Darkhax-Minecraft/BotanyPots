@@ -1,0 +1,33 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "aether:purple_flower"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "aether:purple_flower"
+    },
+    "categories": [
+      "dirt",
+      "grass",
+      "aether_grass",
+      "aether_dirt"
+    ],
+    "growthTicks": 1500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "aether:purple_flower"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "aether:purple_flower"
+        }
+      }
+    ]
+  }

@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "createbb:ephedra_seeds"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "createbb:ephedra_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "createbb:ephedra_crop_block"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "createbb:ephedra"
+      }
+    },
+    {
+      "chance": 0.01,
+      "output": {
+        "item": "createbb:ephedra_seeds"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "environmental:pink_hibiscus"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "environmental:pink_hibiscus"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "environmental:pink_hibiscus"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "environmental:pink_hibiscus"
+        }
+      }
+    ]
+  }

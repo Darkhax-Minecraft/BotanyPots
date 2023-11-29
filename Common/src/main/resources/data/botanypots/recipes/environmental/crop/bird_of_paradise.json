@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "environmental:bird_of_paradise"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "environmental:bird_of_paradise"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "environmental:bird_of_paradise"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "environmental:bird_of_paradise"
+        }
+      }
+    ]
+  }

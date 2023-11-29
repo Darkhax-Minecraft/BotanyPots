@@ -1,0 +1,21 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "mob_grinding_utils:delightful_dirt"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "mob_grinding_utils:delightful_dirt"
+    },
+    "display": {
+      "block": "mob_grinding_utils:delightful_dirt"
+    },
+    "categories": [
+      "dirt",
+      "farmland",
+      "grass"
+    ],
+    "growthModifier": 1.10
+  }

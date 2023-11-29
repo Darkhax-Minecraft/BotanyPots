@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "windswept:wild_berries"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "windswept:wild_berries"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 2750,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "windswept:wild_berry_bush"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "windswept:wild_berries"
+        }
+      }
+    ]
+  }
