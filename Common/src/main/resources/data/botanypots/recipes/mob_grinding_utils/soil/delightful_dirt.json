@@ -2,19 +2,20 @@
     "bookshelf:load_conditions": [
       {
         "type": "bookshelf:item_exists",
-        "values": "blue_skies:lunar_farmland"
+        "values": "mob_grinding_utils:delightful_dirt"
       }
     ],
     "type": "botanypots:soil",
     "input": {
-      "item": "blue_skies:lunar_farmland"
+      "item": "mob_grinding_utils:delightful_dirt"
     },
     "display": {
-      "block": "blue_skies:lunar_farmland"
+      "block": "mob_grinding_utils:delightful_dirt"
     },
     "categories": [
       "dirt",
-      "farmland"
+      "farmland",
+      "grass"
     ],
-    "growthModifier": 1.00
+    "growthModifier": 1.10
   }
