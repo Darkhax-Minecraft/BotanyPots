@@ -19,13 +19,15 @@
     {
       "block": "immersiveengineering:hemp",
       "properties": {
-        "growth": "bottom4"
+        "top": "false",
+        "age": "4"
       }
     },
     {
       "block": "immersiveengineering:hemp",
       "properties": {
-        "growth": "top0"
+        "top": "false",
+        "age": "4"
       }
     }
   ],
