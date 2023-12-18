@@ -1,0 +1,22 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "terrestria:basalt_dirt"
+        ]
+      }
+    ],
+      "type": "botanypots:soil",
+      "input": {
+        "item": "terrestria:basalt_dirt"
+      },
+      "display": {
+        "block": "terrestria:basalt_dirt"
+      },
+      "categories": [
+        "andisol",
+        "dirt"
+      ],
+      "growthModifier": 1
+    }
