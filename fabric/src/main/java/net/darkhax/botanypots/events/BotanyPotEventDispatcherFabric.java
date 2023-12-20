@@ -12,6 +12,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
@@ -23,7 +24,7 @@ public class BotanyPotEventDispatcherFabric implements BotanyPotEventDispatcher 
 
     public static final Event<ILookupCropListener> LOOKUP_CROP = EventFactory.createArrayBacked(ILookupCropListener.class, callbacks -> (level, pos, pot, stack, found) -> {
 
-        Crop result = found;
+        RecipeHolder<Crop> result = found;
 
         for (ILookupCropListener listener : callbacks) {
 
@@ -35,7 +36,7 @@ public class BotanyPotEventDispatcherFabric implements BotanyPotEventDispatcher 
 
     public static final Event<ILookupSoilListener> LOOKUP_SOIL = EventFactory.createArrayBacked(ILookupSoilListener.class, callbacks -> (level, pos, pot, stack, found) -> {
 
-        Soil result = found;
+        RecipeHolder<Soil> result = found;
 
         for (ILookupSoilListener listener : callbacks) {
 
@@ -47,7 +48,7 @@ public class BotanyPotEventDispatcherFabric implements BotanyPotEventDispatcher 
 
     public static final Event<ILookupInteractionListener> LOOKUP_INTERACTION = EventFactory.createArrayBacked(ILookupInteractionListener.class, callbacks -> (state, level, pos, player, hand, stack, pot, found) -> {
 
-        PotInteraction result = found;
+        RecipeHolder<PotInteraction> result = found;
 
         for (ILookupInteractionListener listener : callbacks) {
 
@@ -59,7 +60,7 @@ public class BotanyPotEventDispatcherFabric implements BotanyPotEventDispatcher 
 
     public static final Event<ILookupFertilizerListener> LOOKUP_FERTILIZER = EventFactory.createArrayBacked(ILookupFertilizerListener.class, callbacks -> (state, level, pos, player, hand, stack, pot, found) -> {
 
-        Fertilizer result = found;
+        RecipeHolder<Fertilizer> result = found;
 
         for (ILookupFertilizerListener listener : callbacks) {
 
@@ -79,7 +80,7 @@ public class BotanyPotEventDispatcherFabric implements BotanyPotEventDispatcher 
 
     @Nullable
     @Override
-    public Soil postSoilLookup(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack, @Nullable Soil found) {
+    public RecipeHolder<Soil> postSoilLookup(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack, @Nullable RecipeHolder<Soil> found) {
 
         return LOOKUP_SOIL.invoker().lookup(level, pos, pot, stack, found);
     }
@@ -92,7 +93,7 @@ public class BotanyPotEventDispatcherFabric implements BotanyPotEventDispatcher 
 
     @Nullable
     @Override
-    public Crop postCropLookup(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack, @Nullable Crop found) {
+    public RecipeHolder<Crop> postCropLookup(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack, @Nullable RecipeHolder<Crop> found) {
 
         return LOOKUP_CROP.invoker().lookup(level, pos, pot, stack, found);
     }
@@ -105,7 +106,7 @@ public class BotanyPotEventDispatcherFabric implements BotanyPotEventDispatcher 
 
     @Nullable
     @Override
-    public PotInteraction postInteractionLookup(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot, PotInteraction found) {
+    public RecipeHolder<PotInteraction> postInteractionLookup(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot, RecipeHolder<PotInteraction> found) {
 
         return LOOKUP_INTERACTION.invoker().lookup(state, level, pos, player, hand, heldStack, pot, found);
     }
@@ -118,7 +119,7 @@ public class BotanyPotEventDispatcherFabric implements BotanyPotEventDispatcher 
 
     @Nullable
     @Override
-    public Fertilizer postFertilizerLookup(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot, Fertilizer found) {
+    public RecipeHolder<Fertilizer> postFertilizerLookup(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot, RecipeHolder<Fertilizer> found) {
 
         return LOOKUP_FERTILIZER.invoker().lookup(state, level, pos, player, hand, heldStack, pot, found);
     }

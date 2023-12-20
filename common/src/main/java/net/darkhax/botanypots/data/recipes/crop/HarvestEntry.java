@@ -1,27 +1,26 @@
 package net.darkhax.botanypots.data.recipes.crop;
 
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.darkhax.bookshelf.api.data.bytebuf.BookshelfByteBufs;
+import net.darkhax.bookshelf.api.data.bytebuf.ByteBufHelper;
+import net.darkhax.bookshelf.api.data.codecs.BookshelfCodecs;
+import net.darkhax.bookshelf.api.data.codecs.CodecHelper;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.item.ItemStack;
 
 public class HarvestEntry {
 
-    /**
-     * The chance that the entry should happen.
-     */
+    public static CodecHelper<HarvestEntry> CODEC = new CodecHelper<>(RecordCodecBuilder.create(instance -> instance.group(
+            BookshelfCodecs.FLOAT.get("chance", HarvestEntry::getChance, 1f),
+            BookshelfCodecs.ITEM_STACK_FLEXIBLE.get("output", HarvestEntry::getItem),
+            BookshelfCodecs.INT.get("minRolls", HarvestEntry::getMinRolls, 1),
+            BookshelfCodecs.INT.get("maxRolls", HarvestEntry::getMaxRolls, 1)
+    ).apply(instance, HarvestEntry::new)));
+    public static ByteBufHelper<HarvestEntry> BUFFER = new ByteBufHelper<>(HarvestEntry::read, HarvestEntry::write);
+
     private final float chance;
-
-    /**
-     * The item to give.
-     */
     private final ItemStack item;
-
-    /**
-     * The lowest amount of the item to give.
-     */
     private final int minRolls;
-
-    /**
-     * The maximum amount of the item to give.
-     */
     private final int maxRolls;
 
     public HarvestEntry(float chance, ItemStack item, int minRolls, int maxRolls) {
@@ -80,5 +79,22 @@ public class HarvestEntry {
     public int getMaxRolls() {
 
         return this.maxRolls;
+    }
+
+    public static HarvestEntry read(FriendlyByteBuf buffer) {
+
+        final float chance = BookshelfByteBufs.FLOAT.read(buffer);
+        final ItemStack output = BookshelfByteBufs.ITEM_STACK.read(buffer);
+        final int min = BookshelfByteBufs.INT.read(buffer);
+        final int max = BookshelfByteBufs.INT.read(buffer);
+        return new HarvestEntry(chance, output, min, max);
+    }
+
+    public static void write(FriendlyByteBuf buffer, HarvestEntry entry) {
+
+        BookshelfByteBufs.FLOAT.write(buffer, entry.chance);
+        BookshelfByteBufs.ITEM_STACK.write(buffer, entry.item);
+        BookshelfByteBufs.INT.write(buffer, entry.minRolls);
+        BookshelfByteBufs.INT.write(buffer, entry.maxRolls);
     }
 }

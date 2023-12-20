@@ -1,7 +1,6 @@
 package net.darkhax.botanypots;
 
 import net.darkhax.bookshelf.api.Services;
-import net.darkhax.botanypots.data.displaystate.DisplayState;
 
 public class BotanyPotsCommon {
 
@@ -9,8 +8,7 @@ public class BotanyPotsCommon {
 
     public BotanyPotsCommon() {
 
-        DisplayState.init();
-        this.content = new Content();
+        content = new Content();
         Services.REGISTRIES.loadContent(content);
     }
 }

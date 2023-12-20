@@ -1,6 +1,5 @@
 package net.darkhax.botanypots.addons.jei;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -10,7 +9,6 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.darkhax.bookshelf.api.Services;
 import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.addons.jei.ui.CropDisplayInfo;
 import net.minecraft.client.gui.GuiGraphics;

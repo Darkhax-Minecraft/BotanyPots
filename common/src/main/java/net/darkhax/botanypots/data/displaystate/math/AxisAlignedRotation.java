@@ -1,8 +1,10 @@
 package net.darkhax.botanypots.data.displaystate.math;
 
 import com.mojang.math.Axis;
-import net.darkhax.bookshelf.api.serialization.ISerializer;
-import net.darkhax.bookshelf.api.serialization.SerializerEnum;
+import net.darkhax.bookshelf.api.data.bytebuf.BookshelfByteBufs;
+import net.darkhax.bookshelf.api.data.bytebuf.ByteBufHelper;
+import net.darkhax.bookshelf.api.data.codecs.BookshelfCodecs;
+import net.darkhax.bookshelf.api.data.codecs.CodecHelper;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
@@ -27,7 +29,8 @@ public enum AxisAlignedRotation {
     Z_180(RotationAxis.Z, 2),
     Z_270(RotationAxis.Z, 3);
 
-    public static final ISerializer<AxisAlignedRotation> SERIALIZER = new SerializerEnum<>(AxisAlignedRotation.class);
+    public static final CodecHelper<AxisAlignedRotation> CODEC = new CodecHelper<>(BookshelfCodecs.enumerable(AxisAlignedRotation.class));
+    public static final ByteBufHelper<AxisAlignedRotation> BUFFER = BookshelfByteBufs.enumerable(AxisAlignedRotation.class);
 
     /**
      * A Quaternion that contains the rotational information. In this case it represents a 0, 90, 180, or 270-degree

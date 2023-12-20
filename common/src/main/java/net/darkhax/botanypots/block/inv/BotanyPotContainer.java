@@ -10,6 +10,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
@@ -26,10 +27,10 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
     private final BlockEntityBotanyPot potEntity;
 
     @Nullable
-    private Soil soil = null;
+    private RecipeHolder<Soil> soil = null;
 
     @Nullable
-    private Crop crop = null;
+    private RecipeHolder<Crop> crop = null;
 
     private int requiredGrowthTime = -1;
 
@@ -96,13 +97,13 @@ public class BotanyPotContainer extends SimpleContainer implements WorldlyContai
     }
 
     @Nullable
-    public Crop getCrop() {
+    public RecipeHolder<Crop> getCrop() {
 
         return this.crop;
     }
 
     @Nullable
-    public Soil getSoil() {
+    public RecipeHolder<Soil> getSoil() {
 
         return this.soil;
     }

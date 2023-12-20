@@ -10,6 +10,7 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.data.recipes.crop.BasicCrop;
+import net.darkhax.botanypots.data.recipes.crop.Crop;
 import net.darkhax.botanypots.data.recipes.crop.HarvestEntry;
 import net.darkhax.botanypots.data.recipes.soil.BasicSoil;
 import net.darkhax.botanypots.data.recipes.soil.Soil;
@@ -18,6 +19,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -25,16 +27,19 @@ import java.util.List;
 
 public class BasicCropDisplayInfo extends CropDisplayInfo {
 
-    public static List<CropDisplayInfo> getCropRecipes(BasicCrop crop, List<Soil> soils) {
+    public static List<CropDisplayInfo> getCropRecipes(RecipeHolder<Crop> cropRecipe, List<RecipeHolder<Soil>> soils) {
 
         final List<CropDisplayInfo> info = new ArrayList<>();
 
-        for (Soil soil : soils) {
+        if (cropRecipe.value() instanceof BasicCrop crop) {
 
-            if (soil instanceof BasicSoil basicSoil && crop.canGrowInSoil(null, null, null, soil)) {
+            for (RecipeHolder<Soil> soilRecipe : soils) {
 
-                final int ticks = BotanyPotHelper.getRequiredGrowthTicks(null, null, null, crop, soil);
-                info.add(new BasicCropDisplayInfo(crop.getId(), crop.getSeed(), basicSoil.getIngredient(), crop.getResults(), ticks, basicSoil.getGrowthModifier()));
+                if (soilRecipe.value() instanceof BasicSoil soil && crop.canGrowInSoil(null, null, null, soil)) {
+
+                    final int ticks = BotanyPotHelper.getRequiredGrowthTicks(null, null, null, crop, soil);
+                    info.add(new BasicCropDisplayInfo(cropRecipe.id(), crop.getSeed(), soil.getIngredient(), crop.getResults(), ticks, soil.getGrowthModifier()));
+                }
             }
         }
 
@@ -150,7 +155,7 @@ public class BasicCropDisplayInfo extends CropDisplayInfo {
         return this.id;
     }
 
-    private static String ticksToTime (int ticks) {
+    private static String ticksToTime(int ticks) {
 
         ticks = Math.abs(ticks);
         int i = ticks / 20;

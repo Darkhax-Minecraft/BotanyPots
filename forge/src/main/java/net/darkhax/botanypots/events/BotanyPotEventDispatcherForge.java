@@ -9,6 +9,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,7 +24,7 @@ public class BotanyPotEventDispatcherForge implements BotanyPotEventDispatcher {
 
     @Nullable
     @Override
-    public Soil postSoilLookup(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack, @Nullable Soil found) {
+    public RecipeHolder<Soil> postSoilLookup(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack, @Nullable RecipeHolder<Soil> found) {
 
         final LookupSoilEvent event = new LookupSoilEvent(level, pos, pot, stack, found);
         return MinecraftForge.EVENT_BUS.post(event) ? null : event.getLookupResult();
@@ -40,7 +41,7 @@ public class BotanyPotEventDispatcherForge implements BotanyPotEventDispatcher {
 
     @Nullable
     @Override
-    public Crop postCropLookup(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack, @Nullable Crop found) {
+    public RecipeHolder<Crop> postCropLookup(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack, @Nullable RecipeHolder<Crop> found) {
 
         final LookupCropEvent event = new LookupCropEvent(level, pos, pot, stack, found);
         return MinecraftForge.EVENT_BUS.post(event) ? null : event.getLookupResult();
@@ -57,7 +58,7 @@ public class BotanyPotEventDispatcherForge implements BotanyPotEventDispatcher {
 
     @Nullable
     @Override
-    public PotInteraction postInteractionLookup(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot, PotInteraction found) {
+    public RecipeHolder<PotInteraction> postInteractionLookup(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot, RecipeHolder<PotInteraction> found) {
 
         final LookupInteractionEvent event = new LookupInteractionEvent(state, level, pos, player, hand, heldStack, pot, found);
         return MinecraftForge.EVENT_BUS.post(event) ? null : event.getLookupResult();
@@ -74,7 +75,7 @@ public class BotanyPotEventDispatcherForge implements BotanyPotEventDispatcher {
 
     @Nullable
     @Override
-    public Fertilizer postFertilizerLookup(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot, Fertilizer found) {
+    public RecipeHolder<Fertilizer> postFertilizerLookup(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot, RecipeHolder<Fertilizer> found) {
 
         final LookupFertilizerEvent event = new LookupFertilizerEvent(state, level, pos, player, hand, heldStack, pot, found);
         return MinecraftForge.EVENT_BUS.post(event) ? null : event.getLookupResult();

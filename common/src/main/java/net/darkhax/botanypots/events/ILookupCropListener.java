@@ -4,6 +4,7 @@ import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.data.recipes.crop.Crop;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
@@ -23,5 +24,5 @@ public interface ILookupCropListener {
      * @return The new result for the lookup.
      */
     @Nullable
-    Crop lookup(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack, @Nullable Crop found);
+    RecipeHolder<Crop> lookup(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack, @Nullable RecipeHolder<Crop> found);
 }

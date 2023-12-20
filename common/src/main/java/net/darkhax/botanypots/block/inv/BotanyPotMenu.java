@@ -1,12 +1,11 @@
 package net.darkhax.botanypots.block.inv;
 
+import net.darkhax.bookshelf.api.data.bytebuf.BookshelfByteBufs;
 import net.darkhax.bookshelf.api.function.CachedSupplier;
-import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -26,7 +25,7 @@ public class BotanyPotMenu extends AbstractContainerMenu {
 
     public static BotanyPotMenu fromNetwork(int windowId, Inventory inv, FriendlyByteBuf buf) {
 
-        final BlockPos tilePos = Serializers.BLOCK_POS.fromByteBuf(buf);
+        final BlockPos tilePos = BookshelfByteBufs.BLOCK_POS.read(buf);
 
         if (inv.player.level().getBlockEntity(tilePos) instanceof BlockEntityBotanyPot pot) {
 

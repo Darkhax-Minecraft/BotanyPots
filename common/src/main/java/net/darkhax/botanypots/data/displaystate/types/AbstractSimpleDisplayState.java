@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.data.displaystate;
+package net.darkhax.botanypots.data.displaystate.types;
 
 import net.darkhax.botanypots.data.displaystate.math.AxisAlignedRotation;
 import net.minecraft.world.level.block.state.BlockState;
@@ -9,10 +9,10 @@ import java.util.Optional;
 
 public abstract class AbstractSimpleDisplayState extends DisplayState {
 
-    public final Optional<Vector3f> scale;
-    public final Optional<Vector3f> offset;
-    public final List<AxisAlignedRotation> rotations;
-    public final boolean renderFluid;
+    private final Optional<Vector3f> scale;
+    private final Optional<Vector3f> offset;
+    private final List<AxisAlignedRotation> rotations;
+    private final boolean renderFluid;
 
     public AbstractSimpleDisplayState(Optional<Vector3f> scale, Optional<Vector3f> offset, List<AxisAlignedRotation> rotations, boolean renderFluid) {
 
@@ -22,5 +22,23 @@ public abstract class AbstractSimpleDisplayState extends DisplayState {
         this.renderFluid = renderFluid;
     }
 
-    public abstract BlockState getRenderState(float progress);
+    public Optional<Vector3f> getScale() {
+
+        return scale;
+    }
+
+    public Optional<Vector3f> getOffset() {
+
+        return offset;
+    }
+
+    public List<AxisAlignedRotation> getRotations() {
+
+        return rotations;
+    }
+
+    public boolean shouldRenderFluid() {
+
+        return renderFluid;
+    }
 }

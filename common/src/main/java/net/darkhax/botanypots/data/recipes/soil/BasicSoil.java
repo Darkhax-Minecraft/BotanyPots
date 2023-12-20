@@ -2,10 +2,9 @@ package net.darkhax.botanypots.data.recipes.soil;
 
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
-import net.darkhax.botanypots.data.displaystate.DisplayState;
+import net.darkhax.botanypots.data.displaystate.types.DisplayState;
 import net.darkhax.botanypots.data.recipes.crop.Crop;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -42,9 +41,8 @@ public class BasicSoil extends Soil {
      */
     protected int lightLevel;
 
-    public BasicSoil(ResourceLocation id, Ingredient ingredient, DisplayState renderState, float growthModifier, Set<String> categories, int lightLevel) {
+    public BasicSoil(Ingredient ingredient, DisplayState renderState, float growthModifier, Set<String> categories, int lightLevel) {
 
-        super(id);
         this.ingredient = ingredient;
         this.displayState = renderState;
         this.growthModifier = growthModifier;

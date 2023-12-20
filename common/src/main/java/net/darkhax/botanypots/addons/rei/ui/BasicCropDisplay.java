@@ -13,6 +13,7 @@ import me.shedaniel.rei.api.common.util.EntryIngredients;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.addons.rei.REIPlugin;
 import net.darkhax.botanypots.data.recipes.crop.BasicCrop;
+import net.darkhax.botanypots.data.recipes.crop.Crop;
 import net.darkhax.botanypots.data.recipes.crop.HarvestEntry;
 import net.darkhax.botanypots.data.recipes.soil.BasicSoil;
 import net.darkhax.botanypots.data.recipes.soil.Soil;
@@ -20,6 +21,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -34,16 +36,19 @@ public class BasicCropDisplay extends BasicDisplay implements CropDisplay {
     private final int growthTime;
     private final float modifier;
 
-    public static List<CropDisplay> getCropRecipes(BasicCrop crop, List<Soil> soils) {
+    public static List<CropDisplay> getCropRecipes(RecipeHolder<Crop> cropRecipe, List<RecipeHolder<Soil>> soilRecipes) {
 
         final List<CropDisplay> info = new ArrayList<>();
 
-        for (Soil soil : soils) {
+        if (cropRecipe.value() instanceof BasicCrop crop) {
 
-            if (soil instanceof BasicSoil basicSoil && crop.canGrowInSoil(null, null, null, soil)) {
+            for (RecipeHolder<Soil> soilRecipe : soilRecipes) {
 
-                final int ticks = BotanyPotHelper.getRequiredGrowthTicks(null, null, null, crop, soil);
-                info.add(new BasicCropDisplay(crop.getId(), crop.getSeed(), basicSoil.getIngredient(), crop.getResults(), ticks, basicSoil.getGrowthModifier()));
+                if (soilRecipe.value() instanceof BasicSoil soil && crop.canGrowInSoil(null, null, null, soil)) {
+
+                    final int ticks = BotanyPotHelper.getRequiredGrowthTicks(null, null, null, crop, soil);
+                    info.add(new BasicCropDisplay(cropRecipe.id(), crop.getSeed(), soil.getIngredient(), crop.getResults(), ticks, soil.getGrowthModifier()));
+                }
             }
         }
 

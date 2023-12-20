@@ -3,17 +3,18 @@ package net.darkhax.botanypots.data.recipes.crop;
 import net.darkhax.bookshelf.api.util.MathsHelper;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
-import net.darkhax.botanypots.data.displaystate.DisplayState;
+import net.darkhax.botanypots.data.displaystate.types.DisplayState;
 import net.darkhax.botanypots.data.recipes.soil.Soil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -52,9 +53,13 @@ public class BasicCrop extends Crop {
      */
     protected int lightLevel;
 
-    public BasicCrop(ResourceLocation id, Ingredient seed, Set<String> soilCategories, int growthTicks, List<HarvestEntry> results, List<DisplayState> displayStates, int lightLevel) {
+    public BasicCrop(Ingredient seed, Set<String> soilCategories, int growthTicks, List<DisplayState> displayStates, int lightLevel) {
 
-        super(id);
+        this(seed, soilCategories, growthTicks, new ArrayList<>(), displayStates, lightLevel);
+    }
+
+    public BasicCrop(Ingredient seed, Set<String> soilCategories, int growthTicks, List<HarvestEntry> results, List<DisplayState> displayStates, int lightLevel) {
+
         this.seed = seed;
         this.soilCategories = soilCategories;
         this.growthTicks = growthTicks;

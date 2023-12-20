@@ -1,8 +1,8 @@
 plugins {
-    id 'net.minecraftforge.gradle'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
     id 'net.darkhax.curseforgegradle'
     id 'com.modrinth.minotaur'
-    id 'org.spongepowered.mixin'
 }
 
 apply from: '../gradle/patreon.gradle'
@@ -73,8 +73,8 @@ dependencies {
     implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-${project.ext.minecraft_version}:${project.ext.bookshelf_version}")
     implementation fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
     compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}")
-    compileOnly fg.deobf("dev.architectury:architectury-forge:8.1.87") // It doesn't actually matter which version we use as this is compileOnly
-    compileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:10.0.96") // It doesn't actually matter which version we use as this is compileOnly
+    compileOnly fg.deobf("dev.architectury:architectury-forge:10.0.9") // It doesn't actually matter which version we use as this is compileOnly
+    compileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:12.0.109") // It doesn't actually matter which version we use as this is compileOnly
     compileOnly fg.deobf("curse.maven:top-245211:${top_version}")
 
     compileOnly project(':common')
@@ -204,7 +204,6 @@ task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge)
     apiToken = findProperty('curse_auth')
 
     def mainFile = upload(curse_project, jar)
-    mainFile.addModLoader('NeoForge')
     mainFile.changelogType = 'markdown'
     mainFile.changelog = project.ext.mod_changelog
     mainFile.addJavaVersion('Java 17')

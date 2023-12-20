@@ -1,58 +1,51 @@
 package net.darkhax.botanypots.data.recipes.fertilizer;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import net.darkhax.bookshelf.api.serialization.Serializers;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.darkhax.bookshelf.api.data.bytebuf.BookshelfByteBufs;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+
+import java.util.Optional;
 
 public final class BasicFertilizerSerializer implements RecipeSerializer<BasicFertilizer> {
 
     public static final RecipeSerializer<?> SERIALIZER = new BasicFertilizerSerializer();
 
+    private static final Codec<BasicFertilizer> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(BasicFertilizer::getIngredient),
+            Ingredient.CODEC_NONEMPTY.optionalFieldOf("crop_ingredient").forGetter(BasicFertilizer::getCropIngredient),
+            Ingredient.CODEC_NONEMPTY.optionalFieldOf("soil_ingredient").forGetter(BasicFertilizer::getSoilIngredient),
+            Codec.INT.fieldOf("min_growth").forGetter(BasicFertilizer::getMinTicks),
+            Codec.INT.fieldOf("max_growth").forGetter(BasicFertilizer::getMaxTicks)
+    ).apply(instance, BasicFertilizer::new));
+
     @Override
-    public BasicFertilizer fromJson(ResourceLocation id, JsonObject json) {
+    public Codec<BasicFertilizer> codec() {
 
-        final Ingredient ingredient = Serializers.INGREDIENT.fromJSON(json, "ingredient");
-        final Ingredient cropIngredient = Serializers.INGREDIENT.fromJSONNullable(json, "crop_ingredient");
-        final Ingredient soilIngredient = Serializers.INGREDIENT.fromJSONNullable(json, "soil_ingredient");
-        final int minTicks = Serializers.INT.fromJSON(json, "min_growth");
-        final int maxTicks = Serializers.INT.fromJSON(json, "max_growth");
-
-        if (minTicks < 0 || maxTicks < 0) {
-
-            throw new JsonParseException("Growth ticks must be greater than 0! min=" + minTicks + " max=" + maxTicks);
-        }
-
-        if (minTicks > maxTicks) {
-
-            throw new JsonParseException("Min growth ticks must not be greater than max ticks.  min=" + minTicks + " max=" + maxTicks);
-        }
-
-        return new BasicFertilizer(id, ingredient, cropIngredient, soilIngredient, minTicks, maxTicks);
+        return CODEC;
     }
 
     @Override
-    public BasicFertilizer fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
+    public BasicFertilizer fromNetwork(FriendlyByteBuf buffer) {
 
-        final Ingredient ingredient = Serializers.INGREDIENT.fromByteBuf(buffer);
-        final Ingredient cropIngredient = Serializers.INGREDIENT.fromByteBufNullable(buffer);
-        final Ingredient soilIngredient = Serializers.INGREDIENT.fromByteBufNullable(buffer);
-        final int minTicks = Serializers.INT.fromByteBuf(buffer);
-        final int maxTicks = Serializers.INT.fromByteBuf(buffer);
+        final Ingredient ingredient = BookshelfByteBufs.INGREDIENT.read(buffer);
+        final Optional<Ingredient> cropIngredient = BookshelfByteBufs.INGREDIENT.readOptional(buffer);
+        final Optional<Ingredient> soilIngredient = BookshelfByteBufs.INGREDIENT.readOptional(buffer);
+        final int minTicks = BookshelfByteBufs.INT.read(buffer);
+        final int maxTicks = BookshelfByteBufs.INT.read(buffer);
 
-        return new BasicFertilizer(id, ingredient, cropIngredient, soilIngredient, minTicks, maxTicks);
+        return new BasicFertilizer(ingredient, cropIngredient, soilIngredient, minTicks, maxTicks);
     }
 
     @Override
     public void toNetwork(FriendlyByteBuf buffer, BasicFertilizer toWrite) {
 
-        Serializers.INGREDIENT.toByteBuf(buffer, toWrite.ingredient);
-        Serializers.INGREDIENT.toByteBufNullable(buffer, toWrite.cropIngredient);
-        Serializers.INGREDIENT.toByteBufNullable(buffer, toWrite.soilIngredient);
-        Serializers.INT.toByteBuf(buffer, toWrite.minTicks);
-        Serializers.INT.toByteBuf(buffer, toWrite.maxTicks);
+        BookshelfByteBufs.INGREDIENT.write(buffer, toWrite.ingredient);
+        BookshelfByteBufs.INGREDIENT.writeOptional(buffer, toWrite.cropIngredient);
+        BookshelfByteBufs.INGREDIENT.writeOptional(buffer, toWrite.soilIngredient);
+        BookshelfByteBufs.INT.write(buffer, toWrite.minTicks);
+        BookshelfByteBufs.INT.write(buffer, toWrite.maxTicks);
     }
 }

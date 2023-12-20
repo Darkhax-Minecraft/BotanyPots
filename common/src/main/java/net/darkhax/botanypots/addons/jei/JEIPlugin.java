@@ -22,6 +22,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 
 import java.util.List;
@@ -63,13 +64,16 @@ public class JEIPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
 
         final RecipeManager recipeManager = Minecraft.getInstance().level.getRecipeManager();
-        final List<Soil> soils = BotanyPotHelper.getAllRecipes(recipeManager, BotanyPotHelper.SOIL_TYPE.get());
-        final List<Crop> crops = BotanyPotHelper.getAllRecipes(recipeManager, BotanyPotHelper.CROP_TYPE.get());
+        final List<RecipeHolder<Soil>> soils = BotanyPotHelper.getAllRecipes(recipeManager, BotanyPotHelper.SOIL_TYPE.get());
+        final List<RecipeHolder<Crop>> crops = BotanyPotHelper.getAllRecipes(recipeManager, BotanyPotHelper.CROP_TYPE.get());
 
         crops.forEach(crop -> {
 
-            if (crop instanceof BasicCrop basic) {
-                registration.addRecipes(CROP, BasicCropDisplayInfo.getCropRecipes(basic, soils));
+            final List<CropDisplayInfo> recipeDisplays = BasicCropDisplayInfo.getCropRecipes(crop, soils);
+
+            if (!recipeDisplays.isEmpty()) {
+
+                registration.addRecipes(CROP, recipeDisplays);
             }
         });
     }

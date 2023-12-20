@@ -3,7 +3,7 @@ package net.darkhax.botanypots.block;
 import net.darkhax.bookshelf.api.Services;
 import net.darkhax.bookshelf.api.block.IBindRenderLayer;
 import net.darkhax.bookshelf.api.block.InventoryBlock;
-import net.darkhax.bookshelf.api.serialization.Serializers;
+import net.darkhax.bookshelf.api.data.bytebuf.BookshelfByteBufs;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.data.recipes.fertilizer.Fertilizer;
 import net.darkhax.botanypots.data.recipes.potinteraction.PotInteraction;
@@ -16,6 +16,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -24,6 +25,7 @@ import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -37,7 +39,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedBlock, IBindRenderLayer {
 
     private static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 8, 14);
-    private static final Properties DEFAULT_PROPERTIES = Block.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(1.25F, 4.2F).noOcclusion().lightLevel(state -> state.getValue(BlockStateProperties.LEVEL));
+    private static final Properties DEFAULT_PROPERTIES = BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(1.25F, 4.2F).noOcclusion().lightLevel(state -> state.getValue(BlockStateProperties.LEVEL));
 
     private final boolean hasInventory;
 
@@ -46,7 +48,7 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
         this(DEFAULT_PROPERTIES, hasInventory);
     }
 
-    public BlockBotanyPot(Block.Properties properties, boolean hasInventory) {
+    public BlockBotanyPot(BlockBehaviour.Properties properties, boolean hasInventory) {
 
         super(properties);
 
@@ -130,21 +132,21 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
             // Apply fertilizers, only if a valid crop is growing.
             if (potEntity.areGrowthConditionsMet() && potEntity.getGrowthTime() > 0 && !potEntity.doneGrowing) {
 
-                final Fertilizer fertilizer = BotanyPotHelper.findFertilizer(state, world, pos, player, hand, heldStack, potEntity);
+                final RecipeHolder<Fertilizer> fertilizerRecipe = BotanyPotHelper.findFertilizer(state, world, pos, player, hand, heldStack, potEntity);
 
-                if (fertilizer != null) {
+                if (fertilizerRecipe != null) {
 
-                    fertilizer.apply(state, world, pos, player, hand, heldStack, potEntity);
+                    fertilizerRecipe.value().apply(state, world, pos, player, hand, heldStack, potEntity);
                     return InteractionResult.CONSUME;
                 }
             }
 
             // Attempt right click interaction recipes.
-            final PotInteraction interaction = BotanyPotHelper.findPotInteraction(state, world, pos, player, hand, heldStack, potEntity);
+            final RecipeHolder<PotInteraction> interactionRecipe = BotanyPotHelper.findPotInteraction(state, world, pos, player, hand, heldStack, potEntity);
 
-            if (interaction != null) {
+            if (interactionRecipe != null) {
 
-                interaction.apply(state, world, pos, player, hand, heldStack, potEntity);
+                interactionRecipe.value().apply(state, world, pos, player, hand, heldStack, potEntity);
                 return InteractionResult.CONSUME;
             }
 
@@ -167,7 +169,7 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
             // Open the pot GUI
             else if (player instanceof ServerPlayer serverPlayer) {
 
-                Services.INVENTORY_HELPER.openMenu(serverPlayer, potEntity, buf -> Serializers.BLOCK_POS.toByteBuf(buf, pos));
+                Services.INVENTORY_HELPER.openMenu(serverPlayer, potEntity, buf -> BookshelfByteBufs.BLOCK_POS.write(buf, pos));
                 return InteractionResult.CONSUME;
             }
 

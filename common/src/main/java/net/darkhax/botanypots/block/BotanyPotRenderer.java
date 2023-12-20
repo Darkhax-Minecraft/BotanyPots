@@ -2,7 +2,7 @@ package net.darkhax.botanypots.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.darkhax.botanypots.BotanyPotHelper;
-import net.darkhax.botanypots.data.displaystate.DisplayState;
+import net.darkhax.botanypots.data.displaystate.types.DisplayState;
 import net.darkhax.botanypots.data.displaystate.render.DisplayStateRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;

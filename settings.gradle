@@ -6,6 +6,10 @@ pluginManagement {
             url = 'https://maven.minecraftforge.net/'
         }
         maven {
+            name = 'NeoForge'
+            url = 'https://maven.neoforged.net/releases'
+        }
+        maven {
             name = 'Fabric'
             url = 'https://maven.fabricmc.net/'
         }
@@ -24,3 +28,4 @@ rootProject.name = "BotanyPots"
 include('common')
 include('fabric')
 include('forge')
+include('neoforge')

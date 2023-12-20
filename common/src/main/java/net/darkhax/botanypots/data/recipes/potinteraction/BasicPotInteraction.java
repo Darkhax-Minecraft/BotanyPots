@@ -6,7 +6,6 @@ import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.block.inv.BotanyPotContainer;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -16,36 +15,23 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Optional;
 
 public class BasicPotInteraction extends PotInteraction {
 
     protected final Ingredient heldTest;
-
     protected final boolean damageHeld;
-
-    @Nullable
-    protected final Ingredient soilTest;
-
-    @Nullable
-    protected final Ingredient seedTest;
-
-    @Nullable
-    protected final ItemStack newSoilStack;
-
-    @Nullable
-    protected final ItemStack newSeedStack;
-
-    @Nullable
-    protected final Sound sound;
-
+    protected final Optional<Ingredient> soilTest;
+    protected final Optional<Ingredient> seedTest;
+    protected final Optional<ItemStack> newSoilStack;
+    protected final Optional<ItemStack> newSeedStack;
+    protected final Optional<Sound> sound;
     protected final List<ItemStack> extraDrops;
 
-    public BasicPotInteraction(ResourceLocation id, Ingredient heldTest, boolean damageHeld, @Nullable Ingredient soilTest, @Nullable Ingredient seedTest, @Nullable ItemStack newSoilStack, @Nullable ItemStack newSeedStack, @Nullable Sound sound, List<ItemStack> extraDrops) {
-
-        super(id);
+    public BasicPotInteraction(Ingredient heldTest, boolean damageHeld, Optional<Ingredient> soilTest, Optional<Ingredient> seedTest, Optional<ItemStack> newSoilStack, Optional<ItemStack> newSeedStack, Optional<Sound> sound, List<ItemStack> extraDrops) {
 
         this.heldTest = heldTest;
         this.damageHeld = damageHeld;
@@ -60,7 +46,7 @@ public class BasicPotInteraction extends PotInteraction {
     @Override
     public boolean canApply(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot) {
 
-        return this.heldTest.test(heldStack) && (this.soilTest == null || this.soilTest.test(pot.getInventory().getSoilStack())) && (this.seedTest == null || this.seedTest.test(pot.getInventory().getCropStack()));
+        return this.heldTest.test(heldStack) && (this.soilTest.isEmpty() || this.soilTest.get().test(pot.getInventory().getSoilStack())) && (this.seedTest.isEmpty() || this.seedTest.get().test(pot.getInventory().getCropStack()));
     }
 
     @Override
@@ -68,7 +54,7 @@ public class BasicPotInteraction extends PotInteraction {
 
         if (!world.isClientSide) {
 
-            if (this.newSoilStack != null) {
+            this.newSoilStack.ifPresent(soilStack -> {
 
                 // Drop soil crafting remainder if applicable.
                 if (Services.INVENTORY_HELPER.hasCraftingRemainder(pot.getInventory().getSoilStack())) {
@@ -82,10 +68,10 @@ public class BasicPotInteraction extends PotInteraction {
                 }
 
                 // Set the soil slot.
-                pot.getInventory().setItem(BotanyPotContainer.SOIL_SLOT, this.newSoilStack.copy());
-            }
+                pot.getInventory().setItem(BotanyPotContainer.SOIL_SLOT, soilStack.copy());
+            });
 
-            if (this.newSeedStack != null) {
+            this.newSeedStack.ifPresent(seedStack -> {
 
                 // Drop seed crafting remainder if applicable.
                 if (Services.INVENTORY_HELPER.hasCraftingRemainder(pot.getInventory().getCropStack())) {
@@ -99,8 +85,8 @@ public class BasicPotInteraction extends PotInteraction {
                 }
 
                 // Set the seed slot.
-                pot.getInventory().setItem(BotanyPotContainer.CROP_SLOT, this.newSeedStack.copy());
-            }
+                pot.getInventory().setItem(BotanyPotContainer.CROP_SLOT, seedStack.copy());
+            });
 
             // If the stack can be damaged try to damage it instead of destroying it directly.
             if (this.damageHeld && heldStack.getMaxDamage() > 0) {
@@ -131,15 +117,45 @@ public class BasicPotInteraction extends PotInteraction {
         }
 
         // Play a sound if one is specified.
-        if (this.sound != null) {
-
-            this.sound.playSoundAt(world, player, pos);
-        }
+        this.sound.ifPresent(harvestSound -> harvestSound.playSoundAt(world, player, pos));
     }
 
+    @NotNull
     @Override
     public RecipeSerializer<?> getSerializer() {
 
         return BotanyPotHelper.SIMPLE_POT_INTERACTION_SERIALIZER.get();
+    }
+
+    public Ingredient getHeldTest() {
+        return heldTest;
+    }
+
+    public boolean isDamageHeld() {
+        return damageHeld;
+    }
+
+    public Optional<Ingredient> getSoilTest() {
+        return soilTest;
+    }
+
+    public Optional<Ingredient> getSeedTest() {
+        return seedTest;
+    }
+
+    public Optional<ItemStack> getNewSoilStack() {
+        return newSoilStack;
+    }
+
+    public Optional<ItemStack> getNewSeedStack() {
+        return newSeedStack;
+    }
+
+    public Optional<Sound> getSound() {
+        return sound;
+    }
+
+    public List<ItemStack> getExtraDrops() {
+        return extraDrops;
     }
 }

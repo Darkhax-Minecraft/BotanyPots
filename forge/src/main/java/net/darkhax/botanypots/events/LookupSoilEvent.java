@@ -4,6 +4,7 @@ import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.data.recipes.soil.Soil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.Cancelable;
 
@@ -15,12 +16,12 @@ public class LookupSoilEvent extends BotanyPotEvent {
     final ItemStack stack;
 
     @Nullable
-    private final Soil original;
+    private final RecipeHolder<Soil> original;
 
     @Nullable
-    private Soil result;
+    private RecipeHolder<Soil> result;
 
-    public LookupSoilEvent(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack, Soil original) {
+    public LookupSoilEvent(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack, RecipeHolder<Soil> original) {
 
         super(level, pos, pot);
         this.stack = stack;
@@ -34,18 +35,18 @@ public class LookupSoilEvent extends BotanyPotEvent {
     }
 
     @Nullable
-    public Soil getOriginal() {
+    public RecipeHolder<Soil> getOriginal() {
 
         return this.original;
     }
 
     @Nullable
-    public Soil getLookupResult() {
+    public RecipeHolder<Soil> getLookupResult() {
 
         return this.result;
     }
 
-    public void setLookupResult(@Nullable Soil newResult) {
+    public void setLookupResult(@Nullable RecipeHolder<Soil> newResult) {
 
         this.result = newResult;
     }

@@ -3,10 +3,9 @@ package net.darkhax.botanypots.data.recipes.crop;
 import net.darkhax.bookshelf.api.data.recipes.RecipeBaseData;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
-import net.darkhax.botanypots.data.displaystate.DisplayState;
+import net.darkhax.botanypots.data.displaystate.types.DisplayState;
 import net.darkhax.botanypots.data.recipes.soil.Soil;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -18,11 +17,6 @@ import java.util.Random;
 import java.util.Set;
 
 public abstract class Crop extends RecipeBaseData<Container> {
-
-    public Crop(ResourceLocation id) {
-
-        super(id);
-    }
 
     /**
      * Tests if the crop matches the provided placement context. This is used when looking up crops from their ItemStack

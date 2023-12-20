@@ -1,12 +1,12 @@
 package net.darkhax.botanypots.data.recipes.soil;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import net.darkhax.bookshelf.api.serialization.Serializers;
-import net.darkhax.botanypots.Constants;
-import net.darkhax.botanypots.data.displaystate.DisplayState;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.darkhax.bookshelf.api.data.bytebuf.BookshelfByteBufs;
+import net.darkhax.bookshelf.api.data.codecs.BookshelfCodecs;
+import net.darkhax.botanypots.data.displaystate.DisplayTypes;
+import net.darkhax.botanypots.data.displaystate.types.DisplayState;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 
@@ -18,53 +18,38 @@ public final class BasicSoilSerializer implements RecipeSerializer<BasicSoil> {
 
     public static BasicSoilSerializer SERIALIZER = new BasicSoilSerializer();
 
+    public static Codec<BasicSoil> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            BookshelfCodecs.INGREDIENT_NONEMPTY.get("input", BasicSoil::getIngredient),
+            DisplayTypes.DISPLAY_STATE_CODEC.get("display", BasicSoil::getDisplayState),
+            BookshelfCodecs.FLOAT.get("growthModifier", BasicSoil::getGrowthModifier, 1f),
+            BookshelfCodecs.STRING.getSet("categories", BasicSoil::getCategories),
+            BookshelfCodecs.INT.get("lightLevel", BasicSoil::getLightLevel, 0)
+    ).apply(instance, BasicSoil::new));
+
     @Override
-    public BasicSoil fromJson(ResourceLocation id, JsonObject json) {
-
-        if (id.getNamespace().equalsIgnoreCase("farmersdelight")) {
-
-            Constants.LOG.warn("Soil {} has been disabled by the BotanyPot devs to improve compatibility.", id);
-            return null;
-        }
-
-        final Ingredient input = Serializers.INGREDIENT.fromJSON(json, "input");
-        final DisplayState renderState = DisplayState.SERIALIZER.fromJSON(json, "display");
-        final float growthModifier = Serializers.FLOAT.fromJSON(json, "growthModifier", 1f);
-        final Set<String> categories = Serializers.STRING.fromJSONSet(json, "categories");
-        final int lightLevel = Serializers.INT.fromJSON(json, "lightLevel", 0);
-
-        if (growthModifier <= -1) {
-
-            throw new JsonParseException("Soil " + id + " has an invalid growth modifier. It must be greater than -1. Growth modifier was " + growthModifier);
-        }
-
-        if (lightLevel > 15 || lightLevel < 0) {
-
-            throw new JsonParseException("Soil " + id + " has an invalid light level. Light levels must be between 0 and 15. Light level was " + lightLevel);
-        }
-
-        return new BasicSoil(id, input, renderState, growthModifier, categories, lightLevel);
+    public Codec<BasicSoil> codec() {
+        return CODEC;
     }
 
     @Override
-    public BasicSoil fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
+    public BasicSoil fromNetwork(FriendlyByteBuf buffer) {
 
-        final Ingredient ingredient = Serializers.INGREDIENT.fromByteBuf(buffer);
-        final DisplayState renderState = DisplayState.SERIALIZER.fromByteBuf(buffer);
-        final float growthModifier = Serializers.FLOAT.fromByteBuf(buffer);
-        final Set<String> categories = new HashSet<>(Serializers.STRING.fromByteBufList(buffer));
-        final int lightLevel = Serializers.INT.fromByteBuf(buffer);
+        final Ingredient ingredient = BookshelfByteBufs.INGREDIENT.read(buffer);
+        final DisplayState renderState = DisplayTypes.DISPLAY_STATE_BUFFER.read(buffer);
+        final float growthModifier = BookshelfByteBufs.FLOAT.read(buffer);
+        final Set<String> categories = new HashSet<>(BookshelfByteBufs.STRING.readList(buffer));
+        final int lightLevel = BookshelfByteBufs.INT.read(buffer);
 
-        return new BasicSoil(id, ingredient, renderState, growthModifier, categories, lightLevel);
+        return new BasicSoil(ingredient, renderState, growthModifier, categories, lightLevel);
     }
 
     @Override
     public void toNetwork(FriendlyByteBuf buffer, BasicSoil soilInfo) {
 
-        Serializers.INGREDIENT.toByteBuf(buffer, soilInfo.ingredient);
-        DisplayState.SERIALIZER.toByteBuf(buffer, soilInfo.displayState);
-        Serializers.FLOAT.toByteBuf(buffer, soilInfo.growthModifier);
-        Serializers.STRING.toByteBufList(buffer, new ArrayList<>(soilInfo.categories));
-        Serializers.INT.toByteBuf(buffer, soilInfo.lightLevel);
+        BookshelfByteBufs.INGREDIENT.write(buffer, soilInfo.ingredient);
+        DisplayTypes.DISPLAY_STATE_BUFFER.write(buffer, soilInfo.displayState);
+        BookshelfByteBufs.FLOAT.write(buffer, soilInfo.growthModifier);
+        BookshelfByteBufs.STRING.writeList(buffer, new ArrayList<>(soilInfo.categories));
+        BookshelfByteBufs.INT.write(buffer, soilInfo.lightLevel);
     }
 }

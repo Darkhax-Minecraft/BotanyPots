@@ -6,7 +6,6 @@ import net.darkhax.bookshelf.api.function.CachedSupplier;
 import net.darkhax.bookshelf.api.inventory.ContainerInventoryAccess;
 import net.darkhax.bookshelf.api.inventory.IInventoryAccess;
 import net.darkhax.bookshelf.api.registry.RegistryObject;
-import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.darkhax.bookshelf.api.util.WorldHelper;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.Constants;
@@ -16,9 +15,7 @@ import net.darkhax.botanypots.data.recipes.crop.Crop;
 import net.darkhax.botanypots.data.recipes.soil.Soil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -28,6 +25,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -74,15 +72,29 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
     }
 
     @Nullable
-    public Crop getCrop() {
+    public RecipeHolder<Crop> getCropHolder() {
 
         return this.getInventory().getCrop();
     }
 
     @Nullable
-    public Soil getSoil() {
+    public RecipeHolder<Soil> getSoilHolder() {
 
         return this.getInventory().getSoil();
+    }
+
+    @Nullable
+    public Crop getCrop() {
+
+        final RecipeHolder<Crop> cropHolder = this.getCropHolder();
+        return cropHolder != null ? cropHolder.value() : null;
+    }
+
+    @Nullable
+    public Soil getSoil() {
+
+        final RecipeHolder<Soil> soilHolder = this.getSoilHolder();
+        return soilHolder != null ? soilHolder.value() : null;
     }
 
     public boolean isGrowing() {
@@ -318,13 +330,13 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
 
         super.load(tag);
 
-        this.growthTime = Serializers.INT.fromNBT(tag, "GrowthTime", 0);
-        this.doneGrowing = Serializers.BOOLEAN.fromNBT(tag, "DoneGrowing", false);
-        this.prevComparatorLevel = Serializers.INT.fromNBT(tag, "PrevComparatorLevel", 0);
-        this.comparatorLevel = Serializers.INT.fromNBT(tag, "ComparatorLevel", 0);
-        this.harvestDelay = Serializers.INT.fromNBT(tag, "HarvestDelay", -1);
-        this.exportDelay = Serializers.INT.fromNBT(tag, "ExportDelay", -1);
-        this.rngSeed = Serializers.LONG.fromNBT(tag, "RandomSeed", Constants.RANDOM.nextLong());
+        this.growthTime = tag.getInt("GrowthTime");
+        this.doneGrowing = tag.getBoolean("DoneGrowing");
+        this.prevComparatorLevel = tag.getInt("PrevComparatorLevel");
+        this.comparatorLevel = tag.getInt("ComparatorLevel");
+        this.harvestDelay = tag.contains("HarvestDelay") ? tag.getInt("HarvestDelay") : -1;
+        this.exportDelay = tag.contains("ExportDelay") ? tag.getInt("ExportDelay") : -1;
+        this.rngSeed = tag.contains("RandomSeed") ? tag.getLong("RandomSeed") : Constants.RANDOM.nextLong();
         this.rng.setSeed(this.rngSeed);
     }
 
@@ -333,13 +345,13 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
 
         super.saveAdditional(tag);
 
-        Serializers.INT.toNBT(tag, "GrowthTime", this.growthTime);
-        Serializers.BOOLEAN.toNBT(tag, "DoneGrowing", this.doneGrowing);
-        Serializers.INT.toNBT(tag, "PrevComparatorLevel", this.prevComparatorLevel);
-        Serializers.INT.toNBT(tag, "ComparatorLevel", this.comparatorLevel);
-        Serializers.INT.toNBT(tag, "HarvestDelay", this.harvestDelay);
-        Serializers.INT.toNBT(tag, "ExportDelay", this.exportDelay);
-        Serializers.LONG.toNBT(tag, "RandomSeed", this.rngSeed);
+        tag.putInt("GrowthTime", this.growthTime);
+        tag.putBoolean("DoneGrowing", this.doneGrowing);
+        tag.putInt("PrevComparatorLevel", this.prevComparatorLevel);
+        tag.putInt("ComparatorLevel", this.comparatorLevel);
+        tag.putInt("HarvestDelay", this.harvestDelay);
+        tag.putInt("ExportDelay", this.exportDelay);
+        tag.putLong("RandomSeed", this.rngSeed);
     }
 
     @Override

@@ -12,11 +12,11 @@ import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.addons.rei.ui.BasicCropDisplay;
 import net.darkhax.botanypots.addons.rei.ui.CropDisplay;
 import net.darkhax.botanypots.block.BlockBotanyPot;
-import net.darkhax.botanypots.data.recipes.crop.BasicCrop;
 import net.darkhax.botanypots.data.recipes.crop.Crop;
 import net.darkhax.botanypots.data.recipes.soil.Soil;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 
 import java.util.List;
@@ -46,18 +46,16 @@ public class REIPlugin implements REIClientPlugin {
     public void registerDisplays(DisplayRegistry registry) {
 
         final RecipeManager recipeManager = registry.getRecipeManager();
-        final List<Soil> soils = BotanyPotHelper.getAllRecipes(recipeManager, BotanyPotHelper.SOIL_TYPE.get());
-        final List<Crop> crops = BotanyPotHelper.getAllRecipes(recipeManager, BotanyPotHelper.CROP_TYPE.get());
+        final List<RecipeHolder<Soil>> soils = BotanyPotHelper.getAllRecipes(recipeManager, BotanyPotHelper.SOIL_TYPE.get());
+        final List<RecipeHolder<Crop>> crops = BotanyPotHelper.getAllRecipes(recipeManager, BotanyPotHelper.CROP_TYPE.get());
 
         crops.forEach(crop -> {
 
-            if (crop instanceof BasicCrop basic) {
-                List<CropDisplay> displays = BasicCropDisplay.getCropRecipes(basic, soils);
+            final List<CropDisplay> displays = BasicCropDisplay.getCropRecipes(crop, soils);
 
-                for (CropDisplay display : displays) {
+            for (CropDisplay display : displays) {
 
-                    registry.add(display, basic);
-                }
+                registry.add(display, crop);
             }
         });
     }

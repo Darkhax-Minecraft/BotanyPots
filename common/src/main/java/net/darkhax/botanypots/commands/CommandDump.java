@@ -17,6 +17,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
@@ -118,9 +119,9 @@ public class CommandDump {
 
         private static boolean isCrop(ItemStack stack, RecipeManager recipes) {
 
-            for (final Crop crop : recipes.getAllRecipesFor(BotanyPotHelper.CROP_TYPE.get())) {
+            for (final RecipeHolder<Crop> recipe : recipes.getAllRecipesFor(BotanyPotHelper.CROP_TYPE.get())) {
 
-                if (crop.matchesLookup(null, null, null, stack)) {
+                if (recipe.value().matchesLookup(null, null, null, stack)) {
 
                     return true;
                 }
@@ -131,9 +132,9 @@ public class CommandDump {
 
         private static boolean isSoil(ItemStack stack, RecipeManager recipes) {
 
-            for (final Soil soil : recipes.getAllRecipesFor(BotanyPotHelper.SOIL_TYPE.get())) {
+            for (final RecipeHolder<Soil> recipe : recipes.getAllRecipesFor(BotanyPotHelper.SOIL_TYPE.get())) {
 
-                if (soil.matchesLookup(null, null, null, stack)) {
+                if (recipe.value().matchesLookup(null, null, null, stack)) {
 
                     return true;
                 }

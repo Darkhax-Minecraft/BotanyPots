@@ -17,6 +17,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -42,6 +43,16 @@ public class BotanyPotHelper {
     public static final CachedSupplier<RecipeSerializer<?>> BASIC_FERTILIZER_SERIALIZER = RegistryObject.deferred(BuiltInRegistries.RECIPE_SERIALIZER, Constants.MOD_ID, "fertilizer").cast();
 
     public static final BotanyPotEventDispatcher EVENT_DISPATCHER = Services.load(BotanyPotEventDispatcher.class);
+
+    public static int getRequiredGrowthTicks(Level level, BlockPos pos, BlockEntityBotanyPot pot, @Nullable RecipeHolder<Crop> crop, @Nullable RecipeHolder<Soil> soil) {
+
+        if (crop == null || soil == null) {
+
+            return -1;
+        }
+
+        return getRequiredGrowthTicks(level, pos, pot, crop.value(), soil.value());
+    }
 
     /**
      * Calculates the amount of growth ticks required for a crop to be considered fully grown.
@@ -70,6 +81,16 @@ public class BotanyPotHelper {
         }
 
         return -1;
+    }
+
+    public static boolean canCropGrow(Level level, BlockPos pos, BlockEntityBotanyPot pot, RecipeHolder<Soil> soil, RecipeHolder<Crop> crop) {
+
+        return soil != null && crop != null && canCropGrow(level, pos, pot, soil.value(), crop.value());
+    }
+
+    public static boolean canCropGrow(Level level, BlockPos pos, BlockEntityBotanyPot pot, RecipeHolder<Soil> soil, Crop crop) {
+
+        return soil != null && canCropGrow(level, pos, pot, soil.value(), crop);
     }
 
     /**
@@ -102,17 +123,17 @@ public class BotanyPotHelper {
      * @return A soil that is applicable for the provided context. If no soil is found the result will be null.
      */
     @Nullable
-    public static Soil findSoil(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack soilStack) {
+    public static RecipeHolder<Soil> findSoil(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack soilStack) {
 
-        Soil result = null;
+        RecipeHolder<Soil> result = null;
 
         if (level != null && !soilStack.isEmpty()) {
 
-            for (final Soil soil : getAllRecipes(level.getRecipeManager(), SOIL_TYPE.get())) {
+            for (final RecipeHolder<Soil> recipe : getAllRecipes(level.getRecipeManager(), SOIL_TYPE.get())) {
 
-                if (soil.matchesLookup(level, pos, pot, soilStack)) {
+                if (recipe.value().matchesLookup(level, pos, pot, soilStack)) {
 
-                    result = soil;
+                    result = recipe;
                     break;
                 }
             }
@@ -131,17 +152,17 @@ public class BotanyPotHelper {
      * @return A crop that is applicable for the provided context. If no crop is found the result will be null.
      */
     @Nullable
-    public static Crop findCrop(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack) {
+    public static RecipeHolder<Crop> findCrop(Level level, BlockPos pos, BlockEntityBotanyPot pot, ItemStack stack) {
 
-        Crop result = null;
+        RecipeHolder<Crop> result = null;
 
         if (level != null && !stack.isEmpty()) {
 
-            for (final Crop crop : getAllRecipes(level.getRecipeManager(), CROP_TYPE.get())) {
+            for (final RecipeHolder<Crop> recipe : getAllRecipes(level.getRecipeManager(), CROP_TYPE.get())) {
 
-                if (crop.matchesLookup(level, pos, pot, stack)) {
+                if (recipe.value().matchesLookup(level, pos, pot, stack)) {
 
-                    result = crop;
+                    result = recipe;
                     break;
                 }
             }
@@ -150,7 +171,7 @@ public class BotanyPotHelper {
         return EVENT_DISPATCHER.postCropLookup(level, pos, pot, stack, result);
     }
 
-    public static <C extends Container, T extends Recipe<C>> List<T> getAllRecipes(RecipeManager manager, RecipeType<T> type) {
+    public static <C extends Container, T extends Recipe<C>> List<RecipeHolder<T>> getAllRecipes(RecipeManager manager, RecipeType<T> type) {
 
         return manager.getAllRecipesFor(type);
     }
@@ -169,17 +190,17 @@ public class BotanyPotHelper {
      * be null.
      */
     @Nullable
-    public static PotInteraction findPotInteraction(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot) {
+    public static RecipeHolder<PotInteraction> findPotInteraction(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot) {
 
-        PotInteraction result = null;
+        RecipeHolder<PotInteraction> result = null;
 
         if (!heldStack.isEmpty()) {
 
-            for (final PotInteraction interaction : getAllRecipes(world.getRecipeManager(), POT_INTERACTION_TYPE.get())) {
+            for (final RecipeHolder<PotInteraction> recipe : getAllRecipes(world.getRecipeManager(), POT_INTERACTION_TYPE.get())) {
 
-                if (interaction.canApply(state, world, pos, player, hand, heldStack, pot)) {
+                if (recipe.value().canApply(state, world, pos, player, hand, heldStack, pot)) {
 
-                    result = interaction;
+                    result = recipe;
                     break;
                 }
             }
@@ -202,17 +223,17 @@ public class BotanyPotHelper {
      * null.
      */
     @Nullable
-    public static Fertilizer findFertilizer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot) {
+    public static RecipeHolder<Fertilizer> findFertilizer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot) {
 
-        Fertilizer result = null;
+        RecipeHolder<Fertilizer> result = null;
 
         if (!heldStack.isEmpty()) {
 
-            for (final Fertilizer fertilizer : getAllRecipes(world.getRecipeManager(), FERTILIZER_TYPE.get())) {
+            for (final RecipeHolder<Fertilizer> recipe : getAllRecipes(world.getRecipeManager(), FERTILIZER_TYPE.get())) {
 
-                if (fertilizer.canApply(state, world, pos, player, hand, heldStack, pot)) {
+                if (recipe.value().canApply(state, world, pos, player, hand, heldStack, pot)) {
 
-                    result = fertilizer;
+                    result = recipe;
                     break;
                 }
             }

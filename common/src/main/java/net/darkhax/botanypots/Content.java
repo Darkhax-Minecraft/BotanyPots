@@ -38,7 +38,7 @@ public class Content extends RegistryDataProvider {
         // Recipe Serializers
         this.recipeSerializers.add(() -> BasicSoilSerializer.SERIALIZER, "soil");
         this.recipeSerializers.add(() -> BasicCropSerializer.SERIALIZER, "crop");
-        this.recipeSerializers.add(() -> BasicPotInteractionSerializer.SERIALIZER, "pot_interaction");
+        this.recipeSerializers.add(() -> BasicPotInteractionSerializer.INSTANCE, "pot_interaction");
         this.recipeSerializers.add(() -> BasicFertilizerSerializer.SERIALIZER, "fertilizer");
 
         // Basic Pot

@@ -3,7 +3,7 @@ package net.darkhax.botanypots.data.displaystate.render;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.darkhax.bookshelf.api.client.RenderHelper;
-import net.darkhax.botanypots.data.displaystate.SimpleDisplayState;
+import net.darkhax.botanypots.data.displaystate.types.SimpleDisplayState;
 import net.darkhax.botanypots.data.displaystate.math.AxisAlignedRotation;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -29,10 +29,10 @@ public class SimpleDisplayStateRenderer extends DisplayStateRenderer<SimpleDispl
 
         pose.pushPose();
 
-        displayState.scale.ifPresent(scale -> pose.scale(scale.x(), scale.y(), scale.z()));
-        displayState.offset.ifPresent(offset -> pose.translate(offset.x(), offset.y(), offset.z()));
+        displayState.getScale().ifPresent(scale -> pose.scale(scale.x(), scale.y(), scale.z()));
+        displayState.getOffset().ifPresent(offset -> pose.translate(offset.x(), offset.y(), offset.z()));
 
-        for (AxisAlignedRotation rotation : displayState.rotations) {
+        for (AxisAlignedRotation rotation : displayState.getRotations()) {
 
             // Applies the rotation to the render.
             pose.mulPose(rotation.rotation);
@@ -41,10 +41,10 @@ public class SimpleDisplayStateRenderer extends DisplayStateRenderer<SimpleDispl
             pose.translate(rotation.offset.x(), rotation.offset.y(), rotation.offset.z());
         }
 
-        final BlockState blockState = displayState.getRenderState(progress);
+        final BlockState blockState = displayState.getState();
 
         // Render Fluid
-        if (displayState.renderFluid) {
+        if (displayState.shouldRenderFluid()) {
 
             final FluidState fluidState = blockState.getFluidState();
 

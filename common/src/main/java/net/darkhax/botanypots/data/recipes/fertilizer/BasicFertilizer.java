@@ -1,9 +1,9 @@
 package net.darkhax.botanypots.data.recipes.fertilizer;
 
+import com.google.gson.JsonParseException;
 import net.darkhax.botanypots.BotanyPotHelper;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -13,24 +13,28 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
+import java.util.Optional;
 
 public class BasicFertilizer extends Fertilizer {
 
     protected Ingredient ingredient;
-
-    @Nullable
-    protected Ingredient cropIngredient;
-
-    @Nullable
-    protected Ingredient soilIngredient;
-
+    protected Optional<Ingredient> cropIngredient;
+    protected Optional<Ingredient> soilIngredient;
     protected int minTicks;
-
     protected int maxTicks;
 
-    public BasicFertilizer(ResourceLocation id, Ingredient ingredient, @Nullable Ingredient cropIngredient, @Nullable Ingredient soilIngredient, int minTicks, int maxTicks) {
+    public BasicFertilizer(Ingredient ingredient, Optional<Ingredient> cropIngredient, Optional<Ingredient> soilIngredient, int minTicks, int maxTicks) {
 
-        super(id);
+        if (minTicks < 0 || maxTicks < 0) {
+
+            throw new JsonParseException("Growth ticks must be greater than 0! min=" + minTicks + " max=" + maxTicks);
+        }
+
+        if (minTicks > maxTicks) {
+
+            throw new JsonParseException("Min growth ticks must not be greater than max ticks.  min=" + minTicks + " max=" + maxTicks);
+        }
+
         this.ingredient = ingredient;
         this.cropIngredient = cropIngredient;
         this.soilIngredient = soilIngredient;
@@ -41,7 +45,7 @@ public class BasicFertilizer extends Fertilizer {
     @Override
     public boolean canApply(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, ItemStack heldStack, BlockEntityBotanyPot pot) {
 
-        return ingredient.test(heldStack) && (this.cropIngredient == null || this.cropIngredient.test(pot.getInventory().getCropStack())) && (this.soilIngredient == null || this.soilIngredient.test(pot.getInventory().getSoilStack()));
+        return ingredient.test(heldStack) && (!this.cropIngredient.isPresent() || this.cropIngredient.get().test(pot.getInventory().getCropStack())) && (!this.soilIngredient.isPresent() || this.soilIngredient.get().test(pot.getInventory().getSoilStack()));
     }
 
     @Override
@@ -65,5 +69,32 @@ public class BasicFertilizer extends Fertilizer {
     public RecipeSerializer<?> getSerializer() {
 
         return BotanyPotHelper.BASIC_FERTILIZER_SERIALIZER.get();
+    }
+
+    public Ingredient getIngredient() {
+
+        return ingredient;
+    }
+
+    @Nullable
+    public Optional<Ingredient> getCropIngredient() {
+
+        return cropIngredient;
+    }
+
+    @Nullable
+    public Optional<Ingredient> getSoilIngredient() {
+
+        return soilIngredient;
+    }
+
+    public int getMinTicks() {
+
+        return minTicks;
+    }
+
+    public int getMaxTicks() {
+
+        return maxTicks;
     }
 }
