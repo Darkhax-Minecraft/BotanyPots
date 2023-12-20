@@ -1,0 +1,23 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "terrestria:andisol_farmland"
+        ]
+      }
+    ],
+      "type": "botanypots:soil",
+      "input": {
+        "item": "terrestria:andisol_farmland"
+      },
+      "display": {
+        "block": "terrestria:andisol_farmland"
+      },
+      "categories": [
+        "andisol",
+        "dirt",
+        "farmland"
+      ],
+      "growthModifier": 1
+    }
