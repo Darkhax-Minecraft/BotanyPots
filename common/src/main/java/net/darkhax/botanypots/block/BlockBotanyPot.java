@@ -83,7 +83,14 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
 
         final BlockPos placedPos = context.getClickedPos();
         final FluidState fluidState = context.getLevel().getFluidState(placedPos);
-        return super.getStateForPlacement(context).setValue(BlockStateProperties.WATERLOGGED, fluidState.getType() == Fluids.WATER);
+
+        BlockState placedState = super.getStateForPlacement(context).setValue(BlockStateProperties.WATERLOGGED, fluidState.getType() == Fluids.WATER);
+
+        if (context.getNearestLookingDirection().getAxis().isHorizontal()) {
+            placedState = placedState.setValue(BlockStateProperties.HORIZONTAL_FACING, context.getNearestLookingDirection().getOpposite());
+        }
+
+        return placedState;
     }
 
     @Override
