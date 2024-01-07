@@ -6,23 +6,17 @@ import net.darkhax.bookshelf.api.data.bytebuf.BookshelfByteBufs;
 import net.darkhax.bookshelf.api.data.bytebuf.ByteBufHelper;
 import net.darkhax.bookshelf.api.data.codecs.BookshelfCodecs;
 import net.darkhax.bookshelf.api.data.codecs.CodecHelper;
-import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.data.displaystate.DisplayTypes;
 import net.darkhax.botanypots.data.displaystate.math.AxisAlignedRotation;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.Property;
 import org.joml.Vector3f;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class SimpleDisplayState extends AbstractSimpleDisplayState {
 
@@ -36,7 +30,7 @@ public class SimpleDisplayState extends AbstractSimpleDisplayState {
     ).apply(instance, SimpleDisplayState::new)));
     public static final ByteBufHelper<SimpleDisplayState> BUFFER = new ByteBufHelper<>(SimpleDisplayState::readFromBuffer, SimpleDisplayState::writeToBuffer);
 
-    private BlockState state;
+    private final BlockState state;
 
     public SimpleDisplayState(Block block, Optional<Map<String, String>> properties, Optional<Vector3f> scale, Optional<Vector3f> offset, List<AxisAlignedRotation> rotations, boolean renderFluid) {
 

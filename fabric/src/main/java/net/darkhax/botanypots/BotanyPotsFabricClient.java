@@ -1,6 +1,5 @@
 package net.darkhax.botanypots;
 
-import net.darkhax.bookshelf.api.Services;
 import net.darkhax.bookshelf.api.function.CachedSupplier;
 import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.block.BotanyPotRenderer;
@@ -10,7 +9,6 @@ import net.darkhax.botanypots.data.displaystate.render.DisplayStateRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.MenuType;

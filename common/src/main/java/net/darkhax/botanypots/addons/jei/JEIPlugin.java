@@ -13,7 +13,6 @@ import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.addons.jei.ui.BasicCropDisplayInfo;
 import net.darkhax.botanypots.addons.jei.ui.CropDisplayInfo;
 import net.darkhax.botanypots.block.BlockBotanyPot;
-import net.darkhax.botanypots.data.recipes.crop.BasicCrop;
 import net.darkhax.botanypots.data.recipes.crop.Crop;
 import net.darkhax.botanypots.data.recipes.fertilizer.Fertilizer;
 import net.darkhax.botanypots.data.recipes.potinteraction.PotInteraction;

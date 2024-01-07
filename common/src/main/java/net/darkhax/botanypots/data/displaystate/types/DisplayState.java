@@ -17,7 +17,6 @@ public abstract class DisplayState {
 
     public abstract DisplayTypes.DisplayType<?> getType();
 
-
     public static Optional<Map<String, String>> encodeProperties(BlockState state) {
 
         final Map<String, String> propertyMap = new HashMap<>();

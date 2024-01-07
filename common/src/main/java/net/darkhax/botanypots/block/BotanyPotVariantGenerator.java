@@ -1,9 +1,7 @@
 package net.darkhax.botanypots.block;
 
 import net.darkhax.botanypots.Constants;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
