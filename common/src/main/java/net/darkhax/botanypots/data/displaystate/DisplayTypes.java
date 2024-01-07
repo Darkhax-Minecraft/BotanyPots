@@ -8,6 +8,7 @@ import net.darkhax.bookshelf.api.data.codecs.CodecHelper;
 import net.darkhax.botanypots.Constants;
 import net.darkhax.botanypots.data.displaystate.types.AgingDisplayState;
 import net.darkhax.botanypots.data.displaystate.types.DisplayState;
+import net.darkhax.botanypots.data.displaystate.types.EntityDisplayState;
 import net.darkhax.botanypots.data.displaystate.types.SimpleDisplayState;
 import net.darkhax.botanypots.data.displaystate.types.TransitionalDisplayState;
 import net.minecraft.network.FriendlyByteBuf;
@@ -29,6 +30,7 @@ public class DisplayTypes {
     public static final DisplayType<SimpleDisplayState> SIMPLE = register(Constants.id("simple"), SimpleDisplayState.CODEC, SimpleDisplayState.BUFFER);
     public static final DisplayType<TransitionalDisplayState> TRANSITIONAL = register(Constants.id("transitional"), TransitionalDisplayState.CODEC, TransitionalDisplayState.BUFFER);
     public static final DisplayType<AgingDisplayState> AGING = register(Constants.id("aging"), AgingDisplayState.CODEC, AgingDisplayState.BUFFER);
+    public static final DisplayType<EntityDisplayState> ENTITY = register(Constants.id("entity"), EntityDisplayState.CODEC, EntityDisplayState.BUFFER);
 
     public static <T extends DisplayState> DisplayType<T> register(ResourceLocation id, CodecHelper<T> codec, ByteBufHelper<T> buffer) {
 
