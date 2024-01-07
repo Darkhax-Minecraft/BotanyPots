@@ -1,9 +1,11 @@
 package net.darkhax.botanypots.data.displaystate.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.data.displaystate.DisplayTypes;
 import net.darkhax.botanypots.data.displaystate.types.DisplayState;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 
@@ -26,17 +28,18 @@ public abstract class DisplayStateRenderer<T extends DisplayState> {
         return renderer;
     }
 
-    public static void renderState(DisplayState displayState, PoseStack stack, Level level, BlockPos pos, MultiBufferSource bufferSource, int light, int overlay, float progress) {
+    public static void renderState(BlockEntityRendererProvider.Context context, DisplayState displayState, PoseStack stack, Level level, BlockPos pos, float tickDelta, MultiBufferSource bufferSource, int light, int overlay, BlockEntityBotanyPot pot, float progress) {
 
-        ((DisplayStateRenderer) getRenderer(displayState)).render(displayState, stack, level, pos, bufferSource, light, overlay, progress);
+        ((DisplayStateRenderer) getRenderer(displayState)).render(context, displayState, stack, level, pos, tickDelta, bufferSource, light, overlay, pot, progress);
     }
 
-    public abstract void render(T displayState, PoseStack stack, Level level, BlockPos pos, MultiBufferSource bufferSource, int light, int overlay, float progress);
+    public abstract void render(BlockEntityRendererProvider.Context context, T displayState, PoseStack stack, Level level, BlockPos pos, float tickDelta, MultiBufferSource bufferSource, int light, int overlay, BlockEntityBotanyPot pot, float progress);
 
     public static void init() {
 
         RENDERERS.put(DisplayTypes.SIMPLE, SimpleDisplayStateRenderer.RENDERER);
         RENDERERS.put(DisplayTypes.TRANSITIONAL, PhasedDisplayStateRenderer.TRANSITIONAL);
         RENDERERS.put(DisplayTypes.AGING, PhasedDisplayStateRenderer.AGING);
+        RENDERERS.put(DisplayTypes.ENTITY, EntityDisplayStateRenderer.RENDERER);
     }
 }

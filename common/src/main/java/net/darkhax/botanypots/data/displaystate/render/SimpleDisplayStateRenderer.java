@@ -3,11 +3,13 @@ package net.darkhax.botanypots.data.displaystate.render;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.darkhax.bookshelf.api.client.RenderHelper;
-import net.darkhax.botanypots.data.displaystate.types.SimpleDisplayState;
+import net.darkhax.botanypots.block.BlockEntityBotanyPot;
 import net.darkhax.botanypots.data.displaystate.math.AxisAlignedRotation;
+import net.darkhax.botanypots.data.displaystate.types.SimpleDisplayState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
@@ -25,7 +27,7 @@ public class SimpleDisplayStateRenderer extends DisplayStateRenderer<SimpleDispl
     }
 
     @Override
-    public void render(SimpleDisplayState displayState, PoseStack pose, Level level, BlockPos pos, MultiBufferSource bufferSource, int light, int overlay, float progress) {
+    public void render(BlockEntityRendererProvider.Context context, SimpleDisplayState displayState, PoseStack pose, Level level, BlockPos pos, float tickDelta, MultiBufferSource bufferSource, int light, int overlay, BlockEntityBotanyPot pot, float progress) {
 
         pose.pushPose();
 
@@ -64,7 +66,7 @@ public class SimpleDisplayStateRenderer extends DisplayStateRenderer<SimpleDispl
             final float green = (float) (tintColor >> 8 & 255) / 255f;
             final float blue = (float) (tintColor & 255) / 255f;
 
-            Minecraft.getInstance().getBlockRenderer().getModelRenderer().renderModel(pose.last(), builder, blockState, blockModel, red, green, blue, light, OverlayTexture.NO_OVERLAY);
+            context.getBlockRenderDispatcher().getModelRenderer().renderModel(pose.last(), builder, blockState, blockModel, red, green, blue, light, OverlayTexture.NO_OVERLAY);
         }
 
         pose.popPose();
