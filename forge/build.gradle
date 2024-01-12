@@ -71,7 +71,6 @@ dependencies {
 
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-${project.ext.minecraft_version}:${project.ext.bookshelf_version}")
-    implementation fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
     compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}")
     compileOnly fg.deobf("dev.architectury:architectury-forge:10.0.9") // It doesn't actually matter which version we use as this is compileOnly
     compileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:12.0.109") // It doesn't actually matter which version we use as this is compileOnly
@@ -140,6 +139,12 @@ processResources {
 }
 
 jar.finalizedBy('reobfJar')
+
+sourceSets.each {
+    def dir = layout.buildDirectory.dir("sourcesSets/$it.name")
+    it.output.resourcesDir = dir
+    it.java.destinationDirectory = dir
+}
 
 jar {
 

@@ -1,20 +1,20 @@
 {
   "type": "botanypots:crop",
   "seed": {
-    "item": "minecraft:grass"
+    "item": "minecraft:short_grass"
   },
   "categories": [
     "dirt"
   ],
   "growthTicks": 1200,
   "display": {
-    "block": "minecraft:grass"
+    "block": "minecraft:short_grass"
   },
   "drops": [
     {
       "chance": 1.00,
       "output": {
-        "item": "minecraft:grass"
+        "item": "minecraft:short_grass"
       }
     }
   ]

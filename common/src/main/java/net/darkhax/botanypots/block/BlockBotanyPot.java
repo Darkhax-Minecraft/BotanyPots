@@ -1,5 +1,6 @@
 package net.darkhax.botanypots.block;
 
+import com.mojang.serialization.MapCodec;
 import net.darkhax.bookshelf.api.Services;
 import net.darkhax.bookshelf.api.block.IBindRenderLayer;
 import net.darkhax.bookshelf.api.block.InventoryBlock;
@@ -19,6 +20,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -64,6 +66,11 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
     public boolean hasInventory() {
 
         return this.hasInventory;
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        throw new RuntimeException("Codecs for this block have not been implemented yet. Sorry :(");
     }
 
     @Override
