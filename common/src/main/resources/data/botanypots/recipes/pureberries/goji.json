@@ -1,0 +1,63 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "pureberries:goji_berries"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "pureberries:goji_berries"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "block": "pureberries:goji_berry_bush_stage_0"
+      },
+      {
+        "block": "pureberries:goji_berry_bush_stage_1"
+      },
+      {
+        "block": "pureberries:goji_berry_bush_stage_2"
+      },
+      {
+        "block": "pureberries:goji_berry_bush_stage_3"
+      },
+      {
+        "block": "pureberries:goji_berry_bush_stage_4"
+      },
+      {
+        "block": "pureberries:goji_berry_bush_stage_5"
+      },
+      {
+        "block": "pureberries:goji_berry_bush_stage_6"
+      },
+      {
+        "block": "pureberries:goji_berry_bush_stage_7"
+      }
+    ]
+  },
+  "drops": [
+    {
+      "chance": 1,
+      "output": {
+        "item": "pureberries:goji_berries"
+      },
+      "maxRolls": 3
+    },
+    {
+      "chance": 0.2,
+      "output": {
+        "item": "pureberries:goji_berries"
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "pureberries:cloudberries"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "pureberries:cloudberries"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "block": "pureberries:cloudberry_plant_stage_0"
+      },
+      {
+        "block": "pureberries:cloudberry_plant_stage_1"
+      },
+      {
+        "block": "pureberries:cloudberry_plant_stage_2"
+      },
+      {
+        "block": "pureberries:cloudberry_plant_stage_3"
+      }
+    ]
+  },
+  "drops": [
+    {
+      "chance": 1,
+      "output": {
+        "item": "pureberries:cloudberries"
+      },
+      "maxRolls": 3
+    },
+    {
+      "chance": 0.2,
+      "output": {
+        "item": "pureberries:cloudberries"
+      }
+    }
+  ]
+}
