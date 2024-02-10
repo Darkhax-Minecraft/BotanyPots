@@ -25,6 +25,14 @@
       "output": {
         "item": "betternether:bone_mushroom"
       }
+    },
+    {
+      "chance": 0.15,
+      "output": {
+        "item": "minecraft:bone_meal"
+      },
+      "minRolls": 1,
+      "maxRolls": 2
     }
   ]
 }
