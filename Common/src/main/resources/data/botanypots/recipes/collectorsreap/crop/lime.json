@@ -1,0 +1,52 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "collectorsreap:lime_seeds",
+        "collectorsreap:lime"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "collectorsreap:lime_seeds"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "collectorsreap:lime_bush",
+      "properties": {
+        "half": "lower",
+        "age": "2"
+      }
+    },
+    {
+      "block": "collectorsreap:lime_bush",
+      "properties": {
+        "half": "upper",
+        "age": "2"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "collectorsreap:lime"
+      },
+      "minRolls": 1,
+      "maxRolls": 3
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "collectorsreap:lime_seeds"
+      }
+    }
+  ]
+}
