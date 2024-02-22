@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "tropicraft:pineapple"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "tropicraft:pineapple"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "tropicraft:pineapple"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "tropicraft:pineapple"
+        }
+      }
+    ]
+  }

@@ -1,0 +1,22 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "endergetic:eumus_poismoss"
+        ]
+      }
+    ],
+      "type": "botanypots:soil",
+      "input": {
+        "item": "endergetic:eumus_poismoss"
+      },
+      "display": {
+        "block": "endergetic:eumus_poismoss"
+      },
+      "categories": [
+        "poismoss",
+        "eumus"
+      ],
+      "growthModifier": 1
+    }

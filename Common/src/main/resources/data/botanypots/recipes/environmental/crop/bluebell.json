@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "environmental:bluebell"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "environmental:bluebell"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "environmental:bluebell"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "environmental:bluebell"
+        }
+      }
+    ]
+  }

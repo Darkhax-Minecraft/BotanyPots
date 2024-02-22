@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "deeperdarker:echo_soil"
+      ]
+    }
+  ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "deeperdarker:echo_soil"
+    },
+    "display": {
+      "block": "deeperdarker:echo_soil"
+    },
+    "categories": [
+      "dirt",
+      "farmland",
+      "sculk"
+    ],
+    "growthModifier": 1
+  }

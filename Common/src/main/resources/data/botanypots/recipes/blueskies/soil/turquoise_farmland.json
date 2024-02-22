@@ -1,0 +1,20 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": "blue_skies:turquoise_farmland"
+      }
+    ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "blue_skies:turquoise_farmland"
+    },
+    "display": {
+      "block": "blue_skies:turquoise_farmland"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthModifier": 1.00
+  }

@@ -1,0 +1,31 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "neapolitan:mint_sprout"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "neapolitan:mint_sprout"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1500,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "neapolitan:mint"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "neapolitan:mint_leaves"
+      }
+    }
+  ]
+}

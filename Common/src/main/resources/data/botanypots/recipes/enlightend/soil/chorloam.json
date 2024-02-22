@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "enlightened_end:chorloam"
+      ]
+    }
+  ],
+    "type": "botanypots:soil",
+    "input": {
+      "item": "enlightened_end:chorloam"
+    },
+    "display": {
+      "block": "enlightened_end:chorloam "
+    },
+    "categories": [
+      "chorloam"
+    ],
+    "growthModifier": 1
+  }

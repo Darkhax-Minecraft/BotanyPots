@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "forbidden_arcanus:golden_orchid_seeds"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "forbidden_arcanus:golden_orchid_seeds"
+    },
+    "categories": [
+      "magical_farmland"
+    ],
+    "growthTicks": 2500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "forbidden_arcanus:golden_orchid"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "forbidden_arcanus:deorum_nugget"
+        },
+        "minRolls": 2,
+        "maxRolls": 4
+      },
+      {
+        "chance": 0.001,
+        "output": {
+          "item": "forbidden_arcanus:golden_orchid_seeds"
+        }
+      }
+    ]
+  }

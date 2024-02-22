@@ -1,0 +1,39 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "enlightened_end:elevibloom_seeds",
+          "enlightened_end:elevibloom"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "enlightened_end:elevibloom_seeds"
+    },
+    "categories": [
+      "chorloam"
+    ],
+    "growthTicks": 2500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "enlightened_end:elevibloom_2"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+              "item": "enlightened_end:elevibloom"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+          },
+          {
+            "chance": 0.001,
+            "output": {
+              "item": "enlightened_end:elevibloom"
+        }
+      }
+    ]
+  }

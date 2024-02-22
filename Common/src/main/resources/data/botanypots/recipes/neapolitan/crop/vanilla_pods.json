@@ -1,0 +1,31 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "neapolitan:vanilla_pods"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "neapolitan:vanilla_pods"
+  },
+  "categories": [
+    "dirt",
+    "farmland"
+  ],
+  "growthTicks": 1500,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "neapolitan:vanilla_vine"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "neapolitan:vanilla_pods"
+      }
+    }
+  ]
+}

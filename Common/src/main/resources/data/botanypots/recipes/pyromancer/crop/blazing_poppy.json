@@ -1,0 +1,30 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "pyromancer:blazing_poppy"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "pyromancer:blazing_poppy"
+    },
+    "categories": [
+      "pyromossed_netherrack"
+    ],
+    "growthTicks": 1500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "pyromancer:blazing_poppy"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "pyromancer:blazing_poppy"
+        }
+      }
+    ]
+  }

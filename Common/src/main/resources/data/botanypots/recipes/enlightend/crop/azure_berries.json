@@ -1,0 +1,32 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "enlightened_end:azure_berries"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "enlightened_end:azure_berries"
+    },
+    "categories": [
+      "chorloam",
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 2500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "enlightened_end:azure_berry_vine_1"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+              "item": "enlightened_end:azure_berries"
+        }
+      }
+    ]
+  }

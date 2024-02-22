@@ -1,0 +1,31 @@
+{
+    "bookshelf:load_conditions": [
+      {
+        "type": "bookshelf:item_exists",
+        "values": [
+          "environmental:white_lotus_flower"
+        ]
+      }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+      "item": "environmental:white_lotus_flower"
+    },
+    "categories": [
+      "dirt",
+      "farmland"
+    ],
+    "growthTicks": 1500,
+    "display": {
+      "type": "botanypots:aging",
+      "block": "environmental:white_lotus_flower"
+    },
+    "drops": [
+      {
+        "chance": 1.00,
+        "output": {
+          "item": "environmental:white_lotus_flower"
+        }
+      }
+    ]
+  }
