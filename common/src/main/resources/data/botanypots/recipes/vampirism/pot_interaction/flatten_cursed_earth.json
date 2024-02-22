@@ -1,0 +1,28 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "vampirism:cursed_earth",
+        "vampirism:cursed_earth_path"
+      ]
+    }
+  ],
+  "type": "botanypots:pot_interaction",
+  "held_ingredient": {
+    "tag": "minecraft:shovels"
+  },
+  "soil_ingredient": [
+    {
+      "item": "vampirism:cursed_earth"
+    }
+  ],
+  "soil_output": {
+    "item": "vampirism:cursed_earth_path",
+    "count": 1
+  },
+  "sound": {
+    "sound": "minecraft:item.shovel.flatten",
+    "category": "blocks"
+  }
+}

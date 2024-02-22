@@ -1,0 +1,22 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "vampirism:cursed_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "vampirism:cursed_grass"
+  },
+  "display": {
+    "block": "vampirism:cursed_grass"
+  },
+  "categories": [
+    "dirt",
+    "grass"
+  ],
+  "growthModifier": 1
+}
