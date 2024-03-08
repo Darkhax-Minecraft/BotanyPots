@@ -1,0 +1,32 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "iceandfire:frost_lily"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "iceandfire:frost_lily"
+  },
+  "categories": [
+    "dirt",
+    "farmland",
+    "ice"
+  ],
+  "growthTicks": 1500,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "iceandfire:frost_lily"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "iceandfire:frost_lily"
+      }
+    }
+  ]
+}

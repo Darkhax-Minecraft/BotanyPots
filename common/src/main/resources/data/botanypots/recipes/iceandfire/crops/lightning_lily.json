@@ -1,0 +1,32 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "iceandfire:lightning_lily"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "iceandfire:lightning_lily"
+  },
+  "categories": [
+    "dirt",
+    "farmland",
+    "sand"
+  ],
+  "growthTicks": 1500,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "iceandfire:lightning_lily"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "iceandfire:lightning_lily"
+      }
+    }
+  ]
+}

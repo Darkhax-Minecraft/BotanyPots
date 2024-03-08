@@ -1,0 +1,34 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "iceandfire:fire_lily"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "iceandfire:fire_lily"
+  },
+  "categories": [
+    "dirt",
+    "farmland",
+    "sand",
+    "gravel",
+    "nether"
+  ],
+  "growthTicks": 1500,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "iceandfire:fire_lily"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "iceandfire:fire_lily"
+      }
+    }
+  ]
+}
