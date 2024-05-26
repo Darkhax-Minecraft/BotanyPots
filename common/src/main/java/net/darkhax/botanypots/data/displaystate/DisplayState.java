@@ -60,12 +60,13 @@ public abstract class DisplayState {
         @Override
         public JsonElement toJSON(DisplayState toWrite) {
 
-            if (((DisplayStateSerializer<DisplayState>) toWrite.getSerializer()).toJSON(toWrite) instanceof JsonObject obj) {
+            JsonElement json = ((DisplayStateSerializer<DisplayState>) toWrite.getSerializer()).toJSON(toWrite);
+            if (json instanceof JsonObject obj) {
 
-                Serializers.RESOURCE_LOCATION.toJSON(obj, "type", toWrite.getSerializer().getId());
+               Serializers.RESOURCE_LOCATION.toJSON(obj, "type", toWrite.getSerializer().getId());
             }
 
-            return ((DisplayStateSerializer<DisplayState>) toWrite.getSerializer()).toJSON(toWrite);
+            return json;
         }
 
         @Override
