@@ -145,4 +145,41 @@ public class BasicPotInteraction extends PotInteraction {
 
         return BotanyPotHelper.SIMPLE_POT_INTERACTION_SERIALIZER.get();
     }
+
+    public Ingredient getHeldTest() {
+        return heldTest;
+    }
+
+    public boolean isDamageHeld() {
+        return damageHeld;
+    }
+
+    @Nullable
+    public Ingredient getSoilTest() {
+        return soilTest;
+    }
+
+    @Nullable
+    public Ingredient getSeedTest() {
+        return seedTest;
+    }
+
+    @Nullable
+    public ItemStack getNewSoilStack() {
+        return newSoilStack;
+    }
+
+    @Nullable
+    public ItemStack getNewSeedStack() {
+        return newSeedStack;
+    }
+
+    @Nullable
+    public Sound getSound() {
+        return sound;
+    }
+
+    public List<ItemStack> getExtraDrops() {
+        return extraDrops;
+    }
 }

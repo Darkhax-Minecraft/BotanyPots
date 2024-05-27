@@ -66,4 +66,26 @@ public class BasicFertilizer extends Fertilizer {
 
         return BotanyPotHelper.BASIC_FERTILIZER_SERIALIZER.get();
     }
+
+    public Ingredient getIngredient() {
+        return ingredient;
+    }
+
+    @Nullable
+    public Ingredient getCropIngredient() {
+        return cropIngredient;
+    }
+
+    @Nullable
+    public Ingredient getSoilIngredient() {
+        return soilIngredient;
+    }
+
+    public int getMinTicks() {
+        return minTicks;
+    }
+
+    public int getMaxTicks() {
+        return maxTicks;
+    }
 }
