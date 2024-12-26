@@ -223,6 +223,12 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
             return;
         }
 
+        // Disable pot operations when given a redstone signal.
+        if (pot.getLevel().hasNeighborSignal(pos)) {
+
+            return;
+        }
+
         pot.getInventory().update();
 
         final Soil soil = pot.getSoil();
