@@ -5,13 +5,13 @@
       "values": [
         "hexerei:mandrake_flowers",
         "hexerei:mandrake_root",
-        "hexerei:mandrake_flower"
+        "hexerei:mandrake_plant"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "hexerei:mandrake_flower"
+    "item": "hexerei:mandrake_plant"
   },
   "categories": [
     "dirt"
@@ -37,7 +37,7 @@
     {
       "chance": 0.05,
       "output": {
-        "item": "hexerei:mandrake_flower"
+        "item": "hexerei:mandrake_plant"
       }
     }
   ]

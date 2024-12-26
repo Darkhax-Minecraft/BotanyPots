@@ -5,13 +5,13 @@
       "values": [
         "hexerei:belladonna_berries",
         "hexerei:belladonna_flowers",
-        "hexerei:belladonna_flower"
+        "hexerei:belladonna_plant"
       ]
     }
   ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "hexerei:belladonna_flower"
+    "item": "hexerei:belladonna_plant"
   },
   "categories": [
     "dirt"
@@ -37,7 +37,7 @@
     {
       "chance": 0.05,
       "output": {
-        "item": "hexerei:belladonna_flower"
+        "item": "hexerei:belladonna_plant"
       }
     }
   ]
