@@ -19,6 +19,7 @@ import net.darkhax.botanypots.data.recipes.fertilizer.Fertilizer;
 import net.darkhax.botanypots.data.recipes.potinteraction.PotInteraction;
 import net.darkhax.botanypots.data.recipes.soil.Soil;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -52,22 +53,16 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        for (Item potItem : BotanyPotsCommon.content.items) {
-            if (potItem instanceof BlockItem blockItem && blockItem.getBlock() instanceof BlockBotanyPot pot) {
-                registration.addRecipeCatalyst(potItem.getDefaultInstance(), CROP);
-            }
-        }
+        registration.addRecipeCatalyst(BuiltInRegistries.ITEM.get(new ResourceLocation("botanypots", "terracotta_botany_pot")).getDefaultInstance(), CROP);
+        registration.addRecipeCatalyst(BuiltInRegistries.ITEM.get(new ResourceLocation("botanypots", "terracotta_hopper_botany_pot")).getDefaultInstance(), CROP);
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-
         final RecipeManager recipeManager = Minecraft.getInstance().level.getRecipeManager();
         final List<Soil> soils = BotanyPotHelper.getAllRecipes(recipeManager, BotanyPotHelper.SOIL_TYPE.get());
         final List<Crop> crops = BotanyPotHelper.getAllRecipes(recipeManager, BotanyPotHelper.CROP_TYPE.get());
-
         crops.forEach(crop -> {
-
             if (crop instanceof BasicCrop basic) {
                 registration.addRecipes(CROP, BasicCropDisplayInfo.getCropRecipes(basic, soils));
             }
