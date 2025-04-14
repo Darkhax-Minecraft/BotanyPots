@@ -70,10 +70,7 @@ public class BotanyPotBlock extends BaseEntityBlock implements SimpleWaterlogged
     @NotNull
     @Override
     protected ItemInteractionResult useItemOn(@NotNull ItemStack stack, @NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hitResult) {
-        if (this.type == PotType.WAXED) {
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
-        }
-        if (level.getBlockEntity(pos) instanceof BotanyPotBlockEntity pot) {
+        if (this.type != PotType.WAXED && level.getBlockEntity(pos) instanceof BotanyPotBlockEntity pot) {
             final BlockEntityContext context = new BlockEntityContext(pot, player, hand);
 
             // Harvest basic pots
@@ -99,17 +96,15 @@ public class BotanyPotBlock extends BaseEntityBlock implements SimpleWaterlogged
                 interaction.value().apply(context);
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
-
-            // Menu
-            if (level.isClientSide) {
-                return ItemInteractionResult.SUCCESS;
-            }
-            else {
-                openMenu(state, level, pos, player);
-                return ItemInteractionResult.CONSUME;
-            }
         }
-        return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+        // Menu
+        if (level.isClientSide) {
+            return ItemInteractionResult.SUCCESS;
+        }
+        else {
+            openMenu(state, level, pos, player);
+            return ItemInteractionResult.CONSUME;
+        }
     }
 
     public void openMenu(BlockState state, Level level, BlockPos pos, Player player) {
