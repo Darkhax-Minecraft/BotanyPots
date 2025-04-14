@@ -13,6 +13,7 @@ import net.darkhax.botanypots.common.impl.data.recipe.crop.BasicCrop;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
+import net.minecraft.commands.arguments.coordinates.Coordinates;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -54,9 +55,13 @@ public class PlaceCrops {
         parent.then(cmd);
     }
 
+    private static BlockPos getPos(String name, CommandContext<CommandSourceStack> ctx, Supplier<BlockPos> fallback) {
+        return CommandHelper.hasArgument(name, ctx, Coordinates.class) ? BlockPosArgument.getBlockPos(ctx, name) : fallback.get();
+    }
+
     private static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
-        final BlockPos.MutableBlockPos mutable = CommandHelper.hasArgument("pos", ctx) ? BlockPosArgument.getLoadedBlockPos(ctx, "pos").mutable() : ctx.getSource().getPlayerOrException().getOnPos().mutable();
-        final boolean allSoils = CommandHelper.hasArgument("all_soils", ctx) && BoolArgumentType.getBool(ctx, "all_soils");
+        final BlockPos.MutableBlockPos mutable = getPos("pos", ctx, () -> ctx.getSource().getPlayer().getOnPos()).mutable();
+        final boolean allSoils = CommandHelper.getBooleanArg("all_soils", ctx);
         final Level level = ctx.getSource().getLevel();
         int count = 0;
         for (Map.Entry<Item, RecipeHolder<Crop>> crop : Objects.requireNonNull(Crop.CACHE.apply(ctx.getSource().getLevel())).getCachedValues().entries().stream().sorted(Comparator.comparing(s -> BuiltInRegistries.ITEM.getKey(s.getKey()).toString())).collect(Collectors.toCollection(LinkedHashSet::new))) {

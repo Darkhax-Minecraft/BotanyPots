@@ -168,7 +168,7 @@ public class MissingCommand {
 
     private static int dumpMissingSoils(CommandContext<CommandSourceStack> ctx) {
         final ServerLevel level = ctx.getSource().getLevel();
-        final boolean generate = testArg("generate", ctx, false);
+        final boolean generate = CommandHelper.getBooleanArg("generate", ctx, () -> false);
 
         final Set<Item> missing = new HashSet<>();
         for (Item item : BuiltInRegistries.ITEM) {
@@ -220,8 +220,8 @@ public class MissingCommand {
     }
 
     private static int dumpMissingCrops(CommandContext<CommandSourceStack> ctx) {
-        final boolean includeSaplings = testArg("include_saplings", ctx, false);
-        final boolean generate = testArg("generate", ctx, false);
+        final boolean includeSaplings = CommandHelper.getBooleanArg("include_saplings", ctx, () -> false);
+        final boolean generate = CommandHelper.getBooleanArg("generate", ctx, () -> false);
         final Set<ResourceLocation> missingCrops = getMissingCrops(ctx.getSource().getLevel(), includeSaplings);
 
         if (missingCrops.isEmpty()) {
@@ -304,10 +304,6 @@ public class MissingCommand {
 
     private static boolean isSapling(Item item) {
         return item instanceof BlockItem blockItem && blockItem.getBlock() instanceof SaplingBlock;
-    }
-
-    private static boolean testArg(String name, CommandContext<CommandSourceStack> ctx, boolean fallback) {
-        return CommandHelper.hasArgument(name, ctx) ? BoolArgumentType.getBool(ctx, name) : fallback;
     }
 
     private static void addMissingSoils(ServerLevel level, TagKey<Item> tag, Collection<Item> items) {
