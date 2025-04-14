@@ -1,0 +1,33 @@
+{
+  "type": "botanypots:pot_interaction",
+  "held_item": {
+    "tag": "minecraft:shovels"
+  },
+  "soil_item": [
+    {
+      "item": "minecraft:grass_block"
+    },
+    {
+      "item": "minecraft:dirt"
+    },
+    {
+      "item": "minecraft:podzol"
+    },
+    {
+      "item": "minecraft:coarse_dirt"
+    },
+    {
+      "item": "minecraft:mycelium"
+    },
+    {
+      "item": "minecraft:rooted_dirt"
+    }
+  ],
+  "new_soil": {
+    "id": "minecraft:dirt_path"
+  },
+  "sound_effect": {
+    "id": "minecraft:item.shovel.flatten",
+    "category": "BLOCKS"
+  }
+}

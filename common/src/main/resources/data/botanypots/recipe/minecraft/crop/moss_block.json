@@ -1,0 +1,7 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:moss_block",
+  "soil": {
+    "tag": "botanypots:soil/moss"
+  }
+}

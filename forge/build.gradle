@@ -1,144 +1,82 @@
 plugins {
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'multiloader-loader'
+    id 'idea'
+    id 'eclipse'
+    id 'net.minecraftforge.gradle' version '[6.0.24,6.2)'
     id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
     id 'net.darkhax.curseforgegradle'
     id 'com.modrinth.minotaur'
 }
-
-apply from: '../gradle/patreon.gradle'
-
 base {
-    archivesName = "${mod_name}-Forge-${minecraft_version}"
+    archivesName = "${mod_name}-forge-${minecraft_version}"
+}
+mixin {
+    config("${mod_id}.mixins.json")
+    config("${mod_id}.forge.mixins.json")
 }
 
 minecraft {
-
     mappings channel: 'official', version: minecraft_version
+    copyIdeResources = true
+    reobf = false
 
     runs {
         client {
-            workingDirectory project.file('run')
+            workingDirectory file('runs/client')
             ideaModule "${rootProject.name}.${project.name}.main"
             taskName 'Client'
-
-            if (project.ext.mixin_enabled) {
-                arg "-mixin.config=${mod_id}.mixins.json"
-            }
-
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-
             mods {
                 modClientRun {
                     source sourceSets.main
-                    source project(':common').sourceSets.main
                 }
             }
         }
 
         server {
-            workingDirectory project.file('run')
+            workingDirectory file('runs/server')
             ideaModule "${rootProject.name}.${project.name}.main"
             taskName 'Server'
-
-            if (project.ext.mixin_enabled) {
-                arg "-mixin.config=${mod_id}.mixins.json"
-            }
-
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-
             mods {
                 modServerRun {
                     source sourceSets.main
-                    source project(':common').sourceSets.main
                 }
             }
         }
     }
 }
 
-repositories {
-    maven {
-        url "https://cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
-}
-
 dependencies {
-
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-${project.ext.minecraft_version}:${project.ext.bookshelf_version}")
-    compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}")
-    compileOnly fg.deobf("dev.architectury:architectury-forge:10.0.9") // It doesn't actually matter which version we use as this is compileOnly
-    compileOnly fg.deobf("me.shedaniel.cloth:cloth-config-forge:12.0.109") // It doesn't actually matter which version we use as this is compileOnly
-    compileOnly fg.deobf("curse.maven:top-245211:${top_version}")
-
-    compileOnly project(':common')
-
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-}
-
-configurations {
-    // Fails without this as compileOnly dependencies do not get added to the test classpath
-    testCompileOnly.extendsFrom compileOnly
-}
-
-tasks.withType(JavaCompile).configureEach {
-    source(project(':common').sourceSets.main.allSource)
-}
-
-tasks.withType(Javadoc).configureEach {
-    source(project(':common').sourceSets.main.allJava)
-}
-
-tasks.named("sourcesJar", Jar) {
-    from(project(':common').sourceSets.main.allSource)
-}
-
-processResources {
-
-    from project(':common').sourceSets.main.resources
-
-    def buildProps = project.properties.clone()
-
-    // Replaces FML's magic file.jarVersion string with the correct version at
-    // build time.
-    buildProps.put('file', [jarVersion: project.version])
-
-    if (project.hasProperty('patreon')) {
-
-        def supporters = new ArrayList<String>()
-
-        for (entry in project.ext.patreon.pledges) {
-
-            def pledge = entry.value;
-
-            if (pledge.isValid()) {
-
-                supporters.add(pledge.getDisplayName())
-            }
-        }
-
-        buildProps.put('mod_supporters', supporters.join(', '))
+    annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
+    implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.0"))
+    implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.4.0")) {
+        jarJar.ranged(it, "[0.4.0,)")
     }
 
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+    implementation group: 'net.darkhax.bookshelf', name: 'bookshelf-forge-1.21.1', version: bookshelf_version
+    implementation group: 'net.darkhax.pricklemc', name: 'prickle-forge-1.21.1', version: prickle_version
 
-        expand buildProps
+    if (project.hasProperty('jei_version')) {
+        compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+        compileOnly("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+        runtimeOnly("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
     }
+}
 
-    if (project.ext.mixin_enabled) {
-        filesMatching(["${mod_id}.mixins.json".toString()]) {
+jar {
+    manifest {
+        attributes(['MixinConfigs': "${mod_id}.mixins.json,${mod_id}.forge.mixins.json"])
+    }
+}
 
-            expand buildProps
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            fg.component(it)
         }
     }
 }
-
-jar.finalizedBy('reobfJar')
 
 sourceSets.each {
     def dir = layout.buildDirectory.dir("sourcesSets/$it.name")
@@ -146,110 +84,53 @@ sourceSets.each {
     it.java.destinationDirectory = dir
 }
 
-jar {
-
-    manifest {
-
-        def newProps = [:]
-
-        if (project.ext.mixin_enabled) {
-            newProps['MixinConfigs'] = "${mod_id}.mixins.json"
-        }
-
-        attributes(newProps)
-    }
-}
-
-// -- Mixin Support
-if (project.ext.mixin_enabled) {
-
-    mixin {
-
-        // Tells the mixin plugin where to put the generated refmap file.
-        add sourceSets.main, "${mod_id}.refmap.json"
-    }
-}
-
-// -- MAVEN PUBLISHING --
-project.publishing {
-
-    publications {
-
-        mavenJava(MavenPublication) {
-
-            artifactId = base.archivesName.get()
-            from components.java
-            fg.component(it)
-        }
-    }
-
-    repositories {
-
-        maven {
-
-            // Sets maven credentials if they are provided. This is generally
-            // only used for external/remote uploads.
-            if (project.hasProperty('mavenUsername') && project.hasProperty('mavenPassword')) {
-
-                credentials {
-
-                    username findProperty('mavenUsername')
-                    password findProperty('mavenPassword')
-                }
-            }
-
-            url getDefaultString('mavenURL', 'undefined', true)
-        }
-    }
-}
-
-// CurseForge Publishing
+// CurseForge
 task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
 
-    apiToken = findProperty('curse_auth')
+    apiToken = rootProject.findProperty('curse_auth')
 
-    def mainFile = upload(curse_project, jar)
+    var mainFile = upload(curse_project, jar)
     mainFile.changelogType = 'markdown'
-    mainFile.changelog = project.ext.mod_changelog
-    mainFile.addJavaVersion('Java 17')
-    mainFile.addRequirement('bookshelf')
+    mainFile.changelog = rootProject.findProperty('mod_changelog')
+    mainFile.addJavaVersion('Java 21')
     mainFile.releaseType = 'release'
-    mainFile.addGameVersion('Client', 'Server')
 
-    // Append Patreon Supporters
-    def patreonInfo = project.findProperty('patreon')
+    mainFile.addRequirement('bookshelf')
+    mainFile.addRequirement('prickle')
 
-    if (patreonInfo) {
-        mainFile.changelog += "\n\nThis project is made possible by [Patreon](${patreonInfo.campaignUrlTracked}) support from players like you. Thank you!\n\n${patreonInfo.pledgeLog}"
+    if (rootProject.hasProperty('mod_client_only') && rootProject.findProperty('mod_client_only') == 'true') {
+        mainFile.addGameVersion('Client')
+    } else {
+        mainFile.addGameVersion('Server', 'Client')
     }
 
-    doLast {
-
-        if (project.hasProperty('mod_homepage')) {
-
-            project.ext.curse_file_url = "${mod_homepage}/files/${mainFile.curseFileId}"
-        }
+    // Append Patreon Supporters
+    var patreonInfo = rootProject.findProperty('patreon')
+    if (patreonInfo) {
+        mainFile.changelog += "\n\nThis project is made possible by [Patreon](${patreonInfo.campaignUrl}?${mod_id}) support from players like you. Thank you!\n\n${patreonInfo.pledgeLog}"
     }
 }
 
 // Modrinth
 modrinth {
 
-    def patreonInfo = project.findProperty('patreon')
-    def changelogText = project.ext.mod_changelog
+    var patreonInfo = rootProject.findProperty('patreon')
+    var changelogText = rootProject.findProperty('mod_changelog')
 
     if (patreonInfo) {
-        changelogText += "\n\nThis project is made possible by [Patreon](${patreonInfo.campaignUrlTracked}) support from players like you. Thank you!\n\n${patreonInfo.pledgeLog}"
+        changelogText += "\n\nThis project is made possible by [Patreon](${patreonInfo.campaignUrl}?${mod_id}) support from players like you. Thank you!\n\n${patreonInfo.pledgeLog}"
     }
 
-    token.set(project.findProperty('modrinth_auth'))
+    token.set(rootProject.findProperty('modrinth_auth'))
     projectId.set(modrinth_project)
-    changelog.set(changelogText)
-    versionName.set("${mod_name}-Forge-${minecraft_version}-$version")
+    changelog = changelogText
+    versionName.set("${mod_name}-forge-${minecraft_version}-${version}")
     versionType.set('release')
+    loaders = ["forge"]
+    gameVersions = ["${minecraft_version}"]
     uploadFile.set(tasks.jar)
-
     dependencies {
-        required.project('bookshelf-lib')
+        required.project("bookshelf-lib")
+        required.project("prickle")
     }
 }

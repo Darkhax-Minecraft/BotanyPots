@@ -1,0 +1,10 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:fire_coral",
+  "soil": {
+    "tag": "botanypots:soil/water"
+  },
+  "render_options": {
+    "offset": [0, -0.30, 0]
+  }
+}

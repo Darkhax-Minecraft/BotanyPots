@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "minecraft:tadpole_bucket"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:tadpole_bucket"
+  },
+  "display": {
+    "type": "botanypots:simple",
+    "block_state": {
+      "block": "minecraft:water"
+    },
+    "options": {
+      "render_fluid": true
+    }
+  }
+}

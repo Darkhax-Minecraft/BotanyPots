@@ -1,0 +1,8 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:spore_blossom",
+  "render_options": {
+    "rotation": "X_180",
+    "scale": [0.4, 0.625, 0.4]
+  }
+}

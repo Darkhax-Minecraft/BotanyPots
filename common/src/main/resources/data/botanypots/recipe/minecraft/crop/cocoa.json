@@ -1,0 +1,62 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:cocoa",
+  "soil": {
+    "type": "bookshelf:either",
+    "fabric:type": "bookshelf:either",
+    "ingredients": [
+      {
+        "type": "bookshelf:block_tag",
+        "fabric:type": "bookshelf:block_tag",
+        "tag": "minecraft:jungle_logs"
+      },
+      {
+        "tag": "botanypots:soil/jungle_log"
+      }
+    ]
+  },
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "minecraft:cocoa",
+          "properties": {
+            "age": "0"
+          }
+        },
+        "options": {
+          "rotation": "X_270",
+          "offset": [0, -0.1, 0]
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "minecraft:cocoa",
+          "properties": {
+            "age": "1"
+          }
+        },
+        "options": {
+          "rotation": "X_270",
+          "offset": [0, -0.1, 0]
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "minecraft:cocoa",
+          "properties": {
+            "age": "2"
+          }
+        },
+        "options": {
+          "rotation": "X_270",
+          "offset": [0, -0.1, 0]
+        }
+      }
+    ]
+  }
+}

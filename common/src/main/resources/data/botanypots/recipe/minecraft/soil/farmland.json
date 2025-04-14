@@ -1,0 +1,13 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "minecraft:farmland"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "minecraft:farmland",
+  "growth_modifier": 0.1
+}

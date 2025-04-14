@@ -1,0 +1,10 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:bubble_coral_fan",
+  "soil": {
+    "tag": "botanypots:soil/water"
+  },
+  "render_options": {
+    "scale": [0.5, 0.625, 0.5]
+  }
+}

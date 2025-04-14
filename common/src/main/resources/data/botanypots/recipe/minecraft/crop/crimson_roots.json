@@ -1,0 +1,18 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:crimson_roots",
+  "soil": {
+    "type": "bookshelf:either",
+    "fabric:type": "bookshelf:either",
+    "ingredients": [
+      {
+        "type": "bookshelf:block_tag",
+        "fabric:type": "bookshelf:block_tag",
+        "tag": "minecraft:nylium"
+      },
+      {
+        "tag": "botanypots:soil/nether"
+      }
+    ]
+  }
+}

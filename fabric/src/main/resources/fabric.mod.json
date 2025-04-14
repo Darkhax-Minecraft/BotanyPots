@@ -9,41 +9,42 @@
   ],
   "contributors": [
     "This project is made possible with Patreon support from players like you. Thank you!",
-    "${mod_supporters}"
+    "${patreon_pledges}"
   ],
   "contact": {
-    "homepage": "${mod_homepage}",
-    "sources": "${mod_source}",
-    "issues": "${mod_issues}"
+    "sources": "${mod_repo}",
+    "issues": "${mod_repo}/issues",
+    "homepage": "${curse_page}"
   },
-  "icon": "logo.png",
   "license": "${mod_license}",
-  "environment": "*",
+  "icon": "logo_${mod_id}.png",
+  "environment": "${mod_target_environment}",
   "entrypoints": {
     "main": [
-      "net.darkhax.botanypots.BotanyPotsFabric"
+      "net.darkhax.botanypots.fabric.impl.FabricMod"
     ],
-    "client": [
-      "net.darkhax.botanypots.BotanyPotsFabricClient"
-    ],
-    "rei_client": [
-      "net.darkhax.botanypots.addons.rei.REIPlugin"
+    "jei_mod_plugin": [
+      "net.darkhax.botanypots.common.addons.jei.BotanyPotsJEIPlugin"
     ]
   },
+  "mixins": [
+    "${mod_id}.mixins.json",
+    "${mod_id}.fabric.mixins.json"
+  ],
   "depends": {
-    "fabricloader": ">=0.15.3",
-    "fabric": "*",
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric-api": "*",
     "minecraft": "${minecraft_version}",
-    "java": ">=17",
-    "bookshelf": ">=22"
+    "java": ">=${java_version}",
+    "bookshelf": ">=${bookshelf_version}",
+    "prickle": ">=${prickle_version}"
   },
   "custom": {
     "modmenu": {
       "links": {
-        "modmenu.twitter": "${mod_twitter}",
-        "modmenu.discord": "${mod_discord}",
-        "modmenu.curseforge": "${mod_homepage}",
-        "modmenu.patreon": "${patreon.campaignUrlTracked}"
+        "modmenu.curseforge": "${curse_page}",
+        "modmenu.modrinth": "${modrinth_page}",
+        "modmenu.patreon": "${patreon_url}?${mod_id}"
       }
     }
   }

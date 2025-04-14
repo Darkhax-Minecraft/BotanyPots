@@ -1,0 +1,35 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:twisting_vines",
+  "soil": {
+    "type": "bookshelf:either",
+    "fabric:type": "bookshelf:either",
+    "ingredients": [
+      {
+        "type": "bookshelf:block_tag",
+        "fabric:type": "bookshelf:block_tag",
+        "tag": "minecraft:nylium"
+      },
+      {
+        "tag": "botanypots:soil/nether"
+      }
+    ]
+  },
+  "display": [
+    {
+      "type": "botanypots:simple",
+      "block_state": {
+        "block": "minecraft:twisting_vines_plant"
+      }
+    },
+    {
+      "type": "botanypots:simple",
+      "block_state": {
+        "block": "minecraft:twisting_vines",
+        "properties": {
+          "age": "25"
+        }
+      }
+    }
+  ]
+}

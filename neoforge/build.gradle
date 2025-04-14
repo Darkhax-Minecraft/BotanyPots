@@ -1,179 +1,94 @@
 plugins {
-    id 'net.neoforged.gradle.userdev' version '7.0.43'
+    id 'multiloader-loader'
+    id 'net.neoforged.moddev'
     id 'net.darkhax.curseforgegradle'
     id 'com.modrinth.minotaur'
 }
 
-apply from: '../gradle/patreon.gradle'
-
-base {
-    archivesName = "${mod_name}-NeoForge-${minecraft_version}"
-}
-
-runs {
-    configureEach {
-        modSource project.sourceSets.main
+neoForge {
+    version = neoforge_version
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
     }
-    client {
-        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+    runs {
+        configureEach {
+            systemProperty('neoforge.enabledGameTestNamespaces', mod_id)
+            ideName = "NeoForge ${it.name.capitalize()} (${project.path})"
+        }
+        client {
+            client()
+        }
+        server {
+            server()
+        }
     }
-    server {
-        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
-        programArgument '--nogui'
-    }
-
-    gameTestServer {
-        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
     }
 }
 
 dependencies {
-    implementation "net.neoforged:neoforge:${neoforge_version}"
-    implementation "net.darkhax.bookshelf:Bookshelf-NeoForge-${project.ext.minecraft_version}:${project.ext.bookshelf_version}"
-    compileOnly group: 'me.shedaniel', name: "RoughlyEnoughItems-api-forge", version: rei_version
-    testCompileOnly group: 'me.shedaniel', name: "RoughlyEnoughItems-api-forge", version: rei_version
-    compileOnly project(':common')
-}
-
-// NeoGradle compiles the game, but we don't want to add our common code to the game's code
-TaskCollection.metaClass.excludingNeoTasks = { ->
-    delegate.matching { !it.name.startsWith("neo") }
-}
-
-tasks.withType(JavaCompile).excludingNeoTasks().configureEach {
-    source(project(':common').sourceSets.main.allSource)
-}
-
-tasks.withType(Javadoc).excludingNeoTasks().configureEach {
-    source(project(':common').sourceSets.main.allJava)
-}
-
-tasks.named("sourcesJar", Jar) {
-    from(project(':common').sourceSets.main.allSource)
-}
-
-tasks.withType(ProcessResources).excludingNeoTasks().configureEach {
-    from project(':common').sourceSets.main.resources
-}
-
-processResources {
-
-    from project(":common").sourceSets.main.resources
-
-    def buildProps = project.properties.clone()
-
-    // Replaces FML's magic file.jarVersion string with the correct version at
-    // build time.
-    buildProps.put('file', [jarVersion: project.version])
-
-    if (project.hasProperty('patreon')) {
-
-        def supporters = new ArrayList<String>()
-
-        for (entry in project.ext.patreon.pledges) {
-
-            def pledge = entry.value;
-
-            if (pledge.isValid()) {
-
-                supporters.add(pledge.getDisplayName())
-            }
-        }
-
-        buildProps.put('mod_supporters', supporters.join(', '))
-    }
-
-    filesMatching('*.mixins.json') {
-        filter(org.apache.tools.ant.filters.LineContains, negate: true, contains: ['refmap' ] )
-    }
-
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta', '*.mixins.json']) {
-
-        expand buildProps
+    implementation group: 'net.darkhax.bookshelf', name: 'bookshelf-neoforge-1.21.1', version: bookshelf_version
+    implementation group: 'net.darkhax.pricklemc', name: 'prickle-neoforge-1.21.1', version: prickle_version
+    if (project.hasProperty('jei_version')) {
+        compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+        compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+        runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
     }
 }
 
-// -- MAVEN PUBLISHING --
-project.publishing {
-
-    publications {
-
-        mavenJava(MavenPublication) {
-
-            artifactId = base.archivesName.get()
-            from components.java
-        }
-    }
-
-    repositories {
-
-        maven {
-
-            // Sets maven credentials if they are provided. This is generally
-            // only used for external/remote uploads.
-            if (project.hasProperty('mavenUsername') && project.hasProperty('mavenPassword')) {
-
-                credentials {
-
-                    username findProperty('mavenUsername')
-                    password findProperty('mavenPassword')
-                }
-            }
-
-            url getDefaultString('mavenURL', 'undefined', true)
-        }
-    }
-}
-
-// CurseForge Publishing
+// CurseForge
 task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
 
-    apiToken = findProperty('curse_auth')
+    apiToken = rootProject.findProperty('curse_auth')
 
-    def mainFile = upload(curse_project, jar)
+    var mainFile = upload(curse_project, jar)
     mainFile.changelogType = 'markdown'
-    mainFile.changelog = project.ext.mod_changelog
-    mainFile.addJavaVersion('Java 17')
+    mainFile.changelog = rootProject.findProperty('mod_changelog')
+    mainFile.addJavaVersion('Java 21')
     mainFile.releaseType = 'release'
-    mainFile.addGameVersion('Server', 'Client')
+    mainFile.addModLoader('NeoForge')
+
     mainFile.addRequirement('bookshelf')
+    mainFile.addRequirement('prickle')
 
-    // Append Patreon Supporters
-    def patreonInfo = project.findProperty('patreon')
-
-    if (patreonInfo) {
-        mainFile.changelog += "\n\nThis project is made possible by [Patreon](${patreonInfo.campaignUrlTracked}) support from players like you. Thank you!\n\n${patreonInfo.pledgeLog}"
+    if (rootProject.hasProperty('mod_client_only') && rootProject.findProperty('mod_client_only') == 'true') {
+        mainFile.addGameVersion('Client')
+    } else {
+        mainFile.addGameVersion('Server', 'Client')
     }
 
-    doLast {
-
-        if (project.hasProperty('mod_homepage')) {
-
-            project.ext.curse_file_url = "${mod_homepage}/files/${mainFile.curseFileId}"
-        }
+    // Append Patreon Supporters
+    var patreonInfo = rootProject.findProperty('patreon')
+    if (patreonInfo) {
+        mainFile.changelog += "\n\nThis project is made possible by [Patreon](${patreonInfo.campaignUrl}?${mod_id}) support from players like you. Thank you!\n\n${patreonInfo.pledgeLog}"
     }
 }
 
 // Modrinth
 modrinth {
 
-    def patreonInfo = project.findProperty('patreon')
-    def changelog = project.ext.mod_changelog
+    var patreonInfo = rootProject.findProperty('patreon')
+    var changelogText = rootProject.findProperty('mod_changelog')
 
     if (patreonInfo) {
-        changelog += "\n\nThis project is made possible by [Patreon](${patreonInfo.campaignUrlTracked}) support from players like you. Thank you!\n\n${patreonInfo.pledgeLog}"
+        changelogText += "\n\nThis project is made possible by [Patreon](${patreonInfo.campaignUrl}?${mod_id}) support from players like you. Thank you!\n\n${patreonInfo.pledgeLog}"
     }
 
-    token.set(project.findProperty('modrinth_auth'))
+    token.set(rootProject.findProperty('modrinth_auth'))
     projectId.set(modrinth_project)
-    changelog = changelog
-    versionName.set("${mod_name}-NeoForge-${minecraft_version}-$version")
+    changelog = changelogText
+    versionName.set("${mod_name}-neoforge-${minecraft_version}-${version}")
     versionType.set('release')
-    uploadFile.set(tasks.jar)
     loaders = ["neoforge"]
     gameVersions = ["${minecraft_version}"]
+    uploadFile.set(tasks.jar)
 
     dependencies {
-        required.project('bookshelf-lib')
+        required.project("bookshelf-lib")
+        required.project("prickle")
     }
 }

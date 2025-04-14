@@ -1,0 +1,20 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "minecraft:snow_block"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "minecraft:snow_block"
+  },
+  "display": {
+    "type": "botanypots:simple",
+    "block_state": {
+      "block": "minecraft:snow_block"
+    }
+  }
+}

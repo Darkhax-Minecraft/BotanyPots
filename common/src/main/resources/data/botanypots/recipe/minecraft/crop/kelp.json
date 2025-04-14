@@ -1,0 +1,27 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:kelp",
+  "soil": {
+    "tag": "botanypots:soil/water"
+  },
+  "display": [
+    {
+      "type": "botanypots:simple",
+      "block_state": {
+        "block": "minecraft:kelp_plant"
+      },
+      "options": {
+        "offset": [0, -0.3, 0]
+      }
+    },
+    {
+      "type": "botanypots:simple",
+      "block_state": {
+        "block": "minecraft:kelp",
+        "properties": {
+          "age": "25"
+        }
+      }
+    }
+  ]
+}

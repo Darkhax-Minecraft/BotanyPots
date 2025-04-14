@@ -1,61 +1,42 @@
 plugins {
-    id 'org.spongepowered.gradle.vanilla' version '0.2.1-SNAPSHOT'
-}
-apply from: '../gradle/property_helper.gradle'
-
-base {
-    archivesName = "${mod_name}-Common-${minecraft_version}"
+    id 'multiloader-common'
+    id 'net.neoforged.moddev'
 }
 
-minecraft {
-    version(minecraft_version)
+neoForge {
+    neoFormVersion = neo_form_version
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
+    }
 }
 
 dependencies {
     compileOnly group: 'org.spongepowered', name: 'mixin', version: '0.8.5'
-    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
-    compileOnly group: 'net.darkhax.bookshelf', name: "Bookshelf-Common-${minecraft_version}", version: bookshelf_version
-    compileOnly group: 'me.shedaniel', name: "RoughlyEnoughItems-api-forge", version: rei_version
-}
+    compileOnly group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.4.0'
 
-processResources {
+    compileOnly group: 'net.darkhax.bookshelf', name: 'bookshelf-common-1.21.1', version: bookshelf_version
+    compileOnly group: 'net.darkhax.pricklemc', name: 'prickle-common-1.21.1', version: prickle_version
 
-    def buildProps = project.properties.clone()
+    annotationProcessor group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.4.0'
 
-    filesMatching(['pack.mcmeta']) {
-
-        expand buildProps
+    if (project.hasProperty('jei_version')) {
+        compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
     }
 }
 
-// -- MAVEN PUBLISHING --
-project.publishing {
-
-    publications {
-
-        mavenJava(MavenPublication) {
-
-            artifactId = base.archivesName.get()
-            from components.java
-        }
+configurations {
+    commonJava {
+        canBeResolved = false
+        canBeConsumed = true
     }
-
-    repositories {
-
-        maven {
-
-            // Sets maven credentials if they are provided. This is generally
-            // only used for external/remote uploads.
-            if (project.hasProperty('mavenUsername') && project.hasProperty('mavenPassword')) {
-
-                credentials {
-
-                    username findProperty('mavenUsername')
-                    password findProperty('mavenPassword')
-                }
-            }
-
-            url getDefaultString('mavenURL', 'undefined', true)
-        }
+    commonResources {
+        canBeResolved = false
+        canBeConsumed = true
     }
+}
+
+artifacts {
+    commonJava sourceSets.main.java.sourceDirectories.singleFile
+    commonResources sourceSets.main.resources.sourceDirectories.singleFile
 }

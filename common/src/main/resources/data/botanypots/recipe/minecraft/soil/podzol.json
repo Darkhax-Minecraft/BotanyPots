@@ -1,0 +1,12 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "minecraft:podzol"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "minecraft:podzol"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:sugar_cane",
+  "soil": {
+    "type": "bookshelf:either",
+    "fabric:type": "bookshelf:either",
+    "ingredients": [
+      {
+        "type": "bookshelf:block_tag",
+        "fabric:type": "bookshelf:block_tag",
+        "tag": "minecraft:sand"
+      },
+      {
+        "type": "bookshelf:block_tag",
+        "fabric:type": "bookshelf:block_tag",
+        "tag": "minecraft:dirt"
+      }
+    ]
+  }
+}

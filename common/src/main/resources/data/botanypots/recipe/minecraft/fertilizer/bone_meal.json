@@ -1,0 +1,12 @@
+{
+  "type": "botanypots:fertilizer",
+  "held_item": {
+    "item": "minecraft:bone_meal"
+  },
+  "min_growth": 400,
+  "max_growth": 600,
+  "sound_effect": {
+    "id": "minecraft:item.bone_meal.use",
+    "category": "BLOCKS"
+  }
+}

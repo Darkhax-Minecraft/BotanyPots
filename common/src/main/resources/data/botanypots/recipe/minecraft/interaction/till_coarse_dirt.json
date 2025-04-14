@@ -1,0 +1,16 @@
+{
+  "type": "botanypots:pot_interaction",
+  "held_item": {
+    "tag": "minecraft:hoes"
+  },
+  "soil_item": {
+    "item": "minecraft:coarse_dirt"
+  },
+  "new_soil": {
+    "id": "minecraft:dirt"
+  },
+  "sound_effect": {
+    "id": "minecraft:item.hoe.till",
+    "category": "BLOCKS"
+  }
+}

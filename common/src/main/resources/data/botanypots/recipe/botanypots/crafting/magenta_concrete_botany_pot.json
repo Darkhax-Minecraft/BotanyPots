@@ -1,0 +1,24 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "botanypots:config",
+            "property": "can_craft_basic_pots"
+        }
+    ],
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "group": "botanypots:basic_pot",
+    "pattern": ["M M", "MPM", " M "],
+    "key": {
+        "M": {
+            "item": "minecraft:magenta_concrete"
+        },
+        "P": {
+            "item": "minecraft:flower_pot"
+        }
+    },
+    "result": {
+        "id": "botanypots:magenta_concrete_botany_pot",
+        "count": 1
+    }
+}

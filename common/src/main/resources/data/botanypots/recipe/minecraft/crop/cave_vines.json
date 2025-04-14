@@ -1,0 +1,70 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:cave_vines",
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "minecraft:cave_vines",
+          "properties": {
+            "age": "0"
+          }
+        },
+        "options": {
+          "rotation": "X_180"
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "minecraft:cave_vines",
+          "properties": {
+            "age": "2"
+          }
+        },
+        "options": {
+          "rotation": "X_180"
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "minecraft:cave_vines",
+          "properties": {
+            "age": "4"
+          }
+        },
+        "options": {
+          "rotation": "X_180"
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "minecraft:cave_vines",
+          "properties": {
+            "age": "6"
+          }
+        },
+        "options": {
+          "rotation": "X_180"
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "minecraft:cave_vines",
+          "properties": {
+            "age": "6",
+            "berries": "true"
+          }
+        },
+        "options": {
+          "rotation": "X_180"
+        }
+      }
+    ]
+  }
+}

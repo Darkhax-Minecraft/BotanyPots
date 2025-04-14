@@ -1,0 +1,14 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:pumpkin_stem",
+  "display": {
+    "type": "botanypots:simple",
+    "block_state": {
+      "block": "minecraft:pumpkin"
+    }
+  },
+  "drops": {
+    "type": "botanypots:loot_table",
+    "table_id": "minecraft:blocks/pumpkin"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:chorus_flower",
+  "soil": {
+    "tag": "botanypots:soil/end"
+  }
+}

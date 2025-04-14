@@ -1,0 +1,59 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:warped_fungus",
+  "soil": {
+    "type": "bookshelf:either",
+    "fabric:type": "bookshelf:either",
+    "ingredients": [
+      {
+        "type": "bookshelf:block_tag",
+        "fabric:type": "bookshelf:block_tag",
+        "tag": "minecraft:nylium"
+      },
+      {
+        "tag": "botanypots:soil/nether"
+      }
+    ]
+  },
+  "drops": [
+    {
+      "type": "botanypots:loot_table",
+      "table_id": "minecraft:blocks/warped_fungus"
+    },
+    {
+      "type": "botanypots:items",
+      "items": [
+        {
+          "result": {
+            "id": "minecraft:warped_wart_block"
+          },
+          "chance": 0.05
+        },
+        {
+          "result": {
+            "id": "minecraft:warped_stem"
+          },
+          "chance": 0.05
+        },
+        {
+          "result": {
+            "id": "minecraft:warped_stem"
+          },
+          "chance": 0.10
+        },
+        {
+          "result": {
+            "id": "minecraft:warped_stem"
+          },
+          "chance": 0.15
+        },
+        {
+          "result": {
+            "id": "minecraft:shroomlight"
+          },
+          "chance": 0.05
+        }
+      ]
+    }
+  ]
+}

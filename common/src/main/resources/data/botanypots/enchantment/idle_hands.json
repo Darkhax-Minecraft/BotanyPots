@@ -1,0 +1,54 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.botanypots.idle_hands"
+  },
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "amount": -1,
+        "attribute": "minecraft:player.block_break_speed",
+        "id": "botanypots:enchantment.idle_hands.no_break",
+        "operation": "add_multiplied_total"
+      },
+      {
+        "amount": -1,
+        "attribute": "minecraft:player.mining_efficiency",
+        "id": "botanypots:enchantment.idle_hands.no_mine",
+        "operation": "add_multiplied_total"
+      },
+      {
+        "amount": -1,
+        "attribute": "minecraft:player.entity_interaction_range",
+        "id": "botanypots:enchantment.idle_hands.no_entity",
+        "operation": "add_multiplied_total"
+      },
+      {
+        "amount": -1,
+        "attribute": "minecraft:player.block_interaction_range",
+        "id": "botanypots:enchantment.idle_hands.no_block",
+        "operation": "add_multiplied_total"
+      },
+      {
+        "amount": -1,
+        "attribute": "minecraft:generic.attack_damage",
+        "id": "botanypots:enchantment.idle_hands.no_damage",
+        "operation": "add_multiplied_total"
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 25,
+    "per_level_above_first": 0
+  },
+  "slots": [
+    "any"
+  ],
+  "supported_items": "#botanypots:harvest_items",
+  "weight": 1
+}

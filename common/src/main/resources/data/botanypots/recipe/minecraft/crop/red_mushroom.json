@@ -1,0 +1,41 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:red_mushroom",
+  "soil": {
+    "type": "bookshelf:either",
+    "fabric:type": "bookshelf:either",
+    "ingredients": [
+      {
+        "type": "bookshelf:block_tag",
+        "fabric:type": "bookshelf:block_tag",
+        "tag": "minecraft:mushroom_grow_block"
+      },
+      {
+        "tag": "botanypots:soil/mushroom"
+      }
+    ]
+  },
+  "drops": [
+    {
+      "type": "botanypots:loot_table",
+      "table_id": "minecraft:blocks/red_mushroom"
+    },
+    {
+      "type": "botanypots:items",
+      "items": [
+        {
+          "result": {
+            "id": "minecraft:red_mushroom_block"
+          },
+          "chance": 0.05
+        },
+        {
+          "result": {
+            "id": "minecraft:mushroom_stem"
+          },
+          "chance": 0.05
+        }
+      ]
+    }
+  ]
+}

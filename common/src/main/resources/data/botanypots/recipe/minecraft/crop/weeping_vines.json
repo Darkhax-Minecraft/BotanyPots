@@ -1,0 +1,41 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:weeping_vines",
+  "soil": {
+    "type": "bookshelf:either",
+    "fabric:type": "bookshelf:either",
+    "ingredients": [
+      {
+        "type": "bookshelf:block_tag",
+        "fabric:type": "bookshelf:block_tag",
+        "tag": "minecraft:nylium"
+      },
+      {
+        "tag": "botanypots:soil/nether"
+      }
+    ]
+  },
+  "display": [
+    {
+      "type": "botanypots:simple",
+      "block_state": {
+        "block": "minecraft:weeping_vines_plant"
+      },
+      "options": {
+        "rotation": "X_180"
+      }
+    },
+    {
+      "type": "botanypots:simple",
+      "block_state": {
+        "block": "minecraft:weeping_vines",
+        "properties": {
+          "age": "25"
+        }
+      },
+      "options": {
+        "rotation": "X_180"
+      }
+    }
+  ]
+}

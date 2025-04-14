@@ -1,0 +1,27 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "botanypots:config",
+            "property": "can_craft_hopper_pots"
+        }
+    ],
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "group": "botanypots:quick_hopper_pot",
+    "pattern": ["MHM", "MPM", " M "],
+    "key": {
+        "M": {
+            "item": "minecraft:prismarine_bricks"
+        },
+        "P": {
+            "item": "minecraft:flower_pot"
+        },
+        "H": {
+            "item": "minecraft:hopper"
+        }
+    },
+    "result": {
+        "id": "botanypots:prismarine_bricks_hopper_botany_pot",
+        "count": 1
+    }
+}

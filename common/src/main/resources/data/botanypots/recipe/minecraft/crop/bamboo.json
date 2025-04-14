@@ -1,0 +1,29 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:bamboo",
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "minecraft:bamboo",
+          "properties": {
+            "age": "1",
+            "leaves": "none"
+          }
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "minecraft:bamboo",
+          "properties": {
+            "age": "1",
+            "leaves": "large"
+          }
+        }
+      }
+    ]
+  }
+}

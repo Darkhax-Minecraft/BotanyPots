@@ -1,0 +1,10 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "minecraft:sea_pickle",
+  "soil": {
+    "tag": "botanypots:soil/water"
+  },
+  "render_options": {
+    "offset": [0, -0.20, 0]
+  }
+}

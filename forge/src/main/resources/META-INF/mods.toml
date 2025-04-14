@@ -1,40 +1,45 @@
 modLoader = "javafml"
-loaderVersion = "[47,)"
+loaderVersion = "${forge_loader_version_range}"
 license = "${mod_license}"
-issueTrackerURL = "${mod_issues}"
-logoFile = "logo.png"
-logoBlur = false
+issueTrackerURL = "${mod_repo}/issues"
 
 [[mods]]
 modId = "${mod_id}"
-updateJSONURL = "https://updates.blamejared.com/get?n=${mod_id}&gv=${minecraft_version}"
-version = "${file.jarVersion}"
+version = "${version}"
 displayName = "${mod_name}"
-displayURL = "${mod_homepage}"
-credits = "This project is made possible with Patreon support from players like you. Thank you! ${mod_supporters}"
+logoFile = "logo_${mod_id}.png"
+logoBlur = false
+updateJSONURL = "https://updates.blamejared.com/get?n=${mod_id}&gv=${minecraft_version}&ml=${platform}"
+displayURL = "${curse_page}"
+credits = "This project is made possible with Patreon support from players like you. Thank you! ${patreon_pledges}"
 authors = "${mod_author}"
-description = '''
-${mod_description}
-'''
-itemIcon = "botanypots:terracotta_botany_pot"
+description = '''${mod_description}'''
+itemIcon = "${mod_item_icon}"
 
 [[dependencies.${ mod_id }]]
 modId = "forge"
 mandatory = true
-versionRange = "[47,)"
+versionRange = "${forge_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.${ mod_id }]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20,)"
+versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.${ mod_id }]]
 modId = "bookshelf"
 mandatory = true
-versionRange = "[21.0.14,)"
+versionRange = "${bookshelf_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${ mod_id }]]
+modId = "prickle"
+mandatory = true
+versionRange = "${prickle_version_range}"
 ordering = "NONE"
 side = "BOTH"
