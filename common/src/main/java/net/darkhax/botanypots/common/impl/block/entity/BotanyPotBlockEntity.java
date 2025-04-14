@@ -142,7 +142,7 @@ public class BotanyPotBlockEntity extends AbstractBotanyPotBlockEntity {
     public boolean canHarvest() {
         final Soil soil = this.getOrInvalidateSoil();
         final Crop crop = this.getOrInvalidateCrop();
-        return this.growthTime.getTicks() >= Helpers.getRequiredGrowthTicks(this.getRecipeContext(), this.level, crop, soil) && crop.canHarvest(this.getRecipeContext(), this.level);
+        return soil != null && crop != null && this.growthTime.getTicks() >= Helpers.getRequiredGrowthTicks(this.getRecipeContext(), this.level, crop, soil) && crop.canHarvest(this.getRecipeContext(), this.level);
     }
 
     public void reset() {
