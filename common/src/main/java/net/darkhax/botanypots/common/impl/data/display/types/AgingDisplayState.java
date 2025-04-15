@@ -41,7 +41,7 @@ public class AgingDisplayState extends PhasedDisplayState {
     private List<Display> calculatePhases(Block block) {
         final List<Display> phases = new ArrayList<>();
         if (block instanceof CropBlock crop) {
-            for (int cropStage = 0; cropStage < crop.getMaxAge(); cropStage++) {
+            for (int cropStage = 0; cropStage <= crop.getMaxAge(); cropStage++) {
                 try {
                     final BlockState agedState = crop.getStateForAge(cropStage);
                     phases.add(new SimpleDisplayState(agedState, this.renderOptions));
