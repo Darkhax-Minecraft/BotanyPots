@@ -205,7 +205,7 @@ public class MissingCommand {
         final File outDir = setupDir("botanypots/generated/soils");
         for (Item item : missing) {
             final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(item);
-            final File soilFile = new File(outDir, itemId.getNamespace() + "/" + itemId.getPath() + ".json");
+            final File soilFile = new File(outDir, itemId.getNamespace() + "/soil/" + itemId.getPath() + ".json");
             final ItemStack stack = item.getDefaultInstance();
             if (stack.is(SOIL_WATER)) {
                 writeFile(soilFile, WATER_SOIL.replace("$item_id$", itemId.toString()));
@@ -235,12 +235,8 @@ public class MissingCommand {
                 final Item item = BuiltInRegistries.ITEM.get(itemId);
                 if (item instanceof BlockItem blockItem) {
                     final ResourceLocation blockId = BuiltInRegistries.BLOCK.getKey(blockItem.getBlock());
-                    try (FileWriter writer = new FileWriter(new File(outdir, blockId.getPath() + ".json"))) {
-                        writer.append(SEED_TEMPLATE.replace("$block_id$", blockId.toString()));
-                    }
-                    catch (IOException e) {
-                        BotanyPotsMod.LOG.error("Failed to generate crop for item {}.", itemId, e);
-                    }
+                    final File cropFile = new File(outdir, blockId.getNamespace() + "/crop/" + blockId.getPath() + ".json");
+                    writeFile(cropFile, SEED_TEMPLATE.replace("$block_id$", blockId.toString()));
                 }
             }
             ctx.getSource().sendSuccess(() -> Component.translatable("commands.botanypots.dump.generated").withStyle(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, outdir.getAbsolutePath()))), false);
