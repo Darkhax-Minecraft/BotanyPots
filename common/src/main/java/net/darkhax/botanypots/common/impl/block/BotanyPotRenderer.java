@@ -16,7 +16,6 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -68,7 +67,7 @@ public class BotanyPotRenderer implements BlockEntityRenderer<BotanyPotBlockEnti
         }
         final BlockPos pos = pot.getBlockPos();
         final int maxGrowth = pot.getRequiredGrowthTicks();
-        final float progress = Math.max(Mth.lerp(tickDelta, pot.growthTime.getTicks() - 1f, pot.growthTime.getTicks()) / maxGrowth, 0f);
+        final float progress = maxGrowth > 0 ? Math.clamp(Math.clamp(pot.growthTime.getTicks(), 0, maxGrowth) / maxGrowth, 0f, 1f) : 0f;
         final AxisAlignedRotation baseRotation = getRotationForFace(pot.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING));
         final Soil soil = pot.getOrInvalidateSoil();
         final Crop crop = pot.getOrInvalidateCrop();
