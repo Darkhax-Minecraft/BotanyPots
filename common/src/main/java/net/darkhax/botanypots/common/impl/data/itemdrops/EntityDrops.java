@@ -5,7 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.darkhax.bookshelf.common.api.function.CachedSupplier;
 import net.darkhax.bookshelf.common.api.function.ReloadableCache;
 import net.darkhax.bookshelf.common.api.loot.LootPoolEntryDescriptions;
-import net.darkhax.botanypots.common.api.data.context.BotanyPotContext;
+import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.darkhax.botanypots.common.api.data.itemdrops.ItemDropProvider;
 import net.darkhax.botanypots.common.api.data.itemdrops.ItemDropProviderType;
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;

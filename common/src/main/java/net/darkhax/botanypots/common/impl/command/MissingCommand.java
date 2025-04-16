@@ -1,19 +1,22 @@
-package net.darkhax.botanypots.common.impl.commands;
+package net.darkhax.botanypots.common.impl.command;
 
+import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import net.darkhax.bookshelf.common.api.function.ReloadableCache;
 import net.darkhax.bookshelf.common.api.util.CommandHelper;
+import net.darkhax.botanypots.common.api.command.generator.DataHelper;
+import net.darkhax.botanypots.common.api.command.generator.soil.SoilGenerator;
+import net.darkhax.botanypots.common.api.command.generator.soil.TaggedSoilGenerator;
 import net.darkhax.botanypots.common.api.data.recipes.crop.Crop;
 import net.darkhax.botanypots.common.api.data.recipes.fertilizer.Fertilizer;
 import net.darkhax.botanypots.common.api.data.recipes.soil.Soil;
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;
-import net.darkhax.botanypots.common.impl.data.recipe.crop.BasicCrop;
+import net.darkhax.botanypots.common.impl.command.generator.MissingSoilGenerator;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.ClickEvent;
@@ -25,10 +28,10 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseCoralPlantTypeBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.CropBlock;
@@ -41,22 +44,24 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.StringJoiner;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class MissingCommand {
 
-    private static final TagKey<Item> SOIL_WATER = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("botanypots", "soil/water"));
-    private static final TagKey<Item> SOIL_LAVA = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("botanypots", "soil/lava"));
-    private static final TagKey<Item> SOIL_SNOW = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("botanypots", "soil/snow"));
+    public static SoilGenerator MISSING_BLOCK = new MissingSoilGenerator();
+    public static SoilGenerator WATER = new TaggedSoilGenerator("botanypots:soil/water", DataHelper.simpleDisplay(Blocks.WATER, true));
+    public static SoilGenerator LAVA = new TaggedSoilGenerator("botanypots:soil/lava", DataHelper.simpleDisplay(Blocks.LAVA, true));
+    public static SoilGenerator SNOW = new TaggedSoilGenerator("botanypots:soil/snow", DataHelper.simpleDisplay(Blocks.SNOW_BLOCK));
+
 
     private static final Comparator<ResourceLocation> ID_COMPARE = Comparator.comparing(ResourceLocation::toString);
     private static final TagKey<Item> FORGE_SEEDS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "seeds"));
@@ -87,70 +92,6 @@ public class MissingCommand {
             }
             """;
 
-    public static final String WATER_SOIL = """
-            {
-              "bookshelf:load_conditions": [
-                {
-                  "type": "bookshelf:item_exists",
-                  "values": [
-                    "$item_id$"
-                  ]
-                }
-              ],
-              "type": "botanypots:soil",
-              "input": {
-                "item": "$item_id$"
-              },
-              "display": {
-                "type": "botanypots:simple",
-                "block_state": {
-                  "block": "minecraft:water"
-                },
-                "options": {
-                  "render_fluid": true
-                }
-              }
-            }
-            """;
-
-    public static final String SNOW_SOIL = """
-            {
-              "bookshelf:load_conditions": [
-                {
-                  "type": "bookshelf:item_exists",
-                  "values": [
-                    "$item_id$"
-                  ]
-                }
-              ],
-              "type": "botanypots:soil",
-              "input": {
-                "item": "$item_id$"
-              },
-              "display": {
-                "type": "botanypots:simple",
-                "block_state": {
-                  "block": "minecraft:snow_block"
-                }
-              }
-            }
-            """;
-
-    public static final String BLOCK_SOIL = """
-            {
-              "bookshelf:load_conditions": [
-                {
-                  "type": "bookshelf:block_exists",
-                  "values": [
-                    "$block_id$"
-                  ]
-                }
-              ],
-              "type": "botanypots:block_derived_soil",
-              "block": "$block_id$"
-            }
-            """;
-
     public static void build(LiteralArgumentBuilder<CommandSourceStack> parent) {
         final LiteralArgumentBuilder<CommandSourceStack> cmd = Commands.literal("missing");
         final LiteralArgumentBuilder<CommandSourceStack> seeds = Commands.literal("seeds");
@@ -169,21 +110,20 @@ public class MissingCommand {
     private static int dumpMissingSoils(CommandContext<CommandSourceStack> ctx) {
         final ServerLevel level = ctx.getSource().getLevel();
         final boolean generate = CommandHelper.getBooleanArg("generate", ctx, () -> false);
+        final SoilGenerator[] generators = {SNOW, LAVA, WATER, MISSING_BLOCK};
 
-        final Set<Item> missing = new HashSet<>();
+        final Map<ItemStack, SoilGenerator> missing = new HashMap<>();
         for (Item item : BuiltInRegistries.ITEM) {
             final ItemStack stack = item.getDefaultInstance();
             if (!isSoil(stack, level)) {
-                for (RecipeHolder<Crop> crop : Objects.requireNonNull(Crop.RECIPES.apply(level)).values()) {
-                    if (crop.value() instanceof BasicCrop basic && basic.isValidSoil(stack)) {
-                        missing.add(item);
+                for (SoilGenerator generator : generators) {
+                    if (generator.canGenerateSoil(level, stack)) {
+                        missing.put(stack, generator);
+                        break;
                     }
                 }
             }
         }
-        addMissingSoils(level, SOIL_WATER, missing);
-        addMissingSoils(level, SOIL_LAVA, missing);
-        addMissingSoils(level, SOIL_SNOW, missing);
 
         if (missing.isEmpty()) {
             ctx.getSource().sendSuccess(() -> BotanyPotsCommands.modMessage(Component.translatable("commands.botanypots.dump.no_results")), false);
@@ -195,27 +135,19 @@ public class MissingCommand {
             }
             final StringJoiner entries = new StringJoiner(System.lineSeparator());
             entries.add("Potential missing soil IDs");
-            missing.stream().map(BuiltInRegistries.ITEM::getKey).sorted(Comparator.comparing(ResourceLocation::toString)).forEach(entry -> entries.add(entry.toString()));
+            missing.keySet().stream().map(stack -> BuiltInRegistries.ITEM.getKey(stack.getItem())).sorted(Comparator.comparing(ResourceLocation::toString)).forEach(entry -> entries.add(entry.toString()));
             ctx.getSource().sendSuccess(() -> BotanyPotsCommands.modMessage(Component.translatable("commands.botanypots.dump.missing_soils", Component.literal(Integer.toString(missing.size())).withStyle(style -> style.withColor(ChatFormatting.RED))).withStyle(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, entries.toString())))), false);
         }
         return 0;
     }
 
-    private static void generateMissingSoils(ServerLevel level, Set<Item> missing) {
+    private static void generateMissingSoils(ServerLevel level, Map<ItemStack, SoilGenerator> missing) {
         final File outDir = setupDir("botanypots/generated/soils");
-        for (Item item : missing) {
-            final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(item);
+        for (Map.Entry<ItemStack, SoilGenerator> entry : missing.entrySet()) {
+            final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(entry.getKey().getItem());
             final File soilFile = new File(outDir, itemId.getNamespace() + "/soil/" + itemId.getPath() + ".json");
-            final ItemStack stack = item.getDefaultInstance();
-            if (stack.is(SOIL_WATER)) {
-                writeFile(soilFile, WATER_SOIL.replace("$item_id$", itemId.toString()));
-            }
-            else if (stack.is(SOIL_SNOW)) {
-                writeFile(soilFile, SNOW_SOIL.replace("$item_id$", itemId.toString()));
-            }
-            else if (item instanceof BlockItem blockItem) {
-                writeFile(soilFile, BLOCK_SOIL.replace("$item_id$", itemId.toString()).replace("$block_id$", BuiltInRegistries.BLOCK.getKey(blockItem.getBlock()).toString()));
-            }
+            final JsonObject obj = entry.getValue().generateData(level, entry.getKey());
+            writeFile(soilFile, DataHelper.GSON.toJson(obj));
         }
     }
 
@@ -300,18 +232,6 @@ public class MissingCommand {
 
     private static boolean isSapling(Item item) {
         return item instanceof BlockItem blockItem && blockItem.getBlock() instanceof SaplingBlock;
-    }
-
-    private static void addMissingSoils(ServerLevel level, TagKey<Item> tag, Collection<Item> items) {
-        addFromTag(tag, items, item -> !isSoil(item.getDefaultInstance(), level));
-    }
-
-    private static void addFromTag(TagKey<Item> tag, Collection<Item> items, Predicate<Item> test) {
-        for (Holder<Item> entry : BuiltInRegistries.ITEM.getTagOrEmpty(tag)) {
-            if (test.test(entry.value())) {
-                items.add(entry.value());
-            }
-        }
     }
 
     private static void writeFile(File file, String text) {

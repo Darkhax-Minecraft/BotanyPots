@@ -5,7 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.darkhax.bookshelf.common.api.data.codecs.map.MapCodecs;
 import net.darkhax.bookshelf.common.api.util.MathsHelper;
-import net.darkhax.botanypots.common.api.data.context.BotanyPotContext;
+import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.darkhax.botanypots.common.api.data.itemdrops.ItemDropProvider;
 import net.darkhax.botanypots.common.api.data.itemdrops.ItemDropProviderType;
 import net.minecraft.network.RegistryFriendlyByteBuf;

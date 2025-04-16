@@ -9,5 +9,5 @@
   ],
   "type": "botanypots:block_derived_soil",
   "block": "minecraft:farmland",
-  "growth_modifier": 0.1
+  "growth_modifier": 0.10
 }

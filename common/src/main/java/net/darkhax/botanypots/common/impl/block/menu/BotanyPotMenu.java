@@ -4,7 +4,7 @@ import net.darkhax.bookshelf.common.api.function.CachedSupplier;
 import net.darkhax.bookshelf.common.api.menu.data.BlockPosData;
 import net.darkhax.bookshelf.common.api.menu.slot.InputSlot;
 import net.darkhax.bookshelf.common.api.menu.slot.OutputSlot;
-import net.darkhax.botanypots.common.api.data.context.BlockEntityContext;
+import net.darkhax.botanypots.common.api.context.BlockEntityContext;
 import net.darkhax.botanypots.common.api.data.recipes.crop.Crop;
 import net.darkhax.botanypots.common.api.data.recipes.soil.Soil;
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;

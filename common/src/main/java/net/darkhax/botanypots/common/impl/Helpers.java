@@ -6,7 +6,7 @@ import net.darkhax.bookshelf.common.api.data.codecs.stream.StreamCodecs;
 import net.darkhax.bookshelf.common.api.data.enchantment.EnchantmentLevel;
 import net.darkhax.bookshelf.common.api.util.DataHelper;
 import net.darkhax.bookshelf.common.api.util.MathsHelper;
-import net.darkhax.botanypots.common.api.data.context.BotanyPotContext;
+import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.darkhax.botanypots.common.api.data.recipes.crop.Crop;
 import net.darkhax.botanypots.common.api.data.recipes.soil.Soil;
 import net.minecraft.ChatFormatting;

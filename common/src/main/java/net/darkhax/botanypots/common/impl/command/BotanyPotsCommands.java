@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.common.impl.commands;
+package net.darkhax.botanypots.common.impl.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;

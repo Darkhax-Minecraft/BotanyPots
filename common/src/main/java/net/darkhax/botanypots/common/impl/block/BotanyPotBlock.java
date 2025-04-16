@@ -2,7 +2,7 @@ package net.darkhax.botanypots.common.impl.block;
 
 import com.mojang.serialization.MapCodec;
 import net.darkhax.bookshelf.common.api.block.IBlockHooks;
-import net.darkhax.botanypots.common.api.data.context.BlockEntityContext;
+import net.darkhax.botanypots.common.api.context.BlockEntityContext;
 import net.darkhax.botanypots.common.api.data.recipes.fertilizer.Fertilizer;
 import net.darkhax.botanypots.common.api.data.recipes.interaction.PotInteraction;
 import net.darkhax.botanypots.common.impl.block.entity.BotanyPotBlockEntity;

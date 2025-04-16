@@ -5,7 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.darkhax.bookshelf.common.api.data.codecs.stream.StreamCodecs;
 import net.darkhax.bookshelf.common.api.util.DataHelper;
-import net.darkhax.botanypots.common.api.data.context.BotanyPotContext;
+import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.darkhax.botanypots.common.api.data.display.types.Display;
 import net.darkhax.botanypots.common.api.data.display.types.DisplayType;
 import net.darkhax.botanypots.common.api.data.recipes.CacheableRecipe;

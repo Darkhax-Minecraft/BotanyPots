@@ -1,7 +1,7 @@
 package net.darkhax.botanypots.common.api.data.recipes;
 
 import com.mojang.serialization.Codec;
-import net.darkhax.botanypots.common.api.data.context.BotanyPotContext;
+import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;

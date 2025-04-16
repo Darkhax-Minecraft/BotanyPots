@@ -2,7 +2,7 @@ package net.darkhax.botanypots.common.api.data.recipes.soil;
 
 import net.darkhax.bookshelf.common.api.function.CachedSupplier;
 import net.darkhax.bookshelf.common.api.function.SidedReloadableCache;
-import net.darkhax.botanypots.common.api.data.context.BotanyPotContext;
+import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.darkhax.botanypots.common.api.data.display.types.Display;
 import net.darkhax.botanypots.common.api.data.recipes.BotanyPotRecipe;
 import net.darkhax.botanypots.common.api.data.recipes.RecipeCache;

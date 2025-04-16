@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.common.api.data.context;
+package net.darkhax.botanypots.common.api.context;
 
 import net.darkhax.botanypots.common.impl.block.entity.BotanyPotBlockEntity;
 import net.minecraft.resources.ResourceLocation;

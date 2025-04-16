@@ -1,4 +1,4 @@
-package net.darkhax.botanypots.common.api.data.context;
+package net.darkhax.botanypots.common.api.context;
 
 import net.darkhax.bookshelf.common.api.PhysicalSide;
 import net.darkhax.bookshelf.common.api.annotation.OnlyFor;

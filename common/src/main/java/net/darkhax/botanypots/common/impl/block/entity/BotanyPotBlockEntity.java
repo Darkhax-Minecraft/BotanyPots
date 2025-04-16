@@ -8,7 +8,7 @@ import net.darkhax.bookshelf.common.api.util.DataHelper;
 import net.darkhax.bookshelf.common.api.util.TickAccumulator;
 import net.darkhax.botanypots.common.api.data.components.CropOverride;
 import net.darkhax.botanypots.common.api.data.components.SoilOverride;
-import net.darkhax.botanypots.common.api.data.context.BlockEntityContext;
+import net.darkhax.botanypots.common.api.context.BlockEntityContext;
 import net.darkhax.botanypots.common.api.data.recipes.BotanyPotRecipe;
 import net.darkhax.botanypots.common.api.data.recipes.RecipeCache;
 import net.darkhax.botanypots.common.api.data.recipes.crop.Crop;

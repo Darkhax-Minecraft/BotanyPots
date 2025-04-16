@@ -2,7 +2,7 @@ package net.darkhax.botanypots.common.api.data.itemdrops;
 
 import net.darkhax.bookshelf.common.api.PhysicalSide;
 import net.darkhax.bookshelf.common.api.annotation.OnlyFor;
-import net.darkhax.botanypots.common.api.data.context.BotanyPotContext;
+import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 

@@ -24,7 +24,7 @@ import net.darkhax.botanypots.common.impl.block.PotType;
 import net.darkhax.botanypots.common.impl.block.entity.BotanyPotBlockEntity;
 import net.darkhax.botanypots.common.impl.block.menu.BotanyPotMenu;
 import net.darkhax.botanypots.common.impl.block.menu.BotanyPotScreen;
-import net.darkhax.botanypots.common.impl.commands.BotanyPotsCommands;
+import net.darkhax.botanypots.common.impl.command.BotanyPotsCommands;
 import net.darkhax.botanypots.common.impl.data.BotanyPotFileGenerator;
 import net.darkhax.botanypots.common.impl.data.conditions.ConfigLoadCondition;
 import net.darkhax.botanypots.common.impl.data.display.renderer.EntityDisplayStateRenderer;
