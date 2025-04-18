@@ -48,14 +48,14 @@ public class MissingCommand {
 
     private static final CachedSupplier<Map<ResourceLocation, SoilGenerator>> SOIL_GENERATORS = CachedSupplier.cache(() -> {
         final Map<ResourceLocation, SoilGenerator> generators = new LinkedHashMap<>();
-        BotanyPotsPlugin.CONTENT_PROVIDERS.get().forEach(plugin -> plugin.registerSoilGenerators(generators::put));
+        BotanyPotsPlugin.PLUGINS.get().forEach(plugin -> plugin.registerSoilGenerators(generators::put));
         generators.put(BotanyPotsMod.id("missing_fallback"), new MissingSoilGenerator());
         return generators;
     });
 
     private static final CachedSupplier<Map<ResourceLocation, CropGenerator>> CROP_GENERATORS = CachedSupplier.cache(() -> {
         final Map<ResourceLocation, CropGenerator> generators = new LinkedHashMap<>();
-        BotanyPotsPlugin.CONTENT_PROVIDERS.get().forEach(plugin -> plugin.registerCropGenerators(generators::put));
+        BotanyPotsPlugin.PLUGINS.get().forEach(plugin -> plugin.registerCropGenerators(generators::put));
         generators.put(BotanyPotsMod.id("missing_fallback"), new MissingCropGenerator());
         return generators;
     });

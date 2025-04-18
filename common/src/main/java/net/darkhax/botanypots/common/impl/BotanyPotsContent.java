@@ -14,10 +14,9 @@ import net.darkhax.bookshelf.common.api.registry.register.RegisterItemTab;
 import net.darkhax.bookshelf.common.api.registry.register.RegisterMenuScreen;
 import net.darkhax.bookshelf.common.api.registry.register.RegisterRecipeType;
 import net.darkhax.bookshelf.common.api.service.Services;
+import net.darkhax.botanypots.common.api.BotanyPotsPlugin;
 import net.darkhax.botanypots.common.api.data.components.CropOverride;
 import net.darkhax.botanypots.common.api.data.components.SoilOverride;
-import net.darkhax.botanypots.common.api.data.display.render.DisplayRenderer;
-import net.darkhax.botanypots.common.api.data.display.types.DisplayType;
 import net.darkhax.botanypots.common.impl.block.BotanyPotBlock;
 import net.darkhax.botanypots.common.impl.block.BotanyPotRenderer;
 import net.darkhax.botanypots.common.impl.block.PotType;
@@ -27,15 +26,6 @@ import net.darkhax.botanypots.common.impl.block.menu.BotanyPotScreen;
 import net.darkhax.botanypots.common.impl.command.BotanyPotsCommands;
 import net.darkhax.botanypots.common.impl.data.BotanyPotFileGenerator;
 import net.darkhax.botanypots.common.impl.data.conditions.ConfigLoadCondition;
-import net.darkhax.botanypots.common.impl.data.display.renderer.EntityDisplayStateRenderer;
-import net.darkhax.botanypots.common.impl.data.display.renderer.PhasedDisplayStateRenderer;
-import net.darkhax.botanypots.common.impl.data.display.renderer.SimpleDisplayStateRenderer;
-import net.darkhax.botanypots.common.impl.data.display.renderer.TexturedCubeStateRenderer;
-import net.darkhax.botanypots.common.impl.data.display.types.AgingDisplayState;
-import net.darkhax.botanypots.common.impl.data.display.types.EntityDisplayState;
-import net.darkhax.botanypots.common.impl.data.display.types.SimpleDisplayState;
-import net.darkhax.botanypots.common.impl.data.display.types.TexturedCubeDisplayState;
-import net.darkhax.botanypots.common.impl.data.display.types.TransitionalDisplayState;
 import net.darkhax.botanypots.common.impl.data.recipe.crop.BasicCrop;
 import net.darkhax.botanypots.common.impl.data.recipe.crop.BlockDerivedCrop;
 import net.darkhax.botanypots.common.impl.data.recipe.fertilizer.BasicFertilizer;
@@ -119,17 +109,12 @@ public class BotanyPotsContent implements IContentProvider {
         for (Map.Entry<ResourceLocation, Block> block : allPotBlocks.entrySet()) {
             registry.addBlock(block.getValue());
         }
-
-        DisplayType.register(SimpleDisplayState.TYPE_ID, SimpleDisplayState.CODEC, SimpleDisplayState.STREAM);
-        DisplayType.register(TransitionalDisplayState.TYPE_ID, TransitionalDisplayState.CODEC, TransitionalDisplayState.STREAM);
-        DisplayType.register(AgingDisplayState.TYPE_ID, AgingDisplayState.CODEC, AgingDisplayState.STREAM);
-        DisplayType.register(EntityDisplayState.TYPE_ID, EntityDisplayState.CODEC, EntityDisplayState.STREAM);
-        DisplayType.register(TexturedCubeDisplayState.TYPE_ID, TexturedCubeDisplayState.CODEC, TexturedCubeDisplayState.STREAM);
+        BotanyPotsPlugin.PLUGINS.get().forEach(BotanyPotsPlugin::registerDisplayTypes);
     }
 
     @Override
     public void registerBlockEntities(Register<BlockEntityType.Builder<?>> registry) {
-        registry.add("botany_pot", Services.GAMEPLAY.blockEntityBuilder(BotanyPotBlockEntity::new, allPotBlocks.values().toArray(Block[]::new)));
+        registry.add("botany_pot", Services.GAMEPLAY.blockEntityBuilder(BotanyPotBlockEntity::new, this.allPotBlocks.values().toArray(Block[]::new)));
     }
 
     @Override
@@ -178,11 +163,7 @@ public class BotanyPotsContent implements IContentProvider {
     @Override
     public void bindBlockEntityRenderer(RegisterBlockEntityRenderer registry) {
         registry.bind(BotanyPotBlockEntity.TYPE.get(), BotanyPotRenderer::new);
-        DisplayRenderer.bind(SimpleDisplayState.TYPE.get(), SimpleDisplayStateRenderer.RENDERER);
-        DisplayRenderer.bind(TransitionalDisplayState.TYPE.get(), PhasedDisplayStateRenderer.TRANSITIONAL);
-        DisplayRenderer.bind(AgingDisplayState.TYPE.get(), PhasedDisplayStateRenderer.AGING);
-        DisplayRenderer.bind(EntityDisplayState.TYPE.get(), EntityDisplayStateRenderer.RENDERER);
-        DisplayRenderer.bind(TexturedCubeDisplayState.TYPE.get(), TexturedCubeStateRenderer.RENDERER);
+        BotanyPotsPlugin.PLUGINS.get().forEach(BotanyPotsPlugin::bindDisplayRenderers);
     }
 
     @Override
