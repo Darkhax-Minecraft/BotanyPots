@@ -9,6 +9,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.JsonOps;
 import net.minecraft.core.DefaultedRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -34,7 +35,11 @@ public class DataHelper {
     }
 
     public static JsonObject tag(TagKey<?> tag) {
-        return object("{\"tag\":\"" + tag.location() + "\"}");
+        return tag(tag.location());
+    }
+
+    public static JsonObject tag(ResourceLocation tag) {
+        return object("{\"tag\":\"" + tag + "\"}");
     }
 
     public static JsonElement stack(ItemStack stack) {
@@ -47,6 +52,37 @@ public class DataHelper {
 
     public static JsonObject simpleDisplay(Block block) {
         return simpleDisplay(block, false);
+    }
+
+    public static JsonObject blockTag(TagKey<Block> tag) {
+        return blockTag(tag.location());
+    }
+
+    public static JsonObject blockTag(ResourceLocation tag) {
+        final JsonObject object = ingredientBase("bookshelf:block_tag");
+        object.addProperty("tag", tag.toString());
+        return object;
+    }
+
+    public static JsonObject ingredients(JsonObject... objects) {
+        final JsonObject object = ingredientBase("bookshelf:either");
+        final JsonArray array = new JsonArray();
+        for (JsonObject obj : objects) {
+            array.add(obj);
+        }
+        object.add("ingredients", array);
+        return object;
+    }
+
+    public static JsonObject ingredientBase(ResourceLocation type) {
+        return ingredientBase(type.toString());
+    }
+
+    public static JsonObject ingredientBase(String type) {
+        final JsonObject object = new JsonObject();
+        object.addProperty("type", type);
+        object.addProperty("fabric:type", type);
+        return object;
     }
 
     public static JsonObject simpleDisplay(Block block, boolean fluid) {

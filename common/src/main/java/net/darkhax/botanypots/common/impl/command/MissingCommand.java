@@ -4,15 +4,17 @@ import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import net.darkhax.bookshelf.common.api.function.ReloadableCache;
+import net.darkhax.bookshelf.common.api.function.CachedSupplier;
 import net.darkhax.bookshelf.common.api.util.CommandHelper;
+import net.darkhax.botanypots.common.api.BotanyPotsPlugin;
 import net.darkhax.botanypots.common.api.command.generator.DataHelper;
+import net.darkhax.botanypots.common.api.command.generator.crop.CropGenerator;
 import net.darkhax.botanypots.common.api.command.generator.soil.SoilGenerator;
-import net.darkhax.botanypots.common.api.command.generator.soil.TaggedSoilGenerator;
 import net.darkhax.botanypots.common.api.data.recipes.crop.Crop;
 import net.darkhax.botanypots.common.api.data.recipes.fertilizer.Fertilizer;
 import net.darkhax.botanypots.common.api.data.recipes.soil.Soil;
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;
+import net.darkhax.botanypots.common.impl.command.generator.MissingCropGenerator;
 import net.darkhax.botanypots.common.impl.command.generator.MissingSoilGenerator;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
@@ -27,18 +29,8 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseCoralPlantTypeBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.CropBlock;
-import net.minecraft.world.level.block.GrowingPlantBlock;
 import net.minecraft.world.level.block.SaplingBlock;
-import net.minecraft.world.level.block.SporeBlossomBlock;
-import net.minecraft.world.level.block.state.properties.Property;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -46,51 +38,30 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.StringJoiner;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 public class MissingCommand {
 
-    public static SoilGenerator MISSING_BLOCK = new MissingSoilGenerator();
-    public static SoilGenerator WATER = new TaggedSoilGenerator("botanypots:soil/water", DataHelper.simpleDisplay(Blocks.WATER, true));
-    public static SoilGenerator LAVA = new TaggedSoilGenerator("botanypots:soil/lava", DataHelper.simpleDisplay(Blocks.LAVA, true));
-    public static SoilGenerator SNOW = new TaggedSoilGenerator("botanypots:soil/snow", DataHelper.simpleDisplay(Blocks.SNOW_BLOCK));
-
-
-    private static final Comparator<ResourceLocation> ID_COMPARE = Comparator.comparing(ResourceLocation::toString);
-    private static final TagKey<Item> FORGE_SEEDS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", "seeds"));
-    private static final TagKey<Item> COMMON_SEEDS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "seeds"));
-    private static final ReloadableCache<Set<Item>> IGNORED_ITEMS = ReloadableCache.of(() -> {
-        final Set<Item> items = new HashSet<>();
-        items.add(Items.DEAD_BUSH);
-        items.add(Items.MANGROVE_LEAVES);
-        items.add(Items.NETHERRACK);
-        items.add(Items.ROOTED_DIRT);
-        items.add(Items.GRASS_BLOCK);
-        items.add(Items.WARPED_NYLIUM);
-        items.add(Items.CRIMSON_NYLIUM);
-        return items;
+    private static final CachedSupplier<Map<ResourceLocation, SoilGenerator>> SOIL_GENERATORS = CachedSupplier.cache(() -> {
+        final Map<ResourceLocation, SoilGenerator> generators = new LinkedHashMap<>();
+        BotanyPotsPlugin.CONTENT_PROVIDERS.get().forEach(plugin -> plugin.registerSoilGenerators(generators::put));
+        generators.put(BotanyPotsMod.id("missing_fallback"), new MissingSoilGenerator());
+        return generators;
     });
-    public static final String SEED_TEMPLATE = """
-            {
-              "bookshelf:load_conditions": [
-                {
-                  "type": "bookshelf:block_exists",
-                  "values": [
-                    "$block_id$"
-                  ]
-                }
-              ],
-              "type": "botanypots:block_derived_crop",
-              "block": "$block_id$"
-            }
-            """;
+
+    private static final CachedSupplier<Map<ResourceLocation, CropGenerator>> CROP_GENERATORS = CachedSupplier.cache(() -> {
+        final Map<ResourceLocation, CropGenerator> generators = new LinkedHashMap<>();
+        BotanyPotsPlugin.CONTENT_PROVIDERS.get().forEach(plugin -> plugin.registerCropGenerators(generators::put));
+        generators.put(BotanyPotsMod.id("missing_fallback"), new MissingCropGenerator());
+        return generators;
+    });
+
+    private static final TagKey<Item> SAPLING_TAG = TagKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace("saplings"));
+    private static final Comparator<ResourceLocation> ID_COMPARE = Comparator.comparing(ResourceLocation::toString);
 
     public static void build(LiteralArgumentBuilder<CommandSourceStack> parent) {
         final LiteralArgumentBuilder<CommandSourceStack> cmd = Commands.literal("missing");
@@ -107,16 +78,12 @@ public class MissingCommand {
         parent.then(cmd);
     }
 
-    private static int dumpMissingSoils(CommandContext<CommandSourceStack> ctx) {
-        final ServerLevel level = ctx.getSource().getLevel();
-        final boolean generate = CommandHelper.getBooleanArg("generate", ctx, () -> false);
-        final SoilGenerator[] generators = {SNOW, LAVA, WATER, MISSING_BLOCK};
-
+    private static Map<ItemStack, SoilGenerator> collectMissingSoilItems(ServerLevel level) {
         final Map<ItemStack, SoilGenerator> missing = new HashMap<>();
         for (Item item : BuiltInRegistries.ITEM) {
             final ItemStack stack = item.getDefaultInstance();
-            if (!isSoil(stack, level)) {
-                for (SoilGenerator generator : generators) {
+            if (!isSoil(stack, level) && !isCrop(stack, level)) {
+                for (SoilGenerator generator : SOIL_GENERATORS.get().values()) {
                     if (generator.canGenerateSoil(level, stack)) {
                         missing.put(stack, generator);
                         break;
@@ -124,94 +91,76 @@ public class MissingCommand {
                 }
             }
         }
+        return missing;
+    }
 
+    private static int dumpMissingSoils(CommandContext<CommandSourceStack> ctx) {
+        final ServerLevel level = ctx.getSource().getLevel();
+        final boolean generate = CommandHelper.getBooleanArg("generate", ctx, () -> false);
+        final Map<ItemStack, SoilGenerator> missing = collectMissingSoilItems(level);
         if (missing.isEmpty()) {
             ctx.getSource().sendSuccess(() -> BotanyPotsCommands.modMessage(Component.translatable("commands.botanypots.dump.no_results")), false);
             return 0;
         }
         else {
             if (generate) {
-                generateMissingSoils(level, missing);
+                final File outDir = setupDir("botanypots/generated/soils");
+                for (Map.Entry<ItemStack, SoilGenerator> entry : missing.entrySet()) {
+                    final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(entry.getKey().getItem());
+                    final File soilFile = new File(outDir, itemId.getNamespace() + "/soil/" + itemId.getPath() + ".json");
+                    final JsonObject obj = entry.getValue().generateData(level, entry.getKey());
+                    writeFile(soilFile, DataHelper.GSON.toJson(obj));
+                }
             }
             final StringJoiner entries = new StringJoiner(System.lineSeparator());
             entries.add("Potential missing soil IDs");
             missing.keySet().stream().map(stack -> BuiltInRegistries.ITEM.getKey(stack.getItem())).sorted(Comparator.comparing(ResourceLocation::toString)).forEach(entry -> entries.add(entry.toString()));
             ctx.getSource().sendSuccess(() -> BotanyPotsCommands.modMessage(Component.translatable("commands.botanypots.dump.missing_soils", Component.literal(Integer.toString(missing.size())).withStyle(style -> style.withColor(ChatFormatting.RED))).withStyle(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, entries.toString())))), false);
+            return missing.size();
         }
-        return 0;
     }
 
-    private static void generateMissingSoils(ServerLevel level, Map<ItemStack, SoilGenerator> missing) {
-        final File outDir = setupDir("botanypots/generated/soils");
-        for (Map.Entry<ItemStack, SoilGenerator> entry : missing.entrySet()) {
-            final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(entry.getKey().getItem());
-            final File soilFile = new File(outDir, itemId.getNamespace() + "/soil/" + itemId.getPath() + ".json");
-            final JsonObject obj = entry.getValue().generateData(level, entry.getKey());
-            writeFile(soilFile, DataHelper.GSON.toJson(obj));
+    private static Map<ItemStack, CropGenerator> collectMissingCropItems(boolean collectSaplings, ServerLevel level) {
+        final Map<ItemStack, CropGenerator> missing = new HashMap<>();
+        for (Item item : BuiltInRegistries.ITEM) {
+            final ItemStack stack = item.getDefaultInstance();
+            if (!isSoil(stack, level) && !isCrop(stack, level) && (collectSaplings || !isSapling(item))) {
+                for (CropGenerator generator : CROP_GENERATORS.get().values()) {
+                    if (generator.canGenerateCrop(level, stack)) {
+                        missing.put(stack, generator);
+                        break;
+                    }
+                }
+            }
         }
+        return missing;
     }
 
     private static int dumpMissingCrops(CommandContext<CommandSourceStack> ctx) {
+        final ServerLevel level = ctx.getSource().getLevel();
         final boolean includeSaplings = CommandHelper.getBooleanArg("include_saplings", ctx, () -> false);
         final boolean generate = CommandHelper.getBooleanArg("generate", ctx, () -> false);
-        final Set<ResourceLocation> missingCrops = getMissingCrops(ctx.getSource().getLevel(), includeSaplings);
-
+        final Map<ItemStack, CropGenerator> missingCrops = collectMissingCropItems(includeSaplings, level);
         if (missingCrops.isEmpty()) {
             ctx.getSource().sendSuccess(() -> BotanyPotsCommands.modMessage(Component.translatable("commands.botanypots.dump.no_results")), false);
             return 0;
         }
-
         if (generate) {
             final File outdir = setupDir("botanypots/generated/crops");
-            for (ResourceLocation itemId : missingCrops) {
-                final Item item = BuiltInRegistries.ITEM.get(itemId);
-                if (item instanceof BlockItem blockItem) {
-                    final ResourceLocation blockId = BuiltInRegistries.BLOCK.getKey(blockItem.getBlock());
-                    final File cropFile = new File(outdir, blockId.getNamespace() + "/crop/" + blockId.getPath() + ".json");
-                    writeFile(cropFile, SEED_TEMPLATE.replace("$block_id$", blockId.toString()));
-                }
+            for (Map.Entry<ItemStack, CropGenerator> entry : missingCrops.entrySet()) {
+                final ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(entry.getKey().getItem());
+                final File cropFile = new File(outdir, itemId.getNamespace() + "/crop/" + itemId.getPath() + ".json");
+                writeFile(cropFile, DataHelper.GSON.toJson(entry.getValue().generateData(level, entry.getKey())));
             }
             ctx.getSource().sendSuccess(() -> Component.translatable("commands.botanypots.dump.generated").withStyle(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, outdir.getAbsolutePath()))), false);
         }
         else {
             final StringJoiner entries = new StringJoiner(System.lineSeparator());
             entries.add("Potential missing crop IDs");
-            missingCrops.forEach(entry -> entries.add(entry.toString()));
+            missingCrops.forEach((k, v) -> entries.add(BuiltInRegistries.ITEM.getKey(k.getItem()).toString()));
             ctx.getSource().sendSuccess(() -> BotanyPotsCommands.modMessage(Component.translatable("commands.botanypots.dump.missing_crops", Component.literal(Integer.toString(missingCrops.size())).withStyle(style -> style.withColor(ChatFormatting.RED))).withStyle(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, entries.toString())))), false);
         }
-        return 0;
-    }
-
-    private static Set<ResourceLocation> getMissingCrops(Level level, boolean includeSaplings) {
-        final Set<Item> missingSeedItems = new HashSet<>();
-        for (Item item : BuiltInRegistries.ITEM) {
-            if (isCrop(item.getDefaultInstance(), level) || isSoil(item.getDefaultInstance(), level)) {
-                continue;
-            }
-            if (item instanceof BlockItem itemBlock) {
-                final Block placedBlock = itemBlock.getBlock();
-                final ResourceLocation blockId = BuiltInRegistries.BLOCK.getKey(placedBlock);
-                if (placedBlock instanceof CropBlock || placedBlock instanceof GrowingPlantBlock || placedBlock instanceof BonemealableBlock || placedBlock instanceof SaplingBlock || placedBlock instanceof BushBlock || placedBlock instanceof SporeBlossomBlock || (placedBlock instanceof BaseCoralPlantTypeBlock && !blockId.getPath().startsWith("dead_"))) {
-                    missingSeedItems.add(item);
-                }
-                else {
-                    for (Property<?> property : placedBlock.getStateDefinition().getProperties()) {
-                        if (property.getName().equalsIgnoreCase("age")) {
-                            missingSeedItems.add(item);
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-        final Consumer<Item> tagProcessor = item -> {
-            if (!isCrop(item.getDefaultInstance(), level) && !isSoil(item.getDefaultInstance(), level)) {
-                missingSeedItems.add(item);
-            }
-        };
-        processTag(FORGE_SEEDS, tagProcessor);
-        processTag(COMMON_SEEDS, tagProcessor);
-        return missingSeedItems.stream().filter(item -> (includeSaplings || !isSapling(item)) && !Objects.requireNonNull(IGNORED_ITEMS.apply(level)).contains(item)).map(BuiltInRegistries.ITEM::getKey).sorted(ID_COMPARE).collect(Collectors.toCollection(LinkedHashSet::new));
+        return missingCrops.size();
     }
 
     private static void processTag(TagKey<Item> key, Consumer<Item> consumer) {
@@ -231,7 +180,7 @@ public class MissingCommand {
     }
 
     private static boolean isSapling(Item item) {
-        return item instanceof BlockItem blockItem && blockItem.getBlock() instanceof SaplingBlock;
+        return item.getDefaultInstance().is(SAPLING_TAG) || item instanceof BlockItem blockItem && (blockItem.getBlock() instanceof SaplingBlock);
     }
 
     private static void writeFile(File file, String text) {

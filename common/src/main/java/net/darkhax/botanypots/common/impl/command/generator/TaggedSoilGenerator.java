@@ -1,16 +1,20 @@
-package net.darkhax.botanypots.common.api.command.generator.soil;
+package net.darkhax.botanypots.common.impl.command.generator;
 
 import com.google.gson.JsonObject;
 import net.darkhax.botanypots.common.api.command.generator.DataHelper;
+import net.darkhax.botanypots.common.api.command.generator.soil.SoilGenerator;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 
 import java.util.Objects;
 
+/**
+ * This soil generator will create soils that map items in a tag to a single display output.
+ */
 public class TaggedSoilGenerator implements SoilGenerator {
 
     private final TagKey<Item> tag;
@@ -26,12 +30,12 @@ public class TaggedSoilGenerator implements SoilGenerator {
     }
 
     @Override
-    public boolean canGenerateSoil(Level level, ItemStack stack) {
+    public boolean canGenerateSoil(ServerLevel level, ItemStack stack) {
         return stack.is(this.tag);
     }
 
     @Override
-    public JsonObject generateData(Level level, ItemStack stack) {
+    public JsonObject generateData(ServerLevel level, ItemStack stack) {
         final JsonObject output = new JsonObject();
         output.add("bookshelf:load_conditions", DataHelper.array(DataHelper.requiresItem(stack.getItem())));
         output.addProperty("type", "botanypots:soil");
