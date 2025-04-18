@@ -4,12 +4,8 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import io.netty.buffer.ByteBuf;
 import net.darkhax.bookshelf.common.api.data.codecs.map.MapCodecs;
+import net.darkhax.bookshelf.common.api.function.CachedSupplier;
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;
-import net.darkhax.botanypots.common.impl.data.itemdrops.BlockDrops;
-import net.darkhax.botanypots.common.impl.data.itemdrops.BlockStateDrops;
-import net.darkhax.botanypots.common.impl.data.itemdrops.EntityDrops;
-import net.darkhax.botanypots.common.impl.data.itemdrops.LootTableDrops;
-import net.darkhax.botanypots.common.impl.data.itemdrops.SimpleDropProvider;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
@@ -18,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * Represents a type of drop provider. Handles serialization.
@@ -32,11 +29,6 @@ public record ItemDropProviderType<T extends ItemDropProvider>(ResourceLocation 
     private static final Map<ResourceLocation, ItemDropProviderType<?>> REGISTRY = new HashMap<>();
     public static final Codec<ItemDropProviderType<?>> TYPE_CODEC = ResourceLocation.CODEC.xmap(REGISTRY::get, ItemDropProviderType::typeID);
     public static final StreamCodec<ByteBuf, ? extends ItemDropProviderType<?>> TYPE_STREAM = ResourceLocation.STREAM_CODEC.map(REGISTRY::get, ItemDropProviderType::typeID);
-    public static final ItemDropProviderType<LootTableDrops> LOOT_TABLE = register(BotanyPotsMod.id("loot_table"), LootTableDrops.CODEC, LootTableDrops.STREAM);
-    public static final ItemDropProviderType<SimpleDropProvider> SIMPLE_DROPS = register(BotanyPotsMod.id("items"), SimpleDropProvider.CODEC, SimpleDropProvider.STREAM);
-    public static final ItemDropProviderType<BlockDrops> BLOCK_DROPS = register(BotanyPotsMod.id("block"), BlockDrops.CODEC, BlockDrops.STREAM);
-    public static final ItemDropProviderType<BlockStateDrops> BLOCK_STATE_DROPS = register(BotanyPotsMod.id("block_state"), BlockStateDrops.CODEC, BlockStateDrops.STREAM);
-    public static final ItemDropProviderType<EntityDrops> ENTITY_DROPS = register(BotanyPotsMod.id("entity"), EntityDrops.CODEC, EntityDrops.STREAM);
     public static final Codec<ItemDropProvider> DROP_PROVIDER_CODEC = TYPE_CODEC.dispatch(ItemDropProvider::getType, ItemDropProviderType::codec);
     public static final StreamCodec<RegistryFriendlyByteBuf, ItemDropProvider> DROP_PROVIDER_STREAM = new StreamCodec<>() {
         @Override
@@ -58,6 +50,14 @@ public record ItemDropProviderType<T extends ItemDropProvider>(ResourceLocation 
         }
     };
     public static final Codec<List<ItemDropProvider>> LIST_CODEC = MapCodecs.flexibleList(DROP_PROVIDER_CODEC);
+
+    public static Supplier<ItemDropProviderType<?>> getLazy(ResourceLocation id) {
+        return CachedSupplier.cache(() -> get(id));
+    }
+
+    public static ItemDropProviderType<?> get(ResourceLocation id) {
+        return REGISTRY.get(id);
+    }
 
     /**
      * Creates and registers a drop provider type.

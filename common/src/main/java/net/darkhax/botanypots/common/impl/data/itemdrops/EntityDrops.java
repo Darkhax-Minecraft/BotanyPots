@@ -35,9 +35,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class EntityDrops implements ItemDropProvider {
 
+    public static final Supplier<ItemDropProviderType<?>> TYPE = ItemDropProviderType.getLazy(BotanyPotsMod.id("entity"));
     public static final MapCodec<EntityDrops> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             CompoundTag.CODEC.fieldOf("entity").forGetter(EntityDrops::getEntityData),
             DamageType.CODEC.optionalFieldOf("damage_source").forGetter(EntityDrops::getDamageType)
@@ -129,7 +131,7 @@ public class EntityDrops implements ItemDropProvider {
 
     @Override
     public ItemDropProviderType<?> getType() {
-        return ItemDropProviderType.ENTITY_DROPS;
+        return TYPE.get();
     }
 
     @Override

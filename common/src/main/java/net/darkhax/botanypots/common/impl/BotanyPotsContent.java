@@ -109,12 +109,13 @@ public class BotanyPotsContent implements IContentProvider {
         for (Map.Entry<ResourceLocation, Block> block : allPotBlocks.entrySet()) {
             registry.addBlock(block.getValue());
         }
-        BotanyPotsPlugin.PLUGINS.get().forEach(BotanyPotsPlugin::registerDisplayTypes);
     }
 
     @Override
     public void registerBlockEntities(Register<BlockEntityType.Builder<?>> registry) {
         registry.add("botany_pot", Services.GAMEPLAY.blockEntityBuilder(BotanyPotBlockEntity::new, this.allPotBlocks.values().toArray(Block[]::new)));
+        BotanyPotsPlugin.PLUGINS.get().forEach(BotanyPotsPlugin::registerDisplayTypes);
+        BotanyPotsPlugin.PLUGINS.get().forEach(BotanyPotsPlugin::registerDropProviders);
     }
 
     @Override

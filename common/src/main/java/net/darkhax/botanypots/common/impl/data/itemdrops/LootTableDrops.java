@@ -21,13 +21,14 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class LootTableDrops implements ItemDropProvider {
 
+    public static final Supplier<ItemDropProviderType<?>> TYPE = ItemDropProviderType.getLazy(BotanyPotsMod.id("loot_table"));
     public static final MapCodec<LootTableDrops> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             ResourceLocation.CODEC.fieldOf("table_id").forGetter(LootTableDrops::getTableId)
     ).apply(instance, LootTableDrops::new));
-
     public static final StreamCodec<RegistryFriendlyByteBuf, LootTableDrops> STREAM = StreamCodec.of(
             (buf, val) -> {
                 buf.writeResourceLocation(val.tableId);
@@ -73,7 +74,7 @@ public class LootTableDrops implements ItemDropProvider {
 
     @Override
     public ItemDropProviderType<?> getType() {
-        return ItemDropProviderType.LOOT_TABLE;
+        return TYPE.get();
     }
 
     @Override

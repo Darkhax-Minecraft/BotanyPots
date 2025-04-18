@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.darkhax.botanypots.common.api.data.itemdrops.ItemDropProviderType;
+import net.darkhax.botanypots.common.impl.BotanyPotsMod;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -14,9 +15,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class BlockDrops extends LootTableDrops {
 
+    public static final Supplier<ItemDropProviderType<?>> TYPE = ItemDropProviderType.getLazy(BotanyPotsMod.id("block"));
     public static final MapCodec<BlockDrops> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(BlockDrops::getBlock)
     ).apply(instance, BlockDrops::new));
@@ -77,6 +80,6 @@ public class BlockDrops extends LootTableDrops {
 
     @Override
     public ItemDropProviderType<?> getType() {
-        return ItemDropProviderType.BLOCK_DROPS;
+        return TYPE.get();
     }
 }

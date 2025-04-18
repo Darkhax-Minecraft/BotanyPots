@@ -63,6 +63,14 @@ public interface BotanyPotsPlugin {
     }
 
     /**
+     * Register new item drop provider types. These are registered using
+     * {@link net.darkhax.botanypots.common.api.data.itemdrops.ItemDropProviderType#register(ResourceLocation, MapCodec,
+     * StreamCodec)}.
+     */
+    default void registerDropProviders() {
+    }
+
+    /**
      * Binds a renderer to a display type. This method is only invoked on the client, and it is safe to use client side
      * only code within this method. These are bound using
      * {@link net.darkhax.botanypots.common.api.data.display.render.DisplayRenderer#bind(DisplayType,

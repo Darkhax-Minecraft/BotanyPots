@@ -3,6 +3,8 @@ package net.darkhax.botanypots.common.impl.data.itemdrops;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.darkhax.bookshelf.common.api.data.codecs.map.MapCodecs;
+import net.darkhax.botanypots.common.api.data.itemdrops.ItemDropProviderType;
+import net.darkhax.botanypots.common.impl.BotanyPotsMod;
 import net.darkhax.botanypots.common.impl.Helpers;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -11,9 +13,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class BlockStateDrops extends BlockDrops {
 
+    public static final Supplier<ItemDropProviderType<?>> TYPE = ItemDropProviderType.getLazy(BotanyPotsMod.id("block_state"));
     public static final MapCodec<BlockStateDrops> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             MapCodecs.BLOCK_STATE_MAP_CODEC.fieldOf("block_state").forGetter(BlockStateDrops::getHarvestState)
     ).apply(instance, BlockStateDrops::new));
@@ -40,5 +44,10 @@ public class BlockStateDrops extends BlockDrops {
     // client
     public BlockStateDrops(BlockState state, ResourceLocation tableId, List<ItemStack> displayItems) {
         super(state.getBlock(), state, tableId, displayItems);
+    }
+
+    @Override
+    public ItemDropProviderType<?> getType() {
+        return TYPE.get();
     }
 }

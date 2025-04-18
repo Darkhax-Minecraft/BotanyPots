@@ -8,6 +8,7 @@ import net.darkhax.bookshelf.common.api.util.MathsHelper;
 import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.darkhax.botanypots.common.api.data.itemdrops.ItemDropProvider;
 import net.darkhax.botanypots.common.api.data.itemdrops.ItemDropProviderType;
+import net.darkhax.botanypots.common.impl.BotanyPotsMod;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -17,14 +18,15 @@ import net.minecraft.world.level.Level;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public record SimpleDropProvider(List<SimpleDrop> drops) implements ItemDropProvider {
 
+    public static final Supplier<ItemDropProviderType<?>> TYPE = ItemDropProviderType.getLazy(BotanyPotsMod.id("items"));
     public static final MapCodec<SimpleDropProvider> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             MapCodecs.flexibleList(SimpleDrop.CODEC.codec()).fieldOf("items").forGetter(SimpleDropProvider::drops)
     ).apply(instance, SimpleDropProvider::new));
-
     public static final StreamCodec<RegistryFriendlyByteBuf, SimpleDropProvider> STREAM = StreamCodec.of(
             (buffer, value) -> {
                 buffer.writeInt(value.drops.size());
@@ -52,7 +54,7 @@ public record SimpleDropProvider(List<SimpleDrop> drops) implements ItemDropProv
 
     @Override
     public ItemDropProviderType<?> getType() {
-        return ItemDropProviderType.SIMPLE_DROPS;
+        return TYPE.get();
     }
 
     @Override

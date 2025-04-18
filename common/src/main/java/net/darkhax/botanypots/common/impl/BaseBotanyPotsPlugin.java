@@ -3,9 +3,10 @@ package net.darkhax.botanypots.common.impl;
 import net.darkhax.botanypots.common.api.BotanyPotsPlugin;
 import net.darkhax.botanypots.common.api.command.generator.DataHelper;
 import net.darkhax.botanypots.common.api.command.generator.soil.SoilGenerator;
-import net.darkhax.botanypots.common.impl.command.generator.TaggedSoilGenerator;
 import net.darkhax.botanypots.common.api.data.display.render.DisplayRenderer;
 import net.darkhax.botanypots.common.api.data.display.types.DisplayType;
+import net.darkhax.botanypots.common.api.data.itemdrops.ItemDropProviderType;
+import net.darkhax.botanypots.common.impl.command.generator.TaggedSoilGenerator;
 import net.darkhax.botanypots.common.impl.data.display.renderer.EntityDisplayStateRenderer;
 import net.darkhax.botanypots.common.impl.data.display.renderer.PhasedDisplayStateRenderer;
 import net.darkhax.botanypots.common.impl.data.display.renderer.SimpleDisplayStateRenderer;
@@ -15,6 +16,11 @@ import net.darkhax.botanypots.common.impl.data.display.types.EntityDisplayState;
 import net.darkhax.botanypots.common.impl.data.display.types.SimpleDisplayState;
 import net.darkhax.botanypots.common.impl.data.display.types.TexturedCubeDisplayState;
 import net.darkhax.botanypots.common.impl.data.display.types.TransitionalDisplayState;
+import net.darkhax.botanypots.common.impl.data.itemdrops.BlockDrops;
+import net.darkhax.botanypots.common.impl.data.itemdrops.BlockStateDrops;
+import net.darkhax.botanypots.common.impl.data.itemdrops.EntityDrops;
+import net.darkhax.botanypots.common.impl.data.itemdrops.LootTableDrops;
+import net.darkhax.botanypots.common.impl.data.itemdrops.SimpleDropProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 
@@ -44,5 +50,14 @@ public class BaseBotanyPotsPlugin implements BotanyPotsPlugin {
         DisplayRenderer.bind(AgingDisplayState.TYPE.get(), PhasedDisplayStateRenderer.AGING);
         DisplayRenderer.bind(EntityDisplayState.TYPE.get(), EntityDisplayStateRenderer.RENDERER);
         DisplayRenderer.bind(TexturedCubeDisplayState.TYPE.get(), TexturedCubeStateRenderer.RENDERER);
+    }
+
+    @Override
+    public void registerDropProviders() {
+        ItemDropProviderType.register(BotanyPotsMod.id("loot_table"), LootTableDrops.CODEC, LootTableDrops.STREAM);
+        ItemDropProviderType.register(BotanyPotsMod.id("items"), SimpleDropProvider.CODEC, SimpleDropProvider.STREAM);
+        ItemDropProviderType.register(BotanyPotsMod.id("block"), BlockDrops.CODEC, BlockDrops.STREAM);
+        ItemDropProviderType.register(BotanyPotsMod.id("block_state"), BlockStateDrops.CODEC, BlockStateDrops.STREAM);
+        ItemDropProviderType.register(BotanyPotsMod.id("entity"), EntityDrops.CODEC, EntityDrops.STREAM);
     }
 }
