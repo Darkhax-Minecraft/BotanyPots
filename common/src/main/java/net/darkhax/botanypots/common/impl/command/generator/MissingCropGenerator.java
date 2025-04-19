@@ -1,9 +1,11 @@
 package net.darkhax.botanypots.common.impl.command.generator;
 
+import com.google.common.collect.Multimap;
 import com.google.gson.JsonObject;
 import net.darkhax.botanypots.common.api.command.generator.DataHelper;
 import net.darkhax.botanypots.common.api.command.generator.crop.CropGenerator;
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;
+import net.darkhax.botanypots.common.impl.data.recipe.crop.BlockDerivedCrop;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -12,6 +14,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.BaseCoralPlantTypeBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
@@ -68,6 +71,7 @@ public class MissingCropGenerator implements CropGenerator {
             final JsonObject itemTag = DataHelper.tag(BotanyPotsMod.id("soil/mushroom"));
             output.add("soil", DataHelper.ingredients(blockTag, itemTag));
         }
+        output.add("input", DataHelper.ingredient(Ingredient.of(stack)));
         return output;
     }
 }
