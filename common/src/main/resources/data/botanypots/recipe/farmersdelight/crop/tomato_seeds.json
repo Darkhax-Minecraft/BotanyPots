@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "farmersdelight:budding_tomatoes"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "farmersdelight:budding_tomatoes",
+  "input": {
+    "item": "farmersdelight:tomato_seeds"
+  }
+}

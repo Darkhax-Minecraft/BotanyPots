@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "farmersdelight:cabbages"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "farmersdelight:cabbages",
+  "input": {
+    "item": "farmersdelight:cabbage_seeds"
+  }
+}

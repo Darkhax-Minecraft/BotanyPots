@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "pamhc2crops:pamsunchokecrop"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "pamhc2crops:pamsunchokecrop",
+  "input": {
+    "item": "pamhc2crops:sunchokeseeditem"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "pamhc2crops:pamcantaloupecrop"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "pamhc2crops:pamcantaloupecrop",
+  "input": {
+    "item": "pamhc2crops:cantaloupeseeditem"
+  }
+}

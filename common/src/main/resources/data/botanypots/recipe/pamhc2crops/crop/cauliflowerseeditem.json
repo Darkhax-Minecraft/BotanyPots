@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "pamhc2crops:pamcauliflowercrop"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "pamhc2crops:pamcauliflowercrop",
+  "input": {
+    "item": "pamhc2crops:cauliflowerseeditem"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "sushigocrafting:wasabi_crop"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "sushigocrafting:wasabi_crop",
+  "input": {
+    "item": "sushigocrafting:wasabi_seeds"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "supplementaries:wild_flax"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "supplementaries:wild_flax",
+  "input": {
+    "item": "supplementaries:wild_flax"
+  }
+}

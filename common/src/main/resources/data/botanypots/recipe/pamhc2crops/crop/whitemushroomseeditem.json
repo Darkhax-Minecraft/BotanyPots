@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "pamhc2crops:pamwhitemushroomcrop"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "pamhc2crops:pamwhitemushroomcrop",
+  "input": {
+    "item": "pamhc2crops:whitemushroomseeditem"
+  }
+}

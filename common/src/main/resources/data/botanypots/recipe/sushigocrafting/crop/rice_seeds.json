@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "sushigocrafting:rice_crop"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "sushigocrafting:rice_crop",
+  "input": {
+    "item": "sushigocrafting:rice_seeds"
+  },
+  "soil": {
+    "tag": "botanypots:soil/water"
+  },
+  "render_options": {
+    "offset": [0, -0.30, 0]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "farmersdelight:sandy_shrub"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "farmersdelight:sandy_shrub",
+  "input": {
+    "item": "farmersdelight:sandy_shrub"
+  }
+}

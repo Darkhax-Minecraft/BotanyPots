@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "sushigocrafting:sesame_crop"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "sushigocrafting:sesame_crop",
+  "input": {
+    "item": "sushigocrafting:sesame_seeds"
+  }
+}

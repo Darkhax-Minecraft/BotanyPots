@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "silentgear:fluffy_plant"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "silentgear:fluffy_plant",
+  "input": {
+    "item": "silentgear:fluffy_seeds"
+  }
+}

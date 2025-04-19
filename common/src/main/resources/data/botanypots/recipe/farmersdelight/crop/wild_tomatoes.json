@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "farmersdelight:wild_tomatoes"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "farmersdelight:wild_tomatoes",
+  "input": {
+    "item": "farmersdelight:wild_tomatoes"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "allthemodium:ancient_cavevines"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "allthemodium:ancient_cavevines",
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "allthemodium:ancient_cavevines",
+          "properties": {
+            "age": "0"
+          }
+        },
+        "options": {
+          "rotation": "X_180"
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "allthemodium:ancient_cavevines",
+          "properties": {
+            "age": "2"
+          }
+        },
+        "options": {
+          "rotation": "X_180"
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "allthemodium:ancient_cavevines",
+          "properties": {
+            "age": "4"
+          }
+        },
+        "options": {
+          "rotation": "X_180"
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "allthemodium:ancient_cavevines",
+          "properties": {
+            "age": "6"
+          }
+        },
+        "options": {
+          "rotation": "X_180"
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "allthemodium:ancient_cavevines",
+          "properties": {
+            "age": "6",
+            "berries": "true"
+          }
+        },
+        "options": {
+          "rotation": "X_180"
+        }
+      }
+    ]
+  },
+  "input": [
+    {
+      "item": "allthemodium:ancient_soulberries"
+    },
+    {
+      "item": "allthemodium:ancient_cavevines_plant"
+    }
+  ]
+}

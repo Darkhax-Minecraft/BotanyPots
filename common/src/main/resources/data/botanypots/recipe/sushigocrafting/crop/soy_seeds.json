@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "sushigocrafting:soy_crop"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "sushigocrafting:soy_crop",
+  "input": {
+    "item": "sushigocrafting:soy_seeds"
+  }
+}

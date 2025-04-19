@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "sushigocrafting:cucumber_crop"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "sushigocrafting:cucumber_crop",
+  "input": {
+    "item": "sushigocrafting:cucumber_seeds"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "immersiveengineering:hemp"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "immersiveengineering:hemp",
+  "input": {
+    "item": "immersiveengineering:seed"
+  },
+  "display": [
+    {
+      "type": "botanypots:simple",
+      "block_state": {
+        "block": "immersiveengineering:hemp",
+        "properties": {
+            "age": "4",
+            "half": "lower"
+        }
+      }
+    },
+    {
+      "type": "botanypots:simple",
+      "block_state": {
+        "block": "immersiveengineering:hemp",
+        "properties": {
+            "age": "4",
+            "half": "upper"
+        }
+      }
+    }
+  ]
+}

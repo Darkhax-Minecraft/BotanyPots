@@ -1,0 +1,37 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "supplementaries:flax"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "supplementaries:flax",
+  "input": {
+    "item": "supplementaries:flax_seeds"
+  },
+  "display": [
+    {
+      "type": "botanypots:simple",
+      "block_state": {
+        "block": "supplementaries:flax",
+        "properties": {
+            "age": "7",
+            "half": "lower"
+        }
+      }
+    },
+    {
+      "type": "botanypots:simple",
+      "block_state": {
+        "block": "supplementaries:flax",
+        "properties": {
+            "age": "7",
+            "half": "upper"
+        }
+      }
+    }
+  ]
+}

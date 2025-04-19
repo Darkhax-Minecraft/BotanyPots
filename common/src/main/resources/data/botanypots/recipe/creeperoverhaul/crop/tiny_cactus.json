@@ -1,0 +1,18 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "creeperoverhaul:tiny_cactus"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "creeperoverhaul:tiny_cactus",
+  "input": {
+    "item": "creeperoverhaul:tiny_cactus"
+  },
+  "soil": {
+    "tag": "botanypots:soil/sand"
+  }
+}
