@@ -116,6 +116,7 @@ public class BotanyPotsContent implements IContentProvider {
         registry.add("botany_pot", Services.GAMEPLAY.blockEntityBuilder(BotanyPotBlockEntity::new, this.allPotBlocks.values().toArray(Block[]::new)));
         BotanyPotsPlugin.PLUGINS.get().forEach(BotanyPotsPlugin::registerDisplayTypes);
         BotanyPotsPlugin.PLUGINS.get().forEach(BotanyPotsPlugin::registerDropProviders);
+        BotanyPotsPlugin.PLUGINS.get().forEach(BotanyPotsPlugin::registerGrowthAmountTypes);
     }
 
     @Override

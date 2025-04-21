@@ -71,6 +71,14 @@ public interface BotanyPotsPlugin {
     }
 
     /**
+     * Registers new growth amount calculation types. These are registered using
+     * {@link net.darkhax.botanypots.common.api.data.growthamount.GrowthAmountType#register(ResourceLocation, MapCodec,
+     * StreamCodec)}.
+     */
+    default void registerGrowthAmountTypes() {
+    }
+
+    /**
      * Binds a renderer to a display type. This method is only invoked on the client, and it is safe to use client side
      * only code within this method. These are bound using
      * {@link net.darkhax.botanypots.common.api.data.display.render.DisplayRenderer#bind(DisplayType,

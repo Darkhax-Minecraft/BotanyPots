@@ -6,10 +6,11 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.darkhax.bookshelf.common.api.data.codecs.stream.StreamCodecs;
 import net.darkhax.bookshelf.common.api.util.DataHelper;
 import net.darkhax.bookshelf.common.api.util.FunctionHelper;
-import net.darkhax.bookshelf.common.api.util.MathsHelper;
 import net.darkhax.botanypots.common.api.context.BlockEntityContext;
 import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.darkhax.botanypots.common.api.data.SoundEffect;
+import net.darkhax.botanypots.common.api.data.growthamount.GrowthAmount;
+import net.darkhax.botanypots.common.api.data.growthamount.GrowthAmountType;
 import net.darkhax.botanypots.common.api.data.recipes.CacheableRecipe;
 import net.darkhax.botanypots.common.api.data.recipes.fertilizer.Fertilizer;
 import net.darkhax.botanypots.common.impl.Helpers;
@@ -50,7 +51,7 @@ public class BasicFertilizer extends Fertilizer implements CacheableRecipe {
             final int requiredGrowthTicks = context.getRequiredGrowthTicks();
             final int maxBonemealableTicks = requiredGrowthTicks - 20;
             if (requiredGrowthTicks > 20 && context.pot().growthTime.getTicks() < maxBonemealableTicks) {
-                context.pot().growthTime.setTicks(Math.min(context.pot().growthTime.getTicks() + MathsHelper.nextInt(sLevel.random, properties.minGrowth, properties.maxGrowth), maxBonemealableTicks));
+                context.pot().growthTime.setTicks(Math.min(context.pot().growthTime.getTicks() + properties.growthAmount.getAmount(context, level), maxBonemealableTicks));
                 context.pot().setBonemealCooldown(properties.cooldown);
                 if (properties.spawnsParticles) {
                     level.levelEvent(LevelEvent.PARTICLES_BEE_GROWTH, context.pot().getBlockPos(), 15);
@@ -93,13 +94,12 @@ public class BasicFertilizer extends Fertilizer implements CacheableRecipe {
         return this.properties.heldItem.test(candidate);
     }
 
-    public record Properties(Ingredient heldItem, Optional<Ingredient> soilIngredient, Optional<Ingredient> seedIngredient, int minGrowth, int maxGrowth, int cooldown, boolean spawnsParticles, boolean notifySculk, Optional<SoundEffect> soundEffect) {
+    public record Properties(Ingredient heldItem, Optional<Ingredient> soilIngredient, Optional<Ingredient> seedIngredient, GrowthAmount growthAmount, int cooldown, boolean spawnsParticles, boolean notifySculk, Optional<SoundEffect> soundEffect) {
         public static final MapCodec<Properties> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
                 Ingredient.CODEC.fieldOf("held_item").forGetter(Properties::heldItem),
                 Ingredient.CODEC.optionalFieldOf("soil_item").forGetter(Properties::soilIngredient),
                 Ingredient.CODEC.optionalFieldOf("seed_item").forGetter(Properties::seedIngredient),
-                Codec.INT.optionalFieldOf("min_growth", 400).forGetter(Properties::minGrowth),
-                Codec.INT.optionalFieldOf("max_growth", 800).forGetter(Properties::maxGrowth),
+                GrowthAmountType.GROWTH_AMOUNT_CODEC.fieldOf("growth").forGetter(Properties::growthAmount),
                 Codec.INT.optionalFieldOf("cooldown", 20).forGetter(Properties::cooldown),
                 Codec.BOOL.optionalFieldOf("spawn_particles", true).forGetter(Properties::spawnsParticles),
                 Codec.BOOL.optionalFieldOf("notify_sculk", true).forGetter(Properties::notifySculk),
@@ -113,13 +113,12 @@ public class BasicFertilizer extends Fertilizer implements CacheableRecipe {
                 final Ingredient heldItem = StreamCodecs.INGREDIENT_NON_EMPTY.decode(buf);
                 final Optional<Ingredient> soil = Helpers.OPTIONAL_INGREDIENT_STREAM.decode(buf);
                 final Optional<Ingredient> seed = Helpers.OPTIONAL_INGREDIENT_STREAM.decode(buf);
-                final int min = ByteBufCodecs.INT.decode(buf);
-                final int max = ByteBufCodecs.INT.decode(buf);
+                final GrowthAmount growth = GrowthAmountType.GROWTH_AMOUNT_STREAM.decode(buf);
                 final int cooldown = ByteBufCodecs.INT.decode(buf);
                 final boolean particles = buf.readBoolean();
                 final boolean sculk = buf.readBoolean();
                 final Optional<SoundEffect> soundEffect = SoundEffect.OPTIONAL_STREAM.decode(buf);
-                return new Properties(heldItem, soil, seed, min, max, cooldown, particles, sculk, soundEffect);
+                return new Properties(heldItem, soil, seed, growth, cooldown, particles, sculk, soundEffect);
             }
 
             @Override
@@ -127,8 +126,7 @@ public class BasicFertilizer extends Fertilizer implements CacheableRecipe {
                 StreamCodecs.INGREDIENT_NON_EMPTY.encode(buf, properties.heldItem);
                 Helpers.OPTIONAL_INGREDIENT_STREAM.encode(buf, properties.soilIngredient);
                 Helpers.OPTIONAL_INGREDIENT_STREAM.encode(buf, properties.seedIngredient);
-                ByteBufCodecs.INT.encode(buf, properties.minGrowth);
-                ByteBufCodecs.INT.encode(buf, properties.maxGrowth);
+                GrowthAmountType.GROWTH_AMOUNT_STREAM.encode(buf, properties.growthAmount);
                 ByteBufCodecs.INT.encode(buf, properties.cooldown);
                 buf.writeBoolean(properties.spawnsParticles);
                 buf.writeBoolean(properties.notifySculk);
