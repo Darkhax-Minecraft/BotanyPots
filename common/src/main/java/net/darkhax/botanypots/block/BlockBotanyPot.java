@@ -164,6 +164,23 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
                 return InteractionResult.CONSUME;
             }
 
+            // Attempt to fill the pot with soil or seed
+            else if (!player.isCrouching() && (potEntity.isValidSeed(heldStack) || potEntity.isValidSoil(heldStack))) {
+
+                if (potEntity.isValidSeed(heldStack) && potEntity.getCrop() == null) {
+
+                    potEntity.getInventory().setItem(1, new ItemStack(heldStack.getItem(), 1));
+
+                    player.getItemInHand(hand).setCount(heldStack.getCount() - 1);
+
+                } else if (potEntity.isValidSoil(heldStack) && potEntity.getSoil() == null) {
+
+                    potEntity.getInventory().setItem(0, new ItemStack(heldStack.getItem(), 1));
+
+                    player.getItemInHand(hand).setCount(heldStack.getCount() - 1);
+                }
+            }
+
             // Open the pot GUI
             else if (player instanceof ServerPlayer serverPlayer) {
 
