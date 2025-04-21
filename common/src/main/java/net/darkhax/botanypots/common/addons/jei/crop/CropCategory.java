@@ -85,7 +85,7 @@ public class CropCategory implements IRecipeCategory<CropInfo> {
             if (crop != null) {
                 crop.value().hoverTooltip(recipe.context().getSeedItem(), recipe.context(), Minecraft.getInstance().level, tooltip::add);
                 if (Minecraft.getInstance().options.advancedItemTooltips) {
-                    tooltip.add(Component.translatable("tooltip.botanypots.crop_id", recipe.id()).withStyle(ChatFormatting.DARK_GRAY));
+                    tooltip.add(Component.translatable("tooltip.botanypots.crop_id", recipe.id().toString()).withStyle(ChatFormatting.DARK_GRAY));
                 }
             }
         });
@@ -100,7 +100,7 @@ public class CropCategory implements IRecipeCategory<CropInfo> {
                     if (soil != null) {
                         soil.value().hoverTooltip(stack, recipe.context(), Minecraft.getInstance().level, tooltip::add);
                         if (Minecraft.getInstance().options.advancedItemTooltips) {
-                            tooltip.add(Component.translatable("tooltip.botanypots.soil_id", soil.id()).withStyle(ChatFormatting.DARK_GRAY));
+                            tooltip.add(Component.translatable("tooltip.botanypots.soil_id", soil.id().toString()).withStyle(ChatFormatting.DARK_GRAY));
                         }
                     }
                 });
