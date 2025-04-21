@@ -3,12 +3,12 @@
     {
       "type": "bookshelf:block_exists",
       "values": [
-        "farmersdelight:budding_tomatoes"
+        "farmersdelight:tomatoes"
       ]
     }
   ],
   "type": "botanypots:block_derived_crop",
-  "block": "farmersdelight:budding_tomatoes",
+  "block": "farmersdelight:tomatoes",
   "input": {
     "item": "farmersdelight:tomato_seeds"
   }
