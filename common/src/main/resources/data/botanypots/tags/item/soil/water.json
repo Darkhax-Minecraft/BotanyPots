@@ -6,6 +6,26 @@
     "minecraft:tropical_fish_bucket",
     "minecraft:pufferfish_bucket",
     "minecraft:axolotl_bucket",
-    "minecraft:tadpole_bucket"
+    "minecraft:tadpole_bucket",
+    {
+      "id": "cataclysm:the_baby_leviathan_bucket",
+      "required": false
+    },
+    {
+      "id": "undergarden:gwibling_bucket",
+      "required": false
+    },
+    {
+      "id": "pamhc2foodcore:freshwateritem",
+      "required": false
+    },
+    {
+      "id": "evilcraft:bucket_eternal_water",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:edelwood_water_bucket",
+      "required": false
+    }
   ]
 }

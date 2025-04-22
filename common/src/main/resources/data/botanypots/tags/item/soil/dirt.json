@@ -1,6 +1,50 @@
 {
   "values": [
     "#minecraft:dirt",
-    "minecraft:farmland"
+    "minecraft:farmland",
+    {
+      "id": "farmersdelight:rich_soil_farmland",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:magical_farmland",
+      "required": false
+    },
+    {
+      "id": "biomeswevegone:sandy_farmland",
+      "required": false
+    },
+    {
+      "id": "biomeswevegone:lush_farmland",
+      "required": false
+    },
+    {
+      "id": "eternal_starlight:nightfall_farmland",
+      "required": false
+    },
+    {
+      "id": "undergarden:deepsoil_farmland",
+      "required": false
+    },
+    {
+      "id": "farmingforblockheads:fertilized_farmland_rich",
+      "required": false
+    },
+    {
+      "id": "farmingforblockheads:fertilized_farmland_rich_stable",
+      "required": false
+    },
+    {
+      "id": "farmingforblockheads:fertilized_farmland_healthy",
+      "required": false
+    },
+    {
+      "id": "farmingforblockheads:fertilized_farmland_healthy_stable",
+      "required": false
+    },
+    {
+      "id": "farmingforblockheads:fertilized_farmland_stable",
+      "required": false
+    }
   ]
 }
