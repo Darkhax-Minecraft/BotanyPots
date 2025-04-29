@@ -69,8 +69,8 @@ public class BotanyPotBlockEntity extends AbstractBotanyPotBlockEntity {
     protected TickAccumulator growCooldown = new TickAccumulator(0f);
     private int bonemealCooldown = 0;
 
-    public BotanyPotBlockEntity(BlockPos pos, BlockState state) {
-        super(TYPE.get(), pos, state);
+    public BotanyPotBlockEntity(CachedSupplier<BlockEntityType<BotanyPotBlockEntity>> type, BlockPos pos, BlockState state) {
+        super(type.get(), pos, state);
     }
 
     public static void tickPot(Level level, BlockPos pos, BlockState state, BotanyPotBlockEntity pot) {
