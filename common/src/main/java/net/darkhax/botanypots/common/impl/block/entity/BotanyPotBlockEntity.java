@@ -38,6 +38,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public class BotanyPotBlockEntity extends AbstractBotanyPotBlockEntity {
 
@@ -69,7 +70,11 @@ public class BotanyPotBlockEntity extends AbstractBotanyPotBlockEntity {
     protected TickAccumulator growCooldown = new TickAccumulator(0f);
     private int bonemealCooldown = 0;
 
-    public BotanyPotBlockEntity(CachedSupplier<BlockEntityType<BotanyPotBlockEntity>> type, BlockPos pos, BlockState state) {
+    public BotanyPotBlockEntity(BlockPos pos, BlockState state) {
+        this(TYPE, pos, state);
+    }
+
+    public BotanyPotBlockEntity(Supplier<BlockEntityType<BotanyPotBlockEntity>> type, BlockPos pos, BlockState state) {
         super(type.get(), pos, state);
     }
 
