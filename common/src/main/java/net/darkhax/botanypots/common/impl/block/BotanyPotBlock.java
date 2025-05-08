@@ -191,6 +191,6 @@ public class BotanyPotBlock extends BaseEntityBlock implements SimpleWaterlogged
     @Nullable
     @Override
     public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
-        return new BotanyPotBlockEntity(pos, state);
+        return new BotanyPotBlockEntity(BotanyPotBlockEntity.TYPE, pos, state);
     }
 }
