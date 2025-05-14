@@ -2,13 +2,11 @@ package net.darkhax.botanypots.common.api.context;
 
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;
 import net.darkhax.botanypots.common.impl.block.entity.BotanyPotBlockEntity;
-import net.darkhax.botanypots.common.impl.config.Gameplay;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
