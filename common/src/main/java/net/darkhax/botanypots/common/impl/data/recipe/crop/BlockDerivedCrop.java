@@ -15,6 +15,8 @@ import net.darkhax.botanypots.common.impl.data.display.types.AgingDisplayState;
 import net.darkhax.botanypots.common.impl.data.display.types.BasicOptions;
 import net.darkhax.botanypots.common.impl.data.display.types.SimpleDisplayState;
 import net.darkhax.botanypots.common.impl.data.itemdrops.BlockStateDrops;
+import net.darkhax.botanypots.common.mixin.AccessorIntegerProperty;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -25,11 +27,17 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.Half;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -109,8 +117,24 @@ public class BlockDerivedCrop extends BasicCrop {
         }
 
         private static BlockState getHarvestState(Block block) {
+            final StateDefinition<Block, BlockState> stateDef = block.getStateDefinition();
+            BlockState state = getAgedState(block);
+            if (stateDef.getProperty("berries") instanceof BooleanProperty boolProp) {
+                state = state.setValue(boolProp, true);
+            }
+            if (block instanceof MultifaceBlock && block instanceof BonemealableBlock) {
+                state = state.setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true);
+            }
+            return state;
+        }
+
+        private static BlockState getAgedState(Block block) {
             if (block instanceof CropBlock cropBlock) {
                 return cropBlock.getStateForAge(cropBlock.getMaxAge());
+            }
+            final Property<?> ageProp = block.getStateDefinition().getProperty("age");
+            if (ageProp instanceof IntegerProperty intProp && intProp instanceof AccessorIntegerProperty accessor) {
+                return block.defaultBlockState().setValue(intProp, accessor.botanypots$getMax());
             }
             return block.defaultBlockState();
         }

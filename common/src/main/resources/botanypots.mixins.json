@@ -6,6 +6,7 @@
   "compatibilityLevel": "JAVA_18",
   "mixins": [
     "AccessorConfigurableRegistryLookup",
+    "AccessorIntegerProperty",
     "MixinRecipeManager"
   ],
   "client": [],
