@@ -3,16 +3,13 @@ package net.darkhax.botanypots.common.api.data.growthamount;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import io.netty.buffer.ByteBuf;
-import net.darkhax.bookshelf.common.api.data.codecs.map.MapCodecs;
 import net.darkhax.bookshelf.common.api.function.CachedSupplier;
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
