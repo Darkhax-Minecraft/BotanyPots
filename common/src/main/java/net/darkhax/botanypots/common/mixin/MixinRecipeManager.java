@@ -27,7 +27,7 @@ public class MixinRecipeManager {
     @Inject(method = "apply(Ljava/util/Map;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V", at = @At("HEAD"))
     private void onLoad(Map<ResourceLocation, JsonElement> object, ResourceManager resourceManager, ProfilerFiller profiler, CallbackInfo ci) {
         if (this.registries instanceof AccessorConfigurableRegistryLookup registryAccess) {
-            BotanyPotsMod.REGISTRY_ACCESS = new WeakReference<>(registryAccess.simplelootviewer$getRegistry());
+            BotanyPotsMod.REGISTRY_ACCESS = new WeakReference<>(registryAccess.botanypots$getRegistry());
             BotanyPotsMod.LOG.info("Updating registry access.");
         }
     }

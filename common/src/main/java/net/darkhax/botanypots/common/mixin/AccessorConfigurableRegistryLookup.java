@@ -8,5 +8,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 public interface AccessorConfigurableRegistryLookup {
 
     @Accessor("registryAccess")
-    RegistryAccess simplelootviewer$getRegistry();
+    RegistryAccess botanypots$getRegistry();
 }
