@@ -12,6 +12,7 @@ import net.darkhax.botanypots.common.api.data.recipes.crop.Crop;
 import net.darkhax.botanypots.common.api.data.recipes.soil.Soil;
 import net.darkhax.botanypots.common.impl.block.BotanyPotBlock;
 import net.minecraft.ChatFormatting;
+import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -45,6 +46,8 @@ public class Helpers {
     public static final StreamCodec<ByteBuf, BlockState> BLOCK_STATE_STREAM = ByteBufCodecs.idMapper(Block.BLOCK_STATE_REGISTRY);
     public static final StreamCodec<RegistryFriendlyByteBuf, Optional<Ingredient>> OPTIONAL_INGREDIENT_STREAM = DataHelper.optionalStream(StreamCodecs.INGREDIENT_NON_EMPTY);
     public static final StreamCodec<RegistryFriendlyByteBuf, Optional<ItemStack>> OPTIONAL_ITEMSTACK_STREAM = DataHelper.optionalStream(ItemStack.STREAM_CODEC);
+    public static final StreamCodec<RegistryFriendlyByteBuf, Optional<BlockPredicate>> OPTIONAL_BLOCK_PREDICATE = DataHelper.optionalStream(BlockPredicate.STREAM_CODEC);
+    public static final StreamCodec<ByteBuf, TagKey<Block>> BLOCK_TAG = ResourceLocation.STREAM_CODEC.map(rl -> TagKey.create(Registries.BLOCK, rl), TagKey::location);
     public static final TagKey<Enchantment> INCREASE_POT_GROWTH_TAG = TagKey.create(Registries.ENCHANTMENT, BotanyPotsMod.id("increase_pot_growth"));
     public static final TagKey<Enchantment> NEGATE_HARVEST_DAMAGE_TAG = TagKey.create(Registries.ENCHANTMENT, BotanyPotsMod.id("negate_harvest_damage"));
 

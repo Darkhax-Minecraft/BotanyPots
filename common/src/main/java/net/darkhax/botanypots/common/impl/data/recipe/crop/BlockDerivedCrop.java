@@ -16,6 +16,7 @@ import net.darkhax.botanypots.common.impl.data.display.types.BasicOptions;
 import net.darkhax.botanypots.common.impl.data.display.types.SimpleDisplayState;
 import net.darkhax.botanypots.common.impl.data.itemdrops.BlockStateDrops;
 import net.darkhax.botanypots.common.mixin.AccessorIntegerProperty;
+import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -61,7 +62,7 @@ public class BlockDerivedCrop extends BasicCrop {
         return this.properties;
     }
 
-    public record Properties(Block block, Optional<Ingredient> seed, Ingredient soil, int growTime, Optional<List<Display>> display, int lightLevel, Optional<List<ItemDropProvider>> drops, Optional<BasicOptions> renderOptions, Optional<ResourceLocation> functionId) {
+    public record Properties(Block block, Optional<Ingredient> seed, Ingredient soil, int growTime, Optional<List<Display>> display, int lightLevel, Optional<List<ItemDropProvider>> drops, Optional<BasicOptions> renderOptions, Optional<ResourceLocation> functionId, Optional<BlockPredicate> potPredicate) {
         public static final MapCodec<Properties> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
                 BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(Properties::block),
                 Ingredient.CODEC.optionalFieldOf("input").forGetter(Properties::seed),
@@ -71,7 +72,8 @@ public class BlockDerivedCrop extends BasicCrop {
                 Codec.intRange(0, 15).optionalFieldOf("light_level", 0).forGetter(Properties::lightLevel),
                 MapCodecs.flexibleList(ItemDropProviderType.DROP_PROVIDER_CODEC).optionalFieldOf("drops").forGetter(Properties::drops),
                 BasicOptions.CODEC.optionalFieldOf("render_options").forGetter(Properties::renderOptions),
-                ResourceLocation.CODEC.optionalFieldOf("function").forGetter(Properties::functionId)
+                ResourceLocation.CODEC.optionalFieldOf("function").forGetter(Properties::functionId),
+                BlockPredicate.CODEC.optionalFieldOf("pot_predicate").forGetter(Properties::potPredicate)
         ).apply(instance, Properties::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, Properties> STREAM = new StreamCodec<>() {
@@ -109,11 +111,11 @@ public class BlockDerivedCrop extends BasicCrop {
                 return states;
             });
             final List<ItemDropProvider> drops = this.drops.orElseGet(() -> List.of(new BlockStateDrops(getHarvestState(this.block))));
-            return new BasicCrop.Properties(seed, this.soil, this.growTime, display, this.lightLevel, drops, this.functionId);
+            return new BasicCrop.Properties(seed, this.soil, this.growTime, display, this.lightLevel, drops, this.functionId, this.potPredicate);
         }
 
         private static Properties fromBasic(Block block, BasicCrop.Properties basicProps) {
-            return new Properties(block, Optional.of(basicProps.input()), basicProps.soil(), basicProps.growTime(), Optional.of(basicProps.display()), basicProps.lightLevel(), Optional.of(basicProps.drops()), Optional.empty(), basicProps.functionId());
+            return new Properties(block, Optional.of(basicProps.input()), basicProps.soil(), basicProps.growTime(), Optional.of(basicProps.display()), basicProps.lightLevel(), Optional.of(basicProps.drops()), Optional.empty(), basicProps.functionId(), basicProps.potPredicate());
         }
 
         private static BlockState getHarvestState(Block block) {

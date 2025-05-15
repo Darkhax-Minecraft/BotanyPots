@@ -9,6 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.pattern.BlockInWorld;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -93,5 +94,9 @@ public record BlockEntityContext(BotanyPotBlockEntity pot, @Nullable Player play
             level = this.player.level();
         }
         return level != null && !level.isClientSide;
+    }
+
+    public BlockInWorld blockInWorld() {
+        return new BlockInWorld(this.pot.getLevel(), this.pot.getBlockPos(), false);
     }
 }

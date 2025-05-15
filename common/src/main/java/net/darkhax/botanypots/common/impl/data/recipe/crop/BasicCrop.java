@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.darkhax.bookshelf.common.api.data.codecs.map.MapCodecs;
 import net.darkhax.bookshelf.common.api.data.codecs.stream.StreamCodecs;
 import net.darkhax.bookshelf.common.api.util.DataHelper;
+import net.darkhax.botanypots.common.api.context.BlockEntityContext;
 import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.darkhax.botanypots.common.api.data.display.types.Display;
 import net.darkhax.botanypots.common.api.data.display.types.DisplayType;
@@ -14,8 +15,10 @@ import net.darkhax.botanypots.common.api.data.itemdrops.ItemDropProviderType;
 import net.darkhax.botanypots.common.api.data.recipes.CacheableRecipe;
 import net.darkhax.botanypots.common.api.data.recipes.crop.Crop;
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;
+import net.darkhax.botanypots.common.impl.Helpers;
 import net.darkhax.botanypots.common.impl.block.entity.BotanyPotBlockEntity;
 import net.minecraft.ChatFormatting;
+import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -56,6 +59,9 @@ public class BasicCrop extends Crop implements CacheableRecipe {
 
     @Override
     public boolean matches(@NotNull BotanyPotContext input, @NotNull Level level) {
+        if (input instanceof BlockEntityContext context && this.properties.potPredicate.isPresent() && !this.properties.potPredicate.get().matches(context.blockInWorld())) {
+            return false;
+        }
         return this.properties.input.test(input.getSeedItem());
     }
 
@@ -114,6 +120,9 @@ public class BasicCrop extends Crop implements CacheableRecipe {
             if (!this.properties.soil.test(context.getItem(BotanyPotBlockEntity.SOIL_SLOT))) {
                 tooltipLines.accept(TOOLTIP_WRONG_SOIL);
             }
+            if (context instanceof BlockEntityContext beContext && this.properties.potPredicate.isPresent() && !this.properties.potPredicate.get().matches(beContext.blockInWorld())) {
+                tooltipLines.accept(Component.translatable("tooltip.botanypots.wrong_pot", beContext.pot().getBlockState().getBlock().getName()).withStyle(ChatFormatting.RED));
+            }
         }
         else {
             tooltipLines.accept(Component.translatable("tooltip.botanypots.growth_time", StringUtil.formatTickDuration(this.properties.growTime, level.tickRateManager().tickrate())).withStyle(ChatFormatting.GRAY));
@@ -124,7 +133,7 @@ public class BasicCrop extends Crop implements CacheableRecipe {
         return this.properties.soil.test(stack);
     }
 
-    public record Properties(Ingredient input, Ingredient soil, int growTime, List<Display> display, int lightLevel, List<ItemDropProvider> drops, Optional<ResourceLocation> functionId) {
+    public record Properties(Ingredient input, Ingredient soil, int growTime, List<Display> display, int lightLevel, List<ItemDropProvider> drops, Optional<ResourceLocation> functionId, Optional<BlockPredicate> potPredicate) {
         public static final MapCodec<Properties> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
                 Ingredient.CODEC.fieldOf("input").forGetter(Properties::input),
                 Ingredient.CODEC.optionalFieldOf("soil", DIRT).forGetter(Properties::soil),
@@ -132,7 +141,8 @@ public class BasicCrop extends Crop implements CacheableRecipe {
                 DisplayType.LIST_CODEC.fieldOf("display").forGetter(Properties::display),
                 Codec.intRange(0, 15).optionalFieldOf("light_level", 0).forGetter(Properties::lightLevel),
                 MapCodecs.flexibleList(ItemDropProviderType.DROP_PROVIDER_CODEC).optionalFieldOf("drops", List.of()).forGetter(Properties::drops),
-                ResourceLocation.CODEC.optionalFieldOf("function").forGetter(Properties::functionId)
+                ResourceLocation.CODEC.optionalFieldOf("function").forGetter(Properties::functionId),
+                BlockPredicate.CODEC.optionalFieldOf("pot_predicate").forGetter(Properties::potPredicate)
         ).apply(instance, Properties::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, Properties> STREAM = new StreamCodec<>() {
@@ -151,8 +161,8 @@ public class BasicCrop extends Crop implements CacheableRecipe {
                 for (int i = 0; i < dropSize; i++) {
                     drops.add(ItemDropProviderType.DROP_PROVIDER_STREAM.decode(buf));
                 }
-
-                return new Properties(input, soil, growTime, display, light, drops, functionId);
+                final Optional<BlockPredicate> potPredicate = Helpers.OPTIONAL_BLOCK_PREDICATE.decode(buf);
+                return new Properties(input, soil, growTime, display, light, drops, functionId, potPredicate);
             }
 
             @Override
@@ -163,11 +173,11 @@ public class BasicCrop extends Crop implements CacheableRecipe {
                 buf.writeCollection(properties.display, DisplayType.DISPLAY_STATE_STREAM);
                 ByteBufCodecs.INT.encode(buf, properties.lightLevel);
                 buf.writeOptional(properties.functionId, ResourceLocation.STREAM_CODEC);
-
                 buf.writeInt(properties.drops.size());
                 for (ItemDropProvider provider : properties.drops) {
                     ItemDropProviderType.DROP_PROVIDER_STREAM.encode(buf, provider);
                 }
+                Helpers.OPTIONAL_BLOCK_PREDICATE.encode(buf, properties.potPredicate);
             }
         };
     }

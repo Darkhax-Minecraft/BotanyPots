@@ -13,6 +13,7 @@
   "tooltip.botanypots.base_rate": "Grow Time: %s",
   "tooltip.botanypots.crop_id": "Crop ID: %s",
   "tooltip.botanypots.soil_id": "Soil ID: %s",
+  "tooltip.botanypots.wrong_pot": "Can not grow in %s.",
 
   "_commands": "",
   "commands.botanypots.mod_message": "[§aBotany Pots§r] %s",
