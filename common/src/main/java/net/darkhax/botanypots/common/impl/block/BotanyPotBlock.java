@@ -3,8 +3,11 @@ package net.darkhax.botanypots.common.impl.block;
 import com.mojang.serialization.MapCodec;
 import net.darkhax.bookshelf.common.api.block.IBlockHooks;
 import net.darkhax.botanypots.common.api.context.BlockEntityContext;
+import net.darkhax.botanypots.common.api.context.BotanyPotContext;
+import net.darkhax.botanypots.common.api.data.recipes.crop.Crop;
 import net.darkhax.botanypots.common.api.data.recipes.fertilizer.Fertilizer;
 import net.darkhax.botanypots.common.api.data.recipes.interaction.PotInteraction;
+import net.darkhax.botanypots.common.api.data.recipes.soil.Soil;
 import net.darkhax.botanypots.common.impl.block.entity.BotanyPotBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -65,6 +68,20 @@ public class BotanyPotBlock extends BaseEntityBlock implements SimpleWaterlogged
 
     public boolean isHopper() {
         return this.type == PotType.HOPPER;
+    }
+
+    /**
+     * Gets a growth modifier contributed by the block itself. By default, this will always be zero however custom pot
+     * variants may implement other kinds of modifiers.
+     *
+     * @param context The context of the crop being grown.
+     * @param level   The game level this is happening in.
+     * @param crop    The crop being grown.
+     * @param soil    The soil being used to grow the crop, may not always be available.
+     * @return The growth modifier contributed by the block itself.
+     */
+    public float getGrowthModifier(BotanyPotContext context, Level level, Crop crop, @Nullable Soil soil) {
+        return 0f;
     }
 
     @NotNull

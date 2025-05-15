@@ -6,9 +6,11 @@ import net.darkhax.bookshelf.common.api.data.codecs.stream.StreamCodecs;
 import net.darkhax.bookshelf.common.api.data.enchantment.EnchantmentLevel;
 import net.darkhax.bookshelf.common.api.util.DataHelper;
 import net.darkhax.bookshelf.common.api.util.MathsHelper;
+import net.darkhax.botanypots.common.api.context.BlockEntityContext;
 import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.darkhax.botanypots.common.api.data.recipes.crop.Crop;
 import net.darkhax.botanypots.common.api.data.recipes.soil.Soil;
+import net.darkhax.botanypots.common.impl.block.BotanyPotBlock;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -58,6 +60,12 @@ public class Helpers {
         float growthModifier = BotanyPotsMod.CONFIG.get().gameplay.global_growth_modifier;
         growthModifier += soil != null ? soil.getGrowthModifier(context, level) : 0f;
         growthModifier += efficiencyModifier(level.registryAccess(), context.getHarvestItem());
+        if (context instanceof BlockEntityContext beContext) {
+            growthModifier += beContext.pot().getGrowthModifier(context, level, crop, soil);
+            if (beContext.pot().getBlockState().getBlock() instanceof BotanyPotBlock potBlock) {
+                growthModifier += potBlock.getGrowthModifier(context, level, crop, soil);
+            }
+        }
         return Mth.floor(cropTime / growthModifier);
     }
 
