@@ -2,14 +2,9 @@ package net.darkhax.botanypots.impl;
 
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;
 import net.darkhax.botanypots.common.impl.block.entity.BotanyPotBlockEntity;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.event.IModBusEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
