@@ -25,4 +25,9 @@ public class BotanyPotsMod {
 
     public BotanyPotsMod() {
     }
+
+    public static void updateRegistryAccess(RegistryAccess access) {
+        REGISTRY_ACCESS = new WeakReference<>(access);
+        BotanyPotsMod.LOG.info("Updating registry access.");
+    }
 }
