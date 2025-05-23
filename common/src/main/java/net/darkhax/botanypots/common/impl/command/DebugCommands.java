@@ -10,6 +10,7 @@ public class DebugCommands {
         final LiteralArgumentBuilder<CommandSourceStack> cmd = Commands.literal("debug");
         MissingCommand.build(cmd);
         PlaceCrops.build(cmd);
+        InvalidCrops.build(cmd);
         parent.then(cmd);
     }
 }

@@ -21,6 +21,8 @@
   "commands.botanypots.dump.missing_crops": "Found %d potential missing crops. This list is not exhaustive and may include false positives and false negatives. Clicking this message will copy the list to your clipboard.",
   "commands.botanypots.dump.generated": "Generated %d crop files. Click to open directory.",
   "commands.botanypots.dump.missing_soils": "Found %d potential missing soils. This list is not exhaustive and may include false positives and false negatives. Click this message to copy the list to your clipboard.",
+  "commands.botanypots.debug.crop_errors": "Tested %d crops. Found %d errors! Details have been logged.",
+  "commands.botanypots.debug.crop_success": "Tested %d crops and found no errors!",
 
   "_enchantments": "",
   "enchantment.botanypots.idle_hands": "Curse of Idle Hands",
