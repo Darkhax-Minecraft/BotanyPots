@@ -3,5 +3,11 @@
   "block": "minecraft:chorus_flower",
   "soil": {
     "tag": "botanypots:soil/end"
-  }
+  },
+  "drops": [
+    {
+      "type": "botanypots:loot_table",
+      "table_id": "botanypots:botanypots/crops/chorus_flower"
+    }
+  ]
 }
