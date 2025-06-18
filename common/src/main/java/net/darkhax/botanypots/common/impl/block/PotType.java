@@ -15,5 +15,5 @@ public enum PotType {
     /**
      * Always renders as a fully grown crop. Does not tick or have any other logic.
      */
-    WAXED;
+    WAXED
 }

@@ -39,14 +39,15 @@ public class BlockDerivedSoil extends BasicSoil {
         return this.properties;
     }
 
-    public record BlockProperties(Block block, Optional<Ingredient> input, Optional<Display> display, float growthModifier, int lightLevel, Optional<BasicOptions> renderOptions) {
+    public record BlockProperties(Block block, Optional<Ingredient> input, Optional<Display> display, float growthModifier, int lightLevel, Optional<BasicOptions> renderOptions, float dropModifier) {
         public static final MapCodec<BlockProperties> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
                 BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(BlockProperties::block),
                 Ingredient.CODEC.optionalFieldOf("input").forGetter(BlockProperties::input),
                 DisplayType.DISPLAY_STATE_CODEC.optionalFieldOf("display").forGetter(BlockProperties::display),
                 Codec.FLOAT.optionalFieldOf("growth_modifier", 0f).forGetter(BlockProperties::growthModifier),
                 Codec.INT.optionalFieldOf("light_level", 0).forGetter(BlockProperties::lightLevel),
-                BasicOptions.CODEC.optionalFieldOf("render_options").forGetter(BlockProperties::renderOptions)
+                BasicOptions.CODEC.optionalFieldOf("render_options").forGetter(BlockProperties::renderOptions),
+                Codec.floatRange(0f, Float.MAX_VALUE).optionalFieldOf("yield_modifier", 0f).forGetter(BlockProperties::dropModifier)
         ).apply(instance, BlockProperties::new));
         public static final StreamCodec<RegistryFriendlyByteBuf, BlockProperties> STREAM = StreamCodec.of(
                 (buf, props) -> {
@@ -64,11 +65,11 @@ public class BlockDerivedSoil extends BasicSoil {
             final Ingredient input = this.input.orElseGet(() -> getSoil(this.block));
             final BasicOptions options = this.renderOptions.orElseGet(() -> BasicOptions.ofDefault(Set.of(Direction.UP)));
             final Display display = this.display.orElseGet(() -> new SimpleDisplayState(this.block.defaultBlockState(), options));
-            return new BasicSoil.Properties(input, display, this.growthModifier, this.lightLevel);
+            return new BasicSoil.Properties(input, display, this.growthModifier, this.lightLevel, this.dropModifier);
         }
 
         public static BlockProperties fromBasic(Block block, BasicSoil.Properties properties) {
-            return new BlockProperties(block, Optional.of(properties.input()), Optional.of(properties.display()), properties.growthModifier(), properties.lightLevel(), Optional.empty());
+            return new BlockProperties(block, Optional.of(properties.input()), Optional.of(properties.display()), properties.growthModifier(), properties.lightLevel(), Optional.empty(), properties.yieldModifier());
         }
 
         private static Ingredient getSoil(Block block) {

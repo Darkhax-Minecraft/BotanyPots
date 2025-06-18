@@ -7,7 +7,6 @@ import net.darkhax.bookshelf.common.api.service.Services;
 import net.darkhax.bookshelf.common.api.util.DataHelper;
 import net.darkhax.bookshelf.common.api.util.TickAccumulator;
 import net.darkhax.botanypots.common.api.context.BlockEntityContext;
-import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.darkhax.botanypots.common.api.data.components.CropOverride;
 import net.darkhax.botanypots.common.api.data.components.SoilOverride;
 import net.darkhax.botanypots.common.api.data.recipes.BotanyPotRecipe;
@@ -112,7 +111,10 @@ public class BotanyPotBlockEntity extends AbstractBotanyPotBlockEntity {
                     pot.growCooldown.setTicks(5f);
                     if (pot.isHopper() && crop.canHarvest(context, level)) {
                         if (level instanceof ServerLevel serverLevel) {
-                            crop.onHarvest(context, level, stack -> Services.GAMEPLAY.addItem(stack, pot.getItems(), BotanyPotBlockEntity.STORAGE_SLOTS));
+                            final int rolls = Helpers.getLootRolls(context, level, crop, soil);
+                            for (int roll = 0; roll < rolls; roll++) {
+                                crop.onHarvest(context, level, stack -> Services.GAMEPLAY.addItem(stack, pot.getItems(), BotanyPotBlockEntity.STORAGE_SLOTS));
+                            }
                             if (BotanyPotsMod.CONFIG.get().gameplay.damage_harvest_tool && EnchantmentLevel.FIRST.get(Helpers.NEGATE_HARVEST_DAMAGE_TAG, pot.getHarvestItem()) <= 0) {
                                 pot.getHarvestItem().hurtAndBreak(1, serverLevel, null, stack -> {
                                 });
@@ -185,20 +187,6 @@ public class BotanyPotBlockEntity extends AbstractBotanyPotBlockEntity {
 
     public void setBonemealCooldown(int cooldown) {
         this.bonemealCooldown = cooldown;
-    }
-
-    /**
-     * Gets a growth modifier contributed by the block entity itself. By default, this will always be zero however
-     * custom pot variants may implement other kinds of modifiers.
-     *
-     * @param context The context of the crop being grown.
-     * @param level   The game level this is happening in.
-     * @param crop    The crop being grown.
-     * @param soil    The soil being used to grow the crop, may not always be available.
-     * @return The growth modifier contributed by the block entity itself.
-     */
-    public float getGrowthModifier(BotanyPotContext context, Level level, Crop crop, @Nullable Soil soil) {
-        return 0f;
     }
 
     @Override

@@ -79,7 +79,7 @@ public class BotanyPotScreen extends AbstractContainerScreen<BotanyPotMenu> {
             if (stack.is(BotanyPotMenu.HARVEST_ITEM) && level != null) {
                 final float modifier = Helpers.efficiencyModifier(level.registryAccess(), stack);
                 if (modifier != 0f) {
-                    tooltips.add(Helpers.growthModifierComponent(modifier));
+                    tooltips.add(Helpers.modifierComponent(Helpers.GROWTH_MODIFIER_KEY, modifier));
                 }
             }
         }

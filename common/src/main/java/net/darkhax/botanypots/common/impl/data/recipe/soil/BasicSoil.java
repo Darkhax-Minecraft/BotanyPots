@@ -78,7 +78,10 @@ public class BasicSoil extends Soil implements CacheableRecipe {
     @Override
     public void hoverTooltip(ItemStack stack, BotanyPotContext context, Level level, Consumer<Component> tooltipLines) {
         if (this.properties.growthModifier != 0f) {
-            tooltipLines.accept(Helpers.growthModifierComponent(this.properties.growthModifier));
+            tooltipLines.accept(Helpers.modifierComponent(Helpers.GROWTH_MODIFIER_KEY, this.properties.growthModifier));
+        }
+        if (this.properties.yieldModifier != 0f) {
+            tooltipLines.accept(Helpers.modifierComponent(Helpers.YIELD_MODIFIER_KEY, this.properties.yieldModifier));
         }
     }
 
@@ -87,18 +90,25 @@ public class BasicSoil extends Soil implements CacheableRecipe {
         return this.properties.input.test(candidate);
     }
 
-    public record Properties(Ingredient input, Display display, float growthModifier, int lightLevel) {
+    @Override
+    public float getYieldModifier(BotanyPotContext context, Level level) {
+        return this.properties.yieldModifier;
+    }
+
+    public record Properties(Ingredient input, Display display, float growthModifier, int lightLevel, float yieldModifier) {
         public static final MapCodec<Properties> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
                 Ingredient.CODEC.fieldOf("input").forGetter(Properties::input),
                 DisplayType.DISPLAY_STATE_CODEC.fieldOf("display").forGetter(Properties::display),
                 Codec.FLOAT.optionalFieldOf("growth_modifier", 0f).forGetter(Properties::growthModifier),
-                Codec.INT.optionalFieldOf("light_level", 0).forGetter(Properties::lightLevel)
+                Codec.INT.optionalFieldOf("light_level", 0).forGetter(Properties::lightLevel),
+                Codec.floatRange(0f, Float.MAX_VALUE).optionalFieldOf("yield_modifier", 0f).forGetter(Properties::yieldModifier)
         ).apply(instance, Properties::new));
         public static final StreamCodec<RegistryFriendlyByteBuf, Properties> STREAM = StreamCodec.composite(
                 StreamCodecs.INGREDIENT_NON_EMPTY, Properties::input,
                 DisplayType.DISPLAY_STATE_STREAM, Properties::display,
                 ByteBufCodecs.FLOAT, Properties::growthModifier,
                 ByteBufCodecs.INT, Properties::lightLevel,
+                ByteBufCodecs.FLOAT, Properties::yieldModifier,
                 Properties::new
         );
     }

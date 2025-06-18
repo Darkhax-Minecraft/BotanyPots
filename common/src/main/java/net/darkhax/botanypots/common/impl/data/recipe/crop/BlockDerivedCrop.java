@@ -62,7 +62,7 @@ public class BlockDerivedCrop extends BasicCrop {
         return this.properties;
     }
 
-    public record Properties(Block block, Optional<Ingredient> seed, Ingredient soil, int growTime, Optional<List<Display>> display, int lightLevel, Optional<List<ItemDropProvider>> drops, Optional<BasicOptions> renderOptions, Optional<ResourceLocation> functionId, Optional<BlockPredicate> potPredicate) {
+    public record Properties(Block block, Optional<Ingredient> seed, Ingredient soil, int growTime, Optional<List<Display>> display, int lightLevel, Optional<List<ItemDropProvider>> drops, Optional<BasicOptions> renderOptions, Optional<ResourceLocation> functionId, Optional<BlockPredicate> potPredicate, float baseYield, float yieldScale) {
         public static final MapCodec<Properties> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
                 BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(Properties::block),
                 Ingredient.CODEC.optionalFieldOf("input").forGetter(Properties::seed),
@@ -73,7 +73,9 @@ public class BlockDerivedCrop extends BasicCrop {
                 MapCodecs.flexibleList(ItemDropProviderType.DROP_PROVIDER_CODEC).optionalFieldOf("drops").forGetter(Properties::drops),
                 BasicOptions.CODEC.optionalFieldOf("render_options").forGetter(Properties::renderOptions),
                 ResourceLocation.CODEC.optionalFieldOf("function").forGetter(Properties::functionId),
-                BlockPredicate.CODEC.optionalFieldOf("pot_predicate").forGetter(Properties::potPredicate)
+                BlockPredicate.CODEC.optionalFieldOf("pot_predicate").forGetter(Properties::potPredicate),
+                Codec.floatRange(0f, Float.MAX_VALUE).optionalFieldOf("yield", 1f).forGetter(Properties::baseYield),
+                Codec.floatRange(0f, Float.MAX_VALUE).optionalFieldOf("yield_scale", 1f).forGetter(Properties::yieldScale)
         ).apply(instance, Properties::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, Properties> STREAM = new StreamCodec<>() {
@@ -111,11 +113,11 @@ public class BlockDerivedCrop extends BasicCrop {
                 return states;
             });
             final List<ItemDropProvider> drops = this.drops.orElseGet(() -> List.of(new BlockStateDrops(getHarvestState(this.block))));
-            return new BasicCrop.Properties(seed, this.soil, this.growTime, display, this.lightLevel, drops, this.functionId, this.potPredicate);
+            return new BasicCrop.Properties(seed, this.soil, this.growTime, display, this.lightLevel, drops, this.functionId, this.potPredicate, this.baseYield, this.yieldScale);
         }
 
         private static Properties fromBasic(Block block, BasicCrop.Properties basicProps) {
-            return new Properties(block, Optional.of(basicProps.input()), basicProps.soil(), basicProps.growTime(), Optional.of(basicProps.display()), basicProps.lightLevel(), Optional.of(basicProps.drops()), Optional.empty(), basicProps.functionId(), basicProps.potPredicate());
+            return new Properties(block, Optional.of(basicProps.input()), basicProps.soil(), basicProps.growTime(), Optional.of(basicProps.display()), basicProps.lightLevel(), Optional.of(basicProps.drops()), Optional.empty(), basicProps.functionId(), basicProps.potPredicate(), basicProps.baseYield(), basicProps.yieldScale());
         }
 
         private static BlockState getHarvestState(Block block) {

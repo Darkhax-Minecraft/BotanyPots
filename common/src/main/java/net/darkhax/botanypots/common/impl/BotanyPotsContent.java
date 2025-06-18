@@ -36,16 +36,27 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.attributes.RangedAttribute;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.component.Unbreakable;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.material.MapColor;
+import org.w3c.dom.Attr;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -60,7 +71,6 @@ public class BotanyPotsContent implements IContentProvider {
     private final Map<ResourceLocation, Block> allPotBlocks = new LinkedHashMap<>();
 
     public BotanyPotsContent() {
-
 //        final BotanyPotFileGenerator gen = new BotanyPotFileGenerator(new File("outdir"), BotanyPotsMod.MOD_ID);
 //        make(gen, "terracotta");
 //        for (DyeColor color : DyeColor.values()) {
@@ -154,7 +164,36 @@ public class BotanyPotsContent implements IContentProvider {
             for (Block block : this.allPotBlocks.values()) {
                 builder.accept(block.asItem());
             }
+            final float[] buffs = {0.25f, 0.5f, 0.75f, 1f, 5f, 10f, 15f, 50f, 100f, 1000f};
+            final ResourceLocation yieldId = BotanyPotsMod.id("test_yield");
+            final ResourceLocation growthId = BotanyPotsMod.id("test_growth");
+            for (float buff : buffs) {
+                final ItemStack yield = new ItemStack(Items.DIAMOND_HOE);
+                addModifier(yield, Helpers.YIELD_MOD_ATTRIBUTE.get(), new AttributeModifier(yieldId, buff, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+                yield.set(DataComponents.UNBREAKABLE, new Unbreakable(true));
+                builder.accept(yield);
+            }
+            for (float buff : buffs) {
+                final ItemStack growth = new ItemStack(Items.GOLDEN_HOE);
+                addModifier(growth, Helpers.GROWTH_MOD_ATTRIBUTE.get(), new AttributeModifier(growthId, buff, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+                growth.set(DataComponents.UNBREAKABLE, new Unbreakable(true));
+                builder.accept(growth);
+            }
+            for (float buff : buffs) {
+                final ItemStack both = new ItemStack(Items.NETHERITE_HOE);
+                addModifier(both, Helpers.YIELD_MOD_ATTRIBUTE.get(), new AttributeModifier(yieldId, buff, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+                addModifier(both, Helpers.GROWTH_MOD_ATTRIBUTE.get(), new AttributeModifier(growthId, buff, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+                both.set(DataComponents.UNBREAKABLE, new Unbreakable(true));
+                builder.accept(both);
+            }
         });
+    }
+
+    private static ItemStack addModifier(ItemStack stack, Holder<Attribute> attribute, AttributeModifier modifier, EquipmentSlotGroup group) {
+        ItemAttributeModifiers component = stack.getOrDefault(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY);
+        component = component.withModifierAdded(attribute, modifier, group);
+        stack.set(DataComponents.ATTRIBUTE_MODIFIERS, component);
+        return stack;
     }
 
     @Override
@@ -185,6 +224,13 @@ public class BotanyPotsContent implements IContentProvider {
         for (Block block : this.allPotBlocks.values()) {
             registry.accept(block, RenderType.cutout());
         }
+    }
+
+    @Override
+    public void registerAttributes(Register<Attribute> registry) {
+        // TODO Write a mixin to display these as a percentage in tooltips
+        registry.add("growth", new RangedAttribute("attribute.botanypots.growth", 0f, -Float.MAX_VALUE, Float.MAX_VALUE));
+        registry.add("yield", new RangedAttribute("attribute.botanypots.yield", 0f, -Float.MAX_VALUE, Float.MAX_VALUE));
     }
 
     @Override

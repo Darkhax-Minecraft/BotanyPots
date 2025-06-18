@@ -66,6 +66,18 @@ public abstract class Soil extends BotanyPotRecipe {
         // No op
     }
 
+    /**
+     * Gets a modifier that will be added to the chance that a crop will drop items when harvested. If the chance
+     * exceeds 100% additional rolls can happen.
+     *
+     * @param context The context of the crop being grown.
+     * @param level   The game level this is happening in.
+     * @return The drop chance modifier to add to the base chance.
+     */
+    public float getYieldModifier(BotanyPotContext context, Level level) {
+        return 0f;
+    }
+
     @NotNull
     @Override
     public RecipeType<?> getType() {

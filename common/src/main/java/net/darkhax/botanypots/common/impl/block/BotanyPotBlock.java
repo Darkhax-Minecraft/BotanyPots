@@ -84,6 +84,20 @@ public class BotanyPotBlock extends BaseEntityBlock implements SimpleWaterlogged
         return 0f;
     }
 
+    /**
+     * Gets a modifier that will be added to the chance that a crop will drop items when harvested. If the chance
+     * exceeds 100% additional rolls can happen.
+     *
+     * @param context The context of the crop being grown.
+     * @param level   The game level this is happening in.
+     * @param crop    The crop being grown.
+     * @param soil    The soil being used to grow the crop, may not always be available.
+     * @return The drop chance modifier to add to the base drop chance.
+     */
+    public float getYieldModifier(BotanyPotContext context, Level level, Crop crop, @Nullable Soil soil) {
+        return 0f;
+    }
+
     @NotNull
     @Override
     protected ItemInteractionResult useItemOn(@NotNull ItemStack stack, @NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hitResult) {

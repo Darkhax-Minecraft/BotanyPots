@@ -16,6 +16,7 @@ import net.darkhax.botanypots.common.api.data.recipes.CacheableRecipe;
 import net.darkhax.botanypots.common.api.data.recipes.crop.Crop;
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;
 import net.darkhax.botanypots.common.impl.Helpers;
+import net.darkhax.botanypots.common.impl.block.BotanyPotBlock;
 import net.darkhax.botanypots.common.impl.block.entity.BotanyPotBlockEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.critereon.BlockPredicate;
@@ -45,7 +46,6 @@ public class BasicCrop extends Crop implements CacheableRecipe {
     public static final MapCodec<BasicCrop> CODEC = Properties.CODEC.xmap(BasicCrop::new, BasicCrop::getBasicProperties);
     public static final StreamCodec<RegistryFriendlyByteBuf, BasicCrop> STREAM = Properties.STREAM.map(BasicCrop::new, BasicCrop::getBasicProperties);
     public static final RecipeSerializer<BasicCrop> SERIALIZER = DataHelper.recipeSerializer(CODEC, STREAM);
-    public static final Component TOOLTIP_WRONG_SOIL = Component.translatable("tooltip.botanypots.wrong_soil").withStyle(ChatFormatting.RED);
 
     private final Properties properties;
 
@@ -96,6 +96,16 @@ public class BasicCrop extends Crop implements CacheableRecipe {
     }
 
     @Override
+    public float getBaseYield(BotanyPotContext context, Level level) {
+        return this.properties.baseYield;
+    }
+
+    @Override
+    public float getYieldScale(BotanyPotContext context, Level level) {
+        return this.properties.yieldScale;
+    }
+
+    @Override
     public boolean canBeCached() {
         return true;
     }
@@ -117,8 +127,31 @@ public class BasicCrop extends Crop implements CacheableRecipe {
             if (this.isGrowthSustained(context, level)) {
                 tooltipLines.accept(Component.translatable("tooltip.botanypots.growth_time", StringUtil.formatTickDuration(context.getRequiredGrowthTicks(), level.tickRateManager().tickrate())).withStyle(ChatFormatting.GRAY));
             }
+            final float effectiveYield = Helpers.getTotalYield(context, level, this, context.getSoil());
+            if (effectiveYield != 1f) {
+                final float yieldScale = this.getYieldScale(context, level);
+                tooltipLines.accept(Component.translatable("tooltip.botanypots.yield.total", Helpers.chanceToInt(effectiveYield)).withStyle(ChatFormatting.GRAY));
+                final float baseYield = this.getBaseYield(context, level);
+                if (effectiveYield != baseYield) {
+                    tooltipLines.accept(Helpers.indent(Component.translatable("tooltip.botanypots.yield.source.base", Helpers.chanceToInt(this.getBaseYield(context, level))).withStyle(ChatFormatting.DARK_GRAY)));
+                    final float soilYield = context.getSoil() != null ? context.getSoil().getYieldModifier(context, level) : 0f;
+                    if (soilYield != 0f) {
+                        tooltipLines.accept(Helpers.indent(Helpers.withScale(Component.translatable("tooltip.botanypots.yield.source.soil", Helpers.chanceToInt(soilYield)), yieldScale).withStyle(ChatFormatting.DARK_GRAY)));
+                    }
+                    if (context instanceof BlockEntityContext beContext && beContext.pot().getBlockState().getBlock() instanceof BotanyPotBlock potBlock) {
+                        float potYield = potBlock.getYieldModifier(context, level, this, context.getSoil());
+                        if (potYield != 0f) {
+                            tooltipLines.accept(Helpers.indent(Helpers.withScale(Component.translatable("tooltip.botanypots.yield.source.pot", Helpers.chanceToInt(potYield)), yieldScale).withStyle(ChatFormatting.DARK_GRAY)));
+                        }
+                    }
+                    float toolYield = (float) Helpers.getAttributeValue(Helpers.YIELD_MOD_ATTRIBUTE.get(), context.getHarvestItem(), 0f);
+                    if (toolYield != 0f) {
+                        tooltipLines.accept(Helpers.indent(Helpers.withScale(Component.translatable("tooltip.botanypots.yield.source.tool", Helpers.chanceToInt(toolYield)), yieldScale).withStyle(ChatFormatting.DARK_GRAY)));
+                    }
+                }
+            }
             if (!this.properties.soil.test(context.getItem(BotanyPotBlockEntity.SOIL_SLOT))) {
-                tooltipLines.accept(TOOLTIP_WRONG_SOIL);
+                tooltipLines.accept(Component.translatable("tooltip.botanypots.wrong_soil", context.getSoilItem().getHoverName()).withStyle(ChatFormatting.RED));
             }
             if (context instanceof BlockEntityContext beContext && this.properties.potPredicate.isPresent() && !this.properties.potPredicate.get().matches(beContext.blockInWorld())) {
                 tooltipLines.accept(Component.translatable("tooltip.botanypots.wrong_pot", beContext.pot().getBlockState().getBlock().getName()).withStyle(ChatFormatting.RED));
@@ -126,6 +159,14 @@ public class BasicCrop extends Crop implements CacheableRecipe {
         }
         else {
             tooltipLines.accept(Component.translatable("tooltip.botanypots.growth_time", StringUtil.formatTickDuration(this.properties.growTime, level.tickRateManager().tickrate())).withStyle(ChatFormatting.GRAY));
+            final float dropChance = this.getBaseYield(context, level);
+            if (dropChance != 1f) {
+                tooltipLines.accept(Component.translatable("tooltip.botanypots.yield.total", Helpers.chanceToInt(dropChance)).withStyle(ChatFormatting.GRAY));
+            }
+            final float dropScale = this.getYieldScale(context, level);
+            if (dropScale != 1f) {
+                tooltipLines.accept(Component.translatable("tooltip.botanypots.yield.scale", Helpers.chanceToInt(dropScale)).withStyle(ChatFormatting.GRAY));
+            }
         }
     }
 
@@ -133,7 +174,7 @@ public class BasicCrop extends Crop implements CacheableRecipe {
         return this.properties.soil.test(stack);
     }
 
-    public record Properties(Ingredient input, Ingredient soil, int growTime, List<Display> display, int lightLevel, List<ItemDropProvider> drops, Optional<ResourceLocation> functionId, Optional<BlockPredicate> potPredicate) {
+    public record Properties(Ingredient input, Ingredient soil, int growTime, List<Display> display, int lightLevel, List<ItemDropProvider> drops, Optional<ResourceLocation> functionId, Optional<BlockPredicate> potPredicate, float baseYield, float yieldScale) {
         public static final MapCodec<Properties> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
                 Ingredient.CODEC.fieldOf("input").forGetter(Properties::input),
                 Ingredient.CODEC.optionalFieldOf("soil", DIRT).forGetter(Properties::soil),
@@ -142,7 +183,9 @@ public class BasicCrop extends Crop implements CacheableRecipe {
                 Codec.intRange(0, 15).optionalFieldOf("light_level", 0).forGetter(Properties::lightLevel),
                 MapCodecs.flexibleList(ItemDropProviderType.DROP_PROVIDER_CODEC).optionalFieldOf("drops", List.of()).forGetter(Properties::drops),
                 ResourceLocation.CODEC.optionalFieldOf("function").forGetter(Properties::functionId),
-                BlockPredicate.CODEC.optionalFieldOf("pot_predicate").forGetter(Properties::potPredicate)
+                BlockPredicate.CODEC.optionalFieldOf("pot_predicate").forGetter(Properties::potPredicate),
+                Codec.floatRange(0f, Float.MAX_VALUE).optionalFieldOf("yield", 1f).forGetter(Properties::baseYield),
+                Codec.floatRange(0f, Float.MAX_VALUE).optionalFieldOf("yield_scale", 1f).forGetter(Properties::yieldScale)
         ).apply(instance, Properties::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, Properties> STREAM = new StreamCodec<>() {
@@ -162,7 +205,9 @@ public class BasicCrop extends Crop implements CacheableRecipe {
                     drops.add(ItemDropProviderType.DROP_PROVIDER_STREAM.decode(buf));
                 }
                 final Optional<BlockPredicate> potPredicate = Helpers.OPTIONAL_BLOCK_PREDICATE.decode(buf);
-                return new Properties(input, soil, growTime, display, light, drops, functionId, potPredicate);
+                final float baseYield = buf.readFloat();
+                final float yieldModifier = buf.readFloat();
+                return new Properties(input, soil, growTime, display, light, drops, functionId, potPredicate, baseYield, yieldModifier);
             }
 
             @Override
@@ -178,6 +223,8 @@ public class BasicCrop extends Crop implements CacheableRecipe {
                     ItemDropProviderType.DROP_PROVIDER_STREAM.encode(buf, provider);
                 }
                 Helpers.OPTIONAL_BLOCK_PREDICATE.encode(buf, properties.potPredicate);
+                buf.writeFloat(properties.baseYield);
+                buf.writeFloat(properties.yieldScale);
             }
         };
     }

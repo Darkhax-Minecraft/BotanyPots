@@ -86,6 +86,28 @@ public abstract class Crop extends BotanyPotRecipe {
     }
 
     /**
+     * Gets the base chance that the crop will drop items when harvested.
+     *
+     * @param context Context for how the crop is being grown.
+     * @param level   The world the crop is growing in.
+     * @return The base chance that the crop drops items when harvested.
+     */
+    public float getBaseYield(BotanyPotContext context, Level level) {
+        return 1f;
+    }
+
+    /**
+     * Determines how much drop chance modifiers from other sources affect the base drop chance of the crop.
+     *
+     * @param context Context for how the crop is being grown.
+     * @param level   The world the crop is growing in.
+     * @return The scale to apply to drop modifiers.
+     */
+    public float getYieldScale(BotanyPotContext context, Level level) {
+        return 1f;
+    }
+
+    /**
      * Invoked every tick while the crop is in a pot. This can be used for adding tick based effects to your crop, like
      * a random chance to spawn a mob, mutate, or wither.
      *
