@@ -1,5 +1,7 @@
 package net.darkhax.botanypots.common.api.context;
 
+import net.darkhax.botanypots.common.api.data.recipes.crop.Crop;
+import net.darkhax.botanypots.common.api.data.recipes.soil.Soil;
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;
 import net.darkhax.botanypots.common.impl.block.entity.BotanyPotBlockEntity;
 import net.minecraft.resources.ResourceLocation;
@@ -94,6 +96,16 @@ public record BlockEntityContext(BotanyPotBlockEntity pot, @Nullable Player play
             level = this.player.level();
         }
         return level != null && !level.isClientSide;
+    }
+
+    @Override
+    public @Nullable Crop getCrop() {
+        return this.pot.getOrInvalidateCrop();
+    }
+
+    @Override
+    public @Nullable Soil getSoil() {
+        return this.pot.getOrInvalidateSoil();
     }
 
     public BlockInWorld blockInWorld() {

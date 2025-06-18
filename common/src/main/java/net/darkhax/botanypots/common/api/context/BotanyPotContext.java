@@ -1,5 +1,7 @@
 package net.darkhax.botanypots.common.api.context;
 
+import net.darkhax.botanypots.common.api.data.recipes.crop.Crop;
+import net.darkhax.botanypots.common.api.data.recipes.soil.Soil;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -82,4 +84,10 @@ public interface BotanyPotContext extends RecipeInput {
      * @return If the action is happening on a server thread.
      */
     boolean isServerThread();
+
+    @Nullable
+    Crop getCrop();
+
+    @Nullable
+    Soil getSoil();
 }

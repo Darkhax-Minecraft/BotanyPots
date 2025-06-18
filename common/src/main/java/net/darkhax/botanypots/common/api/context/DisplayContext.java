@@ -84,6 +84,32 @@ public record DisplayContext(List<ItemStack> inventory) implements BotanyPotCont
         return false;
     }
 
+    @Nullable
+    @Override
+    public Crop getCrop() {
+        if (this.getPlayer() != null) {
+            final Level level = this.getPlayer().level();
+            final RecipeHolder<Crop> crop = Objects.requireNonNull(Crop.CACHE.apply(level)).lookup(this.getSeedItem(), this, level);
+            if (crop != null) {
+                return crop.value();
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public Soil getSoil() {
+        if (this.getPlayer() != null) {
+            final Level level = this.getPlayer().level();
+            final RecipeHolder<Soil> soil = Objects.requireNonNull(Soil.CACHE.apply(level)).lookup(this.getSoilItem(), this, level);
+            if (soil != null) {
+                return soil.value();
+            }
+        }
+        return null;
+    }
+
     @NotNull
     @Override
     public ItemStack getItem(int i) {
