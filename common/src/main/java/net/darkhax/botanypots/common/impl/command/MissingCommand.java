@@ -25,11 +25,14 @@ import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import org.apache.commons.io.FileUtils;
 
@@ -124,7 +127,7 @@ public class MissingCommand {
         final Map<ItemStack, CropGenerator> missing = new HashMap<>();
         for (Item item : BuiltInRegistries.ITEM) {
             final ItemStack stack = item.getDefaultInstance();
-            if (!isSoil(stack, level) && !isCrop(stack, level) && (collectSaplings || !isSapling(item))) {
+            if (!isSoil(stack, level) && !isCrop(stack, level) && !isLeaves(item) && (collectSaplings || !isSapling(item))) {
                 for (CropGenerator generator : CROP_GENERATORS.get().values()) {
                     if (generator.canGenerateCrop(level, stack)) {
                         missing.put(stack, generator);
@@ -181,6 +184,14 @@ public class MissingCommand {
 
     private static boolean isSapling(Item item) {
         return item.getDefaultInstance().is(SAPLING_TAG) || item instanceof BlockItem blockItem && (blockItem.getBlock() instanceof SaplingBlock);
+    }
+
+    private static boolean isLeaves(Item item) {
+        if (item instanceof BlockItem blockItem) {
+            final Block block = blockItem.getBlock();
+            return block instanceof LeavesBlock || block.defaultBlockState().is(BlockTags.LEAVES);
+        }
+        return false;
     }
 
     private static void writeFile(File file, String text) {
