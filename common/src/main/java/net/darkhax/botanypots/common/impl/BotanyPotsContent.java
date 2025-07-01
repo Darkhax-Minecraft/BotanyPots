@@ -56,6 +56,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.material.MapColor;
 
+import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
@@ -69,13 +70,20 @@ public class BotanyPotsContent implements IContentProvider {
     private final Map<ResourceLocation, Block> allPotBlocks = new LinkedHashMap<>();
 
     public BotanyPotsContent() {
-//        final BotanyPotFileGenerator gen = new BotanyPotFileGenerator(new File("outdir"), BotanyPotsMod.MOD_ID);
-//        make(gen, "terracotta");
-//        for (DyeColor color : DyeColor.values()) {
-//            make(gen, color.getName() + "_terracotta");
-//            make(gen, color.getName() + "_glazed_terracotta");
-//            make(gen, color.getName() + "_concrete");
-//        }
+        //generatePotFiles();
+    }
+
+    private void generatePotFiles() {
+        final BotanyPotFileGenerator gen = new BotanyPotFileGenerator(new File("outdir"), BotanyPotsMod.MOD_ID);
+        make(gen, "terracotta");
+        for (DyeColor color : DyeColor.values()) {
+            make(gen, color.getName() + "_terracotta");
+            make(gen, color.getName() + "_glazed_terracotta");
+            make(gen, color.getName() + "_concrete");
+        }
+        for (String brickType : BRICK_TYPES) {
+            make(gen, brickType.equalsIgnoreCase("brick") ? "bricks" : brickType + "_bricks");
+        }
     }
 
     private void make(BotanyPotFileGenerator gen, String block) {
