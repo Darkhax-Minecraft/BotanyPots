@@ -7,7 +7,7 @@
   "drops": [
     {
       "type": "botanypots:loot_table",
-      "table_id": "botanypots:botanypots/crops/chorus_flower"
+      "table_id": "botanypots:botanypots/minecraft/crop/chorus_flower"
     }
   ]
 }

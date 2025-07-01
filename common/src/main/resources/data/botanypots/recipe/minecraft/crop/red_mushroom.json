@@ -18,7 +18,7 @@
   "drops": [
     {
       "type": "botanypots:loot_table",
-      "table_id": "botanypots:botanypots/crops/red_mushroom"
+      "table_id": "botanypots:botanypots/minecraft/crop/red_mushroom"
     }
   ]
 }

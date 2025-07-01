@@ -4,7 +4,7 @@
   "drops": [
     {
       "type": "botanypots:loot_table",
-      "table_id": "botanypots:botanypots/crops/tall_grass"
+      "table_id": "botanypots:botanypots/minecraft/crop/tall_grass"
     }
   ]
 }

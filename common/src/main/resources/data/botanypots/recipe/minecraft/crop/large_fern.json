@@ -4,7 +4,7 @@
   "drops": [
     {
       "type": "botanypots:loot_table",
-      "table_id": "botanypots:botanypots/crops/large_fern"
+      "table_id": "botanypots:botanypots/minecraft/crop/large_fern"
     }
   ]
 }

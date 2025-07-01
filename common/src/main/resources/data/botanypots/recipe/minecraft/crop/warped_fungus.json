@@ -18,7 +18,7 @@
   "drops": [
     {
       "type": "botanypots:loot_table",
-      "table_id": "botanypots:botanypots/crops/warped_fungus"
+      "table_id": "botanypots:botanypots/minecraft/crop/warped_fungus"
     }
   ]
 }
