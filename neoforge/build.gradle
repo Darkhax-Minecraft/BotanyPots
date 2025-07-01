@@ -14,6 +14,7 @@ neoForge {
     runs {
         configureEach {
             systemProperty('neoforge.enabledGameTestNamespaces', mod_id)
+            systemProperty("terminal.ansi", "true")
             ideName = "NeoForge ${it.name.capitalize()} (${project.path})"
         }
         client {
