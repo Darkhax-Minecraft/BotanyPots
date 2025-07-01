@@ -11,5 +11,11 @@
   "block": "farmersdelight:wild_rice",
   "input": {
     "item": "farmersdelight:wild_rice"
-  }
+  },
+  "drops": [
+    {
+      "type": "botanypots:loot_table",
+      "table_id": "botanypots:botanypots/farmersdelight/crop/wild_rice"
+    }
+  ]
 }
