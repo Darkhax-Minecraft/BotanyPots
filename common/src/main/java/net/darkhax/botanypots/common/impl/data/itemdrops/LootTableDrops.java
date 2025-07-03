@@ -69,7 +69,20 @@ public class LootTableDrops implements ItemDropProvider {
 
     @Override
     public void apply(BotanyPotContext context, Level level, Consumer<ItemStack> drops) {
-        this.cachedTable.ifPresent(table -> table.getRandomItems(this.getLootParams(context), drops));
+        if (hasTableDrops(level)) {
+            this.cachedTable.get().getRandomItems(this.getLootParams(context), drops);
+        }
+        else {
+            fallbackDrops(context, level, drops);
+        }
+    }
+
+    public void fallbackDrops(BotanyPotContext context, Level level, Consumer<ItemStack> drops) {
+    }
+
+    public boolean hasTableDrops(Level level) {
+        final LootTable table = this.cachedTable.get();
+        return table != null && table != LootTable.EMPTY;
     }
 
     @Override

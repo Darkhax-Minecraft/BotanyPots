@@ -21,6 +21,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -39,6 +40,7 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.storage.loot.LootTable;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -95,7 +97,7 @@ public class BlockDerivedCrop extends BasicCrop {
         };
 
         public BasicCrop.Properties toBasic() {
-            final Ingredient seed = this.seed.orElseGet(() -> getSeed(this.block));
+            final Ingredient seed = this.seed.orElseGet(() -> Ingredient.of(getSeed(this.block)));
             final BasicOptions rOptions = this.renderOptions.orElse(BasicOptions.ofDefault());
             final List<Display> display = this.display.orElseGet(() -> {
                 final List<Display> states = new ArrayList<>();
@@ -143,16 +145,16 @@ public class BlockDerivedCrop extends BasicCrop {
             return block.defaultBlockState();
         }
 
-        private static Ingredient getSeed(Block block) {
+        public static Item getSeed(Block block) {
             if (block instanceof AccessorCropBlock crop) {
                 final ItemLike seedItem = crop.bookshelf$getSeed();
                 if (seedItem != null && seedItem != Items.AIR) {
-                    return Ingredient.of(seedItem);
+                    return seedItem.asItem();
                 }
             }
             final Item placer = block.asItem();
             if (placer != Items.AIR) {
-                return Ingredient.of(placer);
+                return placer.asItem();
             }
             throw new IllegalArgumentException("Can not derive seed from block " + block + " id=" + BuiltInRegistries.BLOCK.getKey(block));
         }

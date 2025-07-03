@@ -2,19 +2,23 @@ package net.darkhax.botanypots.common.impl.data.itemdrops;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.darkhax.bookshelf.common.api.function.CachedSupplier;
 import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.darkhax.botanypots.common.api.data.itemdrops.ItemDropProviderType;
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;
+import net.darkhax.botanypots.common.impl.data.recipe.crop.BlockDerivedCrop;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class BlockDrops extends LootTableDrops {
@@ -40,6 +44,7 @@ public class BlockDrops extends LootTableDrops {
 
     private final Block block;
     private final BlockState harvestState;
+    private final CachedSupplier<ItemStack> fallbackDrops;
 
     // server
     public BlockDrops(Block block) {
@@ -51,6 +56,7 @@ public class BlockDrops extends LootTableDrops {
         super(block.getLootTable().location());
         this.block = block;
         this.harvestState = harvestState;
+        this.fallbackDrops = CachedSupplier.cache(() -> new ItemStack(BlockDerivedCrop.Properties.getSeed(this.block)));
     }
 
     // client
@@ -63,6 +69,7 @@ public class BlockDrops extends LootTableDrops {
         super(tableId, display);
         this.block = block;
         this.harvestState = harvestState;
+        this.fallbackDrops = CachedSupplier.cache(() -> new ItemStack(BlockDerivedCrop.Properties.getSeed(this.block)));
     }
 
     public Block getBlock() {
@@ -71,6 +78,14 @@ public class BlockDrops extends LootTableDrops {
 
     public BlockState getHarvestState() {
         return this.harvestState;
+    }
+
+    @Override
+    public void fallbackDrops(BotanyPotContext context, Level level, Consumer<ItemStack> drops) {
+        final ItemStack stack = this.fallbackDrops.get();
+        if (stack != null && !stack.isEmpty()) {
+            drops.accept(stack.copy());
+        }
     }
 
     @Override
