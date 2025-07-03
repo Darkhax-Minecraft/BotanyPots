@@ -69,7 +69,7 @@ public class LootTableDrops implements ItemDropProvider {
 
     @Override
     public void apply(BotanyPotContext context, Level level, Consumer<ItemStack> drops) {
-        if (hasTableDrops(level)) {
+        if (hasTableDrops()) {
             this.cachedTable.get().getRandomItems(this.getLootParams(context), drops);
         }
         else {
@@ -80,7 +80,7 @@ public class LootTableDrops implements ItemDropProvider {
     public void fallbackDrops(BotanyPotContext context, Level level, Consumer<ItemStack> drops) {
     }
 
-    public boolean hasTableDrops(Level level) {
+    public boolean hasTableDrops() {
         final LootTable table = this.cachedTable.get();
         return table != null && table != LootTable.EMPTY;
     }
@@ -91,7 +91,7 @@ public class LootTableDrops implements ItemDropProvider {
     }
 
     @Override
-    public final List<ItemStack> getDisplayItems() {
+    public List<ItemStack> getDisplayItems() {
         return this.displayItems.get();
     }
 }

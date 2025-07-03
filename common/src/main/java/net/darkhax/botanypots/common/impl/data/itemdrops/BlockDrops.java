@@ -89,6 +89,11 @@ public class BlockDrops extends LootTableDrops {
     }
 
     @Override
+    public List<ItemStack> getDisplayItems() {
+        return this.hasTableDrops() ? super.getDisplayItems() : List.of(this.fallbackDrops.get());
+    }
+
+    @Override
     protected LootParams getLootParams(BotanyPotContext context) {
         return context.createLootParams(this.harvestState);
     }
