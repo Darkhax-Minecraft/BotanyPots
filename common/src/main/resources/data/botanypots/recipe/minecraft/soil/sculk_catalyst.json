@@ -1,0 +1,13 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "minecraft:sculk_catalyst"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "minecraft:sculk_catalyst",
+  "growth_modifier": 0.10
+}
