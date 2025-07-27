@@ -157,4 +157,13 @@ public class Helpers {
         }
         return value;
     }
+
+    public static boolean contains(String input, String... matches) {
+        for (String match : matches) {
+            if (input.contains(match)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import net.darkhax.botanypots.common.api.command.generator.DataHelper;
 import net.darkhax.botanypots.common.api.command.generator.crop.CropGenerator;
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;
+import net.darkhax.botanypots.common.impl.Helpers;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -17,11 +18,15 @@ import net.minecraft.world.level.block.BaseCoralPlantTypeBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.CactusBlock;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.GrowingPlantBlock;
 import net.minecraft.world.level.block.MushroomBlock;
 import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.SculkBehaviour;
+import net.minecraft.world.level.block.SculkBlock;
 import net.minecraft.world.level.block.SporeBlossomBlock;
+import net.minecraft.world.level.block.WaterlilyBlock;
 
 /**
  * This crop generator is used as a fallback when none of the other generators have claimed an item. It will generate a
@@ -58,16 +63,23 @@ public class MissingCropGenerator implements CropGenerator {
     public JsonObject generateData(ServerLevel level, ItemStack stack) {
         final JsonObject output = new JsonObject();
         final Block block = ((BlockItem) stack.getItem()).getBlock();
+        final ResourceLocation blockId = BuiltInRegistries.BLOCK.getKey(block);
         output.add("bookshelf:load_conditions", DataHelper.array(DataHelper.requiresBlock(block)));
         output.addProperty("type", "botanypots:block_derived_crop");
         output.addProperty("block", BuiltInRegistries.BLOCK.getKey(block).toString());
-        if (block instanceof BaseCoralPlantTypeBlock) {
+        if (block instanceof BaseCoralPlantTypeBlock || block instanceof WaterlilyBlock || Helpers.contains(blockId.getPath(), "lily_pad", "lilypad", "coral") ) {
             output.add("soil", DataHelper.tag(BotanyPotsMod.id("soil/water")));
         }
-        if (block instanceof MushroomBlock) {
+        else if (block instanceof MushroomBlock || Helpers.contains(blockId.getPath(), "mushroom")) {
             final JsonObject blockTag = DataHelper.blockTag(ResourceLocation.withDefaultNamespace("mushroom_grow_block"));
             final JsonObject itemTag = DataHelper.tag(BotanyPotsMod.id("soil/mushroom"));
             output.add("soil", DataHelper.ingredients(blockTag, itemTag));
+        }
+        else if (block instanceof CactusBlock || Helpers.contains(blockId.getPath(), "cactus")) {
+            output.add("soil", DataHelper.tag(BotanyPotsMod.id("soil/sand")));
+        }
+        else if (block instanceof SculkBehaviour || Helpers.contains(blockId.getPath(), "sculk")) {
+            output.add("soil", DataHelper.tag(BotanyPotsMod.id("soil/sculk")));
         }
         output.add("input", DataHelper.ingredient(Ingredient.of(stack)));
         return output;
