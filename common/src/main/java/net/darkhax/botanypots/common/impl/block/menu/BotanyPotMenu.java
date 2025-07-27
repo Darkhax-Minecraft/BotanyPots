@@ -105,82 +105,76 @@ public class BotanyPotMenu extends AbstractContainerMenu {
 
     @NotNull
     @Override
-    public ItemStack quickMoveStack(@NotNull Player player, int slotId) {
+    public ItemStack quickMoveStack(@NotNull Player player, int clickedSlotId) {
         final BlockEntityContext context = this.getContext();
-        final Slot slot = this.slots.get(slotId);
+        final Slot clickedSlot = this.slots.get(clickedSlotId);
 
         if (context == null) {
-            return slot.hasItem() ? slot.getItem() : ItemStack.EMPTY;
+            return ItemStack.EMPTY;
         }
 
         final int firstSlot = isHopper ? 14 : 2;
         final int lastSlot = isHopper ? 50 : 38;
-        ItemStack unmovedItems = ItemStack.EMPTY;
+        ItemStack unplacedItems = ItemStack.EMPTY;
 
-        if (slot.hasItem()) {
-            ItemStack slotStack = slot.getItem();
-            unmovedItems = slotStack.copy();
+        if (clickedSlot.hasItem()) {
+            final ItemStack clickedStack = clickedSlot.getItem();
+            unplacedItems = clickedStack.copy();
 
             // Attempt to move an output to the player inventory.
-            if (isHopper && slotId > AbstractBotanyPotBlockEntity.TOOL_SLOT && slotId <= AbstractBotanyPotBlockEntity.SLOT_COUNT) {
-                if (!this.moveItemStackTo(slotStack, firstSlot, lastSlot, true)) {
+            if (isHopper && clickedSlotId > AbstractBotanyPotBlockEntity.TOOL_SLOT && clickedSlotId <= AbstractBotanyPotBlockEntity.SLOT_COUNT) {
+                if (!this.moveItemStackTo(clickedStack, firstSlot, lastSlot, true)) {
                     return ItemStack.EMPTY;
                 }
-                slot.onQuickCraft(slotStack, unmovedItems);
+                clickedSlot.onQuickCraft(clickedStack, unplacedItems);
             }
 
             // Attempt moving the soil or seed slot to the player inventory.
-            else if (slotId == BotanyPotBlockEntity.SOIL_SLOT || slotId == BotanyPotBlockEntity.SEED_SLOT || slotId == BotanyPotBlockEntity.TOOL_SLOT) {
-                if (!this.moveItemStackTo(slotStack, firstSlot, lastSlot, true)) {
+            else if (clickedSlotId == BotanyPotBlockEntity.SOIL_SLOT || clickedSlotId == BotanyPotBlockEntity.SEED_SLOT || clickedSlotId == BotanyPotBlockEntity.TOOL_SLOT) {
+                if (!this.moveItemStackTo(clickedStack, firstSlot, lastSlot, true)) {
                     return ItemStack.EMPTY;
                 }
             }
 
             // Attempt transferring a seed or soil into the pot.
-            else if (slotId >= firstSlot && slotId <= lastSlot) {
+            else if (clickedSlotId >= firstSlot && clickedSlotId <= lastSlot) {
                 // Try to insert a tool
                 final Slot toolSlot = this.slots.get(BotanyPotBlockEntity.TOOL_SLOT);
-                if (!toolSlot.hasItem() && slotStack.is(HARVEST_ITEM)) {
-                    toolSlot.set(slotStack.split(1));
-                    slot.set(slotStack);
-                    if (slotStack.isEmpty()) {
-                        return ItemStack.EMPTY;
-                    }
+                if (!toolSlot.hasItem() && clickedStack.is(HARVEST_ITEM)) {
+                    toolSlot.set(clickedStack.split(1));
+                    clickedSlot.set(clickedStack);
+                    return ItemStack.EMPTY;
                 }
                 // Try to insert a soil
                 final Slot soilSlot = this.slots.get(BotanyPotBlockEntity.SOIL_SLOT);
-                if (!soilSlot.hasItem() && Objects.requireNonNull(Soil.CACHE.apply(level)).lookup(slotStack, context, player.level()) != null) {
-                    soilSlot.set(slotStack.split(1));
-                    slot.set(slotStack);
-                    if (slotStack.isEmpty()) {
-                        return ItemStack.EMPTY;
-                    }
+                if (!soilSlot.hasItem() && Objects.requireNonNull(Soil.CACHE.apply(level)).lookup(clickedStack, context, player.level()) != null) {
+                    soilSlot.set(clickedStack.split(1));
+                    clickedSlot.set(clickedStack);
+                    return ItemStack.EMPTY;
                 }
 
                 // Try to insert a seed
                 final Slot cropSlot = this.slots.get(BotanyPotBlockEntity.SEED_SLOT);
-                if (!cropSlot.hasItem() && Objects.requireNonNull(Crop.CACHE.apply(level)).lookup(slotStack, context, player.level()) != null) {
-                    cropSlot.set(slotStack.split(1));
-                    slot.set(slotStack);
-                    if (slotStack.isEmpty()) {
-                        return ItemStack.EMPTY;
-                    }
+                if (!cropSlot.hasItem() && Objects.requireNonNull(Crop.CACHE.apply(level)).lookup(clickedStack, context, player.level()) != null) {
+                    cropSlot.set(clickedStack.split(1));
+                    clickedSlot.set(clickedStack);
+                    return ItemStack.EMPTY;
                 }
             }
 
-            if (slotStack.isEmpty()) {
-                slot.set(ItemStack.EMPTY);
+            if (clickedStack.isEmpty()) {
+                clickedSlot.set(ItemStack.EMPTY);
             }
             else {
-                slot.setChanged();
+                clickedSlot.setChanged();
             }
-            if (slotStack.getCount() == unmovedItems.getCount()) {
+            // Stop when no items left to move
+            if (clickedStack.getCount() == unplacedItems.getCount()) {
                 return ItemStack.EMPTY;
             }
-
-            slot.onTake(player, slotStack);
+            clickedSlot.onTake(player, clickedStack);
         }
-        return unmovedItems;
+        return unplacedItems;
     }
 
     @Override
