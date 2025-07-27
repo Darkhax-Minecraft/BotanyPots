@@ -48,8 +48,8 @@ public class LootTableDrops implements ItemDropProvider {
     // Server
     public LootTableDrops(ResourceLocation tableId) {
         this.tableId = tableId;
-        this.cachedTable = CachedSupplier.cache(() -> Objects.requireNonNull(BotanyPotsMod.REGISTRY_ACCESS.get()).registryOrThrow(Registries.LOOT_TABLE).get(ResourceKey.create(Registries.LOOT_TABLE, tableId)));
-        this.displayItems = CachedSupplier.cache(() -> LootPoolEntryDescriptions.getUniqueItems(Objects.requireNonNull(BotanyPotsMod.REGISTRY_ACCESS.get()), this.cachedTable.get()));
+        this.cachedTable = CachedSupplier.cache(this::lookupTable);
+        this.displayItems = CachedSupplier.cache(this::buildDisplayItems);
     }
 
     // client
@@ -57,6 +57,22 @@ public class LootTableDrops implements ItemDropProvider {
         this.tableId = tableId;
         this.cachedTable = CachedSupplier.singleton(null);
         this.displayItems = CachedSupplier.singleton(displayItems);
+    }
+
+    public LootTable lookupTable() {
+        return Objects.requireNonNull(BotanyPotsMod.REGISTRY_ACCESS.get()).registryOrThrow(Registries.LOOT_TABLE).get(ResourceKey.create(Registries.LOOT_TABLE, tableId));
+    }
+
+    public List<ItemStack> buildDisplayItems() {
+        return LootPoolEntryDescriptions.getUniqueItems(Objects.requireNonNull(BotanyPotsMod.REGISTRY_ACCESS.get()), this.cachedTable.get());
+    }
+
+    public final boolean hasCachedTable() {
+        final LootTable table = this.cachedTable.get();
+        return table != null && table != LootTable.EMPTY;
+    }
+
+    public void fallbackDrops(BotanyPotContext context, Level level, Consumer<ItemStack> drops) {
     }
 
     public ResourceLocation getTableId() {
@@ -69,7 +85,12 @@ public class LootTableDrops implements ItemDropProvider {
 
     @Override
     public void apply(BotanyPotContext context, Level level, Consumer<ItemStack> drops) {
-        this.cachedTable.ifPresent(table -> table.getRandomItems(this.getLootParams(context), drops));
+        if (hasCachedTable()) {
+            this.cachedTable.ifPresent(table -> table.getRandomItems(this.getLootParams(context), drops));
+        }
+        else {
+            this.fallbackDrops(context, level, drops);
+        }
     }
 
     @Override

@@ -2,6 +2,8 @@ package net.darkhax.botanypots.common.impl.data.itemdrops;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.darkhax.bookshelf.common.api.function.CachedSupplier;
+import net.darkhax.bookshelf.common.mixin.access.block.AccessorCropBlock;
 import net.darkhax.botanypots.common.api.context.BotanyPotContext;
 import net.darkhax.botanypots.common.api.data.itemdrops.ItemDropProviderType;
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;
@@ -9,12 +11,17 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class BlockDrops extends LootTableDrops {
@@ -40,6 +47,7 @@ public class BlockDrops extends LootTableDrops {
 
     private final Block block;
     private final BlockState harvestState;
+    private final CachedSupplier<ItemStack> fallbackDrop = CachedSupplier.cache(this::findFallbackItem);
 
     // server
     public BlockDrops(Block block) {
@@ -76,6 +84,31 @@ public class BlockDrops extends LootTableDrops {
     @Override
     protected LootParams getLootParams(BotanyPotContext context) {
         return context.createLootParams(this.harvestState);
+    }
+
+    @Override
+    public List<ItemStack> buildDisplayItems() {
+        return this.hasCachedTable() ? super.buildDisplayItems() : List.of(this.fallbackDrop.get());
+    }
+
+    @Override
+    public void fallbackDrops(BotanyPotContext context, Level level, Consumer<ItemStack> drops) {
+        drops.accept(this.fallbackDrop.get());
+    }
+
+    public ItemStack findFallbackItem() {
+        if (block instanceof AccessorCropBlock crop) {
+            final ItemLike seedItem = crop.bookshelf$getSeed();
+            if (seedItem != null && seedItem != Items.AIR) {
+                return seedItem.asItem().getDefaultInstance();
+            }
+        }
+        final Item placer = block.asItem();
+        if (placer != Items.AIR) {
+            return placer.getDefaultInstance();
+        }
+        BotanyPotsMod.LOG.warn("Can not derive seed from block " + block + " id=" + BuiltInRegistries.BLOCK.getKey(block));
+        return ItemStack.EMPTY;
     }
 
     @Override
