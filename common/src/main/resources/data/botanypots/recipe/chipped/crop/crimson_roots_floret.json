@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "chipped:crimson_roots_floret"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "chipped:crimson_roots_floret",
+  "input": {
+    "item": "chipped:crimson_roots_floret"
+  }
+}

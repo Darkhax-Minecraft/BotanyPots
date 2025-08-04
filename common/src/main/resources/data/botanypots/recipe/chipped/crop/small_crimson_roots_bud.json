@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "chipped:small_crimson_roots_bud"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "chipped:small_crimson_roots_bud",
+  "input": {
+    "item": "chipped:small_crimson_roots_bud"
+  }
+}

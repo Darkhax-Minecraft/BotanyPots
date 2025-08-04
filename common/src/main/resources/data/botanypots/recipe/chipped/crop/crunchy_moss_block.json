@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "chipped:crunchy_moss_block"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "chipped:crunchy_moss_block",
+  "input": {
+    "item": "chipped:crunchy_moss_block"
+  }
+}

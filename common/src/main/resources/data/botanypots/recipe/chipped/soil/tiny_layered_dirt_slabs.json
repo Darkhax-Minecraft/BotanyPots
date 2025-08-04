@@ -1,0 +1,12 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "chipped:tiny_layered_dirt_slabs"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "chipped:tiny_layered_dirt_slabs"
+}

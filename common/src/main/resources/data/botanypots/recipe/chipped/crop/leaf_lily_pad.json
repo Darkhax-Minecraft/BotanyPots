@@ -1,0 +1,18 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "chipped:leaf_lily_pad"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "chipped:leaf_lily_pad",
+  "soil": {
+    "tag": "botanypots:soil/water"
+  },
+  "input": {
+    "item": "chipped:leaf_lily_pad"
+  }
+}

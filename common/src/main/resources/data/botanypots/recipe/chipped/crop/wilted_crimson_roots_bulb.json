@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "chipped:wilted_crimson_roots_bulb"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "chipped:wilted_crimson_roots_bulb",
+  "input": {
+    "item": "chipped:wilted_crimson_roots_bulb"
+  }
+}

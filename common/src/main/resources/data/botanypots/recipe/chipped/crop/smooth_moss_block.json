@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "chipped:smooth_moss_block"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "chipped:smooth_moss_block",
+  "input": {
+    "item": "chipped:smooth_moss_block"
+  }
+}

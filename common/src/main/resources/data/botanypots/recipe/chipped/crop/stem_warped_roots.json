@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "chipped:stem_warped_roots"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "chipped:stem_warped_roots",
+  "input": {
+    "item": "chipped:stem_warped_roots"
+  }
+}

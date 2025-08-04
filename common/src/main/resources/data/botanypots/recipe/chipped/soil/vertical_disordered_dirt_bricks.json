@@ -1,0 +1,12 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "chipped:vertical_disordered_dirt_bricks"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "chipped:vertical_disordered_dirt_bricks"
+}
