@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "undergarden:gwibling_bucket"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "undergarden:gwibling_bucket"
+  },
+  "display": {
+    "type": "botanypots:simple",
+    "block_state": {
+      "block": "minecraft:water"
+    },
+    "options": {
+      "render_fluid": true
+    }
+  }
+}

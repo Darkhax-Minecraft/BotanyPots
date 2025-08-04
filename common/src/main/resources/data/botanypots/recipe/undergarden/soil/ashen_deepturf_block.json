@@ -1,0 +1,12 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "undergarden:ashen_deepturf_block"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "undergarden:ashen_deepturf_block"
+}
