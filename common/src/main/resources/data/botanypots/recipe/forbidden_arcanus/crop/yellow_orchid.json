@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "forbidden_arcanus:yellow_orchid"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "forbidden_arcanus:yellow_orchid",
+  "input": {
+    "item": "forbidden_arcanus:yellow_orchid"
+  }
+}
