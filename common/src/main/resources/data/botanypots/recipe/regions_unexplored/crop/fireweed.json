@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "regions_unexplored:fireweed"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "regions_unexplored:fireweed",
+  "input": {
+    "item": "regions_unexplored:fireweed"
+  }
+}

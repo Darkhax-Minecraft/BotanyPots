@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "regions_unexplored:cattail"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "regions_unexplored:cattail",
+  "input": {
+    "item": "regions_unexplored:cattail"
+  }
+}

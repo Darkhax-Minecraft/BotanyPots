@@ -1,0 +1,12 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "regions_unexplored:brimsprout_nylium"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "regions_unexplored:brimsprout_nylium"
+}

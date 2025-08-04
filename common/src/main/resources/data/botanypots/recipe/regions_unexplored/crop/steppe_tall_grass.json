@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "regions_unexplored:steppe_tall_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "regions_unexplored:steppe_tall_grass",
+  "input": {
+    "item": "regions_unexplored:steppe_tall_grass"
+  },
+  "drops": [
+    {
+      "type": "botanypots:loot_table",
+      "table_id": "botanypots:botanypots/regions_unexplored/crop/steppe_tall_grass"
+    }
+  ]
+}

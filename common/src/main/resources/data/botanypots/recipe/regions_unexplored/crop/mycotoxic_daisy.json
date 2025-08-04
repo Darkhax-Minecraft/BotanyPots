@@ -1,0 +1,29 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "regions_unexplored:mycotoxic_daisy"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "regions_unexplored:mycotoxic_daisy",
+  "soil": {
+    "type": "bookshelf:either",
+    "fabric:type": "bookshelf:either",
+    "ingredients": [
+      {
+        "type": "bookshelf:block_tag",
+        "fabric:type": "bookshelf:block_tag",
+        "tag": "minecraft:mushroom_grow_block"
+      },
+      {
+        "tag": "botanypots:soil/mushroom"
+      }
+    ]
+  },
+  "input": {
+    "item": "regions_unexplored:mycotoxic_daisy"
+  }
+}

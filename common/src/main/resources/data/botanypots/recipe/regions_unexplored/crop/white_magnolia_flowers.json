@@ -1,0 +1,24 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "regions_unexplored:white_magnolia_flowers"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "regions_unexplored:white_magnolia_flowers",
+  "input": {
+    "item": "regions_unexplored:white_magnolia_flowers"
+  },
+  "display": {
+    "type": "botanypots:simple",
+    "block_state": {
+      "block": "regions_unexplored:white_magnolia_flowers",
+      "properties": {
+        "down": "true"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "regions_unexplored:tall_cobalt_earlight"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "regions_unexplored:tall_cobalt_earlight",
+  "input": {
+    "item": "regions_unexplored:tall_cobalt_earlight"
+  }
+}

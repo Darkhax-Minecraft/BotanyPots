@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "regions_unexplored:enchanted_birch_leaf_pile"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "regions_unexplored:enchanted_birch_leaf_pile",
+  "input": {
+    "item": "regions_unexplored:enchanted_birch_leaf_pile"
+  }
+}

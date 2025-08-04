@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "regions_unexplored:brown_snowbelle"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "regions_unexplored:brown_snowbelle",
+  "input": {
+    "item": "regions_unexplored:brown_snowbelle"
+  }
+}
