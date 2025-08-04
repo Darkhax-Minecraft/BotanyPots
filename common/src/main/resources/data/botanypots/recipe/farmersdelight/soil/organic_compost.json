@@ -1,0 +1,13 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "farmersdelight:organic_compost"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "farmersdelight:organic_compost",
+  "growth_modifier": 0.10
+}

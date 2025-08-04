@@ -1,0 +1,13 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "farmersdelight:rich_soil"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "farmersdelight:rich_soil",
+  "growth_modifier": 0.10
+}
