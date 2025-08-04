@@ -12,6 +12,9 @@
   "input": {
     "item": "farmersdelight:wild_rice"
   },
+  "soil": {
+    "tag": "botanypots:soil/water"
+  },
   "drops": [
     {
       "type": "botanypots:loot_table",
