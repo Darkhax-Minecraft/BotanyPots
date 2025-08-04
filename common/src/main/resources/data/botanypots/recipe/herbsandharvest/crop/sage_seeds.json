@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "herbsandharvest:sage_herb"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "herbsandharvest:sage_herb",
+  "input": {
+    "item": "herbsandharvest:sage_seeds"
+  }
+}

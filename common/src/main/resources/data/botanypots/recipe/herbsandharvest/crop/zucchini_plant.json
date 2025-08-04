@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "herbsandharvest:zucchini_plant"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "herbsandharvest:zucchini_plant",
+  "input": {
+    "item": "herbsandharvest:zucchini_plant"
+  }
+}

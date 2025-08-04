@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "herbsandharvest:parsley_placeable_herb"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "herbsandharvest:parsley_placeable_herb",
+  "input": {
+    "item": "herbsandharvest:parsley_placeable_herb"
+  }
+}

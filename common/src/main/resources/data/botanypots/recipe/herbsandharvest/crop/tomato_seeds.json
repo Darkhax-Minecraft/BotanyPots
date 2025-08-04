@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "herbsandharvest:tomato_plant"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "herbsandharvest:tomato_plant",
+  "input": {
+    "item": "herbsandharvest:tomato_seeds"
+  }
+}

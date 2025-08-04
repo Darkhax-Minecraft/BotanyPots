@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "herbsandharvest:mustard_placeable_herb"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "herbsandharvest:mustard_placeable_herb",
+  "input": {
+    "item": "herbsandharvest:fresh_mustard"
+  }
+}

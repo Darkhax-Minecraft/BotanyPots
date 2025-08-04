@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "herbsandharvest:basil_placeable_herb"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "herbsandharvest:basil_placeable_herb",
+  "input": {
+    "item": "herbsandharvest:basil_placeable_herb"
+  }
+}
