@@ -1,0 +1,13 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "utilitarian:red_snad"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "utilitarian:red_snad",
+  "growth_modifier": 0.15
+}
