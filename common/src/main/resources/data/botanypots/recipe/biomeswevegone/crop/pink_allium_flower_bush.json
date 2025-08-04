@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:pink_allium_flower_bush"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:pink_allium_flower_bush",
+  "input": {
+    "item": "biomeswevegone:pink_allium_flower_bush"
+  }
+}

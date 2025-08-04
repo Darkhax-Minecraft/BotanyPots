@@ -1,0 +1,19 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:witch_hazel_blossom"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:witch_hazel_blossom",
+  "input": {
+    "item": "biomeswevegone:witch_hazel_blossom"
+  },
+  "render_options": {
+    "rotation": "X_180",
+    "scale": [0.4, 0.625, 0.4]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:purple_tulip"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:purple_tulip",
+  "input": {
+    "item": "biomeswevegone:purple_tulip"
+  }
+}

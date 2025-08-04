@@ -1,0 +1,18 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:cattail_sprout"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:cattail_sprout",
+  "soil": {
+    "tag": "botanypots:soil/water"
+  },
+  "input": {
+    "item": "biomeswevegone:cattail_sprout"
+  }
+}

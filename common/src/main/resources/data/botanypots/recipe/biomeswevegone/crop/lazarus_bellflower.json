@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:lazarus_bellflower"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:lazarus_bellflower",
+  "input": {
+    "item": "biomeswevegone:lazarus_bellflower"
+  }
+}

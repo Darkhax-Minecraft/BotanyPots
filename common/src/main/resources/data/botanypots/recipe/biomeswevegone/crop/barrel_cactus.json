@@ -1,0 +1,18 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:barrel_cactus"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:barrel_cactus",
+  "soil": {
+    "tag": "botanypots:soil/sand"
+  },
+  "input": {
+    "item": "biomeswevegone:barrel_cactus"
+  }
+}

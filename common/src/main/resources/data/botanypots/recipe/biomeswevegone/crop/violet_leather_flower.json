@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:violet_leather_flower"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:violet_leather_flower",
+  "input": {
+    "item": "biomeswevegone:violet_leather_flower"
+  }
+}

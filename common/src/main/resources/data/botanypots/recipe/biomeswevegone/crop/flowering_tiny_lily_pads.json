@@ -1,0 +1,18 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:flowering_tiny_lily_pads"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:flowering_tiny_lily_pads",
+  "soil": {
+    "tag": "botanypots:soil/water"
+  },
+  "input": {
+    "item": "biomeswevegone:flowering_tiny_lily_pads"
+  }
+}

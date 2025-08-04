@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:pale_pumpkin_stem"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:pale_pumpkin_stem",
+  "input": {
+    "item": "biomeswevegone:pale_pumpkin_seeds"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:blue_rose_bush"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:blue_rose_bush",
+  "input": {
+    "item": "biomeswevegone:blue_rose_bush"
+  }
+}

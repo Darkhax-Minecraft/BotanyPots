@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:magenta_pitcher_plant"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:magenta_pitcher_plant",
+  "input": {
+    "item": "biomeswevegone:magenta_pitcher_plant"
+  }
+}

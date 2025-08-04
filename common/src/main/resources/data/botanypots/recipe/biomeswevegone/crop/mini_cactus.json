@@ -1,0 +1,18 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:mini_cactus"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:mini_cactus",
+  "soil": {
+    "tag": "botanypots:soil/sand"
+  },
+  "input": {
+    "item": "biomeswevegone:mini_cactus"
+  }
+}

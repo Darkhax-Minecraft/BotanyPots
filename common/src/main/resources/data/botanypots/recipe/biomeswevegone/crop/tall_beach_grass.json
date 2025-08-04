@@ -1,0 +1,24 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:tall_beach_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:tall_beach_grass",
+  "input": {
+    "item": "biomeswevegone:tall_beach_grass"
+  },
+  "soil": {
+    "tag": "botanypots:soil/sand"
+  },
+  "drops": [
+    {
+      "type": "botanypots:loot_table",
+      "table_id": "botanypots:botanypots/biomeswevegone/crop/tall_beach_grass"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:indigo_jacaranda_bush"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:indigo_jacaranda_bush",
+  "input": {
+    "item": "biomeswevegone:indigo_jacaranda_bush"
+  }
+}

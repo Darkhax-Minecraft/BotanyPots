@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:yellow_sakura_petals"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:yellow_sakura_petals",
+  "input": {
+    "item": "biomeswevegone:yellow_sakura_petals"
+  }
+}

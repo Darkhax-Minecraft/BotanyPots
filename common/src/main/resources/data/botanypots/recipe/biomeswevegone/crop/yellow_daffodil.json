@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:yellow_daffodil"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:yellow_daffodil",
+  "input": {
+    "item": "biomeswevegone:yellow_daffodil"
+  }
+}

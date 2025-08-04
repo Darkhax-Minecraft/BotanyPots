@@ -1,0 +1,18 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:golden_spined_cactus"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:golden_spined_cactus",
+  "soil": {
+    "tag": "botanypots:soil/sand"
+  },
+  "input": {
+    "item": "biomeswevegone:golden_spined_cactus"
+  }
+}

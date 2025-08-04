@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:winter_cyclamen"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:winter_cyclamen",
+  "input": {
+    "item": "biomeswevegone:winter_cyclamen"
+  }
+}

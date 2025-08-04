@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:tall_prairie_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:tall_prairie_grass",
+  "input": {
+    "item": "biomeswevegone:tall_prairie_grass"
+  },
+  "drops": [
+    {
+      "type": "botanypots:loot_table",
+      "table_id": "botanypots:botanypots/biomeswevegone/crop/tall_prairie_grass"
+    }
+  ]
+}

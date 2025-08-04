@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:hydrangea_hedge"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:hydrangea_hedge",
+  "input": {
+    "item": "biomeswevegone:hydrangea_hedge"
+  }
+}

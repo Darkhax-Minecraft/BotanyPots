@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:peach_leather_flower"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:peach_leather_flower",
+  "input": {
+    "item": "biomeswevegone:peach_leather_flower"
+  }
+}

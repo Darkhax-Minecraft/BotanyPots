@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomeswevegone:firecracker_flower_bush"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "biomeswevegone:firecracker_flower_bush",
+  "input": {
+    "item": "biomeswevegone:firecracker_flower_bush"
+  }
+}
