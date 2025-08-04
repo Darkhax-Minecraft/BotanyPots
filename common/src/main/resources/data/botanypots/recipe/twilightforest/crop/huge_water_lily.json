@@ -1,0 +1,18 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "twilightforest:huge_water_lily"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "twilightforest:huge_water_lily",
+  "soil": {
+    "tag": "botanypots:soil/water"
+  },
+  "input": {
+    "item": "twilightforest:huge_water_lily"
+  }
+}

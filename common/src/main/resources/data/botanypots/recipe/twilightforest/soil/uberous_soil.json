@@ -1,0 +1,13 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "twilightforest:uberous_soil"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "twilightforest:uberous_soil",
+  "growth_modifier": 0.05
+}

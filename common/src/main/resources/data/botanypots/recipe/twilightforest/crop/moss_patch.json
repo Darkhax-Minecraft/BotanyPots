@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "twilightforest:moss_patch"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "twilightforest:moss_patch",
+  "input": {
+    "item": "twilightforest:moss_patch"
+  }
+}

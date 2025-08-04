@@ -1,0 +1,18 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "twilightforest:torchberry_plant"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "twilightforest:torchberry_plant",
+  "input": {
+    "item": "twilightforest:torchberry_plant"
+  },
+  "render_options": {
+    "rotation": "X_180"
+  }
+}

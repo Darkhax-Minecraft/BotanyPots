@@ -1,0 +1,24 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "twilightforest:huge_lily_pad"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "twilightforest:huge_lily_pad",
+  "soil": {
+    "tag": "botanypots:soil/water"
+  },
+  "input": {
+    "item": "twilightforest:huge_lily_pad"
+  },
+  "display": {
+    "type": "botanypots:simple",
+    "block_state": {
+      "block": "minecraft:lily_pad"
+    }
+  }
+}

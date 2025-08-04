@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "twilightforest:root_strand"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "twilightforest:root_strand",
+  "input": {
+    "item": "twilightforest:root_strand"
+  }
+}
