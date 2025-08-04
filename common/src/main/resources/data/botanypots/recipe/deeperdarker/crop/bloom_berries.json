@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "deeperdarker:glowing_vines"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "deeperdarker:glowing_vines",
+  "soil": {
+    "tag": "botanypots:soil/sculk"
+  },
+  "input": {
+    "item": "deeperdarker:bloom_berries"
+  },
+  "render_options": {
+    "rotation": "X_180"
+  }
+}

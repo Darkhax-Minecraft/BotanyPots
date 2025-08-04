@@ -1,0 +1,18 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "deeperdarker:glowing_flowers"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "deeperdarker:glowing_flowers",
+  "soil": {
+    "tag": "botanypots:soil/sculk"
+  },
+  "input": {
+    "item": "deeperdarker:glowing_flowers"
+  }
+}

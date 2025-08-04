@@ -1,0 +1,18 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "deeperdarker:gloomy_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "deeperdarker:gloomy_grass",
+  "soil": {
+    "tag": "botanypots:soil/sculk"
+  },
+  "input": {
+    "item": "deeperdarker:gloomy_grass"
+  }
+}

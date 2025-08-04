@@ -1,0 +1,18 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "deeperdarker:lily_flower"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "deeperdarker:lily_flower",
+  "input": {
+    "item": "deeperdarker:lily_flower"
+  },
+  "soil": {
+    "tag": "botanypots:soil/water"
+  }
+}
