@@ -1,0 +1,12 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "xycraft_world:smooth_kivi"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "xycraft_world:smooth_kivi"
+}
