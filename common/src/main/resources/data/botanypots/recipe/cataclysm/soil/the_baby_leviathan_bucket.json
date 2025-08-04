@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "cataclysm:the_baby_leviathan_bucket"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "cataclysm:the_baby_leviathan_bucket"
+  },
+  "display": {
+    "type": "botanypots:simple",
+    "block_state": {
+      "block": "minecraft:water"
+    },
+    "options": {
+      "render_fluid": true
+    }
+  }
+}
