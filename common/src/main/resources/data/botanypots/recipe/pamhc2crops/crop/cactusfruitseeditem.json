@@ -9,6 +9,9 @@
   ],
   "type": "botanypots:block_derived_crop",
   "block": "pamhc2crops:pamcactusfruitcrop",
+  "soil": {
+    "tag": "botanypots:soil/sand"
+  },
   "input": {
     "item": "pamhc2crops:cactusfruitseeditem"
   }
