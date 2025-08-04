@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "minecolonies:durum"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "minecolonies:durum",
+  "input": {
+    "item": "minecolonies:durum"
+  }
+}
