@@ -1,0 +1,12 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "supplementaries:planter"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "supplementaries:planter"
+}
