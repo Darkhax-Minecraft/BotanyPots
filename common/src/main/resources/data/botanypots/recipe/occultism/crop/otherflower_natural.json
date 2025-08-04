@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "occultism:otherflower_natural"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "occultism:otherflower_natural",
+  "input": {
+    "item": "occultism:otherflower_natural"
+  }
+}
