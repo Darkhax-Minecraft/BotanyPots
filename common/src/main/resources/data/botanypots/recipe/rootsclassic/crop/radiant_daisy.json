@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "rootsclassic:radiant_daisy"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "rootsclassic:radiant_daisy",
+  "input": {
+    "item": "rootsclassic:radiant_daisy"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "rootsclassic:midnight_bloom"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "rootsclassic:midnight_bloom",
+  "input": {
+    "item": "rootsclassic:midnight_bloom"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "rootsclassic:flare_orchid"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "rootsclassic:flare_orchid",
+  "input": {
+    "item": "rootsclassic:flare_orchid"
+  }
+}
