@@ -1,0 +1,25 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "reliquary:fertile_lily_pad"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "reliquary:fertile_lily_pad",
+  "input": {
+    "item": "reliquary:fertile_lily_pad"
+  },
+  "grow_time": 1000,
+  "soil": {
+    "tag": "botanypots:soil/water"
+  },
+  "drops": [
+    {
+      "type": "botanypots:loot_table",
+      "table_id": "minecraft:blocks/lily_pad"
+    }
+  ]
+}
