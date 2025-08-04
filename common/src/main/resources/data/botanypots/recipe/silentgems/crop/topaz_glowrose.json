@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "silentgems:topaz_glowrose"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "silentgems:topaz_glowrose",
+  "input": {
+    "item": "silentgems:topaz_glowrose"
+  }
+}

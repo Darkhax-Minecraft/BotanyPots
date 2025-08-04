@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "silentgems:sapphire_glowrose"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "silentgems:sapphire_glowrose",
+  "input": {
+    "item": "silentgems:sapphire_glowrose"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "silentgems:black_diamond_glowrose"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "silentgems:black_diamond_glowrose",
+  "input": {
+    "item": "silentgems:black_diamond_glowrose"
+  }
+}

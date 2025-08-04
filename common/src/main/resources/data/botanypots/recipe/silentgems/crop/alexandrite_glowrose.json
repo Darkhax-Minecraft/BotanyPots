@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "silentgems:alexandrite_glowrose"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "silentgems:alexandrite_glowrose",
+  "input": {
+    "item": "silentgems:alexandrite_glowrose"
+  }
+}
