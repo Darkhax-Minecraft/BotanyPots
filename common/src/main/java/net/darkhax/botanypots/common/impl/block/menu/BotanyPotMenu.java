@@ -114,7 +114,7 @@ public class BotanyPotMenu extends AbstractContainerMenu {
         }
 
         final int firstSlot = isHopper ? 14 : 2;
-        final int lastSlot = isHopper ? 50 : 38;
+        final int lastSlot = isHopper ? 51 : 38;
         ItemStack unplacedItems = ItemStack.EMPTY;
 
         if (clickedSlot.hasItem()) {
@@ -122,7 +122,7 @@ public class BotanyPotMenu extends AbstractContainerMenu {
             unplacedItems = clickedStack.copy();
 
             // Attempt to move an output to the player inventory.
-            if (isHopper && clickedSlotId > AbstractBotanyPotBlockEntity.TOOL_SLOT && clickedSlotId <= AbstractBotanyPotBlockEntity.SLOT_COUNT) {
+            if (isHopper && clickedSlotId > AbstractBotanyPotBlockEntity.TOOL_SLOT && clickedSlotId <= firstSlot) {
                 if (!this.moveItemStackTo(clickedStack, firstSlot, lastSlot, true)) {
                     return ItemStack.EMPTY;
                 }
@@ -130,7 +130,7 @@ public class BotanyPotMenu extends AbstractContainerMenu {
             }
 
             // Attempt moving the soil or seed slot to the player inventory.
-            else if (clickedSlotId == BotanyPotBlockEntity.SOIL_SLOT || clickedSlotId == BotanyPotBlockEntity.SEED_SLOT || clickedSlotId == BotanyPotBlockEntity.TOOL_SLOT) {
+            else if (clickedSlotId == BotanyPotBlockEntity.SOIL_SLOT || clickedSlotId == BotanyPotBlockEntity.SEED_SLOT || (isHopper && clickedSlotId == BotanyPotBlockEntity.TOOL_SLOT)) {
                 if (!this.moveItemStackTo(clickedStack, firstSlot, lastSlot, true)) {
                     return ItemStack.EMPTY;
                 }
