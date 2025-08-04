@@ -1,0 +1,12 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "farmingforblockheads:fertilized_farmland_stable"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "farmingforblockheads:fertilized_farmland_stable"
+}
