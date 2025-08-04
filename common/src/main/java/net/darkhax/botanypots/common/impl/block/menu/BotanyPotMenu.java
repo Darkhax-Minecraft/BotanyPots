@@ -123,7 +123,7 @@ public class BotanyPotMenu extends AbstractContainerMenu {
 
             // Attempt to move an output to the player inventory.
             if (isHopper && clickedSlotId > AbstractBotanyPotBlockEntity.TOOL_SLOT && clickedSlotId <= firstSlot) {
-                if (!this.moveItemStackTo(clickedStack, firstSlot, lastSlot, true)) {
+                if (!this.moveItemStackTo(clickedStack, firstSlot, lastSlot, false)) {
                     return ItemStack.EMPTY;
                 }
                 clickedSlot.onQuickCraft(clickedStack, unplacedItems);
@@ -131,7 +131,7 @@ public class BotanyPotMenu extends AbstractContainerMenu {
 
             // Attempt moving the soil or seed slot to the player inventory.
             else if (clickedSlotId == BotanyPotBlockEntity.SOIL_SLOT || clickedSlotId == BotanyPotBlockEntity.SEED_SLOT || (isHopper && clickedSlotId == BotanyPotBlockEntity.TOOL_SLOT)) {
-                if (!this.moveItemStackTo(clickedStack, firstSlot, lastSlot, true)) {
+                if (!this.moveItemStackTo(clickedStack, firstSlot, lastSlot, false)) {
                     return ItemStack.EMPTY;
                 }
             }
