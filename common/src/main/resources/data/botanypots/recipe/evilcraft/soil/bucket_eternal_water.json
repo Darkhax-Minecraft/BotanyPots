@@ -1,0 +1,23 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "evilcraft:bucket_eternal_water"
+      ]
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "evilcraft:bucket_eternal_water"
+  },
+  "display": {
+    "type": "botanypots:simple",
+    "block_state": {
+      "block": "minecraft:water"
+    },
+    "options": {
+      "render_fluid": true
+    }
+  }
+}
