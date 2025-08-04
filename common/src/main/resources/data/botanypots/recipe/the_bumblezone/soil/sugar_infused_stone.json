@@ -1,0 +1,12 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "the_bumblezone:sugar_infused_stone"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_soil",
+  "block": "the_bumblezone:sugar_infused_stone"
+}
