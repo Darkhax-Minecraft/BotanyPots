@@ -136,7 +136,7 @@ public class BotanyPotMenu extends AbstractContainerMenu {
                 }
             }
 
-            // Attempt transferring a seed or soil into the pot.
+            // Move items from player inventory
             else if (clickedSlotId >= firstSlot && clickedSlotId <= lastSlot) {
                 // Try to insert a tool
                 final Slot toolSlot = this.slots.get(BotanyPotBlockEntity.TOOL_SLOT);
@@ -158,6 +158,11 @@ public class BotanyPotMenu extends AbstractContainerMenu {
                 if (!cropSlot.hasItem() && Objects.requireNonNull(Crop.CACHE.apply(level)).lookup(clickedStack, context, player.level()) != null) {
                     cropSlot.set(clickedStack.split(1));
                     clickedSlot.set(clickedStack);
+                    return ItemStack.EMPTY;
+                }
+
+                // Inventory to hotbar
+                if (!this.moveItemStackTo(clickedStack, lastSlot - 9, lastSlot, false)) {
                     return ItemStack.EMPTY;
                 }
             }
