@@ -1,0 +1,15 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "mcwholidays:snowy_tall_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "mcwholidays:snowy_tall_grass",
+  "input": {
+    "item": "mcwholidays:snowy_tall_grass"
+  }
+}
