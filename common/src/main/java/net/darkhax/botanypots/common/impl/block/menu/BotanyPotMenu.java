@@ -162,7 +162,12 @@ public class BotanyPotMenu extends AbstractContainerMenu {
                 }
 
                 // Inventory to hotbar
-                if (!this.moveItemStackTo(clickedStack, lastSlot - 9, lastSlot, false)) {
+                if ((clickedSlotId < lastSlot - 9) && !this.moveItemStackTo(clickedStack, lastSlot - 9, lastSlot, false)) {
+                    return ItemStack.EMPTY;
+                }
+
+                // Hotbar to inventory
+                else if (clickedSlotId >= lastSlot - 9 && !this.moveItemStackTo(clickedStack, firstSlot, lastSlot - 9, false)) {
                     return ItemStack.EMPTY;
                 }
             }
