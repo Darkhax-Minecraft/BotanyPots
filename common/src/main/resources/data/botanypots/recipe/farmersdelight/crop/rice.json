@@ -11,5 +11,8 @@
   "block": "farmersdelight:rice",
   "input": {
     "item": "farmersdelight:rice"
+  },
+  "soil": {
+    "tag": "botanypots:soil/water"
   }
 }
