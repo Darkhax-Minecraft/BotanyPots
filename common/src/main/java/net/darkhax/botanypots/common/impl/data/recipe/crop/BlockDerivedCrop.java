@@ -28,7 +28,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -126,7 +125,7 @@ public class BlockDerivedCrop extends BasicCrop {
             if (stateDef.getProperty("berries") instanceof BooleanProperty boolProp) {
                 state = state.setValue(boolProp, true);
             }
-            if (block instanceof MultifaceBlock && block instanceof BonemealableBlock) {
+            if (block instanceof MultifaceBlock) {
                 state = state.setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true);
             }
             return state;
