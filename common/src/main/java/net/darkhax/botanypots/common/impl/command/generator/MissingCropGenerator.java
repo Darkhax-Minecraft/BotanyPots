@@ -24,7 +24,6 @@ import net.minecraft.world.level.block.GrowingPlantBlock;
 import net.minecraft.world.level.block.MushroomBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SculkBehaviour;
-import net.minecraft.world.level.block.SculkBlock;
 import net.minecraft.world.level.block.SporeBlossomBlock;
 import net.minecraft.world.level.block.WaterlilyBlock;
 
