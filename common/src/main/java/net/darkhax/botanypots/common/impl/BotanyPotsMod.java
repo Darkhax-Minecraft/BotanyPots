@@ -24,6 +24,7 @@ public class BotanyPotsMod {
     }
 
     public BotanyPotsMod() {
+        CONFIG.get(); // Force init config file on main thread.
     }
 
     public static void updateRegistryAccess(RegistryAccess access) {
