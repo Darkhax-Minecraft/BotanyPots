@@ -13,6 +13,7 @@ import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 public class NeoForgeMod {
 
     public NeoForgeMod(IEventBus bus) {
+        BotanyPotsMod.init();
         bus.addListener(NeoForgeMod::registerCapabilities);
     }
 

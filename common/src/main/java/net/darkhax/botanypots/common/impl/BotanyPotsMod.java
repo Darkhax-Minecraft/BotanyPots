@@ -23,7 +23,7 @@ public class BotanyPotsMod {
         return ResourceLocation.tryBuild(MOD_ID, path);
     }
 
-    public BotanyPotsMod() {
+    public static void init() {
         CONFIG.get(); // Force init config file on main thread.
     }
 
