@@ -22,7 +22,7 @@ public record ConfigLoadCondition(String property) implements ILoadCondition {
     public static final MapCodec<ConfigLoadCondition> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(Codec.STRING.fieldOf("property").forGetter(ConfigLoadCondition::property)).apply(instance, ConfigLoadCondition::new));
 
     private static final Supplier<Map<String, Supplier<Boolean>>> PROPERTIES = CachedSupplier.cache(() -> {
-        final Config cfg = Config.INSTANCE.get();
+        final Config cfg = BotanyPotsMod.CONFIG.get();
         final Map<String, Supplier<Boolean>> properties = new HashMap<>();
         properties.put("can_craft_basic_pots", () -> cfg.recipes.craft_basic_pots);
         properties.put("can_craft_hopper_pots", () -> cfg.recipes.craft_hopper_pots);
