@@ -1,5 +1,6 @@
 package net.darkhax.botanypots.impl;
 
+import net.darkhax.bookshelf.neoforge.impl.util.NeoForgeRegistryHelper;
 import net.darkhax.botanypots.common.impl.BotanyPotsMod;
 import net.darkhax.botanypots.common.impl.block.entity.BotanyPotBlockEntity;
 import net.minecraft.core.Direction;

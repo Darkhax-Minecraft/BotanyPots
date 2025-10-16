@@ -29,7 +29,9 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
@@ -165,5 +167,13 @@ public class Helpers {
             }
         }
         return false;
+    }
+
+
+    public static ItemStack addModifier(ItemStack stack, Holder<Attribute> attribute, AttributeModifier modifier, EquipmentSlotGroup group) {
+        ItemAttributeModifiers component = stack.getOrDefault(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY);
+        component = component.withModifierAdded(attribute, modifier, group);
+        stack.set(DataComponents.ATTRIBUTE_MODIFIERS, component);
+        return stack;
     }
 }

@@ -4,16 +4,17 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.serialization.MapCodec;
 import net.darkhax.bookshelf.common.api.data.conditions.ILoadCondition;
 import net.darkhax.bookshelf.common.api.function.CachedSupplier;
-import net.darkhax.bookshelf.common.api.registry.IContentProvider;
-import net.darkhax.bookshelf.common.api.registry.register.ItemComponentRegister;
-import net.darkhax.bookshelf.common.api.registry.register.MenuRegister;
-import net.darkhax.bookshelf.common.api.registry.register.Register;
-import net.darkhax.bookshelf.common.api.registry.register.RegisterBlockEntityRenderer;
-import net.darkhax.bookshelf.common.api.registry.register.RegisterItem;
-import net.darkhax.bookshelf.common.api.registry.register.RegisterItemTab;
-import net.darkhax.bookshelf.common.api.registry.register.RegisterMenuScreen;
-import net.darkhax.bookshelf.common.api.registry.register.RegisterRecipeType;
+import net.darkhax.bookshelf.common.api.registry.ContentProvider;
+import net.darkhax.bookshelf.common.api.registry.adapters.GameRegistryAdapter;
+import net.darkhax.bookshelf.common.api.registry.adapters.GenericRegistryAdapter;
 import net.darkhax.bookshelf.common.api.service.Services;
+import net.darkhax.bookshelf.common.impl.registry.adapter.BlockEntityRendererAdapter;
+import net.darkhax.bookshelf.common.impl.registry.adapter.BlockRegistryAdapter;
+import net.darkhax.bookshelf.common.impl.registry.adapter.BlockRenderTypeAdapter;
+import net.darkhax.bookshelf.common.impl.registry.adapter.CreativeModeTabAdapter;
+import net.darkhax.bookshelf.common.impl.registry.adapter.MenuScreenAdapter;
+import net.darkhax.bookshelf.common.impl.registry.adapter.MenuTypeAdapter;
+import net.darkhax.bookshelf.common.impl.registry.adapter.RecipeTypeAdapter;
 import net.darkhax.botanypots.common.api.BotanyPotsPlugin;
 import net.darkhax.botanypots.common.api.data.components.CropOverride;
 import net.darkhax.botanypots.common.api.data.components.SoilOverride;
@@ -36,7 +37,6 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -49,7 +49,6 @@ import net.minecraft.world.entity.ai.attributes.RangedAttribute;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Unbreakable;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
@@ -59,11 +58,9 @@ import net.minecraft.world.level.material.MapColor;
 import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.function.BiConsumer;
 import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
 
-public class BotanyPotsContent implements IContentProvider {
+public class BotanyPotsContent implements ContentProvider {
 
     public static final Supplier<ItemStack> TAB_ICON = CachedSupplier.cache(() -> BuiltInRegistries.ITEM.get(BotanyPotsMod.id("terracotta_botany_pot")).getDefaultInstance());
     private static final String[] BRICK_TYPES = {"brick", "stone", "mossy_stone", "deepslate", "tuff", "mud", "prismarine", "nether", "red_nether", "polished_blackstone", "end_stone", "quartz"};
@@ -94,7 +91,7 @@ public class BotanyPotsContent implements IContentProvider {
     }
 
     @Override
-    public void registerBlocks(Register<Block> registry) {
+    public void defineBlocks(BlockRegistryAdapter registry) {
         createPots(registry, "terracotta");
         for (DyeColor color : DyeColor.values()) {
             createPots(registry, color.getName() + "_terracotta");
@@ -106,43 +103,36 @@ public class BotanyPotsContent implements IContentProvider {
         }
     }
 
-    private void createPots(Register<Block> registry, String name) {
+    private void createPots(BlockRegistryAdapter registry, String name) {
         final ResourceLocation blockId = ResourceLocation.withDefaultNamespace(name);
         final MapColor color = BuiltInRegistries.BLOCK.containsKey(blockId) ? BuiltInRegistries.BLOCK.get(blockId).defaultMapColor() : MapColor.COLOR_ORANGE;
-        registerPot(registry, name + "_botany_pot", new BotanyPotBlock(color, PotType.BASIC));
-        registerPot(registry, name + "_hopper_botany_pot", new BotanyPotBlock(color, PotType.HOPPER));
-        registerPot(registry, name + "_waxed_botany_pot", new BotanyPotBlock(color, PotType.WAXED));
+        definePot(registry, name + "_botany_pot", new BotanyPotBlock(color, PotType.BASIC));
+        definePot(registry, name + "_hopper_botany_pot", new BotanyPotBlock(color, PotType.HOPPER));
+        definePot(registry, name + "_waxed_botany_pot", new BotanyPotBlock(color, PotType.WAXED));
     }
 
-    private void registerPot(Register<Block> registry, String id, Block block) {
-        final ResourceLocation blockId = ResourceLocation.fromNamespaceAndPath(this.contentNamespace(), id);
-        registry.add(blockId, block);
+    private void definePot(BlockRegistryAdapter registry, String id, Block block) {
+        final ResourceLocation blockId = ResourceLocation.fromNamespaceAndPath(this.namespace(), id);
+        registry.addPlaceable(id, () -> block);
         allPotBlocks.put(blockId, block);
     }
 
     @Override
-    public void registerItems(RegisterItem registry) {
-        for (Map.Entry<ResourceLocation, Block> block : allPotBlocks.entrySet()) {
-            registry.addBlock(block.getValue());
-        }
-    }
-
-    @Override
-    public void registerBlockEntities(Register<BlockEntityType.Builder<?>> registry) {
-        registry.add("botany_pot", Services.GAMEPLAY.blockEntityBuilder(BotanyPotBlockEntity::new, this.allPotBlocks.values().toArray(Block[]::new)));
+    public void defineBlockEntities(GameRegistryAdapter<BlockEntityType<?>> registry) {
+        registry.add("botany_pot", Services.GAMEPLAY.blockEntityBuilder(BotanyPotBlockEntity::new, this.allPotBlocks.values().toArray(Block[]::new)).build(null));
         BotanyPotsPlugin.PLUGINS.get().forEach(BotanyPotsPlugin::registerDisplayTypes);
         BotanyPotsPlugin.PLUGINS.get().forEach(BotanyPotsPlugin::registerDropProviders);
         BotanyPotsPlugin.PLUGINS.get().forEach(BotanyPotsPlugin::registerGrowthAmountTypes);
     }
 
     @Override
-    public void registerMenus(MenuRegister registry) {
+    public void defineMenuType(MenuTypeAdapter registry) {
         registry.add("basic_pot_menu", BotanyPotMenu::basicMenuClient);
         registry.add("hopper_pot_menu", BotanyPotMenu::hopperMenuClient);
     }
 
     @Override
-    public void registerRecipeTypes(RegisterRecipeType registry) {
+    public void defineRecipeTypes(RecipeTypeAdapter registry) {
         registry.add("soil");
         registry.add("crop");
         registry.add("pot_interaction");
@@ -150,7 +140,7 @@ public class BotanyPotsContent implements IContentProvider {
     }
 
     @Override
-    public void registerRecipeSerializers(Register<RecipeSerializer<?>> registry) {
+    public void defineRecipeSerializers(GameRegistryAdapter<RecipeSerializer<?>> registry) {
         registry.add("soil", BasicSoil.SERIALIZER);
         registry.add("block_derived_soil", BlockDerivedSoil.SERIALIZER);
         registry.add("crop", BasicCrop.SERIALIZER);
@@ -160,12 +150,12 @@ public class BotanyPotsContent implements IContentProvider {
     }
 
     @Override
-    public void registerLoadConditions(Register<MapCodec<? extends ILoadCondition>> registry) {
+    public void defineLoadConditions(GenericRegistryAdapter<MapCodec<? extends ILoadCondition>> registry) {
         registry.add(ConfigLoadCondition.TYPE_ID, ConfigLoadCondition.CODEC);
     }
 
     @Override
-    public void registerItemTabs(RegisterItemTab registry) {
+    public void defineCreativeTabs(CreativeModeTabAdapter registry) {
         registry.add("tab", TAB_ICON, (params, builder) -> {
             for (Block block : this.allPotBlocks.values()) {
                 builder.accept(block.asItem());
@@ -175,72 +165,65 @@ public class BotanyPotsContent implements IContentProvider {
             final ResourceLocation growthId = BotanyPotsMod.id("test_growth");
             for (float buff : buffs) {
                 final ItemStack yield = new ItemStack(Items.DIAMOND_HOE);
-                addModifier(yield, Helpers.YIELD_MOD_ATTRIBUTE.get(), new AttributeModifier(yieldId, buff, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+                Helpers.addModifier(yield, Helpers.YIELD_MOD_ATTRIBUTE.get(), new AttributeModifier(yieldId, buff, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
                 yield.set(DataComponents.UNBREAKABLE, new Unbreakable(true));
                 builder.accept(yield);
             }
             for (float buff : buffs) {
                 final ItemStack growth = new ItemStack(Items.GOLDEN_HOE);
-                addModifier(growth, Helpers.GROWTH_MOD_ATTRIBUTE.get(), new AttributeModifier(growthId, buff, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+                Helpers.addModifier(growth, Helpers.GROWTH_MOD_ATTRIBUTE.get(), new AttributeModifier(growthId, buff, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
                 growth.set(DataComponents.UNBREAKABLE, new Unbreakable(true));
                 builder.accept(growth);
             }
             for (float buff : buffs) {
                 final ItemStack both = new ItemStack(Items.NETHERITE_HOE);
-                addModifier(both, Helpers.YIELD_MOD_ATTRIBUTE.get(), new AttributeModifier(yieldId, buff, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
-                addModifier(both, Helpers.GROWTH_MOD_ATTRIBUTE.get(), new AttributeModifier(growthId, buff, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+                Helpers.addModifier(both, Helpers.YIELD_MOD_ATTRIBUTE.get(), new AttributeModifier(yieldId, buff, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+                Helpers.addModifier(both, Helpers.GROWTH_MOD_ATTRIBUTE.get(), new AttributeModifier(growthId, buff, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
                 both.set(DataComponents.UNBREAKABLE, new Unbreakable(true));
                 builder.accept(both);
             }
         });
     }
 
-    private static ItemStack addModifier(ItemStack stack, Holder<Attribute> attribute, AttributeModifier modifier, EquipmentSlotGroup group) {
-        ItemAttributeModifiers component = stack.getOrDefault(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY);
-        component = component.withModifierAdded(attribute, modifier, group);
-        stack.set(DataComponents.ATTRIBUTE_MODIFIERS, component);
-        return stack;
-    }
-
     @Override
-    public void registerCommands(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext context, Commands.CommandSelection selection) {
+    public void defineCommands(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext context, Commands.CommandSelection selection) {
         BotanyPotsCommands.build(dispatcher, context, selection);
     }
 
     @Override
-    public void bindBlockEntityRenderer(RegisterBlockEntityRenderer registry) {
+    public void defineBlockRenderers(BlockEntityRendererAdapter registry) {
         registry.bind(BotanyPotBlockEntity.TYPE.get(), BotanyPotRenderer::new);
         BotanyPotsPlugin.PLUGINS.get().forEach(BotanyPotsPlugin::bindDisplayRenderers);
     }
 
     @Override
-    public void registerItemComponents(ItemComponentRegister registry) {
-        registry.accept(CropOverride.TYPE_ID, (UnaryOperator<DataComponentType.Builder<CropOverride>>) b -> b.persistent(CropOverride.CODEC).networkSynchronized(CropOverride.STREAM));
-        registry.accept(SoilOverride.TYPE_ID, (UnaryOperator<DataComponentType.Builder<SoilOverride>>) b -> b.persistent(SoilOverride.CODEC).networkSynchronized(SoilOverride.STREAM));
+    public void defineItemComponents(GameRegistryAdapter<DataComponentType<?>> registry) {
+        registry.add(CropOverride.TYPE_ID.getPath(), new DataComponentType.Builder<CropOverride>().persistent(CropOverride.CODEC).networkSynchronized(CropOverride.STREAM).build());
+        registry.add(SoilOverride.TYPE_ID.getPath(), new DataComponentType.Builder<SoilOverride>().persistent(SoilOverride.CODEC).networkSynchronized(SoilOverride.STREAM).build());
     }
 
     @Override
-    public void registerMenuScreens(RegisterMenuScreen registry) {
+    public void defineMenuScreens(MenuScreenAdapter registry) {
         registry.bind(BotanyPotMenu.BASIC_MENU.get(), BotanyPotScreen::new);
         registry.bind(BotanyPotMenu.HOPPER_MENU.get(), BotanyPotScreen::new);
     }
 
     @Override
-    public void bindRenderLayers(BiConsumer<Block, RenderType> registry) {
+    public void defineBlockRenderTypes(BlockRenderTypeAdapter registry) {
         for (Block block : this.allPotBlocks.values()) {
-            registry.accept(block, RenderType.cutout());
+            registry.add(block, RenderType.cutout());
         }
     }
 
     @Override
-    public void registerAttributes(Register<Attribute> registry) {
+    public void defineAttributes(GameRegistryAdapter<Attribute> registry) {
         // TODO Write a mixin to display these as a percentage in tooltips
         registry.add("growth", new RangedAttribute("attribute.botanypots.growth", 0f, -Float.MAX_VALUE, Float.MAX_VALUE));
         registry.add("yield", new RangedAttribute("attribute.botanypots.yield", 0f, -Float.MAX_VALUE, Float.MAX_VALUE));
     }
 
     @Override
-    public String contentNamespace() {
+    public String namespace() {
         return BotanyPotsMod.MOD_ID;
     }
 
