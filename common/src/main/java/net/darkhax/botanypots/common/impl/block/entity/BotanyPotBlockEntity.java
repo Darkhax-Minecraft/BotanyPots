@@ -72,6 +72,7 @@ public class BotanyPotBlockEntity extends AbstractBotanyPotBlockEntity {
     public int comparatorLevel = 0;
     protected TickAccumulator exportCooldown = new TickAccumulator(0f);
     protected int exportBackoffStage = 0;
+    protected boolean storageMayHaveItems = true;
     protected TickAccumulator growCooldown = new TickAccumulator(0f);
     private int bonemealCooldown = 0;
 
@@ -124,6 +125,7 @@ public class BotanyPotBlockEntity extends AbstractBotanyPotBlockEntity {
                                 pot.getHarvestItem().hurtAndBreak(1, serverLevel, null, stack -> {
                                 });
                             }
+                            pot.storageMayHaveItems = true;
                             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(pot.getBlockState()));
                         }
                         pot.growthTime.reset();
@@ -136,10 +138,12 @@ public class BotanyPotBlockEntity extends AbstractBotanyPotBlockEntity {
         }
 
         // Update Inventory
-        if (pot.isHopper()) {
+        if (pot.storageMayHaveItems && pot.isHopper()) {
             pot.exportCooldown.tickDown(level);
             if (pot.exportCooldown.getTicks() <= 0) {
                 if (level instanceof ServerLevel serverLevel && !serverLevel.getBlockState(pot.below.get()).isAir()) {
+                    pot.storageMayHaveItems = false;
+
                     final Object2ObjectArrayMap<Item, ObjectArraySet<DataComponentMap>> knownUninsertable = new Object2ObjectArrayMap<>();
 
                     for (int slot : BotanyPotBlockEntity.STORAGE_SLOTS) {
@@ -162,6 +166,7 @@ public class BotanyPotBlockEntity extends AbstractBotanyPotBlockEntity {
 
                         if (!stack.isEmpty()) {
                             badComponents.add(stack.getComponents());
+                            pot.storageMayHaveItems = true;
                         }
                     }
                 }
