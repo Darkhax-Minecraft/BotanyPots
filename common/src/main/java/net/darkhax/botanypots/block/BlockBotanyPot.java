@@ -33,6 +33,8 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedBlock, IBindRenderLayer {
 
@@ -184,6 +186,7 @@ public class BlockBotanyPot extends InventoryBlock implements SimpleWaterloggedB
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public RenderType getRenderLayerToBind() {
 
         return RenderType.cutout();
