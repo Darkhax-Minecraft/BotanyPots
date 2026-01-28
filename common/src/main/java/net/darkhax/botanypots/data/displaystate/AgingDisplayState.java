@@ -43,7 +43,7 @@ public class AgingDisplayState extends TransitionalDisplayState {
 
         if (block instanceof CropBlock crop) {
 
-            for (int i = 0; i < crop.getMaxAge(); i++) {
+            for (int i = 0; i <= crop.getMaxAge(); i++) {
 
                 try {
 
