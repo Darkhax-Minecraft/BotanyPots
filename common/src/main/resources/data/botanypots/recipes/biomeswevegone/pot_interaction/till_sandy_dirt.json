@@ -1,0 +1,27 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "biomeswevegone:sandy_dirt",
+                "biomeswevegone:sandy_farmland"
+            ]
+        }
+    ],
+    "type": "botanypots:pot_interaction",
+    "held_ingredient": {
+        "tag": "minecraft:hoes"
+    },
+    "soil_ingredient": [
+        {
+            "item": "biomeswevegone:sandy_dirt"
+        }
+    ],
+    "soil_output": {
+        "item": "biomeswevegone:sandy_farmland"
+    },
+    "sound": {
+        "sound": "minecraft:item.hoe.till",
+        "category": "blocks"
+    }
+}

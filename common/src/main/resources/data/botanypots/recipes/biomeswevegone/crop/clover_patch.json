@@ -1,0 +1,30 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "biomeswevegone:clover_patch"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "biomeswevegone:clover_patch"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "biomeswevegone:clover_patch"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "biomeswevegone:clover_patch"
+      }
+    }
+  ]
+}

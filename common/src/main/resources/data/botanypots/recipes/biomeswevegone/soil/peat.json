@@ -1,0 +1,20 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:peat"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:peat"
+  },
+  "display": {
+    "block": "biomeswevegone:peat"
+  },
+  "categories": [
+    "dirt",
+    "peat"
+  ],
+  "growthModifier": 1.00
+}

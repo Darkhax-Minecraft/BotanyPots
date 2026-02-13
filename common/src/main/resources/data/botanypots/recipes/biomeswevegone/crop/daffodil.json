@@ -1,0 +1,30 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "biomeswevegone:daffodil"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "biomeswevegone:daffodil"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "biomeswevegone:daffodil"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "biomeswevegone:daffodil"
+      }
+    }
+  ]
+}

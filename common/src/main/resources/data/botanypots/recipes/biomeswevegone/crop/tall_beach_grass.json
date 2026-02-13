@@ -1,0 +1,41 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "biomeswevegone:tall_beach_grass"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "biomeswevegone:tall_beach_grass"
+  },
+  "categories": [
+    "dirt",
+    "sand"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "biomeswevegone:tall_beach_grass",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "biomeswevegone:tall_beach_grass",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1,
+      "output": {
+        "item": "biomeswevegone:tall_beach_grass"
+      }
+    }
+  ]
+}

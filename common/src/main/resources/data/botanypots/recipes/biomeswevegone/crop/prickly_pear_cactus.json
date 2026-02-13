@@ -1,0 +1,30 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "biomeswevegone:prickly_pear_cactus"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "biomeswevegone:prickly_pear_cactus"
+  },
+  "categories": [
+    "sand"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "biomeswevegone:prickly_pear_cactus"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "biomeswevegone:prickly_pear_cactus"
+      }
+    }
+  ]
+}

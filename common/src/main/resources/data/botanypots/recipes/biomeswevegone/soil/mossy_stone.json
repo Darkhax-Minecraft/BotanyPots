@@ -1,0 +1,22 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:mossy_stone"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:mossy_stone"
+  },
+  "display": {
+    "block": "biomeswevegone:mossy_stone"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "moss",
+    "mossy_stone"
+  ],
+  "growthModifier": 1.00
+}

@@ -1,0 +1,55 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "biomeswevegone:yellow_sakura_petals"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "biomeswevegone:yellow_sakura_petals"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "block": "biomeswevegone:yellow_sakura_petals",
+        "properties": {
+          "flower_amount": 1
+        }
+      },
+      {
+        "block": "biomeswevegone:yellow_sakura_petals",
+        "properties": {
+          "flower_amount": 2
+        }
+      },
+      {
+        "block": "biomeswevegone:yellow_sakura_petals",
+        "properties": {
+          "flower_amount": 3
+        }
+      },
+      {
+        "block": "biomeswevegone:yellow_sakura_petals",
+        "properties": {
+          "flower_amount": 4
+        }
+      }
+    ]
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "biomeswevegone:yellow_sakura_petals"
+      }
+    }
+  ]
+}

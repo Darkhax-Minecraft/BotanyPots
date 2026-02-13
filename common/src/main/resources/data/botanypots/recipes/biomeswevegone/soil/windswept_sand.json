@@ -1,0 +1,20 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:windswept_sand"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:windswept_sand"
+  },
+  "display": {
+    "block": "biomeswevegone:windswept_sand"
+  },
+  "categories": [
+    "sand",
+    "windswept_sand"
+  ],
+  "growthModifier": 1.00
+}

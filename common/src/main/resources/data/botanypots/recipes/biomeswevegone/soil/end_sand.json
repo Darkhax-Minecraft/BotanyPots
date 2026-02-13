@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:end_sand"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:end_sand"
+  },
+  "display": {
+    "block": "biomeswevegone:end_sand"
+  },
+  "categories": [
+    "sand",
+    "end_sand",
+    "end"
+  ],
+  "growthModifier": 1.00
+}

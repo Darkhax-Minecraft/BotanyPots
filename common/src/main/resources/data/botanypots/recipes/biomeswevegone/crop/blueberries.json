@@ -1,0 +1,56 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "biomeswevegone:blueberries"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "biomeswevegone:blueberries"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "lightLevel": 14,
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "block": "biomeswevegone:blueberry_bush",
+        "properties": {
+          "age": 0
+        }
+      },
+      {
+        "block": "biomeswevegone:blueberry_bush",
+        "properties": {
+          "age": 1
+        }
+      },
+      {
+        "block": "biomeswevegone:blueberry_bush",
+        "properties": {
+          "age": 3
+        }
+      }
+    ]
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "biomeswevegone:blueberries"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "biomeswevegone:blueberries"
+      }
+    }
+  ]
+}

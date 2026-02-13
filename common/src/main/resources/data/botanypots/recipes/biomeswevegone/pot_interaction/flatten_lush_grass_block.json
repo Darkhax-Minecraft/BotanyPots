@@ -1,0 +1,27 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "biomeswevegone:lush_grass_block",
+                "biomeswevegone:lush_dirt_path"
+            ]
+        }
+    ],
+    "type": "botanypots:pot_interaction",
+    "held_ingredient": {
+        "tag": "minecraft:shovels"
+    },
+    "soil_ingredient": [
+        {
+            "item": "biomeswevegone:lush_grass_block"
+        }
+    ],
+    "soil_output": {
+        "item": "biomeswevegone:lush_dirt_path"
+    },
+    "sound": {
+        "sound": "minecraft:item.shovel.flatten",
+        "category": "blocks"
+    }
+}

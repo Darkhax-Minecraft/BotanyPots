@@ -1,0 +1,22 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:overgrown_dacite"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:overgrown_dacite"
+  },
+  "display": {
+    "block": "biomeswevegone:overgrown_dacite"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "dacite",
+    "grass"
+  ],
+  "growthModifier": 1.00
+}

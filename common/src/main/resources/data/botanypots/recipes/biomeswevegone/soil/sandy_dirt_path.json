@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:sandy_dirt_path"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:sandy_dirt_path"
+  },
+  "display": {
+    "block": "biomeswevegone:sandy_dirt_path"
+  },
+  "categories": [
+    "dirt",
+    "sand",
+    "path"
+  ],
+  "growthModifier": 0.5
+}

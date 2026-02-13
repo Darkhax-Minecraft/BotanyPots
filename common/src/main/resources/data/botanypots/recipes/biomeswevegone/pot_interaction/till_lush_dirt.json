@@ -1,0 +1,27 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "biomeswevegone:lush_dirt",
+                "biomeswevegone:lush_farmland"
+            ]
+        }
+    ],
+    "type": "botanypots:pot_interaction",
+    "held_ingredient": {
+        "tag": "minecraft:hoes"
+    },
+    "soil_ingredient": [
+        {
+            "item": "biomeswevegone:lush_dirt"
+        }
+    ],
+    "soil_output": {
+        "item": "biomeswevegone:lush_farmland"
+    },
+    "sound": {
+        "sound": "minecraft:item.hoe.till",
+        "category": "blocks"
+    }
+}

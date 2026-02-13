@@ -1,0 +1,36 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "biomeswevegone:skyris_vine"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "biomeswevegone:skyris_vine"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "biomeswevegone:skyris_vine",
+    "properties": {
+      "north": "true",
+      "east": "true",
+      "south": "true",
+      "west": "true",
+      "up": "true"
+    }
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "biomeswevegone:skyris_vine"
+      }
+    }
+  ]
+}

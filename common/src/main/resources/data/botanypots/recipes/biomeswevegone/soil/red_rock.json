@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:red_rock"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:red_rock"
+  },
+  "display": {
+    "block": "biomeswevegone:red_rock"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "red_rock"
+  ],
+  "growthModifier": 1.00
+}

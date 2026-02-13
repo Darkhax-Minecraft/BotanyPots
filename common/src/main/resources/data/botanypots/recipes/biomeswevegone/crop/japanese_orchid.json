@@ -1,0 +1,40 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "biomeswevegone:japanese_orchid"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "biomeswevegone:japanese_orchid"
+  },
+  "categories": [
+    "dirt"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "biomeswevegone:japanese_orchid",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "biomeswevegone:japanese_orchid",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1,
+      "output": {
+        "item": "biomeswevegone:japanese_orchid"
+      }
+    }
+  ]
+}

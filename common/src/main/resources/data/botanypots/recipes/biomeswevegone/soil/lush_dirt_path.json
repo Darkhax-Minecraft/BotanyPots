@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:lush_dirt_path"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:lush_dirt_path"
+  },
+  "display": {
+    "block": "biomeswevegone:lush_dirt_path"
+  },
+  "categories": [
+    "dirt",
+    "lush_dirt",
+    "path"
+  ],
+  "growthModifier": 0.5
+}

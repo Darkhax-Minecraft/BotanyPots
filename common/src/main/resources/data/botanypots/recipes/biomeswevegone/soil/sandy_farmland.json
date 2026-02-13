@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:sandy_farmland"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:sandy_farmland"
+  },
+  "display": {
+    "block": "biomeswevegone:sandy_farmland"
+  },
+  "categories": [
+    "dirt",
+    "sand",
+    "farmland"
+  ],
+  "growthModifier": 1.05
+}

@@ -1,0 +1,20 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:black_sand"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:black_sand"
+  },
+  "display": {
+    "block": "biomeswevegone:black_sand"
+  },
+  "categories": [
+    "sand",
+    "black_sand"
+  ],
+  "growthModifier": 1.00
+}

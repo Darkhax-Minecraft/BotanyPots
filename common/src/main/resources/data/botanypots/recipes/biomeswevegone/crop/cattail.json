@@ -1,0 +1,41 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "biomeswevegone:cattail_sprout"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "biomeswevegone:cattail_sprout"
+  },
+  "categories": [
+    "dirt",
+    "sand"
+  ],
+  "growthTicks": 1200,
+  "display": [
+    {
+      "block": "biomeswevegone:cattail",
+      "properties": {
+        "half": "lower"
+      }
+    },
+    {
+      "block": "biomeswevegone:cattail",
+      "properties": {
+        "half": "upper"
+      }
+    }
+  ],
+  "drops": [
+    {
+      "chance": 1,
+      "output": {
+        "item": "biomeswevegone:cattail_sprout"
+      }
+    }
+  ]
+}

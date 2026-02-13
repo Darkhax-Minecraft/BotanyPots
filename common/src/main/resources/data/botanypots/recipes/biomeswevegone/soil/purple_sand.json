@@ -1,0 +1,20 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:purple_sand"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:purple_sand"
+  },
+  "display": {
+    "block": "biomeswevegone:purple_sand"
+  },
+  "categories": [
+    "sand",
+    "purple_sand"
+  ],
+  "growthModifier": 1.00
+}

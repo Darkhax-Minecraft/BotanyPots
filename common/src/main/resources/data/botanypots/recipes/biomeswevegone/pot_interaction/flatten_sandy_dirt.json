@@ -1,0 +1,27 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "biomeswevegone:sandy_dirt",
+                "biomeswevegone:sandy_dirt_path"
+            ]
+        }
+    ],
+    "type": "botanypots:pot_interaction",
+    "held_ingredient": {
+        "tag": "minecraft:shovels"
+    },
+    "soil_ingredient": [
+        {
+            "item": "biomeswevegone:sandy_dirt"
+        }
+    ],
+    "soil_output": {
+        "item": "biomeswevegone:sandy_dirt_path"
+    },
+    "sound": {
+        "sound": "minecraft:item.shovel.flatten",
+        "category": "blocks"
+    }
+}

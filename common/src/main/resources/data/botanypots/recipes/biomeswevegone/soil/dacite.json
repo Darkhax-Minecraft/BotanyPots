@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:dacite"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:dacite"
+  },
+  "display": {
+    "block": "biomeswevegone:dacite"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "dacite"
+  ],
+  "growthModifier": 1.00
+}

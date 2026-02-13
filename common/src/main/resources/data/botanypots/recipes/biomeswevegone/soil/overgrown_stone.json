@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:overgrown_stone"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:overgrown_stone"
+  },
+  "display": {
+    "block": "biomeswevegone:overgrown_stone"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "grass"
+  ],
+  "growthModifier": 1.00
+}

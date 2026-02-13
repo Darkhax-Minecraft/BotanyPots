@@ -1,0 +1,20 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:quicksand"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:quicksand"
+  },
+  "display": {
+    "block": "biomeswevegone:quicksand"
+  },
+  "categories": [
+    "sand",
+    "quicksand"
+  ],
+  "growthModifier": 0.95
+}

@@ -1,0 +1,22 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "biomeswevegone:podzol_dacite"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "biomeswevegone:podzol_dacite"
+  },
+  "display": {
+    "block": "biomeswevegone:podzol_dacite"
+  },
+  "categories": [
+    "stone",
+    "mushroom",
+    "podzol",
+    "dacite"
+  ],
+  "growthModifier": 1.00
+}

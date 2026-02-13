@@ -1,0 +1,36 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "biomeswevegone:barrel_cactus"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "biomeswevegone:aloe_vera"
+  },
+  "categories": [
+    "sand"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "type": "botanypots:aging",
+    "block": "biomeswevegone:aloe_vera"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "biomeswevegone:aloe_vera"
+      }
+    },
+    {
+      "chance": 0.125,
+      "output": {
+        "item": "minecraft:wheat_seeds"
+      }
+    }
+  ]
+}

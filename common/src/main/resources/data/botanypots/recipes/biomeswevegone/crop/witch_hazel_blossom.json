@@ -1,0 +1,31 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": [
+        "biomeswevegone:witch_hazel_blossom"
+      ]
+    }
+  ],
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "biomeswevegone:witch_hazel_blossom"
+  },
+  "categories": [
+    "dirt",
+    "moss"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "biomeswevegone:witch_hazel_blossom",
+    "rotation": "X_180"
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "biomeswevegone:witch_hazel_blossom"
+      }
+    }
+  ]
+}
