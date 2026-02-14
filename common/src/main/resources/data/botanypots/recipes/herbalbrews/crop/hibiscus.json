@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "herbalbrews:hibiscus"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "herbalbrews:hibiscus"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "herbalbrews:hibiscus"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "herbalbrews:hibiscus"
+            }
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "herbalbrews:tea_blossom"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
+}

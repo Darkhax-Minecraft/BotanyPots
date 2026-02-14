@@ -1,0 +1,27 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "meadow:small_fir"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "meadow:small_fir"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "meadow:small_fir"
+            }
+        },
+        {
+            "chance": 0.125,
+            "output": {
+                "item": "minecraft:wheat_seeds"
+            }
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "bloomingnature:barrel_cactus"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "bloomingnature:barrel_cactus"
+    },
+    "categories": [
+        "dirt",
+        "sand"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "bloomingnature:barrel_cactus"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "bloomingnature:barrel_cactus"
+            }
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:item_exists",
+      "values": "farm_and_charm:fertilized_farmland"
+    }
+  ],
+  "type": "botanypots:soil",
+  "input": {
+    "item": "farm_and_charm:fertilized_farmland"
+  },
+  "display": {
+    "block": "farm_and_charm:fertilized_farmland"
+  },
+  "categories": [
+    "dirt",
+    "fertilized_farmland",
+    "farmland"
+  ],
+  "growthModifier": 1.15
+}

@@ -1,0 +1,29 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "bloomingnature:amaryllis"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "bloomingnature:amaryllis"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "bloomingnature:amaryllis"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "bloomingnature:amaryllis"
+            }
+        }
+    ]
+}

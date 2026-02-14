@@ -1,0 +1,29 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "bloomingnature:begonie"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "bloomingnature:begonie"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "bloomingnature:begonie"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "bloomingnature:begonie"
+            }
+        }
+    ]
+}

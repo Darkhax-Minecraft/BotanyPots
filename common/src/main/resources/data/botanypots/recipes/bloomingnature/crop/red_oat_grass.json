@@ -1,0 +1,29 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "bloomingnature:red_oat_grass"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "bloomingnature:red_oat_grass"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "bloomingnature:red_oat_grass"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "bloomingnature:red_oat_grass"
+            }
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "candlelight:rose"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "candlelight:rose"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "candlelight:rose"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "candlelight:rose"
+            }
+        }
+    ]
+}

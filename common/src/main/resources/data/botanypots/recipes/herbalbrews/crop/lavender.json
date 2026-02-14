@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "herbalbrews:lavender"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "herbalbrews:lavender"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "herbalbrews:lavender"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "herbalbrews:lavender"
+            }
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "herbalbrews:lavender_blossom"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
+}

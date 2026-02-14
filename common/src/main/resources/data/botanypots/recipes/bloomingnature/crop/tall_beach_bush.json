@@ -1,0 +1,41 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "bloomingnature:tall_beach_bush"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "bloomingnature:tall_beach_bush"
+    },
+    "categories": [
+        "dirt",
+        "sand"
+    ],
+    "growthTicks": 1200,
+    "display": [
+        {
+            "block": "bloomingnature:tall_beach_bush",
+            "properties": {
+                "half": "lower"
+            }
+        },
+        {
+            "block": "bloomingnature:tall_beach_bush",
+            "properties": {
+                "half": "upper"
+            }
+        }
+    ],
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "bloomingnature:tall_beach_bush"
+            }
+        }
+    ]
+}

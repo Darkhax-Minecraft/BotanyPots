@@ -1,0 +1,40 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "bloomingnature:cattail"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "bloomingnature:cattail"
+    },
+    "categories": [
+        "water"
+    ],
+    "growthTicks": 1200,
+    "display": [
+        {
+            "block": "bloomingnature:cattail",
+            "properties": {
+                "half": "lower"
+            }
+        },
+        {
+            "block": "bloomingnature:cattail",
+            "properties": {
+                "half": "upper"
+            }
+        }
+    ],
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "bloomingnature:cattail"
+            }
+        }
+    ]
+}

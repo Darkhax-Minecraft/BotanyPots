@@ -1,0 +1,40 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "farm_and_charm:kernels",
+                "farm_and_charm:corn"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "farm_and_charm:kernels"
+    },
+    "categories": [
+        "dirt",
+        "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "farm_and_charm:corn_crop"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "farm_and_charm:corn"
+            }
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "farm_and_charm:kernels"
+            },
+            "minRolls": 1,
+            "maxRolls": 4
+        }
+    ]
+}

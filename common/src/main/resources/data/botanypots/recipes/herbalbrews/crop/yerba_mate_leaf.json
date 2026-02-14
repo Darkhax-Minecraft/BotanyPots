@@ -1,0 +1,43 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "herbalbrews:yerba_mate_leaf"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "herbalbrews:yerba_mate_leaf"
+    },
+    "categories": [
+        "dirt",
+        "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "herbalbrews:yerba_mate_plant"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "herbalbrews:yerba_mate_leaf"
+            }
+        },
+        {
+            "chance": 0.50,
+            "output": {
+                "item": "herbalbrews:yerba_mate_leaf"
+            }
+        },
+        {
+            "chance": 0.25,
+            "output": {
+                "item": "herbalbrews:yerba_mate_leaf"
+            }
+        }
+    ]
+}

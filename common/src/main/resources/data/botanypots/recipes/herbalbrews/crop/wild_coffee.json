@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "herbalbrews:wild_coffee"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "herbalbrews:wild_coffee"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "herbalbrews:wild_coffee"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "herbalbrews:wild_coffee"
+            }
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "herbalbrews:coffee_beans"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
+}

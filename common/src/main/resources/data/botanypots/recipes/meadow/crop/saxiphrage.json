@@ -1,0 +1,21 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "meadow:saxifrage"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "meadow:saxifrage"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "meadow:saxifrage"
+            }
+        }
+    ]
+}

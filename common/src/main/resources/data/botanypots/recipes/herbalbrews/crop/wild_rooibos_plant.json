@@ -1,0 +1,38 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "herbalbrews:wild_rooibos_plant"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "herbalbrews:wild_rooibos_plant"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "herbalbrews:wild_rooibos_plant"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "herbalbrews:wild_rooibos_plant"
+            }
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "herbalbrews:rooibos_leaf"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
+}

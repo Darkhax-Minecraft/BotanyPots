@@ -1,0 +1,40 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "bloomingnature:tall_lupine_purple"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "bloomingnature:tall_lupine_purple"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": [
+        {
+            "block": "bloomingnature:tall_lupine_purple",
+            "properties": {
+                "half": "lower"
+            }
+        },
+        {
+            "block": "bloomingnature:tall_lupine_purple",
+            "properties": {
+                "half": "upper"
+            }
+        }
+    ],
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "bloomingnature:tall_lupine_purple"
+            }
+        }
+    ]
+}

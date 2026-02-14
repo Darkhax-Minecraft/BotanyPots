@@ -1,0 +1,42 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "farm_and_charm:tomato_seeds",
+                "farm_and_charm:tomato"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "farm_and_charm:tomato_seeds"
+    },
+    "categories": [
+        "dirt",
+        "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "farm_and_charm:tomato_crop"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "farm_and_charm:tomato"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "farm_and_charm:tomato_seeds"
+            },
+            "minRolls": 1,
+            "maxRolls": 2
+        }
+    ]
+}

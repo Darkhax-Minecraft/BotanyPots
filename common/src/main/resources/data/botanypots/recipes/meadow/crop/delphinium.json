@@ -1,0 +1,21 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "meadow:delphinium"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "meadow:delphinium"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "meadow:delphinium"
+            }
+        }
+    ]
+}

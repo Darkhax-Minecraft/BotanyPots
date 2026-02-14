@@ -1,0 +1,32 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "farm_and_charm:wild_carrots"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "farm_and_charm:wild_carrots"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "farm_and_charm:wild_carrots"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "minecraft:carrot"
+            },
+            "minRolls": 3,
+            "maxRolls": 3
+        }
+    ]
+}

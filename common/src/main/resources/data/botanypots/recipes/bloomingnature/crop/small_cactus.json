@@ -1,0 +1,29 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "bloomingnature:small_cactus"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "bloomingnature:small_cactus"
+    },
+    "categories": [
+        "sand"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "bloomingnature:small_cactus"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "bloomingnature:small_cactus"
+            }
+        }
+    ]
+}

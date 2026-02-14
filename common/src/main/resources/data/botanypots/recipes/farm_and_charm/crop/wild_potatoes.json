@@ -1,0 +1,44 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "farm_and_charm:wild_potatoes"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "farm_and_charm:wild_potatoes"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "farm_and_charm:wild_potatoes"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "minecraft:potato"
+            },
+            "minRolls": 3,
+            "maxRolls": 3
+        },
+        {
+            "chance": 0.125,
+            "output": {
+                "item": "minecraft:poisonous_potato"
+            }
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "farm_and_charm:wild_potatoes"
+            }
+        }
+    ]
+}

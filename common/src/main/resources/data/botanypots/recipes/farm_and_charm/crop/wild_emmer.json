@@ -1,0 +1,44 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "farm_and_charm:wild_emmer"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "farm_and_charm:wild_emmer"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "farm_and_charm:wild_emmer"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "minecraft:wheat"
+            },
+            "minRolls": 3,
+            "maxRolls": 3
+        },
+        {
+            "chance": 0.125,
+            "output": {
+                "item": "minecraft:wheat_seeds"
+            }
+        },
+        {
+            "chance": 0.05,
+            "output": {
+                "item": "farm_and_charm:wild_emmer"
+            }
+        }
+    ]
+}

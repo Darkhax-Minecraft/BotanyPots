@@ -1,0 +1,43 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "herbalbrews:rooibos_leaf"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "herbalbrews:rooibos_leaf"
+    },
+    "categories": [
+        "dirt",
+        "farmland"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "type": "botanypots:aging",
+        "block": "herbalbrews:rooibos_plant"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "herbalbrews:rooibos_leaf"
+            }
+        },
+        {
+            "chance": 0.50,
+            "output": {
+                "item": "herbalbrews:rooibos_leaf"
+            }
+        },
+        {
+            "chance": 0.25,
+            "output": {
+                "item": "herbalbrews:rooibos_leaf"
+            }
+        }
+    ]
+}

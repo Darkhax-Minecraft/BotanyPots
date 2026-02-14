@@ -1,0 +1,21 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "meadow:fire_lily"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "meadow:fire_lily"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "meadow:fire_lily"
+            }
+        }
+    ]
+}

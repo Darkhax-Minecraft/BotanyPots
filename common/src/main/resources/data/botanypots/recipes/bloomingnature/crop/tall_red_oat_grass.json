@@ -1,0 +1,40 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "bloomingnature:tall_red_oat_grass"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "bloomingnature:tall_red_oat_grass"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": [
+        {
+            "block": "bloomingnature:tall_red_oat_grass",
+            "properties": {
+                "half": "lower"
+            }
+        },
+        {
+            "block": "bloomingnature:tall_red_oat_grass",
+            "properties": {
+                "half": "upper"
+            }
+        }
+    ],
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "bloomingnature:tall_red_oat_grass"
+            }
+        }
+    ]
+}

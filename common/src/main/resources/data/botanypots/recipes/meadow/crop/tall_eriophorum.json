@@ -1,0 +1,21 @@
+{
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "meadow:tall_eriophorum"
+    },
+    "categories": [
+        "dirt"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "meadow:tall_eriophorum"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "meadow:tall_eriophorum"
+            }
+        }
+    ]
+}

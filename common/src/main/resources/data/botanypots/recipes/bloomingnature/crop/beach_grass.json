@@ -1,0 +1,30 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:item_exists",
+            "values": [
+                "bloomingnature:beach_grass"
+            ]
+        }
+    ],
+    "type": "botanypots:crop",
+    "seed": {
+        "item": "bloomingnature:beach_grass"
+    },
+    "categories": [
+        "dirt",
+        "sand"
+    ],
+    "growthTicks": 1200,
+    "display": {
+        "block": "bloomingnature:beach_grass"
+    },
+    "drops": [
+        {
+            "chance": 1.00,
+            "output": {
+                "item": "bloomingnature:beach_grass"
+            }
+        }
+    ]
+}
