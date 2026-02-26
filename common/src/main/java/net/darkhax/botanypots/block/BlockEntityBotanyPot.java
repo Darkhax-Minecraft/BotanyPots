@@ -20,6 +20,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -279,9 +280,7 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
                     pot.markDirty();
                 }
             }
-        }
-
-        else if (pot.growthTime != -1 || pot.doneGrowing || pot.comparatorLevel != 0) {
+        } else if (pot.growthTime != -1 || pot.doneGrowing || pot.comparatorLevel != 0) {
 
             pot.resetGrowth();
         }
@@ -315,9 +314,9 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
 
     @Override
     public void load(CompoundTag tag) {
-
-        super.load(tag);
-
+        if (shouldLoadSuper(tag)) {
+            super.load(tag);
+        }
         this.growthTime = Serializers.INT.fromNBT(tag, "GrowthTime", 0);
         this.doneGrowing = Serializers.BOOLEAN.fromNBT(tag, "DoneGrowing", false);
         this.prevComparatorLevel = Serializers.INT.fromNBT(tag, "PrevComparatorLevel", 0);
@@ -326,6 +325,34 @@ public class BlockEntityBotanyPot extends WorldlyInventoryBlockEntity<BotanyPotC
         this.exportDelay = Serializers.INT.fromNBT(tag, "ExportDelay", -1);
         this.rngSeed = Serializers.LONG.fromNBT(tag, "RandomSeed", Constants.RANDOM.nextLong());
         this.rng.setSeed(this.rngSeed);
+    }
+
+    /** Only load super if crops and soils are any different,
+     * indicating a change should be done on renderer.<br/>
+     * Client just need the crop and soil stacks to render BE,
+     * see {@link net.darkhax.botanypots.block.BotanyPotRenderer}.<br/>
+     * The product stacks are only needed on Pot UI,
+     * but data are synced in {@link BlockEntityBotanyPot#createMenu(int, Inventory)} invoked on server side.<br/>
+     * Also don't worry about the data reload,
+     * the {@link net.darkhax.botanypots.data.recipes.crop.BasicCrop} can handle that
+     * */
+    private boolean shouldLoadSuper(CompoundTag compoundTag) {
+        // Always load if we are on the server
+        if (this.getLevel() != null && !this.getLevel().isClientSide) {
+            return true;
+        }
+        // Does not contain inventory tag, return in case of NPE
+        if (!compoundTag.contains("Inventory")) {
+            return false;
+        }
+        // only load if crops and soils are any different
+        ItemStack clientSoilStack = this.getInventory().getSoilStack();
+        ItemStack clientCropStack = this.getInventory().getCropStack();
+        ListTag items = compoundTag.getCompound("Inventory").getList("Items", 10);
+        ItemStack serverSoilStack = ItemStack.of(items.getCompound(0));
+        ItemStack serverCropStack = ItemStack.of(items.getCompound(1));
+        return !ItemStack.isSameItemSameTags(clientCropStack, serverCropStack) ||
+            !ItemStack.isSameItemSameTags(clientSoilStack, serverSoilStack);
     }
 
     @Override
