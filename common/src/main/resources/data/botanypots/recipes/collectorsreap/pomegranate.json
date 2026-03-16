@@ -1,0 +1,65 @@
+{
+  "type": "botanypots:crop",
+  "seed": {
+    "item": "collectorsreap:pomegranate_seeds"
+  },
+  "categories": [
+    "nylium",
+    "rich_soul"
+  ],
+  "growthTicks": 1800,
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "block": "collectorsreap:pomegranate_bush",
+        "properties": {
+          "age": 0,
+          "half": "lower"
+        }
+      },
+      {
+        "block": "collectorsreap:pomegranate_bush",
+        "properties": {
+          "age": 1,
+          "half": "lower"
+        }
+      },
+      {
+        "block": "collectorsreap:pomegranate_bush",
+        "properties": {
+          "age": 2,
+          "half": "upper"
+        }
+      },
+      {
+        "block": "collectorsreap:pomegranate_bush",
+        "properties": {
+          "age": 3,
+          "half": "upper"
+        }
+      },
+      {
+        "block": "collectorsreap:pomegranate_bush",
+        "properties": {
+          "age": 4,
+          "half": "upper"
+        }
+      }
+    ]
+  },
+  "drops": [
+    {
+      "chance": 1.00,
+      "output": {
+        "item": "collectorsreap:pomegranate"
+      }
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "collectorsreap:pomegranate_seeds"
+      }
+    }
+  ]
+}
