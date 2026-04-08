@@ -1,0 +1,12 @@
+{
+  "type": "botanypots:block_derived_soil",
+  "block": "biomesoplenty:orange_sand",
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomesoplenty:orange_sand"
+      ]
+    }
+  ]
+}
