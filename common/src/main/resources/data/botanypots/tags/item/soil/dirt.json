@@ -3,6 +3,10 @@
     "#minecraft:dirt",
     "minecraft:farmland",
     {
+      "id": "farmersdelight:rich_soil",
+      "required": false
+    },
+    {
       "id": "farmersdelight:rich_soil_farmland",
       "required": false
     },
