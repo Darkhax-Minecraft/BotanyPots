@@ -6,5 +6,11 @@
   },
   "render_options": {
     "scale": [0.5, 0.625, 0.5]
-  }
+  },
+  "drops": [
+    {
+      "type": "botanypots:loot_table",
+      "table_id": "botanypots:botanypots/minecraft/crop/horn_coral"
+    }
+  ]
 }

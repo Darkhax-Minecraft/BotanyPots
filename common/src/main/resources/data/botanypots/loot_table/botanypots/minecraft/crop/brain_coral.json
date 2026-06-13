@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:brain_coral"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:brain_coral_fan"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:brain_coral_block"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "botanypots:crops/brain_coral"
+}
