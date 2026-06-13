@@ -4,5 +4,11 @@
   "soil": {
     "tag": "botanypots:soil/sculk"
   },
-  "grow_time": 2400
+  "grow_time": 2400,
+  "drops": [
+    {
+      "type": "botanypots:loot_table",
+      "table_id": "botanypots:botanypots/minecraft/crop/sculk_bloom"
+    }
+  ]
 }
