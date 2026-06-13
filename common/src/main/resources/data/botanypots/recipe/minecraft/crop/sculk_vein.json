@@ -12,5 +12,11 @@
         "down": "true"
       }
     }
-  }
+  },
+  "drops": [
+    {
+      "type": "botanypots:loot_table",
+      "table_id": "botanypots:botanypots/minecraft/crop/sculk_vein"
+    }
+  ]
 }
