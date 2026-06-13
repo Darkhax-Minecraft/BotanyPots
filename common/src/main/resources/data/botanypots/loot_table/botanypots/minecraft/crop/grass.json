@@ -11,33 +11,25 @@
               "type": "minecraft:item",
               "conditions": [
                 {
-                  "condition": "minecraft:match_tool",
-                  "predicate": {
-                    "items": "minecraft:shears"
-                  }
-                },
-                {
-                  "chance": 0.125,
+                  "chance": 0.15,
                   "condition": "minecraft:random_chance"
                 }
               ],
-              "name": "minecraft:large_fern"
+              "name": "minecraft:tall_grass"
             },
             {
               "type": "minecraft:item",
               "conditions": [
                 {
-                  "condition": "minecraft:match_tool",
-                  "predicate": {
-                    "items": "minecraft:shears"
-                  }
+                  "chance": 0.30,
+                  "condition": "minecraft:random_chance"
                 }
               ],
-              "name": "minecraft:fern"
+              "name": "minecraft:wheat_seeds"
             },
             {
               "type": "minecraft:item",
-              "name": "minecraft:wheat_seeds"
+              "name": "minecraft:short_grass"
             }
           ]
         }
@@ -45,5 +37,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "minecraft:blocks/large_fern"
+  "random_sequence": "botanypots:crops/grass"
 }
