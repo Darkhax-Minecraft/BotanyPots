@@ -1,5 +1,7 @@
 package net.darkhax.botanypots.common.impl.block.entity;
 
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import net.darkhax.bookshelf.common.api.data.enchantment.EnchantmentLevel;
 import net.darkhax.bookshelf.common.api.function.CachedSupplier;
 import net.darkhax.bookshelf.common.api.function.ReloadableCache;
@@ -20,6 +22,7 @@ import net.darkhax.botanypots.common.impl.block.menu.BotanyPotMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -28,6 +31,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
@@ -67,6 +71,8 @@ public class BotanyPotBlockEntity extends AbstractBotanyPotBlockEntity {
     public TickAccumulator growthTime = new TickAccumulator(-1f);
     public int comparatorLevel = 0;
     protected TickAccumulator exportCooldown = new TickAccumulator(0f);
+    protected int exportBackoffStage = 0;
+    protected boolean storageMayHaveItems = true;
     protected TickAccumulator growCooldown = new TickAccumulator(0f);
     private int bonemealCooldown = 0;
 
@@ -119,6 +125,7 @@ public class BotanyPotBlockEntity extends AbstractBotanyPotBlockEntity {
                                 pot.getHarvestItem().hurtAndBreak(1, serverLevel, null, stack -> {
                                 });
                             }
+                            pot.storageMayHaveItems = true;
                             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(pot.getBlockState()));
                         }
                         pot.growthTime.reset();
@@ -129,20 +136,45 @@ public class BotanyPotBlockEntity extends AbstractBotanyPotBlockEntity {
                 }
             }
         }
+
         // Update Inventory
-        if (pot.isHopper()) {
+        if (pot.storageMayHaveItems && pot.isHopper()) {
             pot.exportCooldown.tickDown(level);
             if (pot.exportCooldown.getTicks() <= 0) {
                 if (level instanceof ServerLevel serverLevel && !serverLevel.getBlockState(pot.below.get()).isAir()) {
+                    pot.storageMayHaveItems = false;
+
+                    final Object2ObjectArrayMap<Item, ObjectArraySet<DataComponentMap>> knownUninsertable = new Object2ObjectArrayMap<>();
+
                     for (int slot : BotanyPotBlockEntity.STORAGE_SLOTS) {
                         final ItemStack stack = pot.getItem(slot);
-                        if (!stack.isEmpty()) {
-                            final ItemStack result = Services.GAMEPLAY.inventoryInsert(serverLevel, pot.below.get(), Direction.UP, stack);
+                        if (stack.isEmpty()) {
+                            continue;
+                        }
+
+                        final ObjectArraySet<DataComponentMap> badComponents = knownUninsertable.computeIfAbsent(stack.getItem(), key -> new ObjectArraySet<>());
+                        if (badComponents.contains(stack.getComponents())) {
+                            continue;
+                        }
+
+                        final ItemStack result = Services.GAMEPLAY.inventoryInsert(serverLevel, pot.below.get(), Direction.UP, stack);
+
+                        if (stack.getCount() != result.getCount()) {
+                            pot.exportBackoffStage = 0;
                             pot.setItem(slot, result);
+                        }
+
+                        if (!stack.isEmpty()) {
+                            badComponents.add(stack.getComponents());
+                            pot.storageMayHaveItems = true;
                         }
                     }
                 }
-                pot.exportCooldown.reset();
+
+                if (pot.exportBackoffStage++ > 0) {
+                    // Exponential backoff up to 128 ticks.
+                    pot.exportCooldown.setTicks(1 << Math.min(7, pot.exportBackoffStage));
+                }
             }
         }
     }
