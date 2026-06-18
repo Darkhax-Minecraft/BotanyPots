@@ -1,0 +1,24 @@
+{
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "farmersdelight:rich_soil"
+      ]
+    }
+  ],
+  "type": "botanypots:pot_interaction",
+  "held_item": {
+    "tag": "minecraft:hoes"
+  },
+  "soil_item": {
+    "item": "farmersdelight:rich_soil"
+  },
+  "new_soil": {
+    "id": "farmersdelight:rich_soil_farmland"
+  },
+  "sound_effect": {
+    "id": "minecraft:item.hoe.till",
+    "category": "BLOCKS"
+  }
+}
