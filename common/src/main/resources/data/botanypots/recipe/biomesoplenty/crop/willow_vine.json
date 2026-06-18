@@ -1,0 +1,12 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "biomesoplenty:willow_vine",
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomesoplenty:willow_vine"
+      ]
+    }
+  ]
+}

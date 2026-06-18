@@ -1,0 +1,12 @@
+{
+  "type": "botanypots:block_derived_soil",
+  "block": "biomesoplenty:porous_flesh",
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomesoplenty:porous_flesh"
+      ]
+    }
+  ]
+}

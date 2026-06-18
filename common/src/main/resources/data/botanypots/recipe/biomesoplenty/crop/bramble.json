@@ -1,0 +1,12 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "biomesoplenty:bramble",
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomesoplenty:bramble"
+      ]
+    }
+  ]
+}

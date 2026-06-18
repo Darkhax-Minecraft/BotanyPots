@@ -1,0 +1,12 @@
+{
+  "type": "botanypots:block_derived_soil",
+  "block": "biomesoplenty:black_sand",
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomesoplenty:black_sand"
+      ]
+    }
+  ]
+}

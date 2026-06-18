@@ -1,0 +1,12 @@
+{
+  "type": "botanypots:block_derived_soil",
+  "block": "biomesoplenty:origin_grass_block",
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomesoplenty:origin_grass_block"
+      ]
+    }
+  ]
+}

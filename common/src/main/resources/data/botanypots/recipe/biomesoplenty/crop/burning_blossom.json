@@ -1,0 +1,12 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "biomesoplenty:burning_blossom",
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomesoplenty:burning_blossom"
+      ]
+    }
+  ]
+}

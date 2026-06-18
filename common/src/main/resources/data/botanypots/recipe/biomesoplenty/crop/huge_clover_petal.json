@@ -1,0 +1,12 @@
+{
+  "type": "botanypots:block_derived_crop",
+  "block": "biomesoplenty:huge_clover_petal",
+  "bookshelf:load_conditions": [
+    {
+      "type": "bookshelf:block_exists",
+      "values": [
+        "biomesoplenty:huge_clover_petal"
+      ]
+    }
+  ]
+}
