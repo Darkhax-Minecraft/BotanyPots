@@ -1,0 +1,12 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:block_exists",
+            "values": [
+                "chicken_roost:seed_crop_9"
+            ]
+        }
+    ],
+    "type": "botanypots:block_derived_crop",
+    "block": "chicken_roost:seed_crop_9"
+}

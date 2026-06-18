@@ -1,0 +1,13 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:block_exists",
+            "values": [
+                "justdirethings:goosoil_tier4"
+            ]
+        }
+    ],
+    "type": "botanypots:block_derived_soil",
+    "block": "justdirethings:goosoil_tier4",
+    "growth_modifier": 0.50
+}

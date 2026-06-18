@@ -1,0 +1,12 @@
+{
+    "bookshelf:load_conditions": [
+        {
+            "type": "bookshelf:block_exists",
+            "values": [
+                "ars_nouveau:sourceberry_bush"
+            ]
+        }
+    ],
+    "type": "botanypots:block_derived_crop",
+    "block": "ars_nouveau:sourceberry_bush"
+}
